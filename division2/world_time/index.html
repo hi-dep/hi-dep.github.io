@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Division2 world time</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Google icon font -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Materialize CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+</head>
+
+<body class='blue-grey lighten-4 '>
+
+    <!-- jQuery-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <!-- Materialize JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <!-- division2 world timer JavaScript-->
+    <script src="./division2_world_timer.js"></script>
+
+    <nav>
+        <div class="nav-wrapper blue-grey">
+            <div class='brand-logo'>D2 world time</div>
+            <ul class="right hide-on-med-and-down">
+                <!-- Dropdown Trigger -->
+                <li><a class='dropdown-trigger ' href='#' data-target='dropdown1'>Link</a></li>
+            </ul>
+        </div>
+    </nav>
+    <!-- Dropdown Structure -->
+    <ul id='dropdown1' class='dropdown-content'>
+        <li><a href="https://drive.google.com/file/d/1RSwklB6dtqT9gNDbL6gX3DRP5LZj5y-8/view?usp=sharing" target="_blank">装備</a></li>
+        <li><a href="https://docs.google.com/spreadsheets/d/1CrHp5C2KkknawkihcWvwxo-SaEdaoS1FW2ZFr0L1uA0/edit?usp=sharing" target="_blank">店売り情報</a></li>
+    </ul>
+
+    <script>
+        $(document).ready(function () {
+            $('.dropdown-trigger').dropdown({
+                constrainWidth: false,
+            });
+        });
+    </script>
+    <table class="centered">
+        <tbody>
+            <tr style='display: none;'>
+                <th>Current Time (JST)</th>
+                <td><span id="t" /></td>
+            </tr>
+            <tr style='display: none;'>
+                <th>Seconds</th>
+                <td><span id="ts" /></td>
+            </tr>
+            <tr>
+                <th>Division 2 world time</th>
+                <td>
+                    <span id="t2" />
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="striped highlight centered">
+        <tbody>
+            <tr>
+                <th>00:00</th>
+                <td><span id="t00" /></td>
+                <td><span id="s00" /></td>
+                <th>12:00</th>
+                <td><span id="t12" /></td>
+                <td><span id="s12" /></td>
+            </tr>
+            <tr>
+                <th>01:00</th>
+                <td><span id="t01" /></td>
+                <td><span id="s01" /></td>
+                <th>13:00</th>
+                <td><span id="t13" /></td>
+                <td><span id="s13" /></td>
+            </tr>
+            <tr>
+                <th>02:00</th>
+                <td><span id="t02" /></td>
+                <td><span id="s02" /></td>
+                <th>14:00</th>
+                <td><span id="t14" /></td>
+                <td><span id="s14" /></td>
+            </tr>
+            <tr>
+                <th>03:00</th>
+                <td><span id="t03" /></td>
+                <td><span id="s03" /></td>
+                <th>15:00</th>
+                <td><span id="t15" /></td>
+                <td><span id="s15" /></td>
+            </tr>
+            <tr>
+                <th>04:00</th>
+                <td><span id="t04" /></td>
+                <td><span id="s04" /></td>
+                <th>16:00</th>
+                <td><span id="t16" /></td>
+                <td><span id="s16" /></td>
+            </tr>
+            <tr>
+                <th>05:00</th>
+                <td><span id="t05" /></td>
+                <td><span id="s05" /></td>
+                <th>17:00</th>
+                <td><span id="t17" /></td>
+                <td><span id="s17" /></td>
+            </tr>
+            <tr>
+                <th>06:00</th>
+                <td><span id="t06" /></td>
+                <td><span id="s06" /></td>
+                <th>18:00</th>
+                <td><span id="t18" /></td>
+                <td><span id="s18" /></td>
+            </tr>
+            <tr>
+                <th>07:00</th>
+                <td><span id="t07" /></td>
+                <td><span id="s07" /></td>
+                <th>19:00</th>
+                <td><span id="t19" /></td>
+                <td><span id="s19" /></td>
+            </tr>
+            <tr>
+                <th>08:00</th>
+                <td><span id="t08" /></td>
+                <td><span id="s08" /></td>
+                <th>20:00</th>
+                <td><span id="t20" /></td>
+                <td><span id="s20" /></td>
+            </tr>
+            <tr>
+                <th>09:00</th>
+                <td><span id="t09" /></td>
+                <td><span id="s09" /></td>
+                <th>21:00</th>
+                <td><span id="t21" /></td>
+                <td><span id="s21" /></td>
+            </tr>
+            <tr>
+                <th>10:00</th>
+                <td><span id="t10" /></td>
+                <td><span id="s10" /></td>
+                <th>22:00</th>
+                <td><span id="t22" /></td>
+                <td><span id="s22" /></td>
+            </tr>
+            <tr>
+                <th>11:00</th>
+                <td><span id="t11" /></td>
+                <td><span id="s11" /></td>
+                <th>23:00</th>
+                <td><span id="t23" /></td>
+                <td><span id="s23" /></td>
+            </tr>
+        </tbody>
+    </table>
+    </p>
+    <footer class="page-footer blue-grey">
+        <div class="footer-copyright">
+            <div class="container">
+                <a class="grey-text text-lighten-4 right" href="https://twitter.com/hi_dep_g"
+                    target="_blank">@hi_dep_g</a>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
