@@ -299,16 +299,15 @@
             startTime = Date.now();
             shuffleArray(gear);
             shuffleArray(condition);
-            document.getElementById("condition").innerText = condition[0];
+            $('#condition').each((i, el) => el.innerText = condition[0]);
             let idx = 0;
-            for (let r = 0; r < 4; r++){
-                for (let c = 0; c < 4; c++){
-                    let id = `img${r}${c}`;
-                    let img = document.getElementById(id);
-                    img.src = gear[idx++];
-                    img.classList = ['rc-image-tile-44'];
+
+            $('.rc-image-tile-44').each(
+                (i, el) => {
+                    el.src = gear[idx++];
+                    el.classList = ['rc-image-tile-44'];
                 }
-            }
+            )
         }
 
         window.onload = () => {
@@ -383,27 +382,26 @@
 
         function judge(){
 
-            let correct = document.getElementById("condition").innerText;
+            let correct = $('#condition')[0].innerText;
             let cnt_ok = 0;
             let cnt_ng = 0;
             let cnt_total = 0;
 
-            for (let r = 0; r < 4; r++){
-                for (let c = 0; c < 4; c++){
-                    let id = `img${r}${c}`;
-                    if (document.getElementById(id).classList.length > 1) {
+            $('.rc-image-tile-44').each(
+                (i, el) => {
+                    if (el.classList.length > 1) {
                         // clicked
-                        if (Array.from(document.getElementById(id).classList).includes(correct)) {
+                        if (Array.from(el.classList).includes(correct)) {
                             cnt_ok++;
                         } else {
                             cnt_ng++;
                         }
                     }
-                    if (document.getElementById(id).src.match(correct)) {
+                    if (el.src.match(correct)) {
                         cnt_total++;
                     }
                 }
-            }
+            )
 
             console.log(cnt_total, cnt_ok, cnt_ng);
 
@@ -417,48 +415,39 @@
         }
 
         function giveupImgs(){
-            for (let r = 0; r < 4; r++){
-                for (let c = 0; c < 4; c++){
-                    let id = `img${r}${c}`;
-                    let img = document.getElementById(id);
 
-                    if (img.classList.length == 1) {
-                        if (img.src.match(/Armor/)) {
-                            img.classList.add("Armor")
+            $('.rc-image-tile-44').each(
+                (i, el) => {
+                    if (el.classList.length == 1) {
+                        if (el.src.match(/Armor/)) {
+                            el.classList.add("Armor")
                         }
-                        else if (img.src.match(/Weapon/)) {
-                            img.classList.add("Weapon")
+                        else if (el.src.match(/Weapon/)) {
+                            el.classList.add("Weapon")
                         }
-                        else if (img.src.match(/Skill/)) {
-                            img.classList.add("Skill")
+                        else if (el.src.match(/Skill/)) {
+                            el.classList.add("Skill")
                         }
                     }
                 }
-            }
+            )
         }
 
         function conguratsImgs(){
             endTime = Date.now();
-            for (let r = 0; r < 4; r++){
-                for (let c = 0; c < 4; c++){
-                    let id = `img${r}${c}`;
-                    let img = document.getElementById(id);
 
-                    if (img.classList.length == 1) {
-                        img.classList.add("Congrats")
+            $('.rc-image-tile-44').each(
+                (i, el) => {
+                    if (el.classList.length == 1) {
+                        el.classList.add("Congrats")
                     }
                 }
-            }
+            )
         }
 
-        let imgs = document.getElementsByClassName("rc-image-tile-44");
-        Array.from(imgs).forEach(d => d.addEventListener("click", imgClick));
-
-        let reload = document.getElementById("recaptcha-reload-button");
-        reload.addEventListener("click", resetImgs)
-
-        let giveup = document.getElementById("recaptcha-verify-button");
-        giveup.addEventListener("click", giveupImgs)
+        $(".rc-image-tile-44").each((i, el) => el.addEventListener("click", imgClick));
+        $("#recaptcha-reload-button").each((i, el) => el.addEventListener("click", resetImgs));
+        $("#recaptcha-verify-button").each((i, el) => el.addEventListener("click", giveupImgs));
         
     </script>
 
