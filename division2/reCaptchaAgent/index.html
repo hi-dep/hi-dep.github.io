@@ -4,6 +4,7 @@
 <head>
     <title>reCaptchaAgent</title>
     <link rel="stylesheet" href="reCaptchaAgent.css">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -252,6 +253,7 @@
             </div><span class="rc-imageselect-tabloop-end" tabindex="0"></span>
         </div>
     </div>
+    <div id="div1" style="display:none;">
 
     <script>
         condition = [
@@ -286,11 +288,15 @@
             "img/Skill/アルプスサミット・アーマメント_w.svg",
         ]
 
+        var startTime = Date.now(); 
+        var endTime = Date.now(); 
+
         function shuffleArray(inputArray){
             inputArray.sort(()=> Math.random() - 0.5);
         }
 
         function resetImgs() {
+            startTime = Date.now();
             shuffleArray(gear);
             shuffleArray(condition);
             document.getElementById("condition").innerText = condition[0];
@@ -306,6 +312,13 @@
         }
 
         window.onload = () => {
+            console.log(window.innerWidth, window.innerHeight)
+            if (window.innerWidth < window.innerHeight){
+                console.log(window.innerWidth, window.innerHeight, (window.innerWidth / 400 * 95) + '%')
+                // 縦長
+                $("body").css("zoom",(window.innerWidth / 400 * 95) + '%');
+            }
+
             resetImgs();
         }
 
@@ -342,10 +355,29 @@
             } else if (result > 0) {
                 // game clear
                 conguratsImgs()
+                let result = (endTime - startTime) / 1000 + ' seconds.';
                 setTimeout(() => {
-                    alert('Congrats Agent!!')    
+                    if (confirm('Congrats Agent!! Your time is ' + result + '\n' + 
+                        'Tweet this result?'
+                        )) {
+                            twitText("I'm verified Division Agent !!\n" + result + '\n #division2 #ディビジョン2 #Division2AgentVerify')
+                        }
                 }, 100);
-                
+            }
+        }
+
+        function twitText(text) {
+            var s, url;
+            url = document.location.href;
+            
+            if (text != "") {
+                if (text.length > 140) {
+                    //文字数制限
+                } else {
+                    //投稿画面を開く
+                    url = "http://twitter.com/share?url=" + escape(url) + "&text=" + text;
+                    window.open(url,"_blank","width=600,height=300");
+                }
             }
         }
 
@@ -406,6 +438,7 @@
         }
 
         function conguratsImgs(){
+            endTime = Date.now();
             for (let r = 0; r < 4; r++){
                 for (let c = 0; c < 4; c++){
                     let id = `img${r}${c}`;
