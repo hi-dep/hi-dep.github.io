@@ -360,22 +360,22 @@
                     if (confirm('Congrats Agent!! Your time is ' + result + '\n' + 
                         'Tweet this result?'
                         )) {
-                            twitText("I'm verified Division Agent !!\n" + result + '\n #division2 #ディビジョン2 #Division2AgentVerify')
+                            twitText("I'm verified Division Agent !! \n" + result + '\n #division2 #ディビジョン2 #Division2AgentVerify')
                         }
                 }, 100);
             }
         }
 
         function twitText(text) {
-            var s, url;
+            var s, url, hashtags;
             url = document.location.href;
-            
+            hashtags 
             if (text != "") {
                 if (text.length > 140) {
                     //文字数制限
                 } else {
                     //投稿画面を開く
-                    url = "http://twitter.com/share?url=" + escape(url) + "&text=" + text;
+                    url = "http://twitter.com/share?url=" + escape(url) + "&text=" + encodeURIComponent(text);
                     window.open(url,"_blank","width=600,height=300");
                 }
             }
