@@ -1,0 +1,17 @@
+.small {
+    font-size: 6px !important;
+    white-space: nowrap;
+}
+
+.card .card-content {
+    padding: 4px;
+}
+
+.card-title {
+    line-height: 8px !important;
+    font-weight: bold !important;
+}
+
+ul {
+    margin: 6px;
+}
