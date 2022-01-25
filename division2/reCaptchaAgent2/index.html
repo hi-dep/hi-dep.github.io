@@ -325,11 +325,15 @@
             shuffleArray(condition);
             $('#condition').each((i, el) => el.innerText = condition[0]);
             let idx = 0;
+            let correct = 0;
 
             $('.rc-image-tile-44').each(
                 (i, el) => {
                     el.src = gear[idx++];
                     el.classList = ['rc-image-tile-44'];
+                    if (el.src.indexOf(condition[0]) > 0) {
+                        correct++;
+                    }
                 }
             )
             $("#death").each(
@@ -337,6 +341,10 @@
                     el.style.display = "none";
                 }
             )
+
+            if (correct < 5) {
+                resetImgs()
+            }
         }
 
         window.onload = () => {
@@ -373,6 +381,11 @@
 
             if (result < 0){
                 giveupImgs()
+                $("#death").each(
+                    (i, el) => {
+                        el.style.display = "block";
+                    }
+                )
                 setTimeout(() => {
                     alert("YOU ARE DEAD");
                     $("#death").each(
@@ -459,11 +472,6 @@
                 }
             )
 
-            $("#death").each(
-                (i, el) => {
-                    el.style.display = "block";
-                }
-            )
         }
 
         function conguratsImgs(){
