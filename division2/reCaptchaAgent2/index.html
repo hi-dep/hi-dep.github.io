@@ -253,7 +253,9 @@
             </div><span class="rc-imageselect-tabloop-end" tabindex="0"></span>
         </div>
     </div>
-    <div id="div1" style="display:none;">
+    <div id="death">
+        <img src="../death.png" class="death">
+    </div>
 
     <script>
         condition = [
@@ -330,6 +332,11 @@
                     el.classList = ['rc-image-tile-44'];
                 }
             )
+            $("#death").each(
+                (i, el) => {
+                    el.style.display = "none";
+                }
+            )
         }
 
         window.onload = () => {
@@ -367,7 +374,12 @@
             if (result < 0){
                 giveupImgs()
                 setTimeout(() => {
-                    alert("You're Rogue Agent!!")    
+                    alert("YOU ARE DEAD");
+                    $("#death").each(
+                        (i, el) => {
+                            el.style.display = "none";
+                        }
+                    )
                 }, 100);
             } else if (result > 0) {
                 // game clear
@@ -444,6 +456,12 @@
                             el.classList.add("Backpack")
                         }
                     }
+                }
+            )
+
+            $("#death").each(
+                (i, el) => {
+                    el.style.display = "block";
                 }
             )
         }

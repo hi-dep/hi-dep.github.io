@@ -21,3 +21,19 @@ img.Backpack {
 body {
     zoom: 150%;
 }
+
+#death {
+    text-align: center;
+    position: absolute;
+    width : 412px;
+    height: 520px;
+    background-color: rgba(16,16,16);
+    opacity: 95%;
+    display: none;
+}
+
+.death {
+    width : 412px;
+    opacity: 95%;
+}
+
