@@ -1,0 +1,225 @@
+:root{
+  --bg: #0f1115;
+  --panel: #151a22;
+  --panel2: #1a2030;
+  --border: rgba(255,255,255,.10);
+  --border2: rgba(255,255,255,.07);
+
+  --text: #e7e9ee;
+  --muted: #a9b0c0;
+  --accent: #ff7f00;
+
+  --highend: rgb(255, 175, 16);
+  --gearset: rgb(1, 255, 144);
+  --named: rgb(255, 132, 19);
+  --namedText: rgb(234, 162, 19);
+  --god: rgb(255, 149, 58);
+
+  --gRed: rgb(164, 59, 59);
+  --gBlue: rgb(69, 97, 142);
+  --gYellow: rgb(255, 211, 115);
+  --gGray: rgb(128, 128, 128);
+
+  --gap: 4px;        /* 余白最小 */
+  --cardPad: 6px;    /* 余白最小 */
+  --fs: 9.5px;      /* 全体小さめ */
+  --fsTitle: 11.5px;
+}
+
+*{ box-sizing:border-box; }
+body{
+  margin:0;
+  font-family: system-ui, -apple-system, "Segoe UI", "Noto Sans JP", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  font-size: var(--fs);
+}
+
+.header{
+  padding: 8px 8px 6px;
+  border-bottom: 1px solid rgba(255,255,255,.08);
+  background: linear-gradient(180deg, rgba(255,255,255,.03), transparent);
+}
+.title{
+  margin: 0 0 6px;
+  font-size: 13px;
+  letter-spacing: .02em;
+}
+
+.controls{
+  display:flex;
+  flex-wrap:wrap;
+  gap: 6px 10px;
+  align-items:end;
+}
+.control{
+  display:flex;
+  flex-direction:column;
+  gap: 4px;
+  color: var(--muted);
+  font-size: 10px;
+}
+select{
+  background: var(--panel);
+  color: var(--text);
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 8px;
+  padding: 5px 7px;
+  min-width: 180px;
+}
+.checkbox{
+  flex-direction:row;
+  align-items:center;
+  gap: 6px;
+  padding: 2px 0;
+}
+.checkbox input{ transform: translateY(1px); }
+
+.container{ padding: 6px 6px 24px; }
+
+.vendor{
+  margin: 8px 0 10px; /* 余白最小 */
+}
+.vendor__title{
+  margin: 0 0 4px;
+  color: var(--accent);
+  font-size: 11px;
+  letter-spacing: .02em;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--gap);
+}
+
+/* タブレット以下 */
+@media (max-width: 980px){
+  .grid{ grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+/* スマホは2列固定（要望どおり） */
+@media (max-width: 720px){
+  .grid{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  select{ min-width: 160px; }
+}
+
+.card{
+  position:relative;
+  background: rgba(0,0,0,.16);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow:hidden;
+}
+
+.card__tint{
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  opacity:.55;
+}
+.card__tint.highend{ background: color-mix(in srgb, var(--highend) 16%, transparent); }
+.card__tint.gearset{ background: color-mix(in srgb, var(--gearset) 14%, transparent); }
+.card__tint.named{ background: color-mix(in srgb, var(--named) 14%, transparent); }
+
+.card__body{
+  position:relative;
+  padding: var(--cardPad);
+  background: color-mix(in srgb, var(--panel) 82%, transparent);
+}
+
+.dzIcon{
+  position:absolute;
+  top: 4px;
+  left: 4px;
+  width: 14px;
+  height: 14px;
+  opacity:.95;
+}
+
+.head{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap: 6px;
+  margin-bottom: 4px; /* 余白最小 */
+}
+
+.htext{ min-width:0; }
+.h1{
+  margin:0;
+  font-size: var(--fsTitle);
+  line-height: 1.15;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+.h1.namedText{ color: var(--namedText); }
+
+.h2{
+  margin: 2px 0 0;
+  color: var(--muted);
+  font-size: 10px;
+  line-height: 1.1;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+.bigIcon{
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  opacity: .95;
+  flex: 0 0 auto;
+}
+
+/* 特性ボックス（1つに詰める） */
+.box{
+  border: 1px solid var(--border2);
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--panel2) 92%, transparent);
+  padding: 5px 6px; /* 余白最小 */
+  display:flex;
+  flex-direction:column;
+  gap: 2px; /* 行間最小 */
+}
+
+/* 1行 */
+.row{
+  display:flex;
+  align-items:center;
+  gap: 5px;
+  min-height: 16px;
+}
+
+.icon{
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+  opacity:.95;
+  flex: 0 0 auto;
+}
+
+.rtext{
+  min-width:0;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+  line-height: 1.1;
+}
+.rtext.namedText{ color: var(--namedText); }
+
+/* ゲージ（%表示なし） */
+.gauge{
+  height: 4px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.20);
+  overflow:hidden;
+  background: rgba(0,0,0,.22);
+}
+.gauge.max{ border-color: var(--god); }
+
+.fill{
+  height:100%;
+  width:0%;
+}

@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Division2 Shop Viewer</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <header class="header">
+    <h1 class="title">ショップ更新</h1>
+
+    <div class="controls">
+      <label class="control">
+        <span>週（DATE）</span>
+        <select id="weekSelect"></select>
+      </label>
+
+      <label class="control checkbox">
+        <input type="checkbox" id="hideEmptyVendors" checked />
+        <span>空ベンダー非表示</span>
+      </label>
+    </div>
+  </header>
+
+  <main class="container">
+    <div id="content"></div>
+  </main>
+
+  <script src="./app.js"></script>
+</body>
+</html>

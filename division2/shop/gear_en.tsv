@@ -1,0 +1,43 @@
+DATE	type	rarity	vendor	level	name	brand	slot	armor	core_icon	core_value	core_type	attribute1_icon	attribute1_value	attribute1_type	attribute2_icon	attribute2_value	attribute2_type	talents	mods
+2025-06-03	gear	header-he	The Bridge	40	Big Drum Body Armor	Overlord Armaments	Chest	158k	icon-offensive	12.5	Weapon Damage	icon-defensive	15106.0	Health	icon-offensive	4.3	Critical Hit Chance	Tag Team	Offensive
+2025-06-03	gear	header-he	The Bridge	40	Faux Leather Mitts	Empress International	Gloves	80k	icon-utility	1.0	Skill Tier	icon-offensive	10.0	Critical Hit Damage	icon-utility	8.3	Status Effects	-	-
+2025-06-03	gear	header-he	The Bridge	40	Electrique Mask	Electrique	Mask	80k	icon-utility	1.0	Skill Tier	icon-utility	8.4	Status Effects	icon-utility	10.1	Skill Haste	-	Utility
+2025-06-03	gear	header-he	Haven	40	Parascheva Guard	Uzina Getica	Chest	158k	icon-defensive	121672.0	Armor	icon-offensive	5.3	Critical Hit Chance	icon-offensive	5.7	Headshot Damage	Skilled	Defensive
+2025-06-03	gear	header-he	Haven	40	Lengmo Ballistic Gloves	Lengmo	Gloves	80k	icon-defensive	115795.0	Armor	icon-defensive	7.8	Explosive Resistance	icon-offensive	4.3	Critical Hit Chance	-	-
+2025-06-03	gear	header-he	Haven	40	Jackrabbit Holster	Gila Guard	Holster	112k	icon-defensive	125699.0	Armor	icon-utility	7.5	Skill Damage	icon-offensive	10.3	Critical Hit Damage	-	-
+2025-06-03	gear	header-he	Benitez	40	Service Vest	Shiny Monkey Gear	Chest	158k	icon-utility	1.0	Skill Tier	icon-utility	10.0	Skill Haste	icon-offensive	10.0	Critical Hit Damage	Efficient	Utility
+2025-06-03	gear	header-he	Benitez	40	Micro Plated Gloves	Sokolov Concern	Gloves	80k	icon-offensive	13.7	Weapon Damage	icon-offensive	5.0	Weapon Handling	icon-offensive	3.8	Critical Hit Chance	-	-
+2025-06-03	gear	header-he	Benitez	40	Didactyl Pad Holster	Wyvern Wear	Holster	112k	icon-utility	1.0	Skill Tier	icon-utility	9.4	Skill Haste	icon-utility	9.3	Status Effects	-	-
+2025-06-03	gear	header-named	White House	40	Carpenter	Lengmo	Chest	158k	icon-defensive	153106.0	Armor	icon-defensive	7.7	Explosive Resistance	icon-defensive	3129.0	Armor Regeneration	Perfectly Mad Bomber	Defensive
+2025-06-03	gear	header-he	White House	40	Horizons Rucksack	Walker, Harris & Co.	Backpack	131k	icon-offensive	10.7	Weapon Damage	icon-utility	4.2	Skill Damage	icon-defensive	4925.0	Armor Regeneration	Calculated	Offensive
+2025-06-03	gear	header-he	White House	40	X-TREYME Pro Ribcage	Alps Summit Armaments	Chest	158k	icon-utility	1.0	Skill Tier	icon-utility	10.2	Skill Haste	icon-utility	16.3	Repair Skills	Overwatch	Utility
+2025-06-03	gear	header-named	Clan	40	Caesar's Guard	Empress International	Chest	158k	icon-utility	1.0	Skill Tier	icon-utility	17.0	Repair Skills	icon-defensive	15925.0	Health	Perfect Skilled	Utility
+2025-06-03	gear	header-gs	Clan	40	Loadout Frame	Ongoing Directive	Backpack	131k	icon-offensive	11.9	Weapon Damage	icon-defensive	8.0	Explosive Resistance				Trauma Specialist	Utility
+2025-06-03	gear	header-gs	Clan	40	Snow Job Mask	Negotiator's Dilemma	Mask	80k	icon-offensive	11.6	Weapon Damage	icon-defensive	4099.0	Armor Regeneration				-	Offensive
+2025-06-03	gear	header-gs	Clan	40	Rigger Utility Pouch	Rigger	Holster	112k	icon-utility	1.0	Skill Tier	icon-offensive	7.9	Headshot Damage				-	-
+2025-06-03	gear	header-he	Clan	40	Aphrodite Glint Concealer	Airaldi Holdings	Mask	80k	icon-offensive	13.7	Weapon Damage	icon-defensive	15530.0	Health	icon-defensive	7.1	Explosive Resistance	-	Offensive
+2025-06-03	gear	header-he	Clan	40	Lomond Medium Breather	Douglas & Harding	Mask	80k	icon-offensive	9.8	Weapon Damage	icon-utility	10.0	Skill Damage	icon-utility	8.1	Status Effects	-	Offensive
+2025-06-03	gear	header-he	Clan	40	Rally Point Secure Pack	Sokolov Concern	Backpack	131k	icon-offensive	15.0	Weapon Damage	icon-offensive	10.2	Critical Hit Damage	icon-offensive	6.0	Weapon Handling	Bloodsucker	Offensive
+2025-06-03	gear	header-named	Countdown	40	Cloak	Imminence Armaments	Kneepads	99k	icon-offensive	11.4	Weapon Damage	icon-utility	50.0	Reduced Threat	icon-offensive	7.7	Headshot Damage	-	-
+2025-06-03	gear	header-named	Countdown	40	The Gift	Providence Defense	Backpack	131k	icon-offensive	14.3	Weapon Damage	icon-offensive	4.0	Critical Hit Chance	icon-defensive	17113.0	Health	Perfect Vigilance	Offensive
+2025-06-03	gear	header-he	The Theater	40	Tactical Assault Gloves	Providence Defense	Gloves	80k	icon-offensive	11.8	Weapon Damage	icon-offensive	3.8	Critical Hit Chance	icon-utility	7.0	Skill Damage	-	-
+2025-06-03	gear	header-he	The Theater	40	Urban Warfare Kneepads	Providence Defense	Kneepads	99k	icon-offensive	12.8	Weapon Damage	icon-utility	15.7	Repair Skills	icon-offensive	9.9	Critical Hit Damage	-	-
+2025-06-03	gear	header-he	The Campus	40	Machinist's Mask	Shiny Monkey Gear	Mask	80k	icon-utility	1.0	Skill Tier	icon-utility	8.6	Status Effects	icon-offensive	7.6	Headshot Damage	-	Utility
+2025-06-03	gear	header-he	The Campus	40	HG Holster	Habsburg Guard	Holster	112k	icon-defensive	93206.0	Armor	icon-defensive	3305.0	Armor Regeneration	icon-utility	10.0	Skill Damage	-	-
+2025-06-03	gear	header-he	Castle	40	MJ 54	China Light Industries Corporation	Mask	80k	icon-utility	1.0	Skill Tier	icon-defensive	3536.0	Armor Regeneration	icon-utility	17.6	Repair Skills	-	Utility
+2025-06-03	gear	header-he	Castle	40	Constantin Sheath	Uzina Getica	Holster	112k	icon-defensive	156887.0	Armor	icon-defensive	3465.0	Armor Regeneration	icon-utility	9.3	Skill Haste	-	-
+2025-06-03	gear	header-named	DZ West	40	Emperor's Guard	Murakami Industries	Kneepads	99k	icon-utility	1.0	Skill Tier	icon-defensive	1.0	Armor Regeneration	icon-utility	9.5	Skill Haste	-	-
+2025-06-03	gear	header-gs	DZ West	40	Measure Gloves	Measured Assembly	Gloves	80k	icon-utility	1.0	Skill Tier	icon-utility	10.1	Skill Haste				-	-
+2025-06-03	gear	header-gs	DZ West	40	Anti-Tear Joint Shielding	Eclipse Protocol	Kneepads	99k	icon-utility	1.0	Skill Tier	icon-utility	9.9	Skill Haste				-	-
+2025-06-03	gear	header-he	DZ West	40	Garage Gloves	Shiny Monkey Gear	Gloves	80k	icon-utility	1.0	Skill Tier	icon-utility	8.5	Status Effects	icon-offensive	4.8	Critical Hit Chance	-	-
+2025-06-03	gear	header-he	DZ West	40	Mesa Knee Guards	Walker, Harris & Co.	Kneepads	99k	icon-offensive	11.4	Weapon Damage	icon-offensive	9.8	Critical Hit Damage	icon-offensive	6.5	Weapon Handling	-	-
+2025-06-03	gear	header-named	DZ South	40	Devil's Due	Česká Výroba s.r.o.	Backpack	131k	icon-offensive	10.6	Weapon Damage	icon-offensive	6.0	Weapon Handling	icon-offensive	10.0	Critical Hit Damage	Perfect Clutch	Defensive
+2025-06-03	gear	header-gs	DZ South	40	Measure Backpack	Measured Assembly	Backpack	131k	icon-utility	1.0	Skill Tier	icon-utility	16.1	Repair Skills				Smart Cooperation	Defensive
+2025-06-03	gear	header-gs	DZ South	40	Unflinching Vest	Heartbreaker	Chest	158k	icon-defensive	1224404.0	Armor	icon-offensive	4.5	Critical Hit Chance				Max BPM	Defensive
+2025-06-03	gear	header-he	DZ South	40	Lowlands Carrier	Zwiadowka Sp. z o.o.	Backpack	131k	icon-offensive	11.0	Weapon Damage	icon-offensive	6.8	Headshot Damage	icon-defensive	3959.0	Armor Regeneration	Creeping Death	Offensive
+2025-06-03	gear	header-he	DZ South	40	Fortitude Plate Carrier	Overlord Armaments	Chest	158k	icon-offensive	5.9	Weapon Damage	icon-offensive	4.4	Critical Hit Chance	icon-utility	19.8	Repair Skills	Empathic Resolve	Offensive
+2025-06-03	gear	header-named	DZ East	40	Nightwatcher	Gila Guard	Mask	80k	icon-defensive	123356.0	Armor	icon-utility	100.0	Scanner Pulse Haste	icon-utility	8.1	Status Effects	-	Defensive
+2025-06-03	gear	header-gs	DZ East	40	Aegis Mask	Aegis	Mask	80k	icon-defensive	117645.0	Armor	icon-defensive	8.3	Hazard Protection				-	Defensive
+2025-06-03	gear	header-gs	DZ East	40	Young Low-Friction Holster	True Patriot	Holster	112k	icon-defensive	101535.0	Armor	icon-defensive	9.2	Hazard Protection				-	-
+2025-06-03	gear	header-he	DZ East	40	Ilarion Filter	Uzina Getica	Mask	80k	icon-defensive	122995.0	Armor	icon-offensive	9.8	Critical Hit Damage	icon-utility	15.5	Repair Skills	-	Defensive
+2025-06-03	gear	header-he	DZ East	40	HG Holster	Habsburg Guard	Holster	112k	icon-defensive	94579.0	Armor	icon-defensive	3745.0	Armor Regeneration	icon-offensive	11.3	Critical Hit Damage	-	-

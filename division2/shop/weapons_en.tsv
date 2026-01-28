@@ -1,0 +1,37 @@
+DATE	type	rarity	vendor	level	name	dmg	rpm	mag	talent	attribute1_icon	attribute1_value	attribute1_type	attribute2_icon	attribute2_value	attribute2_type	attribute3_icon	attribute3_value	attribute3_type
+2025-06-03	weapon	header-he	The Bridge	40	FAL SA-58 Para	56,885	650	20	Sadist	icon-weapons	10.8	AR Damage	icon-weapons	15.0	Health Damage	icon-weapons	9.0	Headshot Damage
+2025-06-03	weapon	header-he	The Bridge	40	Military L86 LSW	59,705	610	30	Fast Hands	icon-weapons	10.7	LMG Damage	icon-weapons	5.0	Damage Out of Cover	icon-weapons	9.5	Health Damage
+2025-06-03	weapon	header-he	The Bridge	40	Resolute MK47	104,837	300	30	Flatline	icon-weapons	11.7	Rifle Damage	icon-weapons	11.0	Critical Hit Damage	icon-weapons	10.0	Magazine Size
+2025-06-03	weapon	header-he	The Bridge	40	Diceros	169,243	180	6	Pressure Point	icon-weapons	9.7	Pistol Damage	icon-weapons	9.7	Reload Speed			-
+2025-06-03	weapon	header-he	Haven	40	PDR		700	30	Streamline	icon-weapons	10.8	AR Damage	icon-weapons	14.0	Health Damage	icon-weapons	9.0	Magazine Size
+2025-06-03	weapon	header-he	Haven	40	Classic M60	63,466	500	100	Killer	icon-weapons	10.3	LMG Damage	icon-weapons	8.0	Damage Out of Cover	icon-weapons	8.5	Magazine Size
+2025-06-03	weapon	header-he	Haven	40	SASG-12	364,812	180	7	Perpetuation	icon-weapons	10.1	Shotgun Damage	icon-weapons	8.0	Damage to Armor	icon-weapons	9.5	Magazine Size
+2025-06-03	weapon	header-he	Haven	40	M1911	101,076	310	7	Naked	icon-weapons	11.2	Pistol Damage	icon-weapons	9.0	Stability			-
+2025-06-03	weapon	header-he	Benitez	40	TKB-480		650	30	Perpetuation	icon-weapons	9.3	AR Damage	icon-weapons	12.5	Health Damage	icon-weapons	11.6	Stability
+2025-06-03	weapon	header-he	Benitez	40	G28	146,677	275	20	Sledgehammer	icon-weapons	11.0	MMR Damage	icon-weapons	93.0	Headshot Damage	icon-weapons	12.4	Swap Speed
+2025-06-03	weapon	header-he	Benitez	40	UIC15 MOD2	105,777	240	30	Fast Hands	icon-weapons	10.8	Rifle Damage	icon-weapons	13.0	Critical Hit Damage	icon-weapons	9.0	Headshot Damage
+2025-06-03	weapon	header-he	Benitez	40	D50	220,956	150	8	Optimist	icon-weapons	10.5	Pistol Damage	icon-weapons	9.0	Headshot Damage			-
+2025-06-03	weapon	header-he	White House	40	PP-19	59,705	700	53	Reformation	icon-weapons	10.5	SMG Damage	icon-weapons	14.5	Critical Hit Chance	icon-weapons	8.4	Accuracy
+2025-06-03	weapon	header-he	White House	40	FAL SA-58 Para	56,885	650	20	Ignited	icon-weapons	10.4	AR Damage	icon-weapons	15.5	Health Damage	icon-weapons	9.0	Headshot Damage
+2025-06-03	weapon	header-he	White House	40	93R	32,908	1100	20	Reformation	icon-weapons	10.0	Pistol Damage	icon-weapons	7.5	Health Damage			-
+2025-06-03	weapon	header-he	Clan	40	Paratrooper SVD	159,841	260	10	Reformation	icon-weapons	11.0	MMR Damage	icon-weapons	96.0	Headshot Damage	icon-weapons	9.0	Damage Out of Cover
+2025-06-03	weapon	header-he	Clan	40	FAL SA-58	56,885	650	20	Killer	icon-weapons	11.2	AR Damage	icon-weapons	18.0	Health Damage	icon-weapons	5.0	Damage to Armor
+2025-06-03	weapon	header-he	Clan	40	F2000	45,132	850	30	Strained	icon-weapons	12.0	AR Damage	icon-weapons	16.5	Health Damage	icon-weapons	5.0	Damage to Armor
+2025-06-03	weapon	header-he	Clan	40	Stoner LAMG	47,952	580	200	Precision Strike	icon-weapons	11.5	LMG Damage	icon-weapons	9.0	Damage Out of Cover	icon-weapons	9.0	Headshot Damage
+2025-06-03	weapon	header-named	Countdown	40	Lefty - ACS-12	169,243	300	20	Perfect Sledgehammer	icon-weapons	11.9	Shotgun Damage	icon-weapons	9.0	Damage to Armor	icon-weapons	8.0	Damage Out of Cover
+2025-06-03	weapon	header-named	The Theater	40	Whisper	84,622	400	30	Perfectly Behind You	icon-weapons	10.7	Rifle Damage	icon-weapons	12.0	Critical Hit Damage	icon-weapons	12.2	Swap Speed
+2025-06-03	weapon	header-he	The Theater	40	Tactical SASG-12 K	364,812	180	7	Sadist	icon-weapons	10.0	Shotgun Damage	icon-weapons	8.0	Damage to Armor	icon-weapons	8.0	Critical Hit Damage
+2025-06-03	weapon	header-he	The Theater	40	UIC15 MOD2	105,777	240	30	Killer	icon-weapons	10.0	Rifle Damage	icon-weapons	14.0	Critical Hit Damage	icon-weapons	9.5	Magazine Size
+2025-06-03	weapon	header-named	The Campus	40	The White Death - Classic M44 Carbine	423,108	55	5	Vindictive	icon-weapons	12.2	MMR Damage	icon-weapons	137.0	Headshot Damage	icon-weapons	7.0	Critical Hit Damage
+2025-06-03	weapon	header-he	The Campus	40	SRS A1	338,957	60	7	Close & Personal	icon-weapons	8.2	MMR Damage	icon-weapons	110.0	Headshot Damage	icon-weapons	6.6	Stability
+2025-06-03	weapon	header-he	The Campus	40	GR9	37,610	750	200	Sadist	icon-weapons	10.3	LMG Damage	icon-weapons	9.0	Damage Out of Cover	icon-weapons	8.5	Magazine Size
+2025-06-03	weapon	header-named	Castle	40	The White Death - Classic M44 Carbine	423,108	55	5	In Sync	icon-weapons	13.4	MMR Damage	icon-weapons	137.0	Headshot Damage	icon-weapons	8.8	Reload Speed
+2025-06-03	weapon	header-he	Castle	40	G28	146,677	275	20	Naked	icon-weapons	10.8	MMR Damage	icon-weapons	89.0	Headshot Damage	icon-weapons	8.2	Accuracy
+2025-06-03	weapon	header-he	Castle	40	Military RPK-74 M	55,474	650	45	Strained	icon-weapons	11.1	LMG Damage	icon-weapons	8.0	Damage Out of Cover	icon-weapons	8.5	Magazine Size
+2025-06-03	weapon	header-he	DZ West	40	SASG-12	364,812	180	7	Perpetuation	icon-weapons	10.8	Shotgun Damage	icon-weapons	9.0	Damage to Armor	icon-weapons	6.5	Health Damage
+2025-06-03	weapon	header-he	DZ West	40	Resolute MK47	104,837	300	30	Lucky Shot	icon-weapons	9.8	Rifle Damage	icon-weapons	13.0	Critical Hit Damage	icon-weapons	9.0	Headshot Damage
+2025-06-03	weapon	header-he	DZ South	40	Converted SMG-9	51,713	825	32	In Sync	icon-weapons	7.9	SMG Damage	icon-weapons	17.0	Critical Hit Chance	icon-weapons	5.0	Damage to Armor
+2025-06-03	weapon	header-he	DZ South	40	F2000	45,132	850	30	Reformation	icon-weapons	10.5	AR Damage	icon-weapons	8.0	Health Damage	icon-weapons	10.0	Headshot Damage
+2025-06-03	weapon	header-he	DZ South	40	Px4 Storm Type T	79,920	380	17	Strained	icon-weapons	9.9	Pistol Damage	icon-weapons	9.0	Headshot Damage			-
+2025-06-03	weapon	header-named	DZ East	40	Relic - G28	146,677	275	20	Perfectly Determined	icon-weapons	10.6	MMR Damage	icon-weapons	91.0	Headshot Damage	icon-weapons	8.5	Accuracy
+2025-06-03	weapon	header-he	DZ East	40	Classic M60	63,466	500	100	Preservation	icon-weapons	10.8	LMG Damage	icon-weapons	9.0	Damage Out of Cover	icon-weapons	9.6	Stability
