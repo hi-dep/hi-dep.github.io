@@ -1,0 +1,260 @@
+{
+  "version": 1,
+  "policy": {
+    "undefined_stat_max": 0
+  },
+  "gear": {
+    "weapondamage": 15,
+    "armor": 170000,
+    "skilltier": 1,
+    "criticalhitchance": 6,
+    "criticalhitdamage": 12,
+    "headshotdamage": 10,
+    "weaponhandling": 8,
+    "armorregeneration": 4925,
+    "explosiveresistance": 10,
+    "hazardprotection": 10,
+    "health": 18935,
+    "skilldamage": 10,
+    "skillhaste": 12,
+    "repairskills": 20,
+    "statuseffects": 10,
+    "damageoutofcover": 8,
+    "damagetoarmor": 8,
+    "healthdamage": 10,
+    "scannerpulsehaste": 100,
+    "armoronkill": 10,
+    "meleedamage": 500,
+    "pistoldamage": 9,
+    "shieldhealth": 50,
+    "reducedthreat": 50,
+    "accuracy": 38
+  },
+  "weapon": {
+    "ar": {
+      "ardamage": 15,
+      "healthdamage": 21,
+      "damagetoarmor": 6,
+      "criticalhitchance": 9.5,
+      "damageoutofcover": 10,
+      "headshotdamage": 10,
+      "criticalhitdamage": 10,
+      "reloadspeed": 12,
+      "stability": 12,
+      "accuracy": 12,
+      "optimalrange": 24,
+      "magazinesize": 12.5,
+      "rateoffire": 5,
+      "swapspeed": 15
+    },
+    "lmg": {
+      "lmgdamage": 15,
+      "damageoutofcover": 12,
+      "damagetoarmor": 6,
+      "criticalhitchance": 9.5,
+      "healthdamage": 9.5,
+      "headshotdamage": 10,
+      "criticalhitdamage": 10,
+      "reloadspeed": 12,
+      "stability": 12,
+      "accuracy": 12,
+      "optimalrange": 24,
+      "magazinesize": 12.5,
+      "rateoffire": 5,
+      "swapspeed": 15
+    },
+    "mmr": {
+      "mmrdamage": 15,
+      "headshotdamage": 111,
+      "damagetoarmor": 6,
+      "criticalhitchance": 9.5,
+      "healthdamage": 9.5,
+      "damageoutofcover": 10,
+      "criticalhitdamage": 10,
+      "reloadspeed": 12,
+      "stability": 12,
+      "accuracy": 12,
+      "optimalrange": 24,
+      "magazinesize": 12.5,
+      "rateoffire": 5,
+      "swapspeed": 15
+    },
+    "pistol": {
+      "pistoldamage": 15,
+      "damagetoarmor": 6,
+      "criticalhitchance": 9.5,
+      "healthdamage": 9.5,
+      "damageoutofcover": 10,
+      "headshotdamage": 10,
+      "criticalhitdamage": 10,
+      "reloadspeed": 12,
+      "stability": 12,
+      "accuracy": 12,
+      "optimalrange": 24,
+      "magazinesize": 12.5,
+      "rateoffire": 5,
+      "swapspeed": 15,
+      "skilltier": 1
+    },
+    "rifle": {
+      "rifledamage": 15,
+      "criticalhitdamage": 17,
+      "damagetoarmor": 6,
+      "criticalhitchance": 9.5,
+      "healthdamage": 9.5,
+      "damageoutofcover": 10,
+      "headshotdamage": 10,
+      "reloadspeed": 12,
+      "stability": 12,
+      "accuracy": 12,
+      "optimalrange": 24,
+      "magazinesize": 12.5,
+      "rateoffire": 5,
+      "swapspeed": 15
+    },
+    "shotgun": {
+      "shotgundamage": 15,
+      "damagetoarmor": 12,
+      "criticalhitchance": 9.5,
+      "healthdamage": 9.5,
+      "damageoutofcover": 10,
+      "headshotdamage": 10,
+      "criticalhitdamage": 10,
+      "reloadspeed": 12,
+      "stability": 12,
+      "accuracy": 12,
+      "optimalrange": 24,
+      "magazinesize": 12.5,
+      "rateoffire": 5,
+      "swapspeed": 15,
+      "armoronkill": 10
+    },
+    "smg": {
+      "smgdamage": 15,
+      "criticalhitchance": 21,
+      "damagetoarmor": 6,
+      "healthdamage": 9.5,
+      "damageoutofcover": 10,
+      "headshotdamage": 10,
+      "criticalhitdamage": 10,
+      "reloadspeed": 12,
+      "stability": 12,
+      "accuracy": 12,
+      "optimalrange": 24,
+      "magazinesize": 12.5,
+      "rateoffire": 5,
+      "swapspeed": 15
+    }
+  },
+  "mod": {
+    "gear": {
+      "criticalhitchance": 6,
+      "criticalhitdamage": 12,
+      "headshotdamage": 10,
+      "armoronkill": 18935,
+      "bleedresistance": 10,
+      "blinddeafresistance": 10,
+      "burnresistance": 10,
+      "disorientresistance": 10,
+      "shockresistance": 10,
+      "ensnareresistance": 10,
+      "incomingrepairs": 20,
+      "protectionfromelites": 13,
+      "pulseresistance": 10,
+      "skillduration": 10,
+      "skillhaste": 12,
+      "repairskills": 20
+    },
+    "skill": {
+      "chemlauncher": {
+        "ammo": 1,
+        "burnstrength": 7.5,
+        "damage": 5,
+        "duration": 5,
+        "ensnareduration": 10,
+        "ensnarehealth": 17.5,
+        "heal": 7.5,
+        "radius": 7.5,
+        "skillhaste": 7.5
+      },
+      "decoy": {
+        "duration": 7.5,
+        "health": 7.5
+      },
+      "drone": {
+        "armorrepair": 7.5,
+        "damage": 5,
+        "damagereduction": 6,
+        "deflectduration": 7.5,
+        "duration": 7.5,
+        "extrabombs": 2,
+        "health": 10
+      },
+      "firefly": {
+        "blindeffectduration": 7.5,
+        "damage": 7.5,
+        "maxtargets": 1,
+        "skillhaste": 7.5,
+        "speed": 10
+      },
+      "hive": {
+        "damage": 5,
+        "duration": 5,
+        "heal": 5,
+        "health": 10,
+        "radius": 5,
+        "range": 5,
+        "repaircharges": 4,
+        "revivedarmor": 10,
+        "stimcharges": 4,
+        "stimefficiency": 10,
+        "stingercharges": 4
+      },
+      "pulse": {
+        "conesize": 7.5,
+        "effectduration": 10,
+        "health": 17.5,
+        "radius": 10,
+        "skillhaste": 6
+      },
+      "seekermine": {
+        "clustermines": 1,
+        "damage": 5,
+        "heal": 7.5,
+        "health": 7.5,
+        "radius": 5,
+        "skillhaste": 6
+      },
+      "shield": {
+        "activeregeneration": 5,
+        "damagebonusperenemy": 5,
+        "deflectordamage": 5,
+        "holsteredregeneration": 5,
+        "shieldhealth": 5
+      },
+      "stickybomb": {
+        "blastradius": 6,
+        "burnduration": 5,
+        "damage": 7.5,
+        "duration": 7.5,
+        "skillhaste": 5
+      },
+      "trap": {
+        "shockradius": 7.5
+      },
+      "turret": {
+        "burndamage": 5,
+        "damage": 5,
+        "duration": 7.5,
+        "extramortarammo": 1,
+        "extrasniperammo": 1,
+        "health": 10,
+        "skillhaste": 7.5
+      }
+    }
+  },
+  "_generated": {
+    "source": "batch.py",
+    "notes": "Converted from JP max dictionaries to DB stat keys using i18n.json reverse lookup."
+  }
+}

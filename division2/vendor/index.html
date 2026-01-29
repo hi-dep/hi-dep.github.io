@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Division 2 Shop</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar__left">
+      <div class="title">Division 2 Shop</div>
+    </div>
+
+    <div class="topbar__right">
+      <label class="field">
+        <span id="labelWeek">週</span>
+        <input id="dateInput" type="date" />
+      </label>
+
+      <label class="field">
+        <span id="labelLang">言語</span>
+        <select id="langSelect">
+          <option value="ja" selected>日本語</option>
+          <option value="en">English</option>
+        </select>
+      </label>
+
+      <button id="reloadBtn" class="btn">再読込</button>
+    </div>
+  </header>
+
+  <main class="main">
+    <section id="status" class="status"></section>
+    <section id="content" class="content"></section>
+  </main>
+
+  <!-- sql.js（vendor配下に配置） -->
+  <script src="./sql-wasm.js"></script>
+
+  <!-- gzip解凍フォールバックが必要なら pako を置く（任意） -->
+  <!-- <script src="./pako.min.js"></script> -->
+
+  <script src="./app.js"></script>
+</body>
+</html>
