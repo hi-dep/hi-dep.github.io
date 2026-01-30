@@ -791,6 +791,12 @@ function renderCard(item) {
 function sortItemsStable(arr) {
   const a2 = Array.from(arr || []);
   return a2.sort((x, y) => {
+    const ox = Number.isFinite(x.item_ord) ? x.item_ord : null;
+    const oy = Number.isFinite(y.item_ord) ? y.item_ord : null;
+    if (ox != null && oy != null && ox !== oy) return ox - oy;
+    if (ox != null && oy == null) return -1;
+    if (ox == null && oy != null) return 1;
+
     const sx = `${x.slot_key || ""}|${x.brand_key || ""}|${x.name_en || ""}`.toLowerCase();
     const sy = `${y.slot_key || ""}|${y.brand_key || ""}|${y.name_en || ""}`.toLowerCase();
     return sx.localeCompare(sy);
@@ -1051,6 +1057,7 @@ async function loadWeek(userDateStr) {
         i.brand_key,
         i.slot_en,
         i.slot_key,
+        i.item_ord,
         l.ord,
         l.line_type,
         l.icon_class,
@@ -1062,7 +1069,7 @@ async function loadWeek(userDateStr) {
       FROM shop_items i
       LEFT JOIN shop_lines l ON i.item_id = l.item_id
       WHERE i.date = ?
-      ORDER BY i.vendor_en, i.category, i.item_id, l.ord
+      ORDER BY i.vendor_key, i.category, i.item_ord, i.item_id, l.ord
     `);
 
     stmt.bind([dateStr]);
@@ -1088,6 +1095,7 @@ async function loadWeek(userDateStr) {
           brand_key: row.brand_key || normalizeKey(row.brand_en),
           slot_en: row.slot_en || "",
           slot_key: row.slot_key || normalizeKey(row.slot_en),
+          item_ord: (row.item_ord != null ? Number(row.item_ord) : null),
           lines: []
         };
         itemMap.set(row.item_id, item);
