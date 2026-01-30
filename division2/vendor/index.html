@@ -13,12 +13,12 @@
     </div>
 
     <div class="topbar__right">
-      <label class="field">
+      <label class="field field--date">
         <span id="labelWeek">週</span>
         <input id="dateInput" type="date" />
       </label>
 
-      <label class="field">
+      <label class="field field--lang">
         <span id="labelLang">言語</span>
         <select id="langSelect">
           <option value="ja" selected>日本語</option>
@@ -26,7 +26,24 @@
         </select>
       </label>
 
-      <button id="reloadBtn" class="btn">再読込</button>
+      <label class="field field--mode">
+        <span id="labelMode">条件</span>
+        <select id="modeSelect">
+          <option value="and" selected>AND</option>
+          <option value="or">OR</option>
+        </select>
+      </label>
+
+      <label class="field field--filter">
+        <span id="labelFilter">フィルタ</span>
+        <input id="filterInput" type="text" autocomplete="off" />
+      </label>
+
+      <button id="onlySelectedBtn" class="btn btn--toggle" type="button">選択のみ</button>
+      <button id="clearSelectedBtn" class="btn btn--ghost" type="button">選択解除</button>
+      <button id="clearFiltersBtn" class="btn btn--ghost" type="button">フィルタ解除</button>
+
+      <div id="filterChips" class="chips" aria-label="filters"></div>
     </div>
   </header>
 

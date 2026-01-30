@@ -11,6 +11,8 @@
   --rarity-highend:255,175,16;
   --rarity-gearset:1,255,144;
   --rarity-named:255,132,19;
+  --card-min: 12rem;
+  --card-gap: 6px;
 
 }
 
@@ -32,7 +34,7 @@ body{
   display:flex;
   flex-wrap:wrap;
   gap:10px;
-  align-items:flex-start;
+  align-items:center;
 }
 
 /* タイトルは折り返さない（狭い場合は省略）。条件（右側）は下段へ回す */
@@ -101,8 +103,15 @@ body{
 
 .grid{
   display:grid;
-  grid-template-columns: repeat(2, minmax(0,1fr)); /* スマホでも2列 */
-  gap:6px; /* 余白最小 */
+  grid-template-columns: repeat(auto-fill, minmax(var(--card-min), 1fr));
+  gap: var(--card-gap);
+}
+
+@media (max-width: 430px){
+  :root{ --card-min: 8.5rem; --card-gap: 6px; }
+}
+@media (max-width: 360px){
+  :root{ --card-min: 8.0rem; }
 }
 
 .card{
@@ -164,7 +173,7 @@ body{
 .ico--talent{
   width:14px;
   height:14px;
-  margin-top:2px;
+  margin-top:0;
 }
 
 .card__titles{
@@ -257,8 +266,9 @@ body{
 }
 
 .line__text{
-  /* 本文は必要なら折り返し可（タイトルは折り返さない） */
-  word-break:break-word;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
 }
 
 
@@ -276,9 +286,6 @@ body{
 
 .muted{ color:var(--muted); }
 
-@media (min-width: 900px){
-  .grid{ grid-template-columns: repeat(4, minmax(0,1fr)); }
-}
 
 .gauge{
   margin-top:4px;
@@ -314,15 +321,122 @@ body{
   margin:2px 0 6px;
 }
 
-.badge{display:none !important;}
+.btn--ghost{
+  background:transparent;
+}
+.btn--toggle{
+  background:var(--panel);
+}
 
-.card__title, .card__subtitle{display:flex;align-items:center;gap:6px;}
+/* ---------------------------
+ * Filter / Selection controls
+ * ------------------------- */
+.topbar__right{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  align-items:flex-end;
+  justify-content:flex-end;
+}
 
-.ico{display:inline-block;vertical-align:middle;}
+@media (max-width:720px){
+  .topbar__right{ flex-basis:100%; justify-content:flex-start; }
+}
 
-.line{display:flex;align-items:center;}
-.line__body{flex:1;}
+.field--filter{ flex: 1 1 240px; min-width: 200px; }
+.field--date{ min-width: 150px; }
+.field--lang{ min-width: 140px; }
+.field--mode{ min-width: 90px; }
 
-.card__title-wrap--gear .card__titles{padding-left:0;}
+.btn--ghost{
+  opacity:.9;
+}
+.btn--ghost:hover{ opacity:1; }
 
-.card__title-text{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.btn--toggle.is-on{
+  border-color: rgba(255,127,0,.55);
+  box-shadow: 0 0 0 2px rgba(255,127,0,.18) inset;
+}
+
+.chips{
+  flex-basis:100%;
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px;
+  align-items:center;
+  margin-top:2px;
+}
+
+.chip{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  padding:5px 8px;
+  border-radius:999px;
+  border:1px solid var(--border);
+  background:rgba(255,255,255,.04);
+  color:var(--text);
+  font-size:12px;
+  max-width:100%;
+}
+
+.chip__text{
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+  max-width: 56vw;
+}
+
+.chip__x{
+  width:16px; height:16px;
+  border-radius:999px;
+  border:1px solid var(--border);
+  background:rgba(0,0,0,.22);
+  color:var(--muted);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  flex:0 0 auto;
+}
+.chip__x:hover{ color:var(--text); border-color: rgba(255,255,255,.18); }
+
+/* ---------------------------
+ * Card selection + bg icons
+ * ------------------------- */
+.card{
+  cursor:pointer;
+  user-select:none;
+}
+
+.card.is-selected{
+  border-color: rgba(255,127,0,.55);
+  box-shadow: 0 0 0 2px rgba(255,127,0,.18) inset;
+}
+
+.card__bg{
+  position:absolute;
+  pointer-events:none;
+  opacity:.16;
+  filter: saturate(.9) contrast(1.05);
+}
+
+.card__bg img{
+  width:44px;
+  height:44px;
+  object-fit:contain;
+  display:block;
+}
+
+.card__bg--tr{ top:8px; right:8px; }
+.card__bg--br{ bottom:8px; right:8px; opacity:.12; }
+.card__bg--br img{ width:38px; height:38px; }
+
+.line{
+  cursor:default; /* 行タップはフィルタ */
+}
+
+.line.is-filter-hit{
+  outline: 1px solid rgba(255,255,255,.08);
+  border-radius: 6px;
+}

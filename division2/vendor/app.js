@@ -1,33 +1,61 @@
 /* global initSqlJs */
 
 const DATA_BASE = "../data"; // vendor/ から見て data/ は ../data
+
 const statusEl = document.getElementById("status");
 const contentEl = document.getElementById("content");
+
 const dateInput = document.getElementById("dateInput");
 const langSelect = document.getElementById("langSelect");
-const reloadBtn = document.getElementById("reloadBtn");
+
+const modeSelect = document.getElementById("modeSelect");
+const filterInput = document.getElementById("filterInput");
+
+const onlySelectedBtn = document.getElementById("onlySelectedBtn");
+const clearSelectedBtn = document.getElementById("clearSelectedBtn");
+const clearFiltersBtn = document.getElementById("clearFiltersBtn");
+
+const chipsEl = document.getElementById("filterChips");
+
 const labelWeekEl = document.getElementById("labelWeek");
 const labelLangEl = document.getElementById("labelLang");
+const labelModeEl = document.getElementById("labelMode");
+const labelFilterEl = document.getElementById("labelFilter");
 
 let indexJson = null;
 let i18n = {};
+let i18nJaNormToKey = new Map();
 let graphConfig = {};
+let assetMap = null;
 let SQL = null;
+
+// selection & filters
+let onlySelected = false;
+const selectedIds = new Set();        // item_id
+let filterMode = "and";               // and/or
+let activeFilterKeys = [];            // stat_key[]
+const statLabelEnByKey = new Map();   // stat_key -> English label
 
 function setStatus(msg) {
   statusEl.textContent = msg || "";
 }
 
-// UI文言（固定ラベル/エラーメッセージ等）
+/* ---------------------------
+ * UI text
+ * ------------------------- */
 const UI = {
   ja: {
     week: "週",
     language: "言語",
-    reload: "再読込",
-    optJa: "日本語",
-    optEn: "English",
+    mode: "条件",
+    filter: "フィルタ",
+    filterPh: "属性/タレントを入力（Enterで追加）",
+    selectedOnly: "選択のみ",
+    clearSelected: "選択解除",
+    clearFilters: "フィルタ解除",
     loadingIndex: "index.json 読み込み…",
     loadingI18n: "i18n 読み込み…",
+    loadingAssets: "asset_map 読み込み…",
     loadingGraph: "graph_config 読み込み…",
     loadingDb: "DB 読み込み…",
     noData: "対象週のデータがありません。",
@@ -37,16 +65,22 @@ const UI = {
     catGear: "GEAR",
     catWeapon: "WEAPON",
     catMod: "MOD",
-    modSuffix: "MOD"
+    modSuffix: "MOD",
+    and: "AND",
+    or: "OR"
   },
   en: {
     week: "Week",
     language: "Language",
-    reload: "Reload",
-    optJa: "Japanese",
-    optEn: "English",
+    mode: "Mode",
+    filter: "Filter",
+    filterPh: "Type attribute/talent (Enter to add)",
+    selectedOnly: "Selected only",
+    clearSelected: "Clear selection",
+    clearFilters: "Clear filters",
     loadingIndex: "Loading index.json…",
     loadingI18n: "Loading i18n…",
+    loadingAssets: "Loading asset_map…",
     loadingGraph: "Loading graph_config…",
     loadingDb: "Loading DB…",
     noData: "No data for the selected week.",
@@ -56,7 +90,9 @@ const UI = {
     catGear: "GEAR",
     catWeapon: "WEAPON",
     catMod: "MOD",
-    modSuffix: " MOD"
+    modSuffix: " MOD",
+    and: "AND",
+    or: "OR"
   }
 };
 
@@ -71,17 +107,33 @@ function applyUiLang() {
 
   if (labelWeekEl) labelWeekEl.textContent = ui("week");
   if (labelLangEl) labelLangEl.textContent = ui("language");
-  if (reloadBtn) reloadBtn.textContent = ui("reload");
+  if (labelModeEl) labelModeEl.textContent = ui("mode");
+  if (labelFilterEl) labelFilterEl.textContent = ui("filter");
 
-  // selectの表示文言
+  if (filterInput) filterInput.placeholder = ui("filterPh");
+
+  // select option labels
   const optJa = langSelect?.querySelector('option[value="ja"]');
   const optEn = langSelect?.querySelector('option[value="en"]');
-  if (optJa) optJa.textContent = ui("optJa");
-  if (optEn) optEn.textContent = ui("optEn");
+  if (optJa) optJa.textContent = (lang === "ja") ? "日本語" : "Japanese";
+  if (optEn) optEn.textContent = "English";
+
+  const optAnd = modeSelect?.querySelector('option[value="and"]');
+  const optOr = modeSelect?.querySelector('option[value="or"]');
+  if (optAnd) optAnd.textContent = ui("and");
+  if (optOr) optOr.textContent = ui("or");
+
+  // buttons
+  if (onlySelectedBtn) onlySelectedBtn.textContent = ui("selectedOnly");
+  if (clearSelectedBtn) clearSelectedBtn.textContent = ui("clearSelected");
+  if (clearFiltersBtn) clearFiltersBtn.textContent = ui("clearFilters");
+
+  renderChips(); // label changes
 }
 
-
-// ベンダー表示順（vendor_key 基準）
+/* ---------------------------
+ * Vendor order
+ * ------------------------- */
 const VENDOR_ORDER = [
   "whitehouse",
   "clan",
@@ -98,8 +150,9 @@ const VENDOR_ORDER = [
   "thebridge"
 ];
 
-// Division2: ショップは毎週火曜更新・1週間継続。
-// 日付選択は「その日が属する週の火曜日（週開始日）」へ正規化して表示する。
+/* ---------------------------
+ * Division2 shop week normalize
+ * ------------------------- */
 function parseLocalYmd(dateStr) {
   const m = String(dateStr || "").match(/^(\d{4})-(\d{2})-(\d{2})$/);
   if (!m) return null;
@@ -114,10 +167,11 @@ function formatLocalYmd(dtObj) {
   const d = String(dtObj.getDate()).padStart(2, "0");
   return `${y}-${m}-${d}`;
 }
+// Date -> the Tuesday (local) of its shop week
 function normalizeToShopWeekStart(dateStr) {
   const dtObj = parseLocalYmd(dateStr);
   if (!dtObj) return dateStr;
-  const day = dtObj.getDay(); // Sun=0 ... Tue=2 ...
+  const day = dtObj.getDay(); // Sun=0 ... Tue=2
   const TUE = 2;
   const diff = (day - TUE + 7) % 7; // 0..6
   const start = new Date(dtObj);
@@ -125,6 +179,9 @@ function normalizeToShopWeekStart(dateStr) {
   return formatLocalYmd(start);
 }
 
+/* ---------------------------
+ * Common helpers
+ * ------------------------- */
 function normalizeKey(text) {
   if (text == null) return "";
   return String(text)
@@ -134,9 +191,8 @@ function normalizeKey(text) {
     .toLowerCase();
 }
 
-
 function sanitizeFileKey(key) {
-  // アイコンファイル名用：ASCII英数と._- 以外は _ に置換
+  // ファイル名用：ASCII英数と._- 以外は _ に置換
   return String(key ?? "")
     .trim()
     .toLowerCase()
@@ -145,37 +201,6 @@ function sanitizeFileKey(key) {
     .replace(/[^a-z0-9._-]+/g, "_")
     .replace(/_+/g, "_")
     .replace(/^_+|_+$/g, "");
-}
-
-
-// タレントアイコンのフォールバックキー生成
-// - perfect** / perfectly** の接頭辞を外した通常版へフォールバック
-// - futureperfect の完全版は futureperfection、逆も相互に試す
-function talentKeyVariants(tKey) {
-  const key = String(tKey || "");
-  const vars = [];
-  // 特殊：Future Perfect / Future Perfection
-  if (key === "futureperfection") vars.push("futureperfect");
-  if (key === "futureperfect") vars.push("futureperfection");
-
-  // 一般：perfectlyX -> X
-  if (key.startsWith("perfectly")) {
-    const base = key.replace(/^perfectly/, "");
-    if (base) vars.push(base);
-  } else if (key.startsWith("perfect")) {
-    const base = key.replace(/^perfect/, "");
-    if (base) vars.push(base);
-  }
-
-  // 重複排除（順序保持）
-  const seen = new Set([key]);
-  const out = [];
-  for (const v of vars) {
-    if (!v || seen.has(v)) continue;
-    seen.add(v);
-    out.push(v);
-  }
-  return out;
 }
 
 function stripHtml(s) {
@@ -187,11 +212,6 @@ function stripHtml(s) {
     .trim();
 }
 
-function extractFirstClassFromHtml(s) {
-  const m = String(s ?? "").match(/class="([^"]+)"/i);
-  return m ? m[1] : "";
-}
-
 function trText(text) {
   const cleaned = stripHtml(text ?? "");
   if (langSelect.value !== "ja") return cleaned;
@@ -199,6 +219,122 @@ function trText(text) {
   return i18n[key] ?? cleaned;
 }
 
+function escapeHtml(s) {
+  return String(s ?? "")
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+}
+
+/* ---------------------------
+ * Assets
+ * ------------------------- */
+function assetUrl(assetPath) {
+  if (!assetPath) return "";
+  // asset_map は "img/..." のパスを返す想定。vendor/ からは ../img/...
+  return assetPath.startsWith("img/") ? `../${assetPath}` : assetPath;
+}
+function assetPath(kind, key) {
+  const k = String(key || "").trim();
+  if (!k) return "";
+  const dict = assetMap && assetMap[kind];
+  if (dict && dict[k]) return dict[k];
+  return "";
+}
+function iconUrl(kind, key, fallbackDir = "") {
+  const p = assetPath(kind, key);
+  if (p) return assetUrl(p);
+  if (!fallbackDir) return "";
+  const safe = sanitizeFileKey(key);
+  if (!safe) return "";
+  return `../${fallbackDir}/${safe}.png`;
+}
+
+/* ---------------------------
+ * i18n reverse map (JA text -> key)
+ * ------------------------- */
+function buildI18nReverse() {
+  const m = new Map();
+  const dup = new Set();
+  for (const [k, v] of Object.entries(i18n || {})) {
+    const n = normalizeKey(v);
+    if (!n) continue;
+    if (m.has(n)) {
+      dup.add(n);
+    } else {
+      m.set(n, k);
+    }
+  }
+  for (const n of dup) m.delete(n);
+  i18nJaNormToKey = m;
+}
+
+function userTextToKey(text) {
+  const raw = stripHtml(text || "").trim();
+  if (!raw) return "";
+  const norm = normalizeKey(raw);
+
+  // 1) if already a key
+  if (i18n && Object.prototype.hasOwnProperty.call(i18n, norm)) return norm;
+
+  // 2) JA label -> key
+  if (langSelect.value === "ja") {
+    const k = i18nJaNormToKey.get(norm);
+    if (k) return k;
+  }
+  // 3) fallback normalize
+  return norm;
+}
+
+/* ---------------------------
+ * Talent fallback variants
+ * ------------------------- */
+// - perfect** / perfectly** の接頭辞を外した通常版へフォールバック
+// - futureperfect の完全版は futureperfection、逆も相互に試す
+function talentKeyVariants(tKey) {
+  const key = String(tKey || "");
+  const vars = [];
+  if (key === "futureperfection") vars.push("futureperfect");
+  if (key === "futureperfect") vars.push("futureperfection");
+
+  if (key.startsWith("perfectly")) {
+    const base = key.replace(/^perfectly/, "");
+    if (base) vars.push(base);
+  } else if (key.startsWith("perfect")) {
+    const base = key.replace(/^perfect/, "");
+    if (base) vars.push(base);
+  }
+
+  const seen = new Set([key]);
+  const out = [];
+  for (const v of vars) {
+    if (!v || seen.has(v)) continue;
+    seen.add(v);
+    out.push(v);
+  }
+  return out;
+}
+
+function iconImgHtml(src, cls, alt, fallbackList = []) {
+  const fallbacks = Array.isArray(fallbackList) ? fallbackList.filter(Boolean) : [];
+  const fbAttr = fallbacks.length
+    ? ` data-fallbacks="${escapeHtml(fallbacks.join("|"))}" data-fbi="0"`
+    : "";
+  return `<img class="${escapeHtml(cls)}" src="${escapeHtml(src)}" alt="${escapeHtml(alt)}" loading="lazy"${fbAttr}
+    onerror="(function(img){const fb=img.dataset.fallbacks; if(!fb){img.style.display='none'; return;} const arr=fb.split('|'); const i=Number(img.dataset.fbi||0); if(i < arr.length){img.dataset.fbi=String(i+1); img.src=arr[i];} else {img.style.display='none';}})(this)">`;
+}
+
+function bgIconHtml(src, cls, alt, fallbackList = []) {
+  if (!src) return "";
+  const img = iconImgHtml(src, "card__bgimg", alt, fallbackList);
+  return `<div class="card__bg ${escapeHtml(cls)}">${img}</div>`;
+}
+
+/* ---------------------------
+ * DB chunk & fetch
+ * ------------------------- */
 function toMonth(dateStr) {
   return (dateStr || "").slice(0, 7);
 }
@@ -252,12 +388,11 @@ function clearContent() {
 }
 
 /* ---------------------------
- * MODカード用ヘルパー
+ * MOD helpers
  * ------------------------- */
-
 function isDashOnlyText(s) {
   const t = stripHtml(s ?? "");
-  return /^[\-–—]+$/.test(t); // -, – , — のみ
+  return /^[\-–—]+$/.test(t);
 }
 
 function modKindFromName(nameEn) {
@@ -275,49 +410,42 @@ function dotClassFromModKind(kind) {
 }
 
 function computeModCard(item) {
-  // mods の slot は（最適化後）shop_items.slot_en に入る。
-  // 互換用に shop_lines(line_type='slot') が残っているDBもあるので両対応する。
   const lines0 = Array.isArray(item.lines) ? item.lines.slice() : [];
 
   const slotFromItem = stripHtml(item.slot_en || "");
   const hasSlotItem = !!slotFromItem;
 
-  // 互換（旧DB）：line_type='slot' があればスキルMOD（slot行のstat_enがスキル名）
-  const slotIdx = hasSlotItem
-    ? -1
-    : lines0.findIndex(l => String(l.line_type || "").toLowerCase() === "slot");
+  const slotIdx = hasSlotItem ? -1 : lines0.findIndex(l => String(l.line_type || "").toLowerCase() === "slot");
 
   let title = "MOD";
-  let dotOverride = ""; // 装備MODのみ色固定
+  let dotOverride = "";
   let lines = [];
+  let isSkillMod = false;
 
   if (hasSlotItem || slotIdx >= 0) {
-    // ---- スキルMOD ----
+    isSkillMod = true;
     const skillEn = hasSlotItem ? slotFromItem : stripHtml(lines0[slotIdx].stat_en || "");
     const skillDisp = trText(skillEn);
-    title = (langSelect.value === "ja") ? `${skillDisp}MOD` : `${skillDisp} MOD`;
+    title = (langSelect.value === "ja") ? `${skillDisp}${ui("modSuffix")}` : `${skillDisp}${ui("modSuffix")}`;
 
-    // 本文から slot 行は除外（互換DBの場合）
     lines = lines0.filter(ln => String(ln.line_type || "").toLowerCase() !== "slot");
-    dotOverride = ""; // 灰のまま
+    dotOverride = "";
 
   } else {
-    // ---- 装備MOD（Offensive/Defensive/Utility）----
     const kindEn = modKindFromName(item.name_en || "");
     const kindDisp = kindEn ? trText(kindEn) : "MOD";
     title = kindEn
-      ? ((langSelect.value === "ja") ? `${kindDisp}MOD` : `${kindDisp} MOD`)
+      ? ((langSelect.value === "ja") ? `${kindDisp}${ui("modSuffix")}` : `${kindDisp}${ui("modSuffix")}`)
       : "MOD";
 
     dotOverride = dotClassFromModKind(kindEn);
-    lines = lines0; // 値（特性）行のみのはず
+    lines = lines0;
   }
 
-  // 空/ダッシュだけ/旧仕様 modslot は除外
   lines = lines.filter(ln => {
     const lt = String(ln.line_type || "").toLowerCase();
     if (lt === "modslot") return false;
-    if (lt === "slot") return false; // 念のため
+    if (lt === "slot") return false;
 
     const statText = stripHtml(ln.stat_en || "");
     if (!statText) return false;
@@ -329,10 +457,12 @@ function computeModCard(item) {
     return true;
   });
 
-  return { title, lines, dotOverride };
+  return { title, lines, dotOverride, isSkillMod };
 }
 
-
+/* ---------------------------
+ * Item / line rendering
+ * ------------------------- */
 function isNamedItem(item) {
   return String(item?.rarity || "").toLowerCase().includes("named");
 }
@@ -348,110 +478,6 @@ function rarityToClass(rarity) {
   return "default";
 }
 
-function iconImgHtml(src, cls, alt, fallbackList = []) {
-  // fallbackList: 失敗時に順に試すsrcの配列（src 自体は含めない）
-  const fallbacks = Array.isArray(fallbackList) ? fallbackList.filter(Boolean) : [];
-  const fbAttr = fallbacks.length
-    ? ` data-fallbacks="${escapeHtml(fallbacks.join("|"))}" data-fbi="0"`
-    : "";
-  return `<img class="${escapeHtml(cls)}" src="${escapeHtml(src)}" alt="${escapeHtml(alt)}" loading="lazy"${fbAttr}
-    onerror="(function(img){const fb=img.dataset.fallbacks; if(!fb){img.style.display='none'; return;} const arr=fb.split('|'); const i=Number(img.dataset.fbi||0); if(i < arr.length){img.dataset.fbi=String(i+1); img.src=arr[i];} else {img.style.display='none';}})(this)">`;
-}
-
-
-function buildCardHeadParts(item, modCard = null) {
-  const lang = langSelect.value;
-
-  // --------- gear ----------
-  if (item.category === "gear") {
-    const brandEn = item.brand_en || "";
-    const slotEn = item.slot_en || "";
-
-    const brand = (lang === "ja") ? (i18n[item.brand_key] ?? trText(brandEn)) : brandEn;
-    const slot = (lang === "ja") ? (i18n[item.slot_key] ?? trText(slotEn)) : slotEn;
-
-    let name = "";
-    if (isNamedItem(item)) {
-      const nameEn = item.name_en || "";
-      const d = (lang === "ja") ? trText(nameEn) : nameEn;
-      if (d && d !== slot) name = d;
-    }
-
-    const title1 = brand;
-
-    const bKey = sanitizeFileKey(item.brand_key || normalizeKey(brandEn));
-    const sKey = sanitizeFileKey(item.slot_key || normalizeKey(slotEn));
-
-    // タイトルは2行：1行目=ブランド（アイコンはここに内包） / 2行目=部位(+任意でnamed名)
-    const title2Text = name ? `${slot} / ${name}` : `${slot}`;
-
-    const brandIcon = bKey ? iconImgHtml(`../img/brands/${bKey}.png`, "ico ico--brand-inline", "brand") : "";
-    const title1Html = `${brandIcon}<span class="card__title-text">${escapeHtml(brand)}</span>`;
-
-    const slotIcon = sKey ? iconImgHtml(`../img/gears/${sKey}.png`, "ico ico--slot-inline", "slot") : "";
-    const title2Html = `${slotIcon}<span class="card__subtitle-text">${escapeHtml(title2Text)}</span>`;
-
-    // gear は icons カラムを使わない（字下げを発生させない）
-    const icons = "";
-
-    return { title1, title2: title2Text, title1Html, title2Html, icons };
-
-  }
-// --------- weapon ----------
-  if (item.category === "weapon") {
-    const nameEn = item.name_en || "";
-    const title1 = (lang === "ja") ? trText(nameEn) : nameEn;
-
-    const typeEn = item.slot_en || item.slot_key || "";
-    const typeDisp = (lang === "ja")
-      ? (i18n[item.slot_key] ?? trText(typeEn))
-      : (stripHtml(typeEn) || item.slot_key || "");
-
-    const wKey = sanitizeFileKey(item.slot_key || normalizeKey(typeEn));
-    const icons = wKey ? iconImgHtml(`../img/weapons/${wKey}.png`, "ico ico--weapon", "weapon") : "";
-
-    return { title1, title2: typeDisp, icons };
-  }
-
-  // --------- mod ----------
-  if (item.category === "mod" && modCard) {
-    return { title1: modCard.title, title2: "", icons: "" };
-  }
-
-  const nameEn = item.name_en || "";
-  const title1 = (lang === "ja") ? trText(nameEn) : nameEn;
-  return { title1, title2: "", icons: "" };
-}
-
-function renderCardHead(item, parts) {
-  const namedClass = isNamedItem(item) ? " is-named" : "";
-
-  const title1Inner = parts.title1Html ? parts.title1Html : escapeHtml(parts.title1 || "");
-  const title2Html = parts.title2Html
-    ? `<div class="card__subtitle">${parts.title2Html}</div>`
-    : (parts.title2 ? `<div class="card__subtitle">${escapeHtml(parts.title2)}</div>` : "");
-
-  const iconsHtml = (parts.icons && String(parts.icons).trim())
-    ? `<div class="card__icons">${parts.icons}</div>`
-    : "";
-
-  const wrapClass = item.category === "gear" ? " card__title-wrap--gear" : "";
-
-  return `
-    <div class="card__head">
-      <div class="card__title-wrap${wrapClass}">
-        ${iconsHtml}
-        <div class="card__titles">
-          <div class="card__title${namedClass}">${title1Inner}</div>
-          ${title2Html}
-        </div>
-      </div>
-    </div>
-  `;
-}
-
-
-
 function dotColorFromIconClass(iconClass) {
   const c = (iconClass || "").toLowerCase();
   if (c.includes("offensive")) return "red";
@@ -464,17 +490,23 @@ function getGraphMaxValue(item, ln) {
   const statKey = String(ln.stat_key || "").trim();
   if (!statKey) return 0;
 
+  // gear: { stat_key: max }
   if (item.category === "gear") {
     return Number(graphConfig?.gear?.[statKey] ?? 0);
   }
+
+  // weapon: { weapon_type: { stat_key: max }, default: { stat_key: max } }
   if (item.category === "weapon") {
     const w = String(item.slot_key || "").trim();
     return Number(
       graphConfig?.weapon?.[w]?.[statKey] ??
-      graphConfig?.weapon_default?.[statKey] ??
+      graphConfig?.weapon?.default?.[statKey] ??
+      graphConfig?.weapon_default?.[statKey] ?? // backward compat
       0
     );
   }
+
+  // mod: { gear:{}, skill:{skill_key:{}}, skill_default:{} }
   if (item.category === "mod") {
     const skill = String(item.slot_key || "").trim();
     if (skill) {
@@ -487,61 +519,63 @@ function getGraphMaxValue(item, ln) {
     }
     return Number(graphConfig?.mod?.gear?.[statKey] ?? 0);
   }
+
   return 0;
 }
-
 
 function renderLine(item, ln, colorOverride = "") {
   const lt = String(ln.line_type || "").toLowerCase();
   if (lt === "modslot" || lt === "slot") return "";
 
-  let iconClass = ln.icon_class || "";
-  let statEnRaw = ln.stat_en || "";
-
-  if (statEnRaw.includes("<") && !iconClass) {
-    iconClass = extractFirstClassFromHtml(statEnRaw);
-  }
-
-  const statEn = stripHtml(statEnRaw);
+  const iconClass = ln.icon_class || "";
+  const statEn = stripHtml(ln.stat_en || "");
   if (!statEn) return "";
   if (/^[\-–—]+$/.test(statEn)) return "";
 
   const statKey = String(ln.stat_key || normalizeKey(statEn));
+  if (!statLabelEnByKey.has(statKey)) statLabelEnByKey.set(statKey, statEn);
+
   const stat = (langSelect.value === "ja") ? (i18n[statKey] ?? statEn) : statEn;
 
   const valueRaw = String(ln.value_raw || "").trim();
   if (valueRaw === "-" || /^[\-–—]+$/.test(valueRaw)) return "";
 
-  const hasValue = !!valueRaw;
-  const valuePart = hasValue ? `+${valueRaw}` : "";
+  const valuePart = valueRaw ? `+${valueRaw}` : "";
   const text = valuePart ? `${valuePart} ${stat}` : `${stat}`;
   if (!text.trim() || /^[\-–—]+$/.test(text.trim())) return "";
 
-  // 色クラス（点は出さない。左帯/ゲージ色に利用）
   const colorClass = colorOverride ? colorOverride : dotColorFromIconClass(iconClass);
 
   // talent icon（Perfect系は通常版へフォールバック）
   let talentIconHtml = "";
   if (lt === "talent") {
-    const tKey = sanitizeFileKey(statKey || normalizeKey(statEn));
-    const variants = talentKeyVariants(tKey);
+    const baseKey = sanitizeFileKey(statKey || normalizeKey(statEn));
+    const variants = talentKeyVariants(baseKey);
     const isWeapon = item.category === "weapon";
-    const primaryDir = isWeapon ? "../img/weapon_talents" : "../img/talents";
-    const fallbackDir = isWeapon ? "../img/talents" : "../img/weapon_talents";
+    const primaryKind = isWeapon ? "weapon_talents" : "talents";
+    const fallbackKind = isWeapon ? "talents" : "weapon_talents";
 
+    const primary = iconUrl(primaryKind, baseKey, isWeapon ? "img/weapon_talents" : "img/talents");
     const fallbacks = [];
-    // 同一ディレクトリ内で派生キー（通常版/特殊互換）を優先して試す
-    for (const k of variants) fallbacks.push(`${primaryDir}/${k}.png`);
-    // ディレクトリ違いも試す（weapon_talents ⇄ talents）
-    fallbacks.push(`${fallbackDir}/${tKey}.png`);
-    for (const k of variants) fallbacks.push(`${fallbackDir}/${k}.png`);
-    // 重複排除
+
+    for (const k of variants) {
+      const p = iconUrl(primaryKind, k, isWeapon ? "img/weapon_talents" : "img/talents");
+      if (p) fallbacks.push(p);
+    }
+
+    const fbSameKey = iconUrl(fallbackKind, baseKey, isWeapon ? "img/talents" : "img/weapon_talents");
+    if (fbSameKey) fallbacks.push(fbSameKey);
+    for (const k of variants) {
+      const p = iconUrl(fallbackKind, k, isWeapon ? "img/talents" : "img/weapon_talents");
+      if (p) fallbacks.push(p);
+    }
+
+    // uniq
     const uniq = [];
     const seen = new Set();
     for (const u of fallbacks) { if (!seen.has(u)) { seen.add(u); uniq.push(u); } }
-    const fallbacksUniq = uniq;
 
-    talentIconHtml = iconImgHtml(`${primaryDir}/${tKey}.png`, "ico ico--talent", "talent", fallbacksUniq);
+    talentIconHtml = primary ? iconImgHtml(primary, "ico ico--talent", "talent", uniq) : "";
   }
 
   // gauge（未定義は 0%）
@@ -558,9 +592,10 @@ function renderLine(item, ln, colorOverride = "") {
   }
 
   const lineClass = `line line--${colorClass} line--${lt}`;
+  const hitClass = activeFilterKeys.includes(statKey) ? " is-filter-hit" : "";
 
   return `
-    <div class="${lineClass}">
+    <div class="${lineClass}${hitClass}" data-stat-key="${escapeHtml(statKey)}" data-line-type="${escapeHtml(lt)}">
       ${talentIconHtml}
       <div class="line__body">
         <div class="line__text">${escapeHtml(text)}</div>
@@ -570,23 +605,195 @@ function renderLine(item, ln, colorOverride = "") {
   `;
 }
 
-
-function escapeHtml(s) {
-  return String(s ?? "")
-    .replaceAll("&", "&amp;")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;")
-    .replaceAll('"', "&quot;")
-    .replaceAll("'", "&#039;");
-}
-
 function sortLinesForDisplay(lines) {
-  const typeOrder = { core: 0, attr: 1, modslot: 1, slot: 1, talent: 2 };
+  // 要望：attr の下に talent（core/attr → talent）
+  const typeOrder = { core: 0, attr: 1, talent: 2, modslot: 9, slot: 9 };
   return (lines || []).slice().sort((a, b) => {
-    const oa = typeOrder[a.line_type] ?? 9;
-    const ob = typeOrder[b.line_type] ?? 9;
+    const oa = typeOrder[String(a.line_type || "").toLowerCase()] ?? 9;
+    const ob = typeOrder[String(b.line_type || "").toLowerCase()] ?? 9;
     if (oa !== ob) return oa - ob;
     return (a.ord ?? 0) - (b.ord ?? 0);
+  });
+}
+
+function buildCardHead(item, modCard = null) {
+  const lang = langSelect.value;
+
+  if (item.category === "gear") {
+    const brandEn = item.brand_en || "";
+    const slotEn = item.slot_en || "";
+
+    const brand = (lang === "ja") ? (i18n[item.brand_key] ?? trText(brandEn)) : brandEn;
+    const slot = (lang === "ja") ? (i18n[item.slot_key] ?? trText(slotEn)) : slotEn;
+
+    let name = "";
+    if (isNamedItem(item)) {
+      const nameEn = item.name_en || "";
+      const d = (lang === "ja") ? trText(nameEn) : nameEn;
+      if (d && d !== slot) name = d;
+    }
+
+    const title1 = brand;
+    const title2 = name ? `${slot} / ${name}` : `${slot}`;
+
+    return {
+      title1,
+      title2,
+      titleClass: isNamedItem(item) ? " is-named" : ""
+    };
+  }
+
+  if (item.category === "weapon") {
+    const nameEn = item.name_en || "";
+    const title1 = (lang === "ja") ? trText(nameEn) : nameEn;
+
+    const typeEn = item.slot_en || item.slot_key || "";
+    const typeDisp = (lang === "ja")
+      ? (i18n[item.slot_key] ?? trText(typeEn))
+      : (stripHtml(typeEn) || item.slot_key || "");
+
+    return { title1, title2: typeDisp, titleClass: "" };
+  }
+
+  if (item.category === "mod" && modCard) {
+    return { title1: modCard.title, title2: "", titleClass: "" };
+  }
+
+  const nameEn = item.name_en || "";
+  const title1 = (lang === "ja") ? trText(nameEn) : nameEn;
+  return { title1, title2: "", titleClass: "" };
+}
+
+function buildCardBg(item, modCard = null) {
+  // gear: brand (TR), slot (BR)
+  if (item.category === "gear") {
+    const bKey = item.brand_key || normalizeKey(item.brand_en);
+    const sKey = item.slot_key || normalizeKey(item.slot_en);
+
+    const brandIcon = iconUrl("brands", bKey, "img/brands");
+    const slotIcon = iconUrl("gear_slots", sKey, "img/gears");
+
+    return [
+      bgIconHtml(brandIcon, "card__bg--tr", "brand"),
+      bgIconHtml(slotIcon, "card__bg--br", "slot")
+    ].join("");
+  }
+
+  // weapon: weapon type (TR)
+  if (item.category === "weapon") {
+    const wKey = item.slot_key || normalizeKey(item.slot_en);
+    const wIcon = iconUrl("weapon_types", wKey, "img/weapons");
+    return bgIconHtml(wIcon, "card__bg--tr", "weapon");
+  }
+
+  // mod: skill mod / gear mod icons (top-right)
+  if (item.category === "mod" && modCard) {
+    const p = modCard.isSkillMod ? "../img/gears/skillmod.png" : "../img/gears/gearmod.png";
+    return bgIconHtml(p, "card__bg--tr", "mod");
+  }
+
+  return "";
+}
+
+function buildCardSearch(item, lines, head) {
+  const toks = [];
+  const push = (s) => {
+    const n = normalizeKey(stripHtml(s ?? ""));
+    if (n) toks.push(n);
+  };
+
+  // item basics
+  push(item.category);
+  push(item.rarity);
+
+  // vendor / brand / slot / name (key + EN + JA label)
+  push(item.vendor_key);
+  push(item.vendor_en);
+  push(i18n[item.vendor_key] || "");
+
+  push(item.brand_key);
+  push(item.brand_en);
+  push(i18n[item.brand_key] || "");
+
+  push(item.slot_key);
+  push(item.slot_en);
+  push(i18n[item.slot_key] || "");
+
+  push(item.name_key);
+  push(item.name_en);
+  push(i18n[item.name_key] || "");
+
+  // rendered titles (in current language)
+  if (head) {
+    push(head.title1 || "");
+    push(head.title2 || "");
+  }
+
+  // lines (stat key + EN + JA)
+  for (const ln of (lines || [])) {
+    push(ln.stat_key || "");
+    push(ln.stat_en || "");
+    if (ln.stat_key && i18n[ln.stat_key]) push(i18n[ln.stat_key]);
+  }
+  return toks.join(" ");
+}
+
+function renderCard(item) {
+  let lines = item.lines || [];
+  let colorOverride = "";
+  let modCard = null;
+
+  if (item.category === "mod") {
+    modCard = computeModCard(item);
+    lines = modCard.lines;
+    colorOverride = modCard.dotOverride;
+  }
+
+  const head = buildCardHead(item, modCard);
+  const rarityClass = rarityToClass(item.rarity);
+  const bg = buildCardBg(item, modCard);
+
+  lines = sortLinesForDisplay(lines);
+
+  const linesHtml = lines
+    .map(ln => renderLine(item, ln, colorOverride))
+    .filter(Boolean)
+    .join("");
+
+  // key list for filters
+  const keys = Array.from(new Set(lines.map(ln => String(ln.stat_key || "").trim()).filter(Boolean))).join(" ");
+
+  // For partial-match filtering
+  const search = buildCardSearch(item, lines, head);
+
+  const namedClass = head.titleClass || "";
+  const title2Html = head.title2 ? `<div class="card__subtitle"><span class="card__subtitle-text">${escapeHtml(head.title2)}</span></div>` : "";
+
+  return `
+    <div class="card rarity-${escapeHtml(rarityClass)} cat-${escapeHtml(item.category)}" data-item-id="${escapeHtml(item.item_id)}" data-keys="${escapeHtml(keys)}" data-search="${escapeHtml(search)}">
+      ${bg}
+      <div class="card__head">
+        <div class="card__title-wrap">
+          <div class="card__titles">
+            <div class="card__title${namedClass}"><span class="card__title-text">${escapeHtml(head.title1 || "")}</span></div>
+            ${title2Html}
+          </div>
+        </div>
+      </div>
+      <div class="lines">${linesHtml}</div>
+    </div>
+  `;
+}
+
+/* ---------------------------
+ * Render vendors
+ * ------------------------- */
+function sortItemsStable(arr) {
+  const a2 = Array.from(arr || []);
+  return a2.sort((x, y) => {
+    const sx = `${x.slot_key || ""}|${x.brand_key || ""}|${x.name_en || ""}`.toLowerCase();
+    const sy = `${y.slot_key || ""}|${y.brand_key || ""}|${y.name_en || ""}`.toLowerCase();
+    return sx.localeCompare(sy);
   });
 }
 
@@ -603,22 +810,13 @@ function renderVendors(vendorMap) {
     }
     return a.localeCompare(b);
   });
+
   if (vendors.length === 0) {
     contentEl.innerHTML = `<div class="status">${escapeHtml(ui("noData"))}</div>`;
     return;
   }
 
   const catOrder = ["gear", "weapon", "mod"];
-
-  function sortItems(cat, arr) {
-    const a2 = Array.from(arr || []);
-    // 表示が安定する程度の簡易ソート
-    return a2.sort((x, y) => {
-      const sx = `${x.slot_key || ""}|${x.brand_key || ""}|${x.name_en || ""}`.toLowerCase();
-      const sy = `${y.slot_key || ""}|${y.brand_key || ""}|${y.name_en || ""}`.toLowerCase();
-      return sx.localeCompare(sy);
-    });
-  }
 
   for (const vendorKey of vendors) {
     const itemsAll = vendorMap.get(vendorKey) || [];
@@ -629,34 +827,27 @@ function renderVendors(vendorMap) {
       : vendorEn;
 
     const groups = {
-      gear: sortItems("gear", itemsAll.filter(x => x.category === "gear")),
-      weapon: sortItems("weapon", itemsAll.filter(x => x.category === "weapon")),
-      mod: sortItems("mod", itemsAll.filter(x => x.category === "mod"))
+      gear: sortItemsStable(itemsAll.filter(x => x.category === "gear")),
+      weapon: sortItemsStable(itemsAll.filter(x => x.category === "weapon")),
+      mod: sortItemsStable(itemsAll.filter(x => x.category === "mod"))
     };
-
-    const gearCount = groups.gear.length;
-    const weaponCount = groups.weapon.length;
-    const modCount = groups.mod.length;
 
     const section = document.createElement("section");
     section.className = "vendor";
-
-    const groupBlocks = catOrder.map(cat => {
-      const cnt = groups[cat].length;
-      if (!cnt) return "";
-      const label = (cat === "gear") ? ui("catGear") : (cat === "weapon") ? ui("catWeapon") : ui("catMod");
-      return `
-        <div class="catgroup catgroup--${cat}">
-          <div class="catgroup__title">${label}</div>
-          <div class="grid grid--${cat}"></div>
-        </div>
-      `;
-    }).join("");
-
     section.innerHTML = `
       <h3 class="vendor__title"><span>${escapeHtml(vendorTitle)}</span></h3>
       <div class="vendor__groups">
-        ${groupBlocks}
+        ${catOrder.map(cat => {
+          const cnt = groups[cat].length;
+          if (!cnt) return "";
+          const label = (cat === "gear") ? ui("catGear") : (cat === "weapon") ? ui("catWeapon") : ui("catMod");
+          return `
+            <div class="catgroup catgroup--${escapeHtml(cat)}">
+              <div class="catgroup__title">${escapeHtml(label)}</div>
+              <div class="grid grid--${escapeHtml(cat)}"></div>
+            </div>
+          `;
+        }).join("")}
       </div>
     `;
 
@@ -665,48 +856,168 @@ function renderVendors(vendorMap) {
       if (!grid) continue;
 
       for (const item of groups[cat]) {
-        let lines = item.lines || [];
-        let colorOverride = "";
-        let modCard = null;
-
-        if (item.category === "mod") {
-          modCard = computeModCard(item);
-          lines = modCard.lines;
-          colorOverride = modCard.dotOverride;
-        }
-
-        const headParts = buildCardHeadParts(item, modCard);
-        const rarityClass = rarityToClass(item.rarity);
-
-        const card = document.createElement("div");
-        card.className = `card rarity-${rarityClass} cat-${item.category}`;
-
-        lines = sortLinesForDisplay(lines);
-
-        const linesHtml = lines
-          .map(ln => renderLine(item, ln, colorOverride))
-          .filter(Boolean)
-          .join("");
-
-        card.innerHTML = `
-          ${renderCardHead(item, headParts)}
-          <div class="lines">${linesHtml}</div>
-        `;
-
-        grid.appendChild(card);
+        const wrapper = document.createElement("div");
+        wrapper.innerHTML = renderCard(item);
+        grid.appendChild(wrapper.firstElementChild);
       }
     }
 
     contentEl.appendChild(section);
   }
+
+  // After render, apply selection state & filters
+  syncCardSelectionClasses();
+  applyFiltersToDom();
+}
+
+/* ---------------------------
+ * Selection / filtering (DOM)
+ * ------------------------- */
+function syncCardSelectionClasses() {
+  document.querySelectorAll(".card[data-item-id]").forEach(card => {
+    const id = card.dataset.itemId;
+    if (selectedIds.has(id)) card.classList.add("is-selected");
+    else card.classList.remove("is-selected");
+  });
+}
+
+function cardHasKeys(card, terms) {
+  const hay = String(card.dataset.search || "");
+  if (!terms.length) return true;
+  if (!hay) return false;
+
+  const t = terms
+    .map(s => normalizeKey(stripHtml(s ?? "")))
+    .filter(Boolean);
+
+  if (!t.length) return true;
+
+  if (filterMode === "or") {
+    return t.some(x => hay.includes(x));
+  }
+  return t.every(x => hay.includes(x));
 }
 
 
+function applyFiltersToDom() {
+  const keys = activeFilterKeys.slice();
+
+  document.querySelectorAll(".card[data-item-id]").forEach(card => {
+    const id = card.dataset.itemId;
+    const okSel = (!onlySelected) || selectedIds.has(id);
+    const okKeys = cardHasKeys(card, keys);
+    card.style.display = (okSel && okKeys) ? "" : "none";
+  });
+
+  // line highlight
+  document.querySelectorAll(".line[data-stat-key]").forEach(line => {
+    const k = line.dataset.statKey;
+    if (activeFilterKeys.includes(k)) line.classList.add("is-filter-hit");
+    else line.classList.remove("is-filter-hit");
+  });
+
+  // toggle button ui
+  if (onlySelectedBtn) {
+    onlySelectedBtn.classList.toggle("is-on", onlySelected);
+  }
+  // Hide empty category blocks / vendors when no cards match
+  document.querySelectorAll(".catgroup").forEach(group => {
+    const any = Array.from(group.querySelectorAll(".card[data-item-id]"))
+      .some(c => c.style.display !== "none");
+    group.style.display = any ? "" : "none";
+  });
+
+  document.querySelectorAll(".vendor").forEach(v => {
+    const any = Array.from(v.querySelectorAll(".card[data-item-id]"))
+      .some(c => c.style.display !== "none");
+    v.style.display = any ? "" : "none";
+  });
+
+}
+
+function keyToLabel(key) {
+  const lang = langSelect.value;
+  if (lang === "ja") return i18n[key] ?? statLabelEnByKey.get(key) ?? key;
+  return statLabelEnByKey.get(key) ?? key;
+}
+
+function renderChips() {
+  if (!chipsEl) return;
+  const keys = activeFilterKeys.slice();
+  if (!keys.length) {
+    chipsEl.innerHTML = "";
+    return;
+  }
+  chipsEl.innerHTML = keys.map(k => {
+    const text = keyToLabel(k);
+    return `
+      <div class="chip" data-key="${escapeHtml(k)}">
+        <span class="chip__text">${escapeHtml(text)}</span>
+        <span class="chip__x" role="button" aria-label="remove" title="remove">×</span>
+      </div>
+    `;
+  }).join("");
+}
+
+function addFilterKey(key) {
+  const k = String(key || "").trim();
+  if (!k) return;
+  if (!activeFilterKeys.includes(k)) activeFilterKeys = activeFilterKeys.concat([k]);
+  renderChips();
+  applyFiltersToDom();
+}
+
+function removeFilterKey(key) {
+  const k = String(key || "").trim();
+  if (!k) return;
+  activeFilterKeys = activeFilterKeys.filter(x => x !== k);
+  renderChips();
+  applyFiltersToDom();
+}
+
+function toggleFilterKey(key) {
+  const k = String(key || "").trim();
+  if (!k) return;
+  if (activeFilterKeys.includes(k)) removeFilterKey(k);
+  else addFilterKey(k);
+}
+
+function clearFilters() {
+  activeFilterKeys = [];
+  renderChips();
+  applyFiltersToDom();
+}
+
+function clearSelection() {
+  selectedIds.clear();
+  onlySelected = false;
+  syncCardSelectionClasses();
+  applyFiltersToDom();
+}
+
+function toggleCardSelection(cardEl) {
+  const id = cardEl?.dataset?.itemId;
+  if (!id) return;
+  if (selectedIds.has(id)) {
+    selectedIds.delete(id);
+    cardEl.classList.remove("is-selected");
+  } else {
+    selectedIds.add(id);
+    cardEl.classList.add("is-selected");
+  }
+  applyFiltersToDom();
+}
+
+/* ---------------------------
+ * Main loader
+ * ------------------------- */
 async function loadWeek(userDateStr) {
   const dateStr = normalizeToShopWeekStart(userDateStr);
-  // 選択日を「週開始（火曜）」へ寄せる（表示も火曜に揃える）
   if (dateInput && dateStr) dateInput.value = dateStr;
   if (!indexJson) throw new Error("index.json is not loaded");
+
+  // week switch => selection reset
+  clearSelection();
 
   const chunk = pickChunkForDate(dateStr);
   if (!chunk) {
@@ -786,17 +1097,14 @@ async function loadWeek(userDateStr) {
         vendorMap.get(vkey).push(item);
       }
 
-      // modslot は旧仕様なので読み込み段階で捨てる
-      if (String(row.line_type || "").toLowerCase() === "modslot") {
-        continue;
-      }
+      if (String(row.line_type || "").toLowerCase() === "modslot") continue;
 
       const statText = stripHtml(row.stat_en || "");
       if (!statText) continue;
-      if (/^[\-–—]+$/.test(statText)) continue;  // "-" だけの行を除外
+      if (/^[\-–—]+$/.test(statText)) continue;
 
-      const v = String(row.value_raw || "").trim();
-      if (v === "-" || /^[\-–—]+$/.test(v)) continue; // "-" だけの値も除外
+      const vraw = String(row.value_raw || "").trim();
+      if (vraw === "-" || /^[\-–—]+$/.test(vraw)) continue;
 
       item.lines.push({
         ord: row.ord,
@@ -813,7 +1121,6 @@ async function loadWeek(userDateStr) {
     stmt.free();
 
     renderVendors(vendorMap);
-    // 表示中の注記は不要：完了したらステータスを消す
     setStatus("");
   } finally {
     db.close();
@@ -822,14 +1129,25 @@ async function loadWeek(userDateStr) {
 
 async function boot() {
   applyUiLang();
+
   setStatus(ui("loadingIndex"));
   indexJson = await fetchJson(`${DATA_BASE}/index.json?ts=${Date.now()}`);
 
   const i18nFile = indexJson?.i18n?.file || "i18n.json";
   setStatus(ui("loadingI18n"));
   i18n = await fetchJson(`${DATA_BASE}/${i18nFile}?ts=${Date.now()}`);
+  buildI18nReverse();
 
-  // グラフ設定（最大値テーブル）
+  // assets（任意）
+  try {
+    setStatus(ui("loadingAssets"));
+    const assetFile = (indexJson?.assets?.file) ? indexJson.assets.file : "asset_map.json";
+    assetMap = await fetchJson(`${DATA_BASE}/${assetFile}?ts=${Date.now()}`);
+  } catch (e) {
+    assetMap = null;
+  }
+
+  // graph config（任意）
   try {
     setStatus(ui("loadingGraph"));
     graphConfig = await fetchJson(`${DATA_BASE}/graph_config.json?ts=${Date.now()}`);
@@ -843,6 +1161,9 @@ async function boot() {
   await loadWeek(defaultDate);
 }
 
+/* ---------------------------
+ * Events
+ * ------------------------- */
 dateInput.addEventListener("change", () => {
   const d = dateInput.value;
   if (d) loadWeek(d).catch(err => setStatus(`${ui("error")}: ${err.message}`));
@@ -854,8 +1175,53 @@ langSelect.addEventListener("change", () => {
   if (d) loadWeek(d).catch(err => setStatus(`${ui("error")}: ${err.message}`));
 });
 
-reloadBtn.addEventListener("click", () => {
-  boot().catch(err => setStatus(`${ui("error")}: ${err.message}`));
+modeSelect.addEventListener("change", () => {
+  filterMode = modeSelect.value === "or" ? "or" : "and";
+  applyUiLang(); // option labels (and/or)
+  applyFiltersToDom();
+});
+
+filterInput.addEventListener("keydown", (e) => {
+  if (e.key !== "Enter") return;
+  const term = stripHtml(filterInput.value).trim();
+  if (term) addFilterKey(term);
+  filterInput.value = "";
+});
+
+onlySelectedBtn.addEventListener("click", () => {
+  onlySelected = !onlySelected;
+  applyFiltersToDom();
+});
+
+clearSelectedBtn.addEventListener("click", () => {
+  clearSelection();
+});
+
+clearFiltersBtn.addEventListener("click", () => {
+  clearFilters();
+});
+
+chipsEl.addEventListener("click", (e) => {
+  const x = e.target.closest(".chip__x");
+  if (!x) return;
+  const chip = e.target.closest(".chip");
+  if (!chip) return;
+  const k = chip.dataset.key;
+  removeFilterKey(k);
+});
+
+// event delegation: line tap => toggle filter, card tap => select
+contentEl.addEventListener("click", (e) => {
+  const line = e.target.closest(".line[data-stat-key]");
+  if (line) {
+    e.stopPropagation();
+    toggleFilterKey(line.dataset.statKey);
+    return;
+  }
+  const card = e.target.closest(".card[data-item-id]");
+  if (card) {
+    toggleCardSelection(card);
+  }
 });
 
 boot().catch(err => {
