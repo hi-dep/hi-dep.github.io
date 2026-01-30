@@ -652,7 +652,7 @@ function buildCardHead(item, modCard = null) {
       ? (i18n[item.slot_key] ?? trText(typeEn))
       : (stripHtml(typeEn) || item.slot_key || "");
 
-    return { title1, title2: typeDisp, titleClass: "" };
+    return { title1, title2: typeDisp, titleClass: isNamedItem(item) ? " is-named" : "" };
   }
 
   if (item.category === "mod" && modCard) {
