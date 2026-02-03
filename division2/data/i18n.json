@@ -778,21 +778,5 @@
   "ammo": "弾薬",
   "danny": "ダニー",
   "amount": "数量",
-  "unit_price": "単価",
-  "exotic_cache": "エキゾチックキャッシュ",
-  "exoticcache": "エキゾチックキャッシュ",
-  "field_proficiency_cache": "フィールドマスターキャッシュ",
-  "fieldproficiencycache": "フィールドマスターキャッシュ",
-  "crafting_material_cache": "クラフト材料キャッシュ",
-  "craftingmaterialcache": "クラフト材料キャッシュ",
-  "optimization_cache": "最適化キャッシュ",
-  "optimizationcache": "最適化キャッシュ",
-  "named_item_cache": "名前付きアイテムキャッシュ",
-  "nameditemcache": "名前付きアイテムキャッシュ",
-  "conflict_cache": "コンフリクトキャッシュ",
-  "conflictcache": "コンフリクトキャッシュ",
-  "season_cache": "シーズンキャッシュ",
-  "seasoncache": "シーズンキャッシュ",
-  "enhanced_legacy_season_cache": "強化レガシーシーズンキャッシュ",
-  "enhancedlegacyseasoncache": "強化レガシーシーズンキャッシュ"
+  "unit_price": "単価"
 }

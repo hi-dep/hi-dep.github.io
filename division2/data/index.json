@@ -1,6 +1,6 @@
 {
-  "built_at": "2026-02-03T01:11:12.945136Z",
-  "target_week": "2026-01-27",
+  "built_at": "2026-02-03T12:05:57.093876Z",
+  "target_week": "2026-02-03",
   "chunks": [
     {
       "month": "2021-06",
@@ -1233,11 +1233,23 @@
         "mod": 216,
         "cache": 32
       }
+    },
+    {
+      "month": "2026-02",
+      "start": null,
+      "end": null,
+      "file": "shop/shop_2026-02.db.gz",
+      "sha256": "a8dbf826535080c464d9e56ab0db19f8deb38b9520723a1e51b4a2253c6fe4d0",
+      "size": 1214,
+      "items_total": 0,
+      "lines_total": 0,
+      "items": {},
+      "lines": {}
     }
   ],
   "i18n": {
     "file": "i18n.json",
-    "entries": 796
+    "entries": 780
   },
   "assets": {
     "file": "asset_map.json",
