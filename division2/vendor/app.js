@@ -65,6 +65,7 @@ const UI = {
     catGear: "GEAR",
     catWeapon: "WEAPON",
     catMod: "MOD",
+    catCache: "CACHE",
     modSuffix: "MOD",
     and: "AND",
     or: "OR"
@@ -90,6 +91,7 @@ const UI = {
     catGear: "GEAR",
     catWeapon: "WEAPON",
     catMod: "MOD",
+    catCache: "CACHE",
     modSuffix: " MOD",
     and: "AND",
     or: "OR"
@@ -147,8 +149,105 @@ const VENDOR_ORDER = [
   "dzwest",
   "haven",
   "benitez",
-  "thebridge"
+  "thebridge",
+  "danny"
 ];
+
+/* ---------------------------
+ * Static cache items (not stored in DB)
+ * ------------------------- */
+// Some vendors always sell caches, but they may not exist in the DB.
+// Inject them at render-time so they are always visible in the UI.
+const STATIC_VENDOR_EN = {
+  countdown: "Countdown",
+  dzeast: "DZ East",
+  dzsouth: "DZ South",
+  dzwest: "DZ West"
+};
+
+const STATIC_CACHE_ITEMS = {
+  // Countdown vendor: always show these caches
+  countdown: [
+    { name_en: "Named Item Cache", price: 112, rarity: "named" },
+    { name_en: "Optimization Cache", price: 145, rarity: "highend" },
+    { name_en: "Season Cache", price: 145, rarity: "highend" },
+    { name_en: "Exotic Cache", price: 224, rarity: "exotic" }
+  ],
+  // Dark Zone vendors: exotic cache
+  dzeast: [
+    { name_en: "Exotic Cache", price: 170, rarity: "exotic" }
+  ],
+  dzsouth: [
+    { name_en: "Exotic Cache", price: 170, rarity: "exotic" }
+  ],
+  dzwest: [
+    { name_en: "Exotic Cache", price: 170, rarity: "exotic" }
+  ]
+};
+
+function injectStaticCaches(vendorMap, dateStr) {
+  if (!vendorMap) return;
+
+  for (const [vendorKey, defs] of Object.entries(STATIC_CACHE_ITEMS)) {
+    if (!Array.isArray(defs) || defs.length === 0) continue;
+
+    if (!vendorMap.has(vendorKey)) vendorMap.set(vendorKey, []);
+    const arr = vendorMap.get(vendorKey);
+
+    const vendorEn = (arr[0] && arr[0].vendor_en) ? arr[0].vendor_en : (STATIC_VENDOR_EN[vendorKey] || vendorKey);
+
+    const hasCache = (nameKey) => {
+      const nk = String(nameKey || "");
+      return arr.some(it =>
+        it && it.category === "cache" &&
+        (String(it.name_key || "") === nk || normalizeKey(it.name_en) === nk)
+      );
+    };
+
+    // Put injected caches before other items (stable, deterministic)
+    const ordStart = -1000;
+
+    defs.forEach((d, i) => {
+      const nameEn = String(d.name_en || "").trim();
+      if (!nameEn) return;
+
+      const nameKey = normalizeKey(nameEn);
+      if (hasCache(nameKey)) return;
+
+      const priceNum = Number(d.price);
+      const priceRaw = (Number.isFinite(priceNum) ? String(priceNum) : String(d.price ?? "").trim());
+
+      arr.push({
+        item_id: `static-${dateStr}-${vendorKey}-${nameKey}`,
+        date: dateStr,
+        category: "cache",
+        rarity: String(d.rarity || "highend"),
+        vendor_en: vendorEn,
+        vendor_key: vendorKey,
+        name_en: nameEn,
+        name_key: nameKey,
+        brand_en: "",
+        brand_key: "",
+        slot_en: "",
+        slot_key: "",
+        item_ord: ordStart + i,
+        lines: [
+          {
+            ord: 0,
+            line_type: "price",
+            icon_class: "",
+            stat_key: "unit_price",
+            stat_en: "Unit Price",
+            value_num: Number.isFinite(priceNum) ? priceNum : null,
+            value_raw: priceRaw,
+            unit: ""
+          }
+        ]
+      });
+    });
+  }
+}
+
 
 /* ---------------------------
  * Division2 shop week normalize
@@ -472,10 +571,11 @@ function rarityToClass(rarity) {
   if (r.includes("named")) return "named";
   if (r.includes("gearset")) return "gearset";
   if (r.includes("highend")) return "highend";
+  if (r.includes("exotic")) return "exotic";
   if (r.includes("offensive")) return "offensive";
   if (r.includes("defensive")) return "defensive";
   if (r.includes("utility")) return "utility";
-  return "default";
+  return "highend";
 }
 
 function dotColorFromIconClass(iconClass) {
@@ -581,7 +681,7 @@ function renderLine(item, ln, colorOverride = "") {
   // gauge（未定義は 0%）
   let gaugeHtml = "";
   const vnum = (ln.value_num != null && ln.value_num !== "") ? Number(ln.value_num) : null;
-  if (vnum != null && !Number.isNaN(vnum) && lt !== "talent") {
+  if (vnum != null && !Number.isNaN(vnum) && lt !== "talent" && item.category !== "cache") {
     const maxv = getGraphMaxValue(item, ln);
     const pct = (maxv > 0) ? Math.max(0, Math.min(100, (vnum / maxv) * 100)) : 0;
     gaugeHtml = `
@@ -607,7 +707,7 @@ function renderLine(item, ln, colorOverride = "") {
 
 function sortLinesForDisplay(lines) {
   // 要望：attr の下に talent（core/attr → talent）
-  const typeOrder = { core: 0, attr: 1, talent: 2, modslot: 9, slot: 9 };
+  const typeOrder = { price: -1, core: 0, attr: 1, talent: 2, modslot: 9, slot: 9 };
   return (lines || []).slice().sort((a, b) => {
     const oa = typeOrder[String(a.line_type || "").toLowerCase()] ?? 9;
     const ob = typeOrder[String(b.line_type || "").toLowerCase()] ?? 9;
@@ -822,7 +922,7 @@ function renderVendors(vendorMap) {
     return;
   }
 
-  const catOrder = ["gear", "weapon", "mod"];
+  const catOrder = ["gear", "weapon", "mod", "cache"];
 
   for (const vendorKey of vendors) {
     const itemsAll = vendorMap.get(vendorKey) || [];
@@ -835,7 +935,8 @@ function renderVendors(vendorMap) {
     const groups = {
       gear: sortItemsStable(itemsAll.filter(x => x.category === "gear")),
       weapon: sortItemsStable(itemsAll.filter(x => x.category === "weapon")),
-      mod: sortItemsStable(itemsAll.filter(x => x.category === "mod"))
+      mod: sortItemsStable(itemsAll.filter(x => x.category === "mod")),
+      cache: sortItemsStable(itemsAll.filter(x => x.category === "cache"))
     };
 
     const section = document.createElement("section");
@@ -846,7 +947,7 @@ function renderVendors(vendorMap) {
         ${catOrder.map(cat => {
           const cnt = groups[cat].length;
           if (!cnt) return "";
-          const label = (cat === "gear") ? ui("catGear") : (cat === "weapon") ? ui("catWeapon") : ui("catMod");
+          const label = (cat === "gear") ? ui("catGear") : (cat === "weapon") ? ui("catWeapon") : (cat === "mod") ? ui("catMod") : ui("catCache");
           return `
             <div class="catgroup catgroup--${escapeHtml(cat)}">
               <div class="catgroup__title">${escapeHtml(label)}</div>
@@ -1127,6 +1228,9 @@ async function loadWeek(userDateStr) {
     }
 
     stmt.free();
+
+    // Inject always-available cache items (not in DB)
+    injectStaticCaches(vendorMap, dateStr);
 
     renderVendors(vendorMap);
     setStatus("");
