@@ -640,7 +640,7 @@ function renderLine(item, ln, colorOverride = "") {
   const valueRaw = String(ln.value_raw || "").trim();
   if (valueRaw === "-" || /^[\-–—]+$/.test(valueRaw)) return "";
 
-  const valuePart = valueRaw ? `+${valueRaw}` : "";
+  const valuePart = valueRaw ? `${valueRaw}` : "";
   const text = valuePart ? `${valuePart} ${stat}` : `${stat}`;
   if (!text.trim() || /^[\-–—]+$/.test(text.trim())) return "";
 
