@@ -1215,13 +1215,14 @@ function toggleCardSelection(cardEl) {
 /* ---------------------------
  * Main loader
  * ------------------------- */
-async function loadWeek(userDateStr) {
+async function loadWeek(userDateStr, options = {}) {
+  const preserveSelection = !!options.preserveSelection;
   const dateStr = normalizeToShopWeekStart(userDateStr);
   if (dateInput && dateStr) dateInput.value = dateStr;
   if (!indexJson) throw new Error("index.json is not loaded");
 
   // week switch => selection reset
-  clearSelection();
+  if (!preserveSelection) clearSelection();
 
   const chunk = pickChunkForDate(dateStr);
   if (!chunk) {
@@ -1386,7 +1387,7 @@ langSelect.addEventListener("change", () => {
   saveLangSetting();
   applyUiLang();
   const d = dateInput.value;
-  if (d) loadWeek(d).catch(err => setStatus(`${ui("error")}: ${err.message}`));
+  if (d) loadWeek(d, { preserveSelection: true }).catch(err => setStatus(`${ui("error")}: ${err.message}`));
 });
 
 modeSelect.addEventListener("change", () => {
