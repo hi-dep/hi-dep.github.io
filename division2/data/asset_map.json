@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "built_at": "2026-02-04T02:03:08.483577Z",
+  "built_at": "2026-02-04T02:28:31.294179Z",
   "sanitize": {
     "enabled": true,
     "safe_chars": "a-z 0-9 . _ -"
@@ -65,7 +65,8 @@
     "wyvernwear": "img/brands/wyvernwear.png",
     "yaahl": "img/brands/yaahl.png",
     "zwiadowkasp.zo.o.": "img/brands/zwiadowkasp.zo.o.png",
-    "českávýrobas.r.o.": "img/brands/esk_v_robas.r.o.png"
+    "českávýrobas.r.o.": "img/brands/esk_v_robas.r.o.png",
+    "ﾄ憩skﾃ｡vﾃｽrobas.r.o.": "img/brands/sk_v_robas.r.o.png"
   },
   "gear_slots": {
     "#n/a": "img/gears/n_a.png",
@@ -310,7 +311,7 @@
     "utility": "img/icons/utility.png"
   },
   "counts": {
-    "brands": 60,
+    "brands": 61,
     "gear_slots": 7,
     "weapon_types": 7,
     "talents": 128,

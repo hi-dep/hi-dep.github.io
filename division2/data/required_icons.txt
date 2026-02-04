@@ -44,6 +44,7 @@ img/brands/refactor.png
 img/brands/richter_kaiser.png
 img/brands/rigger.png
 img/brands/shinymonkeygear.png
+img/brands/sk_v_robas.r.o.png
 img/brands/sokolovconcern.png
 img/brands/striker_sbattlegear.png
 img/brands/tipofthespear.png
