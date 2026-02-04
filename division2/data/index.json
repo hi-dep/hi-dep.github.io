@@ -1,5 +1,5 @@
 {
-  "built_at": "2026-02-04T09:10:03.125175Z",
+  "built_at": "2026-02-04T09:30:02.676454Z",
   "target_week": "2026-02-03",
   "chunks": [
     {
@@ -1239,16 +1239,18 @@
       "start": "2026-02-03",
       "end": "2026-02-03",
       "file": "shop/shop_2026-02.db.gz",
-      "sha256": "82ebb87e10dfbb1cd68f3302573b582bf29c3bccdf9ef2f9a6072eab3a2fbc35",
-      "size": 27716,
-      "items_total": 130,
-      "lines_total": 326,
+      "sha256": "3eb94ec3aea197746bb9bba38210439b492a92c1a6406142a2cef8146854bae8",
+      "size": 28793,
+      "items_total": 135,
+      "lines_total": 336,
       "items": {
+        "cache": 5,
         "gear": 38,
         "mod": 52,
         "weapon": 40
       },
       "lines": {
+        "cache": 10,
         "gear": 119,
         "mod": 52,
         "weapon": 155
