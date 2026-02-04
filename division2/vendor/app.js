@@ -22,12 +22,16 @@ const labelLangEl = document.getElementById("labelLang");
 const labelModeEl = document.getElementById("labelMode");
 const labelFilterEl = document.getElementById("labelFilter");
 
+const LANG_STORAGE_KEY = "division2_lang";
+
 let indexJson = null;
 let i18n = {};
 let i18nJaNormToKey = new Map();
 let graphConfig = {};
 let assetMap = null;
 let SQL = null;
+let lastVendorMap = null;
+let lastItems = [];
 
 // selection & filters
 let onlySelected = false;
@@ -38,6 +42,25 @@ const statLabelEnByKey = new Map();   // stat_key -> English label
 
 function setStatus(msg) {
   statusEl.textContent = msg || "";
+}
+
+function saveLangSetting() {
+  if (!langSelect) return;
+  try {
+    localStorage.setItem(LANG_STORAGE_KEY, langSelect.value || "ja");
+  } catch (e) {
+    // ignore storage errors (private mode, quota, etc.)
+  }
+}
+
+function loadLangSetting() {
+  if (!langSelect) return;
+  try {
+    const v = localStorage.getItem(LANG_STORAGE_KEY);
+    if (v) langSelect.value = v;
+  } catch (e) {
+    // ignore storage errors
+  }
 }
 
 /* ---------------------------
@@ -850,6 +873,9 @@ function renderCard(item) {
   }
 
   const head = buildCardHead(item, modCard);
+  const vendorTitle = (langSelect.value === "ja")
+    ? (i18n[item.vendor_key] ?? item.vendor_en ?? item.vendor_key ?? "")
+    : (item.vendor_en ?? item.vendor_key ?? "");
   const rarityClass = rarityToClass(item.rarity);
   const bg = buildCardBg(item, modCard);
 
@@ -870,7 +896,7 @@ function renderCard(item) {
   const title2Html = head.title2 ? `<div class="card__subtitle"><span class="card__subtitle-text">${escapeHtml(head.title2)}</span></div>` : "";
 
   return `
-    <div class="card rarity-${escapeHtml(rarityClass)} cat-${escapeHtml(item.category)}" data-item-id="${escapeHtml(item.item_id)}" data-keys="${escapeHtml(keys)}" data-search="${escapeHtml(search)}">
+    <div class="card rarity-${escapeHtml(rarityClass)} cat-${escapeHtml(item.category)}" data-item-id="${escapeHtml(item.item_id)}" data-keys="${escapeHtml(keys)}" data-search="${escapeHtml(search)}" data-vendor="${escapeHtml(vendorTitle)}">
       ${bg}
       <div class="card__head">
         <div class="card__title-wrap">
@@ -901,6 +927,75 @@ function sortItemsStable(arr) {
     const sy = `${y.slot_key || ""}|${y.brand_key || ""}|${y.name_en || ""}`.toLowerCase();
     return sx.localeCompare(sy);
   });
+}
+
+function vendorOrderIndex(vkey) {
+  const i = VENDOR_ORDER.indexOf(vkey);
+  return (i === -1) ? 9999 : i;
+}
+
+function sortItemsByVendorAndOrd(arr) {
+  const a2 = Array.from(arr || []);
+  return a2.sort((x, y) => {
+    const ia = vendorOrderIndex(x.vendor_key);
+    const ib = vendorOrderIndex(y.vendor_key);
+    if (ia !== ib) return ia - ib;
+
+    const ox = Number.isFinite(x.item_ord) ? x.item_ord : null;
+    const oy = Number.isFinite(y.item_ord) ? y.item_ord : null;
+    if (ox != null && oy != null && ox !== oy) return ox - oy;
+    if (ox != null && oy == null) return -1;
+    if (ox == null && oy != null) return 1;
+
+    const sx = `${x.slot_key || ""}|${x.brand_key || ""}|${x.name_en || ""}`.toLowerCase();
+    const sy = `${y.slot_key || ""}|${y.brand_key || ""}|${y.name_en || ""}`.toLowerCase();
+    return sx.localeCompare(sy);
+  });
+}
+
+function renderOnlySelectedView() {
+  clearContent();
+
+  const selectedItems = (lastItems || []).filter(it => selectedIds.has(it.item_id));
+  if (!selectedItems.length) return;
+
+  const catOrder = ["gear", "weapon", "mod", "cache"];
+  for (const cat of catOrder) {
+    const items = sortItemsByVendorAndOrd(selectedItems.filter(x => x.category === cat));
+    if (!items.length) continue;
+
+    const label = (cat === "gear") ? ui("catGear")
+      : (cat === "weapon") ? ui("catWeapon")
+      : (cat === "mod") ? ui("catMod")
+      : ui("catCache");
+
+    const section = document.createElement("section");
+    section.className = `catgroup catgroup--${cat}`;
+    section.innerHTML = `
+      <div class="catgroup__title">${escapeHtml(label)}</div>
+      <div class="grid grid--${escapeHtml(cat)}"></div>
+    `;
+
+    const grid = section.querySelector(".grid");
+    for (const item of items) {
+      const wrapper = document.createElement("div");
+      wrapper.innerHTML = renderCard(item);
+      grid.appendChild(wrapper.firstElementChild);
+    }
+
+    contentEl.appendChild(section);
+  }
+
+  syncCardSelectionClasses();
+  applyFiltersToDom();
+}
+
+function updateViewMode() {
+  if (onlySelected) {
+    renderOnlySelectedView();
+  } else if (lastVendorMap) {
+    renderVendors(lastVendorMap);
+  }
 }
 
 function renderVendors(vendorMap) {
@@ -1008,6 +1103,8 @@ function cardHasKeys(card, terms) {
 
 function applyFiltersToDom() {
   const keys = activeFilterKeys.slice();
+
+  document.body.classList.toggle("only-selected", onlySelected);
 
   document.querySelectorAll(".card[data-item-id]").forEach(card => {
     const id = card.dataset.itemId;
@@ -1232,6 +1329,9 @@ async function loadWeek(userDateStr) {
     // Inject always-available cache items (not in DB)
     injectStaticCaches(vendorMap, dateStr);
 
+    lastVendorMap = vendorMap;
+    lastItems = Array.from(itemMap.values());
+
     renderVendors(vendorMap);
     setStatus("");
   } finally {
@@ -1240,6 +1340,7 @@ async function loadWeek(userDateStr) {
 }
 
 async function boot() {
+  loadLangSetting();
   applyUiLang();
 
   setStatus(ui("loadingIndex"));
@@ -1282,6 +1383,7 @@ dateInput.addEventListener("change", () => {
 });
 
 langSelect.addEventListener("change", () => {
+  saveLangSetting();
   applyUiLang();
   const d = dateInput.value;
   if (d) loadWeek(d).catch(err => setStatus(`${ui("error")}: ${err.message}`));
@@ -1302,11 +1404,13 @@ filterInput.addEventListener("keydown", (e) => {
 
 onlySelectedBtn.addEventListener("click", () => {
   onlySelected = !onlySelected;
+  updateViewMode();
   applyFiltersToDom();
 });
 
 clearSelectedBtn.addEventListener("click", () => {
   clearSelection();
+  updateViewMode();
 });
 
 clearFiltersBtn.addEventListener("click", () => {
