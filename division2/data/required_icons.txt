@@ -205,9 +205,11 @@ img/weapon_talents/determined.png
 img/weapon_talents/eyeless.png
 img/weapon_talents/fasthands.png
 img/weapon_talents/finisher.png
+img/weapon_talents/firstblood.png
 img/weapon_talents/flatline.png
 img/weapon_talents/frenzy.png
 img/weapon_talents/futureperfect.png
+img/weapon_talents/futureperfection.png
 img/weapon_talents/ignited.png
 img/weapon_talents/immobilize.png
 img/weapon_talents/insync.png
@@ -231,6 +233,7 @@ img/weapon_talents/perfectflatline.png
 img/weapon_talents/perfectfrenzy.png
 img/weapon_talents/perfectimmobilize.png
 img/weapon_talents/perfectjazzhands.png
+img/weapon_talents/perfectkiller.png
 img/weapon_talents/perfectluckyshot.png
 img/weapon_talents/perfectlybehindyou.png
 img/weapon_talents/perfectlydetermined.png

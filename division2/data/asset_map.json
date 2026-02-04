@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "built_at": "2026-02-03T12:10:03.359709Z",
+  "built_at": "2026-02-04T01:50:02.812097Z",
   "sanitize": {
     "enabled": true,
     "safe_chars": "a-z 0-9 . _ -"
@@ -225,9 +225,11 @@
     "eyeless": "img/weapon_talents/eyeless.png",
     "fasthands": "img/weapon_talents/fasthands.png",
     "finisher": "img/weapon_talents/finisher.png",
+    "firstblood": "img/weapon_talents/firstblood.png",
     "flatline": "img/weapon_talents/flatline.png",
     "frenzy": "img/weapon_talents/frenzy.png",
     "futureperfect": "img/weapon_talents/futureperfect.png",
+    "futureperfection": "img/weapon_talents/futureperfection.png",
     "ignited": "img/weapon_talents/ignited.png",
     "immobilize": "img/weapon_talents/immobilize.png",
     "insync": "img/weapon_talents/insync.png",
@@ -251,6 +253,7 @@
     "perfectfrenzy": "img/weapon_talents/perfectfrenzy.png",
     "perfectimmobilize": "img/weapon_talents/perfectimmobilize.png",
     "perfectjazzhands": "img/weapon_talents/perfectjazzhands.png",
+    "perfectkiller": "img/weapon_talents/perfectkiller.png",
     "perfectluckyshot": "img/weapon_talents/perfectluckyshot.png",
     "perfectlybehindyou": "img/weapon_talents/perfectlybehindyou.png",
     "perfectlydetermined": "img/weapon_talents/perfectlydetermined.png",
@@ -311,6 +314,6 @@
     "gear_slots": 7,
     "weapon_types": 7,
     "talents": 128,
-    "weapon_talents": 84
+    "weapon_talents": 87
   }
 }
