@@ -140,7 +140,7 @@ function applyUiLang() {
   // select option labels
   const optJa = langSelect?.querySelector('option[value="ja"]');
   const optEn = langSelect?.querySelector('option[value="en"]');
-  if (optJa) optJa.textContent = (lang === "ja") ? "日本語" : "Japanese";
+  if (optJa) optJa.textContent = "Japanese";
   if (optEn) optEn.textContent = "English";
 
   const optAnd = modeSelect?.querySelector('option[value="and"]');
