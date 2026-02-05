@@ -1,5 +1,5 @@
 {
-  "built_at": "2026-02-05T16:45:33.311059Z",
+  "built_at": "2026-02-05T16:50:02.826707Z",
   "target_week": "2026-02-03",
   "chunks": [
     {
@@ -1239,8 +1239,8 @@
       "start": "2026-02-03",
       "end": "2026-02-03",
       "file": "shop/shop_2026-02.db.gz",
-      "sha256": "3301efbb3d416ba7b316a59621191977300cd04b7ac9a8f38455a0363ca110e5",
-      "size": 34337,
+      "sha256": "6eaf9b7d52742d49c4d80aaf55aab00a8debc08f783d8a4d23af29587b31acc6",
+      "size": 33916,
       "items_total": 150,
       "lines_total": 384,
       "items": {
@@ -1259,7 +1259,7 @@
   ],
   "i18n": {
     "file": "i18n.json",
-    "entries": 781
+    "entries": 797
   },
   "assets": {
     "file": "asset_map.json",
