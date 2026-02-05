@@ -12,7 +12,8 @@
   --rarity-gearset:1,255,144;
   --rarity-named:255,132,19;
   --rarity-exotic:255,111,54;
-  --card-min: 12rem;
+  /* rem基準：文字サイズを小さくすると列数が増える */
+  --card-min: 10.5rem;
   --card-gap: 6px;
 
 }
@@ -123,19 +124,7 @@ body{
 }
 
 @media (max-width: 430px){
-  :root{ --card-min: 6.0rem; --card-gap: 4px; }
-  .card{ padding:6px; }
-  .card__title{ font-size:11px; }
-  .card__subtitle{ font-size:9px; }
-  .line{ font-size:9px; }
-  .card__bg img{ width:34px; height:34px; }
-  .card__bg--br img{ width:30px; height:30px; }
-}
-@media (max-width: 360px){
-  :root{ --card-min: 5.0rem; --card-gap: 4px; }
-  .card__title{ font-size:10px; }
-  .card__subtitle{ font-size:8px; }
-  .line{ font-size:8px; }
+  :root{ --card-min: 10.5rem; --card-gap: 6px; }
 }
 
 .card{
