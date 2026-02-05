@@ -12,7 +12,14 @@
       <div class="title">Division 2 Shop</div>
     </div>
 
-    <div class="topbar__right">
+    <button id="filterToggleBtn" class="btn btn--ghost topbar__toggle" type="button">条件</button>
+
+    <div class="topbar__time">
+      <span id="worldTimeLabel" class="time-label">TIME</span>
+      <span id="worldTime" class="time-value">--:--</span>
+    </div>
+
+    <div class="topbar__base">
       <label class="field field--date">
         <span id="labelWeek">週</span>
         <input id="dateInput" type="date" />
@@ -25,6 +32,9 @@
           <option value="en">English</option>
         </select>
       </label>
+    </div>
+
+    <div class="topbar__right">
 
       <label class="field field--mode">
         <span id="labelMode">条件</span>
@@ -47,6 +57,11 @@
     </div>
   </header>
 
+  <div id="worldTimePopup" class="time-popup" aria-hidden="true">
+    <div id="worldTimePopupTitle" class="time-popup__title">World Time</div>
+    <div id="worldTimePopupBody" class="time-popup__body"></div>
+  </div>
+
   <main class="main">
     <section id="status" class="status"></section>
     <section id="content" class="content"></section>
@@ -58,6 +73,7 @@
   <!-- gzip解凍フォールバックが必要なら pako を置く（任意） -->
   <!-- <script src="./pako.min.js"></script> -->
 
+  <script src="./world_time.js"></script>
   <script src="./app.js"></script>
 </body>
 </html>

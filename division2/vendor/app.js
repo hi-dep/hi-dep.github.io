@@ -16,8 +16,14 @@ const filterInput = document.getElementById("filterInput");
 const onlySelectedBtn = document.getElementById("onlySelectedBtn");
 const clearSelectedBtn = document.getElementById("clearSelectedBtn");
 const clearFiltersBtn = document.getElementById("clearFiltersBtn");
+const filterToggleBtn = document.getElementById("filterToggleBtn");
 
 const chipsEl = document.getElementById("filterChips");
+const worldTimeEl = document.getElementById("worldTime");
+const worldTimePopupEl = document.getElementById("worldTimePopup");
+const worldTimePopupBodyEl = document.getElementById("worldTimePopupBody");
+const worldTimeLabelEl = document.getElementById("worldTimeLabel");
+const worldTimePopupTitleEl = document.getElementById("worldTimePopupTitle");
 
 const labelWeekEl = document.getElementById("labelWeek");
 const labelLangEl = document.getElementById("labelLang");
@@ -34,6 +40,279 @@ let assetMap = null;
 let SQL = null;
 let lastVendorMap = null;
 let lastItems = [];
+let isWorldTimePopupOpen = false;
+let statusMode = "";
+const JST_OFFSET_MS = 9 * 60 * 60 * 1000;
+let filtersOpen = false;
+
+/* ---------------------------
+ * Division2 world time (HH:MM)
+ * ------------------------- */
+function getWorldTimeHHMM(sec) {
+  let minuteSec = 0;
+  for (let i = 0; i < m_sec.length; i++) {
+    if (sec > m_sec[i]) minuteSec = i;
+    else break;
+  }
+  const hour = Math.floor(minuteSec / 60);
+  const minute = minuteSec % 60;
+  return ("0" + hour).slice(-2) + ":" + ("0" + minute).slice(-2);
+}
+
+function updateWorldTime() {
+  if (!worldTimeEl) return;
+  const nowTime = new Date();
+  updateScheduleStatus(nowTime);
+  if (!window.base_t || !window.m_sec || !window.d1_sec) {
+    worldTimeEl.textContent = "--:--";
+    return;
+  }
+  const diff = nowTime.getTime() - base_t.getTime();
+  const diffSec = Math.floor(diff / 1000);
+  const curSec = diffSec % d1_sec;
+  worldTimeEl.textContent = getWorldTimeHHMM(curSec);
+  if (isWorldTimePopupOpen) updateWorldTimePopup(curSec, nowTime);
+}
+
+function formatHMS(totalSec) {
+  const h = Math.floor(totalSec / 3600);
+  const m = Math.floor(totalSec / 60) % 60;
+  const s = totalSec % 60;
+  return ("0" + h).slice(-2) + ":" + ("0" + m).slice(-2) + ":" + ("0" + s).slice(-2);
+}
+
+function formatHM(dateObj) {
+  const h = ("0" + dateObj.getHours()).slice(-2);
+  const m = ("0" + dateObj.getMinutes()).slice(-2);
+  return `${h}:${m}`;
+}
+
+function formatRemaining(ms) {
+  const totalMin = Math.max(0, Math.floor(ms / 60000));
+  const days = Math.floor(totalMin / (60 * 24));
+  const hours = Math.floor((totalMin % (60 * 24)) / 60);
+  const mins = totalMin % 60;
+  const d = String(days).padStart(2, "0");
+  const h = String(hours).padStart(2, "0");
+  const m = String(mins).padStart(2, "0");
+  return `${d}d ${h}h ${m}m`;
+}
+
+function getJstParts(ms) {
+  const d = new Date(ms + JST_OFFSET_MS);
+  return {
+    y: d.getUTCFullYear(),
+    m: d.getUTCMonth(),
+    d: d.getUTCDate(),
+    dow: d.getUTCDay(),
+    h: d.getUTCHours(),
+    min: d.getUTCMinutes()
+  };
+}
+
+function addDaysJst(y, m, d, deltaDays) {
+  const baseUtc = Date.UTC(y, m, d);
+  const targetUtc = baseUtc + deltaDays * 86400000;
+  const t = new Date(targetUtc);
+  return { y: t.getUTCFullYear(), m: t.getUTCMonth(), d: t.getUTCDate() };
+}
+
+function jstToUtcMs(y, m, d, h, min) {
+  return Date.UTC(y, m, d, h, min) - JST_OFFSET_MS;
+}
+
+function nextWeeklyUtcMs(nowMs, dow, hour, minute) {
+  const p = getJstParts(nowMs);
+  let daysUntil = (dow - p.dow + 7) % 7;
+  if (daysUntil === 0 && (p.h > hour || (p.h === hour && p.min >= minute))) {
+    daysUntil = 7;
+  }
+  const date = addDaysJst(p.y, p.m, p.d, daysUntil);
+  return jstToUtcMs(date.y, date.m, date.d, hour, minute);
+}
+
+function lastWeeklyUtcMs(nowMs, dow, hour, minute) {
+  const p = getJstParts(nowMs);
+  let daysSince = (p.dow - dow + 7) % 7;
+  if (daysSince === 0 && (p.h < hour || (p.h === hour && p.min < minute))) {
+    daysSince = 7;
+  }
+  const date = addDaysJst(p.y, p.m, p.d, -daysSince);
+  return jstToUtcMs(date.y, date.m, date.d, hour, minute);
+}
+
+function updateScheduleStatus(nowTime) {
+  const nowMs = nowTime.getTime();
+
+  // Shop update: every Tue 17:00 JST
+  const nextShopUtc = nextWeeklyUtcMs(nowMs, 2, 17, 0);
+  const shopRemain = nextShopUtc - nowMs;
+
+  // Cassie/Danny opening windows (24h each)
+  const openSlots = [
+    { dow: 3, hour: 17, min: 0 }, // Wed 17:00
+    { dow: 6, hour: 1, min: 0 },  // Sat 01:00
+    { dow: 1, hour: 9, min: 0 }   // Mon 09:00
+  ];
+
+  function computeStoreStatus() {
+    let openUntil = null;
+    let openFrom = null;
+    for (const s of openSlots) {
+      const lastOpen = lastWeeklyUtcMs(nowMs, s.dow, s.hour, s.min);
+      const close = lastOpen + 24 * 60 * 60 * 1000;
+      if (nowMs >= lastOpen && nowMs < close) {
+        if (openFrom == null || lastOpen > openFrom) {
+          openFrom = lastOpen;
+          openUntil = close;
+        }
+      }
+    }
+
+    if (openUntil != null) {
+      const remain = openUntil - nowMs;
+      return { isOpen: true, remain };
+    }
+
+    let nextOpenUtc = null;
+    for (const s of openSlots) {
+      const nextOpen = nextWeeklyUtcMs(nowMs, s.dow, s.hour, s.min);
+      if (nextOpenUtc == null || nextOpen < nextOpenUtc) nextOpenUtc = nextOpen;
+    }
+    const openRemain = nextOpenUtc - nowMs;
+    return { isOpen: false, remain: openRemain };
+  }
+
+  const store = computeStoreStatus();
+  const storeText = store.isOpen
+    ? `${ui("closesIn")} ${formatRemaining(store.remain)}`
+    : `${ui("opensIn")} ${formatRemaining(store.remain)}`;
+
+  const lines = [
+    { label: ui("shopUpdate"), time: formatRemaining(shopRemain) },
+    { label: `${ui("cassie")} / ${ui("danny")}`, time: storeText }
+  ];
+
+  showScheduleStatus(lines);
+}
+
+function remainSecondsToHour(sec, toHour) {
+  const bfIdx = ((toHour - 1 + 24) % 24) * 60;
+  const idx = toHour * 60;
+  const remainSec = (m_sec[idx] + 1 - sec + d1_sec) % d1_sec;
+  return remainSec;
+}
+
+function updateWorldTimePopup(curSec, nowTime) {
+  if (!worldTimePopupBodyEl) return;
+
+  const prevBody = worldTimePopupBodyEl.querySelector(".time-popup__table-body");
+  const prevScrollTop = prevBody ? prevBody.scrollTop : 0;
+
+  const curWorld = getWorldTimeHHMM(curSec);
+  const nowLocal = formatHM(nowTime);
+
+  // Find next in-game hour (minimum remaining seconds)
+  let minRemain = d1_sec;
+  let nextHour = 0;
+  for (let h = 0; h < 24; h++) {
+    const r = remainSecondsToHour(curSec, h);
+    if (r > 0 && r < minRemain) {
+      minRemain = r;
+      nextHour = h;
+    }
+  }
+
+  const rows = [];
+  rows.push(`
+    <div class="time-popup__row">
+      <span>${ui("worldTime")}</span>
+      <strong>${curWorld}</strong>
+    </div>
+  `);
+  rows.push(`
+    <div class="time-popup__row">
+      <span>${ui("localTime")}</span>
+      <strong>${nowLocal}</strong>
+    </div>
+  `);
+  // Next line omitted; full list below covers it
+
+  const tableHead = `
+    <div class="time-popup__th">${ui("nextHour")}</div>
+    <div class="time-popup__th">${ui("local")}</div>
+    <div class="time-popup__th">${ui("remain")}</div>
+  `;
+  const tableBodyRows = [];
+  for (let i = 0; i < 24; i++) {
+    const h = (nextHour + i) % 24;
+    const r = remainSecondsToHour(curSec, h);
+    const t = new Date(nowTime.getTime() + r * 1000);
+    const label = `${("0" + h).slice(-2)}:00`;
+    tableBodyRows.push(`<div>${label}</div><div>${formatHM(t)}</div><div>${formatHMS(r)}</div>`);
+  }
+
+  worldTimePopupBodyEl.innerHTML = `
+    ${rows.join("")}
+    <div class="time-popup__table">
+      <div class="time-popup__table-head">${tableHead}</div>
+      <div class="time-popup__table-body">${tableBodyRows.join("")}</div>
+    </div>
+  `;
+
+  const newBody = worldTimePopupBodyEl.querySelector(".time-popup__table-body");
+  if (newBody) newBody.scrollTop = prevScrollTop;
+}
+
+function positionWorldTimePopup() {
+  if (!worldTimeEl || !worldTimePopupEl) return;
+  const rect = worldTimeEl.getBoundingClientRect();
+  const top = rect.bottom + 8;
+  const right = Math.max(8, window.innerWidth - rect.right);
+  worldTimePopupEl.style.top = `${top}px`;
+  worldTimePopupEl.style.right = `${right}px`;
+  worldTimePopupEl.style.left = "auto";
+}
+
+function openWorldTimePopup() {
+  if (!worldTimePopupEl) return;
+  isWorldTimePopupOpen = true;
+  worldTimePopupEl.setAttribute("aria-hidden", "false");
+  positionWorldTimePopup();
+  const now = new Date();
+  const diff = now.getTime() - base_t.getTime();
+  const diffSec = Math.floor(diff / 1000);
+  const curSec = diffSec % d1_sec;
+  updateWorldTimePopup(curSec, now);
+}
+
+function closeWorldTimePopup() {
+  if (!worldTimePopupEl) return;
+  isWorldTimePopupOpen = false;
+  worldTimePopupEl.setAttribute("aria-hidden", "true");
+}
+
+function toggleWorldTimePopup() {
+  if (isWorldTimePopupOpen) closeWorldTimePopup();
+  else openWorldTimePopup();
+}
+
+function setFiltersOpen(isOpen) {
+  filtersOpen = !!isOpen;
+  document.body.classList.toggle("filters-closed", !filtersOpen);
+
+  const controls = [
+    modeSelect,
+    filterInput,
+    onlySelectedBtn,
+    clearSelectedBtn,
+    clearFiltersBtn
+  ];
+  controls.forEach(el => {
+    if (!el) return;
+    el.disabled = !filtersOpen;
+  });
+}
 
 // selection & filters
 let onlySelected = false;
@@ -42,8 +321,27 @@ let filterMode = "and";               // and/or
 let activeFilterKeys = [];            // stat_key[]
 const statLabelEnByKey = new Map();   // stat_key -> English label
 
-function setStatus(msg) {
+function setStatus(msg, mode = "loading") {
+  statusMode = msg ? mode : "";
   statusEl.textContent = msg || "";
+  statusEl.classList.toggle("status--schedule", mode === "schedule");
+  statusEl.style.display = msg ? "" : "none";
+}
+
+function showScheduleStatus(lines) {
+  if (!statusEl) return;
+  if (statusMode === "loading" || statusMode === "error") return;
+  statusMode = "schedule";
+  statusEl.classList.add("status--schedule");
+  statusEl.innerHTML = (lines || []).map(l => {
+    return `
+      <div class="status__row">
+        <span class="status__label">${escapeHtml(l.label)}</span>
+        <span class="status__time">${escapeHtml(l.time)}</span>
+      </div>
+    `;
+  }).join("");
+  statusEl.style.display = (lines && lines.length) ? "" : "none";
 }
 
 function saveLangSetting() {
@@ -93,7 +391,21 @@ const UI = {
     catCache: "CACHE",
     modSuffix: "MOD",
     and: "AND",
-    or: "OR"
+    or: "OR",
+    time: "時間",
+    worldTime: "ゲーム内時刻",
+    localTime: "現在時刻",
+    next: "次",
+    nextHour: "次の時刻",
+    local: "現実時刻",
+    remain: "残り",
+    shopUpdate: "ショップ更新",
+    cassie: "キャシー",
+    danny: "ダニー",
+    opensIn: "開店まで",
+    closesIn: "閉店まで",
+    filtersOpen: "条件を開く",
+    filtersClose: "条件を閉じる"
   },
   en: {
     week: "Week",
@@ -119,7 +431,21 @@ const UI = {
     catCache: "CACHE",
     modSuffix: " MOD",
     and: "AND",
-    or: "OR"
+    or: "OR",
+    time: "TIME",
+    worldTime: "World Time",
+    localTime: "Local Time",
+    next: "Next",
+    nextHour: "Next Hour",
+    local: "Local",
+    remain: "Remain",
+    shopUpdate: "Shop Update",
+    cassie: "Cassie",
+    danny: "Danny",
+    opensIn: "Opens in",
+    closesIn: "Closes in",
+    filtersOpen: "Show Filters",
+    filtersClose: "Hide Filters"
   }
 };
 
@@ -136,6 +462,11 @@ function applyUiLang() {
   if (labelLangEl) labelLangEl.textContent = ui("language");
   if (labelModeEl) labelModeEl.textContent = ui("mode");
   if (labelFilterEl) labelFilterEl.textContent = ui("filter");
+  if (worldTimeLabelEl) worldTimeLabelEl.textContent = ui("time");
+  if (worldTimePopupTitleEl) worldTimePopupTitleEl.textContent = ui("worldTime");
+  if (filterToggleBtn) {
+    filterToggleBtn.textContent = filtersOpen ? ui("filtersClose") : ui("filtersOpen");
+  }
 
   if (filterInput) filterInput.placeholder = ui("filterPh");
 
@@ -155,7 +486,9 @@ function applyUiLang() {
   if (clearSelectedBtn) clearSelectedBtn.textContent = ui("clearSelected");
   if (clearFiltersBtn) clearFiltersBtn.textContent = ui("clearFilters");
 
+  if (isWorldTimePopupOpen) updateWorldTime();
   renderChips(); // label changes
+  updateScheduleStatus(new Date());
 }
 
 /* ---------------------------
@@ -1347,6 +1680,7 @@ async function loadWeek(userDateStr, options = {}) {
 
 async function boot() {
   loadLangSetting();
+  setFiltersOpen(false);
   applyUiLang();
 
   setStatus(ui("loadingIndex"));
@@ -1380,6 +1714,13 @@ async function boot() {
   await loadWeek(defaultDate);
 }
 
+if (filterToggleBtn) {
+  filterToggleBtn.addEventListener("click", () => {
+    setFiltersOpen(!filtersOpen);
+    applyUiLang();
+  });
+}
+
 /* ---------------------------
  * Events
  * ------------------------- */
@@ -1396,12 +1737,14 @@ langSelect.addEventListener("change", () => {
 });
 
 modeSelect.addEventListener("change", () => {
+  if (!filtersOpen) return;
   filterMode = modeSelect.value === "or" ? "or" : "and";
   applyUiLang(); // option labels (and/or)
   applyFiltersToDom();
 });
 
 filterInput.addEventListener("keydown", (e) => {
+  if (!filtersOpen) return;
   if (e.key !== "Enter") return;
   const term = stripHtml(filterInput.value).trim();
   if (term) addFilterKey(term);
@@ -1409,21 +1752,25 @@ filterInput.addEventListener("keydown", (e) => {
 });
 
 onlySelectedBtn.addEventListener("click", () => {
+  if (!filtersOpen) return;
   onlySelected = !onlySelected;
   updateViewMode();
   applyFiltersToDom();
 });
 
 clearSelectedBtn.addEventListener("click", () => {
+  if (!filtersOpen) return;
   clearSelection();
   updateViewMode();
 });
 
 clearFiltersBtn.addEventListener("click", () => {
+  if (!filtersOpen) return;
   clearFilters();
 });
 
 chipsEl.addEventListener("click", (e) => {
+  if (!filtersOpen) return;
   const x = e.target.closest(".chip__x");
   if (!x) return;
   const chip = e.target.closest(".chip");
@@ -1432,10 +1779,30 @@ chipsEl.addEventListener("click", (e) => {
   removeFilterKey(k);
 });
 
+if (worldTimeEl) {
+  worldTimeEl.addEventListener("click", (e) => {
+    e.stopPropagation();
+    toggleWorldTimePopup();
+  });
+}
+document.addEventListener("click", (e) => {
+  if (!isWorldTimePopupOpen) return;
+  if (worldTimePopupEl && worldTimePopupEl.contains(e.target)) return;
+  if (worldTimeEl && worldTimeEl.contains(e.target)) return;
+  closeWorldTimePopup();
+});
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") closeWorldTimePopup();
+});
+window.addEventListener("resize", () => {
+  if (isWorldTimePopupOpen) positionWorldTimePopup();
+});
+
 // event delegation: line tap => toggle filter, card tap => select
 contentEl.addEventListener("click", (e) => {
   const line = e.target.closest(".line[data-stat-key]");
   if (line) {
+    if (!filtersOpen) return;
     e.stopPropagation();
     toggleFilterKey(line.dataset.statKey);
     return;
@@ -1448,5 +1815,9 @@ contentEl.addEventListener("click", (e) => {
 
 boot().catch(err => {
   console.error(err);
-  setStatus(`${ui("loadError")}: ${err.message}`);
+  setStatus(`${ui("loadError")}: ${err.message}`, "error");
 });
+
+// world time tick (once per second)
+updateWorldTime();
+setInterval(updateWorldTime, 1000);
