@@ -2,8 +2,6 @@
 
 const DATA_BASE = "../data"; // vendor/ から見て data/ は ../data
 
-const SHOW_CACHE = false;
-
 const statusEl = document.getElementById("status");
 const contentEl = document.getElementById("content");
 
@@ -24,6 +22,7 @@ const worldTimePopupEl = document.getElementById("worldTimePopup");
 const worldTimePopupBodyEl = document.getElementById("worldTimePopupBody");
 const worldTimeLabelEl = document.getElementById("worldTimeLabel");
 const worldTimePopupTitleEl = document.getElementById("worldTimePopupTitle");
+const cacheProviderRowEl = document.getElementById("cacheProviderRow");
 
 const labelWeekEl = document.getElementById("labelWeek");
 const labelLangEl = document.getElementById("labelLang");
@@ -439,7 +438,7 @@ const UI = {
     nextHour: "Next Hour",
     local: "Local",
     remain: "Remain",
-    shopUpdate: "Shop Update",
+    shopUpdate: "Vendor Reset",
     cassie: "Cassie",
     danny: "Danny",
     opensIn: "Opens in",
@@ -489,6 +488,9 @@ function applyUiLang() {
   if (isWorldTimePopupOpen) updateWorldTime();
   renderChips(); // label changes
   updateScheduleStatus(new Date());
+  if (cacheProviderRowEl) {
+    cacheProviderRowEl.style.display = "";
+  }
 }
 
 /* ---------------------------
@@ -544,7 +546,6 @@ const STATIC_CACHE_ITEMS = {
 };
 
 function injectStaticCaches(vendorMap, dateStr) {
-  if (!SHOW_CACHE) return;
   if (!vendorMap) return;
 
   for (const [vendorKey, defs] of Object.entries(STATIC_CACHE_ITEMS)) {
@@ -1295,7 +1296,7 @@ function renderOnlySelectedView() {
   const selectedItems = (lastItems || []).filter(it => selectedIds.has(it.item_id));
   if (!selectedItems.length) return;
 
-  const catOrder = SHOW_CACHE ? ["gear", "weapon", "mod", "cache"] : ["gear", "weapon", "mod"];
+  const catOrder = ["gear", "weapon", "mod", "cache"];
   for (const cat of catOrder) {
     const items = sortItemsByVendorAndOrd(selectedItems.filter(x => x.category === cat));
     if (!items.length) continue;
@@ -1353,7 +1354,7 @@ function renderVendors(vendorMap) {
     return;
   }
 
-  const catOrder = SHOW_CACHE ? ["gear", "weapon", "mod", "cache"] : ["gear", "weapon", "mod"];
+  const catOrder = ["gear", "weapon", "mod", "cache"];
 
   for (const vendorKey of vendors) {
     const itemsAll = vendorMap.get(vendorKey) || [];
@@ -1366,11 +1367,9 @@ function renderVendors(vendorMap) {
     const groups = {
       gear: sortItemsStable(itemsAll.filter(x => x.category === "gear")),
       weapon: sortItemsStable(itemsAll.filter(x => x.category === "weapon")),
-      mod: sortItemsStable(itemsAll.filter(x => x.category === "mod"))
+      mod: sortItemsStable(itemsAll.filter(x => x.category === "mod")),
+      cache: sortItemsStable(itemsAll.filter(x => x.category === "cache"))
     };
-    if (SHOW_CACHE) {
-      groups.cache = sortItemsStable(itemsAll.filter(x => x.category === "cache"));
-    }
 
     const section = document.createElement("section");
     section.className = "vendor";
