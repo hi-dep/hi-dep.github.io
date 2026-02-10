@@ -218,6 +218,7 @@ img/weapon_talents/killer.png
 img/weapon_talents/luckyshot.png
 img/weapon_talents/measured.png
 img/weapon_talents/naked.png
+img/weapon_talents/nearsighted.png
 img/weapon_talents/onempty.png
 img/weapon_talents/optimist.png
 img/weapon_talents/outsider.png

@@ -1,6 +1,6 @@
 {
-  "built_at": "2026-02-05T16:50:02.826707Z",
-  "target_week": "2026-02-03",
+  "built_at": "2026-02-10T22:35:02.795383Z",
+  "target_week": "2026-02-10",
   "chunks": [
     {
       "month": "2021-06",
@@ -1237,23 +1237,23 @@
     {
       "month": "2026-02",
       "start": "2026-02-03",
-      "end": "2026-02-03",
+      "end": "2026-02-10",
       "file": "shop/shop_2026-02.db.gz",
-      "sha256": "6eaf9b7d52742d49c4d80aaf55aab00a8debc08f783d8a4d23af29587b31acc6",
-      "size": 33916,
-      "items_total": 150,
-      "lines_total": 384,
+      "sha256": "1e3c943e7304e8f9b478966e7d6a5781e5f56125105c757b7d4f32d7671b3277",
+      "size": 67595,
+      "items_total": 274,
+      "lines_total": 692,
       "items": {
         "cache": 5,
-        "gear": 48,
-        "mod": 52,
-        "weapon": 45
+        "gear": 89,
+        "mod": 102,
+        "weapon": 78
       },
       "lines": {
         "cache": 10,
-        "gear": 147,
-        "mod": 52,
-        "weapon": 175
+        "gear": 274,
+        "mod": 102,
+        "weapon": 306
       }
     }
   ],
@@ -1274,7 +1274,7 @@
       "gear_slots": 7,
       "weapon_types": 7,
       "talents": 128,
-      "weapon_talents": 87
+      "weapon_talents": 88
     }
   }
 }

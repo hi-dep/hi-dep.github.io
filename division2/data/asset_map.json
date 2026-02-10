@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "built_at": "2026-02-05T16:50:02.826707Z",
+  "built_at": "2026-02-10T22:35:02.795383Z",
   "sanitize": {
     "enabled": true,
     "safe_chars": "a-z 0-9 . _ -"
@@ -238,6 +238,7 @@
     "luckyshot": "img/weapon_talents/luckyshot.png",
     "measured": "img/weapon_talents/measured.png",
     "naked": "img/weapon_talents/naked.png",
+    "nearsighted": "img/weapon_talents/nearsighted.png",
     "onempty": "img/weapon_talents/onempty.png",
     "optimist": "img/weapon_talents/optimist.png",
     "outsider": "img/weapon_talents/outsider.png",
@@ -315,6 +316,6 @@
     "gear_slots": 7,
     "weapon_types": 7,
     "talents": 128,
-    "weapon_talents": 87
+    "weapon_talents": 88
   }
 }
