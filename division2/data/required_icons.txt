@@ -252,6 +252,7 @@ img/weapon_talents/perfectlyunhinged.png
 img/weapon_talents/perfectoptimist.png
 img/weapon_talents/perfectoutsider.png
 img/weapon_talents/perfectoverwhelm.png
+img/weapon_talents/perfectperpetuation.png
 img/weapon_talents/perfectprecisionstrike.png
 img/weapon_talents/perfectpressurepoint.png
 img/weapon_talents/perfectreformation.png

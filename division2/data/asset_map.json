@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "built_at": "2026-02-10T22:35:02.795383Z",
+  "built_at": "2026-02-10T22:40:02.819968Z",
   "sanitize": {
     "enabled": true,
     "safe_chars": "a-z 0-9 . _ -"
@@ -272,6 +272,7 @@
     "perfectoptimist": "img/weapon_talents/perfectoptimist.png",
     "perfectoutsider": "img/weapon_talents/perfectoutsider.png",
     "perfectoverwhelm": "img/weapon_talents/perfectoverwhelm.png",
+    "perfectperpetuation": "img/weapon_talents/perfectperpetuation.png",
     "perfectprecisionstrike": "img/weapon_talents/perfectprecisionstrike.png",
     "perfectpressurepoint": "img/weapon_talents/perfectpressurepoint.png",
     "perfectreformation": "img/weapon_talents/perfectreformation.png",
@@ -316,6 +317,6 @@
     "gear_slots": 7,
     "weapon_types": 7,
     "talents": 128,
-    "weapon_talents": 88
+    "weapon_talents": 89
   }
 }
