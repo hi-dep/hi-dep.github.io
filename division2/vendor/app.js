@@ -362,6 +362,30 @@ function loadLangSetting() {
   }
 }
 
+function getUrlParam(name) {
+  try {
+    const params = new URLSearchParams(window.location.search || "");
+    const v = params.get(name);
+    return v ? v.trim() : "";
+  } catch (e) {
+    return "";
+  }
+}
+
+function applyUrlParams() {
+  // lang=ja|en
+  const lang = getUrlParam("lang");
+  if (lang && (lang === "ja" || lang === "en") && langSelect) {
+    langSelect.value = lang;
+  }
+
+  // date=YYYY-MM-DD
+  const date = getUrlParam("date");
+  if (date && /^\d{4}-\d{2}-\d{2}$/.test(date) && dateInput) {
+    dateInput.value = date;
+  }
+}
+
 /* ---------------------------
  * UI text
  * ------------------------- */
@@ -1679,6 +1703,7 @@ async function loadWeek(userDateStr, options = {}) {
 
 async function boot() {
   loadLangSetting();
+  applyUrlParams();
   setFiltersOpen(false);
   applyUiLang();
 
@@ -1707,7 +1732,7 @@ async function boot() {
     graphConfig = {};
   }
 
-  const defaultDate = indexJson.target_week || new Date().toISOString().slice(0, 10);
+  const defaultDate = dateInput.value || indexJson.target_week || new Date().toISOString().slice(0, 10);
   dateInput.value = defaultDate;
 
   await loadWeek(defaultDate);
