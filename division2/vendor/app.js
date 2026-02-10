@@ -1119,10 +1119,12 @@ function buildCardHead(item, modCard = null) {
 
     const title1 = brand;
     const title2 = name ? `${slot} / ${name}` : `${slot}`;
+    const title2Parts = name ? { slot, name } : null;
 
     return {
       title1,
       title2,
+      title2Parts,
       titleClass: isNamedItem(item) ? " is-named" : ""
     };
   }
@@ -1254,7 +1256,18 @@ function renderCard(item) {
   const search = buildCardSearch(item, lines, head);
 
   const namedClass = head.titleClass || "";
-  const title2Html = head.title2 ? `<div class="card__subtitle"><span class="card__subtitle-text">${escapeHtml(head.title2)}</span></div>` : "";
+  let title2Html = "";
+  if (head.title2Parts && head.title2Parts.name) {
+    title2Html = `
+      <div class="card__subtitle">
+        <span class="card__subtitle-text">${escapeHtml(head.title2Parts.slot)}</span>
+        <span class="card__subtitle-sep">/</span>
+        <span class="card__subtitle-name is-named">${escapeHtml(head.title2Parts.name)}</span>
+      </div>
+    `;
+  } else if (head.title2) {
+    title2Html = `<div class="card__subtitle"><span class="card__subtitle-text">${escapeHtml(head.title2)}</span></div>`;
+  }
 
   return `
     <div class="card rarity-${escapeHtml(rarityClass)} cat-${escapeHtml(item.category)}" data-item-id="${escapeHtml(item.item_id)}" data-keys="${escapeHtml(keys)}" data-search="${escapeHtml(search)}" data-vendor="${escapeHtml(vendorTitle)}">
