@@ -202,6 +202,7 @@ img/weapon_talents/boomerang.png
 img/weapon_talents/brazen.png
 img/weapon_talents/breadbasket.png
 img/weapon_talents/close_personal.png
+img/weapon_talents/deter.png
 img/weapon_talents/determined.png
 img/weapon_talents/eyeless.png
 img/weapon_talents/fasthands.png
