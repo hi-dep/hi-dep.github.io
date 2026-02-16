@@ -526,7 +526,7 @@ const VENDOR_ORDER = [
   "countdown",
   "thecampus",
   "thetheater",
-  "thecastle",
+  "castle",
   "cassie",
   "dzeast",
   "dzsouth",
@@ -784,10 +784,16 @@ function talentKeyVariants(tKey) {
 
   if (key.startsWith("perfectly")) {
     const base = key.replace(/^perfectly/, "");
-    if (base) vars.push(base);
+    if (base) {
+      vars.push(base);
+      vars.push(`perfect${base}`);
+    }
   } else if (key.startsWith("perfect")) {
     const base = key.replace(/^perfect/, "");
-    if (base) vars.push(base);
+    if (base) {
+      vars.push(base);
+      vars.push(`perfectly${base}`);
+    }
   }
 
   const seen = new Set([key]);
@@ -1375,7 +1381,8 @@ function sortItemsStable(arr) {
 }
 
 function vendorOrderIndex(vkey) {
-  const i = VENDOR_ORDER.indexOf(vkey);
+  const legacy = (vkey === "thecastle") ? "castle" : vkey;
+  const i = VENDOR_ORDER.indexOf(legacy);
   return (i === -1) ? 9999 : i;
 }
 
@@ -1447,14 +1454,12 @@ function renderVendors(vendorMap) {
   clearContent();
 
   const vendors = Array.from(vendorMap.keys()).sort((a, b) => {
-    const ia = VENDOR_ORDER.indexOf(a);
-    const ib = VENDOR_ORDER.indexOf(b);
-    if (ia !== -1 || ib !== -1) {
-      if (ia === -1) return 1;
-      if (ib === -1) return -1;
-      return ia - ib;
-    }
-    return a.localeCompare(b);
+    const ia = vendorOrderIndex(a);
+    const ib = vendorOrderIndex(b);
+    if (ia === 9999 && ib === 9999) return a.localeCompare(b);
+    if (ia === 9999) return 1;
+    if (ib === 9999) return -1;
+    return ia - ib;
   });
 
   if (vendors.length === 0) {
