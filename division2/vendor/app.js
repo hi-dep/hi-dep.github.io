@@ -974,19 +974,46 @@ function getGraphMaxValue(item, ln) {
   const statKey = String(ln.stat_key || "").trim();
   if (!statKey) return 0;
 
+  const matchException = (ex, nameKey, valueNum) => {
+    if (!ex || typeof ex !== "object") return false;
+    if ("name_key" in ex && String(ex.name_key || "") !== String(nameKey || "")) return false;
+    if ("value_num_eq" in ex) {
+      if (!Number.isFinite(valueNum)) return false;
+      if (Number(valueNum) !== Number(ex.value_num_eq)) return false;
+    }
+    return true;
+  };
+
+  const maxFromCfg = (cfg, itemNameKey, valueNum) => {
+    if (cfg == null) return 0;
+    if (typeof cfg === "number") return Number(cfg) || 0;
+    if (typeof cfg === "object") {
+      const exs = Array.isArray(cfg.exceptions) ? cfg.exceptions : [];
+      for (const ex of exs) {
+        if (matchException(ex, itemNameKey, valueNum) && ex.max_value_num != null) {
+          return Number(ex.max_value_num) || 0;
+        }
+      }
+      return Number(cfg.max_value_num ?? 0) || 0;
+    }
+    return 0;
+  };
+
   // gear: { stat_key: max }
   if (item.category === "gear") {
-    return Number(graphConfig?.gear?.[statKey] ?? 0);
+    return maxFromCfg(graphConfig?.gear?.[statKey] ?? 0, item.name_key, ln.value_num);
   }
 
   // weapon: { weapon_type: { stat_key: max }, default: { stat_key: max } }
   if (item.category === "weapon") {
     const w = String(item.slot_key || "").trim();
-    return Number(
+    return maxFromCfg(
       graphConfig?.weapon?.[w]?.[statKey] ??
       graphConfig?.weapon?.default?.[statKey] ??
       graphConfig?.weapon_default?.[statKey] ?? // backward compat
-      0
+      0,
+      item.name_key,
+      ln.value_num
     );
   }
 
@@ -994,14 +1021,16 @@ function getGraphMaxValue(item, ln) {
   if (item.category === "mod") {
     const skill = String(item.slot_key || "").trim();
     if (skill) {
-      return Number(
+      return maxFromCfg(
         graphConfig?.mod?.skill?.[skill]?.[statKey] ??
         graphConfig?.mod?.skill_default?.[statKey] ??
         graphConfig?.mod?.gear?.[statKey] ??
-        0
+        0,
+        item.name_key,
+        ln.value_num
       );
     }
-    return Number(graphConfig?.mod?.gear?.[statKey] ?? 0);
+    return maxFromCfg(graphConfig?.mod?.gear?.[statKey] ?? 0, item.name_key, ln.value_num);
   }
 
   return 0;
@@ -1021,14 +1050,55 @@ function renderLine(item, ln, colorOverride = "") {
 
   const stat = (langSelect.value === "ja") ? (i18n[statKey] ?? statEn) : statEn;
 
+  const unit = String(ln.unit || "");
+  const valueNum = Number.isFinite(ln.value_num) ? ln.value_num : null;
   const valueRaw = String(ln.value_raw || "").trim();
-  if (valueRaw === "-" || /^[\-–—]+$/.test(valueRaw)) return "";
+  if (valueNum === null && (valueRaw === "-" || /^[\-–—]+$/.test(valueRaw))) return "";
+  let valueText = "";
+  if (valueNum !== null) {
+    const numStr = Number.isInteger(valueNum) ? String(Math.trunc(valueNum)) : String(valueNum);
+    valueText = `${numStr}${unit}`;
+  }
 
-  const valuePart = valueRaw ? (item.category === "cache" ? `${valueRaw}` : `+${valueRaw}`) : "";
+  const valuePart = valueText ? (item.category === "cache" ? `${valueText}` : `+${valueText}`) : "";
   const text = valuePart ? `${valuePart} ${stat}` : `${stat}`;
   if (!text.trim() || /^[\-–—]+$/.test(text.trim())) return "";
 
   const colorClass = colorOverride ? colorOverride : dotColorFromIconClass(iconClass);
+  const perfectItem = (() => {
+    const byCat = graphConfig?.perfect?.items_by_category;
+    if (!byCat || typeof byCat !== "object") return null;
+    const nk = String(item.name_key || "");
+    const cat = String(item.category || "");
+    const items = Array.isArray(byCat[cat]) ? byCat[cat] : [];
+    for (const it of items) {
+      if (!it || typeof it !== "object") continue;
+      if (String(it.name_key || "") !== nk) continue;
+      return it;
+    }
+    return null;
+  })();
+
+  const isPerfectTalent =
+    (lt === "talent") &&
+    isNamedItem(item) &&
+    !!(perfectItem && perfectItem.perfect_talent_key && String(perfectItem.perfect_talent_key) === String(statKey));
+
+  const isPerfectAttr = (() => {
+    if (!isNamedItem(item)) return false;
+    if (!(lt === "core" || lt === "attr")) return false;
+    if (!perfectItem || !Array.isArray(perfectItem.attrs)) return false;
+    const vnum = Number.isFinite(ln.value_num) ? ln.value_num : null;
+    for (const ex of perfectItem.attrs) {
+      if (!ex || typeof ex !== "object") continue;
+      if (String(ex.stat_key || "") !== String(statKey)) continue;
+      if (String(ex.unit || "") !== String(unit)) continue;
+      if (vnum == null) continue;
+      if (Number(vnum) !== Number(ex.max_value_num)) continue;
+      return true;
+    }
+    return false;
+  })();
 
   // talent icon（Perfect系は通常版へフォールバック）
   let talentIconHtml = "";
@@ -1075,7 +1145,8 @@ function renderLine(item, ln, colorOverride = "") {
     `;
   }
 
-  const lineClass = `line line--${colorClass} line--${lt}`;
+  const perfectClass = (isPerfectTalent || isPerfectAttr) ? " line--perfect" : "";
+  const lineClass = `line line--${colorClass} line--${lt}${perfectClass}`;
   const hitClass = activeFilterKeys.includes(statKey) ? " is-filter-hit" : "";
 
   return `

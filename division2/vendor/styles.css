@@ -6,6 +6,7 @@
   --muted:#a7b0c0;
   --border:rgba(255,255,255,.08);
   --accent:#ff7f00;
+  --perfect-text:var(--named-text);
   --named-text:#eaa213;
   --rarity-default:255,255,255;
   --rarity-highend:255,175,16;
@@ -422,6 +423,13 @@ body::before{
 }
 .line--talent::before{
   display:none;
+}
+.line--perfect .line__text{
+  color:var(--perfect-text);
+  font-weight:700;
+}
+.line--perfect .ico--talent{
+  filter: drop-shadow(0 0 6px rgba(255, 132, 19, .6));
 }
 
 .line__body{
