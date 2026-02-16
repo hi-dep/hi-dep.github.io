@@ -25,6 +25,7 @@
     "scannerpulsehaste": {"max_value_num": 100, "unit": "%", "exceptions": []},
     "armoronkill": {"max_value_num": 10, "unit": "%", "exceptions": []},
     "meleedamage": {"max_value_num": 500, "unit": "%", "exceptions": []},
+    "optimalrange": {"max_value_num": 50, "unit": "%", "exceptions": []},
     "pistoldamage": {"max_value_num": 9, "unit": "%", "exceptions": []},
     "shieldhealth": {"max_value_num": 50, "unit": "%", "exceptions": []},
     "reducedthreat": {"max_value_num": 50, "unit": "%", "exceptions": []},
@@ -304,12 +305,12 @@
         {"slot_key": "holster", "brand_key": "wyvernwear", "name_key": "clawsout", "perfect_talent_key": null, "attrs": [{"stat_key": "meleedamage", "unit": "%", "max_value_num": 500}, {"stat_key": "pistoldamage", "unit": "%", "max_value_num": 11}]},
         {"slot_key": "kneepads", "brand_key": "imminencearmaments", "name_key": "cloak", "perfect_talent_key": null, "attrs": [{"stat_key": "reducedthreat", "unit": "%", "max_value_num": 50}]},
         {"slot_key": "kneepads", "brand_key": "murakamiindustries", "name_key": "emperor'sguard", "perfect_talent_key": null, "attrs": [{"stat_key": "armorregen", "unit": "%", "max_value_num": 1}]},
-        {"slot_key": "kneepads", "brand_key": "overlordarmaments", "name_key": "fox'sprayer", "perfect_talent_key": null, "attrs": [{"stat_key": "damageoutofcover", "unit": "%", "max_value_num": 8}]},
+        {"slot_key": "kneepads", "brand_key": "overlordarmaments", "name_key": "fox'sprayer", "perfect_talent_key": null, "attrs": [{"stat_key": "dmgtotargetofcover", "unit": "%", "max_value_num": 8}]},
         {"slot_key": "kneepads", "brand_key": "shinymonkeygear", "name_key": "grease", "perfect_talent_key": null, "attrs": [{"stat_key": "statuseffects", "unit": "%", "max_value_num": 16}]},
         {"slot_key": "mask", "brand_key": "douglas&harding", "name_key": "punchdrunk", "perfect_talent_key": null, "attrs": [{"stat_key": "headshotdamage", "unit": "%", "max_value_num": 20}]},
         {"slot_key": "mask", "brand_key": "gilaguard", "name_key": "nightwatcher", "perfect_talent_key": null, "attrs": [{"stat_key": "scannerpulsehaste", "unit": "%", "max_value_num": 100}]},
         {"slot_key": "mask", "brand_key": "legatuss.p.a.", "name_key": "visionario", "perfect_talent_key": null, "attrs": [{"stat_key": "optimalrange", "unit": "%", "max_value_num": 50}]},
-        {"slot_key": "mask", "brand_key": "yaahl", "name_key": "thehollowman", "perfect_talent_key": null, "attrs": [{"stat_key": "damagetohealth", "unit": "%", "max_value_num": 14}]}
+        {"slot_key": "mask", "brand_key": "yaahl", "name_key": "thehollowman", "perfect_talent_key": null, "attrs": [{"stat_key": "healthdamage", "unit": "%", "max_value_num": 14}]}
       ],
       "weapon": [
         {"slot_key": "ar", "name_key": "borngreat", "perfect_talent_key": "perfectstabilize", "attrs": []},
