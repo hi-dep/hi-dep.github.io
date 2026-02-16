@@ -300,6 +300,7 @@
   "headshotdamage": "ヘッドショットダメージ上昇",
   "weaponhandling": "武器ハンドリング",
   "armorregeneration": "アーマー回復",
+  "armorregen": "アーマー回復",
   "explosiveresistance": "爆発物耐性",
   "hazardprotection": "状態異常耐性",
   "health": "HP",
