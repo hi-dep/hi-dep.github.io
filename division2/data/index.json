@@ -1,5 +1,5 @@
 {
-  "built_at": "2026-02-16T03:50:01.847949Z",
+  "built_at": "2026-02-16T04:03:08.571967Z",
   "target_week": "2026-02-10",
   "chunks": [
     {
@@ -7,19 +7,19 @@
       "start": "2021-06-01",
       "end": "2021-06-29",
       "file": "shop/shop_2021-06.db.gz",
-      "sha256": "ecbb523e143314ce588f2f6bdc1170946cafa05ac8cab77cb14fd8f1ad106675",
-      "size": 70836,
-      "items_total": 336,
-      "lines_total": 568,
+      "sha256": "db799fdebe03f5d4cd7196d5245cd2f89ea5780351143d1a1249435490feb8d5",
+      "size": 118071,
+      "items_total": 508,
+      "lines_total": 1233,
       "items": {
         "gear": 116,
-        "weapon": 0,
+        "weapon": 172,
         "mod": 220,
         "cache": 0
       },
       "lines": {
         "gear": 348,
-        "weapon": 0,
+        "weapon": 665,
         "mod": 220,
         "cache": 0
       }
@@ -29,19 +29,19 @@
       "start": "2021-07-06",
       "end": "2021-07-27",
       "file": "shop/shop_2021-07.db.gz",
-      "sha256": "baf275c38954b67da81601700f1834d6f9b7a7a93ade4c1489b2ecab1ddec983",
-      "size": 76151,
-      "items_total": 340,
-      "lines_total": 685,
+      "sha256": "6802b9cd54b32382bfba26f5045980089465931808ee9c9bb2c4ef804aa0a221",
+      "size": 114145,
+      "items_total": 477,
+      "lines_total": 1215,
       "items": {
         "gear": 170,
-        "weapon": 0,
+        "weapon": 137,
         "mod": 170,
         "cache": 0
       },
       "lines": {
         "gear": 515,
-        "weapon": 0,
+        "weapon": 530,
         "mod": 170,
         "cache": 0
       }
@@ -51,19 +51,19 @@
       "start": "2021-08-03",
       "end": "2021-08-31",
       "file": "shop/shop_2021-08.db.gz",
-      "sha256": "2777a1774a5907a13cea5d653e488229df649cab2e3c3f06b6f899c7aacd1afc",
-      "size": 97490,
-      "items_total": 436,
-      "lines_total": 876,
+      "sha256": "8dcc3d9061e3cd1cf1f09d45dd8e1e91b93632cf3983f0d570e5563bc23b5c60",
+      "size": 142364,
+      "items_total": 603,
+      "lines_total": 1520,
       "items": {
         "gear": 216,
-        "weapon": 0,
+        "weapon": 167,
         "mod": 220,
         "cache": 0
       },
       "lines": {
         "gear": 656,
-        "weapon": 0,
+        "weapon": 644,
         "mod": 220,
         "cache": 0
       }
@@ -73,19 +73,19 @@
       "start": "2021-09-07",
       "end": "2021-09-28",
       "file": "shop/shop_2021-09.db.gz",
-      "sha256": "9db49ee36a28f7035ffe28eb5aab6401b6bf04d735d821ccdd06e0dbf2eda325",
-      "size": 76321,
-      "items_total": 341,
-      "lines_total": 672,
+      "sha256": "e22dc73d1bf9d5fa956df44206ed906a84be2abcbd5698b46d663cc4cc662b4a",
+      "size": 115575,
+      "items_total": 484,
+      "lines_total": 1226,
       "items": {
         "gear": 165,
-        "weapon": 0,
+        "weapon": 143,
         "mod": 176,
         "cache": 0
       },
       "lines": {
         "gear": 496,
-        "weapon": 0,
+        "weapon": 554,
         "mod": 176,
         "cache": 0
       }
@@ -95,19 +95,19 @@
       "start": "2021-10-05",
       "end": "2021-10-26",
       "file": "shop/shop_2021-10.db.gz",
-      "sha256": "21053b81913bfb589b6c5b7281d385ac98073c9ab8986b08493b465b601697b9",
-      "size": 78010,
-      "items_total": 348,
-      "lines_total": 699,
+      "sha256": "599e0f162ffa521aaae9d88d93993d3e8fd310ccd396fc7bafb9084967ed218b",
+      "size": 114927,
+      "items_total": 484,
+      "lines_total": 1225,
       "items": {
         "gear": 172,
-        "weapon": 0,
+        "weapon": 136,
         "mod": 176,
         "cache": 0
       },
       "lines": {
         "gear": 523,
-        "weapon": 0,
+        "weapon": 526,
         "mod": 176,
         "cache": 0
       }
@@ -117,19 +117,19 @@
       "start": "2021-11-02",
       "end": "2021-11-30",
       "file": "shop/shop_2021-11.db.gz",
-      "sha256": "651da9b8f807dc21336876990d51f56c00e3faa3aa6999212acf5b5919e1a74a",
-      "size": 96625,
-      "items_total": 434,
-      "lines_total": 858,
+      "sha256": "26303d500f7ea1b8ae954b1b3af879131d2f5657d79bd9efb2c3472a73451436",
+      "size": 142060,
+      "items_total": 605,
+      "lines_total": 1514,
       "items": {
         "gear": 214,
-        "weapon": 0,
+        "weapon": 171,
         "mod": 220,
         "cache": 0
       },
       "lines": {
         "gear": 638,
-        "weapon": 0,
+        "weapon": 656,
         "mod": 220,
         "cache": 0
       }
@@ -139,19 +139,19 @@
       "start": "2021-12-07",
       "end": "2021-12-28",
       "file": "shop/shop_2021-12.db.gz",
-      "sha256": "507ff4b38f693fa47d976a7cb41979a0eaf4786d419b661ae4d8d27284075696",
-      "size": 77038,
-      "items_total": 345,
-      "lines_total": 695,
+      "sha256": "130024fbb405b86af1880cfbe26e61ac9d1d130827567df707ad2dd4a3ed9bf1",
+      "size": 114698,
+      "items_total": 484,
+      "lines_total": 1229,
       "items": {
         "gear": 169,
-        "weapon": 0,
+        "weapon": 139,
         "mod": 176,
         "cache": 0
       },
       "lines": {
         "gear": 519,
-        "weapon": 0,
+        "weapon": 534,
         "mod": 176,
         "cache": 0
       }
@@ -161,19 +161,19 @@
       "start": "2022-01-04",
       "end": "2022-01-25",
       "file": "shop/shop_2022-01.db.gz",
-      "sha256": "d7f95aacc2e93b57494daacaf15dd873d844f5454d0b9f2b66b32282fba77db4",
-      "size": 75553,
-      "items_total": 349,
-      "lines_total": 755,
+      "sha256": "e86cda173c52d099bd66329e0149e2b7bea99faa826437f3928cb225f0ae916b",
+      "size": 112867,
+      "items_total": 484,
+      "lines_total": 1274,
       "items": {
         "gear": 173,
-        "weapon": 0,
+        "weapon": 135,
         "mod": 176,
         "cache": 0
       },
       "lines": {
         "gear": 580,
-        "weapon": 0,
+        "weapon": 519,
         "mod": 175,
         "cache": 0
       }
@@ -183,19 +183,19 @@
       "start": "2022-02-01",
       "end": "2022-02-15",
       "file": "shop/shop_2022-02.db.gz",
-      "sha256": "9d162c98da3977f837858a2bebff378e90f7e7e6fc648617f5d599028ea94fbb",
-      "size": 53846,
-      "items_total": 260,
-      "lines_total": 557,
+      "sha256": "eb8afd8b8e6b4d867631034722052a344e94107434c926e83cf4309ef840592e",
+      "size": 85114,
+      "items_total": 363,
+      "lines_total": 954,
       "items": {
         "gear": 128,
-        "weapon": 0,
+        "weapon": 103,
         "mod": 132,
         "cache": 0
       },
       "lines": {
         "gear": 425,
-        "weapon": 0,
+        "weapon": 397,
         "mod": 132,
         "cache": 0
       }
@@ -205,19 +205,19 @@
       "start": "2022-03-01",
       "end": "2022-03-29",
       "file": "shop/shop_2022-03.db.gz",
-      "sha256": "2f87f463c9e55fa7c9fd77a97e0bea9a168e3fbca432fb7ec259f42030071153",
-      "size": 94294,
-      "items_total": 428,
-      "lines_total": 840,
+      "sha256": "d5bffe6cba26add3b62a010b499a806000dcbace2bba79c3dfc388ea57b5e779",
+      "size": 142222,
+      "items_total": 604,
+      "lines_total": 1518,
       "items": {
         "gear": 208,
-        "weapon": 0,
+        "weapon": 176,
         "mod": 220,
         "cache": 0
       },
       "lines": {
         "gear": 620,
-        "weapon": 0,
+        "weapon": 678,
         "mod": 220,
         "cache": 0
       }
@@ -227,19 +227,19 @@
       "start": "2022-04-05",
       "end": "2022-04-26",
       "file": "shop/shop_2022-04.db.gz",
-      "sha256": "30e9e31a088c37193e76eb4907215f227435bbc53d3fa8364b8e417f4078ff87",
-      "size": 78944,
-      "items_total": 348,
-      "lines_total": 701,
+      "sha256": "0c9bbe7067b6012c673bfecc37d16c720d428f52705b90ad9ec8faab98086f70",
+      "size": 114934,
+      "items_total": 480,
+      "lines_total": 1210,
       "items": {
         "gear": 172,
-        "weapon": 0,
+        "weapon": 132,
         "mod": 176,
         "cache": 0
       },
       "lines": {
         "gear": 525,
-        "weapon": 0,
+        "weapon": 509,
         "mod": 176,
         "cache": 0
       }
@@ -249,19 +249,19 @@
       "start": "2022-05-03",
       "end": "2022-05-31",
       "file": "shop/shop_2022-05.db.gz",
-      "sha256": "93cf306f1911999a3d0fa96da53e5a18fb033d8bc3b3b94f66ef074fd62e7a60",
-      "size": 97789,
-      "items_total": 435,
-      "lines_total": 873,
+      "sha256": "2a456f93a6e3afa125a2d0a4ce7338b63cdea095a48226aee30e7d54f6c9b3bc",
+      "size": 146313,
+      "items_total": 616,
+      "lines_total": 1572,
       "items": {
         "gear": 215,
-        "weapon": 0,
+        "weapon": 181,
         "mod": 220,
         "cache": 0
       },
       "lines": {
         "gear": 653,
-        "weapon": 0,
+        "weapon": 699,
         "mod": 220,
         "cache": 0
       }
@@ -271,19 +271,19 @@
       "start": "2022-06-07",
       "end": "2022-06-28",
       "file": "shop/shop_2022-06.db.gz",
-      "sha256": "b809c17d235b7d8007dd22d806dde57bc55ec32b3eb1c227d62d3ba7aeec8d23",
-      "size": 79645,
-      "items_total": 355,
-      "lines_total": 716,
+      "sha256": "adf0dc3010fe37ad502c7aa3f7d9eadd21071e6066dd84cef35015ab38517326",
+      "size": 117392,
+      "items_total": 494,
+      "lines_total": 1250,
       "items": {
         "gear": 179,
-        "weapon": 0,
+        "weapon": 139,
         "mod": 176,
         "cache": 0
       },
       "lines": {
         "gear": 540,
-        "weapon": 0,
+        "weapon": 534,
         "mod": 176,
         "cache": 0
       }
@@ -293,19 +293,19 @@
       "start": "2022-07-05",
       "end": "2022-07-26",
       "file": "shop/shop_2022-07.db.gz",
-      "sha256": "c923913b2bfc3bbd32a238bb407225a52ef31d05c44040923576e667e94bb665",
-      "size": 79287,
-      "items_total": 350,
-      "lines_total": 704,
+      "sha256": "175c6a95b34a93a14e7d364a7a176a330cfc88213244cd10b0adac91be42ed07",
+      "size": 118499,
+      "items_total": 495,
+      "lines_total": 1262,
       "items": {
         "gear": 174,
-        "weapon": 0,
+        "weapon": 145,
         "mod": 176,
         "cache": 0
       },
       "lines": {
         "gear": 528,
-        "weapon": 0,
+        "weapon": 558,
         "mod": 176,
         "cache": 0
       }
@@ -315,19 +315,19 @@
       "start": "2022-08-02",
       "end": "2022-08-30",
       "file": "shop/shop_2022-08.db.gz",
-      "sha256": "71f08586110eccdcc12290cce4bbd4b98a74a1e075b0ed14b751e14e5c09e0f1",
-      "size": 97674,
-      "items_total": 439,
-      "lines_total": 883,
+      "sha256": "8001a20ff8a639699eb43fd48501353e772ec33dc892fb00ccae7ba17afa373f",
+      "size": 145757,
+      "items_total": 618,
+      "lines_total": 1569,
       "items": {
         "gear": 219,
-        "weapon": 0,
+        "weapon": 179,
         "mod": 220,
         "cache": 0
       },
       "lines": {
         "gear": 663,
-        "weapon": 0,
+        "weapon": 686,
         "mod": 220,
         "cache": 0
       }
@@ -337,19 +337,19 @@
       "start": "2022-09-06",
       "end": "2022-09-27",
       "file": "shop/shop_2022-09.db.gz",
-      "sha256": "332e2acebc7e5a8ea7e9cafaacf59c5623cdc87edca2193ca1d3c22b194e6dc3",
-      "size": 79368,
-      "items_total": 351,
-      "lines_total": 715,
+      "sha256": "f0d1820d5857ab6b6abaeb9c263ecccb1b9e0a423f12acc6cadf851c30bbd329",
+      "size": 118206,
+      "items_total": 493,
+      "lines_total": 1265,
       "items": {
         "gear": 175,
-        "weapon": 0,
+        "weapon": 142,
         "mod": 176,
         "cache": 0
       },
       "lines": {
         "gear": 539,
-        "weapon": 0,
+        "weapon": 550,
         "mod": 176,
         "cache": 0
       }
@@ -359,19 +359,19 @@
       "start": "2022-10-04",
       "end": "2022-10-25",
       "file": "shop/shop_2022-10.db.gz",
-      "sha256": "006b3a748c75ee41132e5fcb1cafd4e76ff6230215aeac4a6c6cf7b6d9e970e7",
-      "size": 78681,
-      "items_total": 349,
-      "lines_total": 697,
+      "sha256": "6f3f5682110707dc6ca415024d9194bdc13af7bf4e418fbf4d441fdf35332fe9",
+      "size": 117869,
+      "items_total": 496,
+      "lines_total": 1262,
       "items": {
         "gear": 173,
-        "weapon": 0,
+        "weapon": 147,
         "mod": 176,
         "cache": 0
       },
       "lines": {
         "gear": 521,
-        "weapon": 0,
+        "weapon": 565,
         "mod": 176,
         "cache": 0
       }
@@ -381,19 +381,19 @@
       "start": "2022-11-01",
       "end": "2022-11-29",
       "file": "shop/shop_2022-11.db.gz",
-      "sha256": "343e17f24f3bb65abfab5293f47825dd052f4a1fcfb8a9255c17cc55b539402c",
-      "size": 98268,
-      "items_total": 439,
-      "lines_total": 884,
+      "sha256": "e07e40e2e1ca4bb0a8a6fb82dafad8403975104ee21467f8c6b360347baffa30",
+      "size": 147147,
+      "items_total": 620,
+      "lines_total": 1581,
       "items": {
         "gear": 219,
-        "weapon": 0,
+        "weapon": 181,
         "mod": 220,
         "cache": 0
       },
       "lines": {
         "gear": 664,
-        "weapon": 0,
+        "weapon": 697,
         "mod": 220,
         "cache": 0
       }
@@ -403,19 +403,19 @@
       "start": "2022-12-06",
       "end": "2022-12-27",
       "file": "shop/shop_2022-12.db.gz",
-      "sha256": "3c4179c662fbb3a209ea673c5f45f6a2f142108e1b8b12c5645abe48e00756d6",
-      "size": 79164,
-      "items_total": 350,
-      "lines_total": 713,
+      "sha256": "f5cd5d96896dba1bf79c9b7effdb1966259010a7645dc1363949af24af7daeb1",
+      "size": 119129,
+      "items_total": 496,
+      "lines_total": 1279,
       "items": {
         "gear": 174,
-        "weapon": 0,
+        "weapon": 146,
         "mod": 176,
         "cache": 0
       },
       "lines": {
         "gear": 537,
-        "weapon": 0,
+        "weapon": 566,
         "mod": 176,
         "cache": 0
       }
@@ -425,19 +425,19 @@
       "start": "2023-01-03",
       "end": "2023-01-31",
       "file": "shop/shop_2023-01.db.gz",
-      "sha256": "c731d0e5a39bb951663ddda8445c2875f6917f2b107f4f5b7bd21ff7e67d397e",
-      "size": 97514,
-      "items_total": 437,
-      "lines_total": 873,
+      "sha256": "4b08b38094cf65d9d74d19c3110322c80ebc9754a732e3d52a464bab42865e76",
+      "size": 146370,
+      "items_total": 620,
+      "lines_total": 1578,
       "items": {
         "gear": 217,
-        "weapon": 0,
+        "weapon": 183,
         "mod": 220,
         "cache": 0
       },
       "lines": {
         "gear": 653,
-        "weapon": 0,
+        "weapon": 705,
         "mod": 220,
         "cache": 0
       }
@@ -447,19 +447,19 @@
       "start": "2023-02-07",
       "end": "2023-02-28",
       "file": "shop/shop_2023-02.db.gz",
-      "sha256": "d914924b304cb1dac570818bde10767658cbcda845d2e77c835fe6ddb7058dd8",
-      "size": 81621,
-      "items_total": 363,
-      "lines_total": 733,
+      "sha256": "5d7f3297cc3cae6cb35340ba2e57124e2afcdcc4eade6bb067d894b376461e3c",
+      "size": 120842,
+      "items_total": 506,
+      "lines_total": 1282,
       "items": {
         "gear": 182,
-        "weapon": 0,
+        "weapon": 143,
         "mod": 181,
         "cache": 0
       },
       "lines": {
         "gear": 552,
-        "weapon": 0,
+        "weapon": 549,
         "mod": 181,
         "cache": 0
       }
@@ -469,19 +469,19 @@
       "start": "2023-03-07",
       "end": "2023-03-28",
       "file": "shop/shop_2023-03.db.gz",
-      "sha256": "de3058393e1c2a0c6a256044d8ed788466a13eea1fc2f21e1e51cd05617095f1",
-      "size": 85126,
-      "items_total": 383,
-      "lines_total": 758,
+      "sha256": "a5ae41d41c6c81b6fa4fe249d1258268b5d26daf0c2dd37a75ac1236eb288f93",
+      "size": 127090,
+      "items_total": 536,
+      "lines_total": 1346,
       "items": {
         "gear": 187,
-        "weapon": 0,
+        "weapon": 153,
         "mod": 196,
         "cache": 0
       },
       "lines": {
         "gear": 562,
-        "weapon": 0,
+        "weapon": 588,
         "mod": 196,
         "cache": 0
       }
@@ -491,19 +491,19 @@
       "start": "2023-04-04",
       "end": "2023-04-25",
       "file": "shop/shop_2023-04.db.gz",
-      "sha256": "d900074681cacdc7e3260163729a4215183e516fde2f9375be92c4970442aea3",
-      "size": 87000,
-      "items_total": 386,
-      "lines_total": 776,
+      "sha256": "c6058910f549b3c26b7c50fa52c4f9f775b08118bd26d1e2b9478a3a4e66e5e2",
+      "size": 127503,
+      "items_total": 536,
+      "lines_total": 1356,
       "items": {
         "gear": 190,
-        "weapon": 0,
+        "weapon": 150,
         "mod": 196,
         "cache": 0
       },
       "lines": {
         "gear": 580,
-        "weapon": 0,
+        "weapon": 580,
         "mod": 196,
         "cache": 0
       }
@@ -513,19 +513,19 @@
       "start": "2023-05-02",
       "end": "2023-05-30",
       "file": "shop/shop_2023-05.db.gz",
-      "sha256": "0a6fcaa57f3ce824755dbac444ed3ae115adbad7e8f8a49a5a11ccbb9ac2cef7",
-      "size": 104552,
-      "items_total": 473,
-      "lines_total": 928,
+      "sha256": "b07bf4e4c0c51dd52d5514817267e5e72f32c946e09eb392d226513f5fde1991",
+      "size": 156289,
+      "items_total": 667,
+      "lines_total": 1679,
       "items": {
         "gear": 228,
-        "weapon": 0,
+        "weapon": 194,
         "mod": 245,
         "cache": 0
       },
       "lines": {
         "gear": 683,
-        "weapon": 0,
+        "weapon": 751,
         "mod": 245,
         "cache": 0
       }
@@ -535,19 +535,19 @@
       "start": "2023-06-06",
       "end": "2023-06-27",
       "file": "shop/shop_2023-06.db.gz",
-      "sha256": "6c25f3e3d258224e5619c406a0f3ca7a1063664e2f5566ce0a0bb0585d6d5b10",
-      "size": 85264,
-      "items_total": 380,
-      "lines_total": 756,
+      "sha256": "510fe71b37c7d39b27931794fcc344fd9225f8842153180e92483a72ffa848f9",
+      "size": 127609,
+      "items_total": 535,
+      "lines_total": 1356,
       "items": {
         "gear": 184,
-        "weapon": 0,
+        "weapon": 155,
         "mod": 196,
         "cache": 0
       },
       "lines": {
         "gear": 560,
-        "weapon": 0,
+        "weapon": 600,
         "mod": 196,
         "cache": 0
       }
@@ -557,19 +557,19 @@
       "start": "2023-07-04",
       "end": "2023-07-25",
       "file": "shop/shop_2023-07.db.gz",
-      "sha256": "2700bdd10f240653da117821e7591a6065bae37e2aab862f9a0329b06a1fcfa8",
-      "size": 84858,
-      "items_total": 377,
-      "lines_total": 707,
+      "sha256": "57dbe2103a2f105b5b945dbe9b2fd2f2ad187ff2f7d811a21c223d5335955e72",
+      "size": 127172,
+      "items_total": 531,
+      "lines_total": 1303,
       "items": {
         "gear": 181,
-        "weapon": 0,
+        "weapon": 154,
         "mod": 196,
         "cache": 0
       },
       "lines": {
         "gear": 511,
-        "weapon": 0,
+        "weapon": 596,
         "mod": 196,
         "cache": 0
       }
@@ -579,19 +579,19 @@
       "start": "2023-08-01",
       "end": "2023-08-29",
       "file": "shop/shop_2023-08.db.gz",
-      "sha256": "0ddcfc18ae7d05d7f9c238a9ed8f7e17cb672feb78f5e7b67f9a204f9fd1d91e",
-      "size": 106262,
-      "items_total": 477,
-      "lines_total": 960,
+      "sha256": "b4796f46cd378d2a17f44053b6618abfd4076a75c027e49100d327b01aeb49f1",
+      "size": 157404,
+      "items_total": 668,
+      "lines_total": 1698,
       "items": {
         "gear": 234,
-        "weapon": 0,
+        "weapon": 191,
         "mod": 243,
         "cache": 0
       },
       "lines": {
         "gear": 717,
-        "weapon": 0,
+        "weapon": 738,
         "mod": 243,
         "cache": 0
       }
@@ -601,19 +601,19 @@
       "start": "2023-09-05",
       "end": "2023-09-26",
       "file": "shop/shop_2023-09.db.gz",
-      "sha256": "f186c713bef0571c290db241eaf816009d5955d9a1de3b959e3926b8f9463e37",
-      "size": 85267,
-      "items_total": 380,
-      "lines_total": 756,
+      "sha256": "ccfe84d288735387b7f49ad98dc435725a71812ead4cbea454503468895e5a77",
+      "size": 127874,
+      "items_total": 536,
+      "lines_total": 1358,
       "items": {
         "gear": 184,
-        "weapon": 0,
+        "weapon": 156,
         "mod": 196,
         "cache": 0
       },
       "lines": {
         "gear": 560,
-        "weapon": 0,
+        "weapon": 602,
         "mod": 196,
         "cache": 0
       }
@@ -623,19 +623,19 @@
       "start": "2023-10-03",
       "end": "2023-10-31",
       "file": "shop/shop_2023-10.db.gz",
-      "sha256": "10d173a015664b02bb109cc9c51710d180ef5612cd2206e1da79b5cf9fcad4f4",
-      "size": 104823,
-      "items_total": 475,
-      "lines_total": 935,
+      "sha256": "c715fa7c4fd69e727599850bbf8f8bb69efb3164ab3691f511320bc39758c99d",
+      "size": 156542,
+      "items_total": 669,
+      "lines_total": 1687,
       "items": {
         "gear": 230,
-        "weapon": 0,
+        "weapon": 194,
         "mod": 245,
         "cache": 0
       },
       "lines": {
         "gear": 690,
-        "weapon": 0,
+        "weapon": 752,
         "mod": 245,
         "cache": 0
       }
@@ -645,19 +645,19 @@
       "start": "2023-11-07",
       "end": "2023-11-28",
       "file": "shop/shop_2023-11.db.gz",
-      "sha256": "c0340050f65ee3da9984c270fccd47ef6d19c0d52b865d7f9d08e993bc6bf47b",
-      "size": 86426,
-      "items_total": 385,
-      "lines_total": 772,
+      "sha256": "4401bce4dff3b06b6dfbb0819d7928de7881bb5af4ad7f404e2349a7d8ad989e",
+      "size": 127867,
+      "items_total": 536,
+      "lines_total": 1356,
       "items": {
         "gear": 189,
-        "weapon": 0,
+        "weapon": 151,
         "mod": 196,
         "cache": 0
       },
       "lines": {
         "gear": 576,
-        "weapon": 0,
+        "weapon": 584,
         "mod": 196,
         "cache": 0
       }
@@ -667,19 +667,19 @@
       "start": "2023-12-05",
       "end": "2023-12-26",
       "file": "shop/shop_2023-12.db.gz",
-      "sha256": "a76f3881af618a63342107de3b8f07c57461a5ad334439c1113a6af8eee2b5e3",
-      "size": 86038,
-      "items_total": 384,
-      "lines_total": 772,
+      "sha256": "86e1dc4edce4df7049a0a3f70846452d403f90bd5ee3411bfe209ab0532d4dbb",
+      "size": 127949,
+      "items_total": 536,
+      "lines_total": 1363,
       "items": {
         "gear": 188,
-        "weapon": 0,
+        "weapon": 152,
         "mod": 196,
         "cache": 0
       },
       "lines": {
         "gear": 576,
-        "weapon": 0,
+        "weapon": 591,
         "mod": 196,
         "cache": 0
       }
@@ -689,19 +689,19 @@
       "start": "2024-01-02",
       "end": "2024-01-30",
       "file": "shop/shop_2024-01.db.gz",
-      "sha256": "f73ae3bd9b19dbd5dbd6949f53527da3f0443cd8971d42e95c631a5a685f3c20",
-      "size": 105442,
-      "items_total": 477,
-      "lines_total": 939,
+      "sha256": "03c4b213df897488bc093d2759e1ab4d92c06834c6c0cf675db9755add1b5100",
+      "size": 155726,
+      "items_total": 665,
+      "lines_total": 1667,
       "items": {
         "gear": 232,
-        "weapon": 0,
+        "weapon": 188,
         "mod": 245,
         "cache": 0
       },
       "lines": {
         "gear": 694,
-        "weapon": 0,
+        "weapon": 728,
         "mod": 245,
         "cache": 0
       }
@@ -711,19 +711,19 @@
       "start": "2024-02-06",
       "end": "2024-02-27",
       "file": "shop/shop_2024-02.db.gz",
-      "sha256": "00924b47d74b4cc9fdaf664eb1a59f27ccb6104537916e99b66c7bc516f6e4fd",
-      "size": 87300,
-      "items_total": 389,
-      "lines_total": 774,
+      "sha256": "cd70b81e333de3ee1e26a8ffd930bf0f2a77f86ddf366e01242ad8f92a5e080e",
+      "size": 129526,
+      "items_total": 543,
+      "lines_total": 1368,
       "items": {
         "gear": 186,
-        "weapon": 0,
+        "weapon": 154,
         "mod": 195,
         "cache": 8
       },
       "lines": {
         "gear": 563,
-        "weapon": 0,
+        "weapon": 594,
         "mod": 195,
         "cache": 16
       }
@@ -733,19 +733,19 @@
       "start": "2024-03-05",
       "end": "2024-03-26",
       "file": "shop/shop_2024-03.db.gz",
-      "sha256": "9f0da57ec5741fc37ef572ae6b197645e458ea03e85767620bb3a97a3791851a",
-      "size": 88090,
-      "items_total": 392,
-      "lines_total": 788,
+      "sha256": "d072da8edeb5060c28fae5e7ab00e5b9a2e2f160adba633c4d786b73682ab238",
+      "size": 130470,
+      "items_total": 548,
+      "lines_total": 1395,
       "items": {
         "gear": 184,
-        "weapon": 0,
+        "weapon": 156,
         "mod": 192,
         "cache": 16
       },
       "lines": {
         "gear": 564,
-        "weapon": 0,
+        "weapon": 607,
         "mod": 192,
         "cache": 32
       }
@@ -755,19 +755,19 @@
       "start": "2024-04-02",
       "end": "2024-04-30",
       "file": "shop/shop_2024-04.db.gz",
-      "sha256": "204534f822322b256788c14618827fe1124e5cdddff0512758707b4ad5621dbf",
-      "size": 112009,
-      "items_total": 505,
-      "lines_total": 1017,
+      "sha256": "e7bc5cceb50dcacfe6e0c3ee64c91c80516b22a0adee094f090a2422c787fb68",
+      "size": 161915,
+      "items_total": 691,
+      "lines_total": 1739,
       "items": {
         "gear": 239,
-        "weapon": 0,
+        "weapon": 186,
         "mod": 245,
         "cache": 21
       },
       "lines": {
         "gear": 730,
-        "weapon": 0,
+        "weapon": 722,
         "mod": 245,
         "cache": 42
       }
@@ -777,19 +777,19 @@
       "start": "2024-05-07",
       "end": "2024-05-28",
       "file": "shop/shop_2024-05.db.gz",
-      "sha256": "5cf9b7fdfae8d9416b0081a713fa905f8a8716766d1cb09a17075b8455510574",
-      "size": 88480,
-      "items_total": 394,
-      "lines_total": 783,
+      "sha256": "c2078b957b9b2f151ff2fa482c936947fb5ba363421626e25f8a4de22496590f",
+      "size": 130384,
+      "items_total": 550,
+      "lines_total": 1383,
       "items": {
         "gear": 184,
-        "weapon": 0,
+        "weapon": 156,
         "mod": 196,
         "cache": 14
       },
       "lines": {
         "gear": 559,
-        "weapon": 0,
+        "weapon": 600,
         "mod": 196,
         "cache": 28
       }
@@ -799,19 +799,19 @@
       "start": "2024-06-04",
       "end": "2024-06-25",
       "file": "shop/shop_2024-06.db.gz",
-      "sha256": "3f2d66a8dcf98161f660c54587caa5d435bf2894651604819acb137ab9e86e52",
-      "size": 89069,
-      "items_total": 397,
-      "lines_total": 794,
+      "sha256": "d824489aa8e82680a4ce441a95989131fa1a57b5677eb73da33326dfb3740ee8",
+      "size": 130509,
+      "items_total": 548,
+      "lines_total": 1376,
       "items": {
         "gear": 189,
-        "weapon": 0,
+        "weapon": 151,
         "mod": 196,
         "cache": 12
       },
       "lines": {
         "gear": 574,
-        "weapon": 0,
+        "weapon": 582,
         "mod": 196,
         "cache": 24
       }
@@ -821,19 +821,19 @@
       "start": "2024-07-02",
       "end": "2024-07-30",
       "file": "shop/shop_2024-07.db.gz",
-      "sha256": "757ce39944fe7cf58c6c40141722a99f697eb71f5e30919457105e4e7899f357",
-      "size": 108352,
-      "items_total": 492,
-      "lines_total": 976,
+      "sha256": "7bcdbb8a1b2f59943780bca0db6ee3a307f50402d911fa10ffb41b768f94f8e2",
+      "size": 161711,
+      "items_total": 689,
+      "lines_total": 1740,
       "items": {
         "gear": 228,
-        "weapon": 0,
+        "weapon": 197,
         "mod": 245,
         "cache": 19
       },
       "lines": {
         "gear": 693,
-        "weapon": 0,
+        "weapon": 764,
         "mod": 245,
         "cache": 38
       }
@@ -843,19 +843,19 @@
       "start": "2024-08-06",
       "end": "2024-08-27",
       "file": "shop/shop_2024-08.db.gz",
-      "sha256": "757d317825af87189fb1c341f43276b153b48f2b5eb8221c0d1e4722c1bb80ba",
-      "size": 88617,
-      "items_total": 394,
-      "lines_total": 790,
+      "sha256": "8bf03e5055e15fa6bde498fd8d272fada66940ee487490599a910efd6e998c0c",
+      "size": 130074,
+      "items_total": 547,
+      "lines_total": 1381,
       "items": {
         "gear": 187,
-        "weapon": 0,
+        "weapon": 153,
         "mod": 196,
         "cache": 11
       },
       "lines": {
         "gear": 572,
-        "weapon": 0,
+        "weapon": 591,
         "mod": 196,
         "cache": 22
       }
@@ -865,19 +865,19 @@
       "start": "2024-09-03",
       "end": "2024-09-24",
       "file": "shop/shop_2024-09.db.gz",
-      "sha256": "d29aa78f08c71ac340e809ea6d68adb354cd5fa7cf114fadc815211db1b988a4",
-      "size": 88952,
-      "items_total": 398,
-      "lines_total": 784,
+      "sha256": "1538aa7889929ccfcccae78c3c0ecb85643efe3e1fa5a3f9af9143d7c453381a",
+      "size": 131408,
+      "items_total": 554,
+      "lines_total": 1389,
       "items": {
         "gear": 184,
-        "weapon": 0,
+        "weapon": 156,
         "mod": 196,
         "cache": 18
       },
       "lines": {
         "gear": 552,
-        "weapon": 0,
+        "weapon": 605,
         "mod": 196,
         "cache": 36
       }
@@ -887,19 +887,19 @@
       "start": "2024-10-01",
       "end": "2024-10-29",
       "file": "shop/shop_2024-10.db.gz",
-      "sha256": "18d93a00dcb84a6e701286d3b1998636017406a5a100caa618984596128b1113",
-      "size": 89502,
-      "items_total": 399,
-      "lines_total": 796,
+      "sha256": "cedd57fa685f8177bcbaaabe8bd6069e2bd9aa3869f54d96f8e568590448c077",
+      "size": 131261,
+      "items_total": 552,
+      "lines_total": 1384,
       "items": {
         "gear": 187,
-        "weapon": 0,
+        "weapon": 153,
         "mod": 196,
         "cache": 16
       },
       "lines": {
         "gear": 568,
-        "weapon": 0,
+        "weapon": 588,
         "mod": 196,
         "cache": 32
       }
@@ -909,19 +909,19 @@
       "start": "2024-11-05",
       "end": "2024-11-26",
       "file": "shop/shop_2024-11.db.gz",
-      "sha256": "5be0287006126739058df260c17ff564b3243bbdd5d600cea17c530fc938431e",
-      "size": 88620,
-      "items_total": 394,
-      "lines_total": 782,
+      "sha256": "7c0e39bdd9c13066f688097843229f96002a1001e91fbe2c60d7c3dfffb342ff",
+      "size": 130774,
+      "items_total": 549,
+      "lines_total": 1383,
       "items": {
         "gear": 185,
-        "weapon": 0,
+        "weapon": 155,
         "mod": 196,
         "cache": 13
       },
       "lines": {
         "gear": 560,
-        "weapon": 0,
+        "weapon": 601,
         "mod": 196,
         "cache": 26
       }
@@ -931,19 +931,19 @@
       "start": "2024-12-03",
       "end": "2024-12-31",
       "file": "shop/shop_2024-12.db.gz",
-      "sha256": "f8cbe1618519051c32d2c675b259943af7498d3a6f78caba619f15aa1974938a",
-      "size": 107919,
-      "items_total": 485,
-      "lines_total": 968,
+      "sha256": "eda651117e4ad7e035a7d144f0b6a00d099d1e0f40f60f470c7cd477c8e92793",
+      "size": 157305,
+      "items_total": 670,
+      "lines_total": 1682,
       "items": {
         "gear": 226,
-        "weapon": 0,
+        "weapon": 185,
         "mod": 243,
         "cache": 16
       },
       "lines": {
         "gear": 693,
-        "weapon": 0,
+        "weapon": 714,
         "mod": 243,
         "cache": 32
       }
@@ -953,19 +953,19 @@
       "start": "2025-01-07",
       "end": "2025-01-28",
       "file": "shop/shop_2025-01.db.gz",
-      "sha256": "efb1df40531033cf7e92d1635512eead75e5e179bd6a3da113cf4ed69e9ab3a1",
-      "size": 88983,
-      "items_total": 397,
-      "lines_total": 795,
+      "sha256": "607aa6a4dc5c58098d25ca71d55732f2d8edcb5bc35e16cf62d122f041f3f65e",
+      "size": 130832,
+      "items_total": 551,
+      "lines_total": 1390,
       "items": {
         "gear": 186,
-        "weapon": 0,
+        "weapon": 154,
         "mod": 196,
         "cache": 15
       },
       "lines": {
         "gear": 569,
-        "weapon": 0,
+        "weapon": 595,
         "mod": 196,
         "cache": 30
       }
@@ -975,19 +975,19 @@
       "start": "2025-02-04",
       "end": "2025-02-25",
       "file": "shop/shop_2025-02.db.gz",
-      "sha256": "e03cd74dc824a31f49899b54bc4825dd315c68c46bdea1b295c6a22d2514e7b6",
-      "size": 83582,
-      "items_total": 373,
-      "lines_total": 744,
+      "sha256": "899dd1f03c34bebdb42b6bcc39a372c8bb76dbe8fb1e5c087cb5d55d7efd891f",
+      "size": 123308,
+      "items_total": 516,
+      "lines_total": 1295,
       "items": {
         "gear": 175,
-        "weapon": 0,
+        "weapon": 143,
         "mod": 184,
         "cache": 14
       },
       "lines": {
         "gear": 532,
-        "weapon": 0,
+        "weapon": 551,
         "mod": 184,
         "cache": 28
       }
@@ -997,19 +997,19 @@
       "start": "2025-03-04",
       "end": "2025-03-25",
       "file": "shop/shop_2025-03.db.gz",
-      "sha256": "f151edc6cfb51d2239b0bddfe54c3e7c150d7681db217bff82da5b47dce3695f",
-      "size": 89369,
-      "items_total": 399,
-      "lines_total": 794,
+      "sha256": "7b0e6514910fa1a7f0f3b5b6642f72a5edac3b530342bcdb50764fbb3ea5cebd",
+      "size": 130751,
+      "items_total": 550,
+      "lines_total": 1379,
       "items": {
         "gear": 188,
-        "weapon": 0,
+        "weapon": 151,
         "mod": 196,
         "cache": 15
       },
       "lines": {
         "gear": 568,
-        "weapon": 0,
+        "weapon": 585,
         "mod": 196,
         "cache": 30
       }
@@ -1019,19 +1019,19 @@
       "start": "2025-04-01",
       "end": "2025-04-29",
       "file": "shop/shop_2025-04.db.gz",
-      "sha256": "99f923649be1984a3984f4be6b758536e1ece22d5ee154f9b120c3a24cd3a71c",
-      "size": 109418,
-      "items_total": 495,
-      "lines_total": 984,
+      "sha256": "67ab943e30adeb7337a2f3a8cbad318888e117359b687dad7944526c1fda39b7",
+      "size": 157536,
+      "items_total": 677,
+      "lines_total": 1685,
       "items": {
         "gear": 239,
-        "weapon": 0,
+        "weapon": 182,
         "mod": 243,
         "cache": 13
       },
       "lines": {
         "gear": 715,
-        "weapon": 0,
+        "weapon": 701,
         "mod": 243,
         "cache": 26
       }
@@ -1041,19 +1041,19 @@
       "start": "2025-05-06",
       "end": "2025-05-27",
       "file": "shop/shop_2025-05.db.gz",
-      "sha256": "17f655717607ae511c82f63c47872db771d35e14e7966f6022a47b724a6614f1",
-      "size": 89557,
-      "items_total": 404,
-      "lines_total": 808,
+      "sha256": "9e1c17be2d849f65d4afa48bc75010cbe4b442468af66e0397218b2267c20fd2",
+      "size": 132621,
+      "items_total": 563,
+      "lines_total": 1420,
       "items": {
         "gear": 188,
-        "weapon": 0,
+        "weapon": 159,
         "mod": 199,
         "cache": 17
       },
       "lines": {
         "gear": 575,
-        "weapon": 0,
+        "weapon": 612,
         "mod": 199,
         "cache": 34
       }
@@ -1063,19 +1063,19 @@
       "start": "2025-06-03",
       "end": "2025-06-24",
       "file": "shop/shop_2025-06.db.gz",
-      "sha256": "3f572381679af9b8403c8480067762fcb87adf338b764cbc28060901814907eb",
-      "size": 92956,
-      "items_total": 419,
-      "lines_total": 840,
+      "sha256": "8aa348c303e9249be57a3ecb9056fd6b326471ed4ff413a9556aab7610bb8297",
+      "size": 138329,
+      "items_total": 589,
+      "lines_total": 1497,
       "items": {
         "gear": 200,
-        "weapon": 0,
+        "weapon": 170,
         "mod": 209,
         "cache": 10
       },
       "lines": {
         "gear": 611,
-        "weapon": 0,
+        "weapon": 657,
         "mod": 209,
         "cache": 20
       }
@@ -1085,19 +1085,19 @@
       "start": "2025-07-01",
       "end": "2025-07-29",
       "file": "shop/shop_2025-07.db.gz",
-      "sha256": "6fad7ee80945045ebdb94da17b50cb38c714e1acd708185dd8d49c6428c1074f",
-      "size": 118612,
-      "items_total": 541,
-      "lines_total": 1074,
+      "sha256": "3c00f0605d505155797dc6f6afdccc7844d4ff3c4e496a01d3d237817b8b05e9",
+      "size": 173488,
+      "items_total": 756,
+      "lines_total": 1897,
       "items": {
         "gear": 250,
-        "weapon": 0,
+        "weapon": 215,
         "mod": 270,
         "cache": 21
       },
       "lines": {
         "gear": 762,
-        "weapon": 0,
+        "weapon": 823,
         "mod": 270,
         "cache": 42
       }
@@ -1107,19 +1107,19 @@
       "start": "2025-08-05",
       "end": "2025-08-26",
       "file": "shop/shop_2025-08.db.gz",
-      "sha256": "6368704d9703d5eec62b9ccc047c3823679b5cd95296a08dd9090c005f3af81e",
-      "size": 92981,
-      "items_total": 415,
-      "lines_total": 824,
+      "sha256": "be0887e5d4bd5427f00e178d734216aa6f01fb3f54b166fcfa7afbb4876ed6fc",
+      "size": 138639,
+      "items_total": 583,
+      "lines_total": 1472,
       "items": {
         "gear": 189,
-        "weapon": 0,
+        "weapon": 168,
         "mod": 214,
         "cache": 12
       },
       "lines": {
         "gear": 586,
-        "weapon": 0,
+        "weapon": 648,
         "mod": 214,
         "cache": 24
       }
@@ -1129,19 +1129,19 @@
       "start": "2025-09-02",
       "end": "2025-09-30",
       "file": "shop/shop_2025-09.db.gz",
-      "sha256": "dc1bb24db41b59ed410d9618a7918fcf992ef6f68f977cb6c8caeeb868d02d96",
-      "size": 117625,
-      "items_total": 539,
-      "lines_total": 1073,
+      "sha256": "2d00f554bb690d630b50ba837546ce565f171701d111cea288bd249d16feedd9",
+      "size": 172388,
+      "items_total": 753,
+      "lines_total": 1902,
       "items": {
         "gear": 250,
-        "weapon": 0,
+        "weapon": 214,
         "mod": 270,
         "cache": 19
       },
       "lines": {
         "gear": 765,
-        "weapon": 0,
+        "weapon": 829,
         "mod": 270,
         "cache": 38
       }
@@ -1151,19 +1151,19 @@
       "start": "2025-10-07",
       "end": "2025-10-28",
       "file": "shop/shop_2025-10.db.gz",
-      "sha256": "ee699bbc39bfb3f99540a9649b7b358a994eb5a8c12a09d0020e3d423b934a24",
-      "size": 95181,
-      "items_total": 436,
-      "lines_total": 875,
+      "sha256": "544c51c7a12dc9b2139c11b297562d62dc3f7d2a878f5fbcd49962f29f0fcfa4",
+      "size": 139045,
+      "items_total": 600,
+      "lines_total": 1508,
       "items": {
         "gear": 205,
-        "weapon": 0,
+        "weapon": 164,
         "mod": 216,
         "cache": 15
       },
       "lines": {
         "gear": 629,
-        "weapon": 0,
+        "weapon": 633,
         "mod": 216,
         "cache": 30
       }
@@ -1173,19 +1173,19 @@
       "start": "2025-11-04",
       "end": "2025-11-25",
       "file": "shop/shop_2025-11.db.gz",
-      "sha256": "3b9edfb9104767ee0f6fb1cafbd26d6e459f90fd72eaf61369f14c70519e290d",
-      "size": 104135,
-      "items_total": 462,
-      "lines_total": 980,
+      "sha256": "26037349e774cf3a5dfd667d9122c986a7fe2efe002a3a94aa7847e7f114988f",
+      "size": 140367,
+      "items_total": 600,
+      "lines_total": 1513,
       "items": {
         "gear": 191,
-        "weapon": 43,
+        "weapon": 181,
         "mod": 216,
         "cache": 12
       },
       "lines": {
         "gear": 576,
-        "weapon": 164,
+        "weapon": 697,
         "mod": 216,
         "cache": 24
       }
@@ -1195,8 +1195,8 @@
       "start": "2025-12-02",
       "end": "2025-12-30",
       "file": "shop/shop_2025-12.db.gz",
-      "sha256": "d3da10bddbdd2435f0af91d9afbe6394a35a1dd0119a745cf9a7e83d78dabff0",
-      "size": 173807,
+      "sha256": "d6f3cf1afede081c37a49e0c29edc3544e38ce79c08887db87f43c08089c5e2f",
+      "size": 173297,
       "items_total": 754,
       "lines_total": 1908,
       "items": {
@@ -1217,8 +1217,8 @@
       "start": "2026-01-06",
       "end": "2026-01-27",
       "file": "shop/shop_2026-01.db.gz",
-      "sha256": "16f007de8d6dfbf7eb8f56c30cb7656910d0a5ad612f65b3fb394f0c49b8bc8f",
-      "size": 142901,
+      "sha256": "379f2b6882e4141d614a8b2d6370a3927d8c143b1b6014a36761b34ce4d0adc5",
+      "size": 143110,
       "items_total": 604,
       "lines_total": 1519,
       "items": {
@@ -1239,21 +1239,21 @@
       "start": "2026-02-03",
       "end": "2026-02-10",
       "file": "shop/shop_2026-02.db.gz",
-      "sha256": "f43c3150c03a78b25720a3e476b58736dd1715c4781011022b080618634ebf3e",
-      "size": 74750,
+      "sha256": "897837062acd62ef43b365d63beca2c02acd8dd39662f38d2aa7bd12763590c5",
+      "size": 74078,
       "items_total": 301,
       "lines_total": 762,
       "items": {
-        "cache": 9,
         "gear": 99,
+        "weapon": 87,
         "mod": 106,
-        "weapon": 87
+        "cache": 9
       },
       "lines": {
-        "cache": 18,
         "gear": 301,
+        "weapon": 337,
         "mod": 106,
-        "weapon": 337
+        "cache": 18
       }
     }
   ],
