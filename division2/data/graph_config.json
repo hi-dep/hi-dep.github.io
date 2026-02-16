@@ -11,7 +11,7 @@
     "criticalhitdamage": {"max_value_num": 12, "unit": "%", "exceptions": []},
     "headshotdamage": {"max_value_num": 10, "unit": "%", "exceptions": []},
     "weaponhandling": {"max_value_num": 8, "unit": "%", "exceptions": []},
-    "armorregeneration": {"max_value_num": 4925, "unit": "", "exceptions": [{"name_key": "emperor'sguard", "value_num_eq": 1, "unit": "%", "max_value_num": 1}]},
+    "armorregen": {"max_value_num": 4925, "unit": "", "exceptions": [{"name_key": "emperor'sguard", "value_num_eq": 1, "unit": "%", "max_value_num": 1}]},
     "explosiveresistance": {"max_value_num": 10, "unit": "%", "exceptions": []},
     "hazardprotection": {"max_value_num": 10, "unit": "%", "exceptions": []},
     "health": {"max_value_num": 18935, "unit": "", "exceptions": []},
@@ -303,7 +303,7 @@
         {"slot_key": "holster", "brand_key": "urbanlookout", "name_key": "spot-on", "perfect_talent_key": null, "attrs": [{"stat_key": "accuracy", "unit": "%", "max_value_num": 38}]},
         {"slot_key": "holster", "brand_key": "wyvernwear", "name_key": "clawsout", "perfect_talent_key": null, "attrs": [{"stat_key": "meleedamage", "unit": "%", "max_value_num": 500}, {"stat_key": "pistoldamage", "unit": "%", "max_value_num": 11}]},
         {"slot_key": "kneepads", "brand_key": "imminencearmaments", "name_key": "cloak", "perfect_talent_key": null, "attrs": [{"stat_key": "reducedthreat", "unit": "%", "max_value_num": 50}]},
-        {"slot_key": "kneepads", "brand_key": "murakamiindustries", "name_key": "emperor'sguard", "perfect_talent_key": null, "attrs": [{"stat_key": "armorregeneration", "unit": "%", "max_value_num": 1}]},
+        {"slot_key": "kneepads", "brand_key": "murakamiindustries", "name_key": "emperor'sguard", "perfect_talent_key": null, "attrs": [{"stat_key": "armorregen", "unit": "%", "max_value_num": 1}]},
         {"slot_key": "kneepads", "brand_key": "overlordarmaments", "name_key": "fox'sprayer", "perfect_talent_key": null, "attrs": [{"stat_key": "damageoutofcover", "unit": "%", "max_value_num": 8}]},
         {"slot_key": "kneepads", "brand_key": "shinymonkeygear", "name_key": "grease", "perfect_talent_key": null, "attrs": [{"stat_key": "statuseffects", "unit": "%", "max_value_num": 16}]},
         {"slot_key": "mask", "brand_key": "douglas&harding", "name_key": "punchdrunk", "perfect_talent_key": null, "attrs": [{"stat_key": "headshotdamage", "unit": "%", "max_value_num": 20}]},
@@ -372,3 +372,4 @@
     "notes": "Converted from JP max dictionaries to DB stat keys using i18n.json reverse lookup."
   }
 }
+
