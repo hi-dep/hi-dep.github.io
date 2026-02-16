@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "built_at": "2026-02-12T09:10:02.098484Z",
+  "built_at": "2026-02-16T03:50:01.847949Z",
   "sanitize": {
     "enabled": true,
     "safe_chars": "a-z 0-9 . _ -"
@@ -78,7 +78,10 @@
     "mask": "img/gears/mask.png"
   },
   "weapon_types": {
+    ".0%pistol": "img/weapons/0_pistol.png",
+    ".1%rifle": "img/weapons/1_rifle.png",
     "ar": "img/weapons/ar.png",
+    "headshot": "img/weapons/headshot.png",
     "lmg": "img/weapons/lmg.png",
     "mmr": "img/weapons/mmr.png",
     "pistol": "img/weapons/pistol.png",
@@ -245,6 +248,7 @@
     "outsider": "img/weapon_talents/outsider.png",
     "overflowing": "img/weapon_talents/overflowing.png",
     "overwhelm": "img/weapon_talents/overwhelm.png",
+    "perfectallegro": "img/weapon_talents/perfectallegro.png",
     "perfectboomerang": "img/weapon_talents/perfectboomerang.png",
     "perfectbrazen": "img/weapon_talents/perfectbrazen.png",
     "perfectbreadbasket": "img/weapon_talents/perfectbreadbasket.png",
@@ -258,9 +262,11 @@
     "perfectjazzhands": "img/weapon_talents/perfectjazzhands.png",
     "perfectkiller": "img/weapon_talents/perfectkiller.png",
     "perfectluckyshot": "img/weapon_talents/perfectluckyshot.png",
+    "perfectlyaccurate": "img/weapon_talents/perfectlyaccurate.png",
     "perfectlybehindyou": "img/weapon_talents/perfectlybehindyou.png",
     "perfectlydetermined": "img/weapon_talents/perfectlydetermined.png",
     "perfectlyextra": "img/weapon_talents/perfectlyextra.png",
+    "perfectlyignited": "img/weapon_talents/perfectlyignited.png",
     "perfectlyinsync": "img/weapon_talents/perfectlyinsync.png",
     "perfectlymeasured": "img/weapon_talents/perfectlymeasured.png",
     "perfectlynaked": "img/weapon_talents/perfectlynaked.png",
@@ -270,13 +276,19 @@
     "perfectlysteadyhanded": "img/weapon_talents/perfectlysteadyhanded.png",
     "perfectlystrained": "img/weapon_talents/perfectlystrained.png",
     "perfectlyunhinged": "img/weapon_talents/perfectlyunhinged.png",
+    "perfectonempty": "img/weapon_talents/perfectonempty.png",
     "perfectoptimist": "img/weapon_talents/perfectoptimist.png",
     "perfectoutsider": "img/weapon_talents/perfectoutsider.png",
     "perfectoverwhelm": "img/weapon_talents/perfectoverwhelm.png",
     "perfectperpetuation": "img/weapon_talents/perfectperpetuation.png",
     "perfectprecisionstrike": "img/weapon_talents/perfectprecisionstrike.png",
+    "perfectpreservation": "img/weapon_talents/perfectpreservation.png",
     "perfectpressurepoint": "img/weapon_talents/perfectpressurepoint.png",
+    "perfectpummel": "img/weapon_talents/perfectpummel.png",
+    "perfectpumpedup": "img/weapon_talents/perfectpumpedup.png",
+    "perfectranger": "img/weapon_talents/perfectranger.png",
     "perfectreformation": "img/weapon_talents/perfectreformation.png",
+    "perfectrifleman": "img/weapon_talents/perfectrifleman.png",
     "perfectsadist": "img/weapon_talents/perfectsadist.png",
     "perfectsalvage": "img/weapon_talents/perfectsalvage.png",
     "perfectsledgehammer": "img/weapon_talents/perfectsledgehammer.png",
@@ -286,6 +298,7 @@
     "perfectstreamline": "img/weapon_talents/perfectstreamline.png",
     "perfectthunderstrike": "img/weapon_talents/perfectthunderstrike.png",
     "perfectunwavering": "img/weapon_talents/perfectunwavering.png",
+    "perfectvindictive": "img/weapon_talents/perfectvindictive.png",
     "perpetuation": "img/weapon_talents/perpetuation.png",
     "precisionstrike": "img/weapon_talents/precisionstrike.png",
     "preservation": "img/weapon_talents/preservation.png",
@@ -305,6 +318,7 @@
     "strained": "img/weapon_talents/strained.png",
     "streamline": "img/weapon_talents/streamline.png",
     "thunderstrike": "img/weapon_talents/thunderstrike.png",
+    "unhinged": "img/weapon_talents/unhinged.png",
     "unwavering": "img/weapon_talents/unwavering.png",
     "vindictive": "img/weapon_talents/vindictive.png"
   },
@@ -316,8 +330,8 @@
   "counts": {
     "brands": 61,
     "gear_slots": 7,
-    "weapon_types": 7,
+    "weapon_types": 10,
     "talents": 128,
-    "weapon_talents": 90
+    "weapon_talents": 101
   }
 }
