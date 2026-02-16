@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "built_at": "2026-02-16T06:04:50.229562Z",
+  "built_at": "2026-02-16T06:40:02.245664Z",
   "sanitize": {
     "enabled": true,
     "safe_chars": "a-z 0-9 . _ -"
@@ -225,7 +225,6 @@
     "brazen": "img/weapon_talents/brazen.png",
     "breadbasket": "img/weapon_talents/breadbasket.png",
     "close&personal": "img/weapon_talents/close_personal.png",
-    "deter": "img/weapon_talents/deter.png",
     "determined": "img/weapon_talents/determined.png",
     "eyeless": "img/weapon_talents/eyeless.png",
     "fasthands": "img/weapon_talents/fasthands.png",
@@ -332,6 +331,6 @@
     "gear_slots": 7,
     "weapon_types": 10,
     "talents": 128,
-    "weapon_talents": 101
+    "weapon_talents": 100
   }
 }
