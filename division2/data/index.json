@@ -1,5 +1,5 @@
 {
-  "built_at": "2026-02-18T08:15:01.930509Z",
+  "built_at": "2026-02-18T09:10:01.500888Z",
   "target_week": "2026-02-17",
   "chunks": [
     {
@@ -1239,8 +1239,8 @@
       "start": "2026-02-03",
       "end": "2026-02-17",
       "file": "shop/shop_2026-02.db.gz",
-      "sha256": "6f9e06687d1461de698fc51393b109a8c126b762dff8fa7e70e9695aa61e5f4e",
-      "size": 109279,
+      "sha256": "2dc9113ea454673270c1887a97886397f4eb0261d2b1fca8ef36fc01a5e9c03c",
+      "size": 110439,
       "items_total": 447,
       "lines_total": 1138,
       "items": {
