@@ -8,6 +8,8 @@
     defensive: "Defensive",
     utility: "Utility",
   };
+  const VALUE_TOKEN_OPEN = "__DESCENT_TIER_VALUE_OPEN__";
+  const VALUE_TOKEN_CLOSE = "__DESCENT_TIER_VALUE_CLOSE__";
 
   const state = {
     selectedPoolKey: "",
@@ -74,7 +76,14 @@
   function buildTierDescription(baseDesc, formula, tier) {
     const f = String(formula || "").trim();
     if (!f) return String(baseDesc || "").trim();
-    return f.replace(/\[([^\]]+)\]/g, (_, expr) => evalTierExpr(expr, tier));
+    return f.replace(/\[([^\]]+)\]/g, (_, expr) => `${VALUE_TOKEN_OPEN}${evalTierExpr(expr, tier)}${VALUE_TOKEN_CLOSE}`);
+  }
+
+  function formatTierDescriptionHtml(text) {
+    const escaped = escapeHtmlWithBr(text);
+    return escaped
+      .split(VALUE_TOKEN_OPEN).join('<span class="descent-tier-value">')
+      .split(VALUE_TOKEN_CLOSE).join("</span>");
   }
 
   function rarityClassByGroup(group) {
@@ -317,7 +326,7 @@
     if (desc) {
       lines.push({
         cls: "line line--named-meta line--talent-desc",
-        html: escapeHtmlWithBr(desc),
+        html: formatTierDescriptionHtml(desc),
         isDesc: true,
       });
     }
@@ -337,12 +346,21 @@
     const active = payload?.active || null;
     const rows = Array.isArray(payload?.rows) ? payload.rows : [];
     const poolOptions = sortedPoolOptions(rows);
-    if (!state.poolInitDone && !state.selectedPoolKey && active?.poolKey) {
-      state.selectedPoolKey = normalizeKey(active.poolKey);
+    if (!state.poolInitDone) {
+      const requestedPoolKey = normalizeKey(String(window.descentTalentInitialPoolKey || ""));
+      if (requestedPoolKey && poolOptions.some((x) => x.key === requestedPoolKey)) {
+        state.selectedPoolKey = requestedPoolKey;
+      } else if (!state.selectedPoolKey && active?.poolKey) {
+        state.selectedPoolKey = normalizeKey(active.poolKey);
+      }
       state.poolInitDone = true;
     }
     if (state.selectedPoolKey && !poolOptions.some((x) => x.key === state.selectedPoolKey)) {
       state.selectedPoolKey = "";
+    }
+    window.descentTalentInitialPoolKey = state.selectedPoolKey || "";
+    if (typeof replaceUrlParams === "function") {
+      replaceUrlParams({ descent_pool: state.selectedPoolKey || null });
     }
     state.selectedTier = normalizeTier(state.selectedTier);
     const filteredByPool = rows.filter((r) => {
@@ -425,6 +443,10 @@
       btn.addEventListener("click", () => {
         const v = normalizeKey(btn.getAttribute("data-descent-pool") || "");
         state.selectedPoolKey = (v === "all") ? "" : v;
+        window.descentTalentInitialPoolKey = state.selectedPoolKey || "";
+        if (typeof replaceUrlParams === "function") {
+          replaceUrlParams({ descent_pool: state.selectedPoolKey || null });
+        }
         render(payload);
       });
     });

@@ -88,6 +88,7 @@ window.weaponsShowDetails = false;
 window.weaponTalentTypeFilter = [];
 window.talentShowDesc = false;
 let initialViewMode = "vendor";
+window.descentTalentInitialPoolKey = "";
 
 /* ---------------------------
  * Division2 world time (HH:MM)
@@ -222,8 +223,11 @@ function getActiveDescentPoolStatus(nowMs) {
     ? pools.map((x) => trText(x)).join(", ")
     : talents.map((x) => trText(x)).join(", ");
   if (!poolText) return null;
+  const poolKeys = Array.isArray(found.poolKeys) ? found.poolKeys.filter(Boolean).map((x) => normalizeKey(x)) : [];
+  const poolKey = poolKeys.length ? poolKeys[0] : "";
   return {
     poolText,
+    poolKey,
     expireRemainMs: Math.max(0, cycleEndUtcMs - nowMs),
     cycleStartJst: formatJstDateTimeFromUtcMs(cycleStartUtcMs),
     cycleEndJst: formatJstDateTimeFromUtcMs(cycleEndUtcMs)
@@ -302,7 +306,9 @@ function updateScheduleStatus(nowTime) {
   const lines = [
     {
       label: ui("descentPool"),
-      time: descent ? `${descent.poolText} (${ui("remainPrefix")} ${formatRemaining(descent.expireRemainMs)})` : "---"
+      time: descent ? `${descent.poolText} (${ui("remainPrefix")} ${formatRemaining(descent.expireRemainMs)})` : "---",
+      action: descent ? "open_descent_talent" : "",
+      poolKey: descent ? descent.poolKey : ""
     },
     { label: ui("shopUpdate"), time: formatRemaining(shopRemain) },
     { label: `${ui("cassie")} / ${ui("danny")}`, time: storeText }
@@ -450,8 +456,14 @@ function showScheduleStatus(lines) {
   statusMode = "schedule";
   statusEl.classList.add("status--schedule");
   statusEl.innerHTML = (lines || []).map(l => {
+    const action = String(l?.action || "").trim();
+    const poolKey = normalizeKey(String(l?.poolKey || ""));
+    const attrs = action
+      ? ` data-status-action="${escapeHtml(action)}"${poolKey ? ` data-status-pool-key="${escapeHtml(poolKey)}"` : ""}`
+      : "";
+    const rowClass = action ? "status__row status__row--link" : "status__row";
     return `
-      <div class="status__row">
+      <div class="${rowClass}"${attrs}>
         <span class="status__label">${escapeHtml(l.label)}</span>
         <span class="status__time">${escapeHtml(l.time)}</span>
       </div>
@@ -463,7 +475,7 @@ function showScheduleStatus(lines) {
 function saveLangSetting() {
   if (!langSelect) return;
   try {
-    localStorage.setItem(LANG_STORAGE_KEY, langSelect.value || "ja");
+    localStorage.setItem(LANG_STORAGE_KEY, langSelect.value || "en");
   } catch (e) {
     // ignore storage errors (private mode, quota, etc.)
   }
@@ -515,6 +527,10 @@ function applyUrlParams() {
   else if (view === "item_sources" || view === "itemsources") initialViewMode = "item_sources";
   else if (view === "trello") initialViewMode = "trello";
   else if (view === "patches") initialViewMode = "patches";
+
+  // descent_pool=<pool_key>
+  const descentPool = normalizeKey(getUrlParam("descent_pool"));
+  window.descentTalentInitialPoolKey = descentPool || "";
 
   // trello_group=name|planned
   const trelloGroup = getUrlParam("trello_group").toLowerCase();
@@ -718,12 +734,12 @@ const UI = {
 };
 
 function ui(key) {
-  const lang = (langSelect && langSelect.value) ? langSelect.value : "ja";
+  const lang = (langSelect && langSelect.value) ? langSelect.value : "en";
   return (UI[lang] && UI[lang][key]) || UI.en[key] || key;
 }
 
 function applyUiLang() {
-  const lang = (langSelect && langSelect.value) ? langSelect.value : "ja";
+  const lang = (langSelect && langSelect.value) ? langSelect.value : "en";
   document.documentElement.lang = lang;
 
   if (labelWeekEl) labelWeekEl.textContent = ui("week");
@@ -1312,7 +1328,7 @@ async function loadDescentPoolState() {
     const db = new sql.Database(bytes);
     try {
       const rs = db.exec(
-        "SELECT normalized_cycle_jst, talent_pool FROM descent_talent_pool ORDER BY normalized_cycle_jst ASC, talent_pool ASC"
+        "SELECT normalized_cycle_jst, talent_pool, talent_pool_key FROM descent_talent_pool ORDER BY normalized_cycle_jst ASC, talent_pool ASC"
       );
       if (!rs || !rs.length || !Array.isArray(rs[0].values)) {
         descentPoolState = fallback;
@@ -1322,17 +1338,20 @@ async function loadDescentPoolState() {
       for (const row of rs[0].values) {
         const cycleJst = String(row[0] || "").trim();
         const poolName = String(row[1] || "").trim();
+        const poolKey = normalizeKey(String(row[2] || poolName));
         if (!cycleJst) continue;
         if (!map.has(cycleJst)) {
-          map.set(cycleJst, { pools: new Set(), talents: [] });
+          map.set(cycleJst, { pools: new Set(), poolKeys: new Set(), talents: [] });
         }
         const bucket = map.get(cycleJst);
         if (poolName) bucket.pools.add(poolName);
+        if (poolKey) bucket.poolKeys.add(poolKey);
       }
       const entries = Array.from(map.entries()).map(([cycleJst, bucket]) => ({
         cycleJst,
         startUtcMs: parseJstDateTimeToUtcMs(cycleJst),
         pools: Array.from(bucket.pools || []),
+        poolKeys: Array.from(bucket.poolKeys || []),
         talents: Array.isArray(bucket.talents) ? bucket.talents : []
       })).filter((x) => Number.isFinite(x.startUtcMs));
       entries.sort((a, b) => a.startUtcMs - b.startUtcMs);
@@ -2443,7 +2462,10 @@ async function switchViewMode(mode) {
     setStatus("");
   }
   if (worldTimeWrapEl) worldTimeWrapEl.style.display = (currentViewMode === "vendor") ? "" : "none";
-  replaceUrlParams({ view: currentViewMode });
+  replaceUrlParams({
+    view: currentViewMode,
+    descent_pool: currentViewMode === "descent_talent" ? (window.descentTalentInitialPoolKey || null) : null
+  });
   if (currentViewMode === "weapons") {
     await renderWeaponsView();
     return;
@@ -2633,7 +2655,7 @@ dateInput.addEventListener("change", () => {
 
 langSelect.addEventListener("change", () => {
   saveLangSetting();
-  replaceUrlParams({ lang: langSelect.value || "ja" });
+  replaceUrlParams({ lang: langSelect.value || "en" });
   applyUiLang();
   const d = dateInput.value;
   if (currentViewMode === "vendor") {
@@ -2788,6 +2810,17 @@ document.addEventListener("click", (e) => {
   if (worldTimeEl && worldTimeEl.contains(e.target)) return;
   closeWorldTimePopup();
 });
+if (statusEl) {
+  statusEl.addEventListener("click", (e) => {
+    const row = e.target.closest(".status__row[data-status-action]");
+    if (!row) return;
+    const action = String(row.getAttribute("data-status-action") || "");
+    if (action !== "open_descent_talent") return;
+    const poolKey = normalizeKey(String(row.getAttribute("data-status-pool-key") || ""));
+    window.descentTalentInitialPoolKey = poolKey || "";
+    switchViewMode("descent_talent").catch(err => setStatus(`${ui("error")}: ${err.message}`));
+  });
+}
 document.addEventListener("keydown", (e) => {
   if (e.key === "Escape") closeWorldTimePopup();
 });

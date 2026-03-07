@@ -583,6 +583,13 @@ body::before{
   gap:8px;
   align-items:center;
 }
+.status__row--link{
+  cursor:pointer;
+}
+.status__row--link:hover .status__label,
+.status__row--link:hover .status__time{
+  color:var(--named-text);
+}
 .status__label{ color:var(--muted); }
 .status__time{ color:var(--text); text-align:right; }
 
@@ -1057,6 +1064,10 @@ body::before{
 .line--named .line__text{ color:var(--named-text); font-weight:700; }
 .line--named-meta::before{ background:rgba(255,255,255,.26); }
 .line--named-meta .line__text{ color:var(--text); opacity:.9; }
+.descent-tier-value{
+  color:var(--named-text);
+  font-weight:700;
+}
 .line--named-attr{ padding-left:6px; }
 .line--named-attr::before{ display:none; }
 .brand-named-sep{
