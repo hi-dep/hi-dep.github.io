@@ -1,5 +1,5 @@
 {
-  "built_at": "2026-03-07T22:40:04.010731Z",
+  "built_at": "2026-03-07T23:40:03.226641Z",
   "target_week": "2026-03-03",
   "chunks": [
     {
@@ -1281,7 +1281,7 @@
   ],
   "i18n": {
     "file": "i18n.json",
-    "entries": 922
+    "entries": 927
   },
   "assets": {
     "file": "asset_map.json",
