@@ -1,0 +1,114 @@
+{
+  "built_at": "2026-03-07T10:15:02.334199Z",
+  "summary": {
+    "total_corrections": 2169,
+    "unique_patterns": 15
+  },
+  "corrections": [
+    {
+      "target": "shop_asset_map",
+      "source": "Richter & Kaiser",
+      "corrected": "Richter & Kaiser GmbH",
+      "method": "prefix_unique",
+      "count": 300
+    },
+    {
+      "target": "shop_i18n",
+      "source": "Richter & Kaiser",
+      "corrected": "Richter & Kaiser GmbH",
+      "method": "prefix_unique",
+      "count": 300
+    },
+    {
+      "target": "shop_ingest_gear",
+      "source": "Richter & Kaiser",
+      "corrected": "Richter & Kaiser GmbH",
+      "method": "prefix_unique",
+      "count": 300
+    },
+    {
+      "target": "shop_asset_map",
+      "source": "China Light Industries Corporation",
+      "corrected": "China Light Industries Corporatior",
+      "method": "fuzzy:0.968",
+      "count": 221
+    },
+    {
+      "target": "shop_i18n",
+      "source": "China Light Industries Corporation",
+      "corrected": "China Light Industries Corporatior",
+      "method": "fuzzy:0.968",
+      "count": 221
+    },
+    {
+      "target": "shop_ingest_gear",
+      "source": "China Light Industries Corporation",
+      "corrected": "China Light Industries Corporatior",
+      "method": "fuzzy:0.968",
+      "count": 221
+    },
+    {
+      "target": "shop_asset_map",
+      "source": "Yaahl",
+      "corrected": "Yaahl Gear",
+      "method": "prefix_unique",
+      "count": 102
+    },
+    {
+      "target": "shop_i18n",
+      "source": "Yaahl",
+      "corrected": "Yaahl Gear",
+      "method": "prefix_unique",
+      "count": 102
+    },
+    {
+      "target": "shop_ingest_gear",
+      "source": "Yaahl",
+      "corrected": "Yaahl Gear",
+      "method": "prefix_unique",
+      "count": 102
+    },
+    {
+      "target": "shop_asset_map",
+      "source": "Zwiadowka Sp. z o.o.",
+      "corrected": "Zwiadowka Sp.z o.o.",
+      "method": "exact_key",
+      "count": 88
+    },
+    {
+      "target": "shop_i18n",
+      "source": "Zwiadowka Sp. z o.o.",
+      "corrected": "Zwiadowka Sp.z o.o.",
+      "method": "exact_key",
+      "count": 88
+    },
+    {
+      "target": "shop_ingest_gear",
+      "source": "Zwiadowka Sp. z o.o.",
+      "corrected": "Zwiadowka Sp.z o.o.",
+      "method": "exact_key",
+      "count": 88
+    },
+    {
+      "target": "shop_asset_map",
+      "source": "Ortiz Exuro",
+      "corrected": "Ortiz: Exuro",
+      "method": "exact_key",
+      "count": 12
+    },
+    {
+      "target": "shop_i18n",
+      "source": "Ortiz Exuro",
+      "corrected": "Ortiz: Exuro",
+      "method": "exact_key",
+      "count": 12
+    },
+    {
+      "target": "shop_ingest_gear",
+      "source": "Ortiz Exuro",
+      "corrected": "Ortiz: Exuro",
+      "method": "exact_key",
+      "count": 12
+    }
+  ]
+}

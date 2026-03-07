@@ -1,0 +1,2996 @@
+/* global initSqlJs */
+
+const APP_BASE = String(window.__APP_BASE__ || ".").replace(/\/+$/, "");
+const DATA_BASE = `${APP_BASE}/data`;
+
+function appPath(relPath) {
+  const rel = String(relPath || "").replace(/^\.?\//, "");
+  return rel ? `${APP_BASE}/${rel}` : APP_BASE;
+}
+
+const statusEl = document.getElementById("status");
+const contentEl = document.getElementById("content");
+
+const dateInput = document.getElementById("dateInput");
+const langSelect = document.getElementById("langSelect");
+
+const modeSelect = document.getElementById("modeSelect");
+const filterInput = document.getElementById("filterInput");
+
+const onlySelectedBtn = document.getElementById("onlySelectedBtn");
+const recommendSelectedBtn = document.getElementById("recommendSelectedBtn");
+const clearSelectedBtn = document.getElementById("clearSelectedBtn");
+const clearFiltersBtn = document.getElementById("clearFiltersBtn");
+const filterToggleBtn = document.getElementById("filterToggleBtn");
+
+const chipsEl = document.getElementById("filterChips");
+const worldTimeEl = document.getElementById("worldTime");
+const worldTimePopupEl = document.getElementById("worldTimePopup");
+const worldTimePopupBodyEl = document.getElementById("worldTimePopupBody");
+const worldTimeLabelEl = document.getElementById("worldTimeLabel");
+const worldTimePopupTitleEl = document.getElementById("worldTimePopupTitle");
+const cacheProviderRowEl = document.getElementById("cacheProviderRow");
+const worldTimeWrapEl = worldTimeEl ? worldTimeEl.closest(".topbar__time") : null;
+const titleEl = document.querySelector(".topbar .title");
+const weekFieldEl = dateInput ? dateInput.closest(".field") : null;
+const navMenuBtn = document.getElementById("navMenuBtn");
+const navMenuPanel = document.getElementById("navMenuPanel");
+const navVendorBtn = document.getElementById("navVendorBtn");
+const navWeaponsBtn = document.getElementById("navWeaponsBtn");
+const navBrandBtn = document.getElementById("navBrandBtn");
+const navGearsetBtn = document.getElementById("navGearsetBtn");
+const navExoticGearBtn = document.getElementById("navExoticGearBtn");
+const navGearTalentBtn = document.getElementById("navGearTalentBtn");
+const navWeaponTalentBtn = document.getElementById("navWeaponTalentBtn");
+const navDescentTalentBtn = document.getElementById("navDescentTalentBtn");
+const navItemSourcesBtn = document.getElementById("navItemSourcesBtn");
+const navTrelloBtn = document.getElementById("navTrelloBtn");
+const navPatchesBtn = document.getElementById("navPatchesBtn");
+if (navMenuPanel) navMenuPanel.inert = true;
+
+const labelWeekEl = document.getElementById("labelWeek");
+const labelLangEl = document.getElementById("labelLang");
+const labelModeEl = document.getElementById("labelMode");
+const labelFilterEl = document.getElementById("labelFilter");
+
+const LANG_STORAGE_KEY = "division2_lang";
+
+let indexJson = null;
+let i18n = {};
+let i18nAliases = {};
+let i18nJaNormToKey = new Map();
+let i18nCategories = {};
+let graphConfig = {};
+let vendorRecommendations = { version: 1, auto_select_on_load: false, rules: [] };
+let assetMap = null;
+let SQL = null;
+let lastVendorMap = null;
+let lastItems = [];
+let isWorldTimePopupOpen = false;
+let statusMode = "";
+const JST_OFFSET_MS = 9 * 60 * 60 * 1000;
+let filtersOpen = false;
+let currentViewMode = "vendor"; // vendor | weapons | brand | gearset | exotic_gear | gear_talent | weapon_talent | descent_talent | item_sources | trello | patches
+let trelloSummaryCache = null;
+let descentPoolState = {
+  loaded: false,
+  available: false,
+  cycleMs: 0,
+  anchorUtcMs: 0,
+  entries: [] // [{ startUtcMs, pools[], talents[] }]
+};
+window.currentViewMode = currentViewMode;
+window.trelloGroupBy = "name";
+window.trelloShowArchive = false;
+window.trelloExpandAll = false;
+window.brandShowNamed = false;
+window.weaponsShowDetails = false;
+window.weaponTalentTypeFilter = [];
+window.talentShowDesc = false;
+let initialViewMode = "vendor";
+
+/* ---------------------------
+ * Division2 world time (HH:MM)
+ * ------------------------- */
+function getWorldTimeHHMM(sec) {
+  let minuteSec = 0;
+  for (let i = 0; i < m_sec.length; i++) {
+    if (sec > m_sec[i]) minuteSec = i;
+    else break;
+  }
+  const hour = Math.floor(minuteSec / 60);
+  const minute = minuteSec % 60;
+  return ("0" + hour).slice(-2) + ":" + ("0" + minute).slice(-2);
+}
+
+function updateWorldTime() {
+  if (!worldTimeEl) return;
+  const nowTime = new Date();
+  updateScheduleStatus(nowTime);
+  if (!window.base_t || !window.m_sec || !window.d1_sec) {
+    worldTimeEl.textContent = "--:--";
+    return;
+  }
+  const diff = nowTime.getTime() - base_t.getTime();
+  const diffSec = Math.floor(diff / 1000);
+  const curSec = diffSec % d1_sec;
+  worldTimeEl.textContent = getWorldTimeHHMM(curSec);
+  if (isWorldTimePopupOpen) updateWorldTimePopup(curSec, nowTime);
+}
+
+function formatHMS(totalSec) {
+  const h = Math.floor(totalSec / 3600);
+  const m = Math.floor(totalSec / 60) % 60;
+  const s = totalSec % 60;
+  return ("0" + h).slice(-2) + ":" + ("0" + m).slice(-2) + ":" + ("0" + s).slice(-2);
+}
+
+function formatHM(dateObj) {
+  const h = ("0" + dateObj.getHours()).slice(-2);
+  const m = ("0" + dateObj.getMinutes()).slice(-2);
+  return `${h}:${m}`;
+}
+
+function formatRemaining(ms) {
+  const totalMin = Math.max(0, Math.floor(ms / 60000));
+  const days = Math.floor(totalMin / (60 * 24));
+  const hours = Math.floor((totalMin % (60 * 24)) / 60);
+  const mins = totalMin % 60;
+  const d = String(days).padStart(2, "0");
+  const h = String(hours).padStart(2, "0");
+  const m = String(mins).padStart(2, "0");
+  return `${d}d ${h}h ${m}m`;
+}
+
+function getJstParts(ms) {
+  const d = new Date(ms + JST_OFFSET_MS);
+  return {
+    y: d.getUTCFullYear(),
+    m: d.getUTCMonth(),
+    d: d.getUTCDate(),
+    dow: d.getUTCDay(),
+    h: d.getUTCHours(),
+    min: d.getUTCMinutes()
+  };
+}
+
+function addDaysJst(y, m, d, deltaDays) {
+  const baseUtc = Date.UTC(y, m, d);
+  const targetUtc = baseUtc + deltaDays * 86400000;
+  const t = new Date(targetUtc);
+  return { y: t.getUTCFullYear(), m: t.getUTCMonth(), d: t.getUTCDate() };
+}
+
+function jstToUtcMs(y, m, d, h, min) {
+  return Date.UTC(y, m, d, h, min) - JST_OFFSET_MS;
+}
+
+function parseJstDateTimeToUtcMs(text) {
+  const s = String(text || "").trim();
+  const m = s.match(/^(\d{4})-(\d{2})-(\d{2})[ T](\d{2}):(\d{2})(?::(\d{2}))?$/);
+  if (!m) return NaN;
+  const y = Number(m[1]);
+  const mon = Number(m[2]) - 1;
+  const d = Number(m[3]);
+  const h = Number(m[4]);
+  const min = Number(m[5]);
+  const sec = Number(m[6] || "0");
+  return Date.UTC(y, mon, d, h, min, sec) - JST_OFFSET_MS;
+}
+
+function formatJstDateTimeFromUtcMs(utcMs) {
+  const d = new Date(Number(utcMs) + JST_OFFSET_MS);
+  const y = d.getUTCFullYear();
+  const mo = String(d.getUTCMonth() + 1).padStart(2, "0");
+  const day = String(d.getUTCDate()).padStart(2, "0");
+  const h = String(d.getUTCHours()).padStart(2, "0");
+  const min = String(d.getUTCMinutes()).padStart(2, "0");
+  const sec = String(d.getUTCSeconds()).padStart(2, "0");
+  return `${y}-${mo}-${day} ${h}:${min}:${sec}`;
+}
+
+function getActiveDescentPoolStatus(nowMs) {
+  if (!descentPoolState?.available || !Array.isArray(descentPoolState.entries) || !descentPoolState.entries.length) {
+    return null;
+  }
+  const entries = descentPoolState.entries;
+  const cycleMs = Number(descentPoolState.cycleMs) || 0;
+  const anchorUtcMs = Number(descentPoolState.anchorUtcMs);
+  if (!(cycleMs > 0) || !Number.isFinite(anchorUtcMs)) {
+    return null;
+  }
+
+  // Current cycle boundary from configured anchor/cycle.
+  const slot = Math.floor((nowMs - anchorUtcMs) / cycleMs);
+  const cycleStartUtcMs = anchorUtcMs + slot * cycleMs;
+  const cycleEndUtcMs = cycleStartUtcMs + cycleMs;
+
+  let found = null;
+  for (let i = entries.length - 1; i >= 0; i--) {
+    const e = entries[i];
+    if ((Number(e.startUtcMs) || 0) <= nowMs) {
+      found = e;
+      break;
+    }
+  }
+  if (!found) return null;
+  if ((Number(found.startUtcMs) || 0) !== cycleStartUtcMs) return null;
+
+  const talents = Array.isArray(found.talents) ? found.talents.filter(Boolean) : [];
+  const pools = Array.isArray(found.pools) ? found.pools.filter(Boolean) : [];
+  const poolText = pools.length
+    ? pools.map((x) => trText(x)).join(", ")
+    : talents.map((x) => trText(x)).join(", ");
+  if (!poolText) return null;
+  return {
+    poolText,
+    expireRemainMs: Math.max(0, cycleEndUtcMs - nowMs),
+    cycleStartJst: formatJstDateTimeFromUtcMs(cycleStartUtcMs),
+    cycleEndJst: formatJstDateTimeFromUtcMs(cycleEndUtcMs)
+  };
+}
+
+function nextWeeklyUtcMs(nowMs, dow, hour, minute) {
+  const p = getJstParts(nowMs);
+  let daysUntil = (dow - p.dow + 7) % 7;
+  if (daysUntil === 0 && (p.h > hour || (p.h === hour && p.min >= minute))) {
+    daysUntil = 7;
+  }
+  const date = addDaysJst(p.y, p.m, p.d, daysUntil);
+  return jstToUtcMs(date.y, date.m, date.d, hour, minute);
+}
+
+function lastWeeklyUtcMs(nowMs, dow, hour, minute) {
+  const p = getJstParts(nowMs);
+  let daysSince = (p.dow - dow + 7) % 7;
+  if (daysSince === 0 && (p.h < hour || (p.h === hour && p.min < minute))) {
+    daysSince = 7;
+  }
+  const date = addDaysJst(p.y, p.m, p.d, -daysSince);
+  return jstToUtcMs(date.y, date.m, date.d, hour, minute);
+}
+
+function updateScheduleStatus(nowTime) {
+  if (currentViewMode !== "vendor") return;
+  const nowMs = nowTime.getTime();
+
+  // Shop update: every Tue 17:00 JST
+  const nextShopUtc = nextWeeklyUtcMs(nowMs, 2, 17, 0);
+  const shopRemain = nextShopUtc - nowMs;
+
+  // Cassie/Danny opening windows (24h each)
+  const openSlots = [
+    { dow: 3, hour: 17, min: 0 }, // Wed 17:00
+    { dow: 6, hour: 1, min: 0 },  // Sat 01:00
+    { dow: 1, hour: 9, min: 0 }   // Mon 09:00
+  ];
+
+  function computeStoreStatus() {
+    let openUntil = null;
+    let openFrom = null;
+    for (const s of openSlots) {
+      const lastOpen = lastWeeklyUtcMs(nowMs, s.dow, s.hour, s.min);
+      const close = lastOpen + 24 * 60 * 60 * 1000;
+      if (nowMs >= lastOpen && nowMs < close) {
+        if (openFrom == null || lastOpen > openFrom) {
+          openFrom = lastOpen;
+          openUntil = close;
+        }
+      }
+    }
+
+    if (openUntil != null) {
+      const remain = openUntil - nowMs;
+      return { isOpen: true, remain };
+    }
+
+    let nextOpenUtc = null;
+    for (const s of openSlots) {
+      const nextOpen = nextWeeklyUtcMs(nowMs, s.dow, s.hour, s.min);
+      if (nextOpenUtc == null || nextOpen < nextOpenUtc) nextOpenUtc = nextOpen;
+    }
+    const openRemain = nextOpenUtc - nowMs;
+    return { isOpen: false, remain: openRemain };
+  }
+
+  const store = computeStoreStatus();
+  const storeText = store.isOpen
+    ? `${ui("closesIn")} ${formatRemaining(store.remain)}`
+    : `${ui("opensIn")} ${formatRemaining(store.remain)}`;
+  const descent = getActiveDescentPoolStatus(nowMs);
+
+  const lines = [
+    {
+      label: ui("descentPool"),
+      time: descent ? `${descent.poolText} (${ui("remainPrefix")} ${formatRemaining(descent.expireRemainMs)})` : "---"
+    },
+    { label: ui("shopUpdate"), time: formatRemaining(shopRemain) },
+    { label: `${ui("cassie")} / ${ui("danny")}`, time: storeText }
+  ];
+
+  showScheduleStatus(lines);
+}
+
+function remainSecondsToHour(sec, toHour) {
+  const bfIdx = ((toHour - 1 + 24) % 24) * 60;
+  const idx = toHour * 60;
+  const remainSec = (m_sec[idx] + 1 - sec + d1_sec) % d1_sec;
+  return remainSec;
+}
+
+function updateWorldTimePopup(curSec, nowTime) {
+  if (!worldTimePopupBodyEl) return;
+
+  const prevBody = worldTimePopupBodyEl.querySelector(".time-popup__table-body");
+  const prevScrollTop = prevBody ? prevBody.scrollTop : 0;
+
+  const curWorld = getWorldTimeHHMM(curSec);
+  const nowLocal = formatHM(nowTime);
+
+  // Find next in-game hour (minimum remaining seconds)
+  let minRemain = d1_sec;
+  let nextHour = 0;
+  for (let h = 0; h < 24; h++) {
+    const r = remainSecondsToHour(curSec, h);
+    if (r > 0 && r < minRemain) {
+      minRemain = r;
+      nextHour = h;
+    }
+  }
+
+  const rows = [];
+  rows.push(`
+    <div class="time-popup__row">
+      <span>${ui("worldTime")}</span>
+      <strong>${curWorld}</strong>
+    </div>
+  `);
+  rows.push(`
+    <div class="time-popup__row">
+      <span>${ui("localTime")}</span>
+      <strong>${nowLocal}</strong>
+    </div>
+  `);
+  // Next line omitted; full list below covers it
+
+  const tableHead = `
+    <div class="time-popup__th">${ui("nextHour")}</div>
+    <div class="time-popup__th">${ui("local")}</div>
+    <div class="time-popup__th">${ui("remain")}</div>
+  `;
+  const tableBodyRows = [];
+  for (let i = 0; i < 24; i++) {
+    const h = (nextHour + i) % 24;
+    const r = remainSecondsToHour(curSec, h);
+    const t = new Date(nowTime.getTime() + r * 1000);
+    const label = `${("0" + h).slice(-2)}:00`;
+    tableBodyRows.push(`<div>${label}</div><div>${formatHM(t)}</div><div>${formatHMS(r)}</div>`);
+  }
+
+  worldTimePopupBodyEl.innerHTML = `
+    ${rows.join("")}
+    <div class="time-popup__table">
+      <div class="time-popup__table-head">${tableHead}</div>
+      <div class="time-popup__table-body">${tableBodyRows.join("")}</div>
+    </div>
+  `;
+
+  const newBody = worldTimePopupBodyEl.querySelector(".time-popup__table-body");
+  if (newBody) newBody.scrollTop = prevScrollTop;
+}
+
+function positionWorldTimePopup() {
+  if (!worldTimeEl || !worldTimePopupEl) return;
+  const rect = worldTimeEl.getBoundingClientRect();
+  const top = rect.bottom + 8;
+  const right = Math.max(8, window.innerWidth - rect.right);
+  worldTimePopupEl.style.top = `${top}px`;
+  worldTimePopupEl.style.right = `${right}px`;
+  worldTimePopupEl.style.left = "auto";
+}
+
+function openWorldTimePopup() {
+  if (!worldTimePopupEl) return;
+  isWorldTimePopupOpen = true;
+  worldTimePopupEl.setAttribute("aria-hidden", "false");
+  positionWorldTimePopup();
+  const now = new Date();
+  const diff = now.getTime() - base_t.getTime();
+  const diffSec = Math.floor(diff / 1000);
+  const curSec = diffSec % d1_sec;
+  updateWorldTimePopup(curSec, now);
+}
+
+function closeWorldTimePopup() {
+  if (!worldTimePopupEl) return;
+  isWorldTimePopupOpen = false;
+  worldTimePopupEl.setAttribute("aria-hidden", "true");
+}
+
+function toggleWorldTimePopup() {
+  if (isWorldTimePopupOpen) closeWorldTimePopup();
+  else openWorldTimePopup();
+}
+
+function setFiltersOpen(isOpen) {
+  filtersOpen = !!isOpen;
+  document.body.classList.toggle("filters-closed", !filtersOpen);
+
+  const controls = [
+    modeSelect,
+    filterInput,
+    onlySelectedBtn,
+    recommendSelectedBtn,
+    clearSelectedBtn,
+    clearFiltersBtn
+  ];
+  controls.forEach(el => {
+    if (!el) return;
+    el.disabled = !filtersOpen;
+  });
+}
+
+// selection & filters
+let onlySelected = false;
+const selectedIds = new Set();        // item_id
+let filterMode = "and";               // and/or
+let activeFilterKeys = [];            // stat_key[]
+const statLabelEnByKey = new Map();   // stat_key -> English label
+
+function setStatus(msg, mode = "loading") {
+  statusMode = msg ? mode : "";
+  statusEl.textContent = msg || "";
+  statusEl.classList.toggle("status--schedule", mode === "schedule");
+  statusEl.style.display = msg ? "" : "none";
+}
+
+function showScheduleStatus(lines) {
+  if (!statusEl) return;
+  if (statusMode === "loading" || statusMode === "error") return;
+  statusMode = "schedule";
+  statusEl.classList.add("status--schedule");
+  statusEl.innerHTML = (lines || []).map(l => {
+    return `
+      <div class="status__row">
+        <span class="status__label">${escapeHtml(l.label)}</span>
+        <span class="status__time">${escapeHtml(l.time)}</span>
+      </div>
+    `;
+  }).join("");
+  statusEl.style.display = (lines && lines.length) ? "" : "none";
+}
+
+function saveLangSetting() {
+  if (!langSelect) return;
+  try {
+    localStorage.setItem(LANG_STORAGE_KEY, langSelect.value || "ja");
+  } catch (e) {
+    // ignore storage errors (private mode, quota, etc.)
+  }
+}
+
+function loadLangSetting() {
+  if (!langSelect) return;
+  try {
+    const v = localStorage.getItem(LANG_STORAGE_KEY);
+    if (v) langSelect.value = v;
+  } catch (e) {
+    // ignore storage errors
+  }
+}
+
+function getUrlParam(name) {
+  try {
+    const params = new URLSearchParams(window.location.search || "");
+    const v = params.get(name);
+    return v ? v.trim() : "";
+  } catch (e) {
+    return "";
+  }
+}
+
+function applyUrlParams() {
+  // lang=ja|en
+  const lang = getUrlParam("lang");
+  if (lang && (lang === "ja" || lang === "en") && langSelect) {
+    langSelect.value = lang;
+  }
+
+  // date=YYYY-MM-DD
+  const date = getUrlParam("date");
+  if (date && /^\d{4}-\d{2}-\d{2}$/.test(date) && dateInput) {
+    dateInput.value = date;
+  }
+
+  // view=vendor|weapons|brand|gearset|exotic_gear|gear_talent|weapon_talent|item_sources|trello|patches (accept typo: vendo)
+  const view = getUrlParam("view").toLowerCase();
+  if (view === "vendor" || view === "vendo") initialViewMode = "vendor";
+  else if (view === "weapons" || view === "weapon") initialViewMode = "weapons";
+  else if (view === "brand" || view === "brands") initialViewMode = "brand";
+  else if (view === "gearset" || view === "gearsets") initialViewMode = "gearset";
+  else if (view === "exotic_gear" || view === "exoticgear") initialViewMode = "exotic_gear";
+  else if (view === "gear_talent" || view === "geartalent") initialViewMode = "gear_talent";
+  else if (view === "weapon_talent" || view === "weapontalent") initialViewMode = "weapon_talent";
+  else if (view === "descent_talent" || view === "descenttalent") initialViewMode = "descent_talent";
+  else if (view === "item_sources" || view === "itemsources") initialViewMode = "item_sources";
+  else if (view === "trello") initialViewMode = "trello";
+  else if (view === "patches") initialViewMode = "patches";
+
+  // trello_group=name|planned
+  const trelloGroup = getUrlParam("trello_group").toLowerCase();
+  if (trelloGroup === "planned") window.trelloGroupBy = "planned";
+  else if (trelloGroup === "name") window.trelloGroupBy = "name";
+}
+
+function replaceUrlParams(patch) {
+  try {
+    const u = new URL(window.location.href);
+    const params = u.searchParams;
+    Object.entries(patch || {}).forEach(([k, v]) => {
+      if (v == null || v === "") params.delete(k);
+      else params.set(k, String(v));
+    });
+    const qs = params.toString();
+    const next = `${u.pathname}${qs ? "?" + qs : ""}${u.hash || ""}`;
+    history.replaceState(null, "", next);
+  } catch (e) {
+    // ignore URL rewrite errors
+  }
+}
+
+function updateModeUi() {
+  const isVendorView = currentViewMode === "vendor";
+  let nextTitle = "Division 2 Vendor";
+  if (titleEl) {
+    if (currentViewMode === "brand") {
+      nextTitle = "Division 2 Brandset";
+      titleEl.textContent = nextTitle;
+    } else if (currentViewMode === "weapons") {
+      nextTitle = "Division 2 Weapons";
+      titleEl.textContent = nextTitle;
+    } else if (currentViewMode === "gearset") {
+      nextTitle = "Division 2 Gearset";
+      titleEl.textContent = nextTitle;
+    } else if (currentViewMode === "exotic_gear") {
+      nextTitle = "Division 2 Exotic Items";
+      titleEl.textContent = nextTitle;
+    } else if (currentViewMode === "gear_talent") {
+      nextTitle = "Division 2 Gear Talent";
+      titleEl.textContent = nextTitle;
+    } else if (currentViewMode === "weapon_talent") {
+      nextTitle = "Division 2 Weapon Talent";
+      titleEl.textContent = nextTitle;
+    } else if (currentViewMode === "descent_talent") {
+      nextTitle = "Division 2 Descent Talent";
+      titleEl.textContent = nextTitle;
+    } else if (currentViewMode === "item_sources") {
+      nextTitle = "Division 2 Item Sources";
+      titleEl.textContent = nextTitle;
+    } else if (currentViewMode === "trello") {
+      nextTitle = "Division 2 Trello";
+      titleEl.textContent = nextTitle;
+    } else if (currentViewMode === "patches") {
+      nextTitle = "Division 2 Patches";
+      titleEl.textContent = nextTitle;
+    } else {
+      nextTitle = "Division 2 Vendor";
+      titleEl.textContent = nextTitle;
+    }
+  }
+  document.title = nextTitle;
+  if (weekFieldEl) {
+    weekFieldEl.style.display = isVendorView ? "" : "none";
+  }
+  if (filterToggleBtn) {
+    filterToggleBtn.style.display = isVendorView ? "" : "none";
+  }
+  if (!isVendorView && filtersOpen) {
+    setFiltersOpen(false);
+  }
+}
+
+function refreshDescButtons() {
+  document.querySelectorAll(".trello-desc-btn[data-toggle-desc]").forEach((btn) => {
+    btn.classList.toggle("is-on", !!window.trelloExpandAll);
+  });
+}
+
+function refreshTalentDescButtons() {
+  document.querySelectorAll(".talent-desc-btn[data-toggle-talent-desc]").forEach((btn) => {
+    btn.classList.toggle("is-on", !!window.talentShowDesc);
+  });
+}
+
+function toggleCardDesc(cardEl) {
+  if (!cardEl) return;
+  if (String(cardEl.getAttribute("data-desc-collapsible") || "") !== "1") return;
+  const isOpen = cardEl.classList.contains("is-desc-open");
+  cardEl.classList.toggle("is-desc-open", !isOpen);
+  cardEl.setAttribute("data-desc-open", (!isOpen) ? "1" : "0");
+}
+
+function syncDescToggleStateFromDom() {
+  if (!(currentViewMode === "trello" || currentViewMode === "patches")) return;
+  const panels = Array.from(contentEl.querySelectorAll(".trello-card__detail"));
+  if (panels.length === 0) {
+    window.trelloExpandAll = false;
+    refreshDescButtons();
+    return;
+  }
+  window.trelloExpandAll = panels.every((p) => p.getAttribute("aria-hidden") === "false");
+  refreshDescButtons();
+}
+
+/* ---------------------------
+ * UI text
+ * ------------------------- */
+const UI = {
+  ja: {
+    week: "週",
+    language: "言語",
+    mode: "条件",
+    filter: "フィルタ",
+    filterPh: "属性/タレントを入力（Enterで追加）",
+    selectedOnly: "選択のみ",
+    recommendSelected: "おすすめ選択",
+    clearSelected: "選択解除",
+    clearFilters: "フィルタ解除",
+    loadingIndex: "index.json 読み込み…",
+    loadingI18n: "i18n 読み込み…",
+    loadingAssets: "asset_map 読み込み…",
+    loadingGraph: "graph_config 読み込み…",
+    loadingDb: "DB 読み込み…",
+    noData: "対象週のデータがありません。",
+    noChunk: "該当する月DBが見つかりません",
+    error: "エラー",
+    loadError: "読み込みエラー",
+    dataUnavailable: "表示データが未準備です。",
+    catGear: "GEAR",
+    catWeapon: "WEAPON",
+    catMod: "MOD",
+    catCache: "CACHE",
+    modSuffix: "MOD",
+    and: "AND",
+    or: "OR",
+    time: "時間",
+    worldTime: "ゲーム内時刻",
+    localTime: "現在時刻",
+    next: "次",
+    nextHour: "次の時刻",
+    local: "現実時刻",
+    remain: "残り",
+    remainPrefix: "残り",
+    descentPool: "ディセントタレントプール",
+    descentExpires: "ディセント有効期限",
+    shopUpdate: "ショップ更新",
+    cassie: "キャシー",
+    danny: "ダニー",
+    opensIn: "開店まで",
+    closesIn: "閉店まで",
+    filtersOpen: "条件を開く",
+    filtersClose: "条件を閉じる"
+  },
+  en: {
+    week: "Week",
+    language: "Language",
+    mode: "Mode",
+    filter: "Filter",
+    filterPh: "Type attribute/talent (Enter to add)",
+    selectedOnly: "Selected only",
+    recommendSelected: "Recommend",
+    clearSelected: "Clear selection",
+    clearFilters: "Clear filters",
+    loadingIndex: "Loading index.json…",
+    loadingI18n: "Loading i18n…",
+    loadingAssets: "Loading asset_map…",
+    loadingGraph: "Loading graph_config…",
+    loadingDb: "Loading DB…",
+    noData: "No data for the selected week.",
+    noChunk: "Monthly DB not found",
+    error: "Error",
+    loadError: "Load error",
+    dataUnavailable: "Display data is not ready.",
+    catGear: "GEAR",
+    catWeapon: "WEAPON",
+    catMod: "MOD",
+    catCache: "CACHE",
+    modSuffix: " MOD",
+    and: "AND",
+    or: "OR",
+    time: "TIME",
+    worldTime: "World Time",
+    localTime: "Local Time",
+    next: "Next",
+    nextHour: "Next Hour",
+    local: "Local",
+    remain: "Remain",
+    remainPrefix: "Remain",
+    descentPool: "Descent Talent Pool",
+    descentExpires: "Descent Expires In",
+    shopUpdate: "Vendor Reset",
+    cassie: "Cassie",
+    danny: "Danny",
+    opensIn: "Opens in",
+    closesIn: "Closes in",
+    filtersOpen: "Show Filters",
+    filtersClose: "Hide Filters"
+  }
+};
+
+function ui(key) {
+  const lang = (langSelect && langSelect.value) ? langSelect.value : "ja";
+  return (UI[lang] && UI[lang][key]) || UI.en[key] || key;
+}
+
+function applyUiLang() {
+  const lang = (langSelect && langSelect.value) ? langSelect.value : "ja";
+  document.documentElement.lang = lang;
+
+  if (labelWeekEl) labelWeekEl.textContent = ui("week");
+  if (labelLangEl) labelLangEl.textContent = ui("language");
+  if (labelModeEl) labelModeEl.textContent = ui("mode");
+  if (labelFilterEl) labelFilterEl.textContent = ui("filter");
+  if (worldTimeLabelEl) worldTimeLabelEl.textContent = ui("time");
+  if (worldTimePopupTitleEl) worldTimePopupTitleEl.textContent = ui("worldTime");
+  if (filterToggleBtn) {
+    filterToggleBtn.textContent = filtersOpen ? ui("filtersClose") : ui("filtersOpen");
+  }
+
+  if (filterInput) filterInput.placeholder = ui("filterPh");
+
+  // select option labels
+  const optJa = langSelect?.querySelector('option[value="ja"]');
+  const optEn = langSelect?.querySelector('option[value="en"]');
+  if (optJa) optJa.textContent = "Japanese";
+  if (optEn) optEn.textContent = "English";
+
+  const optAnd = modeSelect?.querySelector('option[value="and"]');
+  const optOr = modeSelect?.querySelector('option[value="or"]');
+  if (optAnd) optAnd.textContent = ui("and");
+  if (optOr) optOr.textContent = ui("or");
+
+  // buttons
+  if (onlySelectedBtn) onlySelectedBtn.textContent = ui("selectedOnly");
+  if (recommendSelectedBtn) recommendSelectedBtn.textContent = ui("recommendSelected");
+  if (clearSelectedBtn) clearSelectedBtn.textContent = ui("clearSelected");
+  if (clearFiltersBtn) clearFiltersBtn.textContent = ui("clearFilters");
+  if (navExoticGearBtn) navExoticGearBtn.textContent = "Exotic Items";
+
+  if (isWorldTimePopupOpen) updateWorldTime();
+  renderChips(); // label changes
+  updateScheduleStatus(new Date());
+  refreshTalentDescButtons();
+  if (cacheProviderRowEl) {
+    cacheProviderRowEl.style.display = "";
+  }
+}
+
+/* ---------------------------
+ * Vendor order
+ * ------------------------- */
+const VENDOR_ORDER = [
+  "whitehouse",
+  "clan",
+  "countdown",
+  "thecampus",
+  "thetheater",
+  "castle",
+  "cassie",
+  "dzeast",
+  "dzsouth",
+  "dzwest",
+  "haven",
+  "benitez",
+  "thebridge",
+  "danny"
+];
+
+/* ---------------------------
+ * Static cache items (not stored in DB)
+ * ------------------------- */
+// Some vendors always sell caches, but they may not exist in the DB.
+// Inject them at render-time so they are always visible in the UI.
+const STATIC_VENDOR_EN = {
+  countdown: "Countdown",
+  dzeast: "DZ East",
+  dzsouth: "DZ South",
+  dzwest: "DZ West"
+};
+
+const STATIC_CACHE_ITEMS = {
+  // Countdown vendor: always show these caches
+  countdown: [
+    { name_en: "Named Item Cache", price: 112, rarity: "named" },
+    { name_en: "Optimization Cache", price: 145, rarity: "highend" },
+    { name_en: "Season Cache", price: 145, rarity: "highend" },
+    { name_en: "Exotic Cache", price: 224, rarity: "exotic" }
+  ],
+  // Dark Zone vendors: exotic cache
+  dzeast: [
+    { name_en: "Exotic Cache", price: 170, rarity: "exotic" }
+  ],
+  dzsouth: [
+    { name_en: "Exotic Cache", price: 170, rarity: "exotic" }
+  ],
+  dzwest: [
+    { name_en: "Exotic Cache", price: 170, rarity: "exotic" }
+  ]
+};
+
+function injectStaticCaches(vendorMap, dateStr) {
+  if (!vendorMap) return;
+
+  for (const [vendorKey, defs] of Object.entries(STATIC_CACHE_ITEMS)) {
+    if (!Array.isArray(defs) || defs.length === 0) continue;
+
+    if (!vendorMap.has(vendorKey)) vendorMap.set(vendorKey, []);
+    const arr = vendorMap.get(vendorKey);
+    // Align with image_create rule:
+    // inject static caches only when the vendor has at least one non-cache item in this week.
+    const hasNonCacheItem = arr.some(it => it && it.category !== "cache");
+    if (!hasNonCacheItem) continue;
+
+    const vendorEn = (arr[0] && arr[0].vendor_en) ? arr[0].vendor_en : (STATIC_VENDOR_EN[vendorKey] || vendorKey);
+
+    const hasCache = (nameKey) => {
+      const nk = String(nameKey || "");
+      return arr.some(it =>
+        it && it.category === "cache" &&
+        (String(it.name_key || "") === nk || normalizeKey(it.name_en) === nk)
+      );
+    };
+
+    // Put injected caches before other items (stable, deterministic)
+    const ordStart = -1000;
+
+    defs.forEach((d, i) => {
+      const nameEn = String(d.name_en || "").trim();
+      if (!nameEn) return;
+
+      const nameKey = normalizeKey(nameEn);
+      if (hasCache(nameKey)) return;
+
+      const priceNum = Number(d.price);
+      const priceRaw = (Number.isFinite(priceNum) ? String(priceNum) : String(d.price ?? "").trim());
+
+      arr.push({
+        item_id: `static-${dateStr}-${vendorKey}-${nameKey}`,
+        date: dateStr,
+        category: "cache",
+        rarity: String(d.rarity || "highend"),
+        vendor_en: vendorEn,
+        vendor_key: vendorKey,
+        name_en: nameEn,
+        name_key: nameKey,
+        brand_en: "",
+        brand_key: "",
+        slot_en: "",
+        slot_key: "",
+        item_ord: ordStart + i,
+        lines: [
+          {
+            ord: 0,
+            line_type: "price",
+            icon_class: "",
+            stat_key: "unit_price",
+            stat_en: "Unit Price",
+            value_num: Number.isFinite(priceNum) ? priceNum : null,
+            value_raw: priceRaw,
+            unit: ""
+          }
+        ]
+      });
+    });
+  }
+}
+
+
+/* ---------------------------
+ * Division2 shop week normalize
+ * ------------------------- */
+function parseLocalYmd(dateStr) {
+  const m = String(dateStr || "").match(/^(\d{4})-(\d{2})-(\d{2})$/);
+  if (!m) return null;
+  const y = Number(m[1]);
+  const mo = Number(m[2]);
+  const d = Number(m[3]);
+  return new Date(y, mo - 1, d); // local
+}
+function formatLocalYmd(dtObj) {
+  const y = dtObj.getFullYear();
+  const m = String(dtObj.getMonth() + 1).padStart(2, "0");
+  const d = String(dtObj.getDate()).padStart(2, "0");
+  return `${y}-${m}-${d}`;
+}
+// Date -> the Tuesday (local) of its shop week
+function normalizeToShopWeekStart(dateStr) {
+  const dtObj = parseLocalYmd(dateStr);
+  if (!dtObj) return dateStr;
+  const day = dtObj.getDay(); // Sun=0 ... Tue=2
+  const TUE = 2;
+  const diff = (day - TUE + 7) % 7; // 0..6
+  const start = new Date(dtObj);
+  start.setDate(dtObj.getDate() - diff);
+  return formatLocalYmd(start);
+}
+
+/* ---------------------------
+ * Common helpers
+ * ------------------------- */
+function normalizeKey(text) {
+  if (text == null) return "";
+  return String(text)
+    .trim()
+    .normalize("NFKD")
+    .replace(/[–—]/g, "-")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "");
+}
+
+function formatDisplayNumber(v) {
+  if (v == null || v === "") return "";
+  const s0 = String(v).trim();
+  if (!s0) return "";
+  if (!/^[-+]?\d+(?:\.\d+)?$/.test(s0)) return s0;
+  // "20.0" -> "20"
+  return s0.replace(/\.0+$/, "");
+}
+
+function sanitizeFileKey(key) {
+  // ファイル名用：ASCII英数と._- 以外は _ に置換
+  return String(key ?? "")
+    .trim()
+    .toLowerCase()
+    .normalize("NFKD")
+    .replace(/[–—]/g, "-")
+    .replace(/[^a-z0-9._-]+/g, "_")
+    .replace(/_+/g, "_")
+    .replace(/^_+|_+$/g, "");
+}
+
+function stripHtml(s) {
+  return String(s ?? "")
+    .replace(/<br\s*\/?>/gi, " ")
+    .replace(/<[^>]*>/g, "")
+    .replace(/\u00a0/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function parseJsonArrayText(text) {
+  const s = String(text || "").trim();
+  if (!s) return [];
+  try {
+    const v = JSON.parse(s);
+    return Array.isArray(v) ? v : [];
+  } catch (e) {
+    return [];
+  }
+}
+
+function parseJsonObjectArrayText(text) {
+  const arr = parseJsonArrayText(text);
+  return arr.filter((x) => x && typeof x === "object");
+}
+
+function parseJsonObjectText(text) {
+  const s = String(text || "").trim();
+  if (!s) return {};
+  try {
+    const v = JSON.parse(s);
+    if (v && typeof v === "object" && !Array.isArray(v)) return v;
+  } catch (e) {
+    // ignore
+  }
+  return {};
+}
+
+function gearSlotKey(itemType) {
+  const k = normalizeKey(itemType || "");
+  if (k === "knee" || k === "knees" || k === "kneepad") return "kneepads";
+  return k;
+}
+
+function brandJoinCandidates(...rawValues) {
+  const out = new Set();
+  const suffixes = new Set([
+    "co", "company", "corp", "corporation", "corporatior",
+    "ltd", "limited", "gmbh", "group", "inc", "llc",
+    "industries", "industry", "defense", "defence", "sa"
+  ]);
+  for (const raw of rawValues) {
+    const s = String(raw || "").trim();
+    if (!s) continue;
+    const n1 = normalizeKey(s);
+    if (n1) out.add(n1);
+    const words = s
+      .normalize("NFKD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .toLowerCase()
+      .replace(/&/g, " and ")
+      .replace(/[^a-z0-9]+/g, " ")
+      .trim()
+      .split(/\s+/)
+      .filter(Boolean);
+    if (!words.length) continue;
+    out.add(words.join(""));
+    const trimmed = words.slice();
+    while (trimmed.length && suffixes.has(trimmed[trimmed.length - 1])) trimmed.pop();
+    if (trimmed.length) out.add(trimmed.join(""));
+  }
+  return Array.from(out);
+}
+
+function trText(text) {
+  const cleaned = stripHtml(text ?? "");
+  if (langSelect.value !== "ja") return cleaned;
+  const key = normalizeKey(cleaned);
+  return i18n[key] ?? cleaned;
+}
+
+function trCategoryText(category, key, fallbackText = "") {
+  const cleaned = String(fallbackText ?? "").replace(/\r/g, "");
+  if (langSelect.value !== "ja") return cleaned;
+  const cat = (i18nCategories && typeof i18nCategories === "object")
+    ? i18nCategories[category]
+    : null;
+  if (!cat || typeof cat !== "object") return cleaned;
+
+  const seed = normalizeKey(key || "");
+  if (!seed) return cleaned;
+
+  const cands = [];
+  const seen = new Set();
+  const add = (k) => {
+    const kk = normalizeKey(k || "");
+    if (!kk || seen.has(kk)) return;
+    seen.add(kk);
+    cands.push(kk);
+  };
+  add(seed);
+  if (i18nAliases && i18nAliases[seed]) add(i18nAliases[seed]);
+  if (typeof talentKeyVariants === "function") {
+    for (const v of talentKeyVariants(seed)) add(v);
+  }
+  for (const k of cands) {
+    if (Object.prototype.hasOwnProperty.call(cat, k)) {
+      return String(cat[k] ?? "").replace(/\r/g, "");
+    }
+  }
+  return cleaned;
+}
+
+function escapeHtml(s) {
+  return String(s ?? "")
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+}
+
+/* ---------------------------
+ * Assets
+ * ------------------------- */
+function assetUrl(assetPath) {
+  if (!assetPath) return "";
+  return assetPath.startsWith("img/") ? appPath(assetPath) : assetPath;
+}
+function assetPath(kind, key) {
+  const k = String(key || "").trim();
+  if (!k) return "";
+  const dict = assetMap && assetMap[kind];
+  if (dict && dict[k]) return dict[k];
+  return "";
+}
+function iconUrl(kind, key, fallbackDir = "") {
+  const p = assetPath(kind, key);
+  if (p) return assetUrl(p);
+  // Talent icons are shared across categories in some data snapshots.
+  // Cross-check both maps so WebUI can resolve either side.
+  if (kind === "talents") {
+    const pAlt = assetPath("weapon_talents", key);
+    if (pAlt) return assetUrl(pAlt);
+  } else if (kind === "weapon_talents") {
+    const pAlt = assetPath("talents", key);
+    if (pAlt) return assetUrl(pAlt);
+  }
+  if (!fallbackDir) return "";
+  const safe = sanitizeFileKey(key);
+  if (!safe) return "";
+  return appPath(`${fallbackDir}/${safe}.png`);
+}
+
+/* ---------------------------
+ * i18n reverse map (JA text -> key)
+ * ------------------------- */
+function buildI18nReverse() {
+  const m = new Map();
+  const dup = new Set();
+  for (const [k, v] of Object.entries(i18n || {})) {
+    const n = normalizeKey(v);
+    if (!n) continue;
+    if (m.has(n)) {
+      dup.add(n);
+    } else {
+      m.set(n, k);
+    }
+  }
+  for (const n of dup) m.delete(n);
+  i18nJaNormToKey = m;
+}
+
+function userTextToKey(text) {
+  const raw = stripHtml(text || "").trim();
+  if (!raw) return "";
+  const norm = normalizeKey(raw);
+
+  // 1) if already a key
+  if (i18n && Object.prototype.hasOwnProperty.call(i18n, norm)) return norm;
+  const ali = i18nAliases[norm];
+  if (ali && i18n && Object.prototype.hasOwnProperty.call(i18n, ali)) return ali;
+
+  // 2) JA label -> key
+  if (langSelect.value === "ja") {
+    const k = i18nJaNormToKey.get(norm);
+    if (k) return k;
+  }
+  // 3) fallback normalize
+  return norm;
+}
+
+/* ---------------------------
+ * Talent fallback variants
+ * ------------------------- */
+// - perfect** <-> perfectly** の揺れのみ相互フォールバック
+// - futureperfect の完全版は futureperfection、逆も相互に試す
+function talentKeyVariants(tKey) {
+  const key = String(tKey || "");
+  const vars = [];
+  if (key === "futureperfection") vars.push("futureperfect");
+  if (key === "futureperfect") vars.push("futureperfection");
+
+  if (key.startsWith("perfectly")) {
+    const base = key.replace(/^perfectly/, "");
+    if (base) {
+      vars.push(`perfect${base}`);
+    }
+  } else if (key.startsWith("perfect")) {
+    const base = key.replace(/^perfect/, "");
+    if (base) {
+      vars.push(`perfectly${base}`);
+    }
+  }
+
+  const seen = new Set([key]);
+  const out = [];
+  for (const v of vars) {
+    if (!v || seen.has(v)) continue;
+    seen.add(v);
+    out.push(v);
+  }
+  return out;
+}
+
+function iconImgHtml(src, cls, alt, fallbackList = []) {
+  const fallbacks = Array.isArray(fallbackList) ? fallbackList.filter(Boolean) : [];
+  const fbAttr = fallbacks.length
+    ? ` data-fallbacks="${escapeHtml(fallbacks.join("|"))}" data-fbi="0"`
+    : "";
+  return `<img class="${escapeHtml(cls)}" src="${escapeHtml(src)}" alt="${escapeHtml(alt)}" loading="lazy"${fbAttr}
+    onerror="(function(img){const fb=img.dataset.fallbacks; if(!fb){img.style.display='none'; return;} const arr=fb.split('|'); const i=Number(img.dataset.fbi||0); if(i < arr.length){img.dataset.fbi=String(i+1); img.src=arr[i];} else {img.style.display='none';}})(this)">`;
+}
+
+function bgIconHtml(src, cls, alt, fallbackList = []) {
+  if (!src) return "";
+  const img = iconImgHtml(src, "card__bgimg", alt, fallbackList);
+  return `<div class="card__bg ${escapeHtml(cls)}">${img}</div>`;
+}
+
+function brandTalentIconHtml(talentKey, fallbackText = "") {
+  const baseKey = sanitizeFileKey(talentKey || normalizeKey(fallbackText || ""));
+  if (!baseKey) return "";
+  const cands = [];
+  const add = (u) => {
+    if (!u) return;
+    if (!cands.includes(u)) cands.push(u);
+  };
+  add(iconUrl("talents", baseKey, "img/talents"));
+  for (const k of talentKeyVariants(baseKey)) {
+    add(iconUrl("talents", k, "img/talents"));
+  }
+  if (!cands.length) return "";
+  return iconImgHtml(cands[0], "ico ico--talent", "talent", cands.slice(1));
+}
+
+/* ---------------------------
+ * DB chunk & fetch
+ * ------------------------- */
+function toMonth(dateStr) {
+  return (dateStr || "").slice(0, 7);
+}
+
+function pickChunkForDate(dateStr) {
+  const m = toMonth(dateStr);
+  if (!indexJson?.chunks?.length) return null;
+  const byMonth = indexJson.chunks.find(c => c.month === m);
+  if (byMonth) return byMonth;
+  return indexJson.chunks.find(c => c.start <= dateStr && dateStr <= c.end) || null;
+}
+
+async function fetchJson(path) {
+  const res = await fetch(path, { cache: "no-store" });
+  if (!res.ok) throw new Error(`fetch failed: ${res.status} ${path}`);
+  return res.json();
+}
+
+async function fetchJsonWithTimeout(path, timeoutMs = 8000) {
+  const ms = Math.max(1, Number(timeoutMs) || 8000);
+  const hasAbort = typeof AbortController !== "undefined";
+  const ctrl = hasAbort ? new AbortController() : null;
+  let timer = null;
+  try {
+    const fetchPromise = fetch(path, hasAbort
+      ? { cache: "no-store", signal: ctrl.signal }
+      : { cache: "no-store" }
+    ).then((res) => {
+      if (!res.ok) throw new Error(`fetch failed: ${res.status} ${path}`);
+      return res.json();
+    });
+
+    const timeoutPromise = new Promise((_, reject) => {
+      timer = setTimeout(() => {
+        try {
+          if (ctrl) ctrl.abort();
+        } catch (e) {
+          // ignore abort errors
+        }
+        reject(new Error(`fetch timeout: ${path}`));
+      }, ms);
+    });
+
+    return await Promise.race([fetchPromise, timeoutPromise]);
+  } finally {
+    if (timer) clearTimeout(timer);
+  }
+}
+
+async function fetchArrayBuffer(path) {
+  const res = await fetch(path, { cache: "no-store" });
+  if (!res.ok) throw new Error(`fetch failed: ${res.status} ${path}`);
+  return res.arrayBuffer();
+}
+
+async function gunzipToUint8Array(gzBuffer) {
+  if ("DecompressionStream" in window) {
+    const ds = new DecompressionStream("gzip");
+    const stream = new Blob([gzBuffer]).stream().pipeThrough(ds);
+    const ab = await new Response(stream).arrayBuffer();
+    return new Uint8Array(ab);
+  }
+  if (window.pako) {
+    return window.pako.ungzip(new Uint8Array(gzBuffer));
+  }
+  throw new Error("gzip decode unavailable. Use a modern browser or add pako.min.js.");
+}
+
+async function initSql() {
+  if (SQL) return SQL;
+  if (typeof initSqlJs !== "function") {
+    throw new Error("sql-wasm.js is not loaded. Place web/sql-wasm.js and web/sql-wasm.wasm.");
+  }
+  SQL = await initSqlJs({
+    locateFile: (file) => appPath(file)
+  });
+  return SQL;
+}
+
+async function loadDescentPoolState() {
+  const fallback = {
+    loaded: true,
+    available: false,
+    cycleMs: 0,
+    anchorUtcMs: 0,
+    entries: []
+  };
+  try {
+    const idx = await fetchJsonWithTimeout(`${DATA_BASE}/descent/index.json?ts=${Date.now()}`, 5000);
+    const dbRel = String(idx?.db_gz || "data/descent/descent_talent_pool_latest.db.gz").trim();
+    const dbPath = appPath(dbRel);
+    const cycleDays = Number(idx?.cycle_days || 3);
+    const cycleMs = cycleDays * 24 * 60 * 60 * 1000;
+    const anchorUtcMs = parseJstDateTimeToUtcMs(String(idx?.anchor_jst || "2026-03-07 09:00:00"));
+    if (!(cycleMs > 0) || !Number.isFinite(anchorUtcMs)) {
+      descentPoolState = fallback;
+      return;
+    }
+
+    const gz = await fetchArrayBuffer(`${dbPath}?ts=${Date.now()}`);
+    const bytes = await gunzipToUint8Array(gz);
+    const sql = await initSql();
+    const db = new sql.Database(bytes);
+    try {
+      const rs = db.exec(
+        "SELECT normalized_cycle_jst, talent_pool FROM descent_talent_pool ORDER BY normalized_cycle_jst ASC, talent_pool ASC"
+      );
+      if (!rs || !rs.length || !Array.isArray(rs[0].values)) {
+        descentPoolState = fallback;
+        return;
+      }
+      const map = new Map();
+      for (const row of rs[0].values) {
+        const cycleJst = String(row[0] || "").trim();
+        const poolName = String(row[1] || "").trim();
+        if (!cycleJst) continue;
+        if (!map.has(cycleJst)) {
+          map.set(cycleJst, { pools: new Set(), talents: [] });
+        }
+        const bucket = map.get(cycleJst);
+        if (poolName) bucket.pools.add(poolName);
+      }
+      const entries = Array.from(map.entries()).map(([cycleJst, bucket]) => ({
+        cycleJst,
+        startUtcMs: parseJstDateTimeToUtcMs(cycleJst),
+        pools: Array.from(bucket.pools || []),
+        talents: Array.isArray(bucket.talents) ? bucket.talents : []
+      })).filter((x) => Number.isFinite(x.startUtcMs));
+      entries.sort((a, b) => a.startUtcMs - b.startUtcMs);
+      descentPoolState = {
+        loaded: true,
+        available: entries.length > 0,
+        cycleMs,
+        anchorUtcMs,
+        entries
+      };
+    } finally {
+      db.close();
+    }
+  } catch (e) {
+    descentPoolState = fallback;
+  }
+}
+
+function clearContent() {
+  contentEl.innerHTML = "";
+}
+
+/* ---------------------------
+ * MOD helpers
+ * ------------------------- */
+function isDashOnlyText(s) {
+  const t = stripHtml(s ?? "");
+  return /^[\-–—]+$/.test(t);
+}
+
+function modKindFromName(nameEn) {
+  const s = String(nameEn || "");
+  const m = s.match(/^(Offensive|Defensive|Utility)\b/i);
+  return m ? (m[1][0].toUpperCase() + m[1].slice(1).toLowerCase()) : "";
+}
+
+function dotClassFromModKind(kind) {
+  const k = String(kind || "").toLowerCase();
+  if (k === "offensive") return "red";
+  if (k === "defensive") return "blue";
+  if (k === "utility") return "yellow";
+  return "";
+}
+
+function computeModCard(item) {
+  const lines0 = Array.isArray(item.lines) ? item.lines.slice() : [];
+
+  const slotFromItem = stripHtml(item.slot_en || "");
+  const hasSlotItem = !!slotFromItem;
+
+  const slotIdx = hasSlotItem ? -1 : lines0.findIndex(l => String(l.line_type || "").toLowerCase() === "slot");
+
+  let title = "MOD";
+  let dotOverride = "";
+  let lines = [];
+  let isSkillMod = false;
+
+  if (hasSlotItem || slotIdx >= 0) {
+    isSkillMod = true;
+    const skillEn = hasSlotItem ? slotFromItem : stripHtml(lines0[slotIdx].stat_en || "");
+    const skillDisp = trText(skillEn);
+    title = (langSelect.value === "ja") ? `${skillDisp}${ui("modSuffix")}` : `${skillDisp}${ui("modSuffix")}`;
+
+    lines = lines0.filter(ln => String(ln.line_type || "").toLowerCase() !== "slot");
+    dotOverride = "";
+
+  } else {
+    const kindEn = modKindFromName(item.name_en || "");
+    const kindDisp = kindEn ? trText(kindEn) : "MOD";
+    title = kindEn
+      ? ((langSelect.value === "ja") ? `${kindDisp}${ui("modSuffix")}` : `${kindDisp}${ui("modSuffix")}`)
+      : "MOD";
+
+    dotOverride = dotClassFromModKind(kindEn);
+    lines = lines0;
+  }
+
+  lines = lines.filter(ln => {
+    const lt = String(ln.line_type || "").toLowerCase();
+    if (lt === "modslot") return false;
+    if (lt === "slot") return false;
+
+    const statText = stripHtml(ln.stat_en || "");
+    if (!statText) return false;
+    if (isDashOnlyText(statText)) return false;
+
+    const v = String(ln.value_raw || "").trim();
+    if (v === "-" || /^[\-–—]+$/.test(v)) return false;
+
+    return true;
+  });
+
+  return { title, lines, dotOverride, isSkillMod };
+}
+
+/* ---------------------------
+ * Item / line rendering
+ * ------------------------- */
+function isNamedItem(item) {
+  return String(item?.rarity || "").toLowerCase().includes("named");
+}
+
+function rarityToClass(rarity) {
+  const r = String(rarity || "").toLowerCase();
+  if (r.includes("named")) return "named";
+  if (r.includes("gearset")) return "gearset";
+  if (r.includes("highend")) return "highend";
+  if (r.includes("exotic")) return "exotic";
+  if (r.includes("offensive")) return "offensive";
+  if (r.includes("defensive")) return "defensive";
+  if (r.includes("utility")) return "utility";
+  return "highend";
+}
+
+function dotColorFromIconClass(iconClass) {
+  const c = (iconClass || "").toLowerCase();
+  if (c.includes("offensive")) return "red";
+  if (c.includes("defensive")) return "blue";
+  if (c.includes("utility")) return "yellow";
+  return "gray";
+}
+
+function getGraphMaxValue(item, ln) {
+  const statKey = String(ln.stat_key || "").trim();
+  if (!statKey) return 0;
+
+  const matchException = (ex, nameKey, valueNum) => {
+    if (!ex || typeof ex !== "object") return false;
+    if ("name_key" in ex && normalizeKey(String(ex.name_key || "")) !== normalizeKey(String(nameKey || ""))) return false;
+    if ("value_num_eq" in ex) {
+      if (!Number.isFinite(valueNum)) return false;
+      if (Number(valueNum) !== Number(ex.value_num_eq)) return false;
+    }
+    return true;
+  };
+
+  const maxFromCfg = (cfg, itemNameKey, valueNum) => {
+    if (cfg == null) return 0;
+    if (typeof cfg === "number") return Number(cfg) || 0;
+    if (typeof cfg === "object") {
+      const exs = Array.isArray(cfg.exceptions) ? cfg.exceptions : [];
+      for (const ex of exs) {
+        if (matchException(ex, itemNameKey, valueNum) && ex.max_value_num != null) {
+          return Number(ex.max_value_num) || 0;
+        }
+      }
+      return Number(cfg.max_value_num ?? 0) || 0;
+    }
+    return 0;
+  };
+
+  // gear: { stat_key: max }
+  if (item.category === "gear") {
+    return maxFromCfg(graphConfig?.gear?.[statKey] ?? 0, item.name_key, ln.value_num);
+  }
+
+  // weapon: { weapon_type: { stat_key: max }, default: { stat_key: max } }
+  if (item.category === "weapon") {
+    const w = String(item.slot_key || "").trim();
+    return maxFromCfg(
+      graphConfig?.weapon?.[w]?.[statKey] ??
+      graphConfig?.weapon?.default?.[statKey] ??
+      graphConfig?.weapon_default?.[statKey] ?? // backward compat
+      0,
+      item.name_key,
+      ln.value_num
+    );
+  }
+
+  // mod: { gear:{}, skill:{skill_key:{}}, skill_default:{} }
+  if (item.category === "mod") {
+    const skill = String(item.slot_key || "").trim();
+    if (skill) {
+      return maxFromCfg(
+        graphConfig?.mod?.skill?.[skill]?.[statKey] ??
+        graphConfig?.mod?.skill_default?.[statKey] ??
+        graphConfig?.mod?.gear?.[statKey] ??
+        0,
+        item.name_key,
+        ln.value_num
+      );
+    }
+    return maxFromCfg(graphConfig?.mod?.gear?.[statKey] ?? 0, item.name_key, ln.value_num);
+  }
+
+  return 0;
+}
+
+function renderLine(item, ln, colorOverride = "") {
+  const lt = String(ln.line_type || "").toLowerCase();
+  if (lt === "modslot" || lt === "slot") return "";
+
+  const iconClass = ln.icon_class || "";
+  const statEn = stripHtml(ln.stat_en || "");
+  if (!statEn) return "";
+  if (/^[\-–—]+$/.test(statEn)) return "";
+
+  const statKey = String(ln.stat_key || normalizeKey(statEn));
+  if (!statLabelEnByKey.has(statKey)) statLabelEnByKey.set(statKey, statEn);
+
+  const stat = (langSelect.value === "ja")
+    ? (i18n[statKey] ?? i18n[normalizeKey(statKey)] ?? statEn)
+    : statEn;
+
+  const unit = String(ln.unit || "");
+  const valueNum = Number.isFinite(ln.value_num) ? ln.value_num : null;
+  const valueRaw = String(ln.value_raw || "").trim();
+  if (valueNum === null && (valueRaw === "-" || /^[\-–—]+$/.test(valueRaw))) return "";
+  let valueText = "";
+  if (valueNum !== null) {
+    const numStr = formatDisplayNumber(valueNum);
+    valueText = `${numStr}${unit}`;
+  }
+
+  const valuePart = valueText ? (item.category === "cache" ? `${valueText}` : `+${valueText}`) : "";
+  const text = valuePart ? `${valuePart} ${stat}` : `${stat}`;
+  if (!text.trim() || /^[\-–—]+$/.test(text.trim())) return "";
+
+  const colorClass = colorOverride ? colorOverride : dotColorFromIconClass(iconClass);
+  const perfectItem = (() => {
+    const byCat = graphConfig?.perfect?.items_by_category;
+    if (!byCat || typeof byCat !== "object") return null;
+    const nk = normalizeKey(String(item.name_key || ""));
+    const cat = String(item.category || "");
+    const items = Array.isArray(byCat[cat]) ? byCat[cat] : [];
+    for (const it of items) {
+      if (!it || typeof it !== "object") continue;
+      if (normalizeKey(String(it.name_key || "")) !== nk) continue;
+      return it;
+    }
+    return null;
+  })();
+
+  const isPerfectTalent =
+    (lt === "talent") &&
+    isNamedItem(item) &&
+    !!(perfectItem && perfectItem.perfect_talent_key && String(perfectItem.perfect_talent_key) === String(statKey));
+
+  const isPerfectAttr = (() => {
+    if (!isNamedItem(item)) return false;
+    if (!(lt === "core" || lt === "attr")) return false;
+    if (!perfectItem || !Array.isArray(perfectItem.attrs)) return false;
+    const vnum = Number.isFinite(ln.value_num) ? ln.value_num : null;
+    for (const ex of perfectItem.attrs) {
+      if (!ex || typeof ex !== "object") continue;
+      if (String(ex.stat_key || "") !== String(statKey)) continue;
+      if (String(ex.unit || "") !== String(unit)) continue;
+      if (vnum == null) continue;
+      if (Number(vnum) !== Number(ex.max_value_num)) continue;
+      return true;
+    }
+    return false;
+  })();
+
+  // talent icon（Perfect系は通常版へフォールバック）
+  let talentIconHtml = "";
+  if (lt === "talent") {
+    const baseKey = sanitizeFileKey(statKey || normalizeKey(statEn));
+    const variants = talentKeyVariants(baseKey);
+    const isWeapon = item.category === "weapon";
+    const primaryKind = isWeapon ? "weapon_talents" : "talents";
+    const fallbackKind = isWeapon ? "talents" : "weapon_talents";
+
+    const primary = iconUrl(primaryKind, baseKey, isWeapon ? "img/weapon_talents" : "img/talents");
+    const fallbacks = [];
+
+    for (const k of variants) {
+      const p = iconUrl(primaryKind, k, isWeapon ? "img/weapon_talents" : "img/talents");
+      if (p) fallbacks.push(p);
+    }
+
+    const fbSameKey = iconUrl(fallbackKind, baseKey, isWeapon ? "img/talents" : "img/weapon_talents");
+    if (fbSameKey) fallbacks.push(fbSameKey);
+    for (const k of variants) {
+      const p = iconUrl(fallbackKind, k, isWeapon ? "img/talents" : "img/weapon_talents");
+      if (p) fallbacks.push(p);
+    }
+
+    // uniq
+    const uniq = [];
+    const seen = new Set();
+    for (const u of fallbacks) { if (!seen.has(u)) { seen.add(u); uniq.push(u); } }
+
+    talentIconHtml = primary ? iconImgHtml(primary, "ico ico--talent", "talent", uniq) : "";
+  }
+
+  // gauge（未定義は 0%）
+  let gaugeHtml = "";
+  const vnum = (ln.value_num != null && ln.value_num !== "") ? Number(ln.value_num) : null;
+  if (vnum != null && !Number.isNaN(vnum) && lt !== "talent" && item.category !== "cache") {
+    const maxv = getGraphMaxValue(item, ln);
+    const pct = (maxv > 0) ? Math.max(0, Math.min(100, (vnum / maxv) * 100)) : 0;
+    gaugeHtml = `
+      <div class="gauge" title="${pct.toFixed(1)}%">
+        <div class="gauge__fill" style="width:${pct.toFixed(1)}%"></div>
+      </div>
+    `;
+  }
+
+  const perfectClass = (isPerfectTalent || isPerfectAttr) ? " line--perfect" : "";
+  const lineClass = `line line--${colorClass} line--${lt}${perfectClass}`;
+  const hitClass = activeFilterKeys.includes(statKey) ? " is-filter-hit" : "";
+
+  return `
+    <div class="${lineClass}${hitClass}" data-stat-key="${escapeHtml(statKey)}" data-line-type="${escapeHtml(lt)}">
+      ${talentIconHtml}
+      <div class="line__body">
+        <div class="line__text">${escapeHtml(text)}</div>
+        ${gaugeHtml}
+      </div>
+    </div>
+  `;
+}
+
+function sortLinesForDisplay(lines) {
+  // 要望：attr の下に talent（core/attr → talent）
+  const typeOrder = { price: -1, core: 0, attr: 1, talent: 2, modslot: 9, slot: 9 };
+  return (lines || []).slice().sort((a, b) => {
+    const oa = typeOrder[String(a.line_type || "").toLowerCase()] ?? 9;
+    const ob = typeOrder[String(b.line_type || "").toLowerCase()] ?? 9;
+    if (oa !== ob) return oa - ob;
+    return (a.ord ?? 0) - (b.ord ?? 0);
+  });
+}
+
+function buildCardHead(item, modCard = null) {
+  const lang = langSelect.value;
+
+  if (item.category === "gear") {
+    const brandEn = item.brand_en || "";
+    const slotEn = item.slot_en || "";
+
+    const brand = (lang === "ja") ? (i18n[item.brand_key] ?? trText(brandEn)) : brandEn;
+    const slot = (lang === "ja") ? (i18n[item.slot_key] ?? trText(slotEn)) : slotEn;
+
+    let name = "";
+    if (isNamedItem(item)) {
+      const nameEn = item.name_en || "";
+      const d = (lang === "ja") ? trText(nameEn) : nameEn;
+      if (d && d !== slot) name = d;
+    }
+
+    const title1 = brand;
+    const title2 = name ? `${slot} / ${name}` : `${slot}`;
+    const title2Parts = name ? { slot, name } : null;
+
+    return {
+      title1,
+      title2,
+      title2Parts,
+      titleClass: isNamedItem(item) ? " is-named" : ""
+    };
+  }
+
+  if (item.category === "weapon") {
+    const nameEn = item.name_en || "";
+    const title1 = (lang === "ja") ? trText(nameEn) : nameEn;
+
+    const typeEn = item.slot_en || item.slot_key || "";
+    const typeDisp = (lang === "ja")
+      ? (i18n[item.slot_key] ?? trText(typeEn))
+      : (stripHtml(typeEn) || item.slot_key || "");
+
+    return { title1, title2: typeDisp, titleClass: isNamedItem(item) ? " is-named" : "" };
+  }
+
+  if (item.category === "mod" && modCard) {
+    return { title1: modCard.title, title2: "", titleClass: "" };
+  }
+
+  const nameEn = item.name_en || "";
+  const title1 = (lang === "ja") ? trText(nameEn) : nameEn;
+  return { title1, title2: "", titleClass: "" };
+}
+
+function buildCardBg(item, modCard = null) {
+  // gear: brand (TR), slot (BR)
+  if (item.category === "gear") {
+    const bKey = item.brand_key || normalizeKey(item.brand_en);
+    const sKey = item.slot_key || normalizeKey(item.slot_en);
+
+    const brandIcon = iconUrl("brands", bKey, "img/brands");
+    const slotIcon = iconUrl("gear_slots", sKey, "img/gears");
+
+    return [
+      bgIconHtml(brandIcon, "card__bg--tr", "brand"),
+      bgIconHtml(slotIcon, "card__bg--br", "slot")
+    ].join("");
+  }
+
+  // weapon: weapon type (TR)
+  if (item.category === "weapon") {
+    const wKey = item.slot_key || normalizeKey(item.slot_en);
+    const wIcon = iconUrl("weapon_types", wKey, "img/weapons");
+    return bgIconHtml(wIcon, "card__bg--tr", "weapon");
+  }
+
+  // mod: skill mod / gear mod icons (top-right)
+  if (item.category === "mod" && modCard) {
+    const p = modCard.isSkillMod ? appPath("img/gears/skillmod.png") : appPath("img/gears/gearmod.png");
+    return bgIconHtml(p, "card__bg--tr", "mod");
+  }
+
+  return "";
+}
+
+function buildCardSearch(item, lines, head) {
+  const toks = [];
+  const push = (s) => {
+    const n = normalizeKey(stripHtml(s ?? ""));
+    if (n) toks.push(n);
+  };
+
+  // item basics
+  push(item.category);
+  push(item.rarity);
+
+  // vendor / brand / slot / name (key + EN + JA label)
+  push(item.vendor_key);
+  push(item.vendor_en);
+  push(i18n[item.vendor_key] || "");
+
+  push(item.brand_key);
+  push(item.brand_en);
+  push(i18n[item.brand_key] || "");
+
+  push(item.slot_key);
+  push(item.slot_en);
+  push(i18n[item.slot_key] || "");
+
+  push(item.name_key);
+  push(item.name_en);
+  push(i18n[item.name_key] || "");
+
+  // rendered titles (in current language)
+  if (head) {
+    push(head.title1 || "");
+    push(head.title2 || "");
+  }
+
+  // lines (stat key + EN + JA)
+  for (const ln of (lines || [])) {
+    push(ln.stat_key || "");
+    push(ln.stat_en || "");
+    if (ln.stat_key && i18n[ln.stat_key]) push(i18n[ln.stat_key]);
+  }
+  return toks.join(" ");
+}
+
+function renderCard(item) {
+  let lines = item.lines || [];
+  let colorOverride = "";
+  let modCard = null;
+
+  if (item.category === "mod") {
+    modCard = computeModCard(item);
+    lines = modCard.lines;
+    colorOverride = modCard.dotOverride;
+  }
+
+  const head = buildCardHead(item, modCard);
+  const vendorTitle = (langSelect.value === "ja")
+    ? (i18n[item.vendor_key] ?? item.vendor_en ?? item.vendor_key ?? "")
+    : (item.vendor_en ?? item.vendor_key ?? "");
+  const rarityClass = rarityToClass(item.rarity);
+  const bg = buildCardBg(item, modCard);
+
+  lines = sortLinesForDisplay(lines);
+
+  const linesHtml = lines
+    .map(ln => renderLine(item, ln, colorOverride))
+    .filter(Boolean)
+    .join("");
+
+  // key list for filters
+  const keys = Array.from(new Set(lines.map(ln => String(ln.stat_key || "").trim()).filter(Boolean))).join(" ");
+
+  // For partial-match filtering
+  const search = buildCardSearch(item, lines, head);
+
+  const namedClass = head.titleClass || "";
+  let title2Html = "";
+  if (head.title2Parts && head.title2Parts.name) {
+    title2Html = `
+      <div class="card__subtitle">
+        <span class="card__subtitle-text">${escapeHtml(head.title2Parts.slot)}</span>
+        <span class="card__subtitle-sep">/</span>
+        <span class="card__subtitle-name is-named">${escapeHtml(head.title2Parts.name)}</span>
+      </div>
+    `;
+  } else if (head.title2) {
+    title2Html = `<div class="card__subtitle"><span class="card__subtitle-text">${escapeHtml(head.title2)}</span></div>`;
+  }
+
+  return `
+    <div class="card rarity-${escapeHtml(rarityClass)} cat-${escapeHtml(item.category)}" data-item-id="${escapeHtml(item.item_id)}" data-keys="${escapeHtml(keys)}" data-search="${escapeHtml(search)}" data-vendor="${escapeHtml(vendorTitle)}">
+      ${bg}
+      <div class="card__head">
+        <div class="card__title-wrap">
+          <div class="card__titles">
+            <div class="card__title${namedClass}"><span class="card__title-text">${escapeHtml(head.title1 || "")}</span></div>
+            ${title2Html}
+          </div>
+        </div>
+      </div>
+      <div class="lines">${linesHtml}</div>
+    </div>
+  `;
+}
+
+/* ---------------------------
+ * Render vendors
+ * ------------------------- */
+function sortItemsStable(arr) {
+  const a2 = Array.from(arr || []);
+  return a2.sort((x, y) => {
+    const ox = Number.isFinite(x.item_ord) ? x.item_ord : null;
+    const oy = Number.isFinite(y.item_ord) ? y.item_ord : null;
+    if (ox != null && oy != null && ox !== oy) return ox - oy;
+    if (ox != null && oy == null) return -1;
+    if (ox == null && oy != null) return 1;
+
+    const sx = `${x.slot_key || ""}|${x.brand_key || ""}|${x.name_en || ""}`.toLowerCase();
+    const sy = `${y.slot_key || ""}|${y.brand_key || ""}|${y.name_en || ""}`.toLowerCase();
+    return sx.localeCompare(sy);
+  });
+}
+
+function vendorOrderIndex(vkey) {
+  const legacy = (vkey === "thecastle") ? "castle" : vkey;
+  const i = VENDOR_ORDER.indexOf(legacy);
+  return (i === -1) ? 9999 : i;
+}
+
+function sortItemsByVendorAndOrd(arr) {
+  const a2 = Array.from(arr || []);
+  return a2.sort((x, y) => {
+    const ia = vendorOrderIndex(x.vendor_key);
+    const ib = vendorOrderIndex(y.vendor_key);
+    if (ia !== ib) return ia - ib;
+
+    const ox = Number.isFinite(x.item_ord) ? x.item_ord : null;
+    const oy = Number.isFinite(y.item_ord) ? y.item_ord : null;
+    if (ox != null && oy != null && ox !== oy) return ox - oy;
+    if (ox != null && oy == null) return -1;
+    if (ox == null && oy != null) return 1;
+
+    const sx = `${x.slot_key || ""}|${x.brand_key || ""}|${x.name_en || ""}`.toLowerCase();
+    const sy = `${y.slot_key || ""}|${y.brand_key || ""}|${y.name_en || ""}`.toLowerCase();
+    return sx.localeCompare(sy);
+  });
+}
+
+function renderOnlySelectedView() {
+  clearContent();
+
+  const selectedItems = (lastItems || []).filter(it => selectedIds.has(it.item_id));
+  if (!selectedItems.length) return;
+
+  const catOrder = ["gear", "weapon", "mod", "cache"];
+  for (const cat of catOrder) {
+    const items = sortItemsByVendorAndOrd(selectedItems.filter(x => x.category === cat));
+    if (!items.length) continue;
+
+    const label = (cat === "gear") ? ui("catGear")
+      : (cat === "weapon") ? ui("catWeapon")
+      : (cat === "mod") ? ui("catMod")
+      : ui("catCache");
+
+    const section = document.createElement("section");
+    section.className = `catgroup catgroup--${cat}`;
+    section.innerHTML = `
+      <div class="catgroup__title">${escapeHtml(label)}</div>
+      <div class="grid grid--${escapeHtml(cat)}"></div>
+    `;
+
+    const grid = section.querySelector(".grid");
+    for (const item of items) {
+      const wrapper = document.createElement("div");
+      wrapper.innerHTML = renderCard(item);
+      grid.appendChild(wrapper.firstElementChild);
+    }
+
+    contentEl.appendChild(section);
+  }
+
+  syncCardSelectionClasses();
+  applyFiltersToDom();
+}
+
+function updateViewMode() {
+  if (currentViewMode === "brand") {
+    // Brand view stays in-place; selection filtering is handled by applyFiltersToDom().
+    return;
+  }
+  if (currentViewMode !== "vendor") return;
+  if (onlySelected) {
+    renderOnlySelectedView();
+  } else if (lastVendorMap) {
+    renderVendors(lastVendorMap);
+  }
+}
+
+function renderVendors(vendorMap) {
+  clearContent();
+
+  const vendors = Array.from(vendorMap.keys()).sort((a, b) => {
+    const ia = vendorOrderIndex(a);
+    const ib = vendorOrderIndex(b);
+    if (ia === 9999 && ib === 9999) return a.localeCompare(b);
+    if (ia === 9999) return 1;
+    if (ib === 9999) return -1;
+    return ia - ib;
+  });
+
+  if (vendors.length === 0) {
+    contentEl.innerHTML = `<div class="status">${escapeHtml(ui("noData"))}</div>`;
+    return;
+  }
+
+  const catOrder = ["gear", "weapon", "mod", "cache"];
+
+  for (const vendorKey of vendors) {
+    const itemsAll = vendorMap.get(vendorKey) || [];
+    const vendorEn = (itemsAll[0] && itemsAll[0].vendor_en) ? itemsAll[0].vendor_en : vendorKey;
+
+    const vendorTitle = (langSelect.value === "ja")
+      ? (i18n[vendorKey] ?? vendorEn)
+      : vendorEn;
+
+    const groups = {
+      gear: sortItemsStable(itemsAll.filter(x => x.category === "gear")),
+      weapon: sortItemsStable(itemsAll.filter(x => x.category === "weapon")),
+      mod: sortItemsStable(itemsAll.filter(x => x.category === "mod")),
+      cache: sortItemsStable(itemsAll.filter(x => x.category === "cache"))
+    };
+
+    const section = document.createElement("section");
+    section.className = "vendor";
+    section.innerHTML = `
+      <h3 class="vendor__title"><span>${escapeHtml(vendorTitle)}</span></h3>
+      <div class="vendor__groups">
+        ${catOrder.map(cat => {
+          const cnt = groups[cat].length;
+          if (!cnt) return "";
+          const label = (cat === "gear") ? ui("catGear") : (cat === "weapon") ? ui("catWeapon") : (cat === "mod") ? ui("catMod") : ui("catCache");
+          return `
+            <div class="catgroup catgroup--${escapeHtml(cat)}">
+              <div class="catgroup__title">${escapeHtml(label)}</div>
+              <div class="grid grid--${escapeHtml(cat)}"></div>
+            </div>
+          `;
+        }).join("")}
+      </div>
+    `;
+
+    for (const cat of catOrder) {
+      const grid = section.querySelector(`.grid--${cat}`);
+      if (!grid) continue;
+
+      for (const item of groups[cat]) {
+        const wrapper = document.createElement("div");
+        wrapper.innerHTML = renderCard(item);
+        grid.appendChild(wrapper.firstElementChild);
+      }
+    }
+
+    contentEl.appendChild(section);
+  }
+
+  // After render, apply selection state & filters
+  syncCardSelectionClasses();
+  applyFiltersToDom();
+}
+
+/* ---------------------------
+ * Selection / filtering (DOM)
+ * ------------------------- */
+function syncCardSelectionClasses() {
+  document.querySelectorAll("[data-item-id][data-search]").forEach(card => {
+    const id = card.dataset.itemId;
+    if (selectedIds.has(id)) card.classList.add("is-selected");
+    else card.classList.remove("is-selected");
+  });
+}
+
+function cardHasKeys(card, terms) {
+  const hay = String(card.dataset.search || "");
+  if (!terms.length) return true;
+  if (!hay) return false;
+
+  const t = terms
+    .map(s => normalizeKey(stripHtml(s ?? "")))
+    .filter(Boolean);
+
+  if (!t.length) return true;
+
+  if (filterMode === "or") {
+    return t.some(x => hay.includes(x));
+  }
+  return t.every(x => hay.includes(x));
+}
+
+
+function applyFiltersToDom() {
+  if (currentViewMode === "brand") {
+    // Brand view: allow both text filters and selected-only mode.
+    if (onlySelectedBtn) onlySelectedBtn.classList.toggle("is-on", onlySelected);
+  }
+  if (currentViewMode === "trello" || currentViewMode === "patches") {
+    document.body.classList.remove("only-selected");
+    if (typeof window.trelloViewApplyFilters === "function") {
+      window.trelloViewApplyFilters();
+    }
+    if (onlySelectedBtn) {
+      onlySelectedBtn.classList.remove("is-on");
+    }
+    return;
+  }
+
+  const keys = activeFilterKeys.slice();
+
+  document.body.classList.toggle("only-selected", onlySelected);
+
+  document.querySelectorAll("[data-item-id][data-search]").forEach(card => {
+    const id = card.dataset.itemId;
+    const okSel = (!onlySelected) || selectedIds.has(id);
+    const okKeys = cardHasKeys(card, keys);
+    card.style.display = (okSel && okKeys) ? "" : "none";
+  });
+
+  // line highlight
+  document.querySelectorAll(".line[data-stat-key]").forEach(line => {
+    const k = line.dataset.statKey;
+    if (activeFilterKeys.includes(k)) line.classList.add("is-filter-hit");
+    else line.classList.remove("is-filter-hit");
+  });
+
+  // toggle button ui
+  if (onlySelectedBtn) {
+    onlySelectedBtn.classList.toggle("is-on", onlySelected);
+  }
+  // Hide empty category blocks / vendors when no cards match
+  document.querySelectorAll(".catgroup").forEach(group => {
+    if (String(group.getAttribute("data-keep-visible") || "") === "1") {
+      group.style.display = "";
+      return;
+    }
+    const any = Array.from(group.querySelectorAll("[data-item-id][data-search]"))
+      .some(c => c.style.display !== "none");
+    group.style.display = any ? "" : "none";
+  });
+
+  document.querySelectorAll(".vendor").forEach(v => {
+    const any = Array.from(v.querySelectorAll("[data-item-id][data-search]"))
+      .some(c => c.style.display !== "none");
+    v.style.display = any ? "" : "none";
+  });
+
+}
+
+function keyToLabel(key) {
+  const lang = langSelect.value;
+  if (lang === "ja") return i18n[key] ?? statLabelEnByKey.get(key) ?? key;
+  return statLabelEnByKey.get(key) ?? key;
+}
+
+function renderChips() {
+  if (!chipsEl) return;
+  const keys = activeFilterKeys.slice();
+  if (!keys.length) {
+    chipsEl.innerHTML = "";
+    return;
+  }
+  chipsEl.innerHTML = keys.map(k => {
+    const text = keyToLabel(k);
+    return `
+      <div class="chip" data-key="${escapeHtml(k)}">
+        <span class="chip__text">${escapeHtml(text)}</span>
+        <span class="chip__x" role="button" aria-label="remove" title="remove">×</span>
+      </div>
+    `;
+  }).join("");
+}
+
+function addFilterKey(key) {
+  const k = String(key || "").trim();
+  if (!k) return;
+  if (!activeFilterKeys.includes(k)) activeFilterKeys = activeFilterKeys.concat([k]);
+  renderChips();
+  applyFiltersToDom();
+}
+
+function removeFilterKey(key) {
+  const k = String(key || "").trim();
+  if (!k) return;
+  activeFilterKeys = activeFilterKeys.filter(x => x !== k);
+  renderChips();
+  applyFiltersToDom();
+}
+
+function toggleFilterKey(key) {
+  const k = String(key || "").trim();
+  if (!k) return;
+  if (activeFilterKeys.includes(k)) removeFilterKey(k);
+  else addFilterKey(k);
+}
+
+function clearFilters() {
+  activeFilterKeys = [];
+  renderChips();
+  applyFiltersToDom();
+}
+
+function clearSelection() {
+  selectedIds.clear();
+  onlySelected = false;
+  syncCardSelectionClasses();
+  applyFiltersToDom();
+}
+
+function normalizeRuleValue(value) {
+  if (value == null) return "";
+  return normalizeKey(String(value));
+}
+
+function normalizeRuleValueList(value) {
+  if (Array.isArray(value)) return value.map(v => normalizeRuleValue(v)).filter(Boolean);
+  const one = normalizeRuleValue(value);
+  return one ? [one] : [];
+}
+
+function getItemStatKeys(item) {
+  const lines = Array.isArray(item?.lines) ? item.lines : [];
+  const keys = [];
+  for (const ln of lines) {
+    const lt = normalizeRuleValue(ln?.line_type);
+    if (!(lt === "core" || lt === "attr" || lt === "talent" || lt === "price")) continue;
+    const k = normalizeRuleValue(ln?.stat_key || ln?.stat_en);
+    if (k) keys.push(k);
+  }
+  return keys;
+}
+
+function getItemAttrStatKeys(item) {
+  const lines = Array.isArray(item?.lines) ? item.lines : [];
+  const keys = [];
+  for (const ln of lines) {
+    const lt = normalizeRuleValue(ln?.line_type);
+    if (lt !== "attr") continue;
+    const k = normalizeRuleValue(ln?.stat_key || ln?.stat_en);
+    if (k) keys.push(k);
+  }
+  return keys;
+}
+
+function getItemAttrStatKeyByIndex(item, index1) {
+  const idx = Number(index1);
+  if (!Number.isFinite(idx) || idx < 1) return "";
+  const attrs = (Array.isArray(item?.lines) ? item.lines : [])
+    .filter(ln => normalizeRuleValue(ln?.line_type) === "attr")
+    .sort((a, b) => Number(a?.ord || 0) - Number(b?.ord || 0));
+  const ln = attrs[idx - 1];
+  if (!ln) return "";
+  return normalizeRuleValue(ln.stat_key || ln.stat_en);
+}
+
+function evalRuleLeaf(item, node) {
+  const field = String(node?.field || "");
+  const op = String(node?.op || "");
+  const value = node?.value;
+  if (!field || !op) return false;
+
+  if (field === "attr_at") {
+    if (op !== "eq") return false;
+    const idx = value && typeof value === "object" ? value.index : null;
+    const statKey = value && typeof value === "object" ? value.stat_key : null;
+    const actual = getItemAttrStatKeyByIndex(item, idx);
+    const expected = normalizeRuleValue(statKey);
+    return !!actual && !!expected && actual === expected;
+  }
+
+  if (field === "stat_keys") {
+    const actualList = getItemStatKeys(item);
+    const actualSet = new Set(actualList);
+    const expectedList = normalizeRuleValueList(value);
+    if (!expectedList.length) return false;
+    if (op === "has_any") return expectedList.some(v => actualSet.has(v));
+    if (op === "has_all") return expectedList.every(v => actualSet.has(v));
+    if (op === "has_only") {
+      if (!actualSet.size) return false;
+      return Array.from(actualSet).every(v => expectedList.includes(v));
+    }
+    return false;
+  }
+
+  if (field === "attr_stat_keys") {
+    const actualList = getItemAttrStatKeys(item);
+    const actualSet = new Set(actualList);
+    const expectedList = normalizeRuleValueList(value);
+    if (!expectedList.length) return false;
+    if (op === "has_any") return expectedList.some(v => actualSet.has(v));
+    if (op === "has_all") return expectedList.every(v => actualSet.has(v));
+    if (op === "has_only") {
+      if (!actualSet.size) return false;
+      return Array.from(actualSet).every(v => expectedList.includes(v));
+    }
+    return false;
+  }
+
+  if (field === "has_talent") {
+    if (op !== "eq") return false;
+    const lines = Array.isArray(item?.lines) ? item.lines : [];
+    const hasTalent = lines.some(ln => normalizeRuleValue(ln?.line_type) === "talent");
+    return Boolean(hasTalent) === Boolean(value);
+  }
+
+  if (field === "is_named") {
+    if (op !== "eq") return false;
+    return Boolean(isNamedItem(item)) === Boolean(value);
+  }
+
+  const actualMap = {
+    target: normalizeRuleValue(item?.category),
+    category: normalizeRuleValue(item?.category),
+    vendor_key: normalizeRuleValue(item?.vendor_key),
+    brand_key: normalizeRuleValue(item?.brand_key),
+    slot_key: normalizeRuleValue(item?.slot_key),
+    rarity: normalizeRuleValue(item?.rarity),
+    name_key: normalizeRuleValue(item?.name_key)
+  };
+
+  const actual = actualMap[field];
+  if (actual == null) return false;
+  if (op === "eq") return !!actual && actual === normalizeRuleValue(value);
+  if (op === "in") {
+    const list = normalizeRuleValueList(value);
+    return !!actual && list.includes(actual);
+  }
+  return false;
+}
+
+function evalRuleNode(item, node) {
+  if (!node || typeof node !== "object") return false;
+  const hasAll = Array.isArray(node.all);
+  const hasAny = Array.isArray(node.any);
+  if (hasAll || hasAny) {
+    const allOk = hasAll ? node.all.every(child => evalRuleNode(item, child)) : true;
+    const anyOk = hasAny ? node.any.some(child => evalRuleNode(item, child)) : true;
+    return allOk && anyOk;
+  }
+  return evalRuleLeaf(item, node);
+}
+
+function itemMatchesRecommendationRule(item, rule) {
+  if (!item || !rule || typeof rule !== "object") return false;
+  if (rule.enabled === false) return false;
+  const target = normalizeRuleValue(rule.target);
+  if (target) {
+    const cat = normalizeRuleValue(item?.category);
+    if (!cat || cat !== target) return false;
+  }
+  return evalRuleNode(item, rule);
+}
+
+function collectRecommendedItemIds(items) {
+  const rules = Array.isArray(vendorRecommendations?.rules) ? vendorRecommendations.rules : [];
+  if (!rules.length) return [];
+  const ids = [];
+  for (const item of (items || [])) {
+    if (!item?.item_id) continue;
+    const hit = rules.some(rule => itemMatchesRecommendationRule(item, rule));
+    if (hit) ids.push(item.item_id);
+  }
+  return ids;
+}
+
+function applyVendorRecommendedSelection(options = {}) {
+  const preserveSelection = !!options.preserveSelection;
+  const force = !!options.force;
+  if (currentViewMode !== "vendor") return 0;
+  if (preserveSelection && !force) return 0;
+  if (!force && vendorRecommendations?.auto_select_on_load === false) return 0;
+
+  const ids = collectRecommendedItemIds(lastItems || []);
+  selectedIds.clear();
+  for (const id of ids) selectedIds.add(id);
+  syncCardSelectionClasses();
+  applyFiltersToDom();
+  return ids.length;
+}
+
+window.vendorApplyRecommendations = function vendorApplyRecommendations(items, options = {}) {
+  if (Array.isArray(items)) lastItems = items;
+  return applyVendorRecommendedSelection(options);
+};
+
+function toggleCardSelection(cardEl) {
+  const id = cardEl?.dataset?.itemId;
+  if (!id) return;
+  if (selectedIds.has(id)) {
+    selectedIds.delete(id);
+    cardEl.classList.remove("is-selected");
+  } else {
+    selectedIds.add(id);
+    cardEl.classList.add("is-selected");
+  }
+  applyFiltersToDom();
+}
+
+/* ---------------------------
+ * Main loader
+ * ------------------------- */
+async function loadWeek(userDateStr, options = {}) {
+  if (currentViewMode !== "vendor") return;
+  if (typeof window.vendorViewLoadWeek !== "function") {
+    throw new Error("vendorViewLoadWeek is not available");
+  }
+  await window.vendorViewLoadWeek(userDateStr, options);
+}
+
+async function renderTrelloView() {
+  if (typeof window.trelloViewRender !== "function") {
+    throw new Error("trelloViewRender is not available");
+  }
+  await window.trelloViewRender();
+  syncDescToggleStateFromDom();
+}
+
+async function renderBrandView() {
+  if (typeof window.brandViewRender !== "function") {
+    throw new Error("brandViewRender is not available");
+  }
+  await window.brandViewRender();
+}
+
+async function renderGearsetView() {
+  if (typeof window.gearsetViewRender !== "function") {
+    throw new Error("gearsetViewRender is not available");
+  }
+  await window.gearsetViewRender();
+}
+
+async function renderExoticGearView() {
+  if (typeof window.exoticGearViewRender !== "function") {
+    throw new Error("exoticGearViewRender is not available");
+  }
+  await window.exoticGearViewRender();
+}
+
+async function renderWeaponsView() {
+  if (typeof window.weaponsViewRender !== "function") {
+    throw new Error("weaponsViewRender is not available");
+  }
+  await window.weaponsViewRender();
+}
+
+async function renderGearTalentView() {
+  if (typeof window.gearTalentViewRender !== "function") {
+    throw new Error("gearTalentViewRender is not available");
+  }
+  await window.gearTalentViewRender();
+}
+
+async function renderWeaponTalentView() {
+  if (typeof window.weaponTalentViewRender !== "function") {
+    throw new Error("weaponTalentViewRender is not available");
+  }
+  await window.weaponTalentViewRender();
+}
+
+async function renderDescentTalentView() {
+  if (typeof window.descentTalentViewRender !== "function") {
+    throw new Error("descentTalentViewRender is not available");
+  }
+  await window.descentTalentViewRender();
+}
+
+async function renderItemSourcesView() {
+  if (typeof window.itemSourcesViewRender !== "function") {
+    throw new Error("itemSourcesViewRender is not available");
+  }
+  await window.itemSourcesViewRender();
+}
+function closeNavMenu() {
+  if (!navMenuPanel) return;
+  const active = document.activeElement;
+  if (active && navMenuPanel.contains(active) && typeof active.blur === "function") {
+    active.blur();
+  }
+  navMenuPanel.inert = true;
+  navMenuPanel.setAttribute("aria-hidden", "true");
+}
+
+function toggleNavMenu() {
+  if (!navMenuPanel) return;
+  const hidden = navMenuPanel.getAttribute("aria-hidden") !== "false";
+  navMenuPanel.inert = !hidden;
+  navMenuPanel.setAttribute("aria-hidden", hidden ? "false" : "true");
+}
+
+async function switchViewMode(mode) {
+  currentViewMode = (mode === "weapons" || mode === "brand" || mode === "gearset" || mode === "exotic_gear" || mode === "gear_talent" || mode === "weapon_talent" || mode === "descent_talent" || mode === "item_sources" || mode === "trello" || mode === "patches") ? mode : "vendor";
+  window.currentViewMode = currentViewMode;
+  closeNavMenu();
+  updateModeUi();
+  if (currentViewMode !== "vendor") {
+    setStatus("");
+  }
+  if (worldTimeWrapEl) worldTimeWrapEl.style.display = (currentViewMode === "vendor") ? "" : "none";
+  replaceUrlParams({ view: currentViewMode });
+  if (currentViewMode === "weapons") {
+    await renderWeaponsView();
+    return;
+  }
+  if (currentViewMode === "brand") {
+    await renderBrandView();
+    return;
+  }
+  if (currentViewMode === "gearset") {
+    await renderGearsetView();
+    return;
+  }
+  if (currentViewMode === "exotic_gear") {
+    await renderExoticGearView();
+    return;
+  }
+  if (currentViewMode === "gear_talent") {
+    await renderGearTalentView();
+    return;
+  }
+  if (currentViewMode === "weapon_talent") {
+    await renderWeaponTalentView();
+    return;
+  }
+  if (currentViewMode === "descent_talent") {
+    await renderDescentTalentView();
+    return;
+  }
+  if (currentViewMode === "item_sources") {
+    await renderItemSourcesView();
+    return;
+  }
+  if (currentViewMode === "trello" || currentViewMode === "patches") {
+    await renderTrelloView();
+    return;
+  }
+  const d = dateInput.value || indexJson.target_week || new Date().toISOString().slice(0, 10);
+  await loadWeek(d, { preserveSelection: true });
+}
+
+async function boot() {
+  loadLangSetting();
+  applyUrlParams();
+  setFiltersOpen(false);
+  applyUiLang();
+
+  setStatus(ui("loadingIndex"));
+  indexJson = await fetchJson(`${DATA_BASE}/index.json?ts=${Date.now()}`);
+
+  const i18nFile = indexJson?.i18n?.file || "i18n.json";
+  setStatus(ui("loadingI18n"));
+  const i18nRaw = await fetchJson(`${DATA_BASE}/${i18nFile}?ts=${Date.now()}`);
+  let i18nTalentRaw = null;
+  try {
+    i18nTalentRaw = await fetchJson(`${DATA_BASE}/i18n_talents.json?ts=${Date.now()}`);
+  } catch (e) {
+    i18nTalentRaw = null;
+  }
+  let i18nDict = {};
+
+  const mergedCategories = {};
+  const mergeCategories = (rawObj) => {
+    if (!rawObj || typeof rawObj !== "object") return;
+    const cats = rawObj.categories;
+    if (!cats || typeof cats !== "object") return;
+    for (const [catName, bucket] of Object.entries(cats)) {
+      if (!bucket || typeof bucket !== "object") continue;
+      if (!mergedCategories[catName] || typeof mergedCategories[catName] !== "object") {
+        mergedCategories[catName] = {};
+      }
+      Object.assign(mergedCategories[catName], bucket);
+    }
+  };
+  mergeCategories(i18nRaw);
+  mergeCategories(i18nTalentRaw);
+  i18nCategories = mergedCategories;
+
+  if (i18nRaw && typeof i18nRaw === "object" && i18nRaw.dict && typeof i18nRaw.dict === "object") {
+    // backward compatibility for old shape
+    i18nDict = i18nRaw.dict;
+  } else if (Object.keys(mergedCategories).length > 0) {
+    // v2 shape: categories. Flatten for runtime lookup.
+    const merged = {};
+    for (const [catName, bucket] of Object.entries(mergedCategories)) {
+      // desc categories are resolved explicitly by trCategoryText to avoid key collisions.
+      if (String(catName || "").endsWith("_desc")) continue;
+      if (!bucket || typeof bucket !== "object") continue;
+      for (const [k, v] of Object.entries(bucket)) {
+        if (!Object.prototype.hasOwnProperty.call(merged, k)) merged[k] = v;
+      }
+    }
+    i18nDict = merged;
+  } else {
+    i18nDict = i18nRaw || {};
+  }
+  const aliasA = (i18nRaw && typeof i18nRaw === "object" && i18nRaw.aliases && typeof i18nRaw.aliases === "object")
+    ? i18nRaw.aliases
+    : {};
+  const aliasB = (i18nTalentRaw && typeof i18nTalentRaw === "object" && i18nTalentRaw.aliases && typeof i18nTalentRaw.aliases === "object")
+    ? i18nTalentRaw.aliases
+    : {};
+  i18nAliases = Object.assign({}, aliasA, aliasB);
+  i18n = new Proxy(i18nDict, {
+    get(target, prop, receiver) {
+      if (typeof prop !== "string") return Reflect.get(target, prop, receiver);
+      if (Object.prototype.hasOwnProperty.call(target, prop)) return target[prop];
+      const k = i18nAliases[prop];
+      if (k && Object.prototype.hasOwnProperty.call(target, k)) return target[k];
+      // perfect/perfectly prefix wobble fallback (both directions).
+      const keysToTry = [];
+      const baseKey = (k && typeof k === "string") ? k : prop;
+      if (typeof baseKey === "string" && baseKey) {
+        if (baseKey.startsWith("perfectly")) {
+          const tail = baseKey.slice("perfectly".length);
+          if (tail) keysToTry.push(`perfect${tail}`);
+        } else if (baseKey.startsWith("perfect")) {
+          const tail = baseKey.slice("perfect".length);
+          if (tail) keysToTry.push(`perfectly${tail}`);
+        }
+      }
+      for (const kk of keysToTry) {
+        if (Object.prototype.hasOwnProperty.call(target, kk)) return target[kk];
+      }
+      return Reflect.get(target, prop, receiver);
+    }
+  });
+  buildI18nReverse();
+
+  const defaultDate = dateInput.value || indexJson.target_week || new Date().toISOString().slice(0, 10);
+  dateInput.value = defaultDate;
+  updateModeUi();
+  await switchViewMode(initialViewMode);
+
+  // Optional files: load in background so boot is never blocked.
+  setStatus("");
+  (async () => {
+    let needsVendorRerender = false;
+    try {
+      const assetFile = (indexJson?.assets?.file) ? indexJson.assets.file : "asset_map.json";
+      assetMap = await fetchJsonWithTimeout(`${DATA_BASE}/${assetFile}?ts=${Date.now()}`, 8000);
+      needsVendorRerender = true;
+    } catch (e) {
+      assetMap = null;
+    }
+    try {
+      graphConfig = await fetchJsonWithTimeout(`${DATA_BASE}/graph_config.json?ts=${Date.now()}`, 5000);
+      needsVendorRerender = true;
+    } catch (e) {
+      graphConfig = {};
+    }
+    try {
+      vendorRecommendations = await fetchJsonWithTimeout(`${DATA_BASE}/vendor_recommendations.json?ts=${Date.now()}`, 5000);
+    } catch (e) {
+      vendorRecommendations = { version: 1, auto_select_on_load: false, rules: [] };
+    }
+    if (needsVendorRerender && currentViewMode === "vendor") {
+      const d = dateInput.value || indexJson.target_week || new Date().toISOString().slice(0, 10);
+      try {
+        await loadWeek(d, { preserveSelection: true });
+      } catch (e) {
+        // Keep optional asset failures from breaking initial render.
+      }
+    }
+  })();
+  loadDescentPoolState().finally(() => {
+    updateScheduleStatus(new Date());
+  });
+}
+
+if (filterToggleBtn) {
+  filterToggleBtn.addEventListener("click", () => {
+    setFiltersOpen(!filtersOpen);
+    applyUiLang();
+  });
+}
+
+/* ---------------------------
+ * Events
+ * ------------------------- */
+dateInput.addEventListener("change", () => {
+  const d = dateInput.value;
+  if (!d) return;
+  if (currentViewMode === "vendor") {
+    loadWeek(d).catch(err => setStatus(`${ui("error")}: ${err.message}`));
+  }
+});
+
+langSelect.addEventListener("change", () => {
+  saveLangSetting();
+  replaceUrlParams({ lang: langSelect.value || "ja" });
+  applyUiLang();
+  const d = dateInput.value;
+  if (currentViewMode === "vendor") {
+    if (d) loadWeek(d, { preserveSelection: true }).catch(err => setStatus(`${ui("error")}: ${err.message}`));
+  } else if (currentViewMode === "weapons") {
+    renderWeaponsView().catch(err => setStatus(`${ui("error")}: ${err.message}`));
+  } else if (currentViewMode === "brand") {
+    renderBrandView().catch(err => setStatus(`${ui("error")}: ${err.message}`));
+  } else if (currentViewMode === "gearset") {
+    renderGearsetView().catch(err => setStatus(`${ui("error")}: ${err.message}`));
+  } else if (currentViewMode === "exotic_gear") {
+    renderExoticGearView().catch(err => setStatus(`${ui("error")}: ${err.message}`));
+  } else if (currentViewMode === "gear_talent") {
+    renderGearTalentView().catch(err => setStatus(`${ui("error")}: ${err.message}`));
+  } else if (currentViewMode === "weapon_talent") {
+    renderWeaponTalentView().catch(err => setStatus(`${ui("error")}: ${err.message}`));
+  } else if (currentViewMode === "descent_talent") {
+    renderDescentTalentView().catch(err => setStatus(`${ui("error")}: ${err.message}`));
+  } else if (currentViewMode === "item_sources") {
+    renderItemSourcesView().catch(err => setStatus(`${ui("error")}: ${err.message}`));
+  } else {
+    renderTrelloView().catch(err => setStatus(`${ui("error")}: ${err.message}`));
+  }
+});
+
+modeSelect.addEventListener("change", () => {
+  if (!filtersOpen) return;
+  filterMode = modeSelect.value === "or" ? "or" : "and";
+  applyUiLang(); // option labels (and/or)
+  applyFiltersToDom();
+});
+
+filterInput.addEventListener("keydown", (e) => {
+  if (!filtersOpen) return;
+  if (e.key !== "Enter") return;
+  const term = stripHtml(filterInput.value).trim();
+  if (term) addFilterKey(term);
+  filterInput.value = "";
+});
+
+onlySelectedBtn.addEventListener("click", () => {
+  if (!filtersOpen) return;
+  onlySelected = !onlySelected;
+  updateViewMode();
+  applyFiltersToDom();
+});
+
+if (recommendSelectedBtn) {
+  recommendSelectedBtn.addEventListener("click", () => {
+    if (!filtersOpen) return;
+    applyVendorRecommendedSelection({ force: true });
+  });
+}
+
+clearSelectedBtn.addEventListener("click", () => {
+  if (!filtersOpen) return;
+  clearSelection();
+  updateViewMode();
+});
+
+clearFiltersBtn.addEventListener("click", () => {
+  if (!filtersOpen) return;
+  clearFilters();
+});
+
+chipsEl.addEventListener("click", (e) => {
+  if (!filtersOpen) return;
+  const x = e.target.closest(".chip__x");
+  if (!x) return;
+  const chip = e.target.closest(".chip");
+  if (!chip) return;
+  const k = chip.dataset.key;
+  removeFilterKey(k);
+});
+
+if (navMenuBtn) {
+  navMenuBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    toggleNavMenu();
+  });
+}
+if (navVendorBtn) {
+  navVendorBtn.addEventListener("click", () => {
+    switchViewMode("vendor").catch(err => setStatus(`${ui("error")}: ${err.message}`));
+  });
+}
+if (navWeaponsBtn) {
+  navWeaponsBtn.addEventListener("click", () => {
+    switchViewMode("weapons").catch(err => setStatus(`${ui("error")}: ${err.message}`));
+  });
+}
+if (navBrandBtn) {
+  navBrandBtn.addEventListener("click", () => {
+    switchViewMode("brand").catch(err => setStatus(`${ui("error")}: ${err.message}`));
+  });
+}
+if (navGearsetBtn) {
+  navGearsetBtn.addEventListener("click", () => {
+    switchViewMode("gearset").catch(err => setStatus(`${ui("error")}: ${err.message}`));
+  });
+}
+if (navExoticGearBtn) {
+  navExoticGearBtn.addEventListener("click", () => {
+    switchViewMode("exotic_gear").catch(err => setStatus(`${ui("error")}: ${err.message}`));
+  });
+}
+if (navGearTalentBtn) {
+  navGearTalentBtn.addEventListener("click", () => {
+    switchViewMode("gear_talent").catch(err => setStatus(`${ui("error")}: ${err.message}`));
+  });
+}
+if (navWeaponTalentBtn) {
+  navWeaponTalentBtn.addEventListener("click", () => {
+    switchViewMode("weapon_talent").catch(err => setStatus(`${ui("error")}: ${err.message}`));
+  });
+}
+if (navDescentTalentBtn) {
+  navDescentTalentBtn.addEventListener("click", () => {
+    switchViewMode("descent_talent").catch(err => setStatus(`${ui("error")}: ${err.message}`));
+  });
+}
+if (navItemSourcesBtn) {
+  navItemSourcesBtn.addEventListener("click", () => {
+    switchViewMode("item_sources").catch(err => setStatus(`${ui("error")}: ${err.message}`));
+  });
+}
+if (navTrelloBtn) {
+  navTrelloBtn.addEventListener("click", () => {
+    switchViewMode("trello").catch(err => setStatus(`${ui("error")}: ${err.message}`));
+  });
+}
+if (navPatchesBtn) {
+  navPatchesBtn.addEventListener("click", () => {
+    switchViewMode("patches").catch(err => setStatus(`${ui("error")}: ${err.message}`));
+  });
+}
+
+if (worldTimeEl) {
+  worldTimeEl.addEventListener("click", (e) => {
+    e.stopPropagation();
+    toggleWorldTimePopup();
+  });
+}
+document.addEventListener("click", (e) => {
+  if (navMenuPanel && navMenuBtn) {
+    if (!navMenuPanel.contains(e.target) && !navMenuBtn.contains(e.target)) {
+      closeNavMenu();
+    }
+  }
+  if (!isWorldTimePopupOpen) return;
+  if (worldTimePopupEl && worldTimePopupEl.contains(e.target)) return;
+  if (worldTimeEl && worldTimeEl.contains(e.target)) return;
+  closeWorldTimePopup();
+});
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") closeWorldTimePopup();
+});
+window.addEventListener("resize", () => {
+  if (isWorldTimePopupOpen) positionWorldTimePopup();
+});
+
+// event delegation: line tap => toggle filter, card tap => select
+contentEl.addEventListener("click", (e) => {
+  if (currentViewMode === "trello" || currentViewMode === "patches") {
+    const sbtn = e.target.closest(".trello-sections-btn[data-toggle-sections-picker]");
+    if (sbtn) {
+      const picker = document.querySelector(".trello-sections-picker");
+      if (picker) {
+        const hidden = picker.getAttribute("aria-hidden") !== "false";
+        picker.setAttribute("aria-hidden", hidden ? "false" : "true");
+      }
+      return;
+    }
+    const schk = e.target.closest(".trello-section-check[data-section-key-enc]");
+    if (schk) {
+      const enc = schk.getAttribute("data-section-key-enc");
+      const key = enc ? decodeURIComponent(enc) : "";
+      if (key && typeof window.trelloViewSetSectionVisible === "function") {
+        const gb = window.trelloGroupBy === "planned" ? "planned" : "name";
+        window.trelloViewSetSectionVisible(gb, key, !!schk.checked);
+        applyFiltersToDom();
+      }
+      return;
+    }
+    const gbtn = e.target.closest(".trello-group-btn[data-group-by]");
+    if (gbtn) {
+      const gb = String(gbtn.getAttribute("data-group-by") || "").toLowerCase();
+      window.trelloGroupBy = gb === "planned" ? "planned" : "name";
+      renderTrelloView().catch(err => setStatus(`${ui("error")}: ${err.message}`));
+      return;
+    }
+    const abtn = e.target.closest(".trello-archive-btn[data-toggle-archive]");
+    if (abtn) {
+      window.trelloShowArchive = !window.trelloShowArchive;
+      renderTrelloView().catch(err => setStatus(`${ui("error")}: ${err.message}`));
+      return;
+    }
+    const dbtn = e.target.closest(".trello-desc-btn[data-toggle-desc]");
+    if (dbtn) {
+      window.trelloExpandAll = !window.trelloExpandAll;
+      contentEl.querySelectorAll(".trello-card[data-detail-id]").forEach((card) => {
+        const id = card.getAttribute("data-detail-id");
+        const panel = id ? document.getElementById(id) : null;
+        if (!panel) return;
+        panel.setAttribute("aria-hidden", window.trelloExpandAll ? "false" : "true");
+        card.classList.toggle("is-expanded", !!window.trelloExpandAll);
+      });
+      refreshDescButtons();
+      return;
+    }
+    const sht = e.target.closest(".trello-section-title[data-section-key-enc]");
+    if (sht) {
+      const enc = sht.getAttribute("data-section-key-enc");
+      const key = enc ? decodeURIComponent(enc) : "";
+      const gb = window.trelloGroupBy === "planned" ? "planned" : "name";
+      const sec = sht.closest(".trello-section");
+      if (key && sec && typeof window.trelloViewSetSectionCollapsed === "function") {
+        const nextCollapsed = !sec.classList.contains("is-collapsed");
+        window.trelloViewSetSectionCollapsed(gb, key, nextCollapsed);
+        sec.classList.toggle("is-collapsed", nextCollapsed);
+        const list = sec.querySelector(".trello-list");
+        const caret = sht.querySelector(".trello-section-title__caret");
+        if (list) list.setAttribute("aria-hidden", nextCollapsed ? "true" : "false");
+        sht.setAttribute("aria-expanded", nextCollapsed ? "false" : "true");
+        if (caret) caret.textContent = nextCollapsed ? "▸" : "▾";
+      }
+      return;
+    }
+    const fk = e.target.closest("[data-filter-key]");
+    if (fk && filtersOpen) {
+      const k = fk.getAttribute("data-filter-key");
+      if (k) toggleFilterKey(k);
+      return;
+    }
+    if (e.target.closest("a")) return;
+    const tcard = e.target.closest(".trello-card[data-detail-id]");
+    if (tcard) {
+      const targetId = tcard.getAttribute("data-detail-id");
+      const panel = targetId ? document.getElementById(targetId) : null;
+      if (panel) {
+        const hidden = panel.getAttribute("aria-hidden") !== "false";
+        panel.setAttribute("aria-hidden", hidden ? "false" : "true");
+        tcard.classList.toggle("is-expanded", hidden);
+        syncDescToggleStateFromDom();
+      }
+      return;
+    }
+    return;
+  }
+  if (currentViewMode === "brand") {
+    const bnbtn = e.target.closest(".brand-named-btn[data-toggle-brand-named]");
+    if (bnbtn) {
+      window.brandShowNamed = !window.brandShowNamed;
+      renderBrandView().catch(err => setStatus(`${ui("error")}: ${err.message}`));
+      return;
+    }
+  }
+  if (currentViewMode === "weapon_talent") {
+    const tdbtn = e.target.closest(".talent-desc-btn[data-toggle-talent-desc]");
+    if (tdbtn) {
+      window.talentShowDesc = !window.talentShowDesc;
+      refreshTalentDescButtons();
+      renderWeaponTalentView().catch(err => setStatus(`${ui("error")}: ${err.message}`));
+      return;
+    }
+    const wtfbtn = e.target.closest(".weapon-type-filter-btn[data-wt-type]");
+    if (wtfbtn) {
+      const t = normalizeKey(wtfbtn.getAttribute("data-wt-type") || "");
+      const all = ["ar", "smg", "lmg", "shotgun", "rifle", "mmr", "pistol"];
+      const cur = new Set(Array.isArray(window.weaponTalentTypeFilter) ? window.weaponTalentTypeFilter : []);
+      if (all.includes(t)) {
+        if (cur.has(t)) cur.delete(t);
+        else cur.add(t);
+        window.weaponTalentTypeFilter = all.filter((k) => cur.has(k));
+      }
+      renderWeaponTalentView().catch(err => setStatus(`${ui("error")}: ${err.message}`));
+      return;
+    }
+  }
+  if (currentViewMode === "gear_talent") {
+    const tdbtn = e.target.closest(".talent-desc-btn[data-toggle-talent-desc]");
+    if (tdbtn) {
+      window.talentShowDesc = !window.talentShowDesc;
+      refreshTalentDescButtons();
+      renderGearTalentView().catch(err => setStatus(`${ui("error")}: ${err.message}`));
+      return;
+    }
+  }
+  if (currentViewMode === "gearset") {
+    const tdbtn = e.target.closest(".talent-desc-btn[data-toggle-talent-desc]");
+    if (tdbtn) {
+      window.talentShowDesc = !window.talentShowDesc;
+      refreshTalentDescButtons();
+      renderGearsetView().catch(err => setStatus(`${ui("error")}: ${err.message}`));
+      return;
+    }
+  }
+  if (currentViewMode === "exotic_gear") {
+    const tdbtn = e.target.closest(".talent-desc-btn[data-toggle-talent-desc]");
+    if (tdbtn) {
+      window.talentShowDesc = !window.talentShowDesc;
+      refreshTalentDescButtons();
+      renderExoticGearView().catch(err => setStatus(`${ui("error")}: ${err.message}`));
+      return;
+    }
+  }
+  if (currentViewMode === "descent_talent") {
+    const tdbtn = e.target.closest(".talent-desc-btn[data-toggle-talent-desc]");
+    if (tdbtn) {
+      window.talentShowDesc = !window.talentShowDesc;
+      refreshTalentDescButtons();
+      renderDescentTalentView().catch(err => setStatus(`${ui("error")}: ${err.message}`));
+      return;
+    }
+  }
+  const line = e.target.closest(".line[data-stat-key]");
+  if (line) {
+    if (!filtersOpen) return;
+    e.stopPropagation();
+    toggleFilterKey(line.dataset.statKey);
+    return;
+  }
+  const card = e.target.closest("[data-item-id][data-search]");
+  if (card) {
+    if (!window.talentShowDesc && (
+      currentViewMode === "gear_talent" ||
+      currentViewMode === "weapon_talent" ||
+      currentViewMode === "gearset" ||
+      currentViewMode === "exotic_gear" ||
+      currentViewMode === "descent_talent"
+    ) && String(card.getAttribute("data-desc-collapsible") || "") === "1") {
+      const selectedText = (window.getSelection && window.getSelection().toString()) || "";
+      if (selectedText.trim()) return;
+      toggleCardDesc(card);
+      return;
+    }
+    const selectedText = (window.getSelection && window.getSelection().toString()) || "";
+    if (selectedText.trim()) return;
+    toggleCardSelection(card);
+  }
+});
+
+contentEl.addEventListener("keydown", (e) => {
+  if (currentViewMode !== "trello" && currentViewMode !== "patches") return;
+  if (e.key !== "Enter" && e.key !== " ") return;
+  const sht = e.target.closest(".trello-section-title[data-section-key-enc]");
+  if (!sht) return;
+  e.preventDefault();
+  sht.click();
+});
+
+boot().catch(err => {
+  console.error(err);
+  setStatus(`${ui("loadError")}: ${err.message}`, "error");
+});
+
+// world time tick (once per second)
+updateWorldTime();
+setInterval(updateWorldTime, 1000);
+

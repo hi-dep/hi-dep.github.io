@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Division 2 Vendor</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar__left">
+      <button id="navMenuBtn" class="btn btn--ghost navmenu__btn" type="button" aria-label="Menu">☰</button>
+      <div class="title">Division 2 Vendor</div>
+    </div>
+
+    <button id="filterToggleBtn" class="btn btn--ghost topbar__toggle" type="button">条件</button>
+
+    <div class="topbar__time">
+      <span id="worldTimeLabel" class="time-label">TIME</span>
+      <span id="worldTime" class="time-value">--:--</span>
+    </div>
+
+    <div class="topbar__base">
+      <label class="field field--date">
+        <span id="labelWeek">週</span>
+        <input id="dateInput" type="date" />
+      </label>
+
+      <label class="field field--lang">
+        <span id="labelLang">言語</span>
+        <select id="langSelect">
+          <option value="ja" selected>日本語</option>
+          <option value="en">English</option>
+        </select>
+      </label>
+    </div>
+
+    <div class="topbar__right">
+
+      <label class="field field--mode">
+        <span id="labelMode">条件</span>
+        <select id="modeSelect">
+          <option value="and" selected>AND</option>
+          <option value="or">OR</option>
+        </select>
+      </label>
+
+      <label class="field field--filter">
+        <span id="labelFilter">フィルタ</span>
+        <input id="filterInput" type="text" autocomplete="off" />
+      </label>
+
+      <button id="onlySelectedBtn" class="btn btn--toggle" type="button">選択のみ</button>
+      <button id="recommendSelectedBtn" class="btn btn--ghost" type="button">おすすめ選択</button>
+      <button id="clearSelectedBtn" class="btn btn--ghost" type="button">選択解除</button>
+      <button id="clearFiltersBtn" class="btn btn--ghost" type="button">フィルタ解除</button>
+
+      <div id="filterChips" class="chips" aria-label="filters"></div>
+    </div>
+  </header>
+  <div id="navMenuPanel" class="navmenu" aria-hidden="true">
+    <button id="navVendorBtn" class="navmenu__item" type="button">Vendor</button>
+    <!-- <button id="navWeaponsBtn" class="navmenu__item" type="button">Weapons</button> -->
+    <button id="navBrandBtn" class="navmenu__item" type="button">Brandset</button>
+    <button id="navGearsetBtn" class="navmenu__item" type="button">Gearset</button>
+    <button id="navExoticGearBtn" class="navmenu__item" type="button">Exotic Items</button>
+    <button id="navGearTalentBtn" class="navmenu__item" type="button">Gear Talent</button>
+    <button id="navWeaponTalentBtn" class="navmenu__item" type="button">Weapon Talent</button>
+    <button id="navDescentTalentBtn" class="navmenu__item" type="button">Descent Talent</button>
+    <!-- <button id="navItemSourcesBtn" class="navmenu__item" type="button">Item Sources</button> -->
+    <!-- <button id="navTrelloBtn" class="navmenu__item" type="button">Trello</button> -->
+    <!-- <button id="navPatchesBtn" class="navmenu__item" type="button">Patches and Updates</button> -->
+  </div>
+
+  <div id="worldTimePopup" class="time-popup" aria-hidden="true">
+    <div id="worldTimePopupTitle" class="time-popup__title">World Time</div>
+    <div id="worldTimePopupBody" class="time-popup__body"></div>
+  </div>
+
+  <main class="main">
+    <section id="status" class="status"></section>
+    <section id="content" class="content"></section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__line">
+      <a class="footer__link" href="https://x.com/hi_dep_g" target="_blank" rel="noopener">@hi_dep_g</a>
+      <span id="cacheProviderRow" class="footer__credit">
+        Special thanks to
+        <a class="footer__link" href="https://x.com/toby_net" target="_blank" rel="noopener">@toby_net</a>
+      </span>
+    </div>
+    <div class="footer__line">
+      <a class="footer__link" href="https://x.com/HunDra_YouTube" target="_blank" rel="noopener">@HunDra_YouTube</a>
+      <a class="footer__link" href="https://gamerch.com/td2/" target="_blank" rel="noopener">wiki</a>
+    </div>
+  </footer>
+
+  <!-- sql.js（vendor配下に配置） -->
+  <script src="./sql-wasm.js"></script>
+  <script src="./world_time.js"></script>
+  <script src="./vendor.js"></script>
+  <script src="./brandset.js"></script>
+  <script src="./gearset.js"></script>
+  <script src="./exotic_gear.js"></script>
+  <script src="./weapons.js"></script>
+  <script src="./trello.js"></script>
+  <script src="./gear_talent.js"></script>
+  <script src="./weapon_talent.js"></script>
+  <script src="./descent_talent.js"></script>
+  <script src="./item_sources.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>

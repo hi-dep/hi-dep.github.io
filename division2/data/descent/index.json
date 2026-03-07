@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "generated_at_jst": "2026-03-07 19:57:34",
+  "source_url": "https://docs.google.com/spreadsheets/d/1l71rXsXoekxIFeB7xdETU7q8x5GK-TeDT39YZfwRZcM/edit?resourcekey=&gid=1373613541#gid=1373613541",
+  "source_resolved": "https://docs.google.com/spreadsheets/d/1l71rXsXoekxIFeB7xdETU7q8x5GK-TeDT39YZfwRZcM/export?format=csv&gid=1373613541",
+  "sheet_gid": "1373613541",
+  "pool_map_source_url": "https://docs.google.com/spreadsheets/u/1/d/e/2PACX-1vTJEX5DerCvOj3a_m36TRy1gPBAUvrduOIdmXI9j1Y0MpQk1wIXaZ9KOcPa7HzXzp_N5qGmjDj6yEfL/pubhtml#gid=603810878",
+  "pool_map_source_resolved": "https://docs.google.com/spreadsheets/d/e/2PACX-1vTJEX5DerCvOj3a_m36TRy1gPBAUvrduOIdmXI9j1Y0MpQk1wIXaZ9KOcPa7HzXzp_N5qGmjDj6yEfL/pub?gid=603810878&single=true&output=csv",
+  "pool_map_sheet_gid": "603810878",
+  "pool_map_keys": [
+    "envy",
+    "gluttony",
+    "greed",
+    "sloth",
+    "wrath"
+  ],
+  "anchor_jst": "2026-03-07 09:00:00",
+  "cycle_days": 3,
+  "timestamp_rows": 2,
+  "pool_map_rows": 200,
+  "db_plain": "division_descent_loader/batch/descent_talent_pool_latest.db",
+  "db_gz": "data/descent/descent_talent_pool_latest.db.gz",
+  "timestamp_hash": "c92b059a1cc3e46f460640ee11212c8dc1da8c82a45b35838fa8ccb6c84d507d",
+  "content_hash": "b60b0cdfb76b18af96a77cd501a15458703dd0b8ee2b648b2e2cde4267ebb42e"
+}

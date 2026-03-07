@@ -1,0 +1,107 @@
+{
+  "version": 1,
+  "auto_select_on_load": false,
+  "rules": [
+    {
+      "id": "gear_brand_yaahl",
+      "enabled": true,
+      "target": "gear",
+      "all": [
+        { "field": "brand_key", "op": "eq", "value": "yaahlgear" }
+      ]
+    },
+    {
+      "id": "weapon_attr3_ooc",
+      "enabled": true,
+      "target": "weapon",
+      "all": [
+        { "field": "attr_at", "op": "eq", "value": { "index": 3, "stat_key": "dmgtotargetofcover" } }
+      ]
+    },
+    {
+      "id": "weapon_attr2_ooc_attr3_dta",
+      "enabled": true,
+      "target": "weapon",
+      "all": [
+        { "field": "attr_at", "op": "eq", "value": { "index": 2, "stat_key": "dmgtotargetofcover" } },
+        { "field": "attr_at", "op": "eq", "value": { "index": 3, "stat_key": "damagetoarmor" } }
+      ]
+    },
+    {
+      "id": "weapon_talent_immortal",
+      "enabled": true,
+      "target": "weapon",
+      "all": [
+        { "field": "stat_keys", "op": "has_any", "value": ["immobilize", "perfectimmobilize", "perfectlyimmobilize"] }
+      ]
+    },
+    {
+      "id": "gear_named_talent_attr_only_chc_chd",
+      "enabled": true,
+      "target": "gear",
+      "all": [
+        { "field": "is_named", "op": "eq", "value": true },
+        { "field": "has_talent", "op": "eq", "value": true },
+        { "field": "attr_stat_keys", "op": "has_only", "value": ["criticalhitchance", "criticalhitdamage"] }
+      ]
+    },
+    {
+      "id": "gear_attr_chc_chd",
+      "enabled": true,
+      "target": "gear",
+      "all": [
+        { "field": "attr_stat_keys", "op": "has_all", "value": ["criticalhitchance", "criticalhitdamage"] }
+      ]
+    },
+    {
+      "id": "mod_protection_from_elites",
+      "enabled": true,
+      "target": "mod",
+      "all": [
+        { "field": "stat_keys", "op": "has_any", "value": ["protectionfromelites"] }
+      ]
+    },
+    {
+      "id": "gear_brandset_hsd_or_mmr_with_hsd_wh",
+      "enabled": true,
+      "target": "gear",
+      "all": [
+        {
+          "field": "brand_key",
+          "op": "in",
+          "value": [
+            "airaldiholdings",
+            "habsburgguard",
+            "providencedefense",
+            "urbanlookout"
+          ]
+        },
+        {
+          "field": "attr_stat_keys",
+          "op": "has_all",
+          "value": ["headshotdamage", "weaponhandling"]
+        }
+      ]
+    },
+    {
+      "id": "gear_brandset_explosive_with_skill_status",
+      "enabled": true,
+      "target": "gear",
+      "all": [
+        {
+          "field": "brand_key",
+          "op": "in",
+          "value": [
+            "chinalightindustriescorporatior",
+            "gruposombras.a."
+          ]
+        },
+        {
+          "field": "attr_stat_keys",
+          "op": "has_all",
+          "value": ["skilldamage", "statuseffects"]
+        }
+      ]
+    }
+  ]
+}

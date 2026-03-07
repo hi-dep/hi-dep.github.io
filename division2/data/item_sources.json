@@ -1,0 +1,1813 @@
+{
+  "version": 1,
+  "columns": [
+    "item_id",
+    "entity_type",
+    "category",
+    "name_key",
+    "name",
+    "brand_key",
+    "slot_key",
+    "drop_tags",
+    "acquisition_tags",
+    "acquisition_note"
+  ],
+  "rows": [
+    {
+      "item_id": "6db16d31c45fa994",
+      "entity_type": "brandset",
+      "category": "gear",
+      "name_key": "511tactical",
+      "name": "5.11 Tactical",
+      "brand_key": "511tactical",
+      "slot_key": "",
+      "acquisition_tags": [
+        "target_loot:brand",
+        "craft:backpack",
+        "craft:gloves",
+        "craft:holster"
+      ],
+      "acquisition_note": "",
+      "drop_tags": [
+        "general"
+      ]
+    },
+    {
+      "item_id": "8f7b9e5a186d98e7",
+      "entity_type": "brandset",
+      "category": "gear",
+      "name_key": "airaldiholdings",
+      "name": "Airaldi Holdings",
+      "brand_key": "airaldiholdings",
+      "slot_key": "",
+      "acquisition_tags": [
+        "target_loot:brand",
+        "craft:backpack",
+        "craft:gloves",
+        "craft:kneepads"
+      ],
+      "acquisition_note": "",
+      "drop_tags": [
+        "general"
+      ]
+    },
+    {
+      "item_id": "8ce0511e51ed3927",
+      "entity_type": "brandset",
+      "category": "gear",
+      "name_key": "alpssummitarmaments",
+      "name": "Alps Summit Armaments",
+      "brand_key": "alpssummitarmaments",
+      "slot_key": "",
+      "acquisition_tags": [
+        "target_loot:brand",
+        "craft:backpack",
+        "craft:gloves"
+      ],
+      "acquisition_note": "",
+      "drop_tags": [
+        "general"
+      ]
+    },
+    {
+      "item_id": "ed7bf54a988d5d6a",
+      "entity_type": "brandset",
+      "category": "gear",
+      "name_key": "badgertuff",
+      "name": "Badger Tuff",
+      "brand_key": "badgertuff",
+      "slot_key": "",
+      "acquisition_tags": [
+        "target_loot:brand",
+        "craft:backpack",
+        "craft:gloves",
+        "craft:kneepads"
+      ],
+      "acquisition_note": "",
+      "drop_tags": [
+        "general"
+      ]
+    },
+    {
+      "item_id": "b9fac86204110394",
+      "entity_type": "brandset",
+      "category": "gear",
+      "name_key": "belstonearmory",
+      "name": "Belstone Armory",
+      "brand_key": "belstonearmory",
+      "slot_key": "",
+      "acquisition_tags": [
+        "target_loot:brand",
+        "craft:backpack",
+        "craft:chest",
+        "craft:gloves",
+        "craft:holster",
+        "craft:kneepads",
+        "craft:mask"
+      ],
+      "acquisition_note": "",
+      "drop_tags": [
+        "general"
+      ]
+    },
+    {
+      "item_id": "407b823d463407cd",
+      "entity_type": "brandset",
+      "category": "gear",
+      "name_key": "brazosdearcabuz",
+      "name": "Brazos de Arcabuz",
+      "brand_key": "brazosdearcabuz",
+      "slot_key": "",
+      "acquisition_tags": [
+        "target_loot:brand",
+        "craft:backpack",
+        "craft:chest",
+        "craft:gloves",
+        "craft:holster",
+        "craft:kneepads",
+        "craft:mask"
+      ],
+      "acquisition_note": "",
+      "drop_tags": [
+        "general"
+      ]
+    },
+    {
+      "item_id": "e9a51e9068baa019",
+      "entity_type": "brandset",
+      "category": "gear",
+      "name_key": "ceskavyrobasro",
+      "name": "Česká Výroba s.r.o.",
+      "brand_key": "ceskavyrobasro",
+      "slot_key": "",
+      "acquisition_tags": [
+        "target_loot:brand",
+        "craft:backpack",
+        "craft:holster",
+        "craft:kneepads",
+        "craft:mask"
+      ],
+      "acquisition_note": "",
+      "drop_tags": [
+        "general"
+      ]
+    },
+    {
+      "item_id": "4febc3da41d3f301",
+      "entity_type": "brandset",
+      "category": "gear",
+      "name_key": "chinalightindustriescorporatior",
+      "name": "China Light Industries Corporatior",
+      "brand_key": "chinalightindustriescorporatior",
+      "slot_key": "",
+      "acquisition_tags": [
+        "target_loot:brand",
+        "craft:backpack",
+        "craft:kneepads",
+        "craft:mask"
+      ],
+      "acquisition_note": "",
+      "drop_tags": [
+        "general"
+      ]
+    },
+    {
+      "item_id": "eadf16a8b9dec121",
+      "entity_type": "brandset",
+      "category": "gear",
+      "name_key": "douglasharding",
+      "name": "Douglas & Harding",
+      "brand_key": "douglasharding",
+      "slot_key": "",
+      "acquisition_tags": [
+        "target_loot:brand",
+        "craft:chest",
+        "craft:kneepads",
+        "craft:mask"
+      ],
+      "acquisition_note": "",
+      "drop_tags": [
+        "general"
+      ]
+    },
+    {
+      "item_id": "297f1b2ebd211d25",
+      "entity_type": "brandset",
+      "category": "gear",
+      "name_key": "electrique",
+      "name": "Electrique",
+      "brand_key": "electrique",
+      "slot_key": "",
+      "acquisition_tags": [
+        "target_loot:brand",
+        "craft:backpack",
+        "craft:chest",
+        "craft:gloves",
+        "craft:holster",
+        "craft:kneepads",
+        "craft:mask"
+      ],
+      "acquisition_note": "",
+      "drop_tags": [
+        "general"
+      ]
+    },
+    {
+      "item_id": "88872fc9de6af85f",
+      "entity_type": "brandset",
+      "category": "gear",
+      "name_key": "empressinternational",
+      "name": "Empress International",
+      "brand_key": "empressinternational",
+      "slot_key": "",
+      "acquisition_tags": [
+        "target_loot:brand",
+        "craft:backpack",
+        "craft:chest",
+        "craft:gloves",
+        "craft:holster",
+        "craft:kneepads",
+        "craft:mask"
+      ],
+      "acquisition_note": "",
+      "drop_tags": [
+        "general"
+      ]
+    },
+    {
+      "item_id": "f9f75011d0c030ce",
+      "entity_type": "brandset",
+      "category": "gear",
+      "name_key": "fenrisgroupab",
+      "name": "Fenris Group AB",
+      "brand_key": "fenrisgroupab",
+      "slot_key": "",
+      "acquisition_tags": [
+        "target_loot:brand",
+        "craft:chest",
+        "craft:gloves",
+        "craft:holster"
+      ],
+      "acquisition_note": "",
+      "drop_tags": [
+        "general"
+      ]
+    },
+    {
+      "item_id": "57bc988f9cfa00e9",
+      "entity_type": "brandset",
+      "category": "gear",
+      "name_key": "gilaguard",
+      "name": "Gila Guard",
+      "brand_key": "gilaguard",
+      "slot_key": "",
+      "acquisition_tags": [
+        "target_loot:brand",
+        "craft:backpack",
+        "craft:gloves",
+        "craft:mask"
+      ],
+      "acquisition_note": "",
+      "drop_tags": [
+        "general"
+      ]
+    },
+    {
+      "item_id": "41993ea2d55d2530",
+      "entity_type": "brandset",
+      "category": "gear",
+      "name_key": "golangearltd",
+      "name": "Golan Gear Ltd",
+      "brand_key": "golangearltd",
+      "slot_key": "",
+      "acquisition_tags": [
+        "target_loot:brand",
+        "craft:chest",
+        "craft:gloves",
+        "craft:holster",
+        "craft:mask"
+      ],
+      "acquisition_note": "",
+      "drop_tags": [
+        "general"
+      ]
+    },
+    {
+      "item_id": "2d27a14ceb25ab1c",
+      "entity_type": "brandset",
+      "category": "gear",
+      "name_key": "gruposombrasa",
+      "name": "Grupo Sombra S.A.",
+      "brand_key": "gruposombrasa",
+      "slot_key": "",
+      "acquisition_tags": [
+        "target_loot:brand",
+        "craft:chest",
+        "craft:gloves",
+        "craft:holster",
+        "craft:kneepads"
+      ],
+      "acquisition_note": "",
+      "drop_tags": [
+        "general"
+      ]
+    },
+    {
+      "item_id": "18db9e9dd2c56448",
+      "entity_type": "brandset",
+      "category": "gear",
+      "name_key": "habsburgguard",
+      "name": "Habsburg Guard",
+      "brand_key": "habsburgguard",
+      "slot_key": "",
+      "acquisition_tags": [
+        "target_loot:brand",
+        "craft:backpack",
+        "craft:chest",
+        "craft:gloves",
+        "craft:holster",
+        "craft:kneepads",
+        "craft:mask"
+      ],
+      "acquisition_note": "",
+      "drop_tags": [
+        "general"
+      ]
+    },
+    {
+      "item_id": "b9b73562827f14f0",
+      "entity_type": "brandset",
+      "category": "gear",
+      "name_key": "hanaucorporation",
+      "name": "Hana-U Corporation",
+      "brand_key": "hanaucorporation",
+      "slot_key": "",
+      "acquisition_tags": [
+        "target_loot:brand",
+        "craft:backpack",
+        "craft:gloves",
+        "craft:holster",
+        "craft:mask"
+      ],
+      "acquisition_note": "",
+      "drop_tags": [
+        "general"
+      ]
+    },
+    {
+      "item_id": "718db337e462dedd",
+      "entity_type": "brandset",
+      "category": "gear",
+      "name_key": "imminencearmaments",
+      "name": "Imminence Armaments",
+      "brand_key": "imminencearmaments",
+      "slot_key": "",
+      "acquisition_tags": [
+        "target_loot:brand",
+        "craft:backpack",
+        "craft:chest",
+        "craft:gloves",
+        "craft:holster",
+        "craft:kneepads",
+        "craft:mask"
+      ],
+      "acquisition_note": "",
+      "drop_tags": [
+        "general"
+      ]
+    },
+    {
+      "item_id": "3747ba716e0d47bd",
+      "entity_type": "brandset",
+      "category": "gear",
+      "name_key": "legatusspa",
+      "name": "Legatus S.p.A.",
+      "brand_key": "legatusspa",
+      "slot_key": "",
+      "acquisition_tags": [
+        "target_loot:brand",
+        "craft:backpack",
+        "craft:chest",
+        "craft:gloves",
+        "craft:holster",
+        "craft:kneepads",
+        "craft:mask"
+      ],
+      "acquisition_note": "",
+      "drop_tags": [
+        "general"
+      ]
+    },
+    {
+      "item_id": "bc85b496b210b396",
+      "entity_type": "brandset",
+      "category": "gear",
+      "name_key": "lengmo",
+      "name": "Lengmo",
+      "brand_key": "lengmo",
+      "slot_key": "",
+      "acquisition_tags": [
+        "target_loot:brand",
+        "craft:backpack",
+        "craft:chest",
+        "craft:gloves",
+        "craft:holster",
+        "craft:kneepads",
+        "craft:mask"
+      ],
+      "acquisition_note": "",
+      "drop_tags": [
+        "general"
+      ]
+    },
+    {
+      "item_id": "4ae2ed5756736dff",
+      "entity_type": "brandset",
+      "category": "gear",
+      "name_key": "murakamiindustries",
+      "name": "Murakami Industries",
+      "brand_key": "murakamiindustries",
+      "slot_key": "",
+      "acquisition_tags": [
+        "target_loot:brand",
+        "craft:backpack",
+        "craft:kneepads",
+        "craft:mask"
+      ],
+      "acquisition_note": "",
+      "drop_tags": [
+        "general"
+      ]
+    },
+    {
+      "item_id": "d3dfbe8831b074cd",
+      "entity_type": "brandset",
+      "category": "gear",
+      "name_key": "overlordarmaments",
+      "name": "Overlord Armaments",
+      "brand_key": "overlordarmaments",
+      "slot_key": "",
+      "acquisition_tags": [
+        "target_loot:brand",
+        "craft:chest",
+        "craft:gloves",
+        "craft:mask"
+      ],
+      "acquisition_note": "",
+      "drop_tags": [
+        "general"
+      ]
+    },
+    {
+      "item_id": "b4788e34cc49946c",
+      "entity_type": "brandset",
+      "category": "gear",
+      "name_key": "palisadesteelworks",
+      "name": "Palisade Steelworks",
+      "brand_key": "palisadesteelworks",
+      "slot_key": "",
+      "acquisition_tags": [
+        "target_loot:brand",
+        "craft:backpack",
+        "craft:chest",
+        "craft:gloves",
+        "craft:holster",
+        "craft:kneepads",
+        "craft:mask"
+      ],
+      "acquisition_note": "",
+      "drop_tags": [
+        "general"
+      ]
+    },
+    {
+      "item_id": "33a93085e39661a7",
+      "entity_type": "brandset",
+      "category": "gear",
+      "name_key": "petrovdefensegroup",
+      "name": "Petrov Defense Group",
+      "brand_key": "petrovdefensegroup",
+      "slot_key": "",
+      "acquisition_tags": [
+        "target_loot:brand",
+        "craft:backpack",
+        "craft:holster",
+        "craft:kneepads"
+      ],
+      "acquisition_note": "",
+      "drop_tags": [
+        "general"
+      ]
+    },
+    {
+      "item_id": "03e698aae89f978b",
+      "entity_type": "brandset",
+      "category": "gear",
+      "name_key": "providencedefense",
+      "name": "Providence Defense",
+      "brand_key": "providencedefense",
+      "slot_key": "",
+      "acquisition_tags": [
+        "target_loot:brand",
+        "craft:chest",
+        "craft:holster",
+        "craft:mask"
+      ],
+      "acquisition_note": "",
+      "drop_tags": [
+        "general"
+      ]
+    },
+    {
+      "item_id": "93571dcdd1686c0c",
+      "entity_type": "brandset",
+      "category": "gear",
+      "name_key": "richterkaisergmbh",
+      "name": "Richter & Kaiser GmbH",
+      "brand_key": "richterkaisergmbh",
+      "slot_key": "",
+      "acquisition_tags": [
+        "target_loot:brand",
+        "craft:chest",
+        "craft:holster",
+        "craft:mask"
+      ],
+      "acquisition_note": "",
+      "drop_tags": [
+        "general"
+      ]
+    },
+    {
+      "item_id": "791474ef58d04aa7",
+      "entity_type": "brandset",
+      "category": "gear",
+      "name_key": "shinymonkeygear",
+      "name": "Shiny Monkey Gear",
+      "brand_key": "shinymonkeygear",
+      "slot_key": "",
+      "acquisition_tags": [
+        "target_loot:brand",
+        "craft:backpack",
+        "craft:chest",
+        "craft:gloves",
+        "craft:holster",
+        "craft:kneepads",
+        "craft:mask"
+      ],
+      "acquisition_note": "",
+      "drop_tags": [
+        "general"
+      ]
+    },
+    {
+      "item_id": "a15bd80553db2070",
+      "entity_type": "brandset",
+      "category": "gear",
+      "name_key": "sokolovconcern",
+      "name": "Sokolov Concern",
+      "brand_key": "sokolovconcern",
+      "slot_key": "",
+      "acquisition_tags": [
+        "target_loot:brand",
+        "craft:chest",
+        "craft:gloves",
+        "craft:kneepads"
+      ],
+      "acquisition_note": "",
+      "drop_tags": [
+        "general"
+      ]
+    },
+    {
+      "item_id": "a2a9c495bb657c47",
+      "entity_type": "brandset",
+      "category": "gear",
+      "name_key": "unitalloys",
+      "name": "Unit Alloys",
+      "brand_key": "unitalloys",
+      "slot_key": "",
+      "acquisition_tags": [
+        "target_loot:brand",
+        "craft:backpack",
+        "craft:chest",
+        "craft:gloves",
+        "craft:holster",
+        "craft:mask"
+      ],
+      "acquisition_note": "",
+      "drop_tags": [
+        "general"
+      ]
+    },
+    {
+      "item_id": "c5025e72dbfa5c7a",
+      "entity_type": "brandset",
+      "category": "gear",
+      "name_key": "urbanlookout",
+      "name": "Urban Lookout",
+      "brand_key": "urbanlookout",
+      "slot_key": "",
+      "acquisition_tags": [
+        "target_loot:brand",
+        "craft:backpack",
+        "craft:chest",
+        "craft:gloves",
+        "craft:holster",
+        "craft:kneepads",
+        "craft:mask"
+      ],
+      "acquisition_note": "",
+      "drop_tags": [
+        "general"
+      ]
+    },
+    {
+      "item_id": "bae2b57f40ea4064",
+      "entity_type": "brandset",
+      "category": "gear",
+      "name_key": "uzinagetica",
+      "name": "Uzina Getica",
+      "brand_key": "uzinagetica",
+      "slot_key": "",
+      "acquisition_tags": [
+        "target_loot:brand",
+        "craft:backpack",
+        "craft:chest",
+        "craft:gloves",
+        "craft:holster",
+        "craft:kneepads",
+        "craft:mask"
+      ],
+      "acquisition_note": "",
+      "drop_tags": [
+        "general"
+      ]
+    },
+    {
+      "item_id": "e7925e2dd1e42d58",
+      "entity_type": "brandset",
+      "category": "gear",
+      "name_key": "walkerharrisco",
+      "name": "Walker, Harris & Co.",
+      "brand_key": "walkerharrisco",
+      "slot_key": "",
+      "acquisition_tags": [
+        "target_loot:brand",
+        "craft:backpack",
+        "craft:chest",
+        "craft:gloves",
+        "craft:holster",
+        "craft:kneepads",
+        "craft:mask"
+      ],
+      "acquisition_note": "",
+      "drop_tags": [
+        "general"
+      ]
+    },
+    {
+      "item_id": "2a55a4935bc943bf",
+      "entity_type": "brandset",
+      "category": "gear",
+      "name_key": "wyvernwear",
+      "name": "Wyvern Wear",
+      "brand_key": "wyvernwear",
+      "slot_key": "",
+      "acquisition_tags": [
+        "target_loot:brand",
+        "craft:chest",
+        "craft:holster",
+        "craft:kneepads"
+      ],
+      "acquisition_note": "",
+      "drop_tags": [
+        "general"
+      ]
+    },
+    {
+      "item_id": "44f077de4e446ef3",
+      "entity_type": "brandset",
+      "category": "gear",
+      "name_key": "yaahlgear",
+      "name": "Yaahl Gear",
+      "brand_key": "yaahlgear",
+      "slot_key": "",
+      "acquisition_tags": [
+        "craft:chest",
+        "craft:holster",
+        "craft:mask"
+      ],
+      "acquisition_note": "",
+      "drop_tags": [
+        "pvp_dz",
+        "pvp_conflict"
+      ]
+    },
+    {
+      "item_id": "2beb61f0225aaf5d",
+      "entity_type": "brandset",
+      "category": "gear",
+      "name_key": "zwiadowkaspzoo",
+      "name": "Zwiadowka Sp.z o.o.",
+      "brand_key": "zwiadowkaspzoo",
+      "slot_key": "",
+      "acquisition_tags": [
+        "target_loot:brand",
+        "craft:backpack",
+        "craft:chest",
+        "craft:gloves",
+        "craft:holster",
+        "craft:kneepads",
+        "craft:mask"
+      ],
+      "acquisition_note": "",
+      "drop_tags": [
+        "general"
+      ]
+    },
+    {
+      "item_id": "fe851c653e9b75f5",
+      "entity_type": "gear_named",
+      "category": "gear",
+      "name_key": "ammodump",
+      "name": "Ammo Dump",
+      "brand_key": "badgertuff",
+      "slot_key": "holster",
+      "acquisition_tags": [
+        "craft:holster:sp"
+      ],
+      "acquisition_note": "スペシャリゼーションのフィールドリサーチ報酬で得られる設計図が必要",
+      "drop_tags": []
+    },
+    {
+      "item_id": "264502884e91ed31",
+      "entity_type": "gear_named",
+      "category": "gear",
+      "name_key": "anarchistscookbook",
+      "name": "Anarchist's Cookbook",
+      "brand_key": "golangearltd",
+      "slot_key": "backpack",
+      "acquisition_tags": [
+        "target_loot:brand",
+        "target_loot:backpack",
+        "craft:backpack:rc"
+      ],
+      "acquisition_note": "設計図ソース: Reconstructed Caches",
+      "drop_tags": [
+        "general"
+      ]
+    },
+    {
+      "item_id": "e7e3eded178c1d2d",
+      "entity_type": "gear_named",
+      "category": "gear",
+      "name_key": "axel",
+      "name": "Axel",
+      "brand_key": "shinymonkeygear",
+      "slot_key": "backpack",
+      "acquisition_tags": [
+        "target_loot:brand",
+        "target_loot:backpack",
+        "craft:backpack:rc"
+      ],
+      "acquisition_note": "設計図ソース: Reconstructed Caches",
+      "drop_tags": [
+        "general"
+      ]
+    },
+    {
+      "item_id": "9c5fcebe4adef827",
+      "entity_type": "gear_named",
+      "category": "gear",
+      "name_key": "backbone",
+      "name": "Backbone",
+      "brand_key": "lengmo",
+      "slot_key": "backpack",
+      "acquisition_tags": [
+        "target_loot:brand",
+        "target_loot:backpack",
+        "craft:backpack:rc"
+      ],
+      "acquisition_note": "設計図ソース: Reconstructed Caches",
+      "drop_tags": [
+        "general"
+      ]
+    },
+    {
+      "item_id": "3b1aea628f34d243",
+      "entity_type": "gear_named",
+      "category": "gear",
+      "name_key": "batterypack",
+      "name": "Battery Pack",
+      "brand_key": "empressinternational",
+      "slot_key": "backpack",
+      "acquisition_tags": [
+        "target_loot:brand",
+        "target_loot:backpack",
+        "craft:backpack:rc"
+      ],
+      "acquisition_note": "設計図ソース: Reconstructed Caches",
+      "drop_tags": [
+        "general"
+      ]
+    },
+    {
+      "item_id": "e69e76b7f11ef348",
+      "entity_type": "gear_named",
+      "category": "gear",
+      "name_key": "bober",
+      "name": "Bober",
+      "brand_key": "zwiadowkaspzoo",
+      "slot_key": "chest",
+      "acquisition_tags": [
+        "target_loot:brand",
+        "target_loot:chest",
+        "craft:chest:rc"
+      ],
+      "acquisition_note": "設計図ソース: Reconstructed Caches",
+      "drop_tags": [
+        "general"
+      ]
+    },
+    {
+      "item_id": "60dc0f53a2c512d4",
+      "entity_type": "gear_named",
+      "category": "gear",
+      "name_key": "caesarsguard",
+      "name": "Caesar's Guard",
+      "brand_key": "empressinternational",
+      "slot_key": "chest",
+      "acquisition_tags": [
+        "target_loot:brand",
+        "target_loot:chest",
+        "craft:chest:rc"
+      ],
+      "acquisition_note": "設計図ソース: Reconstructed Caches",
+      "drop_tags": [
+        "general"
+      ]
+    },
+    {
+      "item_id": "34f730c57a716e90",
+      "entity_type": "gear_named",
+      "category": "gear",
+      "name_key": "capn",
+      "name": "Cap'n",
+      "brand_key": "imminencearmaments",
+      "slot_key": "backpack",
+      "acquisition_tags": [
+        "target_loot:brand",
+        "target_loot:backpack",
+        "craft:backpack:rc"
+      ],
+      "acquisition_note": "設計図ソース: Reconstructed Caches",
+      "drop_tags": [
+        "general"
+      ]
+    },
+    {
+      "item_id": "92189b5416586c77",
+      "entity_type": "gear_named",
+      "category": "gear",
+      "name_key": "carpenter",
+      "name": "Carpenter",
+      "brand_key": "lengmo",
+      "slot_key": "chest",
+      "acquisition_tags": [
+        "target_loot:brand",
+        "target_loot:chest",
+        "craft:chest:rc"
+      ],
+      "acquisition_note": "設計図ソース: Reconstructed Caches",
+      "drop_tags": [
+        "general"
+      ]
+    },
+    {
+      "item_id": "dd582003568681e0",
+      "entity_type": "gear_named",
+      "category": "gear",
+      "name_key": "chainkiller",
+      "name": "Chainkiller",
+      "brand_key": "walkerharrisco",
+      "slot_key": "chest",
+      "acquisition_tags": [
+        "target_loot:brand",
+        "target_loot:chest",
+        "craft:chest:rc"
+      ],
+      "acquisition_note": "設計図ソース: Reconstructed Caches",
+      "drop_tags": [
+        "general"
+      ]
+    },
+    {
+      "item_id": "87236f25c004a78f",
+      "entity_type": "gear_named",
+      "category": "gear",
+      "name_key": "cherished",
+      "name": "Cherished",
+      "brand_key": "habsburgguard",
+      "slot_key": "chest",
+      "acquisition_tags": [
+        "target_loot:brand",
+        "target_loot:chest",
+        "craft:chest:rc"
+      ],
+      "acquisition_note": "設計図ソース: Reconstructed Caches",
+      "drop_tags": [
+        "general"
+      ]
+    },
+    {
+      "item_id": "1e1894930cb0c1ac",
+      "entity_type": "gear_named",
+      "category": "gear",
+      "name_key": "chillout",
+      "name": "Chill Out",
+      "brand_key": "gilaguard",
+      "slot_key": "mask",
+      "acquisition_tags": [],
+      "acquisition_note": "スペシャルイベントホーダー限定ドロップ",
+      "drop_tags": [
+        "event"
+      ]
+    },
+    {
+      "item_id": "e235ae78138a0017",
+      "entity_type": "gear_named",
+      "category": "gear",
+      "name_key": "clawsout",
+      "name": "Claws Out",
+      "brand_key": "wyvernwear",
+      "slot_key": "holster",
+      "acquisition_tags": [
+        "target_loot:brand:dz",
+        "target_loot:holster:dz",
+        "craft:holster:rc"
+      ],
+      "acquisition_note": "設計図ソース: Reconstructed Caches",
+      "drop_tags": [
+        "pvp_dz",
+        "dz_cache",
+        "conflict_cache",
+        "named_cache"
+      ]
+    },
+    {
+      "item_id": "315e534a2054adcb",
+      "entity_type": "gear_named",
+      "category": "gear",
+      "name_key": "cloak",
+      "name": "Cloak",
+      "brand_key": "imminencearmaments",
+      "slot_key": "kneepads",
+      "acquisition_tags": [
+        "target_loot:brand",
+        "target_loot:kneepads",
+        "craft:kneepads:rc"
+      ],
+      "acquisition_note": "設計図ソース: Reconstructed Caches",
+      "drop_tags": [
+        "general"
+      ]
+    },
+    {
+      "item_id": "8ce87bd9b076fa59",
+      "entity_type": "gear_named",
+      "category": "gear",
+      "name_key": "closer",
+      "name": "Closer",
+      "brand_key": "uzinagetica",
+      "slot_key": "chest",
+      "acquisition_tags": [
+        "target_loot:brand",
+        "target_loot:chest",
+        "craft:chest:rc"
+      ],
+      "acquisition_note": "設計図ソース: Reconstructed Caches",
+      "drop_tags": [
+        "general"
+      ]
+    },
+    {
+      "item_id": "069a49983762f221",
+      "entity_type": "gear_named",
+      "category": "gear",
+      "name_key": "combustor",
+      "name": "Combustor",
+      "brand_key": "palisadesteelworks",
+      "slot_key": "chest",
+      "acquisition_tags": [
+        "target_loot:brand",
+        "target_loot:chest",
+        "craft:chest:rc"
+      ],
+      "acquisition_note": "設計図ソース: Reconstructed Caches",
+      "drop_tags": [
+        "general"
+      ]
+    },
+    {
+      "item_id": "aca56bb06cf5665b",
+      "entity_type": "gear_named",
+      "category": "gear",
+      "name_key": "contractorsgloves",
+      "name": "Contractor’s Gloves",
+      "brand_key": "petrovdefensegroup",
+      "slot_key": "gloves",
+      "acquisition_tags": [
+        "target_loot:brand",
+        "target_loot:gloves",
+        "craft:gloves:rc"
+      ],
+      "acquisition_note": "設計図ソース: Reconstructed Caches",
+      "drop_tags": [
+        "general"
+      ]
+    },
+    {
+      "item_id": "b40f0f021e7b3e4e",
+      "entity_type": "gear_named",
+      "category": "gear",
+      "name_key": "deathgrips",
+      "name": "Deathgrips",
+      "brand_key": "511tactical",
+      "slot_key": "gloves",
+      "acquisition_tags": [
+        "target_loot:brand:dz",
+        "target_loot:gloves:dz",
+        "craft:gloves:rc"
+      ],
+      "acquisition_note": "設計図ソース: Reconstructed Caches",
+      "drop_tags": [
+        "pvp_dz",
+        "dz_cache",
+        "conflict_cache",
+        "named_cache"
+      ]
+    },
+    {
+      "item_id": "bcb941a73e54c3cb",
+      "entity_type": "gear_named",
+      "category": "gear",
+      "name_key": "devilsdue",
+      "name": "Devil's Due",
+      "brand_key": "ceskavyrobasro",
+      "slot_key": "backpack",
+      "acquisition_tags": [
+        "target_loot:brand:dz",
+        "target_loot:backpack:dz",
+        "craft:backpack:rc"
+      ],
+      "acquisition_note": "設計図ソース: Reconstructed Caches",
+      "drop_tags": [
+        "pvp_dz",
+        "dz_cache",
+        "conflict_cache",
+        "named_cache",
+        "legacy_season_cache",
+        "season_manhunt"
+      ]
+    },
+    {
+      "item_id": "a83f28d45e93f564",
+      "entity_type": "gear_named",
+      "category": "gear",
+      "name_key": "doorkickersknock",
+      "name": "Door-Kicker’s Knock",
+      "brand_key": "gruposombrasa",
+      "slot_key": "chest",
+      "acquisition_tags": [
+        "target_loot:brand:dz",
+        "target_loot:chest:dz",
+        "craft:chest:rc"
+      ],
+      "acquisition_note": "設計図ソース: Reconstructed Caches",
+      "drop_tags": [
+        "pvp_dz",
+        "dz_cache",
+        "conflict_cache",
+        "named_cache",
+        "legacy_season_cache",
+        "season_manhunt"
+      ]
+    },
+    {
+      "item_id": "c327a718b965a881",
+      "entity_type": "gear_named",
+      "category": "gear",
+      "name_key": "eaglesgrasp",
+      "name": "Eagles Grasp",
+      "brand_key": "zwiadowkaspzoo",
+      "slot_key": "gloves",
+      "acquisition_tags": [
+        "target_loot:brand",
+        "target_loot:gloves",
+        "craft:gloves:rc"
+      ],
+      "acquisition_note": "設計図ソース: Reconstructed Caches",
+      "drop_tags": [
+        "general"
+      ]
+    },
+    {
+      "item_id": "8940f96f20aab120",
+      "entity_type": "gear_named",
+      "category": "gear",
+      "name_key": "emperorsguard",
+      "name": "Emperor’s Guard",
+      "brand_key": "murakamiindustries",
+      "slot_key": "kneepads",
+      "acquisition_tags": [
+        "target_loot:brand:dz",
+        "target_loot:kneepads:dz",
+        "craft:kneepads:rc"
+      ],
+      "acquisition_note": "設計図ソース: Reconstructed Caches",
+      "drop_tags": [
+        "pvp_dz",
+        "dz_cache",
+        "conflict_cache",
+        "named_cache"
+      ]
+    },
+    {
+      "item_id": "0a7c7969ae9c0ceb",
+      "entity_type": "gear_named",
+      "category": "gear",
+      "name_key": "equalizer",
+      "name": "Equalizer",
+      "brand_key": "unitalloys",
+      "slot_key": "chest",
+      "acquisition_tags": [
+        "target_loot:brand",
+        "target_loot:chest",
+        "craft:chest:rc"
+      ],
+      "acquisition_note": "設計図ソース: Reconstructed Caches",
+      "drop_tags": [
+        "general"
+      ]
+    },
+    {
+      "item_id": "d807ba89ccf8997b",
+      "entity_type": "gear_named",
+      "category": "gear",
+      "name_key": "everydaycarrier",
+      "name": "Everyday Carrier",
+      "brand_key": "belstonearmory",
+      "slot_key": "chest",
+      "acquisition_tags": [
+        "target_loot:brand",
+        "target_loot:chest",
+        "craft:chest:rc"
+      ],
+      "acquisition_note": "設計図ソース: Reconstructed Caches",
+      "drop_tags": [
+        "general"
+      ]
+    },
+    {
+      "item_id": "364a29043ae36b73",
+      "entity_type": "gear_named",
+      "category": "gear",
+      "name_key": "ferociouscalm",
+      "name": "Ferocious Calm",
+      "brand_key": "fenrisgroupab",
+      "slot_key": "chest",
+      "acquisition_tags": [
+        "target_loot:brand:dz",
+        "target_loot:chest:dz",
+        "craft:chest:rc"
+      ],
+      "acquisition_note": "設計図ソース: Reconstructed Caches",
+      "drop_tags": [
+        "pvp_dz",
+        "dz_cache",
+        "conflict_cache",
+        "named_cache"
+      ]
+    },
+    {
+      "item_id": "80f5be4e6df3dc09",
+      "entity_type": "gear_named",
+      "category": "gear",
+      "name_key": "festivedelivery",
+      "name": "Festive Delivery",
+      "brand_key": "gruposombrasa",
+      "slot_key": "backpack",
+      "acquisition_tags": [],
+      "acquisition_note": "スペシャルイベントホーダー限定ドロップ",
+      "drop_tags": [
+        "event"
+      ]
+    },
+    {
+      "item_id": "7a11db8001a08a35",
+      "entity_type": "gear_named",
+      "category": "gear",
+      "name_key": "firmhandshake",
+      "name": "Firm Handshake",
+      "brand_key": "sokolovconcern",
+      "slot_key": "gloves",
+      "acquisition_tags": [
+        "target_loot:brand",
+        "target_loot:gloves",
+        "craft:gloves:rc"
+      ],
+      "acquisition_note": "設計図ソース: Reconstructed Caches",
+      "drop_tags": [
+        "general"
+      ]
+    },
+    {
+      "item_id": "6a09c3e119ad99ee",
+      "entity_type": "gear_named",
+      "category": "gear",
+      "name_key": "forcemultiplier",
+      "name": "Force Multiplier",
+      "brand_key": "hanaucorporation",
+      "slot_key": "backpack",
+      "acquisition_tags": [
+        "target_loot:brand",
+        "target_loot:backpack",
+        "craft:backpack:rc"
+      ],
+      "acquisition_note": "設計図ソース: Reconstructed Caches",
+      "drop_tags": [
+        "general"
+      ]
+    },
+    {
+      "item_id": "729fa34f76d2fa8d",
+      "entity_type": "gear_named",
+      "category": "gear",
+      "name_key": "forge",
+      "name": "Forge",
+      "brand_key": "richterkaisergmbh",
+      "slot_key": "holster",
+      "acquisition_tags": [
+        "target_loot:brand",
+        "target_loot:holster",
+        "craft:holster:rc"
+      ],
+      "acquisition_note": "設計図ソース: Reconstructed Caches",
+      "drop_tags": [
+        "general"
+      ]
+    },
+    {
+      "item_id": "1b45c4521643afd3",
+      "entity_type": "gear_named",
+      "category": "gear",
+      "name_key": "foxsprayer",
+      "name": "Fox’s Prayer",
+      "brand_key": "overlordarmaments",
+      "slot_key": "kneepads",
+      "acquisition_tags": [
+        "target_loot:brand",
+        "target_loot:kneepads",
+        "craft:kneepads:rc"
+      ],
+      "acquisition_note": "設計図ソース: Reconstructed Caches",
+      "drop_tags": [
+        "general"
+      ]
+    },
+    {
+      "item_id": "2396cf49b4ca89a6",
+      "entity_type": "gear_named",
+      "category": "gear",
+      "name_key": "grease",
+      "name": "Grease",
+      "brand_key": "shinymonkeygear",
+      "slot_key": "kneepads",
+      "acquisition_tags": [
+        "target_loot:brand",
+        "target_loot:kneepads",
+        "craft:kneepads:rc"
+      ],
+      "acquisition_note": "設計図ソース: Reconstructed Caches",
+      "drop_tags": [
+        "general"
+      ]
+    },
+    {
+      "item_id": "fd20f81ec7718eaf",
+      "entity_type": "gear_named",
+      "category": "gear",
+      "name_key": "henri",
+      "name": "Henri",
+      "brand_key": "electrique",
+      "slot_key": "chest",
+      "acquisition_tags": [
+        "target_loot:brand",
+        "target_loot:chest",
+        "craft:chest:rc"
+      ],
+      "acquisition_note": "設計図ソース: Reconstructed Caches",
+      "drop_tags": [
+        "general"
+      ]
+    },
+    {
+      "item_id": "fba460288a9a461a",
+      "entity_type": "gear_named",
+      "category": "gear",
+      "name_key": "hermanobackpack",
+      "name": "Hermano",
+      "brand_key": "brazosdearcabuz",
+      "slot_key": "backpack",
+      "acquisition_tags": [
+        "target_loot:brand",
+        "target_loot:backpack"
+      ],
+      "acquisition_note": "",
+      "drop_tags": [
+        "general"
+      ]
+    },
+    {
+      "item_id": "cd5054aed7e86ebb",
+      "entity_type": "gear_named",
+      "category": "gear",
+      "name_key": "hunterkiller",
+      "name": "Hunter-Killer",
+      "brand_key": "golangearltd",
+      "slot_key": "chest",
+      "acquisition_tags": [
+        "craft:chest"
+      ],
+      "acquisition_note": "ハンターパズル完了後にキャシーの店で購入、またはクラフトで入手",
+      "drop_tags": [
+        "no_drop"
+      ]
+    },
+    {
+      "item_id": "d9c0e8c7ca4731ce",
+      "entity_type": "gear_named",
+      "category": "gear",
+      "name_key": "lavoisier",
+      "name": "Lavoisier",
+      "brand_key": "electrique",
+      "slot_key": "backpack",
+      "acquisition_tags": [
+        "target_loot:brand",
+        "target_loot:backpack",
+        "craft:backpack:rc"
+      ],
+      "acquisition_note": "設計図ソース: Reconstructed Caches",
+      "drop_tags": [
+        "general"
+      ]
+    },
+    {
+      "item_id": "322e63d1589dff29",
+      "entity_type": "gear_named",
+      "category": "gear",
+      "name_key": "liquidengineer",
+      "name": "Liquid Engineer",
+      "brand_key": "belstonearmory",
+      "slot_key": "backpack",
+      "acquisition_tags": [
+        "target_loot:brand:dz",
+        "target_loot:backpack:dz",
+        "craft:backpack:rc"
+      ],
+      "acquisition_note": "設計図ソース: Reconstructed Caches",
+      "drop_tags": [
+        "pvp_dz",
+        "dz_cache",
+        "conflict_cache",
+        "named_cache",
+        "legacy_season_cache",
+        "season_manhunt"
+      ]
+    },
+    {
+      "item_id": "abf3d003d18aeb75",
+      "entity_type": "gear_named",
+      "category": "gear",
+      "name_key": "matador",
+      "name": "Matador",
+      "brand_key": "walkerharrisco",
+      "slot_key": "backpack",
+      "acquisition_tags": [
+        "target_loot:brand:dz",
+        "target_loot:backpack:dz",
+        "craft:backpack:rc"
+      ],
+      "acquisition_note": "設計図ソース: Reconstructed Caches",
+      "drop_tags": [
+        "pvp_dz",
+        "dz_cache",
+        "conflict_cache",
+        "named_cache",
+        "legacy_season_cache",
+        "season_manhunt"
+      ]
+    },
+    {
+      "item_id": "49d2d80fe4425da1",
+      "entity_type": "gear_named",
+      "category": "gear",
+      "name_key": "motherlylove",
+      "name": "Motherly Love",
+      "brand_key": "alpssummitarmaments",
+      "slot_key": "gloves",
+      "acquisition_tags": [
+        "craft:gloves:sp"
+      ],
+      "acquisition_note": "スペシャリゼーションのフィールドリサーチ報酬で得られる設計図が必要",
+      "drop_tags": []
+    },
+    {
+      "item_id": "904a7d25c25fe441",
+      "entity_type": "gear_named",
+      "category": "gear",
+      "name_key": "nightwatcher",
+      "name": "Nightwatcher",
+      "brand_key": "gilaguard",
+      "slot_key": "mask",
+      "acquisition_tags": [
+        "target_loot:brand",
+        "target_loot:mask",
+        "craft:mask:rc"
+      ],
+      "acquisition_note": "設計図ソース: Reconstructed Caches",
+      "drop_tags": [
+        "general"
+      ]
+    },
+    {
+      "item_id": "2c8914c37285633d",
+      "entity_type": "gear_named",
+      "category": "gear",
+      "name_key": "percussivemaintenance",
+      "name": "Percussive Maintenance",
+      "brand_key": "alpssummitarmaments",
+      "slot_key": "backpack",
+      "acquisition_tags": [
+        "target_loot:brand",
+        "target_loot:backpack",
+        "craft:backpack:rc"
+      ],
+      "acquisition_note": "設計図ソース: Reconstructed Caches",
+      "drop_tags": [
+        "general"
+      ]
+    },
+    {
+      "item_id": "6f11b0f370b80484",
+      "entity_type": "gear_named",
+      "category": "gear",
+      "name_key": "picarosholster",
+      "name": "Picaros Holster",
+      "brand_key": "brazosdearcabuz",
+      "slot_key": "holster",
+      "acquisition_tags": [
+        "target_loot:brand",
+        "target_loot:holster",
+        "craft:holster:rc"
+      ],
+      "acquisition_note": "設計図ソース: Reconstructed Caches",
+      "drop_tags": [
+        "general"
+      ]
+    },
+    {
+      "item_id": "fa79ffd810dafb10",
+      "entity_type": "gear_named",
+      "category": "gear",
+      "name_key": "pointman",
+      "name": "Pointman",
+      "brand_key": "gilaguard",
+      "slot_key": "chest",
+      "acquisition_tags": [
+        "target_loot:brand",
+        "target_loot:chest",
+        "craft:chest:rc"
+      ],
+      "acquisition_note": "設計図ソース: Reconstructed Caches",
+      "drop_tags": [
+        "general"
+      ]
+    },
+    {
+      "item_id": "38cf300b3b721ce0",
+      "entity_type": "gear_named",
+      "category": "gear",
+      "name_key": "pristineexample",
+      "name": "Pristine Example",
+      "brand_key": "airaldiholdings",
+      "slot_key": "chest",
+      "acquisition_tags": [
+        "target_loot:brand",
+        "target_loot:chest",
+        "craft:chest:rc"
+      ],
+      "acquisition_note": "設計図ソース: Reconstructed Caches",
+      "drop_tags": [
+        "general"
+      ]
+    },
+    {
+      "item_id": "252f5848517ae351",
+      "entity_type": "gear_named",
+      "category": "gear",
+      "name_key": "proxy",
+      "name": "Proxy",
+      "brand_key": "palisadesteelworks",
+      "slot_key": "backpack",
+      "acquisition_tags": [
+        "target_loot:brand",
+        "target_loot:backpack",
+        "craft:backpack:rc"
+      ],
+      "acquisition_note": "設計図ソース: Reconstructed Caches",
+      "drop_tags": [
+        "general"
+      ]
+    },
+    {
+      "item_id": "180dba1b2054b866",
+      "entity_type": "gear_named",
+      "category": "gear",
+      "name_key": "punchdrunk",
+      "name": "Punch Drunk",
+      "brand_key": "douglasharding",
+      "slot_key": "mask",
+      "acquisition_tags": [
+        "target_loot:brand",
+        "target_loot:mask",
+        "craft:mask:rc"
+      ],
+      "acquisition_note": "設計図ソース: Reconstructed Caches",
+      "drop_tags": [
+        "general"
+      ]
+    },
+    {
+      "item_id": "a5a89ad4aaf94a95",
+      "entity_type": "gear_named",
+      "category": "gear",
+      "name_key": "salvo",
+      "name": "Salvo",
+      "brand_key": "unitalloys",
+      "slot_key": "holster",
+      "acquisition_tags": [
+        "target_loot:brand",
+        "target_loot:holster",
+        "craft:holster:rc"
+      ],
+      "acquisition_note": "設計図ソース: Reconstructed Caches",
+      "drop_tags": [
+        "general"
+      ]
+    },
+    {
+      "item_id": "eef074898fa1fc6b",
+      "entity_type": "gear_named",
+      "category": "gear",
+      "name_key": "sleight",
+      "name": "Sleight",
+      "brand_key": "urbanlookout",
+      "slot_key": "chest",
+      "acquisition_tags": [
+        "target_loot:brand",
+        "target_loot:chest",
+        "craft:chest:rc"
+      ],
+      "acquisition_note": "設計図ソース: Reconstructed Caches",
+      "drop_tags": [
+        "general"
+      ]
+    },
+    {
+      "item_id": "874b4f452233f12e",
+      "entity_type": "gear_named",
+      "category": "gear",
+      "name_key": "snowmachine",
+      "name": "Snow Machine",
+      "brand_key": "electrique",
+      "slot_key": "kneepads",
+      "acquisition_tags": [],
+      "acquisition_note": "スペシャルイベントホーダー限定ドロップ",
+      "drop_tags": [
+        "event"
+      ]
+    },
+    {
+      "item_id": "6b94b0b1bb94019c",
+      "entity_type": "gear_named",
+      "category": "gear",
+      "name_key": "spoton",
+      "name": "Spot-On",
+      "brand_key": "urbanlookout",
+      "slot_key": "holster",
+      "acquisition_tags": [
+        "target_loot:brand",
+        "target_loot:holster",
+        "craft:holster:rc"
+      ],
+      "acquisition_note": "設計図ソース: Reconstructed Caches",
+      "drop_tags": [
+        "general"
+      ]
+    },
+    {
+      "item_id": "70eb6075087b448c",
+      "entity_type": "gear_named",
+      "category": "gear",
+      "name_key": "strategicalignment",
+      "name": "Strategic Alignment",
+      "brand_key": "chinalightindustriescorporatior",
+      "slot_key": "backpack",
+      "acquisition_tags": [
+        "target_loot:brand",
+        "target_loot:backpack",
+        "craft:backpack:rc"
+      ],
+      "acquisition_note": "設計図ソース: Reconstructed Caches",
+      "drop_tags": [
+        "general"
+      ]
+    },
+    {
+      "item_id": "e34c50308b8ae72c",
+      "entity_type": "gear_named",
+      "category": "gear",
+      "name_key": "thecourier",
+      "name": "The Courier",
+      "brand_key": "habsburgguard",
+      "slot_key": "backpack",
+      "acquisition_tags": [
+        "target_loot:brand",
+        "target_loot:backpack",
+        "craft:backpack:rc"
+      ],
+      "acquisition_note": "設計図ソース: Reconstructed Caches",
+      "drop_tags": [
+        "general"
+      ]
+    },
+    {
+      "item_id": "f3fce2861e0d0074",
+      "entity_type": "gear_named",
+      "category": "gear",
+      "name_key": "thegift",
+      "name": "The Gift",
+      "brand_key": "providencedefense",
+      "slot_key": "backpack",
+      "acquisition_tags": [
+        "target_loot:brand:dz",
+        "target_loot:backpack:dz",
+        "craft:backpack:rc"
+      ],
+      "acquisition_note": "設計図ソース: Reconstructed Caches",
+      "drop_tags": [
+        "pvp_dz",
+        "dz_cache",
+        "conflict_cache",
+        "named_cache"
+      ]
+    },
+    {
+      "item_id": "386b350390887930",
+      "entity_type": "gear_named",
+      "category": "gear",
+      "name_key": "thehollowman",
+      "name": "The Hollow Man",
+      "brand_key": "yaahlgear",
+      "slot_key": "mask",
+      "acquisition_tags": [
+        "target_loot:mask:dz",
+        "craft:mask:rc"
+      ],
+      "acquisition_note": "設計図ソース: Reconstructed Caches",
+      "drop_tags": [
+        "pvp_dz",
+        "dz_cache",
+        "conflict_cache",
+        "named_cache"
+      ]
+    },
+    {
+      "item_id": "ec176bfb6470f538",
+      "entity_type": "gear_named",
+      "category": "gear",
+      "name_key": "thesacrifice",
+      "name": "The Sacrifice",
+      "brand_key": "providencedefense",
+      "slot_key": "chest",
+      "acquisition_tags": [
+        "target_loot:brand",
+        "target_loot:chest",
+        "craft:chest:rc"
+      ],
+      "acquisition_note": "設計図ソース: Reconstructed Caches",
+      "drop_tags": [
+        "general"
+      ]
+    },
+    {
+      "item_id": "41da28a10d4e6952",
+      "entity_type": "gear_named",
+      "category": "gear",
+      "name_key": "thesetup",
+      "name": "The Setup",
+      "brand_key": "uzinagetica",
+      "slot_key": "backpack",
+      "acquisition_tags": [
+        "target_loot:brand",
+        "target_loot:backpack",
+        "craft:backpack:rc"
+      ],
+      "acquisition_note": "設計図ソース: Reconstructed Caches",
+      "drop_tags": [
+        "general"
+      ]
+    },
+    {
+      "item_id": "5fdcbf4e0353f5f9",
+      "entity_type": "gear_named",
+      "category": "gear",
+      "name_key": "turmoil",
+      "name": "Turmoil",
+      "brand_key": "ceskavyrobasro",
+      "slot_key": "kneepads",
+      "acquisition_tags": [],
+      "acquisition_note": "",
+      "drop_tags": []
+    },
+    {
+      "item_id": "1789afc1e420ada8",
+      "entity_type": "gear_named",
+      "category": "gear",
+      "name_key": "vedmedytsyavest",
+      "name": "Vedmedytsya Vest",
+      "brand_key": "petrovdefensegroup",
+      "slot_key": "chest",
+      "acquisition_tags": [
+        "craft:chest:sp"
+      ],
+      "acquisition_note": "スペシャリゼーションのフィールドリサーチ報酬で得られる設計図が必要",
+      "drop_tags": []
+    },
+    {
+      "item_id": "55572f77c669c4eb",
+      "entity_type": "gear_named",
+      "category": "gear",
+      "name_key": "vigil",
+      "name": "Vigil",
+      "brand_key": "legatusspa",
+      "slot_key": "backpack",
+      "acquisition_tags": [
+        "target_loot:brand",
+        "target_loot:backpack",
+        "craft:backpack:rc"
+      ],
+      "acquisition_note": "設計図ソース: Reconstructed Caches",
+      "drop_tags": [
+        "general"
+      ]
+    },
+    {
+      "item_id": "0d3668fed0c4f501",
+      "entity_type": "gear_named",
+      "category": "gear",
+      "name_key": "visionario",
+      "name": "Visionario",
+      "brand_key": "legatusspa",
+      "slot_key": "mask",
+      "acquisition_tags": [
+        "target_loot:brand",
+        "target_loot:mask",
+        "craft:mask:rc"
+      ],
+      "acquisition_note": "設計図ソース: Reconstructed Caches",
+      "drop_tags": [
+        "general"
+      ]
+    },
+    {
+      "item_id": "5d8ceb1cfeee0db9",
+      "entity_type": "gear_named",
+      "category": "gear",
+      "name_key": "zerofs",
+      "name": "Zero F’s",
+      "brand_key": "badgertuff",
+      "slot_key": "chest",
+      "acquisition_tags": [
+        "target_loot:brand",
+        "target_loot:chest",
+        "craft:chest:rc"
+      ],
+      "acquisition_note": "設計図ソース: Reconstructed Caches",
+      "drop_tags": [
+        "general"
+      ]
+    }
+  ]
+}
