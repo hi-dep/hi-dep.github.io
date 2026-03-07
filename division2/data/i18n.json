@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "built_at": "2026-03-07T12:26:54.066803Z",
+  "built_at": "2026-03-07T13:20:03.536391Z",
   "categories": {
     "vendor": {
       "benitez": "ベニテス",
@@ -256,14 +256,14 @@
       "militarym60e4": "ミリタリー M60 E4",
       "militaryrpk74m": "ミリタリー RPK-74 M",
       "newreliable": "ニューリライアブル",
+      "pakhan": "TODO:pakhan",
       "pestilence": "ペスティレンス",
       "quietroar": "クワイエットロア",
       "rusty": "ラスティ",
       "sleipner": "スレイプニル",
       "tabularasa": "タブラ・ラーサ",
       "tacticalm249para": "タクティカル M249 Para",
-      "thestinger": "スティンガー",
-      "pakhan": "TODO:pakhan"
+      "thestinger": "スティンガー"
     },
     "weapon_item_name_smg": {
       "blackmarkett821": "ブラックマーケット T821",
@@ -833,7 +833,6 @@
       "outsider": "アウトサイダー",
       "overflowing": "オーバーフロー",
       "overwhelm": "オーバーウェルム",
-      "pakhan": "TODO:pakhan",
       "paymentinkind": "ペイメント・イン・カインド",
       "perfectallegro": "パーフェクト・アレグロ",
       "perfectboomerang": "パーフェクト・ブーメラン",
@@ -904,9 +903,7 @@
       "twinklinglights": "トゥインクルライト",
       "unhinged": "アンヒンジド",
       "unnerve": "アンナーヴ",
-      "unwavering": "アンウェイバリング",
-      "busylittlebee": "TODO:busylittlebee",
-      "doctorhome": "TODO:doctorhome"
+      "unwavering": "アンウェイバリング"
     },
     "cache": {
       "amount": "数量",
