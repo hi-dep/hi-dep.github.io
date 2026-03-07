@@ -1,5 +1,5 @@
 {
-  "built_at": "2026-03-07T12:10:03.260588Z",
+  "built_at": "2026-03-07T12:30:03.343581Z",
   "target_week": "2026-03-03",
   "chunks": [
     {
@@ -1290,13 +1290,6 @@
     "sanitize": {
       "enabled": true,
       "safe_chars": "a-z 0-9 . _ -"
-    },
-    "counts": {
-      "brands": 61,
-      "gear_slots": 6,
-      "weapon_types": 7,
-      "talents": 128,
-      "weapon_talents": 100
     }
   }
 }
