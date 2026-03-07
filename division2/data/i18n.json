@@ -170,7 +170,9 @@
       "vile": "ヴァイル",
       "visionario": "ビジョナリオ",
       "waveform": "ウェーブフォーム",
-      "zerofs": "ゼロエフス"
+      "zerofs": "ゼロエフス",
+      "harrierpride": "ハリアープライド",
+      "impetus": "インピタス"
     },
     "weapon_item_name_ar": {
       "acr": "ACR",
@@ -749,7 +751,8 @@
       "unstoppableforce": "アンストッパブル",
       "vanguard": "バンガード",
       "vigilance": "ヴィジランス",
-      "wicked": "ウィキッド"
+      "wicked": "ウィキッド",
+      "perfectkineticmomentum": "パーフェクト・キネクティックモーメンタム"
     },
     "weapon_talent": {
       "closepersonal": "接近戦",
@@ -906,7 +909,8 @@
       "unwavering": "アンウェイバリング",
       "busylittlebee": "ビジー・リトル・ビー",
       "doctorhome": "ドクターホーム",
-      "pakhan": "パハン"
+      "pakhan": "パハン",
+      "covershooter": "カバーシューター"
     },
     "cache": {
       "amount": "数量",
@@ -949,7 +953,8 @@
       "toxicdelivery": "トキシックデリバリー",
       "transferenceoverclock": "トレンスファレンス・オーバークロック",
       "viciouscycle": "ヴィシャスサイクル",
-      "weakestlink": "ウィーケストリンク"
+      "weakestlink": "ウィーケストリンク",
+      "rebalance": "リバランス"
     },
     "preserved": {
       "conflict_cache": "コンフリクトキャッシュ",

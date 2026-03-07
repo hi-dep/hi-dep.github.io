@@ -242,7 +242,14 @@
     "vigilance": "img/talents/vigilance.png",
     "wavingtheflag": "img/talents/wavingtheflag.png",
     "weakestlink": "img/talents/weakestlink.png",
-    "wicked": "img/talents/wicked.png"
+    "wicked": "img/talents/wicked.png",
+    "rebalance": "img/talents/rebalance.png",
+    "bewildered": "img/talents/bewildered.png",
+    "fireworksshow": "img/talents/fireworksshow.png",
+    "flurry": "img/talents/flurry.png",
+    "perfectbraced": "img/talents/braced.png",
+    "perfectkineticmomentum": "img/talents/kineticmomentum.png",
+    "perfectprotectedreload": "img/talents/protectedreload.png"
   },
   "weapon_talents": {
     "actumest": "img/weapon_talents/actumest.png",
@@ -384,6 +391,15 @@
     "unhinged": "img/weapon_talents/unhinged.png",
     "unnerve": "img/weapon_talents/unnerve.png",
     "unwavering": "img/weapon_talents/unwavering.png",
-    "vindictive": "img/weapon_talents/vindictive.png"
+    "vindictive": "img/weapon_talents/vindictive.png",
+    "covershooter": "img/weapon_talents/covershooter.png",
+    "hiddenrock": "img/weapon_talents/hiddenrock.png",
+    "perfectdistance": "img/weapon_talents/distance.png",
+    "perfectlyclosepersonal": "img/weapon_talents/closepersonal.png",
+    "primerrounds": "img/weapon_talents/primerrounds.png",
+    "refreshing": "img/weapon_talents/refreshing.png",
+    "sportmode": "img/weapon_talents/sportmode.png",
+    "swift": "img/weapon_talents/swift.png",
+    "twinklinglights": "img/weapon_talents/twinklinglights.png"
   }
 }
