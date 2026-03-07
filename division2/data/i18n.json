@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "built_at": "2026-03-07T16:20:03.906554Z",
+  "built_at": "2026-03-07T16:50:53.781322Z",
   "categories": {
     "vendor": {
       "benitez": "ベニテス",
@@ -903,7 +903,10 @@
       "twinklinglights": "トゥインクルライト",
       "unhinged": "アンヒンジド",
       "unnerve": "アンナーヴ",
-      "unwavering": "アンウェイバリング"
+      "unwavering": "アンウェイバリング",
+      "busylittlebee": "ビジー・リトル・ビー",
+      "doctorhome": "ドクターホーム",
+      "pakhan": "パハン"
     },
     "cache": {
       "amount": "数量",
