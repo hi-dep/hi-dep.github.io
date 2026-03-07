@@ -262,7 +262,8 @@
       "sleipner": "スレイプニル",
       "tabularasa": "タブラ・ラーサ",
       "tacticalm249para": "タクティカル M249 Para",
-      "thestinger": "スティンガー"
+      "thestinger": "スティンガー",
+      "pakhan": "TODO:pakhan"
     },
     "weapon_item_name_smg": {
       "blackmarkett821": "ブラックマーケット T821",
@@ -903,7 +904,9 @@
       "twinklinglights": "トゥインクルライト",
       "unhinged": "アンヒンジド",
       "unnerve": "アンナーヴ",
-      "unwavering": "アンウェイバリング"
+      "unwavering": "アンウェイバリング",
+      "busylittlebee": "TODO:busylittlebee",
+      "doctorhome": "TODO:doctorhome"
     },
     "cache": {
       "amount": "数量",
