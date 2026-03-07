@@ -2621,10 +2621,28 @@ async function boot() {
     } catch (e) {
       vendorRecommendations = { version: 1, auto_select_on_load: false, rules: [] };
     }
-    if (needsVendorRerender && currentViewMode === "vendor") {
-      const d = dateInput.value || indexJson.target_week || new Date().toISOString().slice(0, 10);
+    if (needsVendorRerender) {
       try {
-        await loadWeek(d, { preserveSelection: true });
+        if (currentViewMode === "vendor") {
+          const d = dateInput.value || indexJson.target_week || new Date().toISOString().slice(0, 10);
+          await loadWeek(d, { preserveSelection: true });
+        } else if (currentViewMode === "weapons") {
+          await renderWeaponsView();
+        } else if (currentViewMode === "brand") {
+          await renderBrandView();
+        } else if (currentViewMode === "gearset") {
+          await renderGearsetView();
+        } else if (currentViewMode === "exotic_gear") {
+          await renderExoticGearView();
+        } else if (currentViewMode === "gear_talent") {
+          await renderGearTalentView();
+        } else if (currentViewMode === "weapon_talent") {
+          await renderWeaponTalentView();
+        } else if (currentViewMode === "descent_talent") {
+          await renderDescentTalentView();
+        } else if (currentViewMode === "item_sources") {
+          await renderItemSourcesView();
+        }
       } catch (e) {
         // Keep optional asset failures from breaking initial render.
       }
