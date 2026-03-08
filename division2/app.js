@@ -79,6 +79,21 @@ let descentPoolState = {
   anchorUtcMs: 0,
   entries: [] // [{ startUtcMs, pools[], talents[] }]
 };
+let floatingInfoCardEl = null;
+let floatingInfoCardTitleEl = null;
+let floatingInfoCardBodyEl = null;
+let floatingInfoCardAnchorEl = null;
+let floatingInfoBackdropEl = null;
+let brandDescCache = null;
+let brandDescPromise = null;
+let gearsetPopupCache = null;
+let gearsetPopupPromise = null;
+let namedTalentLookupCache = null;
+let namedTalentLookupPromise = null;
+let itemTalentOverrideCache = null;
+let itemTalentOverridePromise = null;
+let talentDescLookupCache = null;
+let talentDescLookupPromise = null;
 window.currentViewMode = currentViewMode;
 window.trelloGroupBy = "name";
 window.trelloShowArchive = false;
@@ -1086,6 +1101,896 @@ function escapeHtml(s) {
     .replaceAll("'", "&#039;");
 }
 
+function ensureFloatingInfoCard() {
+  if (floatingInfoCardEl && floatingInfoCardTitleEl && floatingInfoCardBodyEl) return;
+  const backdrop = document.createElement("div");
+  backdrop.className = "floating-info-backdrop";
+  backdrop.setAttribute("aria-hidden", "true");
+  backdrop.addEventListener("click", () => closeFloatingInfoCard());
+  document.body.appendChild(backdrop);
+  floatingInfoBackdropEl = backdrop;
+  const el = document.createElement("div");
+  el.className = "floating-info-card";
+  el.setAttribute("aria-hidden", "true");
+  el.innerHTML = `
+    <div class="floating-info-card__title"></div>
+    <div class="floating-info-card__body"></div>
+  `;
+  document.body.appendChild(el);
+  floatingInfoCardEl = el;
+  floatingInfoCardTitleEl = el.querySelector(".floating-info-card__title");
+  floatingInfoCardBodyEl = el.querySelector(".floating-info-card__body");
+}
+
+function isFloatingInfoCardOpen() {
+  return !!(floatingInfoCardEl && floatingInfoCardEl.getAttribute("aria-hidden") === "false");
+}
+
+function closeFloatingInfoCard() {
+  if (!floatingInfoCardEl) return;
+  floatingInfoCardEl.setAttribute("aria-hidden", "true");
+  if (floatingInfoBackdropEl) floatingInfoBackdropEl.setAttribute("aria-hidden", "true");
+  floatingInfoCardAnchorEl = null;
+}
+
+function setFloatingBackdropVisible(visible) {
+  if (!floatingInfoBackdropEl) return;
+  floatingInfoBackdropEl.setAttribute("aria-hidden", visible ? "false" : "true");
+}
+
+function positionFloatingInfoCard(anchorEl) {
+  if (!floatingInfoCardEl || !anchorEl) return;
+  const gap = 8;
+  const pad = 8;
+  const rect = anchorEl.getBoundingClientRect();
+  const panelRect = floatingInfoCardEl.getBoundingClientRect();
+  const vw = window.innerWidth || document.documentElement.clientWidth || 0;
+  const vh = window.innerHeight || document.documentElement.clientHeight || 0;
+  let left = rect.left + (rect.width / 2) - (panelRect.width / 2);
+  left = Math.max(pad, Math.min(left, Math.max(pad, vw - panelRect.width - pad)));
+  let top = rect.bottom + gap;
+  if (top + panelRect.height + pad > vh) {
+    top = rect.top - panelRect.height - gap;
+  }
+  if (top < pad) top = pad;
+  floatingInfoCardEl.style.left = `${Math.round(left)}px`;
+  floatingInfoCardEl.style.top = `${Math.round(top)}px`;
+}
+
+const FLOATING_INFO_KIND_CLASSES = [
+  "floating-info-card--brand",
+  "floating-info-card--talent",
+  "floating-info-card--talent-named",
+  "floating-info-card--gear-highend",
+  "floating-info-card--gear-named",
+  "floating-info-card--gearset",
+  "floating-info-card--brand-core-weapon",
+  "floating-info-card--brand-core-armor",
+  "floating-info-card--brand-core-skill",
+  "floating-info-card--brand-core-other"
+];
+
+function resetFloatingInfoCardClasses() {
+  if (!floatingInfoCardEl) return;
+  floatingInfoCardEl.classList.remove(...FLOATING_INFO_KIND_CLASSES);
+}
+
+function applyFloatingInfoCardKind(kind, extraClass = "") {
+  if (!floatingInfoCardEl) return;
+  if (kind === "talent") floatingInfoCardEl.classList.add("floating-info-card--talent");
+  else if (kind === "talent-named") floatingInfoCardEl.classList.add("floating-info-card--talent-named");
+  else if (kind === "gear-highend") floatingInfoCardEl.classList.add("floating-info-card--gear-highend");
+  else if (kind === "gear-named") floatingInfoCardEl.classList.add("floating-info-card--gear-named");
+  else if (kind === "gearset") floatingInfoCardEl.classList.add("floating-info-card--gearset");
+  else if (kind === "brand") floatingInfoCardEl.classList.add("floating-info-card--brand");
+  if (extraClass) floatingInfoCardEl.classList.add(extraClass);
+}
+
+function showFloatingInfoCard(anchorEl, {
+  kind = "",
+  title = "",
+  bodyText = "",
+  bodyHtml = "",
+  rich = false,
+  extraClass = ""
+} = {}) {
+  ensureFloatingInfoCard();
+  if (!floatingInfoCardEl || !floatingInfoCardTitleEl || !floatingInfoCardBodyEl || !anchorEl) return;
+  resetFloatingInfoCardClasses();
+  applyFloatingInfoCardKind(kind, extraClass);
+  if (rich) {
+    floatingInfoCardEl.classList.add("floating-info-card--cardhost");
+    const titleText = String(title || "").trim();
+    if (titleText) {
+      floatingInfoCardTitleEl.textContent = titleText;
+      floatingInfoCardTitleEl.style.display = "";
+    } else {
+      floatingInfoCardTitleEl.textContent = "";
+      floatingInfoCardTitleEl.style.display = "none";
+    }
+    floatingInfoCardBodyEl.classList.add("floating-info-card__body--rich");
+    floatingInfoCardBodyEl.innerHTML = String(bodyHtml || "").trim() || `<div>${escapeHtml(ui("noData"))}</div>`;
+  } else {
+    floatingInfoCardEl.classList.remove("floating-info-card--cardhost");
+    floatingInfoCardTitleEl.textContent = String(title || "").trim();
+    floatingInfoCardTitleEl.style.display = "";
+    floatingInfoCardBodyEl.classList.remove("floating-info-card__body--rich");
+    floatingInfoCardBodyEl.textContent = String(bodyText || "").replace(/\r/g, "").trim() || ui("noData");
+  }
+  setFloatingBackdropVisible(true);
+  floatingInfoCardEl.setAttribute("aria-hidden", "false");
+  floatingInfoCardAnchorEl = anchorEl;
+  positionFloatingInfoCard(anchorEl);
+}
+
+function openFloatingInfoCard(anchorEl, title, body, kind = "") {
+  showFloatingInfoCard(anchorEl, { kind, title, bodyText: body, rich: false });
+}
+
+function openFloatingInfoCardRich(anchorEl, title, bodyHtml, kind = "", extraClass = "") {
+  showFloatingInfoCard(anchorEl, { kind, title, bodyHtml, rich: true, extraClass });
+}
+
+function resolveCategoryTextRaw(category, key) {
+  const cat = (i18nCategories && typeof i18nCategories === "object")
+    ? i18nCategories[category]
+    : null;
+  if (!cat || typeof cat !== "object") return "";
+
+  const seed = normalizeKey(key || "");
+  if (!seed) return "";
+
+  const cands = [];
+  const seen = new Set();
+  const add = (k) => {
+    const kk = normalizeKey(k || "");
+    if (!kk || seen.has(kk)) return;
+    seen.add(kk);
+    cands.push(kk);
+  };
+  add(seed);
+  if (i18nAliases && i18nAliases[seed]) add(i18nAliases[seed]);
+  if (typeof talentKeyVariants === "function") {
+    for (const v of talentKeyVariants(seed)) add(v);
+  }
+
+  for (const k of cands) {
+    if (Object.prototype.hasOwnProperty.call(cat, k)) {
+      return String(cat[k] ?? "").replace(/\r/g, "").trim();
+    }
+  }
+  return "";
+}
+
+function getTalentDescFromLookup(lookup, itemCategory, talentKey) {
+  if (!lookup) return "";
+  const cat = normalizeKey(itemCategory || "");
+  const map = (cat === "weapon") ? lookup.weapon : lookup.gear;
+  if (!map || !(map instanceof Map)) return "";
+  const keys = expandTalentKeysForLookup(talentKey || "");
+  for (const k of keys) {
+    const hit = map.get(k);
+    if (hit) return String(hit).replace(/\r/g, "").trim();
+  }
+  return "";
+}
+
+function resolveTalentDescription(itemCategory, talentKey, fallbackText = "", lookup = null, talentNameHint = "") {
+  const cat = normalizeKey(itemCategory || "");
+  const key = normalizeKey(talentKey || "");
+  const hintKey = normalizeKey(talentNameHint || "");
+  const fallbackRaw = String(fallbackText || "").replace(/\r/g, "").trim();
+  const lookupDesc = getTalentDescFromLookup(lookup, itemCategory, key);
+  const fallback = fallbackRaw || lookupDesc || "";
+  const probeKey = key || hintKey;
+  if (!probeKey) return fallback;
+  if (langSelect.value !== "ja") return fallback;
+  const catNames = (cat === "weapon")
+    ? ["weapon_talent_desc", "exotic_weapon_talent_desc"]
+    : ["gear_talent_desc", "exotic_gear_talent_desc", "gearset_talent_desc"];
+  for (const cn of catNames) {
+    const txt = trCategoryText(cn, probeKey, "");
+    if (txt) return txt;
+  }
+  return fallback;
+}
+
+async function ensureTalentDescLookupCache() {
+  if (talentDescLookupCache) return talentDescLookupCache;
+  if (talentDescLookupPromise) return talentDescLookupPromise;
+  talentDescLookupPromise = (async () => {
+    const out = { gear: new Map(), weapon: new Map() };
+    const put = (map, keyRaw, descRaw) => {
+      const desc = String(descRaw || "").replace(/\r/g, "").trim();
+      if (!desc) return;
+      const keys = expandTalentKeysForLookup(keyRaw || "");
+      if (!keys.length) return;
+      for (const k of keys) {
+        if (!map.has(k)) map.set(k, desc);
+      }
+    };
+    const parseTitleDescFromRaw = (rawText) => {
+      const raw = String(rawText || "").replace(/\r/g, "");
+      if (!raw.trim()) return { title: "", desc: "" };
+      const lines = raw.split("\n").map((x) => String(x || "").trim());
+      const nonEmpty = lines.filter(Boolean);
+      if (!nonEmpty.length) return { title: "", desc: "" };
+      const title = nonEmpty[0];
+      const desc = nonEmpty.slice(1).join("\n").trim();
+      return { title, desc };
+    };
+    const sql = await initSql();
+    const v = indexJson?.built_at ? `?v=${encodeURIComponent(indexJson.built_at)}` : `?v=${Date.now()}`;
+    const gz = await fetchArrayBuffer(`${DATA_BASE}/items.db.gz${v}`);
+    const dbBytes = await gunzipToUint8Array(gz);
+    const db = new sql.Database(dbBytes);
+    try {
+      const hasTable = (name) => db.exec(`SELECT name FROM sqlite_master WHERE type='table' AND name='${name}'`).length > 0;
+      if (hasTable("items_weapon_talents")) {
+        const st = db.prepare(`
+          SELECT talent, talent_desc, perfect_talent, perfect_talent_desc
+          FROM items_weapon_talents
+        `);
+        while (st.step()) {
+          const r = st.getAsObject();
+          put(out.weapon, r.talent, r.talent_desc);
+          put(out.weapon, r.perfect_talent, r.perfect_talent_desc);
+        }
+        st.free();
+      }
+      if (hasTable("items_gear_talents")) {
+        const st = db.prepare(`
+          SELECT talent, talent_desc, perfect_talent, perfect_talent_desc
+          FROM items_gear_talents
+        `);
+        while (st.step()) {
+          const r = st.getAsObject();
+          put(out.gear, r.talent, r.talent_desc);
+          put(out.gear, r.perfect_talent, r.perfect_talent_desc);
+        }
+        st.free();
+      }
+      if (hasTable("items_gearset_bonuses")) {
+        const st = db.prepare(`
+          SELECT talent_name, talent_desc
+          FROM items_gearset_bonuses
+          WHERE trim(talent_name) <> '' OR trim(talent_desc) <> ''
+        `);
+        while (st.step()) {
+          const r = st.getAsObject();
+          const tName = String(r.talent_name || "").trim();
+          const tDesc = String(r.talent_desc || "").replace(/\r/g, "").trim();
+          if (tName && tDesc) put(out.gear, tName, tDesc);
+        }
+        st.free();
+      }
+      if (hasTable("items_gearsets")) {
+        const st = db.prepare(`
+          SELECT backpack_talent, backpack_talent_raw, chest_talent, chest_talent_raw
+          FROM items_gearsets
+        `);
+        while (st.step()) {
+          const r = st.getAsObject();
+          const bp = parseTitleDescFromRaw(r.backpack_talent_raw || "");
+          const ch = parseTitleDescFromRaw(r.chest_talent_raw || "");
+          const bpName = bp.title || String(r.backpack_talent || "").trim();
+          const chName = ch.title || String(r.chest_talent || "").trim();
+          const bpDesc = bp.desc;
+          const chDesc = ch.desc;
+          if (bpName && bpDesc) put(out.gear, bpName, bpDesc);
+          if (chName && chDesc) put(out.gear, chName, chDesc);
+        }
+        st.free();
+      }
+      const collectNamedExotic = (table, map) => {
+        if (!hasTable(table)) return;
+        const st = db.prepare(`
+          SELECT talent, talent_key, talent_desc
+          FROM ${table}
+          WHERE trim(talent) <> '' OR trim(talent_key) <> ''
+        `);
+        while (st.step()) {
+          const r = st.getAsObject();
+          put(map, r.talent_key || r.talent, r.talent_desc);
+        }
+        st.free();
+      };
+      collectNamedExotic("items_weapon_named", out.weapon);
+      collectNamedExotic("items_weapon_exotic", out.weapon);
+      collectNamedExotic("items_gear_named", out.gear);
+      collectNamedExotic("items_gear_exotic", out.gear);
+      talentDescLookupCache = out;
+      return out;
+    } finally {
+      db.close();
+    }
+  })();
+  try {
+    return await talentDescLookupPromise;
+  } finally {
+    talentDescLookupPromise = null;
+  }
+}
+
+async function ensureBrandDescCache() {
+  if (brandDescCache) return brandDescCache;
+  if (brandDescPromise) return brandDescPromise;
+  brandDescPromise = (async () => {
+    const out = new Map();
+    const sql = await initSql();
+    const v = indexJson?.built_at ? `?v=${encodeURIComponent(indexJson.built_at)}` : `?v=${Date.now()}`;
+    const gz = await fetchArrayBuffer(`${DATA_BASE}/items.db.gz${v}`);
+    const dbBytes = await gunzipToUint8Array(gz);
+    const db = new sql.Database(dbBytes);
+    try {
+      const hasBrandsets = db.exec("SELECT name FROM sqlite_master WHERE type='table' AND name='items_brandsets'").length > 0;
+      const hasGearsets = db.exec("SELECT name FROM sqlite_master WHERE type='table' AND name='items_gearsets'").length > 0;
+      const hasBonuses = db.exec("SELECT name FROM sqlite_master WHERE type='table' AND name='items_brandset_bonuses'").length > 0;
+      if ((!hasBrandsets && !hasGearsets) || !hasBonuses) {
+        brandDescCache = out;
+        return out;
+      }
+      const ingest = (tableName, keyCol, nameCol) => {
+        const st = db.prepare(`
+          SELECT
+            t.${keyCol} AS set_key,
+            t.${nameCol} AS set_name,
+            t.core_attribute,
+            bo.slot,
+            bo.value,
+            bo.type,
+            bo.type_key,
+            bo.value_num,
+            bo.unit
+          FROM ${tableName} t
+          LEFT JOIN items_brandset_bonuses bo ON bo.parent_item_id = t.item_id
+          ORDER BY t.${nameCol}, t.item_id, bo.bonus_ord, bo.bonus_part_ord
+        `);
+        while (st.step()) {
+          const row = st.getAsObject();
+          const brandKey = normalizeKey(String(row.set_key || row.set_name || ""));
+          if (!brandKey) continue;
+          if (!out.has(brandKey)) {
+            out.set(brandKey, {
+              core: String(row.core_attribute || "").trim(),
+              bonuses: []
+            });
+          }
+          if (row.slot != null && String(row.slot).trim() !== "") {
+            out.get(brandKey).bonuses.push({
+              slot: String(row.slot || "").trim(),
+              value: String(row.value || "").trim(),
+              type: String(row.type || "").trim(),
+              typeKey: String(row.type_key || "").trim(),
+              valueNum: String(row.value_num || "").trim(),
+              unit: String(row.unit || "").trim()
+            });
+          }
+        }
+        st.free();
+      };
+      if (hasBrandsets) ingest("items_brandsets", "brandset_key", "brandset");
+      if (hasGearsets) ingest("items_gearsets", "gearset_key", "gearset");
+      brandDescCache = out;
+      return out;
+    } finally {
+      db.close();
+    }
+  })();
+  try {
+    return await brandDescPromise;
+  } finally {
+    brandDescPromise = null;
+  }
+}
+
+function formatBrandDescription(info) {
+  if (!info || typeof info !== "object") return "";
+  const lines = [];
+  const coreText = String(info.core || "").trim();
+  if (coreText) lines.push(`${trText(coreText)}`);
+  const bonuses = Array.isArray(info.bonuses) ? info.bonuses.slice() : [];
+  bonuses.sort((a, b) => Number(a.slot || 999) - Number(b.slot || 999));
+  bonuses.forEach((b) => {
+    const numOnly = formatDisplayNumber(b.valueNum || "");
+    const numUnit = `${numOnly}${b.unit || ""}`.trim();
+    const typeText = trText(b.type || b.typeKey || "");
+    const valueText = (numUnit || stripHtml(b.value || "")).trim();
+    const body = [valueText, typeText].filter(Boolean).join(" ").trim();
+    if (!body) return;
+    lines.push(body);
+  });
+  return lines.join("\n");
+}
+
+function brandPopupCoreClass(coreText) {
+  const k = normalizeKey(coreText || "");
+  if (k === "weapondamage") return "brand-core-weapon";
+  if (k === "armor") return "brand-core-armor";
+  if (k === "skilltier") return "brand-core-skill";
+  return "brand-core-other";
+}
+
+function buildBrandPopupCardHtml(info, brandName, brandKey) {
+  const title = String(brandName || brandKey || "").trim();
+  const core = String(info?.core || "").trim();
+  const bonuses = Array.isArray(info?.bonuses) ? info.bonuses.slice() : [];
+  bonuses.sort((a, b) => Number(a.slot || 999) - Number(b.slot || 999));
+  const lines = [];
+  if (core) lines.push(trText(core));
+  bonuses.forEach((b) => {
+    const numOnly = formatDisplayNumber(b.valueNum || "");
+    const numUnit = `${numOnly}${b.unit || ""}`.trim();
+    const typeText = trText(b.type || b.typeKey || "");
+    const valueText = (numUnit || stripHtml(b.value || "")).trim();
+    const text = [valueText, typeText].filter(Boolean).join(" ").trim();
+    if (text) lines.push(text);
+  });
+  const brandKeyNorm = normalizeKey(brandKey || title);
+  const brandIconPrimary = iconUrl("brands", brandKeyNorm, "img/brands");
+  const brandIconAlt = iconUrl("brands", normalizeKey(title), "img/brands");
+  const brandIconFallbacks = [];
+  if (brandIconAlt && brandIconAlt !== brandIconPrimary) brandIconFallbacks.push(brandIconAlt);
+  const brandBgHtml = brandIconPrimary
+    ? bgIconHtml(brandIconPrimary, "card__bg--tr", "brand", brandIconFallbacks)
+    : "";
+  const coreClass = brandPopupCoreClass(core);
+  const linesHtml = lines.length
+    ? lines.map((ln, idx) => `<div class="line ${idx === 0 ? "line--core" : "line--gray"}"><div class="line__body"><div class="line__text">${escapeHtml(ln)}</div></div></div>`).join("")
+    : `<div class="line line--gray"><div class="line__body"><div class="line__text">${escapeHtml(ui("noData"))}</div></div></div>`;
+
+  return `
+    <div class="card rarity-highend ${escapeHtml(coreClass)}">
+      ${brandBgHtml}
+      <div class="card__head">
+        <div class="card__title-wrap card__title-wrap--gear">
+          <div class="card__titles">
+            <div class="card__title"><span class="card__title-text">${escapeHtml(title)}</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="lines">${linesHtml}</div>
+    </div>
+  `;
+}
+
+async function ensureGearsetPopupCache() {
+  if (gearsetPopupCache) return gearsetPopupCache;
+  if (gearsetPopupPromise) return gearsetPopupPromise;
+  gearsetPopupPromise = (async () => {
+    const out = new Map();
+    const sql = await initSql();
+    const v = indexJson?.built_at ? `?v=${encodeURIComponent(indexJson.built_at)}` : `?v=${Date.now()}`;
+    const gz = await fetchArrayBuffer(`${DATA_BASE}/items.db.gz${v}`);
+    const dbBytes = await gunzipToUint8Array(gz);
+    const db = new sql.Database(dbBytes);
+    try {
+      const hasGearsets = db.exec("SELECT name FROM sqlite_master WHERE type='table' AND name='items_gearsets'").length > 0;
+      const hasBonuses = db.exec("SELECT name FROM sqlite_master WHERE type='table' AND name='items_gearset_bonuses'").length > 0;
+      if (!hasGearsets || !hasBonuses) {
+        gearsetPopupCache = out;
+        return out;
+      }
+      const st = db.prepare(`
+        SELECT
+          g.item_id,
+          g.gearset_key,
+          g.gearset,
+          g.core_attribute,
+          g.backpack_talent,
+          g.backpack_talent_raw,
+          g.chest_talent,
+          g.chest_talent_raw,
+          bo.slot,
+          bo.label,
+          bo.bonus_type,
+          bo.value,
+          bo.value_num,
+          bo.unit,
+          bo.type,
+          bo.type_key,
+          bo.talent_name,
+          bo.talent_desc,
+          bo.value_raw
+        FROM items_gearsets g
+        LEFT JOIN items_gearset_bonuses bo ON bo.parent_item_id = g.item_id
+        ORDER BY g.gearset, g.item_id, bo.bonus_ord, bo.bonus_part_ord
+      `);
+      while (st.step()) {
+        const r = st.getAsObject();
+        const key = normalizeKey(String(r.gearset_key || r.gearset || ""));
+        if (!key) continue;
+        if (!out.has(key)) {
+          out.set(key, {
+            itemId: String(r.item_id || "").trim(),
+            gearsetKey: String(r.gearset_key || "").trim(),
+            gearset: String(r.gearset || "").trim(),
+            core: String(r.core_attribute || "").trim(),
+            backpackTalent: String(r.backpack_talent || "").trim(),
+            backpackTalentRaw: String(r.backpack_talent_raw || "").trim(),
+            chestTalent: String(r.chest_talent || "").trim(),
+            chestTalentRaw: String(r.chest_talent_raw || "").trim(),
+            bonuses: []
+          });
+        }
+        if (r.slot != null && String(r.slot).trim() !== "") {
+          out.get(key).bonuses.push({
+            slot: String(r.slot || "").trim(),
+            label: String(r.label || "").trim(),
+            bonusType: String(r.bonus_type || "").trim(),
+            value: String(r.value || "").trim(),
+            valueNum: String(r.value_num || "").trim(),
+            unit: String(r.unit || "").trim(),
+            type: String(r.type || "").trim(),
+            typeKey: String(r.type_key || "").trim(),
+            talentName: String(r.talent_name || "").trim(),
+            talentDesc: String(r.talent_desc || "").trim(),
+            valueRaw: String(r.value_raw || "").trim()
+          });
+        }
+      }
+      st.free();
+      gearsetPopupCache = out;
+      return out;
+    } finally {
+      db.close();
+    }
+  })();
+  try {
+    return await gearsetPopupPromise;
+  } finally {
+    gearsetPopupPromise = null;
+  }
+}
+
+function gearsetPopupCoreClass(coreText) {
+  const k = normalizeKey(coreText || "");
+  if (k === "weapondamage") return "gearset-core-weapon";
+  if (k === "armor") return "gearset-core-armor";
+  if (k === "skilltier") return "gearset-core-skill";
+  return "gearset-core-other";
+}
+
+function parseTalentRawTitleDesc(raw) {
+  const s = String(raw || "").replace(/\r/g, "").trim();
+  if (!s) return { title: "", desc: "" };
+  const parts = s.split("\n").map((x) => String(x || "").trim()).filter(Boolean);
+  if (!parts.length) return { title: "", desc: "" };
+  return { title: parts[0], desc: parts.slice(1).join("\n").trim() };
+}
+
+function buildGearsetPopupCardHtml(it, fallbackTitle = "") {
+  if (!it || typeof it !== "object") return `<div class="status">${escapeHtml(ui("noData"))}</div>`;
+  const titleRaw = String(it.gearset || fallbackTitle || "").trim();
+  const title = (langSelect.value === "ja")
+    ? (i18n[it.gearsetKey] ?? i18n[normalizeKey(it.gearsetKey || titleRaw)] ?? titleRaw)
+    : titleRaw;
+  const coreText = trText(it.core || "");
+  const lines = [];
+  if (coreText) lines.push({ cls: "line line--core", text: coreText, textHtml: "" });
+
+  const grouped = new Map();
+  (it.bonuses || []).forEach((b) => {
+    const gk = `${b.slot}|${b.bonusType || ""}|${b.talentName || ""}|${b.talentDesc || ""}`;
+    if (!grouped.has(gk)) grouped.set(gk, []);
+    grouped.get(gk).push(b);
+  });
+  function gearPieceIconByLabels(labels) {
+    const all = (labels || []).map((x) => normalizeKey(x || "")).join(" ");
+    if (all.includes("backpack")) {
+      const src = iconUrl("gear_slots", "backpack", "img/gears");
+      return src ? iconImgHtml(src, "ico ico--talent", "backpack") : "";
+    }
+    if (all.includes("chest")) {
+      const src = iconUrl("gear_slots", "chest", "img/gears");
+      return src ? iconImgHtml(src, "ico ico--talent", "chest") : "";
+    }
+    return "";
+  }
+
+  const keyNorm = normalizeKey(it.gearsetKey || titleRaw);
+  const setIconPrimary = iconUrl("brands", it.gearsetKey || keyNorm, "img/brands");
+  const setIconAlt = iconUrl("brands", keyNorm, "img/brands");
+  const setFallbacks = [];
+  if (setIconAlt && setIconAlt !== setIconPrimary) setFallbacks.push(setIconAlt);
+  const setBgHtml = setIconPrimary ? bgIconHtml(setIconPrimary, "card__bg--tr", "gearset", setFallbacks) : "";
+
+  for (const gs of grouped.values()) {
+    const b = gs[0] || {};
+    if (b.bonusType === "talent" || b.talentName || b.talentDesc) {
+      const tn = b.talentName || b.value || "";
+      const td = b.talentDesc || "";
+      const labelList = gs.map((x) => String(x.label || "").trim()).filter(Boolean);
+      const labelNorm = labelList.map((x) => normalizeKey(x)).join(" ");
+      const slotNum = Number.parseInt(String(b.slot || "0"), 10) || 0;
+      const isFourPc = slotNum >= 4 || labelNorm.includes("4pc") || labelNorm.includes("4piece");
+      const pieceIcon = gearPieceIconByLabels(labelList);
+      const talentIcon = pieceIcon || (isFourPc && setIconPrimary ? iconImgHtml(setIconPrimary, "ico ico--talent", "gearset", setFallbacks) : "");
+      const talentKey = normalizeKey(tn || "");
+      const tnDisp = (langSelect.value === "ja")
+        ? (i18n[talentKey] ?? trText(tn))
+        : tn;
+      const tdDisp = (langSelect.value === "ja")
+        ? trCategoryText("gearset_talent_desc", talentKey, td)
+        : td;
+      if (tnDisp) lines.push({ cls: "line line--gray line--talent", text: tnDisp.trim(), textHtml: "", icon: talentIcon });
+      if (tdDisp) lines.push({ cls: "line line--named-meta line--talent-desc", text: tdDisp, textHtml: escapeHtml(tdDisp).replace(/\r?\n/g, "<br>") });
+      continue;
+    }
+    const parts = [];
+    gs.forEach((x) => {
+      const typeText = trText(x.type || x.typeKey || "");
+      const numUnit = `${formatDisplayNumber(x.valueNum || "")}${x.unit || ""}`.trim();
+      const valText = [numUnit, typeText].filter(Boolean).join(" ").trim() || stripHtml(x.value || "");
+      if (valText) parts.push(valText);
+    });
+    if (!parts.length) continue;
+    lines.push({ cls: "line line--gray", text: parts.join(" "), textHtml: parts.map((p) => escapeHtml(p)).join("<br>") });
+  }
+
+  // fallback talents from gearsets raw columns
+  if (!lines.some((x) => x.cls.includes("line--talent"))) {
+    const bp = parseTalentRawTitleDesc(it.backpackTalentRaw || "");
+    const ch = parseTalentRawTitleDesc(it.chestTalentRaw || "");
+    [bp, ch].forEach((t) => {
+      if (!t.title) return;
+      const tk = normalizeKey(t.title);
+      const tnDisp = (langSelect.value === "ja") ? (i18n[tk] ?? trText(t.title)) : t.title;
+      const tdDisp = (langSelect.value === "ja") ? trCategoryText("gearset_talent_desc", tk, t.desc) : t.desc;
+      lines.push({ cls: "line line--gray line--talent", text: tnDisp, textHtml: "", icon: "" });
+      if (tdDisp) lines.push({ cls: "line line--named-meta line--talent-desc", text: tdDisp, textHtml: escapeHtml(tdDisp).replace(/\r?\n/g, "<br>") });
+    });
+  }
+  const coreClass = gearsetPopupCoreClass(it.core);
+  const linesHtml = lines.length
+    ? lines.map((ln) => `<div class="${ln.cls}">${ln.icon || ""}<div class="line__body"><div class="line__text">${ln.textHtml || escapeHtml(ln.text)}</div></div></div>`).join("")
+    : `<div class="line line--gray"><div class="line__body"><div class="line__text">${escapeHtml(ui("noData"))}</div></div></div>`;
+  return `
+    <div class="card rarity-gearset ${escapeHtml(coreClass)}">
+      ${setBgHtml}
+      <div class="card__head">
+        <div class="card__title-wrap card__title-wrap--gear">
+          <div class="card__titles">
+            <div class="card__title"><span class="card__title-text">${escapeHtml(title)}</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="lines">${linesHtml}</div>
+    </div>
+  `;
+}
+
+function expandTalentKeysForLookup(raw) {
+  const seed = normalizeKey(raw || "");
+  if (!seed) return [];
+  const out = [];
+  const seen = new Set();
+  const add = (k) => {
+    const kk = normalizeKey(k || "");
+    if (!kk || seen.has(kk)) return;
+    seen.add(kk);
+    out.push(kk);
+  };
+  add(seed);
+  const alias = (i18nAliases && i18nAliases[seed]) ? i18nAliases[seed] : "";
+  if (alias) add(alias);
+  if (typeof talentKeyVariants === "function") {
+    for (const v of talentKeyVariants(seed)) add(v);
+  }
+  return out;
+}
+
+async function ensureNamedTalentLookupCache() {
+  if (namedTalentLookupCache) return namedTalentLookupCache;
+  if (namedTalentLookupPromise) return namedTalentLookupPromise;
+  namedTalentLookupPromise = (async () => {
+    const out = {
+      gearByItemId: new Map(),
+      gearByNameKey: new Map(),
+      weaponByItemId: new Map(),
+      weaponByNameKey: new Map()
+    };
+    const add = (bucket, key, talentKey) => {
+      const k = String(key || "").trim();
+      const t = normalizeKey(talentKey || "");
+      if (!k || !t) return;
+      if (!bucket.has(k)) bucket.set(k, new Set());
+      bucket.get(k).add(t);
+    };
+    const sql = await initSql();
+    const v = indexJson?.built_at ? `?v=${encodeURIComponent(indexJson.built_at)}` : `?v=${Date.now()}`;
+    const gz = await fetchArrayBuffer(`${DATA_BASE}/items.db.gz${v}`);
+    const dbBytes = await gunzipToUint8Array(gz);
+    const db = new sql.Database(dbBytes);
+    try {
+      const hasGearNamed = db.exec("SELECT name FROM sqlite_master WHERE type='table' AND name='items_gear_named'").length > 0;
+      if (hasGearNamed) {
+        const st = db.prepare(`
+          SELECT item_id, name_key, talent, talent_key
+          FROM items_gear_named
+          WHERE trim(talent) <> '' OR trim(talent_key) <> ''
+        `);
+        while (st.step()) {
+          const r = st.getAsObject();
+          const itemId = String(r.item_id || "").trim();
+          const nameKey = normalizeKey(String(r.name_key || ""));
+          const keys = expandTalentKeysForLookup(r.talent_key || r.talent || "");
+          keys.forEach((tk) => {
+            add(out.gearByItemId, itemId, tk);
+            add(out.gearByNameKey, nameKey, tk);
+          });
+        }
+        st.free();
+      }
+      const hasWeaponNamed = db.exec("SELECT name FROM sqlite_master WHERE type='table' AND name='items_weapon_named'").length > 0;
+      if (hasWeaponNamed) {
+        const st = db.prepare(`
+          SELECT item_id, name_key, talent, talent_key
+          FROM items_weapon_named
+          WHERE trim(talent) <> '' OR trim(talent_key) <> ''
+        `);
+        while (st.step()) {
+          const r = st.getAsObject();
+          const itemId = String(r.item_id || "").trim();
+          const nameKey = normalizeKey(String(r.name_key || ""));
+          const keys = expandTalentKeysForLookup(r.talent_key || r.talent || "");
+          keys.forEach((tk) => {
+            add(out.weaponByItemId, itemId, tk);
+            add(out.weaponByNameKey, nameKey, tk);
+          });
+        }
+        st.free();
+      }
+      namedTalentLookupCache = out;
+      return out;
+    } finally {
+      db.close();
+    }
+  })();
+  try {
+    return await namedTalentLookupPromise;
+  } finally {
+    namedTalentLookupPromise = null;
+  }
+}
+
+function hasNamedTalentInLookup(lookup, itemCategory, itemId, nameKey, talentKey) {
+  if (!lookup || !talentKey) return false;
+  const t = normalizeKey(talentKey);
+  if (!t) return false;
+  const cat = normalizeKey(itemCategory || "");
+  const id = String(itemId || "").trim();
+  const nk = normalizeKey(nameKey || "");
+  const byItem = (cat === "weapon") ? lookup.weaponByItemId : lookup.gearByItemId;
+  const byName = (cat === "weapon") ? lookup.weaponByNameKey : lookup.gearByNameKey;
+  const hitByItem = !!(id && byItem.has(id) && byItem.get(id).has(t));
+  const hitByName = !!(nk && byName.has(nk) && byName.get(nk).has(t));
+  return hitByItem || hitByName;
+}
+
+async function ensureItemTalentOverrideCache() {
+  if (itemTalentOverrideCache) return itemTalentOverrideCache;
+  if (itemTalentOverridePromise) return itemTalentOverridePromise;
+  itemTalentOverridePromise = (async () => {
+    const out = {
+      gearByItemId: new Map(),
+      gearByNameKey: new Map(),
+      weaponByItemId: new Map(),
+      weaponByNameKey: new Map()
+    };
+    const upsert = (bucket, key, talentKey, payload) => {
+      const k = String(key || "").trim();
+      const tk = normalizeKey(talentKey || "");
+      if (!k || !tk) return;
+      if (!bucket.has(k)) bucket.set(k, new Map());
+      const m = bucket.get(k);
+      const prev = m.get(tk);
+      if (!prev) {
+        m.set(tk, payload);
+        return;
+      }
+      if (!prev.talentDesc && payload.talentDesc) prev.talentDesc = payload.talentDesc;
+      if (!prev.talent && payload.talent) prev.talent = payload.talent;
+    };
+    const ingestRow = (target, row) => {
+      const itemId = String(row.item_id || "").trim();
+      const nameKey = normalizeKey(String(row.name_key || ""));
+      const talent = String(row.talent || "").trim();
+      const talentDesc = String(row.talent_desc || "").replace(/\r/g, "").trim();
+      const keys = expandTalentKeysForLookup(row.talent_key || row.talent || "");
+      keys.forEach((tk) => {
+        const payload = { talentKey: tk, talent, talentDesc };
+        upsert(target.byItemId, itemId, tk, payload);
+        upsert(target.byNameKey, nameKey, tk, payload);
+      });
+    };
+
+    const sql = await initSql();
+    const v = indexJson?.built_at ? `?v=${encodeURIComponent(indexJson.built_at)}` : `?v=${Date.now()}`;
+    const gz = await fetchArrayBuffer(`${DATA_BASE}/items.db.gz${v}`);
+    const dbBytes = await gunzipToUint8Array(gz);
+    const db = new sql.Database(dbBytes);
+    try {
+      const collect = (table, target) => {
+        const has = db.exec(`SELECT name FROM sqlite_master WHERE type='table' AND name='${table}'`).length > 0;
+        if (!has) return;
+        const st = db.prepare(`
+          SELECT item_id, name_key, talent, talent_key, talent_desc
+          FROM ${table}
+          WHERE trim(talent) <> '' OR trim(talent_key) <> ''
+        `);
+        while (st.step()) ingestRow(target, st.getAsObject());
+        st.free();
+      };
+      collect("items_gear_named", { byItemId: out.gearByItemId, byNameKey: out.gearByNameKey });
+      collect("items_gear_exotic", { byItemId: out.gearByItemId, byNameKey: out.gearByNameKey });
+      collect("items_weapon_named", { byItemId: out.weaponByItemId, byNameKey: out.weaponByNameKey });
+      collect("items_weapon_exotic", { byItemId: out.weaponByItemId, byNameKey: out.weaponByNameKey });
+      itemTalentOverrideCache = out;
+      return out;
+    } finally {
+      db.close();
+    }
+  })();
+  try {
+    return await itemTalentOverridePromise;
+  } finally {
+    itemTalentOverridePromise = null;
+  }
+}
+
+function getVendorTalentOverrideFromCache(cache, itemCategory, itemId, nameKey, talentKey) {
+  if (!cache) return null;
+  const cat = normalizeKey(itemCategory || "");
+  const byItem = (cat === "weapon") ? cache.weaponByItemId : cache.gearByItemId;
+  const byName = (cat === "weapon") ? cache.weaponByNameKey : cache.gearByNameKey;
+  const id = String(itemId || "").trim();
+  const nk = normalizeKey(nameKey || "");
+  const keys = expandTalentKeysForLookup(talentKey || "");
+  for (const tk of keys) {
+    if (id && byItem.has(id)) {
+      const hit = byItem.get(id).get(tk);
+      if (hit) return hit;
+    }
+  }
+  for (const tk of keys) {
+    if (nk && byName.has(nk)) {
+      const hit = byName.get(nk).get(tk);
+      if (hit) return hit;
+    }
+  }
+  // Fallback: if item/name resolves to exactly one talent definition in items tables,
+  // prefer that even when shop talent_key is wrong.
+  const pickSingleEquivalent = (m) => {
+    if (!m || m.size === 0) return null;
+    let first = null;
+    let sig = "";
+    for (const v of m.values()) {
+      if (!v) continue;
+      const s = [
+        normalizeKey(v.talent || ""),
+        normalizeKey(v.talentDesc || "")
+      ].join("|");
+      if (!first) {
+        first = v;
+        sig = s;
+        continue;
+      }
+      if (s !== sig) return null;
+    }
+    return first;
+  };
+  if (id && byItem.has(id)) {
+    const picked = pickSingleEquivalent(byItem.get(id));
+    if (picked) return picked;
+  }
+  if (nk && byName.has(nk)) {
+    const picked = pickSingleEquivalent(byName.get(nk));
+    if (picked) return picked;
+  }
+  return null;
+}
+
 /* ---------------------------
  * Assets
  * ------------------------- */
@@ -1545,11 +2450,11 @@ function renderLine(item, ln, colorOverride = "") {
   if (lt === "modslot" || lt === "slot") return "";
 
   const iconClass = ln.icon_class || "";
-  const statEn = stripHtml(ln.stat_en || "");
+  const statEn = stripHtml((lt === "talent" && ln.override_talent_name) ? ln.override_talent_name : (ln.stat_en || ""));
   if (!statEn) return "";
   if (/^[\-–—]+$/.test(statEn)) return "";
 
-  const statKey = String(ln.stat_key || normalizeKey(statEn));
+  const statKey = String((lt === "talent" && ln.override_talent_key) ? ln.override_talent_key : (ln.stat_key || normalizeKey(statEn)));
   if (!statLabelEnByKey.has(statKey)) statLabelEnByKey.set(statKey, statEn);
 
   const stat = (langSelect.value === "ja")
@@ -1652,14 +2557,21 @@ function renderLine(item, ln, colorOverride = "") {
   }
 
   const perfectClass = (isPerfectTalent || isPerfectAttr) ? " line--perfect" : "";
-  const lineClass = `line line--${colorClass} line--${lt}${perfectClass}`;
+  const namedTalentClass = (lt === "talent" && !!ln.is_named_talent) ? " line--named" : "";
+  const lineClass = `line line--${colorClass} line--${lt}${perfectClass}${namedTalentClass}`;
   const hitClass = activeFilterKeys.includes(statKey) ? " is-filter-hit" : "";
+
+  let lineTextHtml = escapeHtml(text);
+  if (currentViewMode === "vendor" && lt === "talent" && statKey) {
+    const namedAttr = ln.is_named_talent ? "1" : "0";
+    lineTextHtml = `<button type="button" class="inline-pop-trigger line__text-pop-trigger" data-pop-type="talent" data-item-category="${escapeHtml(item.category || "")}" data-item-rarity="${escapeHtml(item.rarity || "")}" data-item-id="${escapeHtml(item.item_id || "")}" data-item-name-key="${escapeHtml(item.name_key || "")}" data-talent-key="${escapeHtml(statKey)}" data-talent-name="${escapeHtml(stat)}" data-talent-named="${namedAttr}">${escapeHtml(text)}</button>`;
+  }
 
   return `
     <div class="${lineClass}${hitClass}" data-stat-key="${escapeHtml(statKey)}" data-line-type="${escapeHtml(lt)}">
       ${talentIconHtml}
       <div class="line__body">
-        <div class="line__text">${escapeHtml(text)}</div>
+        <div class="line__text">${lineTextHtml}</div>
         ${gaugeHtml}
       </div>
     </div>
@@ -1839,11 +2751,20 @@ function renderCard(item) {
       <div class="card__subtitle">
         <span class="card__subtitle-text">${escapeHtml(head.title2Parts.slot)}</span>
         <span class="card__subtitle-sep">/</span>
-        <span class="card__subtitle-name is-named">${escapeHtml(head.title2Parts.name)}</span>
+        <button type="button" class="inline-pop-trigger card__subtitle-pop-trigger" data-pop-type="gear-summary"><span class="card__subtitle-name is-named">${escapeHtml(head.title2Parts.name)}</span></button>
       </div>
     `;
   } else if (head.title2) {
     title2Html = `<div class="card__subtitle"><span class="card__subtitle-text">${escapeHtml(head.title2)}</span></div>`;
+  }
+
+  let title1Html = `<span class="card__title-text">${escapeHtml(head.title1 || "")}</span>`;
+  if (currentViewMode === "vendor" && item.category === "gear") {
+    const brandKey = normalizeKey(String(item.brand_key || item.brand_en || ""));
+    const brandScope = String(item.rarity || "").toLowerCase().includes("gearset") ? "gearset" : "brand";
+    if (brandKey) {
+      title1Html = `<button type="button" class="inline-pop-trigger card__title-pop-trigger" data-pop-type="brand" data-brand-scope="${escapeHtml(brandScope)}" data-brand-key="${escapeHtml(brandKey)}" data-brand-name="${escapeHtml(head.title1 || item.brand_en || "")}"><span class="card__title-text">${escapeHtml(head.title1 || "")}</span></button>`;
+    }
   }
 
   return `
@@ -1852,7 +2773,7 @@ function renderCard(item) {
       <div class="card__head">
         <div class="card__title-wrap">
           <div class="card__titles">
-            <div class="card__title${namedClass}"><span class="card__title-text">${escapeHtml(head.title1 || "")}</span></div>
+            <div class="card__title${namedClass}">${title1Html}</div>
             ${title2Html}
           </div>
         </div>
@@ -2110,7 +3031,6 @@ function applyFiltersToDom() {
       .some(c => c.style.display !== "none");
     v.style.display = any ? "" : "none";
   });
-
 }
 
 function keyToLabel(key) {
@@ -2515,9 +3435,8 @@ async function boot() {
   setStatus(ui("loadingIndex"));
   indexJson = await fetchJson(`${DATA_BASE}/index.json?ts=${Date.now()}`);
 
-  const i18nFile = indexJson?.i18n?.file || "i18n.json";
   setStatus(ui("loadingI18n"));
-  const i18nRaw = await fetchJson(`${DATA_BASE}/${i18nFile}?ts=${Date.now()}`);
+  const i18nRaw = await fetchJson(`${DATA_BASE}/i18n.json?ts=${Date.now()}`);
   let i18nTalentRaw = null;
   try {
     i18nTalentRaw = await fetchJson(`${DATA_BASE}/i18n_talents.json?ts=${Date.now()}`);
@@ -2604,8 +3523,7 @@ async function boot() {
   (async () => {
     let needsVendorRerender = false;
     try {
-      const assetFile = (indexJson?.assets?.file) ? indexJson.assets.file : "asset_map.json";
-      assetMap = await fetchJsonWithTimeout(`${DATA_BASE}/${assetFile}?ts=${Date.now()}`, 8000);
+      assetMap = await fetchJsonWithTimeout(`${DATA_BASE}/asset_map.json?ts=${Date.now()}`, 8000);
       needsVendorRerender = true;
     } catch (e) {
       assetMap = null;
@@ -2823,10 +3741,16 @@ document.addEventListener("click", (e) => {
       closeNavMenu();
     }
   }
-  if (!isWorldTimePopupOpen) return;
-  if (worldTimePopupEl && worldTimePopupEl.contains(e.target)) return;
-  if (worldTimeEl && worldTimeEl.contains(e.target)) return;
-  closeWorldTimePopup();
+  if (isFloatingInfoCardOpen()) {
+    if (!(floatingInfoCardEl && floatingInfoCardEl.contains(e.target)) && !e.target.closest(".inline-pop-trigger")) {
+      closeFloatingInfoCard();
+    }
+  }
+  if (isWorldTimePopupOpen) {
+    if (worldTimePopupEl && worldTimePopupEl.contains(e.target)) return;
+    if (worldTimeEl && worldTimeEl.contains(e.target)) return;
+    closeWorldTimePopup();
+  }
 });
 if (statusEl) {
   statusEl.addEventListener("click", (e) => {
@@ -2840,11 +3764,108 @@ if (statusEl) {
   });
 }
 document.addEventListener("keydown", (e) => {
-  if (e.key === "Escape") closeWorldTimePopup();
+  if (e.key !== "Escape") return;
+  closeWorldTimePopup();
+  closeFloatingInfoCard();
 });
 window.addEventListener("resize", () => {
   if (isWorldTimePopupOpen) positionWorldTimePopup();
+  if (isFloatingInfoCardOpen()) {
+    if (floatingInfoCardAnchorEl && document.body.contains(floatingInfoCardAnchorEl)) {
+      positionFloatingInfoCard(floatingInfoCardAnchorEl);
+    } else {
+      closeFloatingInfoCard();
+    }
+  }
 });
+
+async function handleVendorTalentPopup(talentBtn) {
+  const itemCategory = talentBtn.getAttribute("data-item-category") || "";
+  const itemId = talentBtn.getAttribute("data-item-id") || "";
+  const itemNameKey = talentBtn.getAttribute("data-item-name-key") || "";
+  const itemRarity = normalizeKey(talentBtn.getAttribute("data-item-rarity") || "");
+  const talentKey = talentBtn.getAttribute("data-talent-key") || "";
+  const talentName = stripHtml(talentBtn.getAttribute("data-talent-name") || talentBtn.textContent || "");
+  let body = "";
+  let title = talentName || talentKey;
+  const hintedNamed = String(talentBtn.getAttribute("data-talent-named") || "") === "1";
+  let isNamedTalent = hintedNamed;
+  let descLookup = null;
+  let effectiveTalentKey = talentKey;
+  try {
+    descLookup = await ensureTalentDescLookupCache();
+  } catch (err) {
+    descLookup = null;
+  }
+  body = resolveTalentDescription(itemCategory, effectiveTalentKey, "", descLookup, talentName);
+  try {
+    const overrideCache = await ensureItemTalentOverrideCache();
+    const override = getVendorTalentOverrideFromCache(overrideCache, itemCategory, itemId, itemNameKey, talentKey);
+    if (override && (override.talentKey || override.talent)) {
+      effectiveTalentKey = normalizeKey(override.talentKey || override.talent);
+    }
+    if (override && override.talent) {
+      const tKey = normalizeKey(override.talentKey || effectiveTalentKey || override.talent);
+      title = (langSelect.value === "ja")
+        ? (i18n[tKey] ?? trText(override.talent))
+        : override.talent;
+    }
+    if (override && override.talentDesc) {
+      body = resolveTalentDescription(itemCategory, effectiveTalentKey, override.talentDesc, descLookup, override.talent || talentName);
+    } else {
+      body = resolveTalentDescription(itemCategory, effectiveTalentKey, body, descLookup, override?.talent || talentName);
+    }
+    if (!isNamedTalent) {
+      const lookup = await ensureNamedTalentLookupCache();
+      isNamedTalent = hasNamedTalentInLookup(lookup, itemCategory, itemId, itemNameKey, effectiveTalentKey);
+    }
+  } catch (err) {
+    // keep hintedNamed as-is
+  }
+  const catNorm = normalizeKey(itemCategory || "");
+  const popupKind = (catNorm === "gear" && itemRarity.includes("gearset"))
+    ? "gearset"
+    : (catNorm === "gear")
+    ? (isNamedTalent ? "gear-named" : "gear-highend")
+    : (isNamedTalent ? "talent-named" : "talent");
+  openFloatingInfoCard(talentBtn, title, body || ui("noData"), popupKind);
+}
+
+async function handleVendorBrandPopup(brandBtn) {
+  const brandKey = normalizeKey(brandBtn.getAttribute("data-brand-key") || "");
+  const brandName = stripHtml(brandBtn.getAttribute("data-brand-name") || brandBtn.textContent || "");
+  const brandScope = normalizeKey(brandBtn.getAttribute("data-brand-scope") || "brand");
+  try {
+    if (brandScope === "gearset") {
+      const gmap = await ensureGearsetPopupCache();
+      const ginfo = gmap.get(brandKey);
+      const ghtml = buildGearsetPopupCardHtml(ginfo, brandName || brandKey);
+      openFloatingInfoCardRich(brandBtn, "", ghtml, "brand");
+      return;
+    }
+    const map = await ensureBrandDescCache();
+    const info = map.get(brandKey);
+    const bodyHtml = buildBrandPopupCardHtml(info, brandName || brandKey, brandKey);
+    openFloatingInfoCardRich(brandBtn, "", bodyHtml, "brand");
+  } catch (err) {
+    openFloatingInfoCard(brandBtn, brandName || brandKey, ui("dataUnavailable"), "brand");
+  }
+}
+
+function handleVendorGearSummaryPopup(gearBtn) {
+  const srcCard = gearBtn.closest(".card[data-item-id]");
+  if (!srcCard) return;
+  const cloned = srcCard.cloneNode(true);
+  cloned.querySelectorAll(".inline-pop-trigger").forEach((btn) => {
+    const span = document.createElement("span");
+    span.className = String(btn.className || "").replace(/\binline-pop-trigger\b/g, "").trim();
+    span.innerHTML = btn.innerHTML;
+    btn.replaceWith(span);
+  });
+  const itemRarity = String(srcCard.className || "");
+  const kind = itemRarity.includes("rarity-named") ? "gear-named" : "gear-highend";
+  openFloatingInfoCardRich(gearBtn, "", cloned.outerHTML, kind);
+}
 
 // event delegation: line tap => toggle filter, card tap => select
 contentEl.addEventListener("click", (e) => {
@@ -2997,6 +4018,29 @@ contentEl.addEventListener("click", (e) => {
       window.talentShowDesc = !window.talentShowDesc;
       refreshTalentDescButtons();
       renderDescentTalentView().catch(err => setStatus(`${ui("error")}: ${err.message}`));
+      return;
+    }
+  }
+  if (currentViewMode === "vendor") {
+    const talentBtn = e.target.closest(".inline-pop-trigger[data-pop-type='talent']");
+    if (talentBtn) {
+      e.preventDefault();
+      e.stopPropagation();
+      void handleVendorTalentPopup(talentBtn);
+      return;
+    }
+    const brandBtn = e.target.closest(".inline-pop-trigger[data-pop-type='brand']");
+    if (brandBtn) {
+      e.preventDefault();
+      e.stopPropagation();
+      void handleVendorBrandPopup(brandBtn);
+      return;
+    }
+    const gearBtn = e.target.closest(".inline-pop-trigger[data-pop-type='gear-summary']");
+    if (gearBtn) {
+      e.preventDefault();
+      e.stopPropagation();
+      handleVendorGearSummaryPopup(gearBtn);
       return;
     }
   }

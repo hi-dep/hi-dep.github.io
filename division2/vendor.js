@@ -87,6 +87,44 @@
       }
 
       stmt.free();
+
+      // Mark vendor talent lines that are defined in named tables,
+      // and override talent text/desc from items tables when available.
+      try {
+        const namedLookup = await ensureNamedTalentLookupCache();
+        const talentOverrides = await ensureItemTalentOverrideCache();
+        for (const item of itemMap.values()) {
+          if (!item || !Array.isArray(item.lines)) continue;
+          for (const ln of item.lines) {
+            if (!ln) continue;
+            const lt = String(ln.line_type || "").toLowerCase();
+            if (lt !== "talent") continue;
+            const override = getVendorTalentOverrideFromCache(
+              talentOverrides,
+              item.category || "",
+              item.item_id || "",
+              item.name_key || "",
+              ln.stat_key || ""
+            );
+            if (override) {
+              if (override.talent) ln.override_talent_name = override.talent;
+              if (override.talentKey) ln.override_talent_key = override.talentKey;
+              if (override.talentDesc) ln.override_talent_desc = override.talentDesc;
+            }
+            const hit = hasNamedTalentInLookup(
+              namedLookup,
+              item.category || "",
+              item.item_id || "",
+              item.name_key || "",
+              ln.stat_key || ""
+            );
+            if (hit) ln.is_named_talent = true;
+          }
+        }
+      } catch (e) {
+        // Keep vendor rendering resilient when named lookup is unavailable.
+      }
+
       injectStaticCaches(vendorMap, dateStr);
       lastVendorMap = vendorMap;
       lastItems = Array.from(itemMap.values());

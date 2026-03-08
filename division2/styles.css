@@ -911,9 +911,9 @@ body::before{
 .card.rarity-utility{ --rarity-rgb: 255,210,90; }
 
 /* Brand view: color by core attribute */
-.card.brand-core-weapon{ --rarity-rgb: 255,90,90; }
-.card.brand-core-armor{ --rarity-rgb: 90,140,255; }
-.card.brand-core-skill{ --rarity-rgb: 255,210,90; }
+.card.brand-core-weapon{ --rarity-rgb: var(--rarity-highend); }
+.card.brand-core-armor{ --rarity-rgb: var(--rarity-highend); }
+.card.brand-core-skill{ --rarity-rgb: var(--rarity-highend); }
 .card.brand-core-other{ --rarity-rgb: var(--rarity-highend); }
 
 
@@ -1237,6 +1237,158 @@ body::before{
   white-space:nowrap;
   overflow:hidden;
   text-overflow:ellipsis;
+}
+.inline-pop-trigger{
+  appearance:none;
+  border:0;
+  background:transparent;
+  color:inherit;
+  font:inherit;
+  margin:0;
+  padding:0;
+  cursor:pointer;
+}
+.line__text-pop-trigger{
+  width:100%;
+  text-align:left;
+  white-space:inherit;
+  overflow:inherit;
+  text-overflow:inherit;
+}
+.card__title-pop-trigger{
+  display:block;
+  width:100%;
+  text-align:left;
+}
+.card__subtitle-pop-trigger{
+  appearance:none;
+  border:0;
+  background:transparent;
+  color:inherit;
+  font:inherit;
+  margin:0;
+  padding:0;
+  cursor:pointer;
+}
+.card__title-pop-trigger .card__title-text,
+.line__text-pop-trigger{
+  text-decoration:underline;
+  text-decoration-color:rgba(255,255,255,.28);
+  text-underline-offset:2px;
+}
+.card__title-pop-trigger:hover .card__title-text,
+.card__subtitle-pop-trigger:hover .card__subtitle-name,
+.line__text-pop-trigger:hover{
+  text-decoration-color:rgba(255,255,255,.58);
+}
+.card__subtitle-pop-trigger .card__subtitle-name{
+  text-decoration:underline;
+  text-decoration-color:rgba(255,255,255,.28);
+  text-underline-offset:2px;
+}
+
+.floating-info-card{
+  position:fixed;
+  z-index:1200;
+  isolation:isolate;
+  --rarity-rgb: var(--rarity-highend);
+  width:min(360px, calc(100vw - 16px));
+  max-height:min(320px, calc(100vh - 16px));
+  overflow:auto;
+  padding:10px 12px 11px 14px;
+  border:1px solid rgba(255,255,255,.22);
+  border-radius:8px;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,0)),
+    linear-gradient(90deg,
+      rgba(var(--rarity-rgb), .40) 0 4px,
+      rgba(var(--rarity-rgb), .10) 4px 100%),
+    var(--card);
+  backdrop-filter: blur(2px);
+  box-shadow:
+    0 1px 0 rgba(255,255,255,.12) inset,
+    0 12px 24px rgba(0,0,0,.42),
+    0 26px 46px rgba(0,0,0,.32);
+  transform:translate3d(0,0,0);
+  animation:floating-card-in .14s ease-out;
+}
+.floating-info-backdrop{
+  position:fixed;
+  inset:0;
+  z-index:1190;
+  background:rgba(0,0,0,.34);
+  backdrop-filter:brightness(.66);
+}
+.floating-info-backdrop[aria-hidden="true"]{
+  display:none;
+}
+.floating-info-card::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:inherit;
+  pointer-events:none;
+  box-shadow:0 0 0 1px rgba(255,255,255,.04) inset;
+}
+.floating-info-card--cardhost{
+  padding:0;
+  border:0;
+  background:transparent;
+  box-shadow:none;
+  backdrop-filter:none;
+  filter:none;
+  width:min(360px, calc(100vw - 16px));
+  max-height:min(80vh, calc(100vh - 16px));
+}
+.floating-info-card--cardhost::after{
+  display:none;
+}
+.floating-info-card--cardhost .floating-info-card__body{
+  padding:0;
+}
+.floating-info-card--brand{ --rarity-rgb: var(--rarity-highend); }
+.floating-info-card--talent{ --rarity-rgb: var(--rarity-highend); }
+.floating-info-card--talent-named{ --rarity-rgb: var(--rarity-named); }
+.floating-info-card--gear-highend{ --rarity-rgb: var(--rarity-highend); }
+.floating-info-card--gear-named{ --rarity-rgb: var(--rarity-named); }
+.floating-info-card--gearset{ --rarity-rgb: var(--rarity-gearset); }
+.floating-info-card[aria-hidden="true"]{
+  display:none;
+}
+.floating-info-card__title{
+  font-size:13px;
+  font-weight:800;
+  line-height:1.15;
+  color:var(--text);
+  margin:0 0 7px;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+.floating-info-card--talent-named .floating-info-card__title{
+  color:var(--named-text);
+}
+.floating-info-card--gear-named .floating-info-card__title{
+  color:var(--named-text);
+}
+.floating-info-card__body{
+  font-size:12px;
+  line-height:1.35;
+  color:rgba(245, 247, 250, .95);
+  white-space:pre-wrap;
+}
+.floating-info-card__body--rich{
+  white-space:normal;
+}
+@keyframes floating-card-in{
+  from{
+    opacity:.92;
+    transform:translate3d(0,4px,0) scale(.992);
+  }
+  to{
+    opacity:1;
+    transform:translate3d(0,0,0) scale(1);
+  }
 }
 .line--core .line__text .core-mixed-wrap{
   display:flex;
