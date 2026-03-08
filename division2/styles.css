@@ -1124,6 +1124,12 @@ body::before{
   text-overflow:clip;
   word-break:break-word;
 }
+.floating-info-card .line--talent-desc .line__text{
+  white-space:normal;
+  overflow:visible;
+  text-overflow:clip;
+  word-break:break-word;
+}
 .catgroup--gear-talent .line--perfect{
   margin-top:6px;
 }
