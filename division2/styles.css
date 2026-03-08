@@ -1118,6 +1118,12 @@ body::before{
   text-overflow:clip;
   word-break:break-word;
 }
+.catgroup--gearset .line--talent-desc .line__text{
+  white-space:normal;
+  overflow:visible;
+  text-overflow:clip;
+  word-break:break-word;
+}
 .catgroup--gear-talent .line--perfect{
   margin-top:6px;
 }
@@ -1272,19 +1278,15 @@ body::before{
 }
 .card__title-pop-trigger .card__title-text,
 .line__text-pop-trigger{
-  text-decoration:underline;
-  text-decoration-color:rgba(255,255,255,.28);
-  text-underline-offset:2px;
+  text-decoration:none;
 }
 .card__title-pop-trigger:hover .card__title-text,
 .card__subtitle-pop-trigger:hover .card__subtitle-name,
 .line__text-pop-trigger:hover{
-  text-decoration-color:rgba(255,255,255,.58);
+  text-decoration:none;
 }
 .card__subtitle-pop-trigger .card__subtitle-name{
-  text-decoration:underline;
-  text-decoration-color:rgba(255,255,255,.28);
-  text-underline-offset:2px;
+  text-decoration:none;
 }
 
 .floating-info-card{
