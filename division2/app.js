@@ -2751,7 +2751,7 @@ function renderCard(item) {
       <div class="card__subtitle">
         <span class="card__subtitle-text">${escapeHtml(head.title2Parts.slot)}</span>
         <span class="card__subtitle-sep">/</span>
-        <button type="button" class="inline-pop-trigger card__subtitle-pop-trigger" data-pop-type="gear-summary"><span class="card__subtitle-name is-named">${escapeHtml(head.title2Parts.name)}</span></button>
+        <span class="card__subtitle-name is-named">${escapeHtml(head.title2Parts.name)}</span>
       </div>
     `;
   } else if (head.title2) {
