@@ -2728,7 +2728,9 @@ function renderCard(item) {
   const vendorTitle = (langSelect.value === "ja")
     ? (i18n[item.vendor_key] ?? item.vendor_en ?? item.vendor_key ?? "")
     : (item.vendor_en ?? item.vendor_key ?? "");
-  const rarityClass = rarityToClass(item.rarity);
+  const rarityClass = (currentViewMode === "vendor" && item.category === "mod")
+    ? "highend"
+    : rarityToClass(item.rarity);
   const bg = buildCardBg(item, modCard);
 
   lines = sortLinesForDisplay(lines);
