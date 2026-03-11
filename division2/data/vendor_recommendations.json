@@ -110,6 +110,16 @@
       "all": [
         { "field": "name_key", "op": "eq", "value": "gearshift" }
       ]
+    },
+    {
+      "id": "gear_named_hunterkiller_chc_or_chd",
+      "enabled": true,
+      "target": "gear",
+      "all": [
+        { "field": "brand_key", "op": "eq", "value": "golangearltd" },
+        { "field": "name_key", "op": "eq", "value": "hunterkiller" },
+        { "field": "attr_stat_keys", "op": "has_any", "value": ["criticalhitchance", "criticalhitdamage"] }
+      ]
     }
   ]
 }
