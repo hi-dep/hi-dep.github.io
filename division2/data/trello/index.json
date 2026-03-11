@@ -1,0 +1,27 @@
+{
+  "built_at": "2026-03-06T22:38:04.745595Z",
+  "board_name": "The Division 2 Known Issues",
+  "date_last_activity": "2026-03-05T16:34:51.306Z",
+  "db_file": "trello_latest.db.gz",
+  "snapshot_file": "",
+  "i18n_file": "trello/i18n_trello.json",
+  "i18n_patches_file": "trello/i18n_trello_patches.json",
+  "counts": {
+    "boards": 1,
+    "lists": 9,
+    "labels": 18,
+    "members": 3,
+    "board_memberships": 3,
+    "cards": 375,
+    "card_labels": 92,
+    "card_members": 0,
+    "card_checklists": 0,
+    "custom_fields": 3,
+    "custom_field_options": 5,
+    "card_custom_field_items": 84,
+    "checklists": 0,
+    "checkitems": 0,
+    "actions": 1000,
+    "attachments": 92
+  }
+}

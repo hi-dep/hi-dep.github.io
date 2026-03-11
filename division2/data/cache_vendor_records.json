@@ -1,0 +1,55 @@
+{
+  "version": 1,
+  "records": [
+    {
+      "vendor_key": "countdown",
+      "name_en": "Named Item Cache",
+      "rarity": "named",
+      "amount": 1,
+      "unit_price": 112
+    },
+    {
+      "vendor_key": "countdown",
+      "name_en": "Optimization Cache",
+      "rarity": "highend",
+      "amount": 1,
+      "unit_price": 145
+    },
+    {
+      "vendor_key": "countdown",
+      "name_en": "Season Cache",
+      "rarity": "highend",
+      "amount": 1,
+      "unit_price": 145
+    },
+    {
+      "vendor_key": "countdown",
+      "name_en": "Exotic Cache",
+      "rarity": "exotic",
+      "amount": 1,
+      "unit_price": 224
+    },
+    {
+      "vendor_key": "dzeast",
+      "name_en": "Exotic Cache",
+      "rarity": "exotic",
+      "amount": 1,
+      "unit_price": 170
+    },
+    {
+      "vendor_key": "dzsouth",
+      "name_en": "Exotic Cache",
+      "rarity": "exotic",
+      "amount": 1,
+      "unit_price": 170
+    },
+    {
+      "vendor_key": "dzwest",
+      "name_en": "Exotic Cache",
+      "rarity": "exotic",
+      "amount": 1,
+      "unit_price": 170
+    }
+  ]
+}
+

@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "generated_at_jst": "2026-03-11 13:03:36",
+  "source_url": "https://docs.google.com/spreadsheets/d/1l71rXsXoekxIFeB7xdETU7q8x5GK-TeDT39YZfwRZcM/edit?resourcekey=&gid=1373613541#gid=1373613541",
+  "source_resolved": "https://docs.google.com/spreadsheets/d/1l71rXsXoekxIFeB7xdETU7q8x5GK-TeDT39YZfwRZcM/export?format=csv&gid=1373613541",
+  "sheet_gid": "1373613541",
+  "pool_map_source_url": "",
+  "pool_map_source_resolved": "",
+  "pool_map_sheet_gid": "",
+  "pool_map_keys": [
+    "envy",
+    "gluttony",
+    "greed",
+    "sloth",
+    "wrath"
+  ],
+  "anchor_jst": "2026-03-07 09:00:00",
+  "cycle_days": 3,
+  "timestamp_rows": 3,
+  "timestamp_rows_raw": 3,
+  "pool_map_rows": 200,
+  "db_plain": "division_descent_loader/batch/descent_talent_pool_latest.db",
+  "db_gz": "data/descent/descent_talent_pool_latest.db.gz",
+  "timestamp_hash": "90ae34eb6c6ef15275f93df35754ab583de1023352fb1f29dfb32a9548c7424b",
+  "content_hash": "042f96857247d1e088d73937fa40f54bdfc44ffa921a58a12ca866adcdb050ac"
+}
