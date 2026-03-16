@@ -1,5 +1,5 @@
 {
-  "built_at": "2026-03-11T12:30:06.084335Z",
+  "built_at": "2026-03-16T13:30:08.760329Z",
   "source": "division_trello_loader/i18n_trello.temp.json",
   "text_map": {
     "[Loadouts] There is a visual bug causing agents' loadouts not to appear when inspected.": "【ロードアウト】エージェントのロードアウトを確認した際に表示されない視覚的な不具合が発生しています。",
@@ -603,6 +603,19 @@
     "Some players experienced a delay in receiving content after purchasing the Shady Pack.": "",
     "This was due to a temporary delay in the delivery process. The issue has now been resolved, and all affected players should see the full Shady Pack content, including credits additional items, reflected in their accounts.": "",
     "If it’s not visible, please restart the game and check again.": "",
-    "Sudden FOV and camera shift during inventory and weapon switch transitions": ""
+    "Sudden FOV and camera shift during inventory and weapon switch transitions": "",
+    "Armor Attribute appears in Chest and Backpack categories in the Library.": "",
+    "The Armor attribute is currently appearing in the Chest and Backpack categories of the Library in the Tinkering Station. This attribute should not be listed in these categories.": "",
+    "Sudden FOV and camera shift during inventory and weapon switch transitions.": "",
+    "Blacklisters Exotic Kneepads drop with incorrect Talent.": "",
+    "Blacklisters Exotic Kneepads currently drops with the Weakest Link Talent. This is not the intended Talent for this item.": "",
+    "Measured, Adaptive Instincts, and Electromagnetic Accelerator Talents do not display values in HUD": "",
+    "The HUD currently does not display values for the following talents:": "",
+    "- Measured and its Perfect variant": "",
+    "- Adaptive Instincts (Chameleon)": "",
+    "- Electromagnetic Accelerator (Nemesis) and its Perfect variant": "",
+    "Additionally, when using a weapon with the Measured talent or its Perfect variant, the HUD does not display the number of bullets fired next to the weapon while aiming down sights.": "",
+    "Visual color tone appears warmer after recent visual improvements": "",
+    "After the recent visual improvements, some players have reported a warmer or yellow color tone in the game. We are aware of the feedback and will adjust the color tone in an upcoming update.": ""
   }
 }
