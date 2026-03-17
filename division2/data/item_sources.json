@@ -11,6 +11,7 @@
     "brand_key",
     "slot_key",
     "blueprint",
+    "target_looted",
     "drop"
   ],
   "rows": [
@@ -37,6 +38,15 @@
           "slot": "mask",
           "type": "craft"
         }
+      ],
+      "target_looted": [
+        "Providence Defense",
+        "mask",
+        "chest",
+        "holster",
+        "backpack",
+        "gloves",
+        "kneepads"
       ],
       "drop": []
     },
@@ -76,6 +86,15 @@
           "type": "craft"
         }
       ],
+      "target_looted": [
+        "Habsburg Guard",
+        "mask",
+        "chest",
+        "holster",
+        "backpack",
+        "gloves",
+        "kneepads"
+      ],
       "drop": []
     },
     {
@@ -114,6 +133,15 @@
           "type": "craft"
         }
       ],
+      "target_looted": [
+        "Electrique",
+        "mask",
+        "chest",
+        "holster",
+        "backpack",
+        "gloves",
+        "kneepads"
+      ],
       "drop": []
     },
     {
@@ -139,6 +167,15 @@
           "slot": "kneepads",
           "type": "craft"
         }
+      ],
+      "target_looted": [
+        "Wyvern Wear",
+        "mask",
+        "chest",
+        "holster",
+        "backpack",
+        "gloves",
+        "kneepads"
       ],
       "drop": []
     },
@@ -178,6 +215,15 @@
           "type": "craft"
         }
       ],
+      "target_looted": [
+        "Zwiadowka Sp.z o.o.",
+        "mask",
+        "chest",
+        "holster",
+        "backpack",
+        "gloves",
+        "kneepads"
+      ],
       "drop": []
     },
     {
@@ -208,6 +254,15 @@
           "type": "craft"
         }
       ],
+      "target_looted": [
+        "Grupo Sombra S.A.",
+        "mask",
+        "chest",
+        "holster",
+        "backpack",
+        "gloves",
+        "kneepads"
+      ],
       "drop": []
     },
     {
@@ -233,6 +288,15 @@
           "slot": "kneepads",
           "type": "craft"
         }
+      ],
+      "target_looted": [
+        "Petrov Defense Group",
+        "mask",
+        "chest",
+        "holster",
+        "backpack",
+        "gloves",
+        "kneepads"
       ],
       "drop": []
     },
@@ -272,6 +336,15 @@
           "type": "craft"
         }
       ],
+      "target_looted": [
+        "Legatus S.p.A.",
+        "mask",
+        "chest",
+        "holster",
+        "backpack",
+        "gloves",
+        "kneepads"
+      ],
       "drop": []
     },
     {
@@ -297,6 +370,15 @@
           "slot": "mask",
           "type": "craft"
         }
+      ],
+      "target_looted": [
+        "China Light Industries Corporation",
+        "mask",
+        "chest",
+        "holster",
+        "backpack",
+        "gloves",
+        "kneepads"
       ],
       "drop": []
     },
@@ -336,6 +418,15 @@
           "type": "craft"
         }
       ],
+      "target_looted": [
+        "Brazos de Arcabuz",
+        "mask",
+        "chest",
+        "holster",
+        "backpack",
+        "gloves",
+        "kneepads"
+      ],
       "drop": []
     },
     {
@@ -366,6 +457,15 @@
           "type": "craft"
         }
       ],
+      "target_looted": [
+        "Golan Gear Ltd",
+        "mask",
+        "chest",
+        "holster",
+        "backpack",
+        "gloves",
+        "kneepads"
+      ],
       "drop": []
     },
     {
@@ -391,6 +491,15 @@
           "slot": "mask",
           "type": "craft"
         }
+      ],
+      "target_looted": [
+        "Yaahl Gear",
+        "mask",
+        "chest",
+        "holster",
+        "backpack",
+        "gloves",
+        "kneepads"
       ],
       "drop": [
         "dz"
@@ -420,6 +529,15 @@
           "type": "craft"
         }
       ],
+      "target_looted": [
+        "Murakami Industries",
+        "mask",
+        "chest",
+        "holster",
+        "backpack",
+        "gloves",
+        "kneepads"
+      ],
       "drop": []
     },
     {
@@ -446,6 +564,15 @@
           "type": "craft"
         }
       ],
+      "target_looted": [
+        "Gila Guard",
+        "mask",
+        "chest",
+        "holster",
+        "backpack",
+        "gloves",
+        "kneepads"
+      ],
       "drop": []
     },
     {
@@ -471,6 +598,15 @@
           "slot": "holster",
           "type": "craft"
         }
+      ],
+      "target_looted": [
+        "5.11 Tactical",
+        "mask",
+        "chest",
+        "holster",
+        "backpack",
+        "gloves",
+        "kneepads"
       ],
       "drop": []
     },
@@ -510,6 +646,15 @@
           "type": "craft"
         }
       ],
+      "target_looted": [
+        "Imminence Armaments",
+        "mask",
+        "chest",
+        "holster",
+        "backpack",
+        "gloves",
+        "kneepads"
+      ],
       "drop": []
     },
     {
@@ -547,6 +692,15 @@
           "slot": "mask",
           "type": "craft"
         }
+      ],
+      "target_looted": [
+        "Shiny Monkey Gear",
+        "mask",
+        "chest",
+        "holster",
+        "backpack",
+        "gloves",
+        "kneepads"
       ],
       "drop": []
     },
@@ -592,6 +746,15 @@
           "type": "craft"
         }
       ],
+      "target_looted": [
+        "Empress International",
+        "mask",
+        "chest",
+        "holster",
+        "backpack",
+        "gloves",
+        "kneepads"
+      ],
       "drop": []
     },
     {
@@ -613,6 +776,15 @@
           "slot": "gloves",
           "type": "craft"
         }
+      ],
+      "target_looted": [
+        "Alps Summit Armaments",
+        "mask",
+        "chest",
+        "holster",
+        "backpack",
+        "gloves",
+        "kneepads"
       ],
       "drop": []
     },
@@ -640,6 +812,15 @@
           "type": "craft"
         }
       ],
+      "target_looted": [
+        "Airaldi Holdings",
+        "mask",
+        "chest",
+        "holster",
+        "backpack",
+        "gloves",
+        "kneepads"
+      ],
       "drop": []
     },
     {
@@ -665,6 +846,15 @@
           "slot": "kneepads",
           "type": "craft"
         }
+      ],
+      "target_looted": [
+        "Sokolov Concern",
+        "mask",
+        "chest",
+        "holster",
+        "backpack",
+        "gloves",
+        "kneepads"
       ],
       "drop": []
     },
@@ -699,6 +889,15 @@
           "slot": "mask",
           "type": "craft"
         }
+      ],
+      "target_looted": [
+        "Unit Alloys",
+        "mask",
+        "chest",
+        "holster",
+        "backpack",
+        "gloves",
+        "kneepads"
       ],
       "drop": []
     },
@@ -738,6 +937,15 @@
           "type": "craft"
         }
       ],
+      "target_looted": [
+        "Palisade Steelworks",
+        "mask",
+        "chest",
+        "holster",
+        "backpack",
+        "gloves",
+        "kneepads"
+      ],
       "drop": []
     },
     {
@@ -767,6 +975,15 @@
           "slot": "mask",
           "type": "craft"
         }
+      ],
+      "target_looted": [
+        "Hana-U Corporation",
+        "mask",
+        "chest",
+        "holster",
+        "backpack",
+        "gloves",
+        "kneepads"
       ],
       "drop": []
     },
@@ -812,6 +1029,15 @@
           "type": "craft"
         }
       ],
+      "target_looted": [
+        "Belstone Armory",
+        "mask",
+        "chest",
+        "holster",
+        "backpack",
+        "gloves",
+        "kneepads"
+      ],
       "drop": []
     },
     {
@@ -856,6 +1082,15 @@
           "type": "craft"
         }
       ],
+      "target_looted": [
+        "Uzina Getica",
+        "mask",
+        "chest",
+        "holster",
+        "backpack",
+        "gloves",
+        "kneepads"
+      ],
       "drop": []
     },
     {
@@ -893,6 +1128,15 @@
           "slot": "mask",
           "type": "craft"
         }
+      ],
+      "target_looted": [
+        "Lengmo",
+        "mask",
+        "chest",
+        "holster",
+        "backpack",
+        "gloves",
+        "kneepads"
       ],
       "drop": []
     },
@@ -932,6 +1176,15 @@
           "type": "craft"
         }
       ],
+      "target_looted": [
+        "Urban Lookout",
+        "mask",
+        "chest",
+        "holster",
+        "backpack",
+        "gloves",
+        "kneepads"
+      ],
       "drop": []
     },
     {
@@ -957,6 +1210,15 @@
           "slot": "mask",
           "type": "craft"
         }
+      ],
+      "target_looted": [
+        "Overlord Armaments",
+        "mask",
+        "chest",
+        "holster",
+        "backpack",
+        "gloves",
+        "kneepads"
       ],
       "drop": []
     },
@@ -996,6 +1258,15 @@
           "type": "craft"
         }
       ],
+      "target_looted": [
+        "Walker, Harris & Co.",
+        "mask",
+        "chest",
+        "holster",
+        "backpack",
+        "gloves",
+        "kneepads"
+      ],
       "drop": []
     },
     {
@@ -1026,6 +1297,15 @@
           "type": "craft"
         }
       ],
+      "target_looted": [
+        "Česká Výroba s.r.o.",
+        "mask",
+        "chest",
+        "holster",
+        "backpack",
+        "gloves",
+        "kneepads"
+      ],
       "drop": []
     },
     {
@@ -1051,6 +1331,15 @@
           "slot": "mask",
           "type": "craft"
         }
+      ],
+      "target_looted": [
+        "Douglas & Harding",
+        "mask",
+        "chest",
+        "holster",
+        "backpack",
+        "gloves",
+        "kneepads"
       ],
       "drop": []
     },
@@ -1078,6 +1367,15 @@
           "type": "craft"
         }
       ],
+      "target_looted": [
+        "Badger Tuff",
+        "mask",
+        "chest",
+        "holster",
+        "backpack",
+        "gloves",
+        "kneepads"
+      ],
       "drop": []
     },
     {
@@ -1104,6 +1402,15 @@
           "type": "craft"
         }
       ],
+      "target_looted": [
+        "Fenris Group AB",
+        "mask",
+        "chest",
+        "holster",
+        "backpack",
+        "gloves",
+        "kneepads"
+      ],
       "drop": []
     },
     {
@@ -1122,6 +1429,15 @@
           "src": "Reconstructed Caches",
           "type": "craft"
         }
+      ],
+      "target_looted": [
+        "Brazos de Arcabuz",
+        "mask",
+        "chest",
+        "holster",
+        "backpack",
+        "gloves",
+        "kneepads"
       ],
       "drop": []
     },
@@ -1149,7 +1465,16 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "Richter & Kaiser GmbH",
+        "mask",
+        "chest",
+        "holster",
+        "backpack",
+        "gloves",
+        "kneepads"
+      ]
     },
     {
       "item_id": "28b847fa8ede3d0f",
@@ -1162,7 +1487,10 @@
       "brand_key": "",
       "slot_key": "kneepads",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "kneepads"
+      ]
     },
     {
       "item_id": "419b930fc82f9c70",
@@ -1181,7 +1509,10 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "backpack"
+      ]
     },
     {
       "item_id": "d338fb8b14a21257",
@@ -1194,7 +1525,10 @@
       "brand_key": "",
       "slot_key": "chest",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "chest"
+      ]
     },
     {
       "item_id": "00d60d7369ac5c0f",
@@ -1207,7 +1541,10 @@
       "brand_key": "",
       "slot_key": "backpack",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "backpack"
+      ]
     },
     {
       "item_id": "6bac23d6c45f2acd",
@@ -1220,7 +1557,10 @@
       "brand_key": "",
       "slot_key": "kneepads",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "kneepads"
+      ]
     },
     {
       "item_id": "023fb566098c98dd",
@@ -1239,7 +1579,10 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "gloves"
+      ]
     },
     {
       "item_id": "30401ca916aab6d7",
@@ -1258,7 +1601,10 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "gloves"
+      ]
     },
     {
       "item_id": "f4e4d32c5c584ed3",
@@ -1271,7 +1617,10 @@
       "brand_key": "",
       "slot_key": "mask",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "mask"
+      ]
     },
     {
       "item_id": "03615cba5b207514",
@@ -1290,7 +1639,10 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "mask"
+      ]
     },
     {
       "item_id": "50d02690a2336e92",
@@ -1303,7 +1655,10 @@
       "brand_key": "",
       "slot_key": "holster",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "holster"
+      ]
     },
     {
       "item_id": "a8b5b7057c782c96",
@@ -1322,7 +1677,10 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "chest"
+      ]
     },
     {
       "item_id": "701b420d23a78a29",
@@ -1341,7 +1699,10 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "mask"
+      ]
     },
     {
       "item_id": "515d81b1df137f4f",
@@ -1354,7 +1715,10 @@
       "brand_key": "",
       "slot_key": "holster",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "holster"
+      ]
     },
     {
       "item_id": "914fadec1af650f0",
@@ -1373,7 +1737,10 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "gloves"
+      ]
     },
     {
       "item_id": "ad9de54d657887cc",
@@ -1392,7 +1759,10 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "holster"
+      ]
     },
     {
       "item_id": "19e11cee52a8f189",
@@ -1411,7 +1781,10 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "backpack"
+      ]
     },
     {
       "item_id": "d897e8c12c1a58bc",
@@ -1430,7 +1803,10 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "holster"
+      ]
     },
     {
       "item_id": "c4a221a58bc1b9b7",
@@ -1449,7 +1825,10 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "backpack"
+      ]
     },
     {
       "item_id": "f9195d3fb5bb0164",
@@ -1468,7 +1847,10 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "kneepads"
+      ]
     },
     {
       "item_id": "a80cee0da3b6717e",
@@ -1487,7 +1869,10 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "gloves"
+      ]
     },
     {
       "item_id": "e060a2c945905194",
@@ -1500,7 +1885,8 @@
       "brand_key": "",
       "slot_key": "chest",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": []
     },
     {
       "item_id": "297b31ff6a630bab",
@@ -1513,7 +1899,10 @@
       "brand_key": "",
       "slot_key": "chest",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "chest"
+      ]
     },
     {
       "item_id": "4f7adec2669fb9b6",
@@ -1532,7 +1921,10 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "gloves"
+      ]
     },
     {
       "item_id": "5a3f3f7765bcd5c0",
@@ -1551,7 +1943,10 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "kneepads"
+      ]
     },
     {
       "item_id": "963be1cd265f9845",
@@ -1570,7 +1965,10 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "holster"
+      ]
     },
     {
       "item_id": "73906b8f649f16f8",
@@ -1589,7 +1987,10 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "chest"
+      ]
     },
     {
       "item_id": "8570ace83012f3ad",
@@ -1602,7 +2003,10 @@
       "brand_key": "",
       "slot_key": "mask",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "mask"
+      ]
     },
     {
       "item_id": "60d3baafef83d6d9",
@@ -1621,7 +2025,10 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "mask"
+      ]
     },
     {
       "item_id": "a8d3e0c454494c9a",
@@ -1640,7 +2047,10 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "holster"
+      ]
     },
     {
       "item_id": "fe851c653e9b75f5",
@@ -1659,7 +2069,11 @@
           "src": "Field Research Firewall"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "Badger Tuff",
+        "holster"
+      ]
     },
     {
       "item_id": "264502884e91ed31",
@@ -1678,7 +2092,11 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "Golan Gear Ltd",
+        "backpack"
+      ]
     },
     {
       "item_id": "e7e3eded178c1d2d",
@@ -1697,7 +2115,11 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "Shiny Monkey Gear",
+        "backpack"
+      ]
     },
     {
       "item_id": "9c5fcebe4adef827",
@@ -1716,7 +2138,11 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "Lengmo",
+        "backpack"
+      ]
     },
     {
       "item_id": "3b1aea628f34d243",
@@ -1735,7 +2161,11 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "Empress International",
+        "backpack"
+      ]
     },
     {
       "item_id": "e69e76b7f11ef348",
@@ -1754,7 +2184,11 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "Zwiadowka Sp.z o.o.",
+        "chest"
+      ]
     },
     {
       "item_id": "60dc0f53a2c512d4",
@@ -1773,7 +2207,11 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "Empress International",
+        "chest"
+      ]
     },
     {
       "item_id": "34f730c57a716e90",
@@ -1792,7 +2230,11 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "Imminence Armaments",
+        "backpack"
+      ]
     },
     {
       "item_id": "92189b5416586c77",
@@ -1811,7 +2253,11 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "Lengmo",
+        "chest"
+      ]
     },
     {
       "item_id": "dd582003568681e0",
@@ -1830,7 +2276,11 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "Walker, Harris & Co.",
+        "chest"
+      ]
     },
     {
       "item_id": "87236f25c004a78f",
@@ -1849,7 +2299,11 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "Habsburg Guard",
+        "chest"
+      ]
     },
     {
       "item_id": "1e1894930cb0c1ac::highend",
@@ -1870,6 +2324,10 @@
       "drop": [
         "Event Hoarder",
         "Mini Warhound"
+      ],
+      "target_looted": [
+        "Gila Guard",
+        "mask"
       ]
     },
     {
@@ -1892,6 +2350,10 @@
       "drop": [
         "Event Hoarder",
         "Mini Warhound"
+      ],
+      "target_looted": [
+        "Gila Guard",
+        "mask"
       ]
     },
     {
@@ -1913,6 +2375,10 @@
       ],
       "drop": [
         "dz"
+      ],
+      "target_looted": [
+        "Wyvern Wear:dz",
+        "holster:dz"
       ]
     },
     {
@@ -1932,7 +2398,11 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "Imminence Armaments",
+        "kneepads"
+      ]
     },
     {
       "item_id": "8ce87bd9b076fa59",
@@ -1951,7 +2421,11 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "Uzina Getica:dz",
+        "chest:dz"
+      ]
     },
     {
       "item_id": "069a49983762f221",
@@ -1970,7 +2444,11 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "Palisade Steelworks",
+        "chest"
+      ]
     },
     {
       "item_id": "aca56bb06cf5665b",
@@ -1989,7 +2467,11 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "Petrov Defense Group",
+        "gloves"
+      ]
     },
     {
       "item_id": "b40f0f021e7b3e4e",
@@ -2010,6 +2492,10 @@
       ],
       "drop": [
         "dz"
+      ],
+      "target_looted": [
+        "5.11 Tactical:dz",
+        "gloves:dz"
       ]
     },
     {
@@ -2031,6 +2517,10 @@
       ],
       "drop": [
         "dz"
+      ],
+      "target_looted": [
+        "Česká Výroba s.r.o.:dz",
+        "backpack:dz"
       ]
     },
     {
@@ -2052,6 +2542,10 @@
       ],
       "drop": [
         "dz"
+      ],
+      "target_looted": [
+        "Grupo Sombra S.A.:dz",
+        "chest:dz"
       ]
     },
     {
@@ -2071,7 +2565,11 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "Zwiadowka Sp.z o.o.",
+        "gloves"
+      ]
     },
     {
       "item_id": "8940f96f20aab120",
@@ -2092,6 +2590,10 @@
       ],
       "drop": [
         "dz"
+      ],
+      "target_looted": [
+        "Murakami Industries:dz",
+        "kneepads:dz"
       ]
     },
     {
@@ -2111,7 +2613,11 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "Unit Alloys",
+        "chest"
+      ]
     },
     {
       "item_id": "d807ba89ccf8997b",
@@ -2130,7 +2636,11 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "Belstone Armory",
+        "chest"
+      ]
     },
     {
       "item_id": "364a29043ae36b73",
@@ -2151,6 +2661,10 @@
       ],
       "drop": [
         "dz"
+      ],
+      "target_looted": [
+        "Fenris Group AB:dz",
+        "chest:dz"
       ]
     },
     {
@@ -2167,6 +2681,9 @@
       "drop": [
         "Event Hoarder",
         "Mini Warhound"
+      ],
+      "target_looted": [
+        "backpack"
       ]
     },
     {
@@ -2186,7 +2703,11 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "Sokolov Concern",
+        "gloves"
+      ]
     },
     {
       "item_id": "6a09c3e119ad99ee",
@@ -2205,7 +2726,11 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "Hana-U Corporation",
+        "backpack"
+      ]
     },
     {
       "item_id": "729fa34f76d2fa8d",
@@ -2224,7 +2749,11 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "Richter & Kaiser GmbH",
+        "holster"
+      ]
     },
     {
       "item_id": "1b45c4521643afd3",
@@ -2243,7 +2772,11 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "Overlord Armaments",
+        "kneepads"
+      ]
     },
     {
       "item_id": "2396cf49b4ca89a6",
@@ -2262,7 +2795,11 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "Shiny Monkey Gear",
+        "kneepads"
+      ]
     },
     {
       "item_id": "fd20f81ec7718eaf",
@@ -2281,7 +2818,11 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "Electrique",
+        "chest"
+      ]
     },
     {
       "item_id": "fba460288a9a461a::highend",
@@ -2299,7 +2840,11 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "Brazos de Arcabuz",
+        "backpack"
+      ]
     },
     {
       "item_id": "fba460288a9a461a::named",
@@ -2318,7 +2863,11 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "Brazos de Arcabuz",
+        "backpack"
+      ]
     },
     {
       "item_id": "cd5054aed7e86ebb",
@@ -2336,7 +2885,11 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "Golan Gear Ltd",
+        "chest"
+      ]
     },
     {
       "item_id": "d9c0e8c7ca4731ce",
@@ -2355,7 +2908,11 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "Electrique",
+        "backpack"
+      ]
     },
     {
       "item_id": "322e63d1589dff29",
@@ -2376,6 +2933,10 @@
       ],
       "drop": [
         "dz"
+      ],
+      "target_looted": [
+        "Belstone Armory:dz",
+        "backpack:dz"
       ]
     },
     {
@@ -2397,6 +2958,10 @@
       ],
       "drop": [
         "dz"
+      ],
+      "target_looted": [
+        "Walker, Harris & Co.:dz",
+        "backpack:dz"
       ]
     },
     {
@@ -2416,7 +2981,11 @@
           "src": "Field Research Technician"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "Alps Summit Armaments",
+        "gloves"
+      ]
     },
     {
       "item_id": "904a7d25c25fe441",
@@ -2435,7 +3004,11 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "Gila Guard",
+        "mask"
+      ]
     },
     {
       "item_id": "2c8914c37285633d",
@@ -2454,7 +3027,11 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "Alps Summit Armaments",
+        "backpack"
+      ]
     },
     {
       "item_id": "6f11b0f370b80484",
@@ -2473,7 +3050,11 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "Brazos de Arcabuz",
+        "holster"
+      ]
     },
     {
       "item_id": "fa79ffd810dafb10",
@@ -2492,7 +3073,11 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "Gila Guard",
+        "chest"
+      ]
     },
     {
       "item_id": "38cf300b3b721ce0",
@@ -2511,7 +3096,11 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "Airaldi Holdings",
+        "chest"
+      ]
     },
     {
       "item_id": "252f5848517ae351",
@@ -2530,7 +3119,11 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "Palisade Steelworks",
+        "backpack"
+      ]
     },
     {
       "item_id": "180dba1b2054b866",
@@ -2549,7 +3142,11 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "Douglas & Harding",
+        "mask"
+      ]
     },
     {
       "item_id": "a5a89ad4aaf94a95",
@@ -2568,7 +3165,11 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "Unit Alloys",
+        "holster"
+      ]
     },
     {
       "item_id": "eef074898fa1fc6b",
@@ -2587,7 +3188,11 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "Urban Lookout",
+        "chest"
+      ]
     },
     {
       "item_id": "874b4f452233f12e",
@@ -2608,6 +3213,10 @@
       "drop": [
         "Event Hoarder",
         "Mini Warhound"
+      ],
+      "target_looted": [
+        "Electrique",
+        "kneepads"
       ]
     },
     {
@@ -2627,7 +3236,11 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "Urban Lookout",
+        "holster"
+      ]
     },
     {
       "item_id": "70eb6075087b448c",
@@ -2646,7 +3259,11 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "China Light Industries Corporation",
+        "backpack"
+      ]
     },
     {
       "item_id": "e34c50308b8ae72c",
@@ -2665,7 +3282,11 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "Habsburg Guard",
+        "backpack"
+      ]
     },
     {
       "item_id": "f3fce2861e0d0074",
@@ -2686,6 +3307,10 @@
       ],
       "drop": [
         "dz"
+      ],
+      "target_looted": [
+        "Providence Defense:dz",
+        "backpack:dz"
       ]
     },
     {
@@ -2707,6 +3332,10 @@
       ],
       "drop": [
         "dz"
+      ],
+      "target_looted": [
+        "Yaahl Gear:dz",
+        "mask:dz"
       ]
     },
     {
@@ -2726,7 +3355,11 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "Providence Defense",
+        "chest"
+      ]
     },
     {
       "item_id": "41da28a10d4e6952",
@@ -2745,7 +3378,11 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "Uzina Getica",
+        "backpack"
+      ]
     },
     {
       "item_id": "5fdcbf4e0353f5f9",
@@ -2763,7 +3400,11 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "Česká Výroba s.r.o.",
+        "kneepads"
+      ]
     },
     {
       "item_id": "1789afc1e420ada8",
@@ -2782,7 +3423,11 @@
           "src": "Field Research Gunner"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "Petrov Defense Group",
+        "chest"
+      ]
     },
     {
       "item_id": "55572f77c669c4eb",
@@ -2801,7 +3446,11 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "Legatus S.p.A.",
+        "backpack"
+      ]
     },
     {
       "item_id": "0d3668fed0c4f501",
@@ -2820,7 +3469,11 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "Legatus S.p.A.",
+        "mask"
+      ]
     },
     {
       "item_id": "5d8ceb1cfeee0db9",
@@ -2839,7 +3492,11 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "Badger Tuff",
+        "chest"
+      ]
     },
     {
       "item_id": "0f02352056f577cc",
@@ -2877,7 +3534,16 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "Aces & Eights",
+        "mask",
+        "chest",
+        "holster",
+        "backpack",
+        "gloves",
+        "kneepads"
+      ]
     },
     {
       "item_id": "76b7d28258049221",
@@ -2915,7 +3581,16 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "Aegis",
+        "mask",
+        "chest",
+        "holster",
+        "backpack",
+        "gloves",
+        "kneepads"
+      ]
     },
     {
       "item_id": "4a50ebc3cc1e64f1",
@@ -2953,7 +3628,16 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "Breaking Point",
+        "mask",
+        "chest",
+        "holster",
+        "backpack",
+        "gloves",
+        "kneepads"
+      ]
     },
     {
       "item_id": "229e0eb6b7f1f0e6",
@@ -2991,7 +3675,16 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "Cavalier",
+        "mask",
+        "chest",
+        "holster",
+        "backpack",
+        "gloves",
+        "kneepads"
+      ]
     },
     {
       "item_id": "9d74cfcd7f9584fc",
@@ -3029,7 +3722,16 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "Concentrated Company",
+        "mask",
+        "chest",
+        "holster",
+        "backpack",
+        "gloves",
+        "kneepads"
+      ]
     },
     {
       "item_id": "107d0d66c41ae007",
@@ -3067,7 +3769,16 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "Eclipse Protocol",
+        "mask",
+        "chest",
+        "holster",
+        "backpack",
+        "gloves",
+        "kneepads"
+      ]
     },
     {
       "item_id": "c2f6204034a42c59",
@@ -3105,7 +3816,16 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "Foundry Bulwark",
+        "mask",
+        "chest",
+        "holster",
+        "backpack",
+        "gloves",
+        "kneepads"
+      ]
     },
     {
       "item_id": "7b2fee2f1df373c0",
@@ -3143,7 +3863,16 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "Future Initiative",
+        "mask",
+        "chest",
+        "holster",
+        "backpack",
+        "gloves",
+        "kneepads"
+      ]
     },
     {
       "item_id": "83680b74d1e95e0d",
@@ -3181,7 +3910,16 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "Hard Wired",
+        "mask",
+        "chest",
+        "holster",
+        "backpack",
+        "gloves",
+        "kneepads"
+      ]
     },
     {
       "item_id": "b8726d13f4e809e2",
@@ -3225,7 +3963,16 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "Heartbreaker",
+        "mask",
+        "chest",
+        "holster",
+        "backpack",
+        "gloves",
+        "kneepads"
+      ]
     },
     {
       "item_id": "aaa90d5a5ee3b9cd",
@@ -3263,7 +4010,16 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "Hotshot",
+        "mask",
+        "chest",
+        "holster",
+        "backpack",
+        "gloves",
+        "kneepads"
+      ]
     },
     {
       "item_id": "7a3b87c8abfd7aff",
@@ -3307,7 +4063,16 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "Hunter's Fury",
+        "mask",
+        "chest",
+        "holster",
+        "backpack",
+        "gloves",
+        "kneepads"
+      ]
     },
     {
       "item_id": "47c332738933ff3d",
@@ -3345,7 +4110,16 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "Measured Assembly",
+        "mask",
+        "chest",
+        "holster",
+        "backpack",
+        "gloves",
+        "kneepads"
+      ]
     },
     {
       "item_id": "2e24e3cc5bf5d1b7",
@@ -3383,7 +4157,16 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "Negotiator's Dilemma",
+        "mask",
+        "chest",
+        "holster",
+        "backpack",
+        "gloves",
+        "kneepads"
+      ]
     },
     {
       "item_id": "c10006577d54e67f",
@@ -3396,7 +4179,16 @@
       "brand_key": "ongoingdirective",
       "slot_key": "",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "Ongoing Directive",
+        "mask",
+        "chest",
+        "holster",
+        "backpack",
+        "gloves",
+        "kneepads"
+      ]
     },
     {
       "item_id": "6ad859aa7d2e9b33",
@@ -3434,7 +4226,16 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "Ortiz: Exuro",
+        "mask",
+        "chest",
+        "holster",
+        "backpack",
+        "gloves",
+        "kneepads"
+      ]
     },
     {
       "item_id": "2d44f190ca5a8e34",
@@ -3472,7 +4273,16 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "Refactor",
+        "mask",
+        "chest",
+        "holster",
+        "backpack",
+        "gloves",
+        "kneepads"
+      ]
     },
     {
       "item_id": "2a37be4b78e79a78",
@@ -3516,7 +4326,16 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "Rigger",
+        "mask",
+        "chest",
+        "holster",
+        "backpack",
+        "gloves",
+        "kneepads"
+      ]
     },
     {
       "item_id": "399b25135837e20f",
@@ -3554,7 +4373,16 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "Striker's Battlegear",
+        "mask",
+        "chest",
+        "holster",
+        "backpack",
+        "gloves",
+        "kneepads"
+      ]
     },
     {
       "item_id": "505b43aaabc088b9",
@@ -3594,6 +4422,15 @@
       ],
       "drop": [
         "dz"
+      ],
+      "target_looted": [
+        "System Corruption",
+        "mask",
+        "chest",
+        "holster",
+        "backpack",
+        "gloves",
+        "kneepads"
       ]
     },
     {
@@ -3632,7 +4469,16 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "Tip of the Spear",
+        "mask",
+        "chest",
+        "holster",
+        "backpack",
+        "gloves",
+        "kneepads"
+      ]
     },
     {
       "item_id": "dad12144c6550004",
@@ -3670,7 +4516,16 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "Tipping Scales",
+        "mask",
+        "chest",
+        "holster",
+        "backpack",
+        "gloves",
+        "kneepads"
+      ]
     },
     {
       "item_id": "53a5433d2658fb2a",
@@ -3683,7 +4538,16 @@
       "brand_key": "truepatriot",
       "slot_key": "",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "True Patriot",
+        "mask",
+        "chest",
+        "holster",
+        "backpack",
+        "gloves",
+        "kneepads"
+      ]
     },
     {
       "item_id": "797728d7dbed5587",
@@ -3722,7 +4586,16 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "Umbra Initiative",
+        "mask",
+        "chest",
+        "holster",
+        "backpack",
+        "gloves",
+        "kneepads"
+      ]
     },
     {
       "item_id": "03c3a951c073a48f",
@@ -3760,7 +4633,16 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "Virtuoso",
+        "mask",
+        "chest",
+        "holster",
+        "backpack",
+        "gloves",
+        "kneepads"
+      ]
     },
     {
       "item_id": "6adfdfab64f32823",
@@ -3773,7 +4655,10 @@
       "brand_key": "",
       "slot_key": "rifle",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "rifle"
+      ]
     },
     {
       "item_id": "32fbf4c233fa3568",
@@ -3786,7 +4671,10 @@
       "brand_key": "",
       "slot_key": "pistol",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "pistol"
+      ]
     },
     {
       "item_id": "942ddaee6c4935fe",
@@ -3799,7 +4687,10 @@
       "brand_key": "",
       "slot_key": "pistol",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "pistol"
+      ]
     },
     {
       "item_id": "208111f4bcc0d5ec",
@@ -3817,7 +4708,10 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "rifle"
+      ]
     },
     {
       "item_id": "07e8ad51f269429a",
@@ -3830,7 +4724,10 @@
       "brand_key": "",
       "slot_key": "ar",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "ar"
+      ]
     },
     {
       "item_id": "181542fdff4e0c99",
@@ -3843,7 +4740,10 @@
       "brand_key": "",
       "slot_key": "ar",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "ar"
+      ]
     },
     {
       "item_id": "feadea21c1261ac9",
@@ -3856,7 +4756,10 @@
       "brand_key": "",
       "slot_key": "rifle",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "rifle"
+      ]
     },
     {
       "item_id": "998ee8354805fbac",
@@ -3869,7 +4772,10 @@
       "brand_key": "",
       "slot_key": "shotgun",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "shotgun"
+      ]
     },
     {
       "item_id": "45d353d6a43ee73f",
@@ -3882,7 +4788,8 @@
       "brand_key": "",
       "slot_key": "mmr",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": []
     },
     {
       "item_id": "2d48e82013976f4f",
@@ -3895,7 +4802,10 @@
       "brand_key": "",
       "slot_key": "ar",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "ar"
+      ]
     },
     {
       "item_id": "4d8d651993d93f78",
@@ -3913,7 +4823,10 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "rifle"
+      ]
     },
     {
       "item_id": "417ef0cd79d6c127",
@@ -3926,7 +4839,10 @@
       "brand_key": "",
       "slot_key": "ar",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "ar"
+      ]
     },
     {
       "item_id": "ecddfbac89dff7fd",
@@ -3939,7 +4855,10 @@
       "brand_key": "",
       "slot_key": "smg",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "smg"
+      ]
     },
     {
       "item_id": "01dc11bb36db4410",
@@ -3957,7 +4876,10 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "smg"
+      ]
     },
     {
       "item_id": "293e1fd1485b54cb",
@@ -3975,7 +4897,10 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "shotgun"
+      ]
     },
     {
       "item_id": "9f9a5ee81a3ca38a",
@@ -3993,7 +4918,10 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "rifle"
+      ]
     },
     {
       "item_id": "d5395975508ba7bf",
@@ -4009,7 +4937,8 @@
       "drop": [
         "Event Hoarder",
         "Mini Warhound"
-      ]
+      ],
+      "target_looted": []
     },
     {
       "item_id": "42ddd95344f2ed09",
@@ -4022,7 +4951,8 @@
       "brand_key": "",
       "slot_key": "lmg",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": []
     },
     {
       "item_id": "6ba032131b2c63b5",
@@ -4040,7 +4970,10 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "lmg"
+      ]
     },
     {
       "item_id": "71db6fa659877131",
@@ -4053,7 +4986,10 @@
       "brand_key": "",
       "slot_key": "rifle",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "rifle"
+      ]
     },
     {
       "item_id": "c74f6faf91fed5b0",
@@ -4073,6 +5009,9 @@
       ],
       "drop": [
         "dz"
+      ],
+      "target_looted": [
+        "lmg:dz"
       ]
     },
     {
@@ -4086,7 +5025,10 @@
       "brand_key": "",
       "slot_key": "ar",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "ar"
+      ]
     },
     {
       "item_id": "c798632adf741c3a",
@@ -4103,7 +5045,8 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": []
     },
     {
       "item_id": "4af236e00d211ea2",
@@ -4116,7 +5059,10 @@
       "brand_key": "",
       "slot_key": "lmg",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "lmg"
+      ]
     },
     {
       "item_id": "d456574c3541883a",
@@ -4133,7 +5079,8 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": []
     },
     {
       "item_id": "c2ad9c6046d466dd",
@@ -4146,7 +5093,10 @@
       "brand_key": "",
       "slot_key": "lmg",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "lmg"
+      ]
     },
     {
       "item_id": "c856ef525574d0a5",
@@ -4159,7 +5109,8 @@
       "brand_key": "",
       "slot_key": "lmg",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": []
     },
     {
       "item_id": "a416b93298ec13ac",
@@ -4172,7 +5123,10 @@
       "brand_key": "",
       "slot_key": "shotgun",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "shotgun"
+      ]
     },
     {
       "item_id": "cdf099917c346a5a",
@@ -4189,7 +5143,8 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": []
     },
     {
       "item_id": "fe20afc0843e2bd7",
@@ -4202,7 +5157,10 @@
       "brand_key": "",
       "slot_key": "smg",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "smg"
+      ]
     },
     {
       "item_id": "2716088646865698",
@@ -4219,7 +5177,8 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": []
     },
     {
       "item_id": "4f37e896b7eee595",
@@ -4237,7 +5196,10 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "lmg"
+      ]
     },
     {
       "item_id": "c3162286687ab285",
@@ -4255,7 +5217,10 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "shotgun"
+      ]
     },
     {
       "item_id": "a8f4dd329a8027a6",
@@ -4273,7 +5238,10 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "ar"
+      ]
     },
     {
       "item_id": "d6db1f895e91b2d4",
@@ -4291,7 +5259,10 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "mmr"
+      ]
     },
     {
       "item_id": "e1259c203d181245",
@@ -4309,7 +5280,10 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "lmg"
+      ]
     },
     {
       "item_id": "5256391d36dcc1eb",
@@ -4327,7 +5301,10 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "ar"
+      ]
     },
     {
       "item_id": "cebac3bf86cea8cf",
@@ -4345,7 +5322,10 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "pistol"
+      ]
     },
     {
       "item_id": "52c924d4bd71e506",
@@ -4363,7 +5343,10 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "smg"
+      ]
     },
     {
       "item_id": "eb6723ff4f4aacee",
@@ -4376,7 +5359,10 @@
       "brand_key": "",
       "slot_key": "ar",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "ar"
+      ]
     },
     {
       "item_id": "dfbc8bf98f786dc2",
@@ -4389,7 +5375,10 @@
       "brand_key": "",
       "slot_key": "ar",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "ar"
+      ]
     },
     {
       "item_id": "f76eda79db462227",
@@ -4402,7 +5391,8 @@
       "brand_key": "",
       "slot_key": "ar",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": []
     },
     {
       "item_id": "4099add811045ec3",
@@ -4420,7 +5410,10 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "lmg"
+      ]
     },
     {
       "item_id": "24515ad08a34b463",
@@ -4438,7 +5431,10 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "ar"
+      ]
     },
     {
       "item_id": "b3e6fb34c31287f1",
@@ -4451,7 +5447,10 @@
       "brand_key": "",
       "slot_key": "rifle",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "rifle"
+      ]
     },
     {
       "item_id": "81fc95f5f8adbb5c",
@@ -4464,7 +5463,10 @@
       "brand_key": "",
       "slot_key": "mmr",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "mmr"
+      ]
     },
     {
       "item_id": "4a3ccb44f122e045",
@@ -4481,7 +5483,8 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": []
     },
     {
       "item_id": "71ae6d0e4411c59f",
@@ -4494,7 +5497,10 @@
       "brand_key": "",
       "slot_key": "lmg",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "lmg"
+      ]
     },
     {
       "item_id": "92aaac13e3bd61af",
@@ -4511,7 +5517,8 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": []
     },
     {
       "item_id": "c23c9c096ec650a6",
@@ -4524,7 +5531,10 @@
       "brand_key": "",
       "slot_key": "lmg",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "lmg"
+      ]
     },
     {
       "item_id": "3baeb5de4b98cf53",
@@ -4541,7 +5551,10 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "smg"
+      ]
     },
     {
       "item_id": "6639c56301482601",
@@ -4559,7 +5572,10 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "smg"
+      ]
     },
     {
       "item_id": "84b18f0343ab86c3",
@@ -4577,7 +5593,10 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "mmr"
+      ]
     },
     {
       "item_id": "6f03c39146f382b7",
@@ -4590,7 +5609,10 @@
       "brand_key": "",
       "slot_key": "smg",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "smg"
+      ]
     },
     {
       "item_id": "9f33d7d1f5f97d40",
@@ -4603,7 +5625,10 @@
       "brand_key": "",
       "slot_key": "smg",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "smg"
+      ]
     },
     {
       "item_id": "d129aee0eaafadad",
@@ -4616,7 +5641,8 @@
       "brand_key": "",
       "slot_key": "smg",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": []
     },
     {
       "item_id": "5e69155e9baed0e6",
@@ -4629,7 +5655,10 @@
       "brand_key": "",
       "slot_key": "rifle",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "rifle"
+      ]
     },
     {
       "item_id": "e90788eae6d65de6",
@@ -4642,7 +5671,10 @@
       "brand_key": "",
       "slot_key": "mmr",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "mmr"
+      ]
     },
     {
       "item_id": "ac7cde01043bf438",
@@ -4660,7 +5692,10 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "lmg"
+      ]
     },
     {
       "item_id": "1a4bcd6f8399c8de",
@@ -4673,7 +5708,10 @@
       "brand_key": "",
       "slot_key": "ar",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "ar"
+      ]
     },
     {
       "item_id": "6de580eb49a3aaa1",
@@ -4691,7 +5729,10 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "shotgun"
+      ]
     },
     {
       "item_id": "0b4649b1686b6cbf",
@@ -4704,7 +5745,10 @@
       "brand_key": "",
       "slot_key": "lmg",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "lmg"
+      ]
     },
     {
       "item_id": "34a74061d0fa2496",
@@ -4721,7 +5765,8 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": []
     },
     {
       "item_id": "cf2c5f77e4c89d9d",
@@ -4734,7 +5779,10 @@
       "brand_key": "",
       "slot_key": "mmr",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "mmr"
+      ]
     },
     {
       "item_id": "d22e1f3a329828c0",
@@ -4751,7 +5799,8 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": []
     },
     {
       "item_id": "ee6fb204e2247a53",
@@ -4764,7 +5813,10 @@
       "brand_key": "",
       "slot_key": "shotgun",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "shotgun"
+      ]
     },
     {
       "item_id": "11e3966d7fe9eefb",
@@ -4781,7 +5833,8 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": []
     },
     {
       "item_id": "a1d8ee8b96c00bbb",
@@ -4794,7 +5847,10 @@
       "brand_key": "",
       "slot_key": "ar",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "ar"
+      ]
     },
     {
       "item_id": "76620d5c2de358eb",
@@ -4807,7 +5863,10 @@
       "brand_key": "",
       "slot_key": "pistol",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "pistol"
+      ]
     },
     {
       "item_id": "04286b19458df3d4",
@@ -4820,7 +5879,10 @@
       "brand_key": "",
       "slot_key": "pistol",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "pistol"
+      ]
     },
     {
       "item_id": "caa9f7c273c5fb49",
@@ -4838,7 +5900,10 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "lmg"
+      ]
     },
     {
       "item_id": "db63248583d261a3",
@@ -4858,6 +5923,9 @@
       ],
       "drop": [
         "dz"
+      ],
+      "target_looted": [
+        "smg:dz"
       ]
     },
     {
@@ -4876,7 +5944,10 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "mmr"
+      ]
     },
     {
       "item_id": "28c3c76ac3a25361",
@@ -4889,7 +5960,10 @@
       "brand_key": "",
       "slot_key": "rifle",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "rifle"
+      ]
     },
     {
       "item_id": "70c025977301f83d",
@@ -4902,7 +5976,10 @@
       "brand_key": "",
       "slot_key": "pistol",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "pistol"
+      ]
     },
     {
       "item_id": "95f3981d4d53d3bc",
@@ -4919,7 +5996,8 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": []
     },
     {
       "item_id": "77ff4be83061c732",
@@ -4932,7 +6010,10 @@
       "brand_key": "",
       "slot_key": "pistol",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "pistol"
+      ]
     },
     {
       "item_id": "867742d184ef43bf",
@@ -4950,7 +6031,10 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "rifle"
+      ]
     },
     {
       "item_id": "5d1b0815f038c866",
@@ -4963,7 +6047,10 @@
       "brand_key": "",
       "slot_key": "shotgun",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "shotgun"
+      ]
     },
     {
       "item_id": "06203a4973866fa4",
@@ -4976,7 +6063,10 @@
       "brand_key": "",
       "slot_key": "shotgun",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "shotgun"
+      ]
     },
     {
       "item_id": "b887dd0d35ec6592",
@@ -4993,7 +6083,8 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": []
     },
     {
       "item_id": "50e3ea3765dd2725",
@@ -5011,7 +6102,10 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "mmr"
+      ]
     },
     {
       "item_id": "497623df9a2150d7",
@@ -5024,7 +6118,8 @@
       "brand_key": "",
       "slot_key": "ar",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": []
     },
     {
       "item_id": "9b93f946347bc837",
@@ -5042,7 +6137,10 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "mmr"
+      ]
     },
     {
       "item_id": "2dbe1686f42f1616",
@@ -5060,7 +6158,10 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "smg"
+      ]
     },
     {
       "item_id": "4f9fb3096f62cfa1",
@@ -5073,7 +6174,10 @@
       "brand_key": "",
       "slot_key": "shotgun",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "shotgun"
+      ]
     },
     {
       "item_id": "10a4d2090309ffba",
@@ -5086,7 +6190,10 @@
       "brand_key": "",
       "slot_key": "smg",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "smg"
+      ]
     },
     {
       "item_id": "210b857dd69ebefd",
@@ -5099,7 +6206,10 @@
       "brand_key": "",
       "slot_key": "smg",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "smg"
+      ]
     },
     {
       "item_id": "1ef3b3fea27a09be",
@@ -5119,6 +6229,9 @@
       ],
       "drop": [
         "dz"
+      ],
+      "target_looted": [
+        "rifle:dz"
       ]
     },
     {
@@ -5132,7 +6245,10 @@
       "brand_key": "",
       "slot_key": "ar",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "ar"
+      ]
     },
     {
       "item_id": "ecdd25393bea4b43",
@@ -5149,7 +6265,8 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": []
     },
     {
       "item_id": "a984b6f3d8766080",
@@ -5162,7 +6279,10 @@
       "brand_key": "",
       "slot_key": "ar",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "ar"
+      ]
     },
     {
       "item_id": "05b926102495707a",
@@ -5175,7 +6295,10 @@
       "brand_key": "",
       "slot_key": "ar",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "ar"
+      ]
     },
     {
       "item_id": "db2c3232aa29ee9a",
@@ -5188,7 +6311,10 @@
       "brand_key": "",
       "slot_key": "ar",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "ar"
+      ]
     },
     {
       "item_id": "8c3081e1373a7889",
@@ -5205,7 +6331,8 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": []
     },
     {
       "item_id": "6600bd63e1555292",
@@ -5218,7 +6345,10 @@
       "brand_key": "",
       "slot_key": "ar",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "ar"
+      ]
     },
     {
       "item_id": "86819ee375f47411",
@@ -5235,7 +6365,8 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": []
     },
     {
       "item_id": "cd9822673babc67c",
@@ -5248,7 +6379,10 @@
       "brand_key": "",
       "slot_key": "shotgun",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "shotgun"
+      ]
     },
     {
       "item_id": "c50e2b16cd4b9a04",
@@ -5264,7 +6398,8 @@
       "drop": [
         "Event Hoarder",
         "Mini Warhound"
-      ]
+      ],
+      "target_looted": []
     },
     {
       "item_id": "ec34f9c7ef390295",
@@ -5277,7 +6412,10 @@
       "brand_key": "",
       "slot_key": "pistol",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "pistol"
+      ]
     },
     {
       "item_id": "b8bc4ea7867b6ac7",
@@ -5295,7 +6433,10 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "smg"
+      ]
     },
     {
       "item_id": "c5e9ba9693145ec6",
@@ -5313,7 +6454,10 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "mmr"
+      ]
     },
     {
       "item_id": "62661e47ea165db3",
@@ -5326,7 +6470,10 @@
       "brand_key": "",
       "slot_key": "ar",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "ar"
+      ]
     },
     {
       "item_id": "8482bfac6a855cd4",
@@ -5339,7 +6486,10 @@
       "brand_key": "",
       "slot_key": "ar",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "ar"
+      ]
     },
     {
       "item_id": "e6d1f02b77057687",
@@ -5356,7 +6506,8 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": []
     },
     {
       "item_id": "da29c67fd9eadd0e",
@@ -5369,7 +6520,10 @@
       "brand_key": "",
       "slot_key": "lmg",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "lmg"
+      ]
     },
     {
       "item_id": "b23070cfa3238f3a",
@@ -5387,7 +6541,10 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "ar"
+      ]
     },
     {
       "item_id": "45c89c6cc78bd714",
@@ -5405,7 +6562,10 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "ar"
+      ]
     },
     {
       "item_id": "66113b043d80cfbe",
@@ -5425,6 +6585,9 @@
       ],
       "drop": [
         "dz"
+      ],
+      "target_looted": [
+        "lmg:dz"
       ]
     },
     {
@@ -5442,7 +6605,10 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "lmg"
+      ]
     },
     {
       "item_id": "5e1775f6ba7311e7",
@@ -5460,7 +6626,10 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "smg"
+      ]
     },
     {
       "item_id": "6beabbdca0c8e70a",
@@ -5476,6 +6645,9 @@
       "drop": [
         "Event Hoarder",
         "Mini Warhound"
+      ],
+      "target_looted": [
+        "mmr"
       ]
     },
     {
@@ -5496,6 +6668,9 @@
       ],
       "drop": [
         "dz"
+      ],
+      "target_looted": [
+        "rifle:dz"
       ]
     },
     {
@@ -5509,7 +6684,10 @@
       "brand_key": "",
       "slot_key": "ar",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "ar"
+      ]
     },
     {
       "item_id": "c588ce685a3a9331",
@@ -5522,7 +6700,10 @@
       "brand_key": "",
       "slot_key": "mmr",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "mmr"
+      ]
     },
     {
       "item_id": "01e05f894b403232",
@@ -5539,7 +6720,8 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": []
     },
     {
       "item_id": "5bb264e7672eac41",
@@ -5552,7 +6734,10 @@
       "brand_key": "",
       "slot_key": "lmg",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "lmg"
+      ]
     },
     {
       "item_id": "5f674627a58d8155",
@@ -5569,7 +6754,8 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": []
     },
     {
       "item_id": "b4105a60f5322017",
@@ -5587,7 +6773,10 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "mmr"
+      ]
     },
     {
       "item_id": "8d8ad5482e0aef84",
@@ -5605,7 +6794,10 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "ar"
+      ]
     },
     {
       "item_id": "1ab632e9ed6d283c",
@@ -5623,7 +6815,10 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "lmg"
+      ]
     },
     {
       "item_id": "ce05e5df982f526e",
@@ -5640,7 +6835,10 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "lmg"
+      ]
     },
     {
       "item_id": "57d07bf776ca09f4",
@@ -5657,7 +6855,10 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "pistol"
+      ]
     },
     {
       "item_id": "45375449a676378a",
@@ -5675,7 +6876,10 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "ar"
+      ]
     },
     {
       "item_id": "c2db4739e763fae5",
@@ -5688,7 +6892,10 @@
       "brand_key": "",
       "slot_key": "shotgun",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "shotgun"
+      ]
     },
     {
       "item_id": "c122415a50a16bb3",
@@ -5706,7 +6913,10 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "smg"
+      ]
     },
     {
       "item_id": "8e949067d2b61318",
@@ -5724,7 +6934,10 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "shotgun"
+      ]
     },
     {
       "item_id": "e1d099f45a790413",
@@ -5737,7 +6950,8 @@
       "brand_key": "",
       "slot_key": "ar",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": []
     },
     {
       "item_id": "9f224e61f2ed6a90",
@@ -5750,7 +6964,10 @@
       "brand_key": "",
       "slot_key": "pistol",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "pistol"
+      ]
     },
     {
       "item_id": "10cc8e8d9a937a27",
@@ -5768,7 +6985,10 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "pistol"
+      ]
     },
     {
       "item_id": "de7978c30baafc87",
@@ -5781,7 +7001,10 @@
       "brand_key": "",
       "slot_key": "rifle",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "rifle"
+      ]
     },
     {
       "item_id": "c3f2ab1dc9008b5e",
@@ -5799,7 +7022,10 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "shotgun"
+      ]
     },
     {
       "item_id": "2496dd5bfa574fa5",
@@ -5817,7 +7043,10 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "shotgun"
+      ]
     },
     {
       "item_id": "bf3077283fcbb176",
@@ -5835,7 +7064,10 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "ar"
+      ]
     },
     {
       "item_id": "1f737ff88f8fe0e2",
@@ -5848,7 +7080,10 @@
       "brand_key": "",
       "slot_key": "shotgun",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "shotgun"
+      ]
     },
     {
       "item_id": "5695376f77e46d86",
@@ -5861,7 +7096,10 @@
       "brand_key": "",
       "slot_key": "rifle",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "rifle"
+      ]
     },
     {
       "item_id": "bf582a1740e464ed",
@@ -5878,7 +7116,8 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": []
     },
     {
       "item_id": "8356bc9a0831a3ba",
@@ -5891,7 +7130,10 @@
       "brand_key": "",
       "slot_key": "rifle",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "rifle"
+      ]
     },
     {
       "item_id": "a685d00d4ded0a63",
@@ -5908,7 +7150,8 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": []
     },
     {
       "item_id": "0841d4b97d9304f7",
@@ -5921,7 +7164,10 @@
       "brand_key": "",
       "slot_key": "pistol",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "pistol"
+      ]
     },
     {
       "item_id": "25e632db4ef82403",
@@ -5934,7 +7180,10 @@
       "brand_key": "",
       "slot_key": "smg",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "smg"
+      ]
     },
     {
       "item_id": "bcaa611b7c3da531",
@@ -5947,7 +7196,10 @@
       "brand_key": "",
       "slot_key": "rifle",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "rifle"
+      ]
     },
     {
       "item_id": "bceaba2f5a607c7d",
@@ -5964,7 +7216,8 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": []
     },
     {
       "item_id": "41c266c69352467b",
@@ -5977,7 +7230,10 @@
       "brand_key": "",
       "slot_key": "lmg",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "lmg"
+      ]
     },
     {
       "item_id": "9f9bed5f4c68603e",
@@ -5990,7 +7246,10 @@
       "brand_key": "",
       "slot_key": "pistol",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "pistol"
+      ]
     },
     {
       "item_id": "31ffd57d64b41918",
@@ -6003,7 +7262,10 @@
       "brand_key": "",
       "slot_key": "mmr",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "mmr"
+      ]
     },
     {
       "item_id": "7cdb53e77fb4d300",
@@ -6020,7 +7282,8 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": []
     },
     {
       "item_id": "3e4fb0077f19d235",
@@ -6033,7 +7296,10 @@
       "brand_key": "",
       "slot_key": "mmr",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "mmr"
+      ]
     },
     {
       "item_id": "11178d8207d5f527",
@@ -6046,7 +7312,10 @@
       "brand_key": "",
       "slot_key": "shotgun",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "shotgun"
+      ]
     },
     {
       "item_id": "dba55e05e29ef404",
@@ -6063,7 +7332,8 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": []
     },
     {
       "item_id": "de93c391b4382de3",
@@ -6083,6 +7353,9 @@
       ],
       "drop": [
         "dz"
+      ],
+      "target_looted": [
+        "ar:dz"
       ]
     },
     {
@@ -6101,7 +7374,10 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "mmr"
+      ]
     },
     {
       "item_id": "4877b28b7f3843b6",
@@ -6114,7 +7390,10 @@
       "brand_key": "",
       "slot_key": "shotgun",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "shotgun"
+      ]
     },
     {
       "item_id": "828e19a40c628581",
@@ -6127,7 +7406,10 @@
       "brand_key": "",
       "slot_key": "pistol",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "pistol"
+      ]
     },
     {
       "item_id": "67a07e5075c74d59",
@@ -6145,7 +7427,10 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "ar"
+      ]
     },
     {
       "item_id": "b80c9ff48572fd10",
@@ -6163,7 +7448,10 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "rifle"
+      ]
     },
     {
       "item_id": "d49ad4535d88f0e1",
@@ -6176,7 +7464,10 @@
       "brand_key": "",
       "slot_key": "lmg",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "lmg"
+      ]
     },
     {
       "item_id": "88ac318740ee3a32",
@@ -6189,7 +7480,10 @@
       "brand_key": "",
       "slot_key": "ar",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "ar"
+      ]
     },
     {
       "item_id": "eb11b639ede32e8c",
@@ -6202,7 +7496,10 @@
       "brand_key": "",
       "slot_key": "ar",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "ar"
+      ]
     },
     {
       "item_id": "236cf2ec52b922a7",
@@ -6215,7 +7512,10 @@
       "brand_key": "",
       "slot_key": "lmg",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "lmg"
+      ]
     },
     {
       "item_id": "92eb74d69109f07d",
@@ -6228,7 +7528,10 @@
       "brand_key": "",
       "slot_key": "lmg",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "lmg"
+      ]
     },
     {
       "item_id": "03affe9473fb58d0",
@@ -6241,7 +7544,10 @@
       "brand_key": "",
       "slot_key": "shotgun",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "shotgun"
+      ]
     },
     {
       "item_id": "68411124cdad2c10",
@@ -6254,7 +7560,10 @@
       "brand_key": "",
       "slot_key": "pistol",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "pistol"
+      ]
     },
     {
       "item_id": "e6cd1940a3d2d7a4",
@@ -6271,7 +7580,8 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": []
     },
     {
       "item_id": "68f9507c71f1c277",
@@ -6284,7 +7594,10 @@
       "brand_key": "",
       "slot_key": "rifle",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "rifle"
+      ]
     },
     {
       "item_id": "c7ad650f0fbfe154",
@@ -6297,7 +7610,10 @@
       "brand_key": "",
       "slot_key": "lmg",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "lmg"
+      ]
     },
     {
       "item_id": "a75fe1ebb2be641c",
@@ -6314,7 +7630,8 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": []
     },
     {
       "item_id": "b6a97ce55bb96ee2",
@@ -6327,7 +7644,10 @@
       "brand_key": "",
       "slot_key": "ar",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "ar"
+      ]
     },
     {
       "item_id": "afee78bc19f1ea8d",
@@ -6340,7 +7660,10 @@
       "brand_key": "",
       "slot_key": "lmg",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "lmg"
+      ]
     },
     {
       "item_id": "0c050c95889d0569",
@@ -6353,7 +7676,10 @@
       "brand_key": "",
       "slot_key": "ar",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "ar"
+      ]
     },
     {
       "item_id": "0afc69397fd07917",
@@ -6366,7 +7692,10 @@
       "brand_key": "",
       "slot_key": "mmr",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "mmr"
+      ]
     },
     {
       "item_id": "8250edb22376f830",
@@ -6383,7 +7712,8 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": []
     },
     {
       "item_id": "b330d296978f6182",
@@ -6401,7 +7731,10 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "pistol"
+      ]
     },
     {
       "item_id": "97db3c6b772b1f9c",
@@ -6419,7 +7752,10 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "pistol"
+      ]
     },
     {
       "item_id": "64c2eb6db2fe9d89",
@@ -6432,7 +7768,10 @@
       "brand_key": "",
       "slot_key": "smg",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "smg"
+      ]
     },
     {
       "item_id": "a01d1c74a6471cd8",
@@ -6445,7 +7784,10 @@
       "brand_key": "",
       "slot_key": "smg",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "smg"
+      ]
     },
     {
       "item_id": "25972508bea50f47",
@@ -6458,7 +7800,10 @@
       "brand_key": "",
       "slot_key": "smg",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "smg"
+      ]
     },
     {
       "item_id": "11025bc9d4d77aac",
@@ -6475,7 +7820,8 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": []
     },
     {
       "item_id": "8744182df3e0d3e2",
@@ -6488,7 +7834,10 @@
       "brand_key": "",
       "slot_key": "smg",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "smg"
+      ]
     },
     {
       "item_id": "6b7b4ad6003b3cec",
@@ -6501,7 +7850,10 @@
       "brand_key": "",
       "slot_key": "smg",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "smg"
+      ]
     },
     {
       "item_id": "c73b930f2d8490db",
@@ -6514,7 +7866,10 @@
       "brand_key": "",
       "slot_key": "mmr",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "mmr"
+      ]
     },
     {
       "item_id": "e52b3ea87bda1fd7",
@@ -6532,7 +7887,10 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "lmg"
+      ]
     },
     {
       "item_id": "38441e6339b87110",
@@ -6545,7 +7903,10 @@
       "brand_key": "",
       "slot_key": "pistol",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "pistol"
+      ]
     },
     {
       "item_id": "7d8f06c0502af3c7",
@@ -6561,7 +7922,8 @@
       "drop": [
         "Event Hoarder",
         "Mini Warhound"
-      ]
+      ],
+      "target_looted": []
     },
     {
       "item_id": "bacb4bd87ed9f7fb",
@@ -6581,6 +7943,9 @@
       ],
       "drop": [
         "dz"
+      ],
+      "target_looted": [
+        "pistol:dz"
       ]
     },
     {
@@ -6594,7 +7959,8 @@
       "brand_key": "",
       "slot_key": "smg",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": []
     },
     {
       "item_id": "1242474bef081259",
@@ -6612,7 +7978,10 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "shotgun"
+      ]
     },
     {
       "item_id": "53891273a90de424",
@@ -6630,7 +7999,10 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "smg"
+      ]
     },
     {
       "item_id": "43a2100a475073f5",
@@ -6643,7 +8015,10 @@
       "brand_key": "",
       "slot_key": "pistol",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "pistol"
+      ]
     },
     {
       "item_id": "55b4a609a954704f",
@@ -6656,7 +8031,10 @@
       "brand_key": "",
       "slot_key": "smg",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "smg"
+      ]
     },
     {
       "item_id": "3d295ae2eda0ce16",
@@ -6673,7 +8051,8 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": []
     },
     {
       "item_id": "9ab8a77ce442df07",
@@ -6691,7 +8070,10 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "lmg"
+      ]
     },
     {
       "item_id": "f24e006fda58fc4f",
@@ -6704,7 +8086,10 @@
       "brand_key": "",
       "slot_key": "mmr",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "mmr"
+      ]
     },
     {
       "item_id": "1db1073d781b8257",
@@ -6721,7 +8106,10 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "ar"
+      ]
     },
     {
       "item_id": "2560004a2bc74a7a",
@@ -6739,7 +8127,10 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "lmg"
+      ]
     },
     {
       "item_id": "90884cd9eeddd2df",
@@ -6757,7 +8148,10 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "mmr:dz"
+      ]
     },
     {
       "item_id": "7c2cb72603b6edbb",
@@ -6775,7 +8169,10 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "pistol"
+      ]
     },
     {
       "item_id": "c98ca2717aa2f260",
@@ -6792,7 +8189,8 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": []
     },
     {
       "item_id": "42897996579e05b8",
@@ -6805,7 +8203,10 @@
       "brand_key": "",
       "slot_key": "ar",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "ar"
+      ]
     },
     {
       "item_id": "7fbff18c34635afe",
@@ -6822,7 +8223,8 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": []
     },
     {
       "item_id": "02d68270d18ec4aa",
@@ -6835,7 +8237,10 @@
       "brand_key": "",
       "slot_key": "rifle",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "rifle"
+      ]
     },
     {
       "item_id": "93366b09937e4d79",
@@ -6852,7 +8257,8 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": []
     },
     {
       "item_id": "92fe586cf46c31e9",
@@ -6865,7 +8271,10 @@
       "brand_key": "",
       "slot_key": "smg",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "smg"
+      ]
     },
     {
       "item_id": "005a61139db79619",
@@ -6878,7 +8287,10 @@
       "brand_key": "",
       "slot_key": "smg",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "smg"
+      ]
     },
     {
       "item_id": "9035b72a7cd3ffef",
@@ -6891,7 +8303,10 @@
       "brand_key": "",
       "slot_key": "smg",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "smg"
+      ]
     },
     {
       "item_id": "a76e4e517f224b09",
@@ -6904,7 +8319,10 @@
       "brand_key": "",
       "slot_key": "pistol",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "pistol"
+      ]
     },
     {
       "item_id": "a4242cc29f8d36e7",
@@ -6921,7 +8339,10 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "smg"
+      ]
     },
     {
       "item_id": "17a1525734c672ab",
@@ -6934,7 +8355,10 @@
       "brand_key": "",
       "slot_key": "pistol",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "pistol"
+      ]
     },
     {
       "item_id": "be8742a8793f50b2",
@@ -6947,7 +8371,10 @@
       "brand_key": "",
       "slot_key": "pistol",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "pistol"
+      ]
     },
     {
       "item_id": "0d1b3fde217ec417",
@@ -6964,7 +8391,8 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": []
     },
     {
       "item_id": "2fb18a36e56141c2",
@@ -6982,7 +8410,10 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "ar"
+      ]
     },
     {
       "item_id": "71dda4e07eafa900",
@@ -6998,7 +8429,8 @@
       "drop": [
         "Event Hoarder",
         "Mini Warhound"
-      ]
+      ],
+      "target_looted": []
     },
     {
       "item_id": "d8089c44a54cd638",
@@ -7016,7 +8448,10 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "lmg"
+      ]
     },
     {
       "item_id": "186e6cf148ddac61",
@@ -7029,7 +8464,8 @@
       "brand_key": "",
       "slot_key": "pistol",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": []
     },
     {
       "item_id": "38970ea90369b233",
@@ -7042,7 +8478,10 @@
       "brand_key": "",
       "slot_key": "mmr",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "mmr"
+      ]
     },
     {
       "item_id": "2b43d61877b3b624",
@@ -7059,7 +8498,10 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "rifle"
+      ]
     },
     {
       "item_id": "27c2aee0ca3a7e1d",
@@ -7079,6 +8521,9 @@
       ],
       "drop": [
         "dz"
+      ],
+      "target_looted": [
+        "shotgun:dz"
       ]
     },
     {
@@ -7096,7 +8541,10 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "lmg"
+      ]
     },
     {
       "item_id": "41877057a507dd4b",
@@ -7109,7 +8557,8 @@
       "brand_key": "",
       "slot_key": "rifle",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": []
     },
     {
       "item_id": "f1848083df53649e",
@@ -7127,7 +8576,10 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "mmr"
+      ]
     },
     {
       "item_id": "b704132606b4b68f",
@@ -7145,7 +8597,10 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "smg"
+      ]
     },
     {
       "item_id": "f0f42dd0b0e8e51d",
@@ -7158,7 +8613,10 @@
       "brand_key": "",
       "slot_key": "shotgun",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "shotgun"
+      ]
     },
     {
       "item_id": "d1ed6a5727deb874",
@@ -7176,7 +8634,8 @@
           "src": "Field Research Firewall"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": []
     },
     {
       "item_id": "4faaf23e8148ee47",
@@ -7194,7 +8653,10 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "mmr"
+      ]
     },
     {
       "item_id": "3b10534337e4055c",
@@ -7212,7 +8674,10 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "shotgun"
+      ]
     },
     {
       "item_id": "d14222cb01108540",
@@ -7225,7 +8690,10 @@
       "brand_key": "",
       "slot_key": "pistol",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "pistol"
+      ]
     },
     {
       "item_id": "cf755df74a7c54a7",
@@ -7242,7 +8710,10 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "ar"
+      ]
     },
     {
       "item_id": "bb691344684aaaa8",
@@ -7260,7 +8731,10 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "mmr"
+      ]
     },
     {
       "item_id": "ae50301bd51a1a25",
@@ -7277,7 +8751,10 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "ar"
+      ]
     },
     {
       "item_id": "26a7af2e37f74333",
@@ -7290,7 +8767,10 @@
       "brand_key": "",
       "slot_key": "rifle",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "rifle"
+      ]
     },
     {
       "item_id": "e62b3df159b65fb8",
@@ -7303,7 +8783,10 @@
       "brand_key": "",
       "slot_key": "rifle",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "rifle"
+      ]
     },
     {
       "item_id": "adeed3ceaca0fa41",
@@ -7320,7 +8803,8 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": []
     },
     {
       "item_id": "cfc35660fdb46eec",
@@ -7341,7 +8825,10 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "shotgun"
+      ]
     },
     {
       "item_id": "0141c5a982b80b23",
@@ -7359,7 +8846,10 @@
           "src": "Field Research Gunner"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "lmg"
+      ]
     },
     {
       "item_id": "e1b8c201bf31e12c",
@@ -7375,7 +8865,8 @@
       "drop": [
         "Event Hoarder",
         "Mini Warhound"
-      ]
+      ],
+      "target_looted": []
     },
     {
       "item_id": "b2094cf7d3660181",
@@ -7388,7 +8879,10 @@
       "brand_key": "",
       "slot_key": "pistol",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "pistol"
+      ]
     },
     {
       "item_id": "a6ba8ac5132f9ddb",
@@ -7405,7 +8899,10 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "rifle"
+      ]
     },
     {
       "item_id": "005c376058dce6a1",
@@ -7418,7 +8915,10 @@
       "brand_key": "",
       "slot_key": "ar",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "ar"
+      ]
     },
     {
       "item_id": "0133743c67cce041",
@@ -7431,7 +8931,10 @@
       "brand_key": "",
       "slot_key": "mmr",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "mmr"
+      ]
     },
     {
       "item_id": "39ffdf3fa34ab35e",
@@ -7448,7 +8951,8 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": []
     },
     {
       "item_id": "ad60e74d6426a662",
@@ -7461,7 +8965,10 @@
       "brand_key": "",
       "slot_key": "shotgun",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "shotgun"
+      ]
     },
     {
       "item_id": "d752f535e57c8b65",
@@ -7478,7 +8985,8 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": []
     },
     {
       "item_id": "ad7ab87acc7d5426",
@@ -7491,7 +8999,10 @@
       "brand_key": "",
       "slot_key": "mmr",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "mmr"
+      ]
     },
     {
       "item_id": "20308ea0ce8da344",
@@ -7508,7 +9019,8 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": []
     },
     {
       "item_id": "2ead6b49c7612521",
@@ -7521,7 +9033,10 @@
       "brand_key": "",
       "slot_key": "mmr",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "mmr"
+      ]
     },
     {
       "item_id": "6d519b5b3d9a4ca8",
@@ -7538,7 +9053,8 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": []
     },
     {
       "item_id": "5b855520ffbeda77",
@@ -7551,7 +9067,10 @@
       "brand_key": "",
       "slot_key": "shotgun",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "shotgun"
+      ]
     },
     {
       "item_id": "d9c982c99a9b3017",
@@ -7569,7 +9088,10 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "rifle"
+      ]
     },
     {
       "item_id": "44c7f5cfa2b7be27",
@@ -7587,7 +9109,10 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "ar"
+      ]
     },
     {
       "item_id": "a2f7ef2ae02117ef",
@@ -7600,7 +9125,10 @@
       "brand_key": "",
       "slot_key": "lmg",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "lmg"
+      ]
     },
     {
       "item_id": "79d503a02ca8d6ce",
@@ -7618,7 +9146,10 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "ar"
+      ]
     },
     {
       "item_id": "17b9dbd68f450af2",
@@ -7631,7 +9162,10 @@
       "brand_key": "",
       "slot_key": "shotgun",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "shotgun"
+      ]
     },
     {
       "item_id": "c20367c65c81fb9a",
@@ -7648,7 +9182,8 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": []
     },
     {
       "item_id": "24bf6e3231bf25ec",
@@ -7666,7 +9201,10 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "rifle"
+      ]
     },
     {
       "item_id": "3c8d5dfe4cc2fd95",
@@ -7679,7 +9217,10 @@
       "brand_key": "",
       "slot_key": "mmr",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "mmr"
+      ]
     },
     {
       "item_id": "f9b959b99b9b3aaf",
@@ -7692,7 +9233,10 @@
       "brand_key": "",
       "slot_key": "pistol",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "pistol"
+      ]
     },
     {
       "item_id": "4d4e2d05d7411458",
@@ -7710,7 +9254,10 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "smg"
+      ]
     },
     {
       "item_id": "32de50df7a92b4f2",
@@ -7728,7 +9275,10 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "shotgun"
+      ]
     },
     {
       "item_id": "ba87359bcbead228",
@@ -7746,7 +9296,10 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "lmg"
+      ]
     },
     {
       "item_id": "1361880677bdcfcb",
@@ -7764,7 +9317,10 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "mmr"
+      ]
     },
     {
       "item_id": "f901d37d014adb64",
@@ -7777,7 +9333,10 @@
       "brand_key": "",
       "slot_key": "smg",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "smg"
+      ]
     },
     {
       "item_id": "980b1181ff515c0b",
@@ -7794,7 +9353,8 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": []
     },
     {
       "item_id": "06cb7d4dabf70fd5",
@@ -7807,7 +9367,10 @@
       "brand_key": "",
       "slot_key": "pistol",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "pistol"
+      ]
     },
     {
       "item_id": "fff5b0278af7ba12",
@@ -7824,7 +9387,8 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": []
     },
     {
       "item_id": "6c42fc071e50561e",
@@ -7837,7 +9401,10 @@
       "brand_key": "",
       "slot_key": "lmg",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "lmg"
+      ]
     },
     {
       "item_id": "09847ac4e5a83748",
@@ -7850,7 +9417,10 @@
       "brand_key": "",
       "slot_key": "ar",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "ar"
+      ]
     },
     {
       "item_id": "0161d094184e6854",
@@ -7867,7 +9437,8 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": []
     },
     {
       "item_id": "7702f7df58c4bb05",
@@ -7880,7 +9451,10 @@
       "brand_key": "",
       "slot_key": "shotgun",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "shotgun"
+      ]
     },
     {
       "item_id": "04e64184c4c17b19",
@@ -7893,7 +9467,10 @@
       "brand_key": "",
       "slot_key": "shotgun",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "shotgun"
+      ]
     },
     {
       "item_id": "09751b692893fd0a",
@@ -7910,7 +9487,8 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": []
     },
     {
       "item_id": "d28854f9c6ea0e34",
@@ -7923,7 +9501,10 @@
       "brand_key": "",
       "slot_key": "smg",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "smg"
+      ]
     },
     {
       "item_id": "002bdf00167dbeb3",
@@ -7940,7 +9521,8 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": []
     },
     {
       "item_id": "a2e8cb5d40a17a6c",
@@ -7953,7 +9535,10 @@
       "brand_key": "",
       "slot_key": "smg",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "smg"
+      ]
     },
     {
       "item_id": "e8ec10ff05cd96fe",
@@ -7973,6 +9558,9 @@
       ],
       "drop": [
         "dz"
+      ],
+      "target_looted": [
+        "pistol:dz"
       ]
     },
     {
@@ -7986,7 +9574,8 @@
       "brand_key": "",
       "slot_key": "pistol",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": []
     },
     {
       "item_id": "64afd0db3304196c",
@@ -8004,7 +9593,10 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "ar"
+      ]
     },
     {
       "item_id": "3b018ae2ea505487",
@@ -8024,6 +9616,9 @@
       ],
       "drop": [
         "dz"
+      ],
+      "target_looted": [
+        "smg:dz"
       ]
     },
     {
@@ -8037,7 +9632,8 @@
       "brand_key": "",
       "slot_key": "ar",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": []
     },
     {
       "item_id": "6f927eeeb407d33c",
@@ -8050,7 +9646,10 @@
       "brand_key": "",
       "slot_key": "smg",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "smg"
+      ]
     },
     {
       "item_id": "f97a5dae5ae2829e",
@@ -8068,7 +9667,10 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "mmr"
+      ]
     },
     {
       "item_id": "7797a1f5f3df958b",
@@ -8086,7 +9688,10 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "ar"
+      ]
     },
     {
       "item_id": "e25e1470a5f61436",
@@ -8104,7 +9709,10 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "smg"
+      ]
     },
     {
       "item_id": "8541a70ef11383d3",
@@ -8120,6 +9728,9 @@
       "drop": [
         "Event Hoarder",
         "Mini Warhound"
+      ],
+      "target_looted": [
+        "pistol"
       ]
     },
     {
@@ -8138,7 +9749,10 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "shotgun"
+      ]
     },
     {
       "item_id": "c37ad9920897a8ca",
@@ -8157,6 +9771,9 @@
       ],
       "drop": [
         "dz"
+      ],
+      "target_looted": [
+        "ar:dz"
       ]
     },
     {
@@ -8170,7 +9787,10 @@
       "brand_key": "",
       "slot_key": "rifle",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "rifle"
+      ]
     },
     {
       "item_id": "80e32515cfe8b6a3",
@@ -8188,7 +9808,10 @@
           "src": "Field Research Technician"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "shotgun"
+      ]
     },
     {
       "item_id": "841c3c1e84181bc6",
@@ -8201,7 +9824,10 @@
       "brand_key": "",
       "slot_key": "shotgun",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "shotgun"
+      ]
     },
     {
       "item_id": "43fb182ec4e34b89",
@@ -8217,7 +9843,8 @@
       "drop": [
         "Event Hoarder",
         "Mini Warhound"
-      ]
+      ],
+      "target_looted": []
     },
     {
       "item_id": "2cc16b767c74c2dd",
@@ -8234,7 +9861,10 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "lmg"
+      ]
     },
     {
       "item_id": "6b30ec80fb314318",
@@ -8254,6 +9884,9 @@
       ],
       "drop": [
         "dz"
+      ],
+      "target_looted": [
+        "rifle:dz"
       ]
     },
     {
@@ -8272,7 +9905,10 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "mmr"
+      ]
     },
     {
       "item_id": "026f0e827082c2b5",
@@ -8290,7 +9926,10 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "shotgun"
+      ]
     },
     {
       "item_id": "62a76421b26f8f2f",
@@ -8307,7 +9946,10 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "ar"
+      ]
     },
     {
       "item_id": "64e97993f12baa88",
@@ -8320,7 +9962,10 @@
       "brand_key": "",
       "slot_key": "smg",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "smg"
+      ]
     },
     {
       "item_id": "41e14d0e7cf4f76e",
@@ -8338,7 +9983,10 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "shotgun"
+      ]
     },
     {
       "item_id": "a1c58558756eb287",
@@ -8351,7 +9999,10 @@
       "brand_key": "",
       "slot_key": "rifle",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "rifle"
+      ]
     },
     {
       "item_id": "32ea24aeb6cef722",
@@ -8364,7 +10015,10 @@
       "brand_key": "",
       "slot_key": "rifle",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "rifle"
+      ]
     },
     {
       "item_id": "4537a63ff4033841",
@@ -8381,7 +10035,8 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": []
     },
     {
       "item_id": "830c9952c5d62577",
@@ -8394,7 +10049,10 @@
       "brand_key": "",
       "slot_key": "rifle",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "rifle"
+      ]
     },
     {
       "item_id": "419515935653874a",
@@ -8411,7 +10069,8 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": []
     },
     {
       "item_id": "2032ac733a78bfca",
@@ -8424,7 +10083,10 @@
       "brand_key": "",
       "slot_key": "smg",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "smg"
+      ]
     },
     {
       "item_id": "5441f0899d933b06",
@@ -8441,7 +10103,8 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": []
     },
     {
       "item_id": "7d43ce2d5bcf4491",
@@ -8454,7 +10117,10 @@
       "brand_key": "",
       "slot_key": "smg",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "smg"
+      ]
     },
     {
       "item_id": "28340a0687d72413",
@@ -8467,7 +10133,10 @@
       "brand_key": "",
       "slot_key": "rifle",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "rifle"
+      ]
     },
     {
       "item_id": "a022ab1975bea482",
@@ -8485,7 +10154,10 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "rifle"
+      ]
     },
     {
       "item_id": "e2df3661e04681f7",
@@ -8498,7 +10170,10 @@
       "brand_key": "",
       "slot_key": "pistol",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "pistol"
+      ]
     },
     {
       "item_id": "b6dc2cc8873ab99e",
@@ -8511,7 +10186,10 @@
       "brand_key": "",
       "slot_key": "pistol",
       "blueprint": [],
-      "drop": []
+      "drop": [],
+      "target_looted": [
+        "pistol"
+      ]
     },
     {
       "item_id": "47c64f9ee7d4c341",
@@ -8528,7 +10206,8 @@
           "type": "craft"
         }
       ],
-      "drop": []
+      "drop": [],
+      "target_looted": []
     }
   ]
 }

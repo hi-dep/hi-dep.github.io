@@ -4,6 +4,7 @@
     const preserveSelection = !!options.preserveSelection;
     const dateStr = normalizeToShopWeekStart(userDateStr);
     if (dateInput && dateStr) dateInput.value = dateStr;
+    if (typeof window.vendorSetDateValue === "function") window.vendorSetDateValue(dateStr);
     if (!indexJson) throw new Error("index.json is not loaded");
 
     if (!preserveSelection) clearSelection();

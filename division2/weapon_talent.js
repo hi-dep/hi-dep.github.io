@@ -382,7 +382,7 @@
         lines.push({ cls: "line line--named-meta line--talent-desc", text: talentDescDisp, html: textToHtmlPreserveNewline(talentDescDisp), key: "", isDesc: true });
       }
       if (hasPerfectTalent && talentTitle) lines.push({ cls: "brand-named-sep", hr: true, text: "", key: "" });
-      if (perfectTitle) lines.push({ cls: "line line--perfect line--talent", text: perfectTitle, key: perfectKey });
+      if (perfectTitle) lines.push({ cls: "line line--named line--talent", text: perfectTitle, key: perfectKey });
       if (hasPerfectTalent && perfectDescDisp) {
         lines.push({ cls: "line line--named-meta line--talent-desc", text: perfectDescDisp, html: highlightDiffHtml(talentDescDisp, perfectDescDisp), key: "", isDesc: true });
       }

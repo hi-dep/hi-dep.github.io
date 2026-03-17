@@ -316,7 +316,7 @@
       const perfectDescDisp = trTalentDescPreserveNewline(perfectDesc, perfectKey || talentKey);
       const showDesc = !!window.talentShowDesc;
       if (namedOnly) {
-        if (perfectTitle) lines.push({ cls: "line line--perfect line--talent", text: perfectTitle, key: perfectKey || talentKey, icon: talentSlotIcon });
+        if (perfectTitle) lines.push({ cls: "line line--named line--talent", text: perfectTitle, key: perfectKey || talentKey, icon: talentSlotIcon });
         if (perfectDescDisp) {
           lines.push({
             cls: "line line--named-meta line--talent-desc",
@@ -340,7 +340,7 @@
         if (hasPerfectTalent) {
           lines.push({ cls: "brand-named-sep", hr: true, text: "", key: "" });
         }
-        if (perfectTitle) lines.push({ cls: "line line--perfect line--talent", text: perfectTitle, key: perfectKey });
+        if (perfectTitle) lines.push({ cls: "line line--named line--talent", text: perfectTitle, key: perfectKey });
         if (hasPerfectTalent && perfectDescDisp) {
           const html = highlightDiffHtml(talentDescDisp, perfectDescDisp);
           lines.push({ cls: "line line--named-meta line--talent-desc", text: perfectDescDisp, html, key: "", isDesc: true });
@@ -408,11 +408,10 @@
               : (it.brandset || "");
             const nk = normalizeKey(it.nameKey || it.name || "");
             const itemName = (langSelect.value === "ja") ? (i18n[it.nameKey] ?? i18n[nk] ?? it.name) : it.name;
-            const lineBrand = brandName
-              ? `<div class="line line--named gear-talent-item-head">${brandIcon}<div class="line__body"><div class="line__text">${escapeHtml(brandName)}</div></div></div>`
+            const brandHtml = brandName
+              ? `<span class="gear-talent-item-brand">${escapeHtml(brandName)}</span>`
               : "";
-            const lineItem = `<div class="line line--named gear-talent-item-sub">${slotIcon}<div class="line__body"><div class="line__text">${escapeHtml(itemName)}</div></div></div>`;
-            return `${lineBrand}${lineItem}`;
+            return `<div class="line line--named">${brandIcon}<div class="line__body"><div class="line__text gear-talent-item-two-line">${brandHtml}<span class="gear-talent-item-name">${slotIcon}${escapeHtml(itemName)}</span></div></div></div>`;
           }).join("")}
         </div>
       `;

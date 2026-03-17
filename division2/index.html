@@ -8,13 +8,13 @@
   <meta property="og:url" content="https://hi-dep.github.io/division2/" />
   <meta property="og:title" content="Division 2 Vendor" />
   <meta property="og:description" content="Weekly vendor, talents, and build data for The Division 2." />
-  <meta property="og:image" content="https://hi-dep.github.io/division2/img/ogp.png?v=20260317080007" />
+  <meta property="og:image" content="https://hi-dep.github.io/division2/img/ogp.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Division 2 Vendor" />
   <meta name="twitter:description" content="Weekly vendor, talents, and build data for The Division 2." />
-  <meta name="twitter:image" content="https://hi-dep.github.io/division2/img/ogp.png?v=20260317080007" />
+  <meta name="twitter:image" content="https://hi-dep.github.io/division2/img/ogp.png" />
   <link rel="icon" type="image/svg+xml" href="./img/site_icon.svg" />
   <meta name="theme-color" content="#ff6a00" />
   <link rel="stylesheet" href="./styles.css" />
@@ -26,50 +26,23 @@
       <div class="title">Division 2 Vendor</div>
     </div>
 
-    <button id="filterToggleBtn" class="btn btn--ghost topbar__toggle" type="button">条件</button>
-
     <div class="topbar__time">
       <span id="worldTimeLabel" class="time-label">TIME</span>
       <span id="worldTime" class="time-value">--:--</span>
     </div>
-
-    <div class="topbar__base">
-      <label class="field field--date">
-        <span id="labelWeek">週</span>
-        <input id="dateInput" type="date" />
-      </label>
-
-      <label class="field field--lang">
-        <span id="labelLang">言語</span>
-        <select id="langSelect">
-          <option value="ja">日本語</option>
-          <option value="en" selected>English</option>
-        </select>
-      </label>
+    <div id="descentPoolSummary" class="topbar__time topbar__descent" role="button" tabindex="0" aria-label="Descent Talent Pool">
+      <span class="time-label">DESCENT</span>
+      <span id="descentPoolValue" class="time-value">---</span>
     </div>
 
-    <div class="topbar__right">
+    <label class="field field--lang">
+      <select id="langSelect">
+        <option value="ja">JA</option>
+        <option value="en" selected>EN</option>
+      </select>
+    </label>
 
-      <label class="field field--mode">
-        <span id="labelMode">条件</span>
-        <select id="modeSelect">
-          <option value="and" selected>AND</option>
-          <option value="or">OR</option>
-        </select>
-      </label>
-
-      <label class="field field--filter">
-        <span id="labelFilter">フィルタ</span>
-        <input id="filterInput" type="text" autocomplete="off" />
-      </label>
-
-      <button id="onlySelectedBtn" class="btn btn--toggle" type="button">選択のみ</button>
-      <button id="recommendSelectedBtn" class="btn btn--ghost" type="button">おすすめ選択</button>
-      <button id="clearSelectedBtn" class="btn btn--ghost" type="button">選択解除</button>
-      <button id="clearFiltersBtn" class="btn btn--ghost" type="button">フィルタ解除</button>
-
-      <div id="filterChips" class="chips" aria-label="filters"></div>
-    </div>
+    <div id="vendorToolbarHost" class="vendor-toolbar-host"></div>
   </header>
   <div id="navMenuPanel" class="navmenu" aria-hidden="true">
     <button id="navVendorBtn" class="navmenu__item" type="button">Vendor</button>
@@ -80,7 +53,7 @@
     <button id="navGearTalentBtn" class="navmenu__item" type="button">Gear Talent</button>
     <button id="navWeaponTalentBtn" class="navmenu__item" type="button">Weapon Talent</button>
     <button id="navDescentTalentBtn" class="navmenu__item" type="button">Descent Talent</button>
-    <!-- <button id="navItemSourcesBtn" class="navmenu__item" type="button">Item Sources</button> -->
+    <button id="navItemSourcesBtn" class="navmenu__item" type="button">Item Sources</button>
     <!-- <button id="navTrelloBtn" class="navmenu__item" type="button">Trello</button> -->
     <!-- <button id="navPatchesBtn" class="navmenu__item" type="button">Patches and Updates</button> -->
   </div>

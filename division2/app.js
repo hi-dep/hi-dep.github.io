@@ -10,21 +10,25 @@ function appPath(relPath) {
 
 const statusEl = document.getElementById("status");
 const contentEl = document.getElementById("content");
-
-const dateInput = document.getElementById("dateInput");
 const langSelect = document.getElementById("langSelect");
+const vendorToolbarHostEl = document.getElementById("vendorToolbarHost");
+let vendorToolbarMounted = false;
+let vendorDateValue = "";
+let toolbarSyncLock = false;
+let toolbarSyncTimer = 0;
 
-const modeSelect = document.getElementById("modeSelect");
-const filterInput = document.getElementById("filterInput");
-
-const onlySelectedBtn = document.getElementById("onlySelectedBtn");
-const recommendSelectedBtn = document.getElementById("recommendSelectedBtn");
-const clearSelectedBtn = document.getElementById("clearSelectedBtn");
-const clearFiltersBtn = document.getElementById("clearFiltersBtn");
-const filterToggleBtn = document.getElementById("filterToggleBtn");
-
-const chipsEl = document.getElementById("filterChips");
+let dateInput = null;
+let modeSelect = null;
+let filterInput = null;
+let onlySelectedBtn = null;
+let recommendSelectedBtn = null;
+let clearSelectedBtn = null;
+let clearFiltersBtn = null;
+let filterToggleBtn = null;
+let chipsEl = null;
 const worldTimeEl = document.getElementById("worldTime");
+const descentPoolSummaryEl = document.getElementById("descentPoolSummary");
+const descentPoolValueEl = document.getElementById("descentPoolValue");
 const worldTimePopupEl = document.getElementById("worldTimePopup");
 const worldTimePopupBodyEl = document.getElementById("worldTimePopupBody");
 const worldTimeLabelEl = document.getElementById("worldTimeLabel");
@@ -32,7 +36,7 @@ const worldTimePopupTitleEl = document.getElementById("worldTimePopupTitle");
 const cacheProviderRowEl = document.getElementById("cacheProviderRow");
 const worldTimeWrapEl = worldTimeEl ? worldTimeEl.closest(".topbar__time") : null;
 const titleEl = document.querySelector(".topbar .title");
-const weekFieldEl = dateInput ? dateInput.closest(".field") : null;
+let weekFieldEl = null;
 const navMenuBtn = document.getElementById("navMenuBtn");
 const navMenuPanel = document.getElementById("navMenuPanel");
 const navVendorBtn = document.getElementById("navVendorBtn");
@@ -48,10 +52,10 @@ const navTrelloBtn = document.getElementById("navTrelloBtn");
 const navPatchesBtn = document.getElementById("navPatchesBtn");
 if (navMenuPanel) navMenuPanel.inert = true;
 
-const labelWeekEl = document.getElementById("labelWeek");
 const labelLangEl = document.getElementById("labelLang");
-const labelModeEl = document.getElementById("labelMode");
-const labelFilterEl = document.getElementById("labelFilter");
+let labelWeekEl = null;
+let labelModeEl = null;
+let labelFilterEl = null;
 
 const LANG_STORAGE_KEY = "division2_lang";
 
@@ -103,8 +107,310 @@ window.brandShowNamed = false;
 window.weaponsShowDetails = false;
 window.weaponTalentTypeFilter = [];
 window.talentShowDesc = false;
+const descToggleByView = {
+  gearset: false,
+  exotic_gear: false,
+  gear_talent: false,
+  weapon_talent: false,
+  descent_talent: false
+};
+function syncDescToggleForCurrentView() {
+  if (Object.prototype.hasOwnProperty.call(descToggleByView, currentViewMode)) {
+    window.talentShowDesc = !!descToggleByView[currentViewMode];
+  } else {
+    window.talentShowDesc = false;
+  }
+}
+function setDescToggleForCurrentView(nextValue) {
+  const v = !!nextValue;
+  if (Object.prototype.hasOwnProperty.call(descToggleByView, currentViewMode)) {
+    descToggleByView[currentViewMode] = v;
+  }
+  window.talentShowDesc = v;
+}
 let initialViewMode = "vendor";
 window.descentTalentInitialPoolKey = "";
+
+const VIEW_TOOLBAR_DEFS = Object.freeze({
+  common: Object.freeze({
+    header: Object.freeze(["title", "nav", "lang", "world_time"])
+  }),
+  vendor: Object.freeze({
+    controls: Object.freeze([
+      Object.freeze({ kind: "field_date", id: "dateInput", labelId: "labelWeek", label: "週", alwaysVisible: true }),
+      Object.freeze({ kind: "button", id: "filterToggleBtn", className: "btn btn--ghost topbar__toggle", label: "条件", alwaysVisible: true }),
+      Object.freeze({ kind: "group_label", id: "selectGroupLabel", className: "vendor-toolbar__group-label vendor-toolbar__group-label--select", label: "選択" }),
+      Object.freeze({ kind: "button", id: "onlySelectedBtn", className: "btn btn--toggle", label: "選択のみ" }),
+      Object.freeze({ kind: "button", id: "recommendSelectedBtn", className: "btn btn--ghost", label: "おすすめ選択" }),
+      Object.freeze({ kind: "button", id: "clearSelectedBtn", className: "btn btn--ghost", label: "選択解除" }),
+      Object.freeze({ kind: "group_label", id: "filterGroupLabel", className: "vendor-toolbar__group-label vendor-toolbar__group-label--filter", label: "フィルタ" }),
+      Object.freeze({
+        kind: "field_select",
+        id: "modeSelect",
+        labelId: "labelMode",
+        label: "条件",
+        options: Object.freeze([
+          Object.freeze({ value: "and", label: "AND", selected: true }),
+          Object.freeze({ value: "or", label: "OR" })
+        ])
+      }),
+      Object.freeze({ kind: "field_text", id: "filterInput", labelId: "labelFilter", label: "フィルタ", autocomplete: "off" }),
+      Object.freeze({ kind: "button", id: "clearFiltersBtn", className: "btn btn--ghost", label: "フィルタ解除" }),
+      Object.freeze({ kind: "chips", id: "filterChips" })
+    ])
+  }),
+  weapons: Object.freeze({
+    controls: Object.freeze(["detail_toggle", "weapon_type_filter"])
+  }),
+  brand: Object.freeze({
+    controls: Object.freeze(["named_toggle"])
+  }),
+  gearset: Object.freeze({
+    controls: Object.freeze(["desc_toggle"])
+  }),
+  exotic_gear: Object.freeze({
+    controls: Object.freeze(["desc_toggle"])
+  }),
+  gear_talent: Object.freeze({
+    controls: Object.freeze(["desc_toggle"])
+  }),
+  weapon_talent: Object.freeze({
+    controls: Object.freeze(["desc_toggle", "weapon_type_filter"])
+  }),
+  descent_talent: Object.freeze({
+    controls: Object.freeze(["desc_toggle", "pool_filter"])
+  }),
+  item_sources: Object.freeze({
+    controls: Object.freeze(["search", "clear", "weapon_type_filter"])
+  })
+});
+window.viewToolbarDefs = VIEW_TOOLBAR_DEFS;
+
+function buildToolbarHtmlFromDef(def) {
+  const controls = Array.isArray(def?.controls) ? def.controls : [];
+  const html = controls.map((c) => {
+    if (!c || typeof c !== "object") return "";
+    const extraAttr = c.alwaysVisible ? "" : ' data-vendor-filter-control="1"';
+    if (c.kind === "group_label") {
+      return `<div id="${c.id}" class="${c.className || "vendor-toolbar__group-label"}"${extraAttr}>${c.label || ""}</div>`;
+    }
+    if (c.kind === "button") {
+      return `<button id="${c.id}" class="${c.className || "btn"}" type="button"${extraAttr}>${c.label || ""}</button>`;
+    }
+    if (c.kind === "field_date") {
+      return `
+      <label class="field field--date"${extraAttr}>
+        <span id="${c.labelId}">${c.label || ""}</span>
+        <input id="${c.id}" type="date" />
+      </label>`;
+    }
+    if (c.kind === "field_select") {
+      const options = Array.isArray(c.options) ? c.options : [];
+      const optionHtml = options
+        .map((o) => `<option value="${o.value}"${o.selected ? " selected" : ""}>${o.label || o.value}</option>`)
+        .join("");
+      return `
+      <label class="field field--mode"${extraAttr}>
+        <span id="${c.labelId}">${c.label || ""}</span>
+        <select id="${c.id}" aria-label="${c.label || c.id || "mode"}">
+          ${optionHtml}
+        </select>
+      </label>`;
+    }
+    if (c.kind === "field_text") {
+      return `
+      <label class="field field--filter"${extraAttr}>
+        <span id="${c.labelId}">${c.label || ""}</span>
+        <input id="${c.id}" type="text" autocomplete="${c.autocomplete || "off"}" aria-label="${c.label || c.id || "filter"}" />
+      </label>`;
+    }
+    if (c.kind === "chips") {
+      return `<div id="${c.id}" class="chips" aria-label="filters"${extraAttr}></div>`;
+    }
+    return "";
+  }).join("");
+  return `<div class="vendor-toolbar">${html}</div>`;
+}
+
+function findViewToolbarNodes(viewMode) {
+  if (!contentEl) return [];
+  const mode = String(viewMode || "");
+  if (mode === "item_sources") {
+    const tb = contentEl.querySelector(".item-sources-toolbar");
+    return tb ? [tb] : [];
+  }
+  if (mode === "descent_talent") {
+    const tb = contentEl.querySelector(".trello-group-toggle.descent-controls");
+    return tb ? [tb] : [];
+  }
+  if (mode === "trello" || mode === "patches") {
+    const tb = contentEl.querySelector(".trello-group-toggle");
+    if (!tb) return [];
+    const nodes = [tb];
+    const picker = tb.nextElementSibling;
+    if (picker && picker.classList.contains("trello-sections-picker")) nodes.push(picker);
+    return nodes;
+  }
+  if (mode === "weapons" || mode === "brand" || mode === "gearset" || mode === "exotic_gear" || mode === "gear_talent" || mode === "weapon_talent") {
+    const tb = contentEl.querySelector(".trello-group-toggle");
+    return tb ? [tb] : [];
+  }
+  return [];
+}
+
+function syncHeaderToolbarFromContent() {
+  if (!vendorToolbarHostEl || toolbarSyncLock) return;
+  if (currentViewMode === "vendor") {
+    ensureVendorToolbarMounted();
+    vendorToolbarHostEl.style.display = "";
+    return;
+  }
+  const nodes = findViewToolbarNodes(currentViewMode);
+  const hasExistingHeaderToolbar = !!vendorToolbarHostEl.querySelector(".view-toolbar");
+  toolbarSyncLock = true;
+  try {
+    if (!nodes.length) {
+      if (hasExistingHeaderToolbar) {
+        vendorToolbarHostEl.style.display = "";
+        return;
+      }
+      vendorToolbarHostEl.innerHTML = "";
+      vendorToolbarHostEl.style.display = "none";
+      return;
+    }
+    vendorToolbarHostEl.innerHTML = "";
+    const shell = document.createElement("div");
+    shell.className = "view-toolbar";
+    nodes.forEach((n) => shell.appendChild(n));
+    vendorToolbarHostEl.appendChild(shell);
+    vendorToolbarHostEl.style.display = "";
+  } finally {
+    toolbarSyncLock = false;
+  }
+}
+
+function requestToolbarSync() {
+  if (toolbarSyncTimer) clearTimeout(toolbarSyncTimer);
+  toolbarSyncTimer = setTimeout(() => {
+    toolbarSyncTimer = 0;
+    syncHeaderToolbarFromContent();
+  }, 0);
+}
+
+function setVendorDateValue(value) {
+  vendorDateValue = String(value || "").trim();
+  if (dateInput) dateInput.value = vendorDateValue;
+}
+window.vendorSetDateValue = setVendorDateValue;
+
+function getVendorDateValue() {
+  if (dateInput && dateInput.value) return String(dateInput.value).trim();
+  return vendorDateValue;
+}
+
+function bindVendorToolbarRefs() {
+  dateInput = document.getElementById("dateInput");
+  modeSelect = document.getElementById("modeSelect");
+  filterInput = document.getElementById("filterInput");
+  onlySelectedBtn = document.getElementById("onlySelectedBtn");
+  recommendSelectedBtn = document.getElementById("recommendSelectedBtn");
+  clearSelectedBtn = document.getElementById("clearSelectedBtn");
+  clearFiltersBtn = document.getElementById("clearFiltersBtn");
+  filterToggleBtn = document.getElementById("filterToggleBtn");
+  chipsEl = document.getElementById("filterChips");
+  weekFieldEl = dateInput ? dateInput.closest(".field") : null;
+  labelWeekEl = document.getElementById("labelWeek");
+  labelModeEl = document.getElementById("labelMode");
+  labelFilterEl = document.getElementById("labelFilter");
+  if (dateInput && vendorDateValue) dateInput.value = vendorDateValue;
+}
+
+function bindVendorToolbarEvents() {
+  if (dateInput) {
+    dateInput.addEventListener("change", () => {
+      const d = dateInput.value;
+      if (!d) return;
+      setVendorDateValue(d);
+      if (currentViewMode === "vendor") {
+        loadWeek(d).catch(err => setStatus(`${ui("error")}: ${err.message}`));
+      }
+    });
+  }
+  if (modeSelect) {
+    modeSelect.addEventListener("change", () => {
+      if (!filtersOpen) return;
+      filterMode = modeSelect.value === "or" ? "or" : "and";
+      applyUiLang();
+      applyFiltersToDom();
+    });
+  }
+  if (filterInput) {
+    filterInput.addEventListener("keydown", (e) => {
+      if (!filtersOpen) return;
+      if (e.key !== "Enter") return;
+      const term = stripHtml(filterInput.value).trim();
+      if (term) addFilterKey(term);
+      filterInput.value = "";
+    });
+  }
+  if (onlySelectedBtn) {
+    onlySelectedBtn.addEventListener("click", () => {
+      if (!filtersOpen) return;
+      onlySelected = !onlySelected;
+      updateViewMode();
+      applyFiltersToDom();
+    });
+  }
+  if (recommendSelectedBtn) {
+    recommendSelectedBtn.addEventListener("click", () => {
+      if (!filtersOpen) return;
+      applyVendorRecommendedSelection({ force: true });
+    });
+  }
+  if (clearSelectedBtn) {
+    clearSelectedBtn.addEventListener("click", () => {
+      if (!filtersOpen) return;
+      clearSelection();
+      updateViewMode();
+    });
+  }
+  if (clearFiltersBtn) {
+    clearFiltersBtn.addEventListener("click", () => {
+      if (!filtersOpen) return;
+      clearFilters();
+    });
+  }
+  if (chipsEl) {
+    chipsEl.addEventListener("click", (e) => {
+      if (!filtersOpen) return;
+      const x = e.target.closest(".chip__x");
+      if (!x) return;
+      const chip = e.target.closest(".chip");
+      if (!chip) return;
+      const k = chip.dataset.key;
+      removeFilterKey(k);
+    });
+  }
+  if (filterToggleBtn) {
+    filterToggleBtn.addEventListener("click", () => {
+      setFiltersOpen(!filtersOpen);
+      applyUiLang();
+    });
+  }
+}
+
+function ensureVendorToolbarMounted() {
+  if (!vendorToolbarHostEl) return;
+  const hasLiveToolbar = !!vendorToolbarHostEl.querySelector("#dateInput");
+  if (vendorToolbarMounted && hasLiveToolbar) return;
+  vendorToolbarMounted = false;
+  vendorToolbarHostEl.innerHTML = buildToolbarHtmlFromDef(VIEW_TOOLBAR_DEFS.vendor);
+  bindVendorToolbarRefs();
+  bindVendorToolbarEvents();
+  vendorToolbarMounted = true;
+  setFiltersOpen(filtersOpen);
+  applyUiLang();
+}
 
 /* ---------------------------
  * Division2 world time (HH:MM)
@@ -123,6 +429,7 @@ function getWorldTimeHHMM(sec) {
 function updateWorldTime() {
   if (!worldTimeEl) return;
   const nowTime = new Date();
+  updateDescentPoolSummary(nowTime.getTime());
   updateScheduleStatus(nowTime);
   if (!window.base_t || !window.m_sec || !window.d1_sec) {
     worldTimeEl.textContent = "--:--";
@@ -180,6 +487,20 @@ function addDaysJst(y, m, d, deltaDays) {
 
 function jstToUtcMs(y, m, d, h, min) {
   return Date.UTC(y, m, d, h, min) - JST_OFFSET_MS;
+}
+
+function updateDescentPoolSummary(nowMs) {
+  if (!descentPoolSummaryEl || !descentPoolValueEl) return;
+  const descent = getActiveDescentPoolStatus(nowMs);
+  if (descent) {
+    descentPoolValueEl.innerHTML = `<span class="topbar__descent-name">${escapeHtml(descent.poolText)}</span><span class="topbar__descent-remain">${escapeHtml(formatRemaining(descent.expireRemainMs))}</span>`;
+    descentPoolSummaryEl.dataset.statusAction = "open_descent_talent";
+    descentPoolSummaryEl.dataset.statusPoolKey = descent.poolKey || "";
+    return;
+  }
+  descentPoolValueEl.innerHTML = '<span class="topbar__descent-remain">---</span>';
+  descentPoolSummaryEl.dataset.statusAction = "open_descent_pool_contribute";
+  descentPoolSummaryEl.dataset.statusPoolKey = "";
 }
 
 function parseJstDateTimeToUtcMs(text) {
@@ -318,15 +639,7 @@ function updateScheduleStatus(nowTime) {
   const storeText = store.isOpen
     ? `${ui("closesIn")} ${formatRemaining(store.remain)}`
     : `${ui("opensIn")} ${formatRemaining(store.remain)}`;
-  const descent = getActiveDescentPoolStatus(nowMs);
-
   const lines = [
-    {
-      label: ui("descentPool"),
-      time: descent ? `${descent.poolText} (${ui("remainPrefix")} ${formatRemaining(descent.expireRemainMs)})` : ui("descentPoolContribute"),
-      action: descent ? "open_descent_talent" : "open_descent_pool_contribute",
-      poolKey: descent ? descent.poolKey : ""
-    },
     { label: ui("shopUpdate"), time: formatRemaining(shopRemain) },
     { label: `${ui("cassie")} / ${ui("danny")}`, time: storeText }
   ];
@@ -438,6 +751,14 @@ function toggleWorldTimePopup() {
 function setFiltersOpen(isOpen) {
   filtersOpen = !!isOpen;
   document.body.classList.toggle("filters-closed", !filtersOpen);
+  const filterOnlyControls = [
+    ...(vendorToolbarHostEl ? Array.from(vendorToolbarHostEl.querySelectorAll("[data-vendor-filter-control='1']")) : []),
+    ...(contentEl ? Array.from(contentEl.querySelectorAll("[data-vendor-filter-control='1']")) : [])
+  ];
+  filterOnlyControls.forEach((el) => {
+    el.hidden = !filtersOpen;
+    el.setAttribute("aria-hidden", (!filtersOpen).toString());
+  });
 
   const controls = [
     modeSelect,
@@ -633,8 +954,8 @@ function applyUrlParams() {
 
   // date=YYYY-MM-DD
   const date = getUrlParam("date");
-  if (date && /^\d{4}-\d{2}-\d{2}$/.test(date) && dateInput) {
-    dateInput.value = date;
+  if (date && /^\d{4}-\d{2}-\d{2}$/.test(date)) {
+    setVendorDateValue(date);
   }
 
   // view=vendor|weapons|brand|gearset|exotic_gear|gear_talent|weapon_talent|item_sources|trello|patches (accept typo: vendo)
@@ -679,6 +1000,11 @@ function replaceUrlParams(patch) {
 
 function updateModeUi() {
   const isVendorView = currentViewMode === "vendor";
+  if (isVendorView) {
+    ensureVendorToolbarMounted();
+  } else {
+    requestToolbarSync();
+  }
   let nextTitle = "Division 2 Vendor";
   if (titleEl) {
     if (currentViewMode === "brand") {
@@ -717,12 +1043,7 @@ function updateModeUi() {
     }
   }
   document.title = nextTitle;
-  if (weekFieldEl) {
-    weekFieldEl.style.display = isVendorView ? "" : "none";
-  }
-  if (filterToggleBtn) {
-    filterToggleBtn.style.display = isVendorView ? "" : "none";
-  }
+  if (vendorToolbarHostEl && isVendorView) vendorToolbarHostEl.style.display = "";
   if (!isVendorView && filtersOpen) {
     setFiltersOpen(false);
   }
@@ -773,6 +1094,8 @@ const UI = {
     selectedOnly: "選択のみ",
     recommendSelected: "おすすめ選択",
     clearSelected: "選択解除",
+    selectGroup: "選択",
+    filterGroup: "フィルタ",
     clearFilters: "フィルタ解除",
     loadingIndex: "index.json 読み込み…",
     loadingI18n: "i18n 読み込み…",
@@ -819,6 +1142,8 @@ const UI = {
     selectedOnly: "Selected only",
     recommendSelected: "Recommend",
     clearSelected: "Clear selection",
+    selectGroup: "Select",
+    filterGroup: "Filter",
     clearFilters: "Clear filters",
     loadingIndex: "Loading index.json…",
     loadingI18n: "Loading i18n…",
@@ -882,8 +1207,8 @@ function applyUiLang() {
   // select option labels
   const optJa = langSelect?.querySelector('option[value="ja"]');
   const optEn = langSelect?.querySelector('option[value="en"]');
-  if (optJa) optJa.textContent = "Japanese";
-  if (optEn) optEn.textContent = "English";
+  if (optJa) optJa.textContent = "JA";
+  if (optEn) optEn.textContent = "EN";
 
   const optAnd = modeSelect?.querySelector('option[value="and"]');
   const optOr = modeSelect?.querySelector('option[value="or"]');
@@ -895,10 +1220,15 @@ function applyUiLang() {
   if (recommendSelectedBtn) recommendSelectedBtn.textContent = ui("recommendSelected");
   if (clearSelectedBtn) clearSelectedBtn.textContent = ui("clearSelected");
   if (clearFiltersBtn) clearFiltersBtn.textContent = ui("clearFilters");
+  const selectGroupLabelEl = document.getElementById("selectGroupLabel");
+  const filterGroupLabelEl = document.getElementById("filterGroupLabel");
+  if (selectGroupLabelEl) selectGroupLabelEl.textContent = ui("selectGroup");
+  if (filterGroupLabelEl) filterGroupLabelEl.textContent = ui("filterGroup");
   if (navExoticGearBtn) navExoticGearBtn.textContent = "Exotic Items";
 
   if (isWorldTimePopupOpen) updateWorldTime();
   renderChips(); // label changes
+  updateDescentPoolSummary(Date.now());
   updateScheduleStatus(new Date());
   refreshTalentDescButtons();
   if (cacheProviderRowEl) {
@@ -2709,7 +3039,7 @@ function renderLine(item, ln, colorOverride = "") {
     `;
   }
 
-  const perfectClass = (isPerfectTalent || isPerfectAttr) ? " line--perfect" : "";
+  const perfectClass = "";
   const namedTalentClass = (lt === "talent" && !!ln.is_named_talent) ? " line--named" : "";
   const lineClass = `line line--${colorClass} line--${lt}${perfectClass}${namedTalentClass}`;
   const hitClass = activeFilterKeys.includes(statKey) ? " is-filter-hit" : "";
@@ -2981,8 +3311,18 @@ function sortItemsByVendorAndOrd(arr) {
   });
 }
 
+function appendVendorWeekInfo() {
+  const currentWeek = getVendorDateValue() || (indexJson && indexJson.target_week) || "";
+  if (!currentWeek || !contentEl) return;
+  const weekInfo = document.createElement("div");
+  weekInfo.className = "vendor-week-info";
+  weekInfo.textContent = `${ui("week")}: ${currentWeek}`;
+  contentEl.appendChild(weekInfo);
+}
+
 function renderOnlySelectedView() {
   clearContent();
+  appendVendorWeekInfo();
 
   const selectedItems = (lastItems || []).filter(it => selectedIds.has(it.item_id));
   if (!selectedItems.length) return;
@@ -2992,15 +3332,9 @@ function renderOnlySelectedView() {
     const items = sortItemsByVendorAndOrd(selectedItems.filter(x => x.category === cat));
     if (!items.length) continue;
 
-    const label = (cat === "gear") ? ui("catGear")
-      : (cat === "weapon") ? ui("catWeapon")
-      : (cat === "mod") ? ui("catMod")
-      : ui("catCache");
-
     const section = document.createElement("section");
-    section.className = `catgroup catgroup--${cat}`;
+    section.className = `catgroup catgroup--${cat} vendor-selected-group`;
     section.innerHTML = `
-      <div class="catgroup__title">${escapeHtml(label)}</div>
       <div class="grid grid--${escapeHtml(cat)}"></div>
     `;
 
@@ -3047,6 +3381,7 @@ function renderVendors(vendorMap) {
     contentEl.innerHTML = `<div class="status">${escapeHtml(ui("noData"))}</div>`;
     return;
   }
+  appendVendorWeekInfo();
 
   const catOrder = ["gear", "weapon", "mod", "cache"];
 
@@ -3133,10 +3468,6 @@ function cardHasKeys(card, terms) {
 
 
 function applyFiltersToDom() {
-  if (currentViewMode === "brand") {
-    // Brand view: allow both text filters and selected-only mode.
-    if (onlySelectedBtn) onlySelectedBtn.classList.toggle("is-on", onlySelected);
-  }
   if (currentViewMode === "trello" || currentViewMode === "patches") {
     document.body.classList.remove("only-selected");
     if (typeof window.trelloViewApplyFilters === "function") {
@@ -3149,12 +3480,13 @@ function applyFiltersToDom() {
   }
 
   const keys = activeFilterKeys.slice();
+  const isVendor = currentViewMode === "vendor";
 
-  document.body.classList.toggle("only-selected", onlySelected);
+  document.body.classList.toggle("only-selected", isVendor && onlySelected);
 
   document.querySelectorAll("[data-item-id][data-search]").forEach(card => {
     const id = card.dataset.itemId;
-    const okSel = (!onlySelected) || selectedIds.has(id);
+    const okSel = (!isVendor || !onlySelected) || selectedIds.has(id);
     const okKeys = cardHasKeys(card, keys);
     card.style.display = (okSel && okKeys) ? "" : "none";
   });
@@ -3425,6 +3757,7 @@ window.vendorApplyRecommendations = function vendorApplyRecommendations(items, o
 };
 
 function toggleCardSelection(cardEl) {
+  if (currentViewMode !== "vendor") return;
   const id = cardEl?.dataset?.itemId;
   if (!id) return;
   if (selectedIds.has(id)) {
@@ -3446,6 +3779,8 @@ async function loadWeek(userDateStr, options = {}) {
     throw new Error("vendorViewLoadWeek is not available");
   }
   await window.vendorViewLoadWeek(userDateStr, options);
+  const currentDate = getVendorDateValue();
+  if (currentDate) setVendorDateValue(currentDate);
 }
 
 async function renderTrelloView() {
@@ -3531,53 +3866,64 @@ function toggleNavMenu() {
 async function switchViewMode(mode) {
   currentViewMode = (mode === "weapons" || mode === "brand" || mode === "gearset" || mode === "exotic_gear" || mode === "gear_talent" || mode === "weapon_talent" || mode === "descent_talent" || mode === "item_sources" || mode === "trello" || mode === "patches") ? mode : "vendor";
   window.currentViewMode = currentViewMode;
+  syncDescToggleForCurrentView();
   closeNavMenu();
   updateModeUi();
   if (currentViewMode !== "vendor") {
     setStatus("");
   }
-  if (worldTimeWrapEl) worldTimeWrapEl.style.display = (currentViewMode === "vendor") ? "" : "none";
+  if (worldTimeWrapEl) worldTimeWrapEl.style.display = "";
   replaceUrlParams({
     view: currentViewMode,
     descent_pool: currentViewMode === "descent_talent" ? (window.descentTalentInitialPoolKey || null) : null
   });
   if (currentViewMode === "weapons") {
     await renderWeaponsView();
+    requestToolbarSync();
     return;
   }
   if (currentViewMode === "brand") {
     await renderBrandView();
+    requestToolbarSync();
     return;
   }
   if (currentViewMode === "gearset") {
     await renderGearsetView();
+    requestToolbarSync();
     return;
   }
   if (currentViewMode === "exotic_gear") {
     await renderExoticGearView();
+    requestToolbarSync();
     return;
   }
   if (currentViewMode === "gear_talent") {
     await renderGearTalentView();
+    requestToolbarSync();
     return;
   }
   if (currentViewMode === "weapon_talent") {
     await renderWeaponTalentView();
+    requestToolbarSync();
     return;
   }
   if (currentViewMode === "descent_talent") {
     await renderDescentTalentView();
+    requestToolbarSync();
     return;
   }
   if (currentViewMode === "item_sources") {
     await renderItemSourcesView();
+    requestToolbarSync();
     return;
   }
   if (currentViewMode === "trello" || currentViewMode === "patches") {
     await renderTrelloView();
+    requestToolbarSync();
     return;
   }
-  const d = dateInput.value || indexJson.target_week || new Date().toISOString().slice(0, 10);
+  const d = getVendorDateValue() || indexJson.target_week || new Date().toISOString().slice(0, 10);
+  setVendorDateValue(d);
   await loadWeek(d, { preserveSelection: true });
 }
 
@@ -3668,8 +4014,8 @@ async function boot() {
   });
   buildI18nReverse();
 
-  const defaultDate = dateInput.value || indexJson.target_week || new Date().toISOString().slice(0, 10);
-  dateInput.value = defaultDate;
+  const defaultDate = getVendorDateValue() || indexJson.target_week || new Date().toISOString().slice(0, 10);
+  setVendorDateValue(defaultDate);
   updateModeUi();
   await switchViewMode(initialViewMode);
 
@@ -3697,7 +4043,8 @@ async function boot() {
     if (needsVendorRerender) {
       try {
         if (currentViewMode === "vendor") {
-          const d = dateInput.value || indexJson.target_week || new Date().toISOString().slice(0, 10);
+          const d = getVendorDateValue() || indexJson.target_week || new Date().toISOString().slice(0, 10);
+          setVendorDateValue(d);
           await loadWeek(d, { preserveSelection: true });
         } else if (currentViewMode === "weapons") {
           await renderWeaponsView();
@@ -3726,29 +4073,15 @@ async function boot() {
   });
 }
 
-if (filterToggleBtn) {
-  filterToggleBtn.addEventListener("click", () => {
-    setFiltersOpen(!filtersOpen);
-    applyUiLang();
-  });
-}
-
 /* ---------------------------
  * Events
  * ------------------------- */
-dateInput.addEventListener("change", () => {
-  const d = dateInput.value;
-  if (!d) return;
-  if (currentViewMode === "vendor") {
-    loadWeek(d).catch(err => setStatus(`${ui("error")}: ${err.message}`));
-  }
-});
 
 langSelect.addEventListener("change", () => {
   saveLangSetting();
   replaceUrlParams({ lang: langSelect.value || "en" });
   applyUiLang();
-  const d = dateInput.value;
+  const d = getVendorDateValue();
   if (currentViewMode === "vendor") {
     if (d) loadWeek(d, { preserveSelection: true }).catch(err => setStatus(`${ui("error")}: ${err.message}`));
   } else if (currentViewMode === "weapons") {
@@ -3770,56 +4103,6 @@ langSelect.addEventListener("change", () => {
   } else {
     renderTrelloView().catch(err => setStatus(`${ui("error")}: ${err.message}`));
   }
-});
-
-modeSelect.addEventListener("change", () => {
-  if (!filtersOpen) return;
-  filterMode = modeSelect.value === "or" ? "or" : "and";
-  applyUiLang(); // option labels (and/or)
-  applyFiltersToDom();
-});
-
-filterInput.addEventListener("keydown", (e) => {
-  if (!filtersOpen) return;
-  if (e.key !== "Enter") return;
-  const term = stripHtml(filterInput.value).trim();
-  if (term) addFilterKey(term);
-  filterInput.value = "";
-});
-
-onlySelectedBtn.addEventListener("click", () => {
-  if (!filtersOpen) return;
-  onlySelected = !onlySelected;
-  updateViewMode();
-  applyFiltersToDom();
-});
-
-if (recommendSelectedBtn) {
-  recommendSelectedBtn.addEventListener("click", () => {
-    if (!filtersOpen) return;
-    applyVendorRecommendedSelection({ force: true });
-  });
-}
-
-clearSelectedBtn.addEventListener("click", () => {
-  if (!filtersOpen) return;
-  clearSelection();
-  updateViewMode();
-});
-
-clearFiltersBtn.addEventListener("click", () => {
-  if (!filtersOpen) return;
-  clearFilters();
-});
-
-chipsEl.addEventListener("click", (e) => {
-  if (!filtersOpen) return;
-  const x = e.target.closest(".chip__x");
-  if (!x) return;
-  const chip = e.target.closest(".chip");
-  if (!chip) return;
-  const k = chip.dataset.key;
-  removeFilterKey(k);
 });
 
 if (navMenuBtn) {
@@ -3890,6 +4173,23 @@ if (worldTimeEl) {
     toggleWorldTimePopup();
   });
 }
+if (descentPoolSummaryEl) {
+  descentPoolSummaryEl.addEventListener("click", (e) => {
+    e.stopPropagation();
+    const action = String(descentPoolSummaryEl.dataset.statusAction || "");
+    if (action === "open_descent_talent") {
+      const poolKey = normalizeKey(String(descentPoolSummaryEl.dataset.statusPoolKey || ""));
+      openDescentPoolStatusPopup(descentPoolSummaryEl, poolKey);
+      return;
+    }
+    window.open(DESCENT_POOL_CONTRIB_URL, "_blank", "noopener,noreferrer");
+  });
+  descentPoolSummaryEl.addEventListener("keydown", (e) => {
+    if (e.key !== "Enter" && e.key !== " ") return;
+    e.preventDefault();
+    descentPoolSummaryEl.click();
+  });
+}
 document.addEventListener("click", (e) => {
   if (navMenuPanel && navMenuBtn) {
     if (!navMenuPanel.contains(e.target) && !navMenuBtn.contains(e.target)) {
@@ -3939,6 +4239,14 @@ window.addEventListener("resize", () => {
     }
   }
 });
+
+if (contentEl && typeof MutationObserver !== "undefined") {
+  const toolbarObserver = new MutationObserver(() => {
+    if (currentViewMode === "vendor") return;
+    requestToolbarSync();
+  });
+  toolbarObserver.observe(contentEl, { childList: true, subtree: true });
+}
 
 async function handleVendorTalentPopup(talentBtn) {
   const itemCategory = talentBtn.getAttribute("data-item-category") || "";
@@ -4029,7 +4337,7 @@ function handleVendorGearSummaryPopup(gearBtn) {
 }
 
 // event delegation: line tap => toggle filter, card tap => select
-contentEl.addEventListener("click", (e) => {
+function handleViewInteractionClick(e) {
   if (currentViewMode === "trello" || currentViewMode === "patches") {
     const sbtn = e.target.closest(".trello-sections-btn[data-toggle-sections-picker]");
     if (sbtn) {
@@ -4127,7 +4435,7 @@ contentEl.addEventListener("click", (e) => {
   if (currentViewMode === "weapon_talent") {
     const tdbtn = e.target.closest(".talent-desc-btn[data-toggle-talent-desc]");
     if (tdbtn) {
-      window.talentShowDesc = !window.talentShowDesc;
+      setDescToggleForCurrentView(!window.talentShowDesc);
       refreshTalentDescButtons();
       renderWeaponTalentView().catch(err => setStatus(`${ui("error")}: ${err.message}`));
       return;
@@ -4149,7 +4457,7 @@ contentEl.addEventListener("click", (e) => {
   if (currentViewMode === "gear_talent") {
     const tdbtn = e.target.closest(".talent-desc-btn[data-toggle-talent-desc]");
     if (tdbtn) {
-      window.talentShowDesc = !window.talentShowDesc;
+      setDescToggleForCurrentView(!window.talentShowDesc);
       refreshTalentDescButtons();
       renderGearTalentView().catch(err => setStatus(`${ui("error")}: ${err.message}`));
       return;
@@ -4158,7 +4466,7 @@ contentEl.addEventListener("click", (e) => {
   if (currentViewMode === "gearset") {
     const tdbtn = e.target.closest(".talent-desc-btn[data-toggle-talent-desc]");
     if (tdbtn) {
-      window.talentShowDesc = !window.talentShowDesc;
+      setDescToggleForCurrentView(!window.talentShowDesc);
       refreshTalentDescButtons();
       renderGearsetView().catch(err => setStatus(`${ui("error")}: ${err.message}`));
       return;
@@ -4167,7 +4475,7 @@ contentEl.addEventListener("click", (e) => {
   if (currentViewMode === "exotic_gear") {
     const tdbtn = e.target.closest(".talent-desc-btn[data-toggle-talent-desc]");
     if (tdbtn) {
-      window.talentShowDesc = !window.talentShowDesc;
+      setDescToggleForCurrentView(!window.talentShowDesc);
       refreshTalentDescButtons();
       renderExoticGearView().catch(err => setStatus(`${ui("error")}: ${err.message}`));
       return;
@@ -4176,38 +4484,42 @@ contentEl.addEventListener("click", (e) => {
   if (currentViewMode === "descent_talent") {
     const tdbtn = e.target.closest(".talent-desc-btn[data-toggle-talent-desc]");
     if (tdbtn) {
-      window.talentShowDesc = !window.talentShowDesc;
+      setDescToggleForCurrentView(!window.talentShowDesc);
       refreshTalentDescButtons();
       renderDescentTalentView().catch(err => setStatus(`${ui("error")}: ${err.message}`));
       return;
     }
   }
   if (currentViewMode === "vendor") {
-    const talentBtn = e.target.closest(".inline-pop-trigger[data-pop-type='talent']");
-    if (talentBtn) {
-      e.preventDefault();
-      e.stopPropagation();
-      void handleVendorTalentPopup(talentBtn);
-      return;
-    }
-    const brandBtn = e.target.closest(".inline-pop-trigger[data-pop-type='brand']");
-    if (brandBtn) {
-      e.preventDefault();
-      e.stopPropagation();
-      void handleVendorBrandPopup(brandBtn);
-      return;
-    }
-    const gearBtn = e.target.closest(".inline-pop-trigger[data-pop-type='gear-summary']");
-    if (gearBtn) {
-      e.preventDefault();
-      e.stopPropagation();
-      handleVendorGearSummaryPopup(gearBtn);
-      return;
+    if (!filtersOpen) {
+      const talentBtn = e.target.closest(".inline-pop-trigger[data-pop-type='talent']");
+      if (talentBtn) {
+        e.preventDefault();
+        e.stopPropagation();
+        void handleVendorTalentPopup(talentBtn);
+        return;
+      }
+      const brandBtn = e.target.closest(".inline-pop-trigger[data-pop-type='brand']");
+      if (brandBtn) {
+        e.preventDefault();
+        e.stopPropagation();
+        void handleVendorBrandPopup(brandBtn);
+        return;
+      }
+      const gearBtn = e.target.closest(".inline-pop-trigger[data-pop-type='gear-summary']");
+      if (gearBtn) {
+        e.preventDefault();
+        e.stopPropagation();
+        handleVendorGearSummaryPopup(gearBtn);
+        return;
+      }
     }
   }
   const line = e.target.closest(".line[data-stat-key]");
   if (line) {
     if (!filtersOpen) return;
+    const lineTextTapTarget = e.target.closest(".line__text, .line__text-pop-trigger");
+    if (!lineTextTapTarget) return;
     e.stopPropagation();
     toggleFilterKey(line.dataset.statKey);
     return;
@@ -4226,11 +4538,18 @@ contentEl.addEventListener("click", (e) => {
       toggleCardDesc(card);
       return;
     }
+    if (currentViewMode !== "vendor") return;
+    if (!filtersOpen) return;
     const selectedText = (window.getSelection && window.getSelection().toString()) || "";
     if (selectedText.trim()) return;
     toggleCardSelection(card);
   }
-});
+}
+
+contentEl.addEventListener("click", handleViewInteractionClick);
+if (vendorToolbarHostEl) {
+  vendorToolbarHostEl.addEventListener("click", handleViewInteractionClick);
+}
 
 contentEl.addEventListener("keydown", (e) => {
   if (currentViewMode !== "trello" && currentViewMode !== "patches") return;

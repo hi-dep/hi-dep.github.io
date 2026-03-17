@@ -148,7 +148,7 @@
     }
 
     const section = document.createElement("section");
-    section.className = "catgroup catgroup--gear gearset-view";
+    section.className = "catgroup catgroup--gear brandset-view";
     section.innerHTML = `
       <div class="trello-group-toggle">
         <button class="btn btn--ghost brand-named-btn ${window.brandShowNamed ? "is-on" : ""}" type="button" data-toggle-brand-named="1">Named</button>

@@ -60,6 +60,9 @@
   if (typeof window.itemSourcesSearchText !== "string") {
     window.itemSourcesSearchText = "";
   }
+  if (!Array.isArray(window.itemSourcesWeaponTypeFilter)) {
+    window.itemSourcesWeaponTypeFilter = [];
+  }
 
   let rowsCache = null;
 
@@ -345,6 +348,58 @@
     return `<span class="wt-inline-badges">${bits.join("")}</span>`;
   }
 
+  function targetLootedEntryHtml(row, rawValue, brandNameByKey) {
+    const category = normalizeKey(row.category || "");
+    const val = String(rawValue || "").trim();
+    const rawParts = val.split(":");
+    const baseRaw = String(rawParts[0] || "").trim();
+    const scopeRaw = normalizeKey(rawParts[1] || "");
+    const scope = (scopeRaw === "dz" || scopeRaw === "lz" || scopeRaw === "any") ? scopeRaw : "";
+    const k = normalizeKey(baseRaw || val);
+    if (!k) return "";
+    const scopeText = scope === "dz" ? "DZ" : (scope === "lz" ? "LZ" : "");
+    const scopeEntryClass = scope === "dz" ? " item-sources-target-entry--dz" : "";
+    const scopeBadge = scopeText
+      ? `<span class="item-source-scope item-source-scope--overlay item-source-scope--${scope}">${scopeText}</span>`
+      : "";
+
+    if (category === "weapon") {
+      const wt = weaponTypeBadgeHtml(k);
+      if (wt) {
+        const weaponDzClass = scope === "dz" ? " item-sources-target-entry--weapon-dz" : "";
+        return `<span class="item-sources-bp-entry item-sources-target-entry${scopeEntryClass}${weaponDzClass}">${wt}${scopeBadge}</span>`;
+      }
+      return `<span class="item-source-tag${scope === "dz" ? " item-source-tag--dz" : ""}">${escapeHtml(baseRaw || val)}${scopeText ? ` (${escapeHtml(scopeText)})` : ""}</span>`;
+    }
+
+    const bKey = normalizeKey(row.brand_key || "");
+    const brandName = String((brandNameByKey && brandNameByKey.get(bKey)) || row.brand_name || row.name || "").trim();
+    const brandNameKey = normalizeKey(brandName);
+    const isBrand = !!bKey && (k === bKey || (brandNameKey && k === brandNameKey));
+    if (isBrand) {
+      const src = iconUrl("brands", bKey, "img/brands");
+      const alt = trByKeyFallback(bKey, brandName || baseRaw || val);
+      if (!src) return `<span class="item-source-tag${scope === "dz" ? " item-source-tag--dz" : ""}">${escapeHtml(alt)}${scopeText ? ` (${escapeHtml(scopeText)})` : ""}</span>`;
+      return `<span class="item-source-icon item-sources-name-slot item-sources-target-entry${scopeEntryClass}" title="${escapeHtml(alt)}">${iconImgHtml(src, "ico ico--item-source", alt)}${scopeBadge}</span>`;
+    }
+
+    const slotSrc = iconUrl("gear_slots", k, "img/gears");
+    const slotLabel = trByKeyFallback(k, baseRaw || val);
+    if (slotSrc) {
+      return `<span class="item-source-icon item-sources-name-slot item-sources-target-entry${scopeEntryClass}" title="${escapeHtml(slotLabel)}">${iconImgHtml(slotSrc, "ico ico--item-source", slotLabel)}${scopeBadge}</span>`;
+    }
+    return `<span class="item-source-tag${scope === "dz" ? " item-source-tag--dz" : ""}">${escapeHtml(baseRaw || val)}${scopeText ? ` (${escapeHtml(scopeText)})` : ""}</span>`;
+  }
+
+  function localizeDropValue(rawValue) {
+    const k = normalizeKey(rawValue || "");
+    const ja = langSelect.value === "ja";
+    if (k === "dz" || k === "pvpdz") return ja ? "PVP限定 (DZ)" : "PVP only (DZ)";
+    if (k === "conflict" || k === "pvpconflict") return ja ? "PVP限定 (コンフリクト)" : "PVP only (Conflict)";
+    if (k === "pvp") return ja ? "PVP限定" : "PVP only";
+    return String(rawValue || "");
+  }
+
   function targetLootIconHtml(row, tag, brandNameByKey) {
     const tl = parseTargetLootTag(tag);
     if (!tl) return "";
@@ -413,10 +468,17 @@
   function matchesFilters(row) {
     const entityActive = new Set(Array.isArray(window.itemSourcesEntityFilter) ? window.itemSourcesEntityFilter : []);
     const tagActive = new Set(Array.isArray(window.itemSourcesTagFilter) ? window.itemSourcesTagFilter : []);
+    const weaponTypeActive = new Set(Array.isArray(window.itemSourcesWeaponTypeFilter) ? window.itemSourcesWeaponTypeFilter : []);
     const search = normalizeKey(window.itemSourcesSearchText || "");
 
     const entity = normalizeKey(row.entity_type || "");
     if (entityActive.size && !entityActive.has(entity)) return false;
+    if (weaponTypeActive.size) {
+      const category = normalizeKey(row.category || "");
+      const slotKey = normalizeKey(row.slot_key || "");
+      if (category !== "weapon") return false;
+      if (!weaponTypeActive.has(slotKey)) return false;
+    }
 
     const tags = []
       .concat(Array.isArray(row.acquisition_tags) ? row.acquisition_tags : [])
@@ -427,6 +489,7 @@
 
     if (search) {
       const bps = Array.isArray(row.blueprint) ? row.blueprint : [];
+      const targetLooted = Array.isArray(row.target_looted) ? row.target_looted : [];
       const drops = Array.isArray(row.drop) ? row.drop : [];
       const parts = [
         row.item_id,
@@ -441,6 +504,7 @@
         ...bps.map((bp) => bp.slot || ""),
         ...bps.map((bp) => bp.src || "Control Point"),
         ...bps.map((bp) => bp.type || ""),
+        ...targetLooted,
         ...drops,
         ...(Array.isArray(row.acquisition_tags) ? row.acquisition_tags : []),
         ...(Array.isArray(row.drop_tags) ? row.drop_tags : []),
@@ -454,11 +518,31 @@
 
   function renderFilters(rows) {
     const searchPh = (langSelect.value === "ja") ? "検索（名前/タグ/ブランド）" : "Search (name/tag/brand)";
+    const weaponOrder = ["ar", "smg", "lmg", "rifle", "mmr", "shotgun", "pistol"];
+    const weaponTypes = new Set();
+    (rows || []).forEach((r) => {
+      if (normalizeKey(r?.category || "") !== "weapon") return;
+      const sk = normalizeKey(r?.slot_key || "");
+      if (sk) weaponTypes.add(sk);
+    });
+    const selected = new Set(Array.isArray(window.itemSourcesWeaponTypeFilter) ? window.itemSourcesWeaponTypeFilter : []);
+    const weaponTypeButtons = weaponOrder
+      .filter((k) => weaponTypes.has(k))
+      .map((k) => {
+        const on = selected.has(k);
+        const label = weaponTypeShortLabel(k);
+        return `<button class="btn btn--ghost talent-desc-btn${on ? " is-on" : ""}" type="button" data-item-sources-wt="${escapeHtml(k)}">${escapeHtml(label)}</button>`;
+      })
+      .join("");
     return `
       <div class="item-sources-toolbar">
         <div class="item-sources-toolbar__row">
           <input id="itemSourcesSearchInput" class="item-sources-search" type="text" placeholder="${escapeHtml(searchPh)}" value="${escapeHtml(window.itemSourcesSearchText || "")}">
           <button class="btn btn--ghost" type="button" id="itemSourcesClearBtn">${langSelect.value === "ja" ? "クリア" : "Clear"}</button>
+        </div>
+        <div class="item-sources-toolbar__row item-sources-toolbar__row--wt trello-group-toggle weapon-type-filter-row">
+          <span class="item-sources-toolbar__label">${langSelect.value === "ja" ? "武器種" : "Weapon Type"}</span>
+          ${weaponTypeButtons}
         </div>
       </div>
     `;
@@ -495,14 +579,19 @@
         }
       }
       const dropArr = Array.isArray(r.drop) ? r.drop.filter((x) => !!String(x || "").trim()) : [];
+      const targetLootedArr = Array.isArray(r.target_looted) ? r.target_looted.filter((x) => !!String(x || "").trim()) : [];
+      const targetLootedHtml = targetLootedArr.length
+        ? `<div class="item-sources-icons">${targetLootedArr.map((d) => targetLootedEntryHtml(r, d, brandNameByKey)).join("")}</div>`
+        : "";
       const dropHtml = dropArr.length
-        ? `<div class="item-sources-tags">${dropArr.map((d) => `<span class="item-source-tag">${escapeHtml(String(d))}</span>`).join("")}</div>`
+        ? `<div class="item-sources-tags">${dropArr.map((d) => `<span class="item-source-tag">${escapeHtml(localizeDropValue(String(d)))}</span>`).join("")}</div>`
         : "";
       return `
         <tr class="item-sources-row rarity-${escapeHtml(normalizeKey(r.tier || '') || 'highend')}">
           <td><div class="item-sources-name"><span class="item-sources-name-main">${escapeHtml(displayName)}</span></div></td>
           <td>${itemKindHtml}</td>
           <td class="item-sources-col-craft">${blueprintHtml}</td>
+          <td>${targetLootedHtml}</td>
           <td>${dropHtml}</td>
           <td>${escapeHtml(localizeAcquisitionNote(r.acquisition_note || "")).replace(/\n/g, "<br>")}</td>
         </tr>
@@ -555,6 +644,7 @@
               <th>${langSelect.value === "ja" ? "アイテム" : "Item"}</th>
               <th>${langSelect.value === "ja" ? "種別" : "Kind"}</th>
               <th class="item-sources-col-craft">${langSelect.value === "ja" ? "設計図" : "Blueprint"}</th>
+              <th>${langSelect.value === "ja" ? "目標アイテム" : "Targeted Loot"}</th>
               <th>${langSelect.value === "ja" ? "ドロップ" : "Drop"}</th>
               <th>${langSelect.value === "ja" ? "備考" : "Note"}</th>
             </tr>
@@ -579,16 +669,29 @@
       clearBtn.addEventListener("click", () => {
         window.itemSourcesEntityFilter = [];
         window.itemSourcesTagFilter = [];
+        window.itemSourcesWeaponTypeFilter = [];
         window.itemSourcesSearchText = "";
         renderItemSourcesViewFromRows(rows);
       });
     }
+    section.querySelectorAll("[data-item-sources-wt]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const k = normalizeKey(btn.getAttribute("data-item-sources-wt") || "");
+        if (!k) return;
+        const cur = new Set(Array.isArray(window.itemSourcesWeaponTypeFilter) ? window.itemSourcesWeaponTypeFilter : []);
+        if (cur.has(k)) cur.delete(k);
+        else cur.add(k);
+        window.itemSourcesWeaponTypeFilter = Array.from(cur);
+        renderItemSourcesViewFromRows(rows);
+      });
+    });
   }
 
   window.itemSourcesViewRender = async function itemSourcesViewRender() {
     // Item Sources view currently has no toggle filters.
     window.itemSourcesEntityFilter = [];
     window.itemSourcesTagFilter = [];
+    window.itemSourcesWeaponTypeFilter = [];
     const rows = await loadItemSourcesRows();
     if (!rows.length) {
       clearContent();
