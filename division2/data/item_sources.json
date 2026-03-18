@@ -1743,6 +1743,20 @@
       ]
     },
     {
+      "item_id": "2c628090c7e6c47b",
+      "entity_type": "gear_exotic",
+      "category": "gear",
+      "tier": "exotic",
+      "name_key": "harrierpride",
+      "name": "Harrier Pride",
+      "brand_name": "",
+      "brand_key": "",
+      "slot_key": "backpack",
+      "blueprint": [],
+      "target_looted": [],
+      "drop": []
+    },
+    {
       "item_id": "ad9de54d657887cc",
       "entity_type": "gear_exotic",
       "category": "gear",
@@ -2890,6 +2904,20 @@
         "Golan Gear Ltd",
         "chest"
       ]
+    },
+    {
+      "item_id": "f3e9b4cb3d1b5db8",
+      "entity_type": "gear_named",
+      "category": "gear",
+      "tier": "named",
+      "name_key": "impetus",
+      "name": "Impetus",
+      "brand_name": "",
+      "brand_key": "wyvernwear",
+      "slot_key": "chest",
+      "blueprint": [],
+      "target_looted": [],
+      "drop": []
     },
     {
       "item_id": "d9c0e8c7ca4731ce",
