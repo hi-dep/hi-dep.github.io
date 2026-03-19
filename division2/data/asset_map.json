@@ -66,7 +66,9 @@
     "walkerharrisco": "img/brands/walkerharrisco.png",
     "wyvernwear": "img/brands/wyvernwear.png",
     "yaahlgear": "img/brands/yaahlgear.png",
-    "zwiadowkaspzoo": "img/brands/zwiadowkaspzoo.png"
+    "zwiadowkaspzoo": "img/brands/zwiadowkaspzoo.png",
+    "corestrength": "img/brands/corestrength.png",
+    "royalworks": "img/brands/royalworks.png"
   },
   "gear_slots": {
     "backpack": "img/gears/backpack.png",
@@ -249,7 +251,8 @@
     "vigilance": "img/talents/vigilance.png",
     "wavingtheflag": "img/talents/wavingtheflag.png",
     "weakestlink": "img/talents/weakestlink.png",
-    "wicked": "img/talents/wicked.png"
+    "wicked": "img/talents/wicked.png",
+    "coreexercise": "img/talents/coreexercise.png"
   },
   "weapon_talents": {
     "actumest": "img/weapon_talents/actumest.png",

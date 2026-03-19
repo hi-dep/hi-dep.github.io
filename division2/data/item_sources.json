@@ -1477,6 +1477,20 @@
       ]
     },
     {
+      "item_id": "57570f317083ec80",
+      "entity_type": "brandset",
+      "category": "gear",
+      "tier": "",
+      "name_key": "royalworks",
+      "name": "Royal Works",
+      "brand_name": "Royal Works",
+      "brand_key": "royalworks",
+      "slot_key": "",
+      "blueprint": [],
+      "target_looted": [],
+      "drop": []
+    },
+    {
       "item_id": "28b847fa8ede3d0f",
       "entity_type": "gear_exotic",
       "category": "gear",
@@ -1744,6 +1758,20 @@
     },
     {
       "item_id": "2c628090c7e6c47b",
+      "entity_type": "gear_exotic",
+      "category": "gear",
+      "tier": "exotic",
+      "name_key": "harrierpride",
+      "name": "Harrier Pride",
+      "brand_name": "",
+      "brand_key": "",
+      "slot_key": "backpack",
+      "blueprint": [],
+      "target_looted": [],
+      "drop": []
+    },
+    {
+      "item_id": "492cf75b38d37f30",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -2906,6 +2934,20 @@
       ]
     },
     {
+      "item_id": "9ba13c65f51a7ddb",
+      "entity_type": "gear_named",
+      "category": "gear",
+      "tier": "named",
+      "name_key": "impetus",
+      "name": "Impetus",
+      "brand_name": "",
+      "brand_key": "wyvernwear",
+      "slot_key": "chest",
+      "blueprint": [],
+      "target_looted": [],
+      "drop": []
+    },
+    {
       "item_id": "f3e9b4cb3d1b5db8",
       "entity_type": "gear_named",
       "category": "gear",
@@ -3760,6 +3802,20 @@
         "gloves",
         "kneepads"
       ]
+    },
+    {
+      "item_id": "bb6ffb94163bd601",
+      "entity_type": "gearset",
+      "category": "gear",
+      "tier": "gearset",
+      "name_key": "corestrength",
+      "name": "Core Strength",
+      "brand_name": "Core Strength",
+      "brand_key": "corestrength",
+      "slot_key": "",
+      "blueprint": [],
+      "target_looted": [],
+      "drop": []
     },
     {
       "item_id": "107d0d66c41ae007",

@@ -278,7 +278,8 @@
       "accelerando": "シンフォニー2倍バフを発生するのに必要な累積が4から3に減少する",
       "chargingcharged": "チャージング:\n戦闘中、カバー外の際にエージェントの被スキルダメージが毎秒5%、最大50%減少する\n\nチャージド:\nフルチャージ中は、あらゆる移動速度に関するデバフへの耐性を獲得し、これが10秒間にわたり味方全員に対するエージェントの状態異常耐性と被スキルダメージの軽減効果のすべてに共有される\n\nチャージ終了後、戦闘とカバー外にいる状態が続いている場合は再びチャージングが開始される",
       "daring": "ボーナスアーマーを50%から100%に増加",
-      "blessed": "サイクルリセットの前に1回ヘッドショットをミスできる"
+      "blessed": "サイクルリセットの前に1回ヘッドショットをミスできる",
+      "coreexercise": "TODO:For each Core on your Gear Pieces, receive 40% of the other two Cores' bonuses.\nSkill Tiers count as 15%\nSkill Efficiency when these bonuses are applied.\nAll pieces from this Gear Set, apart from the Backpack, will feature random Cores."
     },
     "exotic_gear_talent_desc": {
       "toxicdelivery": "ステータス効果は時間経過ダメージのデバフを10秒適用する\n与える全てのダメージは自身のコンカッショングレネードのダメージの50%で、ステータス効果の特性で増加",

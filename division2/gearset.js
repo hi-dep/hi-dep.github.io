@@ -132,6 +132,55 @@
       if (k === "skilltier") return "gearset-core-skill";
       return "gearset-core-other";
     }
+    function coreTokensFromValue(v) {
+      if (Array.isArray(v)) return v.map((x) => String(x || "").trim()).filter(Boolean);
+      const s = String(v || "").trim();
+      return s ? [s] : [];
+    }
+    function coreMixedLineHtml(coreByPiece) {
+      if (!coreByPiece || typeof coreByPiece !== "object") return "";
+      const grouped = new Map();
+      Object.entries(coreByPiece).forEach(([slotRaw, coreRaw]) => {
+        const slot = String(slotRaw || "").trim();
+        if (!slot) return;
+        coreTokensFromValue(coreRaw).forEach((coreText) => {
+          let key = normalizeKey(coreText);
+          if (key === "random") key = "randomattribute";
+          const label = (langSelect.value === "ja")
+            ? trText(coreText)
+            : coreText;
+          if (!key) return;
+          if (!grouped.has(key)) grouped.set(key, { label, slots: [] });
+          grouped.get(key).slots.push(slot);
+        });
+      });
+      if (!grouped.size) return "";
+      const ordered = ["weapondamage", "armor", "skilltier", "randomattribute"];
+      const keys = [...grouped.keys()].sort((a, b) => {
+        const ai = ordered.indexOf(a);
+        const bi = ordered.indexOf(b);
+        if (ai >= 0 && bi >= 0) return ai - bi;
+        if (ai >= 0) return -1;
+        if (bi >= 0) return 1;
+        return a.localeCompare(b);
+      });
+      const rows = keys.map((k) => {
+        const g = grouped.get(k);
+        if (!g) return "";
+        const icons = (g.slots || []).map((slot) => {
+          const src = iconUrl("gear_slots", normalizeKey(slot), "img/gears");
+          const cls = `ico ico--core-slot core-mixed-icon core-mixed-icon--${escapeHtml(k)}`;
+          return src ? iconImgHtml(src, cls, slot) : "";
+        }).filter(Boolean).join("");
+        const label = (k === "randomattribute")
+          ? trText("Random Attribute")
+          : trText(g.label || "");
+        const rowCls = `core-mixed-row core-mixed-row--${escapeHtml(k)}`;
+        return `<span class="${rowCls}"><span class="core-mixed-label">${escapeHtml(label)}</span><span class="core-mixed-icons">${icons}</span></span>`;
+      }).filter(Boolean);
+      if (!rows.length) return "";
+      return `<span class="core-mixed-wrap">${rows.join("")}</span>`;
+    }
 
     items.forEach((it) => {
       const setKeyNorm = normalizeKey(it.gearsetKey || it.gearset || "");
@@ -150,35 +199,12 @@
       const lines = [];
       const coreKey = normalizeKey(it.core || "");
       if (coreKey === "mixed" && it.coreByPiece && typeof it.coreByPiece === "object") {
-        const rows = [];
-        const order = [
-          { key: "weapondamage", label: "Weapon Damage" },
-          { key: "armor", label: "Armor" },
-          { key: "skilltier", label: "Skill Tier" },
-        ];
-        const slotsByCore = new Map();
-        Object.entries(it.coreByPiece || {}).forEach(([slot, core]) => {
-          const ck = normalizeKey(core || "");
-          if (!slotsByCore.has(ck)) slotsByCore.set(ck, []);
-          slotsByCore.get(ck).push(String(slot || "").trim());
-        });
-        order.forEach((o) => {
-          const slots = (slotsByCore.get(o.key) || []).filter(Boolean);
-          if (!slots.length) return;
-          const icons = slots.map((slot) => {
-            const src = iconUrl("gear_slots", normalizeKey(slot), "img/gears");
-            const cls = `ico ico--core-slot core-mixed-icon core-mixed-icon--${o.key}`;
-            return src ? iconImgHtml(src, cls, slot) : "";
-          }).filter(Boolean).join("");
-          const label = trText(o.label);
-          const rowCls = `core-mixed-row core-mixed-row--${escapeHtml(o.key)}`;
-          rows.push(`<span class="${rowCls}"><span class="core-mixed-label">${escapeHtml(label)}</span><span class="core-mixed-icons">${icons}</span></span>`);
-        });
-        if (rows.length) {
+        const mixedHtml = coreMixedLineHtml(it.coreByPiece);
+        if (mixedHtml) {
           lines.push({
             cls: "line line--core",
-            text: rows.map((x) => stripHtml(x)).join(" "),
-            textHtml: `<span class="core-mixed-wrap">${rows.join("")}</span>`,
+            text: stripHtml(mixedHtml),
+            textHtml: mixedHtml,
             key: "mixed"
           });
         } else if (coreText) {
