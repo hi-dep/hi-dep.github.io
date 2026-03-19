@@ -1807,6 +1807,20 @@
       ]
     },
     {
+      "item_id": "9842ea276602df6f",
+      "entity_type": "gear_exotic",
+      "category": "gear",
+      "tier": "exotic",
+      "name_key": "investor",
+      "name": "Investor",
+      "brand_name": "",
+      "brand_key": "",
+      "slot_key": "mask",
+      "blueprint": [],
+      "target_looted": [],
+      "drop": []
+    },
+    {
       "item_id": "19e11cee52a8f189",
       "entity_type": "gear_exotic",
       "category": "gear",
@@ -2231,6 +2245,20 @@
         "Zwiadowka Sp.z o.o.",
         "chest"
       ]
+    },
+    {
+      "item_id": "8c83e06f3afd9172",
+      "entity_type": "gear_named",
+      "category": "gear",
+      "tier": "named",
+      "name_key": "bulldog",
+      "name": "Bulldog",
+      "brand_name": "",
+      "brand_key": "royalworks",
+      "slot_key": "backpack",
+      "blueprint": [],
+      "target_looted": [],
+      "drop": []
     },
     {
       "item_id": "60dc0f53a2c512d4",
@@ -3217,6 +3245,20 @@
         "Douglas & Harding",
         "mask"
       ]
+    },
+    {
+      "item_id": "440d3f942135ef61",
+      "entity_type": "gear_named",
+      "category": "gear",
+      "tier": "named",
+      "name_key": "robin",
+      "name": "Robin",
+      "brand_name": "",
+      "brand_key": "royalworks",
+      "slot_key": "chest",
+      "blueprint": [],
+      "target_looted": [],
+      "drop": []
     },
     {
       "item_id": "a5a89ad4aaf94a95",

@@ -2124,7 +2124,7 @@ function buildGearsetPopupCardHtml(it, fallbackTitle = "") {
       if (!slot) return;
       coreTokensFromValue(coreRaw).forEach((coreTextEach) => {
         let key = normalizeKey(coreTextEach);
-        if (key === "random") key = "randomattribute";
+        if (key === "randomattribute") key = "random";
         if (!key) return;
         const label = (langSelect.value === "ja")
           ? trText(coreTextEach)
@@ -2134,7 +2134,7 @@ function buildGearsetPopupCardHtml(it, fallbackTitle = "") {
       });
     });
     if (!grouped.size) return "";
-    const ordered = ["weapondamage", "armor", "skilltier", "randomattribute"];
+    const ordered = ["weapondamage", "armor", "skilltier", "random"];
     const keys = [...grouped.keys()].sort((a, b) => {
       const ai = ordered.indexOf(a);
       const bi = ordered.indexOf(b);
@@ -2151,8 +2151,8 @@ function buildGearsetPopupCardHtml(it, fallbackTitle = "") {
         const cls = `ico ico--core-slot core-mixed-icon core-mixed-icon--${escapeHtml(k)}`;
         return src ? iconImgHtml(src, cls, slot) : "";
       }).filter(Boolean).join("");
-      const label = (k === "randomattribute")
-        ? trText("Random Attribute")
+      const label = (k === "random")
+        ? (langSelect.value === "ja" ? "ランダム" : "Random")
         : trText(g.label || "");
       const rowCls = `core-mixed-row core-mixed-row--${escapeHtml(k)}`;
       return `<span class="${rowCls}"><span class="core-mixed-label">${escapeHtml(label)}</span><span class="core-mixed-icons">${icons}</span></span>`;
@@ -2189,6 +2189,24 @@ function buildGearsetPopupCardHtml(it, fallbackTitle = "") {
     }
     return "";
   }
+  function gearsetTalentIconHtml(talentKey, pieceIcon, isFourPc, setIconPrimary, setFallbacks) {
+    const baseKey = normalizeKey(talentKey || "");
+    const cands = [];
+    const add = (u) => {
+      if (!u) return;
+      if (!cands.includes(u)) cands.push(u);
+    };
+    if (baseKey) {
+      add(iconUrl("talents", baseKey, "img/talents"));
+      if (typeof talentKeyVariants === "function") {
+        for (const k of talentKeyVariants(baseKey)) add(iconUrl("talents", k, "img/talents"));
+      }
+    }
+    if (cands.length) return iconImgHtml(cands[0], "ico ico--talent", "talent", cands.slice(1));
+    if (pieceIcon) return pieceIcon;
+    if (isFourPc && setIconPrimary) return iconImgHtml(setIconPrimary, "ico ico--talent", "gearset", setFallbacks || []);
+    return "";
+  }
 
   const keyNorm = normalizeKey(it.gearsetKey || titleRaw);
   const setIconPrimary = iconUrl("brands", it.gearsetKey || keyNorm, "img/brands");
@@ -2207,8 +2225,8 @@ function buildGearsetPopupCardHtml(it, fallbackTitle = "") {
       const slotNum = Number.parseInt(String(b.slot || "0"), 10) || 0;
       const isFourPc = slotNum >= 4 || labelNorm.includes("4pc") || labelNorm.includes("4piece");
       const pieceIcon = gearPieceIconByLabels(labelList);
-      const talentIcon = pieceIcon || (isFourPc && setIconPrimary ? iconImgHtml(setIconPrimary, "ico ico--talent", "gearset", setFallbacks) : "");
       const talentKey = normalizeKey(tn || "");
+      const talentIcon = gearsetTalentIconHtml(talentKey, pieceIcon, isFourPc, setIconPrimary, setFallbacks);
       const tnDisp = (langSelect.value === "ja")
         ? (i18n[talentKey] ?? trText(tn))
         : tn;

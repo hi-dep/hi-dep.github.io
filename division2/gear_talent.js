@@ -250,7 +250,25 @@
   function renderGearTalentViewFromRows(payload) {
     const rowsRaw = (payload && payload.rows) || [];
     const namedByTalent = (payload && payload.namedByTalent) || new Map();
+    const slotOrder = new Map([
+      ["mask", 0],
+      ["backpack", 1],
+      ["chest", 2],
+      ["gloves", 3],
+      ["holster", 4],
+      ["kneepads", 5],
+    ]);
     const rows = rowsRaw.slice().sort((a, b) => {
+      const ask = gearSlotKey(a.talent_slot || "");
+      const bsk = gearSlotKey(b.talent_slot || "");
+      const ao = slotOrder.has(ask) ? slotOrder.get(ask) : 999;
+      const bo = slotOrder.has(bsk) ? slotOrder.get(bsk) : 999;
+      if (ao !== bo) return ao - bo;
+      const aslot = trText(a.talent_slot || "");
+      const bslot = trText(b.talent_slot || "");
+      const sc = String(aslot).localeCompare(String(bslot), langSelect.value === "ja" ? "ja" : "en");
+      if (sc !== 0) return sc;
+
       const aSeed = String(a.talent || a.perfect_talent || "");
       const bSeed = String(b.talent || b.perfect_talent || "");
       const ak = normalizeKey(aSeed);

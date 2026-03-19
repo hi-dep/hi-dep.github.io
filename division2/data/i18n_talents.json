@@ -88,7 +88,9 @@
       "fireworksshow": "コンカッショングレネードが祝祭グレネードになる\n祝祭グレネードが敵に命中すると20m以内にいる他の敵2人の周囲で爆発が起こる",
       "flurry": "ステータス効果を適用するごとに、対象に降雪効果も与える",
       "bewildered": "敵に武器ダメージを与えると、ダメージの50%が30m以内にいる別の敵に与えられる。近くに敵がいない場合は、通常通りのダメージを与える。\nアーマープレートには適用されない",
-      "perfectkineticmomentum": "戦闘中にアクティブまたは非クールダウン中の場合、各スキルは累積する\n\n累積によりスキルダメージの合計が1.5%、スキル修復の合計が2%増加する。各スキルの最大累積数は18。クールダウンで消失する"
+      "perfectkineticmomentum": "戦闘中にアクティブまたは非クールダウン中の場合、各スキルは累積する\n\n累積によりスキルダメージの合計が1.5%、スキル修復の合計が2%増加する。各スキルの最大累積数は18。クールダウンで消失する",
+      "perfectcomposure": "カバー中、合計武器ダメージが20%増加する",
+      "perfectgunslinger": "武器を切り替えると合計武器ダメージが28%増加する（5秒間）。このバフは有効時に武器を切り替えると効果が5秒間失われる"
     },
     "weapon_talent_desc": {
       "breadbasket": "ボディショットを決めるごとに、次のヘッドショットに対して+55%のダメージボーナスが10秒間累積する。最大累積数は3",
@@ -198,7 +200,8 @@
       "primerrounds": "ダメージを受けた敵は5秒間にわたり炎上耐性を50%失う",
       "refreshing": "この武器は水流を発射する。味方エージェントに命中するとその味方に累積が溜まる。最大累積は5。累積は2秒ごとに消失する\n累積が1以上あれば、味方は+50%の状態異常耐性を得る",
       "twinklinglights": "煌びやかな光に包まれた夜だけが、彼らの頭を祝祭の喜びでいっぱいにしてくれる",
-      "sportmode": "+20% 移動スピード. このボーナスは他の移動スピードボーナスと累積しない。"
+      "sportmode": "+20% 移動スピード. このボーナスは他の移動スピードボーナスと累積しない。",
+      "perfectbackandforth": "Swapping to this weapon grants +13% Rate of Fire and +12% Weapon Damage for 10s. Swapping from this weapon grants +5% Rate of Fire and +4.5% Weapon Damage for 10s. Receiving one of the bonus groups will remove the other if it's still active. Two instances of this Talent will not function at the same time."
     },
     "gearset_talent_desc": {
       "deadmanshand": "ライフルまたはマークスマンライフルの射撃が命中するとカードを1枚めくる。\nカードが5枚めくられた後、次の射撃のダメージが30%増幅される。命中した分だけ良いカードが出る\n　フォーカード:4回命中\n　フルハウス:3回命中\n　エース&エイト:2回命中\nヘッドショットで1枚多くカードをめくる",
@@ -279,7 +282,7 @@
       "chargingcharged": "チャージング:\n戦闘中、カバー外の際にエージェントの被スキルダメージが毎秒5%、最大50%減少する\n\nチャージド:\nフルチャージ中は、あらゆる移動速度に関するデバフへの耐性を獲得し、これが10秒間にわたり味方全員に対するエージェントの状態異常耐性と被スキルダメージの軽減効果のすべてに共有される\n\nチャージ終了後、戦闘とカバー外にいる状態が続いている場合は再びチャージングが開始される",
       "daring": "ボーナスアーマーを50%から100%に増加",
       "blessed": "サイクルリセットの前に1回ヘッドショットをミスできる",
-      "coreexercise": "TODO:For each Core on your Gear Pieces, receive 40% of the other two Cores' bonuses.\nSkill Tiers count as 15%\nSkill Efficiency when these bonuses are applied.\nAll pieces from this Gear Set, apart from the Backpack, will feature random Cores."
+      "coreexercise": "For each Core on your Gear Pieces, receive 40% of the other two Cores' bonuses.\nSkill Tiers count as 15%\nSkill Efficiency when these bonuses are applied.\nAll pieces from this Gear Set, apart from the Backpack, will feature random Cores."
     },
     "exotic_gear_talent_desc": {
       "toxicdelivery": "ステータス効果は時間経過ダメージのデバフを10秒適用する\n与える全てのダメージは自身のコンカッショングレネードのダメージの50%で、ステータス効果の特性で増加",
@@ -311,7 +314,8 @@
       "escapeplan": "飛び越しをすると3秒間、+10%の移動スピードを得る\n5秒間停止すると5秒間、+20%の移動スピードを得る\n最大移動スピードボーナスは20%。このボーナスはその他の移動スピードボーナスとは累積しない\nステータス効果により-50%の移動スピード低下ペナルティが発生する",
       "ostracize": "敵を撃つとマークが付く。ただし、マークできるのは1人だけ。マークは15秒が経過するか、その敵が倒されると消える\nマークされた敵からは600%の増幅ダメージを受ける\nマークされていない敵には20%の増幅ダメージを与える\n戦闘中の敵が1人だけになると、マークは消えて再び付けることはできない",
       "parkour": "カバー間移動または飛び越しをすると、構えている武器をリロードし、5秒間25%のボーナスアーマーを得る",
-      "rebalance": "敵を3回倒すか攻撃を当てると赤い累積が溜まる。累積ごとに0.5%の武器ダメージが付与される\n\n3回攻撃を受けると青い累積が溜まる。累積ごとに0.5%のダメージ耐性が付与される\n\n累積数が80になると、累積数をすべて失い、赤い累積ごとに0.5%のダメージ耐性、青い累積ごとに0.5%の武器ダメージが、独立したボーナスとして、次に累積が上限に到達するまで付与される"
+      "rebalance": "敵を3回倒すか攻撃を当てると赤い累積が溜まる。累積ごとに0.5%の武器ダメージが付与される\n\n3回攻撃を受けると青い累積が溜まる。累積ごとに0.5%のダメージ耐性が付与される\n\n累積数が80になると、累積数をすべて失い、赤い累積ごとに0.5%のダメージ耐性、青い累積ごとに0.5%の武器ダメージが、独立したボーナスとして、次に累積が上限に到達するまで付与される",
+      "slotted": "Receive bonuses for each non-Core Attribute on this item, depending on their color:\n\nRed: +10% Critical Hit Damage\nYellow: +5% Skill Efficiency\nBlue: +1% Armor Regen\n\nThis item can feature any Core Attribute. This item features a third random Attribute instead of having a Gear Mod Slot.\nThis item cannot feature the Headshot Damage, Health or Skill Repair Attributes."
     },
     "exotic_weapon_talent_desc": {
       "adaptiveinstincts": "- アダプティブ・インスティンクト\nヘッドショットを30回決めると、45秒間クリティカル率が20%上昇し、クリティカルダメージが50%増加する\nボディショットを65回決めると、45秒間武器ダメージが90%増加する\nレッグショットを20回決めると45秒間リロード速度が150%上昇する\nバフは戦闘状態から抜けると更新される",
@@ -350,7 +354,9 @@
       "regicide": "ヘッドショットキルで5mの爆発を起こし、武器ダメージ400%を与え、ヒットしたすべての敵を出血状態にする",
       "restrained": "シールドが破壊された後、20秒間25%の増幅ダメージを与える",
       "mosquitosong": "敵を攻撃すると累積が発生する。この累積はプレイヤー間で共有される\n累積が10になると、その敵は最後に累積を与えたプレイヤーを5秒間強制的に狙う\n累積は5秒ごとに消失する。敵にこの効果を発動させると、ほかの敵に発生していた累積はすべて取り除かれる",
-      "covershooter": "カバー中に撃った弾1発ごとに武器ダメージが1%上昇し、最大で100%まで増加。このボーナスは15秒間持続する\n\nカバー中にこの武器で敵を倒すと持続時間がリセットされる\n\nボーナスダメージはリロード、武器の切り替え、戦闘からの退出でキャンセルされる"
+      "covershooter": "カバー中に撃った弾1発ごとに武器ダメージが1%上昇し、最大で100%まで増加。このボーナスは15秒間持続する\n\nカバー中にこの武器で敵を倒すと持続時間がリセットされる\n\nボーナスダメージはリロード、武器の切り替え、戦闘からの退出でキャンセルされる",
+      "perturb": "While this weapon is holstered, generate 50% less Threat when shooting. Keeping this weapon holstered for 10s will prime it. While primed, swapping to this weapon grants +25% Rate of Fire, +30% Weapon Damage and you generate 100% more Threat when shooting for 15s. Swapping from this weapon before the timer ends removes the bonuses.",
+      "fasterthanreloading": "Having this weapon holstered for 5s reloads and primes it. While primed, swapping to this weapon reloads your Primary and Secondary weapons and grants +20% Rate of Fire and +50% Weapon Damage until its magazine is emptied. Reloading or swapping from this weapon before its magazine is emptied will remove its stat bonuses."
     },
     "descent_talent_desc": {
       "adrenalinerush": "敵から10m以内にいる場合、[3*tier]%のボーナスアーマーを5秒間得る。3回まで累積する\nクールダウン: [5.3-(0.3*tier)]秒",

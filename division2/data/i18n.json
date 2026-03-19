@@ -174,7 +174,10 @@
       "zerofs": "ゼロエフス",
       "harrierpride": "ハリアープライド",
       "impetus": "インピタス",
-      "antumbrabackpack": "TODO:antumbrabackpack"
+      "antumbrabackpack": "TODO:antumbrabackpack",
+      "bulldog": "Bulldog",
+      "robin": "Robin",
+      "investor": "Investor"
     },
     "weapon_item_name_ar": {
       "acr": "ACR",
@@ -228,7 +231,17 @@
       "thebighorn": "ザ・ビッグホーン",
       "therailsplitter": "レイルスプリッター",
       "tkb408": "TKB-408",
-      "tkb480": "TKB-480"
+      "tkb480": "TKB-480",
+      "agitator": "Agitator",
+      "borngreatmilitaryg36": "TODO:borngreatmilitaryg36",
+      "caretakerg36enhanced": "TODO:caretakerg36enhanced",
+      "firstsightakm": "TODO:firstsightakm",
+      "glorydazecustomp416g3": "TODO:glorydazecustomp416g3",
+      "goaliefal": "TODO:goaliefal",
+      "ludsocommk16": "TODO:ludsocommk16",
+      "manicblackmarketakm": "TODO:manicblackmarketakm",
+      "stregafal": "TODO:stregafal",
+      "interchange": "Interchange"
     },
     "weapon_item_name_lmg": {
       "blackmarketrpk74e": "ブラックマーケット RPK-74 E",
@@ -267,7 +280,20 @@
       "sleipner": "スレイプニル",
       "tabularasa": "タブラ・ラーサ",
       "tacticalm249para": "タクティカル M249 Para",
-      "thestinger": "スティンガー"
+      "thestinger": "スティンガー",
+      "bellringerinfantrymg5": "TODO:bellringerinfantrymg5",
+      "bigshowmg5": "TODO:bigshowmg5",
+      "blackfridaym249b": "TODO:blackfridaym249b",
+      "gearshiftmilitarymk46": "TODO:gearshiftmilitarymk46",
+      "goodtimesblackmarketm60e6": "TODO:goodtimesblackmarketm60e6",
+      "ironlungmg5": "TODO:ironlungmg5",
+      "newreliableblackmarketrpk74": "TODO:newreliableblackmarketrpk74",
+      "pakhanclassicrpk": "TODO:pakhanclassicrpk",
+      "pestilencem249b": "TODO:pestilencem249b",
+      "rustyclassicrpk74": "TODO:rustyclassicrpk74",
+      "sleipnermg5": "TODO:sleipnermg5",
+      "tabularasamilitaryl86lsw": "TODO:tabularasamilitaryl86lsw",
+      "thestingerm249b": "TODO:thestingerm249b"
     },
     "weapon_item_name_smg": {
       "blackmarkett821": "ブラックマーケット T821",
@@ -311,7 +337,16 @@
       "thesleigher": "スレイヤー",
       "tommygun": "トミーガン",
       "vectorsbr45acp": "ヴェクター SBR .45 ACP",
-      "vectorsbr9mm": "ヴェクター SBR 9mm"
+      "vectorsbr9mm": "ヴェクター SBR 9mm",
+      "cabaretmp5st": "TODO:cabaretmp5st",
+      "coldrelationsenhancedpp19": "TODO:coldrelationsenhancedpp19",
+      "darkwintervectorsbr45acp": "TODO:darkwintervectorsbr45acp",
+      "frothtacticalvectorsbr9mm": "TODO:frothtacticalvectorsbr9mm",
+      "growngreattommygun": "TODO:growngreattommygun",
+      "ouroborosvectorsbr45acp": "TODO:ouroborosvectorsbr45acp",
+      "puristconvertedsmg9a2": "TODO:puristconvertedsmg9a2",
+      "slingshottacticalump45": "TODO:slingshottacticalump45",
+      "thesleighertommygun": "TODO:thesleighertommygun"
     },
     "weapon_item_name_rifle": {
       "bakersdozen": "ベイカーズダズン",
@@ -347,7 +382,16 @@
       "thevirginian": "バージニアン",
       "urbanmdr": "アーバン MDR",
       "vindicator": "ビンディケーター",
-      "whisper": "ウィスパー"
+      "whisper": "ウィスパー",
+      "artiststoolsig716cqb": "TODO:artiststoolsig716cqb",
+      "bakersdozenclassicm1a": "TODO:bakersdozenclassicm1a",
+      "bittersweetclassicm1a": "TODO:bittersweetclassicm1a",
+      "coolerm1acqb": "TODO:coolerm1acqb",
+      "doctorhomem1acqb": "TODO:doctorhomem1acqb",
+      "everlastinggazepolicemk17": "TODO:everlastinggazepolicemk17",
+      "stageleftsocomm1a": "TODO:stageleftsocomm1a",
+      "surgelvoac": "TODO:surgelvoac",
+      "trader": "Trader"
     },
     "weapon_item_name_mmr": {
       "classicm44carbine": "クラシック M44 カービン",
@@ -381,7 +425,17 @@
       "sr1": "SR-1",
       "tactical308": "タクティカル .308",
       "thedarkness": "ザ・ダークネス",
-      "thewhitedeath": "ホワイトデス"
+      "thewhitedeath": "ホワイトデス",
+      "brutusm700carbon": "TODO:brutusm700carbon",
+      "commandoparatroopersvd": "TODO:commandoparatroopersvd",
+      "ekimslongstickmodel700": "TODO:ekimslongstickmodel700",
+      "handbasketsurplussvd": "TODO:handbasketsurplussvd",
+      "instigatorcustomm44": "TODO:instigatorcustomm44",
+      "mantiscovertsrs": "TODO:mantiscovertsrs",
+      "ohcarolclassicm44carbine": "TODO:ohcarolclassicm44carbine",
+      "pinprickcovertsrs": "TODO:pinprickcovertsrs",
+      "shroudm700carbon": "TODO:shroudm700carbon",
+      "thewhitedeathclassicm44carbine": "TODO:thewhitedeathclassicm44carbine"
     },
     "weapon_item_name_shotgun": {
       "doublebarrelshotgun": "ダブルバレル ショットガン",
@@ -417,7 +471,12 @@
       "themop": "ザ・モップ",
       "thesendoff": "センドオフ",
       "thesheriff": "シェリフ",
-      "tsunami": "ツナミ"
+      "tsunami": "ツナミ",
+      "cuelebremilitarym870": "TODO:cuelebremilitarym870",
+      "enforcersuper90": "TODO:enforcersuper90",
+      "likegluesuper90": "TODO:likegluesuper90",
+      "lockdownm870express": "TODO:lockdownm870express",
+      "tsunamitacticalsasg12k": "TODO:tsunamitacticalsasg12k"
     },
     "weapon_item_name_pistol": {
       "custompf45": "カスタム PF45",
@@ -453,7 +512,18 @@
       "tempest": "テンペスト",
       "theharvest": "ザ・ハーヴェスト",
       "x45": "X-45",
-      "x45tactical": "X-45 タクティカル"
+      "x45tactical": "X-45 タクティカル",
+      "whiplash": "Whiplash",
+      "busylittlebeecustompf45": "TODO:busylittlebeecustompf45",
+      "dicerosspecialdiceros": "TODO:dicerosspecialdiceros",
+      "lightningrodcustompf45": "TODO:lightningrodcustompf45",
+      "mosquitomilitarym9": "TODO:mosquitomilitarym9",
+      "mozambiquespecialm45a1": "TODO:mozambiquespecialm45a1",
+      "orbit586magnum": "TODO:orbit586magnum",
+      "prophetpolice686magnum": "TODO:prophetpolice686magnum",
+      "quickstepm45a1": "TODO:quickstepm45a1",
+      "theharvestpolice686magnum": "TODO:theharvestpolice686magnum",
+      "diceros": "TODO:diceros"
     },
     "gear_slot": {
       "backpack": "バックパック",
@@ -757,7 +827,9 @@
       "vanguard": "バンガード",
       "vigilance": "ヴィジランス",
       "wicked": "ウィキッド",
-      "perfectkineticmomentum": "パーフェクト・キネクティックモーメンタム"
+      "perfectkineticmomentum": "パーフェクト・キネクティックモーメンタム",
+      "perfectcomposure": "パーフェクト・コンポージャー",
+      "perfectgunslinger": "パーフェクト・ガンスリンガー"
     },
     "weapon_talent": {
       "closepersonal": "接近戦",
@@ -915,7 +987,10 @@
       "busylittlebee": "ビジー・リトル・ビー",
       "doctorhome": "ドクターホーム",
       "pakhan": "パハン",
-      "covershooter": "カバーシューター"
+      "covershooter": "カバーシューター",
+      "perturb": "Perturb",
+      "fasterthanreloading": "Faster Than Reloading",
+      "perfectbackandforth": "Perfect Back and Forth"
     },
     "cache": {
       "amount": "数量",
@@ -959,7 +1034,8 @@
       "transferenceoverclock": "トレンスファレンス・オーバークロック",
       "viciouscycle": "ヴィシャスサイクル",
       "weakestlink": "ウィーケストリンク",
-      "rebalance": "リバランス"
+      "rebalance": "リバランス",
+      "slotted": "Slotted"
     },
     "preserved": {
       "conflict_cache": "コンフリクトキャッシュ",
