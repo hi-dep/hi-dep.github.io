@@ -1,5 +1,5 @@
 {
-  "built_at": "2026-03-20T09:30:07.744232Z",
+  "built_at": "2026-03-20T16:30:06.020436Z",
   "source": "division_trello_loader/i18n_trello.temp.json",
   "text_map": {
     "[Loadouts] There is a visual bug causing agents' loadouts not to appear when inspected.": "【ロードアウト】エージェントのロードアウトを確認した際に表示されない視覚的な不具合が発生しています。",
