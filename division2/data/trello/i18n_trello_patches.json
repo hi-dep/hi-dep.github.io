@@ -1,5 +1,5 @@
 {
-  "built_at": "2026-03-19T17:30:09.432193Z",
+  "built_at": "2026-03-20T09:30:07.786210Z",
   "source": "division_trello_loader/i18n_trello_patches.temp.json",
   "text_map": {
     "Y7S1 PTS Patch Notes": "",
@@ -1698,6 +1698,7 @@
     "- Prototype versions of Striker’s Mask, Backpack, Holster, Kneepads, Equalizer and Lexington have also been added to the cache.": "",
     "[Check here for Patch Notes on Escalation and Prototype Gear](https://trello.com/c/aJmfUxKZ \"\")": "",
     "Check here for Patch Notes on Retaliation, Modifiers, Gear, and Weapons.": "",
-    "[Check here for Patch Notes on Retaliation, Modifiers, Gear, and Weapons.](https://trello.com/c/eNEScpLF \"\")": ""
+    "[Check here for Patch Notes on Retaliation, Modifiers, Gear, and Weapons.](https://trello.com/c/eNEScpLF \"\")": "",
+    "- The previous maximum roll for an attribute becomes the minimum possible roll, and the maximum value can reach up to 1.5x the original maximum.": ""
   }
 }
