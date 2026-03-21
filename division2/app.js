@@ -47,6 +47,7 @@ const navExoticGearBtn = document.getElementById("navExoticGearBtn");
 const navGearTalentBtn = document.getElementById("navGearTalentBtn");
 const navWeaponTalentBtn = document.getElementById("navWeaponTalentBtn");
 const navDescentTalentBtn = document.getElementById("navDescentTalentBtn");
+const navPrototypeBtn = document.getElementById("navPrototypeBtn");
 const navItemSourcesBtn = document.getElementById("navItemSourcesBtn");
 const navTrelloBtn = document.getElementById("navTrelloBtn");
 const navPatchesBtn = document.getElementById("navPatchesBtn");
@@ -74,7 +75,7 @@ let isWorldTimePopupOpen = false;
 let statusMode = "";
 const JST_OFFSET_MS = 9 * 60 * 60 * 1000;
 let filtersOpen = false;
-let currentViewMode = "vendor"; // vendor | weapons | brand | gearset | exotic_gear | gear_talent | weapon_talent | descent_talent | item_sources | trello | patches
+let currentViewMode = "vendor"; // vendor | weapons | brand | gearset | exotic_gear | gear_talent | weapon_talent | descent_talent | prototype | item_sources | trello | patches
 let trelloSummaryCache = null;
 let descentPoolState = {
   loaded: false,
@@ -958,7 +959,7 @@ function applyUrlParams() {
     setVendorDateValue(date);
   }
 
-  // view=vendor|weapons|brand|gearset|exotic_gear|gear_talent|weapon_talent|item_sources|trello|patches (accept typo: vendo)
+  // view=vendor|weapons|brand|gearset|exotic_gear|gear_talent|weapon_talent|descent_talent|prototype|item_sources|trello|patches (accept typo: vendo)
   const view = getUrlParam("view").toLowerCase();
   if (view === "vendor" || view === "vendo") initialViewMode = "vendor";
   else if (view === "weapons" || view === "weapon") initialViewMode = "weapons";
@@ -968,6 +969,7 @@ function applyUrlParams() {
   else if (view === "gear_talent" || view === "geartalent") initialViewMode = "gear_talent";
   else if (view === "weapon_talent" || view === "weapontalent") initialViewMode = "weapon_talent";
   else if (view === "descent_talent" || view === "descenttalent") initialViewMode = "descent_talent";
+  else if (view === "prototype") initialViewMode = "prototype";
   else if (view === "item_sources" || view === "itemsources") initialViewMode = "item_sources";
   else if (view === "trello") initialViewMode = "trello";
   else if (view === "patches") initialViewMode = "patches";
@@ -1027,6 +1029,9 @@ function updateModeUi() {
       titleEl.textContent = nextTitle;
     } else if (currentViewMode === "descent_talent") {
       nextTitle = "Division 2 Descent Talent";
+      titleEl.textContent = nextTitle;
+    } else if (currentViewMode === "prototype") {
+      nextTitle = "Division 2 Prototype";
       titleEl.textContent = nextTitle;
     } else if (currentViewMode === "item_sources") {
       nextTitle = "Division 2 Item Sources";
@@ -3925,6 +3930,13 @@ async function renderItemSourcesView() {
   }
   await window.itemSourcesViewRender();
 }
+
+async function renderPrototypeView() {
+  if (typeof window.prototypeViewRender !== "function") {
+    throw new Error("prototypeViewRender is not available");
+  }
+  await window.prototypeViewRender();
+}
 function closeNavMenu() {
   if (!navMenuPanel) return;
   const active = document.activeElement;
@@ -3943,7 +3955,7 @@ function toggleNavMenu() {
 }
 
 async function switchViewMode(mode) {
-  currentViewMode = (mode === "weapons" || mode === "brand" || mode === "gearset" || mode === "exotic_gear" || mode === "gear_talent" || mode === "weapon_talent" || mode === "descent_talent" || mode === "item_sources" || mode === "trello" || mode === "patches") ? mode : "vendor";
+  currentViewMode = (mode === "weapons" || mode === "brand" || mode === "gearset" || mode === "exotic_gear" || mode === "gear_talent" || mode === "weapon_talent" || mode === "descent_talent" || mode === "prototype" || mode === "item_sources" || mode === "trello" || mode === "patches") ? mode : "vendor";
   window.currentViewMode = currentViewMode;
   syncDescToggleForCurrentView();
   closeNavMenu();
@@ -3988,6 +4000,11 @@ async function switchViewMode(mode) {
   }
   if (currentViewMode === "descent_talent") {
     await renderDescentTalentView();
+    requestToolbarSync();
+    return;
+  }
+  if (currentViewMode === "prototype") {
+    await renderPrototypeView();
     requestToolbarSync();
     return;
   }
@@ -4139,6 +4156,8 @@ async function boot() {
           await renderWeaponTalentView();
         } else if (currentViewMode === "descent_talent") {
           await renderDescentTalentView();
+        } else if (currentViewMode === "prototype") {
+          await renderPrototypeView();
         } else if (currentViewMode === "item_sources") {
           await renderItemSourcesView();
         }
@@ -4177,6 +4196,8 @@ langSelect.addEventListener("change", () => {
     renderWeaponTalentView().catch(err => setStatus(`${ui("error")}: ${err.message}`));
   } else if (currentViewMode === "descent_talent") {
     renderDescentTalentView().catch(err => setStatus(`${ui("error")}: ${err.message}`));
+  } else if (currentViewMode === "prototype") {
+    renderPrototypeView().catch(err => setStatus(`${ui("error")}: ${err.message}`));
   } else if (currentViewMode === "item_sources") {
     renderItemSourcesView().catch(err => setStatus(`${ui("error")}: ${err.message}`));
   } else {
@@ -4228,6 +4249,11 @@ if (navWeaponTalentBtn) {
 if (navDescentTalentBtn) {
   navDescentTalentBtn.addEventListener("click", () => {
     switchViewMode("descent_talent").catch(err => setStatus(`${ui("error")}: ${err.message}`));
+  });
+}
+if (navPrototypeBtn) {
+  navPrototypeBtn.addEventListener("click", () => {
+    switchViewMode("prototype").catch(err => setStatus(`${ui("error")}: ${err.message}`));
   });
 }
 if (navItemSourcesBtn) {

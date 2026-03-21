@@ -80,7 +80,9 @@
       "virtuoso": "ヴィルトゥオーゾ",
       "zwiadowkaspzoo": "Zwiadowka Sp.z o.o.",
       "chinalightindustriescorporation": "チャイナ・ライトインダストリー社",
-      "skvrobasro": "TODO:skvrobasro"
+      "skvrobasro": "TODO:skvrobasro",
+      "corestrength": "コア強度",
+      "royalworks": "ロイヤルワークス"
     },
     "gear_item_name": {
       "chainkiller": "チェインキラー",
@@ -175,8 +177,8 @@
       "harrierpride": "ハリアープライド",
       "impetus": "インピタス",
       "antumbrabackpack": "TODO:antumbrabackpack",
-      "bulldog": "Bulldog",
-      "robin": "Robin",
+      "bulldog": "ブルドッグ",
+      "robin": "ロビン",
       "investor": "Investor"
     },
     "weapon_item_name_ar": {
@@ -989,8 +991,9 @@
       "pakhan": "パハン",
       "covershooter": "カバーシューター",
       "perturb": "Perturb",
-      "fasterthanreloading": "Faster Than Reloading",
-      "perfectbackandforth": "Perfect Back and Forth"
+      "fasterthanreloading": "リロードより高速",
+      "perfectbackandforth": "Perfect Back and Forth",
+      "backandforth": "Back and Forth"
     },
     "cache": {
       "amount": "数量",

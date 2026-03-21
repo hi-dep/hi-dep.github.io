@@ -410,6 +410,7 @@
     "fasterthan": "img/weapon_talents/fasterthan.png",
     "perturb": "img/weapon_talents/perturb.png",
     "fasterthanreloading": "img/weapon_talents/fasterthanreloading.png",
-    "perfectbackandforth": "img/weapon_talents/perfectbackandforth.png"
+    "perfectbackandforth": "img/weapon_talents/perfectbackandforth.png",
+    "backandforth": "img/weapon_talents/backandforth.png"
   }
 }

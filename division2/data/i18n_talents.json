@@ -201,7 +201,8 @@
       "refreshing": "この武器は水流を発射する。味方エージェントに命中するとその味方に累積が溜まる。最大累積は5。累積は2秒ごとに消失する\n累積が1以上あれば、味方は+50%の状態異常耐性を得る",
       "twinklinglights": "煌びやかな光に包まれた夜だけが、彼らの頭を祝祭の喜びでいっぱいにしてくれる",
       "sportmode": "+20% 移動スピード. このボーナスは他の移動スピードボーナスと累積しない。",
-      "perfectbackandforth": "Swapping to this weapon grants +13% Rate of Fire and +12% Weapon Damage for 10s. Swapping from this weapon grants +5% Rate of Fire and +4.5% Weapon Damage for 10s. Receiving one of the bonus groups will remove the other if it's still active. Two instances of this Talent will not function at the same time."
+      "perfectbackandforth": "Swapping to this weapon grants +13% Rate of Fire and +12% Weapon Damage for 10s.\n\nSwapping from this weapon grants +5% Rate of Fire and +4.5% Weapon Damage for 10s.\n\nReceiving one of the bonus groups will remove the other if it's still active.\n\nTwo instances of this Talent will not function at the same time.",
+      "backandforth": "Swapping to this weapon grants +10% Rate of Fire and +9% Weapon Damage for 10s.\n\nSwapping from this weapon grants +5% Rate of Fire and +4.5% Weapon Damage for 10s.\n\nReceiving one of the bonus groups will remove the other if it's still active.\n\nTwo instances of this Talent will not function at the same time."
     },
     "gearset_talent_desc": {
       "deadmanshand": "ライフルまたはマークスマンライフルの射撃が命中するとカードを1枚めくる。\nカードが5枚めくられた後、次の射撃のダメージが30%増幅される。命中した分だけ良いカードが出る\n　フォーカード:4回命中\n　フルハウス:3回命中\n　エース&エイト:2回命中\nヘッドショットで1枚多くカードをめくる",
@@ -282,7 +283,9 @@
       "chargingcharged": "チャージング:\n戦闘中、カバー外の際にエージェントの被スキルダメージが毎秒5%、最大50%減少する\n\nチャージド:\nフルチャージ中は、あらゆる移動速度に関するデバフへの耐性を獲得し、これが10秒間にわたり味方全員に対するエージェントの状態異常耐性と被スキルダメージの軽減効果のすべてに共有される\n\nチャージ終了後、戦闘とカバー外にいる状態が続いている場合は再びチャージングが開始される",
       "daring": "ボーナスアーマーを50%から100%に増加",
       "blessed": "サイクルリセットの前に1回ヘッドショットをミスできる",
-      "coreexercise": "For each Core on your Gear Pieces, receive 40% of the other two Cores' bonuses.\nSkill Tiers count as 15%\nSkill Efficiency when these bonuses are applied.\nAll pieces from this Gear Set, apart from the Backpack, will feature random Cores."
+      "coreexercise": "For each Core on your Gear Pieces, receive 40% of the other two Cores' bonuses.\nSkill Tiers count as 15%\nSkill Efficiency when these bonuses are applied.\nAll pieces from this Gear Set, apart from the Backpack, will feature random Cores.",
+      "innercore": "TODO:Increase the percentage of the bonuses you receive from the other Cores from 40% to 60%.",
+      "outercore": "TODO:This Talent does not provide a direct change to the Core Exercise Talent. This Backpack features three Core Attributes."
     },
     "exotic_gear_talent_desc": {
       "toxicdelivery": "ステータス効果は時間経過ダメージのデバフを10秒適用する\n与える全てのダメージは自身のコンカッショングレネードのダメージの50%で、ステータス効果の特性で増加",
