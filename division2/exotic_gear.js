@@ -152,6 +152,13 @@
       if (yellow.has(k)) return "line--yellow";
       return "";
     }
+    function randomTokenKind(v) {
+      const k = normalizeKey(v || "");
+      if (!k) return "";
+      if (k === "randomcoreattribute" || k === "randomcore") return "core";
+      if (k === "random" || k === "ramdom" || k === "randomattribute" || k === "ramdomattribute") return "attr";
+      return "";
+    }
     const slotOrder = {
       mask: 0,
       backpack: 1,
@@ -264,15 +271,18 @@
             const tk = String(attrTypeKeys[i] || "").trim();
             const tv = String(attrTypes[i] || "").trim();
             if (!tv) continue;
-            const key = tk || normalizeKey(tv);
-            const text = (langSelect.value === "ja")
-              ? (i18n[tk] ?? trText(tv))
-              : tv;
+            const rk = randomTokenKind(tk || tv);
+            const key = rk === "core" ? "randomcoreattribute" : (rk === "attr" ? "randomattribute" : (tk || normalizeKey(tv)));
+            const text = rk
+              ? ((langSelect.value === "ja")
+                ? trText(rk === "core" ? "Random Core Attribute" : "Random Attribute")
+                : (rk === "core" ? "Random Core Attribute" : "Random Attribute"))
+              : ((langSelect.value === "ja") ? (i18n[tk] ?? trText(tv)) : tv);
             attrs.push({ key, text });
           }
         }
       }
-      const coreKeySet = new Set(["weapondamage", "armor", "skilltier"]);
+      const coreKeySet = new Set(["weapondamage", "armor", "skilltier", "randomcoreattribute"]);
       const coreAttrKeys = new Set(
         attrs
           .map((a) => normalizeKey(a.key || ""))
@@ -344,7 +354,7 @@
                 : "";
           const cls = isCore && coreColorCls
             ? `line ${coreColorCls} ${textCls}`
-            : (dotColorCls ? `line ${dotColorCls} line--noncore-attr` : "line line--gray");
+            : (isCore ? "line line--core" : (dotColorCls ? `line ${dotColorCls} line--noncore-attr` : "line line--gray"));
           lines.push({ cls, text: a.text, key: String(a.key || "").trim() });
         });
         if (talentText) lines.push({ cls: "line line--gray line--talent", text: talentText, key: talentKey, icon: talentIcon });

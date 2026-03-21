@@ -48,6 +48,7 @@ const navGearTalentBtn = document.getElementById("navGearTalentBtn");
 const navWeaponTalentBtn = document.getElementById("navWeaponTalentBtn");
 const navDescentTalentBtn = document.getElementById("navDescentTalentBtn");
 const navPrototypeBtn = document.getElementById("navPrototypeBtn");
+const navGradeCostBtn = document.getElementById("navGradeCostBtn");
 const navItemSourcesBtn = document.getElementById("navItemSourcesBtn");
 const navTrelloBtn = document.getElementById("navTrelloBtn");
 const navPatchesBtn = document.getElementById("navPatchesBtn");
@@ -75,7 +76,7 @@ let isWorldTimePopupOpen = false;
 let statusMode = "";
 const JST_OFFSET_MS = 9 * 60 * 60 * 1000;
 let filtersOpen = false;
-let currentViewMode = "vendor"; // vendor | weapons | brand | gearset | exotic_gear | gear_talent | weapon_talent | descent_talent | prototype | item_sources | trello | patches
+let currentViewMode = "vendor"; // vendor | weapons | brand | gearset | exotic_gear | gear_talent | weapon_talent | descent_talent | prototype | grade_cost | item_sources | trello | patches
 let trelloSummaryCache = null;
 let descentPoolState = {
   loaded: false,
@@ -959,7 +960,7 @@ function applyUrlParams() {
     setVendorDateValue(date);
   }
 
-  // view=vendor|weapons|brand|gearset|exotic_gear|gear_talent|weapon_talent|descent_talent|prototype|item_sources|trello|patches (accept typo: vendo)
+  // view=vendor|weapons|brand|gearset|exotic_gear|gear_talent|weapon_talent|descent_talent|prototype|grade_cost|item_sources|trello|patches (accept typo: vendo)
   const view = getUrlParam("view").toLowerCase();
   if (view === "vendor" || view === "vendo") initialViewMode = "vendor";
   else if (view === "weapons" || view === "weapon") initialViewMode = "weapons";
@@ -970,6 +971,7 @@ function applyUrlParams() {
   else if (view === "weapon_talent" || view === "weapontalent") initialViewMode = "weapon_talent";
   else if (view === "descent_talent" || view === "descenttalent") initialViewMode = "descent_talent";
   else if (view === "prototype") initialViewMode = "prototype";
+  else if (view === "grade_cost" || view === "gradecost") initialViewMode = "grade_cost";
   else if (view === "item_sources" || view === "itemsources") initialViewMode = "item_sources";
   else if (view === "trello") initialViewMode = "trello";
   else if (view === "patches") initialViewMode = "patches";
@@ -1032,6 +1034,9 @@ function updateModeUi() {
       titleEl.textContent = nextTitle;
     } else if (currentViewMode === "prototype") {
       nextTitle = "Division 2 Prototype";
+      titleEl.textContent = nextTitle;
+    } else if (currentViewMode === "grade_cost") {
+      nextTitle = "Division 2 Grade Cost";
       titleEl.textContent = nextTitle;
     } else if (currentViewMode === "item_sources") {
       nextTitle = "Division 2 Item Sources";
@@ -3937,6 +3942,13 @@ async function renderPrototypeView() {
   }
   await window.prototypeViewRender();
 }
+
+async function renderGradeCostView() {
+  if (typeof window.gradeCostViewRender !== "function") {
+    throw new Error("gradeCostViewRender is not available");
+  }
+  await window.gradeCostViewRender();
+}
 function closeNavMenu() {
   if (!navMenuPanel) return;
   const active = document.activeElement;
@@ -3955,7 +3967,7 @@ function toggleNavMenu() {
 }
 
 async function switchViewMode(mode) {
-  currentViewMode = (mode === "weapons" || mode === "brand" || mode === "gearset" || mode === "exotic_gear" || mode === "gear_talent" || mode === "weapon_talent" || mode === "descent_talent" || mode === "prototype" || mode === "item_sources" || mode === "trello" || mode === "patches") ? mode : "vendor";
+  currentViewMode = (mode === "weapons" || mode === "brand" || mode === "gearset" || mode === "exotic_gear" || mode === "gear_talent" || mode === "weapon_talent" || mode === "descent_talent" || mode === "prototype" || mode === "grade_cost" || mode === "item_sources" || mode === "trello" || mode === "patches") ? mode : "vendor";
   window.currentViewMode = currentViewMode;
   syncDescToggleForCurrentView();
   closeNavMenu();
@@ -4005,6 +4017,11 @@ async function switchViewMode(mode) {
   }
   if (currentViewMode === "prototype") {
     await renderPrototypeView();
+    requestToolbarSync();
+    return;
+  }
+  if (currentViewMode === "grade_cost") {
+    await renderGradeCostView();
     requestToolbarSync();
     return;
   }
@@ -4158,6 +4175,8 @@ async function boot() {
           await renderDescentTalentView();
         } else if (currentViewMode === "prototype") {
           await renderPrototypeView();
+        } else if (currentViewMode === "grade_cost") {
+          await renderGradeCostView();
         } else if (currentViewMode === "item_sources") {
           await renderItemSourcesView();
         }
@@ -4198,6 +4217,8 @@ langSelect.addEventListener("change", () => {
     renderDescentTalentView().catch(err => setStatus(`${ui("error")}: ${err.message}`));
   } else if (currentViewMode === "prototype") {
     renderPrototypeView().catch(err => setStatus(`${ui("error")}: ${err.message}`));
+  } else if (currentViewMode === "grade_cost") {
+    renderGradeCostView().catch(err => setStatus(`${ui("error")}: ${err.message}`));
   } else if (currentViewMode === "item_sources") {
     renderItemSourcesView().catch(err => setStatus(`${ui("error")}: ${err.message}`));
   } else {
@@ -4254,6 +4275,11 @@ if (navDescentTalentBtn) {
 if (navPrototypeBtn) {
   navPrototypeBtn.addEventListener("click", () => {
     switchViewMode("prototype").catch(err => setStatus(`${ui("error")}: ${err.message}`));
+  });
+}
+if (navGradeCostBtn) {
+  navGradeCostBtn.addEventListener("click", () => {
+    switchViewMode("grade_cost").catch(err => setStatus(`${ui("error")}: ${err.message}`));
   });
 }
 if (navItemSourcesBtn) {

@@ -4,12 +4,36 @@
 
   async function fetchPrototypeData() {
     if (prototypeCache) return prototypeCache;
+    const SQL = await initSql();
     const v = (window.indexJson && window.indexJson.built_at) ? `?v=${encodeURIComponent(window.indexJson.built_at)}` : `?v=${Date.now()}`;
-    const res = await fetch(`${DATA_BASE}/prototype.json${v}`, { cache: "no-store" });
-    if (!res.ok) throw new Error(`prototype load failed: ${res.status}`);
-    const data = await res.json();
-    prototypeCache = data || {};
-    return prototypeCache;
+    const gz = await fetchArrayBuffer(`${DATA_BASE}/items.db.gz${v}`);
+    const dbBytes = await gunzipToUint8Array(gz);
+    const db = new SQL.Database(dbBytes);
+    try {
+      const hasTable = db.exec("SELECT name FROM sqlite_master WHERE type='table' AND name='items_prototype'").length > 0;
+      if (!hasTable) {
+        console.warn("Prototype table is missing in items.db", { hasTable });
+        throw new Error("data_unavailable");
+      }
+      const stmt = db.prepare("SELECT payload FROM items_prototype ORDER BY row_id ASC");
+      const rows = [];
+      while (stmt.step()) {
+        const rec = stmt.getAsObject() || {};
+        const raw = String(rec.payload || "").trim();
+        if (!raw) continue;
+        try {
+          const obj = JSON.parse(raw);
+          if (obj && typeof obj === "object") rows.push(obj);
+        } catch (_e) {
+          // Keep rendering robust even if one row is malformed.
+        }
+      }
+      stmt.free();
+      prototypeCache = { items: rows };
+      return prototypeCache;
+    } finally {
+      db.close();
+    }
   }
 
   function cellText(row, key) {

@@ -645,6 +645,7 @@
       "meleedamage": "近接ダメージ",
       "modslot": "MOD",
       "pulseresistance": "パルス耐性",
+      "randomcoreattribute": "ランダムコア特性",
       "randomattribute": "ランダム特性",
       "range": "射程",
       "reducedthreat": "脅威低下",
