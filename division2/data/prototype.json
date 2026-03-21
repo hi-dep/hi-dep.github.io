@@ -1,5 +1,5 @@
 {
-  "built_at": "2026-03-21T05:56:43.592174Z",
+  "built_at": "2026-03-21T07:12:32.132035Z",
   "source": {
     "kind": "prototype",
     "sheet_url": "https://docs.google.com/spreadsheets/d/17T6ax3AvolAgP66-rKjcIsacJmzFk7HxohnE-RO8RYQ/edit?usp=sharing",
@@ -203,7 +203,7 @@
       "#": "9",
       "name": "Trapper",
       "name_ja": "トラッパー",
-      "desc": "Increases Status Effect Duration by 4$",
+      "desc": "Increases Status Effect Duration by 4s",
       "desc_ja": "発生しているCC効果の持続時間が4%延びる",
       "attr": "Status Effect Duration",
       "attr_ja": "クラウドコントロール持続時間延長",
