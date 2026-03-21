@@ -1,5 +1,5 @@
 {
-  "built_at": "2026-03-21T08:12:29.573204Z",
+  "built_at": "2026-03-21T09:12:30.346444Z",
   "source": {
     "kind": "prototype",
     "sheet_url": "https://docs.google.com/spreadsheets/d/17T6ax3AvolAgP66-rKjcIsacJmzFk7HxohnE-RO8RYQ/edit?usp=sharing",
@@ -126,7 +126,7 @@
       "desc": "Health is increased by 5% of your base Total Armor.",
       "desc_ja": "アーマーの5%をHPに変換する。ボーナスアーマーは含まない",
       "attr": "Conversion Rate",
-      "attr_ja": "アーマーHP変変換",
+      "attr_ja": "アーマーHP変換",
       "lv1": "5%",
       "lv2": "6%",
       "lv3": "",
