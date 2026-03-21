@@ -1664,12 +1664,16 @@ th {
 }
 
 .prototype-card .line--gray::before {
-  background: rgba(var(--color-prototype-rgb), 0.46);
+  display: none;
 }
 
 .prototype-card .line--core .line__text {
   font-size: 12px;
   color: var(--text);
+}
+
+.prototype-card .line--gray {
+  padding-left: 0;
 }
 
 .prototype-card .line--gray .line__text {

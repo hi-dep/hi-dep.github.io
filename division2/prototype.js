@@ -71,11 +71,12 @@
         </article>
       `;
     }).join("");
+    const augmentLabel = (langSelect && langSelect.value === "ja") ? "オーグメント" : "Augument";
 
     contentEl.innerHTML = `
       <section class="catgroup catgroup--gear prototype-view">
         <div class="prototype-view__meta">
-          <strong>Rows:</strong> ${rows.length}
+          <strong>${escapeHtml(augmentLabel)}:</strong> ${rows.length}
         </div>
         <div class="grid grid--gear prototype-grid">
           ${cards}
