@@ -253,8 +253,8 @@
     "weakestlink": "img/talents/weakestlink.png",
     "wicked": "img/talents/wicked.png",
     "coreexercise": "img/talents/coreexercise.png",
-    "perfectcomposure": "img/talents/perfectcomposure.png",
-    "perfectgunslinger": "img/talents/perfectgunslinger.png",
+    "perfectcomposure": "img/talents/composure.png",
+    "perfectgunslinger": "img/talents/gunslinger.png",
     "slotted": "img/talents/slotted.png"
   },
   "weapon_talents": {
