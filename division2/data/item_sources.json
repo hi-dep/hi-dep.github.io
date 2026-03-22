@@ -4771,7 +4771,7 @@
       ]
     },
     {
-      "item_id": "6adfdfab64f32823",
+      "item_id": "bc183c57a3666d72",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -4781,13 +4781,11 @@
       "brand_key": "",
       "slot_key": "rifle",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "rifle"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "32fbf4c233fa3568",
+      "item_id": "75eadbe848c6177e",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -4797,13 +4795,11 @@
       "brand_key": "",
       "slot_key": "pistol",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "pistol"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "942ddaee6c4935fe",
+      "item_id": "1136c55bb0c73801",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -4813,13 +4809,11 @@
       "brand_key": "",
       "slot_key": "pistol",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "pistol"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "208111f4bcc0d5ec",
+      "item_id": "6aebcc538c696f53",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -4834,10 +4828,8 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": [
-        "rifle"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
       "item_id": "07e8ad51f269429a",
@@ -4872,7 +4864,7 @@
       ]
     },
     {
-      "item_id": "feadea21c1261ac9",
+      "item_id": "0b62d97576e6fcf2",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -4882,13 +4874,11 @@
       "brand_key": "",
       "slot_key": "rifle",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "rifle"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "998ee8354805fbac",
+      "item_id": "f931c2c15735b826",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -4898,13 +4888,11 @@
       "brand_key": "",
       "slot_key": "shotgun",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "shotgun"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "45d353d6a43ee73f",
+      "item_id": "b21cadabeccced05",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -4914,8 +4902,22 @@
       "brand_key": "",
       "slot_key": "mmr",
       "blueprint": [],
-      "drop": [],
-      "target_looted": []
+      "target_looted": [],
+      "drop": []
+    },
+    {
+      "item_id": "821dab9eef862d14",
+      "entity_type": "weapon",
+      "category": "weapon",
+      "tier": "exotic",
+      "name_key": "agitator",
+      "name": "Agitator",
+      "brand_name": "",
+      "brand_key": "",
+      "slot_key": "ar",
+      "blueprint": [],
+      "target_looted": [],
+      "drop": []
     },
     {
       "item_id": "2d48e82013976f4f",
@@ -4934,7 +4936,7 @@
       ]
     },
     {
-      "item_id": "4d8d651993d93f78",
+      "item_id": "a69b3181e2ba29d9",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -4949,10 +4951,8 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": [
-        "rifle"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
       "item_id": "417ef0cd79d6c127",
@@ -4971,7 +4971,7 @@
       ]
     },
     {
-      "item_id": "ecddfbac89dff7fd",
+      "item_id": "2f4a6b1ddd5ae868",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -4981,13 +4981,11 @@
       "brand_key": "",
       "slot_key": "smg",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "smg"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "01dc11bb36db4410",
+      "item_id": "2b32e5b5281f07c2",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "exotic",
@@ -5002,13 +5000,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": [
-        "smg"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "293e1fd1485b54cb",
+      "item_id": "3c809c5fd6df6dc9",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -5023,13 +5019,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": [
-        "shotgun"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "9f9a5ee81a3ca38a",
+      "item_id": "89ba9f51709aec49",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -5044,13 +5038,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": [
-        "rifle"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "d5395975508ba7bf",
+      "item_id": "a7a643862e95fe46",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -5060,14 +5052,14 @@
       "brand_key": "",
       "slot_key": "lmg",
       "blueprint": [],
+      "target_looted": [],
       "drop": [
         "Event Hoarder",
         "Mini Warhound"
-      ],
-      "target_looted": []
+      ]
     },
     {
-      "item_id": "42ddd95344f2ed09",
+      "item_id": "a574fc60840765bf",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "exotic",
@@ -5077,11 +5069,11 @@
       "brand_key": "",
       "slot_key": "lmg",
       "blueprint": [],
-      "drop": [],
-      "target_looted": []
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "6ba032131b2c63b5",
+      "item_id": "dfff7a79ac0735d8",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -5096,13 +5088,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": [
-        "lmg"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "71db6fa659877131",
+      "item_id": "e6e79aea00045a98",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "exotic",
@@ -5112,13 +5102,11 @@
       "brand_key": "",
       "slot_key": "rifle",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "rifle"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "c74f6faf91fed5b0",
+      "item_id": "a54b13ba11af7380",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -5133,11 +5121,9 @@
           "type": "craft"
         }
       ],
+      "target_looted": [],
       "drop": [
         "dz"
-      ],
-      "target_looted": [
-        "lmg:dz"
       ]
     },
     {
@@ -5175,7 +5161,7 @@
       "target_looted": []
     },
     {
-      "item_id": "4af236e00d211ea2",
+      "item_id": "67b16c24b0f3ab68",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -5185,13 +5171,11 @@
       "brand_key": "",
       "slot_key": "lmg",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "lmg"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "d456574c3541883a",
+      "item_id": "b99b74eb9ce2854d",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -5205,11 +5189,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": []
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "c2ad9c6046d466dd",
+      "item_id": "d3f37fe85465c6f6",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -5219,13 +5203,11 @@
       "brand_key": "",
       "slot_key": "lmg",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "lmg"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "c856ef525574d0a5",
+      "item_id": "556a3722f0ecf739",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -5235,11 +5217,11 @@
       "brand_key": "",
       "slot_key": "lmg",
       "blueprint": [],
-      "drop": [],
-      "target_looted": []
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "a416b93298ec13ac",
+      "item_id": "5c770a7f45abf2ae",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -5249,13 +5231,11 @@
       "brand_key": "",
       "slot_key": "shotgun",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "shotgun"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "cdf099917c346a5a",
+      "item_id": "16875d3ef49adf27",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -5269,11 +5249,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": []
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "fe20afc0843e2bd7",
+      "item_id": "da1621fb5909f512",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -5283,13 +5263,11 @@
       "brand_key": "",
       "slot_key": "smg",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "smg"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "2716088646865698",
+      "item_id": "4f40c4dd30bbe8b0",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -5303,11 +5281,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": []
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "4f37e896b7eee595",
+      "item_id": "6166f1d0a6da43ed",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "exotic",
@@ -5322,13 +5300,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": [
-        "lmg"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "c3162286687ab285",
+      "item_id": "9c5dbc3302b57f30",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -5343,13 +5319,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": [
-        "shotgun"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "a8f4dd329a8027a6",
+      "item_id": "fe5d416bb7373edb",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -5364,13 +5338,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": [
-        "ar"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "d6db1f895e91b2d4",
+      "item_id": "356a58cf519c98fe",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -5385,13 +5357,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": [
-        "mmr"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "e1259c203d181245",
+      "item_id": "d5cd13783994e288",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "exotic",
@@ -5406,13 +5376,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": [
-        "lmg"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "5256391d36dcc1eb",
+      "item_id": "106afe40cedf4ebd",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -5427,13 +5395,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": [
-        "ar"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "cebac3bf86cea8cf",
+      "item_id": "f1cadbb4b3e237fc",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "exotic",
@@ -5448,13 +5414,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": [
-        "pistol"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "52c924d4bd71e506",
+      "item_id": "187b672fdd5a3eb4",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -5469,13 +5433,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": [
-        "smg"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "eb6723ff4f4aacee",
+      "item_id": "ed100e2eca2e5a89",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "exotic",
@@ -5485,10 +5447,8 @@
       "brand_key": "",
       "slot_key": "ar",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "ar"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
       "item_id": "dfbc8bf98f786dc2",
@@ -5507,7 +5467,7 @@
       ]
     },
     {
-      "item_id": "f76eda79db462227",
+      "item_id": "a684cd673b1ef8dc",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -5517,11 +5477,11 @@
       "brand_key": "",
       "slot_key": "ar",
       "blueprint": [],
-      "drop": [],
-      "target_looted": []
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "4099add811045ec3",
+      "item_id": "d4e0fb869f53cf65",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -5536,13 +5496,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": [
-        "lmg"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "24515ad08a34b463",
+      "item_id": "58f0b16428f4b463",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "exotic",
@@ -5557,13 +5515,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": [
-        "ar"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "b3e6fb34c31287f1",
+      "item_id": "1c8e45934489eaa9",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -5573,13 +5529,11 @@
       "brand_key": "",
       "slot_key": "rifle",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "rifle"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "81fc95f5f8adbb5c",
+      "item_id": "f10a9bba1e22fa53",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -5589,13 +5543,11 @@
       "brand_key": "",
       "slot_key": "mmr",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "mmr"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "4a3ccb44f122e045",
+      "item_id": "47fed17c12c26807",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -5609,11 +5561,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": []
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "71ae6d0e4411c59f",
+      "item_id": "c36aca6663ea49e6",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -5623,13 +5575,11 @@
       "brand_key": "",
       "slot_key": "lmg",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "lmg"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "92aaac13e3bd61af",
+      "item_id": "105feb22eedad56b",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -5643,11 +5593,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": []
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "c23c9c096ec650a6",
+      "item_id": "7ff1dd2ca30cdbe5",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -5657,13 +5607,11 @@
       "brand_key": "",
       "slot_key": "lmg",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "lmg"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "3baeb5de4b98cf53",
+      "item_id": "6d8b76ebddfd752e",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -5677,13 +5625,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": [
-        "smg"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "6639c56301482601",
+      "item_id": "a5acdd51be23df87",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -5698,13 +5644,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": [
-        "smg"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "84b18f0343ab86c3",
+      "item_id": "4464595057459bc8",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -5719,13 +5663,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": [
-        "mmr"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "6f03c39146f382b7",
+      "item_id": "5d30c3f54831c421",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -5735,13 +5677,11 @@
       "brand_key": "",
       "slot_key": "smg",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "smg"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "9f33d7d1f5f97d40",
+      "item_id": "8ede99273dc4dae6",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -5751,13 +5691,11 @@
       "brand_key": "",
       "slot_key": "smg",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "smg"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "d129aee0eaafadad",
+      "item_id": "cd4b150679f8a5c0",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -5767,11 +5705,11 @@
       "brand_key": "",
       "slot_key": "smg",
       "blueprint": [],
-      "drop": [],
-      "target_looted": []
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "5e69155e9baed0e6",
+      "item_id": "fa4a858e504a4df9",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -5781,13 +5719,11 @@
       "brand_key": "",
       "slot_key": "rifle",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "rifle"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "e90788eae6d65de6",
+      "item_id": "5ed412f4e55a3d10",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -5797,13 +5733,11 @@
       "brand_key": "",
       "slot_key": "mmr",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "mmr"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "ac7cde01043bf438",
+      "item_id": "f5ecdb7d1ddfca73",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -5818,13 +5752,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": [
-        "lmg"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "1a4bcd6f8399c8de",
+      "item_id": "5e3dd24c1a1524be",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -5834,13 +5766,11 @@
       "brand_key": "",
       "slot_key": "ar",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "ar"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "6de580eb49a3aaa1",
+      "item_id": "b9c1fb39cbb28bd6",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -5855,13 +5785,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": [
-        "shotgun"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "0b4649b1686b6cbf",
+      "item_id": "4ea302ef998ba8c5",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -5871,13 +5799,11 @@
       "brand_key": "",
       "slot_key": "lmg",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "lmg"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "34a74061d0fa2496",
+      "item_id": "d0a48ee465ea688d",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -5891,11 +5817,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": []
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "cf2c5f77e4c89d9d",
+      "item_id": "3c522a385b21d2cd",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -5905,13 +5831,11 @@
       "brand_key": "",
       "slot_key": "mmr",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "mmr"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "d22e1f3a329828c0",
+      "item_id": "4bdd30df2273b26e",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -5925,11 +5849,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": []
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "ee6fb204e2247a53",
+      "item_id": "8202c6f416bb010b",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -5939,13 +5863,11 @@
       "brand_key": "",
       "slot_key": "shotgun",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "shotgun"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "11e3966d7fe9eefb",
+      "item_id": "4db549da9194eaa3",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -5959,11 +5881,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": []
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "a1d8ee8b96c00bbb",
+      "item_id": "7500e969306531b2",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -5973,13 +5895,11 @@
       "brand_key": "",
       "slot_key": "ar",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "ar"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "76620d5c2de358eb",
+      "item_id": "97ed92d3b1aeb2f1",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -5989,13 +5909,11 @@
       "brand_key": "",
       "slot_key": "pistol",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "pistol"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "04286b19458df3d4",
+      "item_id": "4a29ae58f2987306",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -6005,13 +5923,11 @@
       "brand_key": "",
       "slot_key": "pistol",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "pistol"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "caa9f7c273c5fb49",
+      "item_id": "f92d2f133c79a260",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -6026,13 +5942,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": [
-        "lmg"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "db63248583d261a3",
+      "item_id": "1144f3e17aff5a32",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -6047,15 +5961,13 @@
           "type": "craft"
         }
       ],
+      "target_looted": [],
       "drop": [
         "dz"
-      ],
-      "target_looted": [
-        "smg:dz"
       ]
     },
     {
-      "item_id": "57d20e949100fefe",
+      "item_id": "8e37633c9efe148a",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -6070,13 +5982,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": [
-        "mmr"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "28c3c76ac3a25361",
+      "item_id": "de2a24ea9e71d676",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "exotic",
@@ -6086,13 +5996,11 @@
       "brand_key": "",
       "slot_key": "rifle",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "rifle"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "70c025977301f83d",
+      "item_id": "52a99c27ba0a6d12",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -6102,13 +6010,11 @@
       "brand_key": "",
       "slot_key": "pistol",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "pistol"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "95f3981d4d53d3bc",
+      "item_id": "d348713789e36ca0",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -6122,11 +6028,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": []
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "77ff4be83061c732",
+      "item_id": "c923c20efbbb664a",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -6136,13 +6042,11 @@
       "brand_key": "",
       "slot_key": "pistol",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "pistol"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "867742d184ef43bf",
+      "item_id": "4d30a8fda27f0076",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "exotic",
@@ -6157,13 +6061,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": [
-        "rifle"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "5d1b0815f038c866",
+      "item_id": "cec7d7602f39109c",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -6173,13 +6075,11 @@
       "brand_key": "",
       "slot_key": "shotgun",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "shotgun"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "06203a4973866fa4",
+      "item_id": "9890501785df6ebf",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -6189,13 +6089,11 @@
       "brand_key": "",
       "slot_key": "shotgun",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "shotgun"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "b887dd0d35ec6592",
+      "item_id": "9b64e97e5fc94178",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -6209,11 +6107,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": []
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "50e3ea3765dd2725",
+      "item_id": "77cc4e8943b6101f",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "exotic",
@@ -6228,13 +6126,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": [
-        "mmr"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "497623df9a2150d7",
+      "item_id": "ecc7fe73413722ca",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "exotic",
@@ -6244,11 +6140,11 @@
       "brand_key": "",
       "slot_key": "ar",
       "blueprint": [],
-      "drop": [],
-      "target_looted": []
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "9b93f946347bc837",
+      "item_id": "700c41ed59241968",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -6263,13 +6159,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": [
-        "mmr"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "2dbe1686f42f1616",
+      "item_id": "59b6b7dccdc78c7e",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -6284,13 +6178,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": [
-        "smg"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "4f9fb3096f62cfa1",
+      "item_id": "84b72f724924a3cb",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -6300,13 +6192,11 @@
       "brand_key": "",
       "slot_key": "shotgun",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "shotgun"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "10a4d2090309ffba",
+      "item_id": "ee7e0e29d939ffee",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -6316,13 +6206,11 @@
       "brand_key": "",
       "slot_key": "smg",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "smg"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "210b857dd69ebefd",
+      "item_id": "932f397b6ed03199",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -6332,13 +6220,11 @@
       "brand_key": "",
       "slot_key": "smg",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "smg"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "1ef3b3fea27a09be",
+      "item_id": "a5b6819e8335f36e",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -6353,11 +6239,9 @@
           "type": "craft"
         }
       ],
+      "target_looted": [],
       "drop": [
         "dz"
-      ],
-      "target_looted": [
-        "rifle:dz"
       ]
     },
     {
@@ -6395,7 +6279,7 @@
       "target_looted": []
     },
     {
-      "item_id": "a984b6f3d8766080",
+      "item_id": "9f2f4d991713caa1",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -6405,13 +6289,11 @@
       "brand_key": "",
       "slot_key": "ar",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "ar"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "05b926102495707a",
+      "item_id": "ae9d8f37e2e7d516",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -6421,13 +6303,11 @@
       "brand_key": "",
       "slot_key": "ar",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "ar"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "db2c3232aa29ee9a",
+      "item_id": "ffb41d43944d55d9",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -6437,13 +6317,11 @@
       "brand_key": "",
       "slot_key": "ar",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "ar"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "8c3081e1373a7889",
+      "item_id": "ebd148f3e7e1648e",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -6457,11 +6335,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": []
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "6600bd63e1555292",
+      "item_id": "102c50746d03bea2",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -6471,13 +6349,11 @@
       "brand_key": "",
       "slot_key": "ar",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "ar"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "86819ee375f47411",
+      "item_id": "9105d13981f3512e",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -6491,11 +6367,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": []
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "cd9822673babc67c",
+      "item_id": "1a82bc352ed8911f",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -6505,10 +6381,8 @@
       "brand_key": "",
       "slot_key": "shotgun",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "shotgun"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
       "item_id": "c50e2b16cd4b9a04",
@@ -6528,7 +6402,7 @@
       "target_looted": []
     },
     {
-      "item_id": "ec34f9c7ef390295",
+      "item_id": "36ec3ccf6facd236",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -6538,13 +6412,11 @@
       "brand_key": "",
       "slot_key": "pistol",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "pistol"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "b8bc4ea7867b6ac7",
+      "item_id": "0c13b56c85722c3a",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -6559,13 +6431,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": [
-        "smg"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "c5e9ba9693145ec6",
+      "item_id": "26dc13f2fd177ae5",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -6580,13 +6450,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": [
-        "mmr"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "62661e47ea165db3",
+      "item_id": "2f9ca80486ed5633",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -6596,13 +6464,11 @@
       "brand_key": "",
       "slot_key": "ar",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "ar"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "8482bfac6a855cd4",
+      "item_id": "591a0e3f3b632a0c",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -6612,13 +6478,11 @@
       "brand_key": "",
       "slot_key": "ar",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "ar"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "e6d1f02b77057687",
+      "item_id": "ec9957f5f4aac4e0",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -6632,11 +6496,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": []
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "da29c67fd9eadd0e",
+      "item_id": "07c5394749db09bf",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -6646,13 +6510,11 @@
       "brand_key": "",
       "slot_key": "lmg",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "lmg"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "b23070cfa3238f3a",
+      "item_id": "2690852094c25905",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -6667,13 +6529,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": [
-        "ar"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "45c89c6cc78bd714",
+      "item_id": "01efeced78fb5e9a",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -6688,13 +6548,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": [
-        "ar"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "66113b043d80cfbe",
+      "item_id": "982a1073c7224bf1",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -6709,15 +6567,13 @@
           "type": "craft"
         }
       ],
+      "target_looted": [],
       "drop": [
         "dz"
-      ],
-      "target_looted": [
-        "lmg:dz"
       ]
     },
     {
-      "item_id": "5db4c09f1c0180bc",
+      "item_id": "1b91460987545d3b",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -6731,13 +6587,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": [
-        "lmg"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "5e1775f6ba7311e7",
+      "item_id": "492cdc9529bf6e8b",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -6752,13 +6606,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": [
-        "smg"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "6beabbdca0c8e70a",
+      "item_id": "a0484ac2b9997f91",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -6768,16 +6620,14 @@
       "brand_key": "",
       "slot_key": "mmr",
       "blueprint": [],
+      "target_looted": [],
       "drop": [
         "Event Hoarder",
         "Mini Warhound"
-      ],
-      "target_looted": [
-        "mmr"
       ]
     },
     {
-      "item_id": "cd1b0af7b7141fba",
+      "item_id": "73db4c2a36933068",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -6792,15 +6642,13 @@
           "type": "craft"
         }
       ],
+      "target_looted": [],
       "drop": [
         "dz"
-      ],
-      "target_looted": [
-        "rifle:dz"
       ]
     },
     {
-      "item_id": "ac3261315232bbe6",
+      "item_id": "d6a15f564ea69444",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -6810,13 +6658,11 @@
       "brand_key": "",
       "slot_key": "ar",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "ar"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "c588ce685a3a9331",
+      "item_id": "3630ed58b73b5978",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -6826,13 +6672,11 @@
       "brand_key": "",
       "slot_key": "mmr",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "mmr"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "01e05f894b403232",
+      "item_id": "9f0fc8d83429dc57",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -6846,11 +6690,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": []
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "5bb264e7672eac41",
+      "item_id": "46e6fa0dd798e913",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -6860,13 +6704,11 @@
       "brand_key": "",
       "slot_key": "lmg",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "lmg"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "5f674627a58d8155",
+      "item_id": "17a0bd6c8e961649",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -6880,11 +6722,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": []
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "b4105a60f5322017",
+      "item_id": "71a93550ae446b80",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -6899,10 +6741,22 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": [
-        "mmr"
-      ]
+      "target_looted": [],
+      "drop": []
+    },
+    {
+      "item_id": "bbb1d2e565c10949",
+      "entity_type": "weapon",
+      "category": "weapon",
+      "tier": "named",
+      "name_key": "interchangeenhancedauga3p",
+      "name": "Interchange (Enhanced AUG A3P)",
+      "brand_name": "",
+      "brand_key": "",
+      "slot_key": "smg",
+      "blueprint": [],
+      "target_looted": [],
+      "drop": []
     },
     {
       "item_id": "8d8ad5482e0aef84",
@@ -6926,7 +6780,7 @@
       ]
     },
     {
-      "item_id": "1ab632e9ed6d283c",
+      "item_id": "18bff14bd56f9d57",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "exotic",
@@ -6941,13 +6795,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": [
-        "lmg"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "ce05e5df982f526e",
+      "item_id": "428f3ba99d1bd206",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -6961,13 +6813,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": [
-        "lmg"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "57d07bf776ca09f4",
+      "item_id": "914b0f0d45d37fca",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -6981,13 +6831,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": [
-        "pistol"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "45375449a676378a",
+      "item_id": "8488d7d08b283c8f",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -7002,13 +6850,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": [
-        "ar"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "c2db4739e763fae5",
+      "item_id": "dcc27f215a5bc0cb",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -7018,13 +6864,11 @@
       "brand_key": "",
       "slot_key": "shotgun",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "shotgun"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "c122415a50a16bb3",
+      "item_id": "e84ea4105b11f543",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "exotic",
@@ -7039,13 +6883,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": [
-        "smg"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "8e949067d2b61318",
+      "item_id": "8cea542e151ca98f",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -7060,13 +6902,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": [
-        "shotgun"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "e1d099f45a790413",
+      "item_id": "c72cfe96d9f66434",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -7076,11 +6916,11 @@
       "brand_key": "",
       "slot_key": "ar",
       "blueprint": [],
-      "drop": [],
-      "target_looted": []
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "9f224e61f2ed6a90",
+      "item_id": "087d28f4b60cc258",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "exotic",
@@ -7090,13 +6930,11 @@
       "brand_key": "",
       "slot_key": "pistol",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "pistol"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "10cc8e8d9a937a27",
+      "item_id": "e642825e788b8636",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -7111,13 +6949,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": [
-        "pistol"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "de7978c30baafc87",
+      "item_id": "3681d2d2d6f12c2c",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -7127,13 +6963,11 @@
       "brand_key": "",
       "slot_key": "rifle",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "rifle"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "c3f2ab1dc9008b5e",
+      "item_id": "52d402396b33172b",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -7148,13 +6982,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": [
-        "shotgun"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "2496dd5bfa574fa5",
+      "item_id": "e661e57647f8080b",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -7169,13 +7001,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": [
-        "shotgun"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "bf3077283fcbb176",
+      "item_id": "a550964265222150",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -7190,13 +7020,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": [
-        "ar"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "1f737ff88f8fe0e2",
+      "item_id": "28f2604315c5ce79",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "exotic",
@@ -7206,13 +7034,11 @@
       "brand_key": "",
       "slot_key": "shotgun",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "shotgun"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "5695376f77e46d86",
+      "item_id": "56fce6f3198cf7d3",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -7222,13 +7048,11 @@
       "brand_key": "",
       "slot_key": "rifle",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "rifle"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "bf582a1740e464ed",
+      "item_id": "2c36e2359bd24466",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -7242,11 +7066,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": []
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "8356bc9a0831a3ba",
+      "item_id": "4d511898bf9824d5",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -7256,13 +7080,11 @@
       "brand_key": "",
       "slot_key": "rifle",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "rifle"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "a685d00d4ded0a63",
+      "item_id": "1259d85a72bb3fbe",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -7276,11 +7098,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": []
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "0841d4b97d9304f7",
+      "item_id": "9947f406fba085e7",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -7290,13 +7112,11 @@
       "brand_key": "",
       "slot_key": "pistol",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "pistol"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "25e632db4ef82403",
+      "item_id": "48483b863ee75531",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -7306,13 +7126,11 @@
       "brand_key": "",
       "slot_key": "smg",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "smg"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "bcaa611b7c3da531",
+      "item_id": "ab9ff698a13b21ce",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -7322,13 +7140,11 @@
       "brand_key": "",
       "slot_key": "rifle",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "rifle"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "bceaba2f5a607c7d",
+      "item_id": "7e8b2f5221a47ecb",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -7342,11 +7158,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": []
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "41c266c69352467b",
+      "item_id": "2d42c43823162d20",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -7356,13 +7172,11 @@
       "brand_key": "",
       "slot_key": "lmg",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "lmg"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "9f9bed5f4c68603e",
+      "item_id": "ab2195fb0d203679",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -7372,13 +7186,11 @@
       "brand_key": "",
       "slot_key": "pistol",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "pistol"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "31ffd57d64b41918",
+      "item_id": "988340d7757c1ac4",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -7388,13 +7200,11 @@
       "brand_key": "",
       "slot_key": "mmr",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "mmr"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "7cdb53e77fb4d300",
+      "item_id": "919da62fd60bb098",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -7408,11 +7218,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": []
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "3e4fb0077f19d235",
+      "item_id": "7c86f3441b34a9c5",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -7422,13 +7232,11 @@
       "brand_key": "",
       "slot_key": "mmr",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "mmr"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "11178d8207d5f527",
+      "item_id": "48cde6bb35258fbc",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -7438,13 +7246,11 @@
       "brand_key": "",
       "slot_key": "shotgun",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "shotgun"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "dba55e05e29ef404",
+      "item_id": "555c3fc9bb43efed",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -7458,8 +7264,8 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": []
+      "target_looted": [],
+      "drop": []
     },
     {
       "item_id": "de93c391b4382de3",
@@ -7485,7 +7291,7 @@
       ]
     },
     {
-      "item_id": "bbfed77b6fd8efa8",
+      "item_id": "b4d05647e0538fa8",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "exotic",
@@ -7500,13 +7306,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": [
-        "mmr"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "4877b28b7f3843b6",
+      "item_id": "567bb130fa4188dd",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -7516,13 +7320,11 @@
       "brand_key": "",
       "slot_key": "shotgun",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "shotgun"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "828e19a40c628581",
+      "item_id": "851599c9f6a52ad4",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -7532,13 +7334,11 @@
       "brand_key": "",
       "slot_key": "pistol",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "pistol"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "67a07e5075c74d59",
+      "item_id": "53cacac9ca96a776",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -7553,13 +7353,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": [
-        "ar"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "b80c9ff48572fd10",
+      "item_id": "2049707eda49a767",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "exotic",
@@ -7574,13 +7372,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": [
-        "rifle"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "d49ad4535d88f0e1",
+      "item_id": "98df47d1afe7557f",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -7590,10 +7386,8 @@
       "brand_key": "",
       "slot_key": "lmg",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "lmg"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
       "item_id": "88ac318740ee3a32",
@@ -7612,7 +7406,7 @@
       ]
     },
     {
-      "item_id": "eb11b639ede32e8c",
+      "item_id": "1cc74ba01ad810f8",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -7622,13 +7416,11 @@
       "brand_key": "",
       "slot_key": "ar",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "ar"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "236cf2ec52b922a7",
+      "item_id": "ab3ea3b61a453eb7",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -7638,13 +7430,11 @@
       "brand_key": "",
       "slot_key": "lmg",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "lmg"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "92eb74d69109f07d",
+      "item_id": "105f515b4f255450",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -7654,13 +7444,11 @@
       "brand_key": "",
       "slot_key": "lmg",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "lmg"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "03affe9473fb58d0",
+      "item_id": "8dbf47e969332f5d",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -7670,13 +7458,11 @@
       "brand_key": "",
       "slot_key": "shotgun",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "shotgun"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "68411124cdad2c10",
+      "item_id": "cf6e8db34178056b",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -7686,13 +7472,11 @@
       "brand_key": "",
       "slot_key": "pistol",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "pistol"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "e6cd1940a3d2d7a4",
+      "item_id": "b4d8a20fca25351e",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -7706,11 +7490,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": []
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "68f9507c71f1c277",
+      "item_id": "0ac60d2f7cfaa0c4",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -7720,13 +7504,11 @@
       "brand_key": "",
       "slot_key": "rifle",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "rifle"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "c7ad650f0fbfe154",
+      "item_id": "87899bb82fa2561e",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -7736,13 +7518,11 @@
       "brand_key": "",
       "slot_key": "lmg",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "lmg"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "a75fe1ebb2be641c",
+      "item_id": "ab08573601bb376a",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -7756,11 +7536,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": []
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "b6a97ce55bb96ee2",
+      "item_id": "734b4657e05d705f",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -7770,13 +7550,11 @@
       "brand_key": "",
       "slot_key": "ar",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "ar"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "afee78bc19f1ea8d",
+      "item_id": "4bce37efcd26fa76",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -7786,13 +7564,11 @@
       "brand_key": "",
       "slot_key": "lmg",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "lmg"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "0c050c95889d0569",
+      "item_id": "6daadde8fe22d1fb",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -7802,13 +7578,11 @@
       "brand_key": "",
       "slot_key": "ar",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "ar"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "0afc69397fd07917",
+      "item_id": "774ad2e76ee578bc",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -7818,13 +7592,11 @@
       "brand_key": "",
       "slot_key": "mmr",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "mmr"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "8250edb22376f830",
+      "item_id": "028932e37bc13834",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -7838,11 +7610,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": []
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "b330d296978f6182",
+      "item_id": "a6c7e17ef3bb4fb9",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "exotic",
@@ -7857,13 +7629,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": [
-        "pistol"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "97db3c6b772b1f9c",
+      "item_id": "3998806c2505d327",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -7878,13 +7648,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": [
-        "pistol"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "64c2eb6db2fe9d89",
+      "item_id": "9f88f8baf9ec803d",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -7894,13 +7662,11 @@
       "brand_key": "",
       "slot_key": "smg",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "smg"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "a01d1c74a6471cd8",
+      "item_id": "cfd05dcbb9b04d19",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -7910,13 +7676,11 @@
       "brand_key": "",
       "slot_key": "smg",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "smg"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "25972508bea50f47",
+      "item_id": "d1c6d963563802c2",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -7926,13 +7690,11 @@
       "brand_key": "",
       "slot_key": "smg",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "smg"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "11025bc9d4d77aac",
+      "item_id": "8b34f5d3fc5a7c1b",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -7946,11 +7708,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": []
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "8744182df3e0d3e2",
+      "item_id": "5ad2f43d4a2149af",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -7960,13 +7722,11 @@
       "brand_key": "",
       "slot_key": "smg",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "smg"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "6b7b4ad6003b3cec",
+      "item_id": "5f4025949cb13334",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -7976,13 +7736,11 @@
       "brand_key": "",
       "slot_key": "smg",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "smg"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "c73b930f2d8490db",
+      "item_id": "46ae234165f5e20e",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "exotic",
@@ -7992,13 +7750,11 @@
       "brand_key": "",
       "slot_key": "mmr",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "mmr"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "e52b3ea87bda1fd7",
+      "item_id": "d1417bec08a2c47b",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -8013,13 +7769,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": [
-        "lmg"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "38441e6339b87110",
+      "item_id": "a2804623af186be5",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -8029,13 +7783,11 @@
       "brand_key": "",
       "slot_key": "pistol",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "pistol"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "7d8f06c0502af3c7",
+      "item_id": "8afd5ddd35977671",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -8045,14 +7797,14 @@
       "brand_key": "",
       "slot_key": "mmr",
       "blueprint": [],
+      "target_looted": [],
       "drop": [
         "Event Hoarder",
         "Mini Warhound"
-      ],
-      "target_looted": []
+      ]
     },
     {
-      "item_id": "bacb4bd87ed9f7fb",
+      "item_id": "882e1e753a45abe6",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -8067,15 +7819,13 @@
           "type": "craft"
         }
       ],
+      "target_looted": [],
       "drop": [
         "dz"
-      ],
-      "target_looted": [
-        "pistol:dz"
       ]
     },
     {
-      "item_id": "db13c3048a97f18d",
+      "item_id": "f3f4624a033c6dd3",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "exotic",
@@ -8085,11 +7835,11 @@
       "brand_key": "",
       "slot_key": "smg",
       "blueprint": [],
-      "drop": [],
-      "target_looted": []
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "1242474bef081259",
+      "item_id": "dbeb1b0e08b609c9",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "exotic",
@@ -8104,13 +7854,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": [
-        "shotgun"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "53891273a90de424",
+      "item_id": "eb8cc0383ba8733e",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "exotic",
@@ -8125,13 +7873,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": [
-        "smg"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "43a2100a475073f5",
+      "item_id": "11810764b3d3e51a",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -8141,13 +7887,11 @@
       "brand_key": "",
       "slot_key": "pistol",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "pistol"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "55b4a609a954704f",
+      "item_id": "0132d15e468cb972",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -8157,13 +7901,11 @@
       "brand_key": "",
       "slot_key": "smg",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "smg"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "3d295ae2eda0ce16",
+      "item_id": "22be4ebfd8465992",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -8177,11 +7919,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": []
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "9ab8a77ce442df07",
+      "item_id": "28a44b954909b0e8",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "exotic",
@@ -8196,13 +7938,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": [
-        "lmg"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "f24e006fda58fc4f",
+      "item_id": "7eac122041561b95",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -8212,13 +7952,11 @@
       "brand_key": "",
       "slot_key": "mmr",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "mmr"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "1db1073d781b8257",
+      "item_id": "d7bdb6aedb58d051",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -8232,13 +7970,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": [
-        "ar"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "2560004a2bc74a7a",
+      "item_id": "2543d20225a0e182",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "exotic",
@@ -8253,13 +7989,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": [
-        "lmg"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "90884cd9eeddd2df",
+      "item_id": "3746676d1c516dc3",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -8274,13 +8008,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": [
-        "mmr:dz"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "7c2cb72603b6edbb",
+      "item_id": "60929568cad91812",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -8295,13 +8027,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": [
-        "pistol"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "c98ca2717aa2f260",
+      "item_id": "5614fff46d348300",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -8315,11 +8045,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": []
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "42897996579e05b8",
+      "item_id": "ed8f7fb450c01c40",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -8329,13 +8059,11 @@
       "brand_key": "",
       "slot_key": "ar",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "ar"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "7fbff18c34635afe",
+      "item_id": "26149a555cf468d4",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -8349,11 +8077,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": []
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "02d68270d18ec4aa",
+      "item_id": "d1dee66dd43413a3",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -8363,13 +8091,11 @@
       "brand_key": "",
       "slot_key": "rifle",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "rifle"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "93366b09937e4d79",
+      "item_id": "890dfa4115ad59a1",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -8383,11 +8109,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": []
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "92fe586cf46c31e9",
+      "item_id": "a73694f6e0289c75",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -8397,13 +8123,11 @@
       "brand_key": "",
       "slot_key": "smg",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "smg"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "005a61139db79619",
+      "item_id": "87b9ce4e7e9c429a",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -8413,13 +8137,11 @@
       "brand_key": "",
       "slot_key": "smg",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "smg"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "9035b72a7cd3ffef",
+      "item_id": "d1e689fc5f0d5e8d",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -8429,13 +8151,11 @@
       "brand_key": "",
       "slot_key": "smg",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "smg"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "a76e4e517f224b09",
+      "item_id": "79da769a01ab82ad",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -8445,13 +8165,11 @@
       "brand_key": "",
       "slot_key": "pistol",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "pistol"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "a4242cc29f8d36e7",
+      "item_id": "6f0321da9c7b2ea4",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -8465,13 +8183,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": [
-        "smg"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "17a1525734c672ab",
+      "item_id": "2d31dff1a9aae64d",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -8481,13 +8197,11 @@
       "brand_key": "",
       "slot_key": "pistol",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "pistol"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "be8742a8793f50b2",
+      "item_id": "3fda0d8f9dd4639e",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -8497,13 +8211,11 @@
       "brand_key": "",
       "slot_key": "pistol",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "pistol"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "0d1b3fde217ec417",
+      "item_id": "bbee42051dfd011d",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -8517,11 +8229,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": []
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "2fb18a36e56141c2",
+      "item_id": "f1e08098997f0ce0",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -8536,13 +8248,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": [
-        "ar"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "71dda4e07eafa900",
+      "item_id": "695f02e000e02ce6",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -8552,14 +8262,14 @@
       "brand_key": "",
       "slot_key": "pistol",
       "blueprint": [],
+      "target_looted": [],
       "drop": [
         "Event Hoarder",
         "Mini Warhound"
-      ],
-      "target_looted": []
+      ]
     },
     {
-      "item_id": "d8089c44a54cd638",
+      "item_id": "5309f4cc71a44d6f",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -8574,13 +8284,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": [
-        "lmg"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "186e6cf148ddac61",
+      "item_id": "ab4d2b9f2c7d8a37",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "exotic",
@@ -8590,11 +8298,11 @@
       "brand_key": "",
       "slot_key": "pistol",
       "blueprint": [],
-      "drop": [],
-      "target_looted": []
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "38970ea90369b233",
+      "item_id": "2e97619993048bac",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -8604,13 +8312,11 @@
       "brand_key": "",
       "slot_key": "mmr",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "mmr"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "2b43d61877b3b624",
+      "item_id": "6949803799405c0a",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -8624,13 +8330,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": [
-        "rifle"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "27c2aee0ca3a7e1d",
+      "item_id": "b90590f019eafeae",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -8645,15 +8349,13 @@
           "type": "craft"
         }
       ],
+      "target_looted": [],
       "drop": [
         "dz"
-      ],
-      "target_looted": [
-        "shotgun:dz"
       ]
     },
     {
-      "item_id": "2809f3812ceee973",
+      "item_id": "665aadfe2e557cd7",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -8667,13 +8369,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": [
-        "lmg"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "41877057a507dd4b",
+      "item_id": "1bb83a16711aac27",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "exotic",
@@ -8683,11 +8383,11 @@
       "brand_key": "",
       "slot_key": "rifle",
       "blueprint": [],
-      "drop": [],
-      "target_looted": []
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "f1848083df53649e",
+      "item_id": "42eb14c2ac8b97f7",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "exotic",
@@ -8702,13 +8402,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": [
-        "mmr"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "b704132606b4b68f",
+      "item_id": "b51f40af50aca809",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -8723,13 +8421,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": [
-        "smg"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "f0f42dd0b0e8e51d",
+      "item_id": "7962e4c9f4a2cc43",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -8739,13 +8435,11 @@
       "brand_key": "",
       "slot_key": "shotgun",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "shotgun"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "d1ed6a5727deb874",
+      "item_id": "560c9e8bd08d299e",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -8760,11 +8454,11 @@
           "src": "Field Research Firewall"
         }
       ],
-      "drop": [],
-      "target_looted": []
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "4faaf23e8148ee47",
+      "item_id": "fe3c46650d3893f3",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -8779,13 +8473,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": [
-        "mmr"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "3b10534337e4055c",
+      "item_id": "b17ee514f44c4faa",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "exotic",
@@ -8800,13 +8492,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": [
-        "shotgun"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "d14222cb01108540",
+      "item_id": "53f336307206ae63",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -8816,10 +8506,8 @@
       "brand_key": "",
       "slot_key": "pistol",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "pistol"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
       "item_id": "cf755df74a7c54a7",
@@ -8842,7 +8530,7 @@
       ]
     },
     {
-      "item_id": "bb691344684aaaa8",
+      "item_id": "e4daec190b80883d",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "exotic",
@@ -8857,13 +8545,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": [
-        "mmr"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "ae50301bd51a1a25",
+      "item_id": "5180a47c6c665e56",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -8877,13 +8563,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": [
-        "ar"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "26a7af2e37f74333",
+      "item_id": "b060584b94f31dc8",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -8893,13 +8577,11 @@
       "brand_key": "",
       "slot_key": "rifle",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "rifle"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "e62b3df159b65fb8",
+      "item_id": "4cf0c8c77a0fd61f",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -8909,13 +8591,11 @@
       "brand_key": "",
       "slot_key": "rifle",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "rifle"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "adeed3ceaca0fa41",
+      "item_id": "748086baf668a580",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -8929,11 +8609,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": []
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "cfc35660fdb46eec",
+      "item_id": "e602c9513cda6a5b",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -8951,13 +8631,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": [
-        "shotgun"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "0141c5a982b80b23",
+      "item_id": "d7ecdb8870f3f7a9",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -8972,13 +8650,11 @@
           "src": "Field Research Gunner"
         }
       ],
-      "drop": [],
-      "target_looted": [
-        "lmg"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "e1b8c201bf31e12c",
+      "item_id": "a054e5411e3c2f8c",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -8988,14 +8664,14 @@
       "brand_key": "",
       "slot_key": "smg",
       "blueprint": [],
+      "target_looted": [],
       "drop": [
         "Event Hoarder",
         "Mini Warhound"
-      ],
-      "target_looted": []
+      ]
     },
     {
-      "item_id": "b2094cf7d3660181",
+      "item_id": "9f82738cf9b9c359",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -9005,13 +8681,11 @@
       "brand_key": "",
       "slot_key": "pistol",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "pistol"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "a6ba8ac5132f9ddb",
+      "item_id": "ec8ccbaba186dc13",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -9025,13 +8699,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": [
-        "rifle"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "005c376058dce6a1",
+      "item_id": "a8a4462460802bd3",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -9041,13 +8713,11 @@
       "brand_key": "",
       "slot_key": "ar",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "ar"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "0133743c67cce041",
+      "item_id": "ce03f9b6e22e2458",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -9057,13 +8727,11 @@
       "brand_key": "",
       "slot_key": "mmr",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "mmr"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "39ffdf3fa34ab35e",
+      "item_id": "9a37266a884d9641",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -9077,11 +8745,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": []
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "ad60e74d6426a662",
+      "item_id": "99cdda6d8846c811",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -9091,13 +8759,11 @@
       "brand_key": "",
       "slot_key": "shotgun",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "shotgun"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "d752f535e57c8b65",
+      "item_id": "58cc2d55bd3c4218",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -9111,11 +8777,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": []
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "ad7ab87acc7d5426",
+      "item_id": "3a05866869683d42",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -9125,13 +8791,11 @@
       "brand_key": "",
       "slot_key": "mmr",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "mmr"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "20308ea0ce8da344",
+      "item_id": "80867d191c23d73e",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -9145,11 +8809,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": []
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "2ead6b49c7612521",
+      "item_id": "9f0e18e3b37922d9",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -9159,13 +8823,11 @@
       "brand_key": "",
       "slot_key": "mmr",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "mmr"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "6d519b5b3d9a4ca8",
+      "item_id": "110f6424adc49b73",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -9179,11 +8841,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": []
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "5b855520ffbeda77",
+      "item_id": "1a864cdc980980c1",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -9193,13 +8855,11 @@
       "brand_key": "",
       "slot_key": "shotgun",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "shotgun"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "d9c982c99a9b3017",
+      "item_id": "6a193c23a3bf804d",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -9214,13 +8874,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": [
-        "rifle"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "44c7f5cfa2b7be27",
+      "item_id": "9eaec7e98bed1177",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "exotic",
@@ -9235,13 +8893,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": [
-        "ar"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "a2f7ef2ae02117ef",
+      "item_id": "5ff9beeeb777e420",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -9251,13 +8907,11 @@
       "brand_key": "",
       "slot_key": "lmg",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "lmg"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "79d503a02ca8d6ce",
+      "item_id": "0637f4f0f572ef79",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "exotic",
@@ -9272,13 +8926,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": [
-        "ar"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "17b9dbd68f450af2",
+      "item_id": "c2180d3f706aaa2a",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -9288,13 +8940,11 @@
       "brand_key": "",
       "slot_key": "shotgun",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "shotgun"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "c20367c65c81fb9a",
+      "item_id": "befc7e1f32369dd8",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -9308,11 +8958,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": []
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "24bf6e3231bf25ec",
+      "item_id": "0080ee070ffed74c",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -9327,13 +8977,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": [
-        "rifle"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "3c8d5dfe4cc2fd95",
+      "item_id": "83843a96d4f19a17",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -9343,13 +8991,11 @@
       "brand_key": "",
       "slot_key": "mmr",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "mmr"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "f9b959b99b9b3aaf",
+      "item_id": "b9810f97ba49c00e",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -9359,13 +9005,11 @@
       "brand_key": "",
       "slot_key": "pistol",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "pistol"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "4d4e2d05d7411458",
+      "item_id": "cfb7856ea62835ea",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -9380,13 +9024,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": [
-        "smg"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "32de50df7a92b4f2",
+      "item_id": "63b75130d9f7a137",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "exotic",
@@ -9401,13 +9043,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": [
-        "shotgun"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "ba87359bcbead228",
+      "item_id": "3eb4dab9d0a35dc8",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -9422,13 +9062,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": [
-        "lmg"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "1361880677bdcfcb",
+      "item_id": "c58702e205384c89",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -9443,13 +9081,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": [
-        "mmr"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "f901d37d014adb64",
+      "item_id": "6da2a861bf5b816d",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -9459,13 +9095,11 @@
       "brand_key": "",
       "slot_key": "smg",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "smg"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "980b1181ff515c0b",
+      "item_id": "79a45ee8d6f35497",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -9479,11 +9113,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": []
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "06cb7d4dabf70fd5",
+      "item_id": "ef1b58a539cf3b8b",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -9493,13 +9127,11 @@
       "brand_key": "",
       "slot_key": "pistol",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "pistol"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "fff5b0278af7ba12",
+      "item_id": "5041593cbdf16bc9",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -9513,11 +9145,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": []
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "6c42fc071e50561e",
+      "item_id": "8d2f2d7a22e88cb6",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -9527,13 +9159,11 @@
       "brand_key": "",
       "slot_key": "lmg",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "lmg"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "09847ac4e5a83748",
+      "item_id": "4321c14a8ef9f2db",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -9543,13 +9173,11 @@
       "brand_key": "",
       "slot_key": "ar",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "ar"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "0161d094184e6854",
+      "item_id": "6d82f5f961ae72e5",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -9563,11 +9191,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": []
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "7702f7df58c4bb05",
+      "item_id": "5f1f01a1422d943e",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -9577,13 +9205,11 @@
       "brand_key": "",
       "slot_key": "shotgun",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "shotgun"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "04e64184c4c17b19",
+      "item_id": "4d344000d1bf9758",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -9593,13 +9219,11 @@
       "brand_key": "",
       "slot_key": "shotgun",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "shotgun"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "09751b692893fd0a",
+      "item_id": "0d519e0024bda012",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -9613,11 +9237,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": []
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "d28854f9c6ea0e34",
+      "item_id": "b3d1f497d99cf932",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -9627,13 +9251,11 @@
       "brand_key": "",
       "slot_key": "smg",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "smg"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "002bdf00167dbeb3",
+      "item_id": "7dcbb8cdb2cd29e1",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -9647,11 +9269,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": []
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "a2e8cb5d40a17a6c",
+      "item_id": "0bb5d57d097a2404",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -9661,13 +9283,11 @@
       "brand_key": "",
       "slot_key": "smg",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "smg"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "e8ec10ff05cd96fe",
+      "item_id": "4b22d9abdc761166",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -9682,15 +9302,13 @@
           "type": "craft"
         }
       ],
+      "target_looted": [],
       "drop": [
         "dz"
-      ],
-      "target_looted": [
-        "pistol:dz"
       ]
     },
     {
-      "item_id": "139ee46a31397344",
+      "item_id": "ba090902e0d2dc18",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "exotic",
@@ -9700,11 +9318,11 @@
       "brand_key": "",
       "slot_key": "pistol",
       "blueprint": [],
-      "drop": [],
-      "target_looted": []
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "64afd0db3304196c",
+      "item_id": "a46d44fe48d9c2cc",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -9719,13 +9337,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": [
-        "ar"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "3b018ae2ea505487",
+      "item_id": "555c50bd051691b6",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -9740,11 +9356,9 @@
           "type": "craft"
         }
       ],
+      "target_looted": [],
       "drop": [
         "dz"
-      ],
-      "target_looted": [
-        "smg:dz"
       ]
     },
     {
@@ -9762,7 +9376,7 @@
       "target_looted": []
     },
     {
-      "item_id": "6f927eeeb407d33c",
+      "item_id": "f5555bb43f248735",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "exotic",
@@ -9772,13 +9386,11 @@
       "brand_key": "",
       "slot_key": "smg",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "smg"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "f97a5dae5ae2829e",
+      "item_id": "76c2fbc8c0287485",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -9793,10 +9405,8 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": [
-        "mmr"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
       "item_id": "7797a1f5f3df958b",
@@ -9820,7 +9430,7 @@
       ]
     },
     {
-      "item_id": "e25e1470a5f61436",
+      "item_id": "49f2c2a06a86fc6d",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -9835,13 +9445,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": [
-        "smg"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "8541a70ef11383d3",
+      "item_id": "714e075010ab3bcf",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -9851,16 +9459,14 @@
       "brand_key": "",
       "slot_key": "pistol",
       "blueprint": [],
+      "target_looted": [],
       "drop": [
         "Event Hoarder",
         "Mini Warhound"
-      ],
-      "target_looted": [
-        "pistol"
       ]
     },
     {
-      "item_id": "4327d64f5c4c9cac",
+      "item_id": "b0293ba3ce4525c0",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -9875,13 +9481,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": [
-        "shotgun"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "c37ad9920897a8ca",
+      "item_id": "a055169574f39eae",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -9895,15 +9499,13 @@
           "type": "craft"
         }
       ],
+      "target_looted": [],
       "drop": [
         "dz"
-      ],
-      "target_looted": [
-        "ar:dz"
       ]
     },
     {
-      "item_id": "f4a9523ca9f65b1c",
+      "item_id": "183328c567ed3e73",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "exotic",
@@ -9913,13 +9515,11 @@
       "brand_key": "",
       "slot_key": "rifle",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "rifle"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "80e32515cfe8b6a3",
+      "item_id": "ddd7ff48a720c6af",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -9934,13 +9534,11 @@
           "src": "Field Research Technician"
         }
       ],
-      "drop": [],
-      "target_looted": [
-        "shotgun"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "841c3c1e84181bc6",
+      "item_id": "63123d28d01dac95",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -9950,13 +9548,11 @@
       "brand_key": "",
       "slot_key": "shotgun",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "shotgun"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "43fb182ec4e34b89",
+      "item_id": "233849eb6e058c1f",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -9966,14 +9562,14 @@
       "brand_key": "",
       "slot_key": "smg",
       "blueprint": [],
+      "target_looted": [],
       "drop": [
         "Event Hoarder",
         "Mini Warhound"
-      ],
-      "target_looted": []
+      ]
     },
     {
-      "item_id": "2cc16b767c74c2dd",
+      "item_id": "548651672f22f354",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -9987,13 +9583,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": [
-        "lmg"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "6b30ec80fb314318",
+      "item_id": "88ae8a50c8d11b1c",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -10008,15 +9602,13 @@
           "type": "craft"
         }
       ],
+      "target_looted": [],
       "drop": [
         "dz"
-      ],
-      "target_looted": [
-        "rifle:dz"
       ]
     },
     {
-      "item_id": "e855c27de19b1cab",
+      "item_id": "036b57a2c92a976a",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -10031,13 +9623,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": [
-        "mmr"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "026f0e827082c2b5",
+      "item_id": "b13583d7f7093a6d",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -10052,13 +9642,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": [
-        "shotgun"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "62a76421b26f8f2f",
+      "item_id": "3e33826574b2d54a",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -10072,13 +9660,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": [
-        "ar"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "64e97993f12baa88",
+      "item_id": "35ab65f084469485",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -10088,13 +9674,25 @@
       "brand_key": "",
       "slot_key": "smg",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "smg"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "41e14d0e7cf4f76e",
+      "item_id": "7bf4bf2d430bb664",
+      "entity_type": "weapon",
+      "category": "weapon",
+      "tier": "named",
+      "name_key": "trader",
+      "name": "Trader",
+      "brand_name": "",
+      "brand_key": "",
+      "slot_key": "rifle",
+      "blueprint": [],
+      "target_looted": [],
+      "drop": []
+    },
+    {
+      "item_id": "1b10a71fc4b4e48c",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -10109,13 +9707,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": [
-        "shotgun"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "a1c58558756eb287",
+      "item_id": "94b712e6c1c488e2",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -10125,13 +9721,11 @@
       "brand_key": "",
       "slot_key": "rifle",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "rifle"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "32ea24aeb6cef722",
+      "item_id": "76afffbeddc3e438",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -10141,13 +9735,11 @@
       "brand_key": "",
       "slot_key": "rifle",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "rifle"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "4537a63ff4033841",
+      "item_id": "8f4dd81ea862f05c",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -10161,11 +9753,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": []
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "830c9952c5d62577",
+      "item_id": "c88ae63c673994be",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -10175,13 +9767,11 @@
       "brand_key": "",
       "slot_key": "rifle",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "rifle"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "419515935653874a",
+      "item_id": "b2eab3d795fdb468",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -10195,11 +9785,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": []
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "2032ac733a78bfca",
+      "item_id": "defdb861e257deb1",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -10209,13 +9799,11 @@
       "brand_key": "",
       "slot_key": "smg",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "smg"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "5441f0899d933b06",
+      "item_id": "c4af1558bbe0a005",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -10229,11 +9817,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": []
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "7d43ce2d5bcf4491",
+      "item_id": "3cf6c702ed31124d",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -10243,13 +9831,11 @@
       "brand_key": "",
       "slot_key": "smg",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "smg"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "28340a0687d72413",
+      "item_id": "62d01a4b0bc0c57d",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "exotic",
@@ -10259,13 +9845,25 @@
       "brand_key": "",
       "slot_key": "rifle",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "rifle"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "a022ab1975bea482",
+      "item_id": "47cf340ce3ac1587",
+      "entity_type": "weapon",
+      "category": "weapon",
+      "tier": "exotic",
+      "name_key": "whiplashdiceros",
+      "name": "Whiplash (Diceros)",
+      "brand_name": "",
+      "brand_key": "",
+      "slot_key": "pistol",
+      "blueprint": [],
+      "target_looted": [],
+      "drop": []
+    },
+    {
+      "item_id": "0c6a9c25596da040",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -10280,13 +9878,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": [
-        "rifle"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "e2df3661e04681f7",
+      "item_id": "67d15ecae394b7f4",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -10296,13 +9892,11 @@
       "brand_key": "",
       "slot_key": "pistol",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "pistol"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "b6dc2cc8873ab99e",
+      "item_id": "7f5403cd16a3a196",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -10312,13 +9906,11 @@
       "brand_key": "",
       "slot_key": "pistol",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "pistol"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "47c64f9ee7d4c341",
+      "item_id": "bd48ce4d3e3cc775",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -10332,8 +9924,8 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": []
+      "target_looted": [],
+      "drop": []
     }
   ]
 }
