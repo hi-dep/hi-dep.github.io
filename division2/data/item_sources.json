@@ -828,7 +828,7 @@
       "drop": []
     },
     {
-      "item_id": "93571dcdd1686c0c",
+      "item_id": "93571dcdd1686c0c::highend",
       "entity_type": "brandset",
       "category": "gear",
       "tier": "highend",
@@ -1471,10 +1471,32 @@
       "drop": []
     },
     {
-      "item_id": "28b847fa8ede3d0f",
+      "item_id": "28b847fa8ede3d0f::exotic",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
+      "name_key": "acostakneepads",
+      "name": "Acosta Kneepads",
+      "brand_name": "",
+      "brand_key": "",
+      "slot_key": "kneepads",
+      "blueprint": [
+        {
+          "slot": "kneepads",
+          "src": "Outcasts Kill Squad",
+          "type": "craft"
+        }
+      ],
+      "target_looted": [
+        "kneepads"
+      ],
+      "drop": []
+    },
+    {
+      "item_id": "28b847fa8ede3d0f::named",
+      "entity_type": "gear_exotic",
+      "category": "gear",
+      "tier": "named",
       "name_key": "acostakneepads",
       "name": "Acosta Kneepads",
       "brand_name": "",
@@ -2420,7 +2442,7 @@
       ]
     },
     {
-      "item_id": "1e1894930cb0c1ac",
+      "item_id": "1e1894930cb0c1ac::highend",
       "entity_type": "gear_named",
       "category": "gear",
       "tier": "highend",
@@ -2429,7 +2451,38 @@
       "brand_name": "Gila Guard",
       "brand_key": "gilaguard",
       "slot_key": "mask",
-      "blueprint": [],
+      "blueprint": [
+        {
+          "slot": "mask",
+          "type": "craft"
+        }
+      ],
+      "drop": [
+        "Event Hoarder",
+        "Mini Warhound"
+      ],
+      "target_looted": [
+        "Gila Guard",
+        "mask"
+      ]
+    },
+    {
+      "item_id": "1e1894930cb0c1ac::named",
+      "entity_type": "gear_named",
+      "category": "gear",
+      "tier": "named",
+      "name_key": "chillout",
+      "name": "Chill Out",
+      "brand_name": "Gila Guard",
+      "brand_key": "gilaguard",
+      "slot_key": "mask",
+      "blueprint": [
+        {
+          "slot": "mask",
+          "src": "Reconstructed Caches",
+          "type": "craft"
+        }
+      ],
       "drop": [
         "Event Hoarder",
         "Mini Warhound"
