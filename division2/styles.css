@@ -1935,7 +1935,6 @@ th {
 
 .blueprint-td-source {
   color: var(--text);
-  font-size: 12px;
   white-space: nowrap;
 }
 
@@ -2235,6 +2234,13 @@ th {
 }
 
 @media (max-width: 720px) {
+  .blueprint-table,
+  .blueprint-table th,
+  .blueprint-table td {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
   .blueprint-toolbar {
     grid-template-columns: auto 1fr;
   }
