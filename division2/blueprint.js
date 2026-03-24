@@ -101,6 +101,7 @@
       filter_slot: "スロット",
       filter_type: "種別",
       filter_rarity: "rarity",
+      selected_only: "選択のみ",
       type_brand: "ブランド",
       type_named: "ネームド",
       type_gearset: "ギアセット",
@@ -136,6 +137,7 @@
       filter_slot: "Slot",
       filter_type: "Type",
       filter_rarity: "Rarity",
+      selected_only: "Selected only",
       type_brand: "Brand",
       type_named: "Named",
       type_gearset: "Gearset",
@@ -308,6 +310,7 @@
       typeFilter: Array.from(new Set(tf)),
       factionFilter: Array.from(new Set(ff)),
       filtersOpen: !!cur.filtersOpen,
+      onlySelected: !!cur.onlySelected,
       sortKey: ["name", "slot", "source"].includes(normalizeKey(cur.sortKey || "")) ? normalizeKey(cur.sortKey || "") : "",
       sortDir: ["asc", "desc"].includes(normalizeKey(cur.sortDir || "")) ? normalizeKey(cur.sortDir || "") : "",
     };
@@ -319,9 +322,23 @@
       typeFilter: Array.isArray(state.typeFilter) ? state.typeFilter.slice() : [],
       factionFilter: Array.isArray(state.factionFilter) ? state.factionFilter.slice() : [],
       filtersOpen: !!state.filtersOpen,
+      onlySelected: !!state.onlySelected,
       sortKey: normalizeKey(state.sortKey || ""),
       sortDir: normalizeKey(state.sortDir || ""),
     };
+  }
+
+  function rowSelectionKey(row) {
+    const r = row || {};
+    const cat = normalizeKey(r.category || "");
+    const kindRaw = String(r.kind || "").trim().toLowerCase();
+    const slot = normalizeSlot(r.slot || "");
+    const rality = normalizeKey(r.rality || "");
+    const nk = String(r.name_key || "").trim().toLowerCase();
+    const name = String(r.name || "").trim().toLowerCase();
+    const itemName = String(r.item_name || "").trim().toLowerCase();
+    if (kindRaw === "brand_agg") return `agg::${cat}::${rality}::${name}`;
+    return `row::${cat}::${slot}::${rality}::${nk || name || itemName}`;
   }
 
   function factionIcon(factionKey) {
@@ -469,6 +486,7 @@
         category: "gear",
         name: (inferredRarity === "named" && namedBrand) ? namedBrand : displayName,
         item_name: displayName,
+        name_key: normalizeKey(r.name_key),
         rality: inferredRarity,
         slot: r.slot,
         source: sourceLabel(r.source),
@@ -532,6 +550,7 @@
       const row = {
         category: "weapon",
         name,
+        name_key: normalizeKey(r.name_key),
         slot,
         rality: r.rality || "highend",
         source,
@@ -579,6 +598,8 @@
     const hasGearTypeFilter = Array.from(selectedSlotTypes).some((t) => gearTypeKeys.has(t));
     const hasWeaponTypeFilter = Array.from(selectedSlotTypes).some((t) => weaponTypeKeys.has(t));
     const activeFactions = new Set(Array.isArray(state.factionFilter) ? state.factionFilter : []);
+    const selectedOnly = !!(state && state.onlySelected);
+    const selectedSet = window.blueprintSelectedRowKeys instanceof Set ? window.blueprintSelectedRowKeys : new Set();
     const factionsFromSource = (text) => {
       const t = String(text || "").toLowerCase();
       const out = new Set();
@@ -614,6 +635,7 @@
       return tokens;
     };
     const pass = (row) => {
+      if (selectedOnly && !selectedSet.has(rowSelectionKey(row))) return false;
       if (hasGearTypeFilter && (!hasWeaponTypeFilter) && normalizeKey(row && row.category) !== "gear") {
         return false;
       }
@@ -665,9 +687,11 @@
   function renderToolbar(state) {
     const open = !!state.filtersOpen;
     const toggleLabel = open ? ui("filtersClose") : ui("filtersOpen");
+    const onlySelOn = state.onlySelected ? " is-on" : "";
     return `
       <div class="blueprint-toolbar">
         <button id="blueprintFilterToggleBtn" class="btn btn--ghost topbar__toggle" type="button">${escapeHtml(toggleLabel)}</button>
+        <button id="blueprintOnlySelectedBtn" class="btn btn--toggle${onlySelOn}" type="button" data-blueprint-filter-control="1"${open ? "" : " hidden"}>${escapeHtml(bpUi("selected_only"))}</button>
         <label class="field blueprint-toolbar__search" data-blueprint-filter-control="1"${open ? "" : " hidden"}>
           <span>${escapeHtml(bpUi("search"))}</span>
           <input type="text" data-blueprint-filter="search" value="${escapeHtml(state.search || "")}" placeholder="${escapeHtml(bpUi("search_ph"))}" />
@@ -809,10 +833,13 @@
     }
 
     const body = rows.map((r) => {
+      const rowKey = rowSelectionKey(r);
+      const selectedSet = window.blueprintSelectedRowKeys instanceof Set ? window.blueprintSelectedRowKeys : new Set();
+      const selectedClass = selectedSet.has(rowKey) ? " is-selected" : "";
       const rowClass = `blueprint-row ${rarityClass(r.rality)}`;
       if (r.category === "weapon") {
         return `
-      <tr class="${rowClass}">
+      <tr class="${rowClass}${selectedClass}" data-bp-rowkey="${escapeHtml(rowKey)}">
         <td class="blueprint-td-accent"><span class="blueprint-accent"></span></td>
         <td class="blueprint-td-name">${escapeHtml(r.name)}</td>
         <td class="blueprint-td-slots">${renderWeaponSlotTypeCell(r.slot, !!r.blueprint_exists, !!r.season_lock)}</td>
@@ -820,7 +847,7 @@
       </tr>`;
       }
       return `
-      <tr class="${rowClass}">
+      <tr class="${rowClass}${selectedClass}" data-bp-rowkey="${escapeHtml(rowKey)}">
         <td class="blueprint-td-accent"><span class="blueprint-accent"></span></td>
         <td class="blueprint-td-name">${escapeHtml(r.name)}</td>
         <td class="blueprint-td-slots">${renderGearSlotsCell(r)}</td>
@@ -848,10 +875,12 @@
 
   function bindToolbarEvents(allRows) {
     const toggleBtn = contentEl.querySelector("#blueprintFilterToggleBtn");
+    const onlySelectedBtn = contentEl.querySelector("#blueprintOnlySelectedBtn");
     const searchEl = contentEl.querySelector('[data-blueprint-filter="search"]');
     const typeBtns = Array.from(contentEl.querySelectorAll('[data-blueprint-type]'));
     const factionBtns = Array.from(contentEl.querySelectorAll('[data-blueprint-faction]'));
     const sortThs = Array.from(contentEl.querySelectorAll('[data-blueprint-sort]'));
+    const rowEls = Array.from(contentEl.querySelectorAll("tr[data-bp-rowkey]"));
     const rerender = () => {
       const keepSearchFocus = !!(searchEl && document.activeElement === searchEl);
       const selStart = keepSearchFocus ? searchEl.selectionStart : null;
@@ -861,6 +890,7 @@
         typeFilter: Array.isArray(window.blueprintTypeFilter) ? window.blueprintTypeFilter.slice() : [],
         factionFilter: Array.isArray(window.blueprintFactionFilter) ? window.blueprintFactionFilter.slice() : [],
         filtersOpen: !!window.blueprintFiltersOpen,
+        onlySelected: !!window.blueprintOnlySelected,
         sortKey: normalizeKey(window.blueprintSortKey || ""),
         sortDir: normalizeKey(window.blueprintSortDir || ""),
       };
@@ -884,6 +914,12 @@
         rerender();
       });
     }
+    if (onlySelectedBtn) {
+      onlySelectedBtn.addEventListener("click", () => {
+        window.blueprintOnlySelected = !window.blueprintOnlySelected;
+        rerender();
+      });
+    }
     if (!searchEl) return;
     let isComposing = false;
     searchEl.addEventListener("compositionstart", () => {
@@ -900,6 +936,7 @@
           typeFilter: Array.isArray(window.blueprintTypeFilter) ? window.blueprintTypeFilter.slice() : [],
           factionFilter: Array.isArray(window.blueprintFactionFilter) ? window.blueprintFactionFilter.slice() : [],
           filtersOpen: !!window.blueprintFiltersOpen,
+          onlySelected: !!window.blueprintOnlySelected,
           sortKey: normalizeKey(window.blueprintSortKey || ""),
           sortDir: normalizeKey(window.blueprintSortDir || ""),
         };
@@ -950,6 +987,17 @@
         rerender();
       });
     });
+    rowEls.forEach((tr) => {
+      tr.addEventListener("click", () => {
+        if (!window.blueprintFiltersOpen) return;
+        const key = String(tr.getAttribute("data-bp-rowkey") || "").trim();
+        if (!key) return;
+        if (!(window.blueprintSelectedRowKeys instanceof Set)) window.blueprintSelectedRowKeys = new Set();
+        if (window.blueprintSelectedRowKeys.has(key)) window.blueprintSelectedRowKeys.delete(key);
+        else window.blueprintSelectedRowKeys.add(key);
+        rerender();
+      });
+    });
   }
 
   function renderBlueprint(allRows, state) {
@@ -986,6 +1034,8 @@
     window.blueprintTypeFilter = Array.isArray(state.typeFilter) ? state.typeFilter.slice() : [];
     window.blueprintFactionFilter = Array.isArray(state.factionFilter) ? state.factionFilter.slice() : [];
     window.blueprintFiltersOpen = !!state.filtersOpen;
+    window.blueprintOnlySelected = !!state.onlySelected;
+    if (!(window.blueprintSelectedRowKeys instanceof Set)) window.blueprintSelectedRowKeys = new Set();
     window.blueprintSortKey = ["name", "slot", "source"].includes(normalizeKey(state.sortKey || "")) ? normalizeKey(state.sortKey || "") : "";
     window.blueprintSortDir = ["asc", "desc"].includes(normalizeKey(state.sortDir || "")) ? normalizeKey(state.sortDir || "") : "";
     renderBlueprint(rows, state);

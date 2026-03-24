@@ -1845,6 +1845,14 @@ th {
   border-bottom: 0;
 }
 
+.blueprint-row {
+  cursor: pointer;
+}
+
+.blueprint-row.is-selected td {
+  box-shadow: inset 0 0 0 9999px rgba(255, 255, 255, 0.07);
+}
+
 .blueprint-subhead-row td {
   border-bottom: 1px solid rgba(255, 255, 255, 0.14);
 }
