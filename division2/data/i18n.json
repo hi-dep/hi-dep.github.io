@@ -235,6 +235,13 @@
       "tkb408": "TKB-408",
       "tkb480": "TKB-480",
       "agitator": "Agitator",
+      "blackmarketakmreplica": "ブラックマーケット AK-M 模造品",
+      "f2000replica": "F2000 模造品",
+      "falsa58parareplica": "FAL SA-58 Para 模造品",
+      "famas2010replica": "FAMAS 2010 模造品",
+      "g36enhancedreplica": "G36 エンハンスド 模造品",
+      "policem4replica": "ポリス M4 模造品",
+      "tacticalmk16replica": "タクティカル Mk 16 模造品",
       "borngreatmilitaryg36": "TODO:borngreatmilitaryg36",
       "caretakerg36enhanced": "TODO:caretakerg36enhanced",
       "firstsightakm": "TODO:firstsightakm",
@@ -296,9 +303,16 @@
       "sleipnermg5": "TODO:sleipnermg5",
       "tabularasamilitaryl86lsw": "TODO:tabularasamilitaryl86lsw",
       "thestingerm249b": "TODO:thestingerm249b"
+      ,"blackmarketm60e6replica":"ブラックマーケット M60 E6 模造品"
+      ,"blackmarketrpk74replica":"ブラックマーケット RPK-74 模造品"
+      ,"classicm60replica":"クラシック M60 模造品"
+      ,"customl86a2replica":"カスタム L86 A2 模造品"
+      ,"infantrymg5replica":"インファントリー MG5 模造品"
+      ,"militarymk46replica":"ミリタリー MK46 模造品"
     },
     "weapon_item_name_smg": {
       "blackmarkett821": "ブラックマーケット T821",
+      "blackmarkett821replica": "ブラックマーケット T821 模造品",
       "convertedsmg9": "コンバーテッド SMG-9",
       "enhancedauga3p": "エンハンスド AUG A3P",
       "swapchain": "スワップチェーン",
@@ -350,6 +364,12 @@
       "slingshottacticalump45": "TODO:slingshottacticalump45",
       "thesleighertommygun": "TODO:thesleighertommygun",
       "interchangeenhancedauga3p": "TODO:interchangeenhancedauga3p"
+      ,"convertedsmg9replica":"コンバーテッド SMG-9 模造品"
+      ,"mp5streplica":"MP5 ST 模造品"
+      ,"p90replica":"P90 模造品"
+      ,"tacticalauga3preplica":"タクティカル AUG A3P 模造品"
+      ,"tacticalump45replica":"タクティカル UMP-45 模造品"
+      ,"vectorsbr45acpreplica":"ヴェクター SBR .45 ACP 模造品"
     },
     "weapon_item_name_rifle": {
       "bakersdozen": "ベイカーズダズン",
@@ -395,6 +415,13 @@
       "stageleftsocomm1a": "TODO:stageleftsocomm1a",
       "surgelvoac": "TODO:surgelvoac",
       "trader": "Trader"
+      ,"lvoacreplica":"LVOA-C 模造品"
+      ,"m16a2replica":"M16A2 模造品"
+      ,"m1acqbreplica":"M1A CQB 模造品"
+      ,"policemk17replica":"ポリス Mk17 模造品"
+      ,"sig716replica":"SIG 716 模造品"
+      ,"urbanmdrreplica":"アーバン MDR 模造品"
+      ,"usc45acpreplica":"USC .45 ACP 模造品"
     },
     "weapon_item_name_mmr": {
       "classicm44carbine": "クラシック M44 カービン",
@@ -439,6 +466,13 @@
       "pinprickcovertsrs": "TODO:pinprickcovertsrs",
       "shroudm700carbon": "TODO:shroudm700carbon",
       "thewhitedeathclassicm44carbine": "TODO:thewhitedeathclassicm44carbine"
+      ,"classicm44carbinereplica":"クラシック M44 カービン 模造品"
+      ,"customm44replica":"カスタム M44 模造品"
+      ,"m700carbonreplica":"M700 カーボン 模造品"
+      ,"model700replica":"モデル 700 模造品"
+      ,"socommk20ssrreplica":"SOCOM Mk20 SSR 模造品"
+      ,"sr1replica":"SR-1 模造品"
+      ,"srsa1replica":"SRS A1 模造品"
     },
     "weapon_item_name_shotgun": {
       "doublebarrelshotgun": "ダブルバレル ショットガン",
@@ -480,6 +514,13 @@
       "likegluesuper90": "TODO:likegluesuper90",
       "lockdownm870express": "TODO:lockdownm870express",
       "tsunamitacticalsasg12k": "TODO:tsunamitacticalsasg12k"
+      ,"blackmarketsasg12sreplica":"ブラックマーケット SASG-12 S 模造品"
+      ,"customm870mcsreplica":"カスタム M870 MCS 模造品"
+      ,"doublebarrelshotgunreplica":"ダブルバレル ショットガン 模造品"
+      ,"m870expressreplica":"M870 エキスプレス 模造品"
+      ,"spas12replica":"SPAS-12 模造品"
+      ,"super90replica":"スーパー 90 模造品"
+      ,"tacticalsuper90sbsreplica":"タクティカル スーパー 90 SBS 模造品"
     },
     "weapon_item_name_pistol": {
       "custompf45": "カスタム PF45",
@@ -528,6 +569,12 @@
       "theharvestpolice686magnum": "TODO:theharvestpolice686magnum",
       "diceros": "TODO:diceros",
       "whiplashdiceros": "TODO:whiplashdiceros"
+      ,"dicerosreplica":"ダイセロス 模造品"
+      ,"militarym9replica":"ミリタリー M9 模造品"
+      ,"police686magnumreplica":"ポリス 686 マグナム 模造品"
+      ,"px4stormtypetreplica":"Px4 ストームType T 模造品"
+      ,"tacticalm1911replica":"タクティカル M1911 模造品"
+      ,"x45tacticalreplica":"X-45 タクティカル 模造品"
     },
     "gear_slot": {
       "backpack": "バックパック",

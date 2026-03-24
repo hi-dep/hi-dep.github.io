@@ -1654,8 +1654,8 @@ th {
 }
 
 .prototype-card .line--named .line__text {
-  font-size: 15px;
-  font-weight: 700;
+  font-size: var(--card-title-size);
+  font-weight: 800;
   color: var(--text);
 }
 
@@ -1702,6 +1702,374 @@ th {
   line-height: 1.3;
   color: var(--text);
   opacity: 0.92;
+}
+
+.blueprint-view {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.blueprint-toolbar {
+  display: grid;
+  grid-template-columns: auto minmax(240px, 1fr);
+  gap: 8px;
+  align-items: end;
+}
+
+.blueprint-toolbar .field {
+  min-width: 0;
+}
+
+.blueprint-view [data-blueprint-filter-control="1"][hidden] {
+  display: none !important;
+}
+
+.blueprint-toolbar__search {
+  min-width: 0;
+}
+
+.blueprint-type-filter-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+}
+
+.blueprint-type-filter-group {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.blueprint-type-filter-label {
+  font-size: 11px;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.blueprint-type-filter-buttons {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+}
+
+.blueprint-type-btn {
+  min-width: 44px;
+  padding: 4px 9px;
+  font-size: 11px;
+  line-height: 1.2;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.blueprint-type-btn--icon {
+  min-width: 32px;
+  width: 32px;
+  padding: 0;
+}
+
+.blueprint-type-btn--icon .blueprint-slot-ico {
+  width: 13px;
+  height: 13px;
+}
+
+.blueprint-type-btn--icon .blueprint-faction-ico {
+  width: 14px;
+  height: 14px;
+  object-fit: contain;
+}
+
+.blueprint-type-btn.is-on {
+  border-color: rgba(255, 127, 0, 0.55);
+  box-shadow: inset 0 0 0 1px rgba(255, 127, 0, 0.25);
+  background: rgba(255, 127, 0, 0.12);
+  color: rgba(255, 255, 255, 0.98);
+}
+
+.blueprint-table-wrap .catgroup__title {
+  margin: 0 0 8px;
+}
+
+.blueprint-table-scroll {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: auto;
+  background: rgba(20, 22, 34, 0.72);
+}
+
+.blueprint-table {
+  width: 100%;
+  min-width: 780px;
+  border-collapse: collapse;
+}
+
+.blueprint-table thead th {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: rgba(14, 15, 20, 0.96);
+  text-align: left;
+  white-space: nowrap;
+}
+
+.blueprint-table td,
+.blueprint-table th {
+  padding: 8px 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  vertical-align: middle;
+}
+
+.blueprint-th-accent,
+.blueprint-td-accent {
+  width: 8px;
+  min-width: 8px;
+  max-width: 8px;
+  padding: 0 !important;
+}
+
+.blueprint-td-accent .blueprint-accent {
+  display: block;
+  width: 4px;
+  height: 100%;
+  min-height: 30px;
+  margin: 0 auto;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.blueprint-row:last-child td {
+  border-bottom: 0;
+}
+
+.blueprint-subhead-row td {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.blueprint-subhead {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--muted);
+  background: rgba(255, 255, 255, 0.04);
+  letter-spacing: 0.02em;
+}
+
+.blueprint-row.rarity-highend td {
+  background: rgba(var(--rarity-highend), 0.06);
+}
+.blueprint-row.rarity-highend .blueprint-accent {
+  background: rgba(var(--rarity-highend), 0.92);
+}
+.blueprint-row.rarity-highend .blueprint-tag.is-on,
+.blueprint-row.rarity-highend .blueprint-slot-pill.is-on {
+  border-color: rgba(var(--rarity-highend), 0.55);
+  color: rgba(var(--rarity-highend), 1);
+  background: rgba(var(--rarity-highend), 0.14);
+}
+.blueprint-row.rarity-highend .wt-badge.is-on {
+  border-color: rgba(var(--rarity-highend), 0.55);
+  color: rgba(var(--rarity-highend), 1);
+  background: rgba(var(--rarity-highend), 0.14);
+}
+
+.blueprint-row.rarity-named td {
+  background: rgba(var(--rarity-named), 0.07);
+}
+.blueprint-row.rarity-named .blueprint-accent {
+  background: rgba(var(--rarity-named), 0.92);
+}
+.blueprint-row.rarity-named .blueprint-tag.is-on,
+.blueprint-row.rarity-named .blueprint-slot-pill.is-on {
+  border-color: rgba(var(--rarity-named), 0.58);
+  color: rgba(var(--rarity-named), 1);
+  background: rgba(var(--rarity-named), 0.16);
+}
+.blueprint-row.rarity-named .wt-badge.is-on {
+  border-color: rgba(var(--rarity-named), 0.58);
+  color: rgba(var(--rarity-named), 1);
+  background: rgba(var(--rarity-named), 0.16);
+}
+
+.blueprint-row.rarity-gearset td {
+  background: rgba(var(--rarity-gearset), 0.06);
+}
+.blueprint-row.rarity-gearset .blueprint-accent {
+  background: rgba(var(--rarity-gearset), 0.92);
+}
+.blueprint-row.rarity-gearset .blueprint-tag.is-on,
+.blueprint-row.rarity-gearset .blueprint-slot-pill.is-on {
+  border-color: rgba(var(--rarity-gearset), 0.58);
+  color: rgba(var(--rarity-gearset), 1);
+  background: rgba(var(--rarity-gearset), 0.16);
+}
+.blueprint-row.rarity-gearset .wt-badge.is-on {
+  border-color: rgba(var(--rarity-gearset), 0.58);
+  color: rgba(var(--rarity-gearset), 1);
+  background: rgba(var(--rarity-gearset), 0.16);
+}
+
+.blueprint-row.rarity-exotic td {
+  background: rgba(var(--rarity-exotic), 0.08);
+}
+.blueprint-row.rarity-exotic .blueprint-accent {
+  background: rgba(var(--rarity-exotic), 0.94);
+}
+.blueprint-row.rarity-exotic .blueprint-tag.is-on,
+.blueprint-row.rarity-exotic .blueprint-slot-pill.is-on {
+  border-color: rgba(var(--rarity-exotic), 0.6);
+  color: rgba(var(--rarity-exotic), 1);
+  background: rgba(var(--rarity-exotic), 0.18);
+}
+.blueprint-row.rarity-exotic .wt-badge.is-on {
+  border-color: rgba(var(--rarity-exotic), 0.6);
+  color: rgba(var(--rarity-exotic), 1);
+  background: rgba(var(--rarity-exotic), 0.18);
+}
+
+.blueprint-td-name {
+  font-weight: 700;
+}
+
+.blueprint-td-rarity {
+  white-space: nowrap;
+}
+
+.blueprint-td-source {
+  color: var(--text);
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.blueprint-th-sort {
+  cursor: pointer;
+  user-select: none;
+}
+
+.blueprint-td-status {
+  white-space: nowrap;
+}
+
+.blueprint-source-status-inline {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+
+.blueprint-source-status-inline__source {
+  color: var(--text);
+}
+
+.blueprint-source-status-inline__sep {
+  color: rgba(255, 255, 255, 0.35);
+  font-size: 10px;
+}
+
+.blueprint-source-status-inline__status {
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.blueprint-slot-type {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+
+.blueprint-slot-type__badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 1px 6px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  background: rgba(255, 255, 255, 0.08);
+  font-size: 10px;
+  line-height: 1.2;
+  color: var(--text);
+}
+
+.blueprint-weapon-sections {
+  display: grid;
+  gap: 10px;
+}
+
+.blueprint-slot-pack {
+  display: inline-flex;
+  gap: 4px;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+
+.blueprint-slot-inline {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+}
+
+.blueprint-slot-inline-name {
+  font-size: 12px;
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+.blueprint-slot-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 22px;
+  height: 18px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  background: rgba(255, 255, 255, 0.06);
+  padding: 0 4px;
+}
+
+.blueprint-slot-pill.is-off {
+  opacity: 0.45;
+}
+
+.blueprint-slot-pill.has-season {
+  box-shadow: inset 0 0 0 1px rgba(var(--color-dark-zone-rgb), 0.6);
+}
+
+.blueprint-slot-ico {
+  width: 12px;
+  height: 12px;
+  object-fit: contain;
+}
+
+.blueprint-slot-text {
+  font-size: 10px;
+  line-height: 1;
+  color: var(--text);
+}
+
+.blueprint-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 1px 6px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  font-size: 10px;
+  line-height: 1.3;
+  margin-right: 4px;
+}
+
+.blueprint-tag.is-off {
+  border-color: rgba(255, 255, 255, 0.2);
+  color: var(--muted);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.blueprint-tag.is-season {
+  border-color: rgba(var(--color-dark-zone-rgb), 0.62);
+  color: rgba(216, 207, 243, 0.98);
+  background: rgba(var(--color-dark-zone-rgb), 0.2);
 }
 
 .grade-cost-view {
@@ -1864,4 +2232,87 @@ th {
   line-height: 1.2;
   font-size: 11px;
   text-align: center;
+}
+
+@media (max-width: 720px) {
+  .blueprint-toolbar {
+    grid-template-columns: auto 1fr;
+  }
+
+  .blueprint-table {
+    min-width: 760px;
+  }
+
+  .blueprint-type-filter-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 6px;
+    align-items: stretch;
+  }
+
+  .blueprint-type-filter-group {
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .blueprint-type-filter-buttons {
+    min-width: 0;
+  }
+
+  /* Keep page width stable; scroll only inside blueprint table area */
+  .blueprint-view,
+  .blueprint-table-wrap,
+  .blueprint-table-scroll {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .blueprint-table-wrap {
+    overflow: hidden;
+  }
+
+  .blueprint-table-scroll {
+    overflow-x: auto;
+    overflow-y: auto;
+    overscroll-behavior-x: contain;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Fixed left columns: accent + name */
+  .blueprint-table th:first-child,
+  .blueprint-table td:first-child {
+    position: sticky;
+    left: 0;
+    z-index: 4;
+    background: rgba(14, 15, 20, 0.98);
+  }
+
+  .blueprint-table th:nth-child(2),
+  .blueprint-table td:nth-child(2) {
+    position: sticky;
+    left: 8px;
+    z-index: 3;
+    background: rgba(14, 15, 20, 0.98);
+    min-width: 170px;
+    max-width: 170px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .blueprint-table th:nth-child(3),
+  .blueprint-table td:nth-child(3),
+  .blueprint-table th:nth-child(4),
+  .blueprint-table td:nth-child(4) {
+    min-width: 220px;
+  }
+
+  .blueprint-subhead-row .blueprint-subhead {
+    position: sticky;
+    left: 0;
+    z-index: 2;
+    background: rgba(20, 22, 34, 0.96);
+  }
 }

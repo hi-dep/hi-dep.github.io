@@ -120,6 +120,123 @@
         { "field": "name_key", "op": "eq", "value": "hunterkiller" },
         { "field": "attr_stat_keys", "op": "has_any", "value": ["criticalhitchance", "criticalhitdamage"] }
       ]
+    },
+    {
+      "id": "gear_named_eaglesgrasp_chc_or_chd_or_hsd",
+      "enabled": true,
+      "target": "gear",
+      "all": [
+        { "field": "name_key", "op": "eq", "value": "eaglesgrasp" },
+        { "field": "attr_stat_keys", "op": "has_any", "value": ["criticalhitchance", "criticalhitdamage", "headshotdamage"] }
+      ]
+    },
+    {
+      "id": "gear_named_spoton_wh_or_hsd",
+      "enabled": true,
+      "target": "gear",
+      "all": [
+        { "field": "name_key", "op": "eq", "value": "spoton" },
+        { "field": "attr_stat_keys", "op": "has_any", "value": ["weaponhandling", "headshotdamage"] }
+      ]
+    },
+    {
+      "id": "gear_named_foxsprayer_chc_or_chd_or_hsd_or_hzp",
+      "enabled": true,
+      "target": "gear",
+      "all": [
+        { "field": "name_key", "op": "eq", "value": "foxsprayer" },
+        { "field": "attr_stat_keys", "op": "has_any", "value": ["criticalhitchance", "criticalhitdamage", "headshotdamage", "hazardprotection"] }
+      ]
+    },
+    {
+      "id": "gear_named_punchdrunk_wh",
+      "enabled": true,
+      "target": "gear",
+      "all": [
+        { "field": "name_key", "op": "eq", "value": "punchdrunk" },
+        { "field": "attr_stat_keys", "op": "has_any", "value": ["weaponhandling"] }
+      ]
+    },
+    {
+      "id": "gear_named_contractorsgloves_chc_or_chd_or_hzp",
+      "enabled": true,
+      "target": "gear",
+      "all": [
+        { "field": "name_key", "op": "eq", "value": "contractorsgloves" },
+        { "field": "attr_stat_keys", "op": "has_any", "value": ["criticalhitchance", "criticalhitdamage", "hazardprotection"] }
+      ]
+    },
+    {
+      "id": "gear_named_salvo_chc_or_chd_or_hzp",
+      "enabled": true,
+      "target": "gear",
+      "all": [
+        { "field": "name_key", "op": "eq", "value": "salvo" },
+        { "field": "attr_stat_keys", "op": "has_any", "value": ["criticalhitchance", "criticalhitdamage", "hazardprotection"] }
+      ]
+    },
+    {
+      "id": "gear_named_visionario_wh_or_hsd",
+      "enabled": true,
+      "target": "gear",
+      "all": [
+        { "field": "name_key", "op": "eq", "value": "visionario" },
+        { "field": "attr_stat_keys", "op": "has_any", "value": ["weaponhandling", "headshotdamage"] }
+      ]
+    },
+    {
+      "id": "gear_named_deathgrips_chc_or_chd",
+      "enabled": true,
+      "target": "gear",
+      "all": [
+        { "field": "name_key", "op": "eq", "value": "deathgrips" },
+        { "field": "attr_stat_keys", "op": "has_any", "value": ["criticalhitchance", "criticalhitdamage"] }
+      ]
+    },
+    {
+      "id": "gear_named_picarosholster_chc_or_chd_or_hzp",
+      "enabled": true,
+      "target": "gear",
+      "all": [
+        { "field": "name_key", "op": "eq", "value": "picarosholster" },
+        { "field": "attr_stat_keys", "op": "has_any", "value": ["criticalhitchance", "criticalhitdamage", "hazardprotection"] }
+      ]
+    },
+    {
+      "id": "gear_named_thehollowman_chc_or_chd_or_hzp",
+      "enabled": true,
+      "target": "gear",
+      "all": [
+        { "field": "name_key", "op": "eq", "value": "thehollowman" },
+        { "field": "attr_stat_keys", "op": "has_any", "value": ["criticalhitchance", "criticalhitdamage", "hazardprotection"] }
+      ]
+    },
+    {
+      "id": "gear_named_grease_skilldamage_or_skillhaste",
+      "enabled": true,
+      "target": "gear",
+      "all": [
+        { "field": "name_key", "op": "eq", "value": "grease" },
+        { "field": "attr_stat_keys", "op": "has_any", "value": ["skilldamage", "skillhaste"] }
+      ]
+    },
+    {
+      "id": "gear_named_emperorsguard_multi",
+      "enabled": true,
+      "target": "gear",
+      "all": [
+        { "field": "name_key", "op": "eq", "value": "emperorsguard" },
+        { "field": "attr_stat_keys", "op": "has_any", "value": ["criticalhitchance", "criticalhitdamage", "hazardprotection", "skilldamage", "skillhaste", "skillrepair"] }
+      ]
+    },
+    {
+      "id": "gear_named_clawsout_hsd_and_wh",
+      "enabled": true,
+      "target": "gear",
+      "all": [
+        { "field": "name_key", "op": "eq", "value": "clawsout" },
+        { "field": "attr_stat_keys", "op": "has_all", "value": ["headshotdamage", "weaponhandling"] }
+      ]
     }
   ]
 }

@@ -775,6 +775,10 @@
         {
           "slot": "gloves",
           "type": "craft"
+        },
+        {
+          "slot": "holster",
+          "type": "craft"
         }
       ],
       "target_looted": [
@@ -814,6 +818,41 @@
       ],
       "target_looted": [
         "Airaldi Holdings",
+        "mask",
+        "chest",
+        "holster",
+        "backpack",
+        "gloves",
+        "kneepads"
+      ],
+      "drop": []
+    },
+    {
+      "item_id": "93571dcdd1686c0c::highend",
+      "entity_type": "brandset",
+      "category": "gear",
+      "tier": "highend",
+      "name_key": "",
+      "name": "",
+      "brand_name": "Richter & Kaiser GmbH",
+      "brand_key": "richterkaisergmbh",
+      "slot_key": "",
+      "blueprint": [
+        {
+          "slot": "chest",
+          "type": "craft"
+        },
+        {
+          "slot": "holster",
+          "type": "craft"
+        },
+        {
+          "slot": "mask",
+          "type": "craft"
+        }
+      ],
+      "target_looted": [
+        "Richter & Kaiser GmbH",
         "mask",
         "chest",
         "holster",
@@ -883,6 +922,10 @@
         },
         {
           "slot": "holster",
+          "type": "craft"
+        },
+        {
+          "slot": "kneepads",
           "type": "craft"
         },
         {
@@ -1414,69 +1457,6 @@
       "drop": []
     },
     {
-      "item_id": "407b823d463407cd::named",
-      "entity_type": "brandset",
-      "category": "gear",
-      "tier": "named",
-      "name_key": "hermano",
-      "name": "Hermano",
-      "brand_name": "Brazos de Arcabuz",
-      "brand_key": "brazosdearcabuz",
-      "slot_key": "backpack",
-      "blueprint": [
-        {
-          "slot": "backpack",
-          "src": "Reconstructed Caches",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [
-        "Brazos de Arcabuz",
-        "mask",
-        "chest",
-        "holster",
-        "backpack",
-        "gloves",
-        "kneepads"
-      ],
-      "drop": []
-    },
-    {
-      "item_id": "93571dcdd1686c0c",
-      "entity_type": "brandset",
-      "category": "gear",
-      "tier": "highend",
-      "name_key": "richterkaisergmbh",
-      "name": "Richter & Kaiser GmbH",
-      "brand_name": "Richter & Kaiser GmbH",
-      "brand_key": "richterkaisergmbh",
-      "slot_key": "",
-      "blueprint": [
-        {
-          "slot": "chest",
-          "type": "craft"
-        },
-        {
-          "slot": "holster",
-          "type": "craft"
-        },
-        {
-          "slot": "mask",
-          "type": "craft"
-        }
-      ],
-      "drop": [],
-      "target_looted": [
-        "Richter & Kaiser GmbH",
-        "mask",
-        "chest",
-        "holster",
-        "backpack",
-        "gloves",
-        "kneepads"
-      ]
-    },
-    {
       "item_id": "57570f317083ec80",
       "entity_type": "brandset",
       "category": "gear",
@@ -1491,7 +1471,7 @@
       "drop": []
     },
     {
-      "item_id": "28b847fa8ede3d0f",
+      "item_id": "28b847fa8ede3d0f::exotic",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -1500,11 +1480,39 @@
       "brand_name": "",
       "brand_key": "",
       "slot_key": "kneepads",
-      "blueprint": [],
-      "drop": [],
+      "blueprint": [
+        {
+          "slot": "kneepads",
+          "src": "Outcasts Kill Squad",
+          "type": "craft"
+        }
+      ],
       "target_looted": [
         "kneepads"
-      ]
+      ],
+      "drop": []
+    },
+    {
+      "item_id": "28b847fa8ede3d0f::named",
+      "entity_type": "gear_exotic",
+      "category": "gear",
+      "tier": "named",
+      "name_key": "acostakneepads",
+      "name": "Acosta Kneepads",
+      "brand_name": "",
+      "brand_key": "",
+      "slot_key": "kneepads",
+      "blueprint": [
+        {
+          "slot": "kneepads",
+          "src": "Outcasts Kill Squad",
+          "type": "craft"
+        }
+      ],
+      "target_looted": [
+        "kneepads"
+      ],
+      "drop": []
     },
     {
       "item_id": "419b930fc82f9c70",
@@ -1538,7 +1546,13 @@
       "brand_name": "",
       "brand_key": "",
       "slot_key": "chest",
-      "blueprint": [],
+      "blueprint": [
+        {
+          "slot": "chest",
+          "src": "Rikers Kill Squad",
+          "type": "craft"
+        }
+      ],
       "drop": [],
       "target_looted": [
         "chest"
@@ -1554,7 +1568,13 @@
       "brand_name": "",
       "brand_key": "",
       "slot_key": "backpack",
-      "blueprint": [],
+      "blueprint": [
+        {
+          "slot": "backpack",
+          "src": "Blacktusk Kill Squad",
+          "type": "craft"
+        }
+      ],
       "drop": [],
       "target_looted": [
         "backpack"
@@ -1570,7 +1590,13 @@
       "brand_name": "",
       "brand_key": "",
       "slot_key": "kneepads",
-      "blueprint": [],
+      "blueprint": [
+        {
+          "slot": "kneepads",
+          "src": "Blacktusk Kill Squad",
+          "type": "craft"
+        }
+      ],
       "drop": [],
       "target_looted": [
         "kneepads"
@@ -1668,7 +1694,13 @@
       "brand_name": "",
       "brand_key": "",
       "slot_key": "holster",
-      "blueprint": [],
+      "blueprint": [
+        {
+          "slot": "holster",
+          "src": "Hyenas Kill Squad",
+          "type": "craft"
+        }
+      ],
       "drop": [],
       "target_looted": [
         "holster"
@@ -1728,7 +1760,12 @@
       "brand_name": "",
       "brand_key": "",
       "slot_key": "holster",
-      "blueprint": [],
+      "blueprint": [
+        {
+          "slot": "holster",
+          "type": "craft"
+        }
+      ],
       "drop": [],
       "target_looted": [
         "holster"
@@ -1766,7 +1803,13 @@
       "brand_name": "",
       "brand_key": "",
       "slot_key": "backpack",
-      "blueprint": [],
+      "blueprint": [
+        {
+          "slot": "backpack",
+          "src": "Outcasts retaliation completion",
+          "type": "craft"
+        }
+      ],
       "target_looted": [],
       "drop": []
     },
@@ -1780,7 +1823,13 @@
       "brand_name": "",
       "brand_key": "",
       "slot_key": "backpack",
-      "blueprint": [],
+      "blueprint": [
+        {
+          "slot": "backpack",
+          "src": "Outcasts retaliation completion",
+          "type": "craft"
+        }
+      ],
       "target_looted": [],
       "drop": []
     },
@@ -1940,7 +1989,13 @@
       "brand_name": "",
       "brand_key": "",
       "slot_key": "chest",
-      "blueprint": [],
+      "blueprint": [
+        {
+          "slot": "chest",
+          "src": "Blacktusk Kill Squad",
+          "type": "craft"
+        }
+      ],
       "drop": [],
       "target_looted": []
     },
@@ -1954,7 +2009,12 @@
       "brand_name": "",
       "brand_key": "",
       "slot_key": "chest",
-      "blueprint": [],
+      "blueprint": [
+        {
+          "slot": "chest",
+          "type": "craft"
+        }
+      ],
       "drop": [],
       "target_looted": [
         "chest"
@@ -2058,7 +2118,13 @@
       "brand_name": "",
       "brand_key": "",
       "slot_key": "mask",
-      "blueprint": [],
+      "blueprint": [
+        {
+          "slot": "mask",
+          "src": "Blacktusk Kill Squad",
+          "type": "craft"
+        }
+      ],
       "drop": [],
       "target_looted": [
         "mask"
@@ -2121,8 +2187,8 @@
       "blueprint": [
         {
           "slot": "holster",
-          "type": "craft",
-          "src": "Field Research Firewall"
+          "src": "Field Research Firewall",
+          "type": "craft"
         }
       ],
       "drop": [],
@@ -2895,29 +2961,7 @@
       ]
     },
     {
-      "item_id": "fba460288a9a461a::highend",
-      "entity_type": "gear_named",
-      "category": "gear",
-      "tier": "highend",
-      "name_key": "hermanobackpack",
-      "name": "Hermano",
-      "brand_name": "Brazos de Arcabuz",
-      "brand_key": "brazosdearcabuz",
-      "slot_key": "backpack",
-      "blueprint": [
-        {
-          "slot": "backpack",
-          "type": "craft"
-        }
-      ],
-      "drop": [],
-      "target_looted": [
-        "Brazos de Arcabuz",
-        "backpack"
-      ]
-    },
-    {
-      "item_id": "fba460288a9a461a::named",
+      "item_id": "fba460288a9a461a",
       "entity_type": "gear_named",
       "category": "gear",
       "tier": "named",
@@ -2952,6 +2996,7 @@
       "blueprint": [
         {
           "slot": "chest",
+          "src": "Purchase from Inaya after defeating WoNY Hunters",
           "type": "craft"
         }
       ],
@@ -3075,8 +3120,8 @@
       "blueprint": [
         {
           "slot": "gloves",
-          "type": "craft",
-          "src": "Field Research Technician"
+          "src": "Field Research Technician",
+          "type": "craft"
         }
       ],
       "drop": [],
@@ -3531,8 +3576,8 @@
       "blueprint": [
         {
           "slot": "chest",
-          "type": "craft",
-          "src": "Field Research Gunner"
+          "src": "Field Research Gunner",
+          "type": "craft"
         }
       ],
       "drop": [],
@@ -5068,7 +5113,12 @@
       "brand_name": "",
       "brand_key": "",
       "slot_key": "lmg",
-      "blueprint": [],
+      "blueprint": [
+        {
+          "src": "True Sons retaliation completion",
+          "type": "craft"
+        }
+      ],
       "target_looted": [],
       "drop": []
     },
@@ -5101,7 +5151,12 @@
       "brand_name": "",
       "brand_key": "",
       "slot_key": "rifle",
-      "blueprint": [],
+      "blueprint": [
+        {
+          "src": "Cleaners Kill Squad",
+          "type": "craft"
+        }
+      ],
       "target_looted": [],
       "drop": []
     },
@@ -5446,7 +5501,12 @@
       "brand_name": "",
       "brand_key": "",
       "slot_key": "ar",
-      "blueprint": [],
+      "blueprint": [
+        {
+          "src": "Blacktusk Kill Squad",
+          "type": "craft"
+        }
+      ],
       "target_looted": [],
       "drop": []
     },
@@ -5995,7 +6055,12 @@
       "brand_name": "",
       "brand_key": "",
       "slot_key": "rifle",
-      "blueprint": [],
+      "blueprint": [
+        {
+          "src": "Blacktusk retaliation completion",
+          "type": "craft"
+        }
+      ],
       "target_looted": [],
       "drop": []
     },
@@ -6139,7 +6204,12 @@
       "brand_name": "",
       "brand_key": "",
       "slot_key": "ar",
-      "blueprint": [],
+      "blueprint": [
+        {
+          "src": "Blacktusk retaliation completion",
+          "type": "craft"
+        }
+      ],
       "target_looted": [],
       "drop": []
     },
@@ -6687,6 +6757,7 @@
       "slot_key": "ar",
       "blueprint": [
         {
+          "src": "Purchase from Inaya after defeating Brooklyn Hunters",
           "type": "craft"
         }
       ],
@@ -6929,7 +7000,11 @@
       "brand_name": "",
       "brand_key": "",
       "slot_key": "pistol",
-      "blueprint": [],
+      "blueprint": [
+        {
+          "type": "craft"
+        }
+      ],
       "target_looted": [],
       "drop": []
     },
@@ -7749,7 +7824,11 @@
       "brand_name": "",
       "brand_key": "",
       "slot_key": "mmr",
-      "blueprint": [],
+      "blueprint": [
+        {
+          "type": "craft"
+        }
+      ],
       "target_looted": [],
       "drop": []
     },
@@ -7834,7 +7913,12 @@
       "brand_name": "",
       "brand_key": "",
       "slot_key": "smg",
-      "blueprint": [],
+      "blueprint": [
+        {
+          "src": "Blacktusk retaliation completion",
+          "type": "craft"
+        }
+      ],
       "target_looted": [],
       "drop": []
     },
@@ -8180,6 +8264,7 @@
       "slot_key": "smg",
       "blueprint": [
         {
+          "src": "Reconstructed Caches",
           "type": "craft"
         }
       ],
@@ -8297,7 +8382,11 @@
       "brand_name": "",
       "brand_key": "",
       "slot_key": "pistol",
-      "blueprint": [],
+      "blueprint": [
+        {
+          "type": "craft"
+        }
+      ],
       "target_looted": [],
       "drop": []
     },
@@ -8366,6 +8455,7 @@
       "slot_key": "lmg",
       "blueprint": [
         {
+          "src": "__EMPTY__",
           "type": "craft"
         }
       ],
@@ -8450,8 +8540,8 @@
       "slot_key": "ar",
       "blueprint": [
         {
-          "type": "craft",
-          "src": "Field Research Firewall"
+          "src": "Field Research Firewall",
+          "type": "craft"
         }
       ],
       "target_looted": [],
@@ -8521,6 +8611,7 @@
       "slot_key": "ar",
       "blueprint": [
         {
+          "src": "Purchase from Inaya after defeating DC Hunters",
           "type": "craft"
         }
       ],
@@ -8624,9 +8715,6 @@
       "slot_key": "shotgun",
       "blueprint": [
         {
-          "type": "craft"
-        },
-        {
           "src": "Season",
           "type": "craft"
         }
@@ -8646,8 +8734,8 @@
       "slot_key": "lmg",
       "blueprint": [
         {
-          "type": "craft",
-          "src": "Field Research Gunner"
+          "src": "Field Research Gunner",
+          "type": "craft"
         }
       ],
       "target_looted": [],
@@ -9317,7 +9405,12 @@
       "brand_name": "",
       "brand_key": "",
       "slot_key": "pistol",
-      "blueprint": [],
+      "blueprint": [
+        {
+          "src": "Blacktusk Kill Squad",
+          "type": "craft"
+        }
+      ],
       "target_looted": [],
       "drop": []
     },
@@ -9371,7 +9464,12 @@
       "brand_name": "",
       "brand_key": "",
       "slot_key": "ar",
-      "blueprint": [],
+      "blueprint": [
+        {
+          "src": "Blacktusk retaliation completion",
+          "type": "craft"
+        }
+      ],
       "drop": [],
       "target_looted": []
     },
@@ -9385,7 +9483,11 @@
       "brand_name": "",
       "brand_key": "",
       "slot_key": "smg",
-      "blueprint": [],
+      "blueprint": [
+        {
+          "type": "craft"
+        }
+      ],
       "target_looted": [],
       "drop": []
     },
@@ -9496,6 +9598,7 @@
       "slot_key": "ar",
       "blueprint": [
         {
+          "src": "Reconstructed Caches",
           "type": "craft"
         }
       ],
@@ -9514,7 +9617,12 @@
       "brand_name": "",
       "brand_key": "",
       "slot_key": "rifle",
-      "blueprint": [],
+      "blueprint": [
+        {
+          "src": "Blacktusk retaliation completion",
+          "type": "craft"
+        }
+      ],
       "target_looted": [],
       "drop": []
     },
@@ -9530,8 +9638,8 @@
       "slot_key": "shotgun",
       "blueprint": [
         {
-          "type": "craft",
-          "src": "Field Research Technician"
+          "src": "Field Research Technician",
+          "type": "craft"
         }
       ],
       "target_looted": [],
@@ -9547,7 +9655,12 @@
       "brand_name": "",
       "brand_key": "",
       "slot_key": "shotgun",
-      "blueprint": [],
+      "blueprint": [
+        {
+          "src": "Blacktusk Kill Squad",
+          "type": "craft"
+        }
+      ],
       "target_looted": [],
       "drop": []
     },
@@ -9580,6 +9693,7 @@
       "slot_key": "lmg",
       "blueprint": [
         {
+          "src": "Friend Referral Reward",
           "type": "craft"
         }
       ],
@@ -9844,7 +9958,12 @@
       "brand_name": "",
       "brand_key": "",
       "slot_key": "rifle",
-      "blueprint": [],
+      "blueprint": [
+        {
+          "src": "Blacktusk Kill Squad",
+          "type": "craft"
+        }
+      ],
       "target_looted": [],
       "drop": []
     },
