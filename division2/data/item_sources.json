@@ -8400,7 +8400,12 @@
       "brand_name": "",
       "brand_key": "",
       "slot_key": "mmr",
-      "blueprint": [],
+      "blueprint": [
+        {
+          "src": "Season",
+          "type": "craft"
+        }
+      ],
       "target_looted": [],
       "drop": []
     },
@@ -9649,7 +9654,7 @@
       "item_id": "63123d28d01dac95",
       "entity_type": "weapon",
       "category": "weapon",
-      "tier": "highend",
+      "tier": "exotic",
       "name_key": "thesheriff",
       "name": "The Sheriff",
       "brand_name": "",

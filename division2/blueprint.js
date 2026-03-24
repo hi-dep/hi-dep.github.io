@@ -269,256 +269,29 @@
     const db = new SQL.Database(dbBytes);
     try {
       const hasBp = db.exec("SELECT name FROM sqlite_master WHERE type='table' AND name='items_blueprints'").length > 0;
-      const hasWeapons = db.exec("SELECT name FROM sqlite_master WHERE type='table' AND name='items_weapons'").length > 0;
-      const hasWeaponNamed = db.exec("SELECT name FROM sqlite_master WHERE type='table' AND name='items_weapon_named'").length > 0;
-      const hasWeaponExotic = db.exec("SELECT name FROM sqlite_master WHERE type='table' AND name='items_weapon_exotic'").length > 0;
-      const hasBrandsets = db.exec("SELECT name FROM sqlite_master WHERE type='table' AND name='items_brandsets'").length > 0;
-      const hasGearsets = db.exec("SELECT name FROM sqlite_master WHERE type='table' AND name='items_gearsets'").length > 0;
-      const hasGearNamed = db.exec("SELECT name FROM sqlite_master WHERE type='table' AND name='items_gear_named'").length > 0;
-      const hasGearExotic = db.exec("SELECT name FROM sqlite_master WHERE type='table' AND name='items_gear_exotic'").length > 0;
       if (!hasBp) throw new Error("data_unavailable");
 
-      const bpRows = [];
+      const out = [];
       const bpStmt = db.prepare("SELECT category, slot, rality, brand, brand_key, name_key, name, blueprint_exists, season_lock, \"from\" AS source FROM items_blueprints");
-      while (bpStmt.step()) bpRows.push(bpStmt.getAsObject() || {});
-      bpStmt.free();
-
-      const BP_BY_NAME = new Map();
-      const BP_BY_BRAND = new Map();
-      const addMap = (map, key, rec) => {
-        if (!key) return;
-        if (!map.has(key)) map.set(key, []);
-        map.get(key).push(rec);
-      };
-      const nkey = (v) => normalizeKey(v || "");
-      const skey = (v) => normalizeSlot(v || "");
-
-      bpRows.forEach((r) => {
-        const category = nkey(r.category);
-        const slot = skey(r.slot);
-        const rality = nkey(r.rality);
-        const nameKey = nkey(r.name_key);
-        const brandKey = nkey(r.brand_key);
-        const source = String(r.source || "").trim();
-        const rec = {
+      while (bpStmt.step()) {
+        const r = bpStmt.getAsObject() || {};
+        const category = normalizeKey(r.category);
+        const slot = normalizeSlot(r.slot);
+        if (!category || !slot) continue;
+        out.push({
           category,
           slot,
-          rality,
-          name_key: nameKey,
-          brand_key: brandKey,
+          rality: normalizeKey(r.rality),
+          brand: String(r.brand || "").trim(),
+          brand_key: normalizeKey(r.brand_key),
+          name_key: normalizeKey(r.name_key),
+          name: String(r.name || "").trim(),
           blueprint_exists: toBool(r.blueprint_exists),
           season_lock: toBool(r.season_lock),
-          source,
-        };
-        addMap(BP_BY_NAME, `${category}::${slot}::${nameKey}`, rec);
-        addMap(BP_BY_NAME, `${category}::::${nameKey}`, rec);
-        addMap(BP_BY_BRAND, `${category}::${slot}::${rality}::${brandKey}`, rec);
-        addMap(BP_BY_BRAND, `${category}::::${rality}::${brandKey}`, rec);
-      });
-
-      const mergeBp = (arr) => {
-        const rows = Array.isArray(arr) ? arr : [];
-        if (!rows.length) return { blueprint_exists: false, season_lock: false, source: "" };
-        let blueprintExists = false;
-        let seasonLock = false;
-        const sourceSet = new Set();
-        let explicitEmpty = false;
-        rows.forEach((r) => {
-          blueprintExists = blueprintExists || !!r.blueprint_exists;
-          seasonLock = seasonLock || !!r.season_lock;
-          const src = String(r.source || "").trim();
-          if (!src) return;
-          if (src === "__EMPTY__") {
-            explicitEmpty = true;
-            return;
-          }
-          sourceSet.add(src);
+          source: String(r.source || "").trim(),
         });
-        if (explicitEmpty) return { blueprint_exists: blueprintExists, season_lock: seasonLock, source: "__EMPTY__" };
-        return { blueprint_exists: blueprintExists, season_lock: seasonLock, source: Array.from(sourceSet).join(", ") };
-      };
-
-      const out = [];
-
-      if (hasBrandsets) {
-        const st = db.prepare("SELECT brandset_key, brandset FROM items_brandsets ORDER BY brandset");
-        while (st.step()) {
-          const r = st.getAsObject() || {};
-          const brandKey = nkey(r.brandset_key);
-          const brand = String(r.brandset || "").trim();
-          GEAR_SLOTS.forEach((slot) => {
-            const merged = mergeBp(BP_BY_BRAND.get(`gear::${slot}::highend::${brandKey}`) || []);
-            out.push({
-              category: "gear",
-              slot,
-              rality: "highend",
-              brand,
-              name_key: "",
-              name: "",
-              blueprint_exists: merged.blueprint_exists,
-              season_lock: merged.season_lock,
-              source: merged.source,
-            });
-          });
-        }
-        st.free();
       }
-
-      if (hasGearsets) {
-        const st = db.prepare("SELECT gearset_key, gearset FROM items_gearsets ORDER BY gearset");
-        while (st.step()) {
-          const r = st.getAsObject() || {};
-          const brandKey = nkey(r.gearset_key);
-          const brand = String(r.gearset || "").trim();
-          GEAR_SLOTS.forEach((slot) => {
-            const merged = mergeBp(BP_BY_BRAND.get(`gear::${slot}::gearset::${brandKey}`) || []);
-            out.push({
-              category: "gear",
-              slot,
-              rality: "gearset",
-              brand,
-              name_key: "",
-              name: "",
-              blueprint_exists: merged.blueprint_exists,
-              season_lock: merged.season_lock,
-              source: merged.source,
-            });
-          });
-        }
-        st.free();
-      }
-
-      if (hasGearNamed) {
-        const st = db.prepare("SELECT item_type, brandset, name_key, name FROM items_gear_named ORDER BY name");
-        while (st.step()) {
-          const r = st.getAsObject() || {};
-          const slot = skey(r.item_type);
-          if (!GEAR_SLOTS.includes(slot)) continue;
-          const nameKey = nkey(r.name_key);
-          const merged = mergeBp(
-            (BP_BY_NAME.get(`gear::${slot}::${nameKey}`) || []).concat(BP_BY_NAME.get(`gear::::${nameKey}`) || [])
-          );
-          out.push({
-            category: "gear",
-            slot,
-            rality: "named",
-            brand: String(r.brandset || "").trim(),
-            name_key: nameKey,
-            name: String(r.name || "").trim(),
-            blueprint_exists: merged.blueprint_exists,
-            season_lock: merged.season_lock,
-            source: merged.source,
-          });
-        }
-        st.free();
-      }
-
-      if (hasGearExotic) {
-        const st = db.prepare("SELECT item_type, name_key, name FROM items_gear_exotic ORDER BY name");
-        while (st.step()) {
-          const r = st.getAsObject() || {};
-          const slot = skey(r.item_type);
-          if (!GEAR_SLOTS.includes(slot)) continue;
-          const nameKey = nkey(r.name_key);
-          const merged = mergeBp(
-            (BP_BY_NAME.get(`gear::${slot}::${nameKey}`) || []).concat(BP_BY_NAME.get(`gear::::${nameKey}`) || [])
-          );
-          out.push({
-            category: "gear",
-            slot,
-            rality: "exotic",
-            brand: "",
-            name_key: nameKey,
-            name: String(r.name || "").trim(),
-            blueprint_exists: merged.blueprint_exists,
-            season_lock: merged.season_lock,
-            source: merged.source,
-          });
-        }
-        st.free();
-      }
-
-      if (hasWeapons) {
-        const st = db.prepare("SELECT name_key, name, weapon_group, family_key FROM items_weapons ORDER BY weapon_group, name");
-        while (st.step()) {
-          const r = st.getAsObject() || {};
-          const slot = skey(r.weapon_group);
-          if (!WEAPON_SLOTS.includes(slot)) continue;
-          const nameKey = nkey(r.name_key);
-          const familyKey = nkey(r.family_key);
-          const cands = []
-            .concat(BP_BY_NAME.get(`weapon::${slot}::${nameKey}`) || [])
-            .concat(BP_BY_NAME.get(`weapon::::${nameKey}`) || []);
-          if (familyKey && familyKey !== nameKey) {
-            cands.push(...(BP_BY_NAME.get(`weapon::${slot}::${familyKey}`) || []));
-            cands.push(...(BP_BY_NAME.get(`weapon::::${familyKey}`) || []));
-          }
-          const merged = mergeBp(cands);
-          out.push({
-            category: "weapon",
-            slot,
-            rality: "highend",
-            brand: "",
-            name_key: nameKey,
-            name: String(r.name || "").trim(),
-            blueprint_exists: merged.blueprint_exists,
-            season_lock: merged.season_lock,
-            source: merged.source,
-          });
-        }
-        st.free();
-      }
-
-      if (hasWeaponNamed) {
-        const st = db.prepare("SELECT name_key, name, weapon_group, variant FROM items_weapon_named ORDER BY weapon_group, name");
-        while (st.step()) {
-          const r = st.getAsObject() || {};
-          const slot = skey(r.weapon_group);
-          if (!WEAPON_SLOTS.includes(slot)) continue;
-          const nameKey = nkey(r.name_key);
-          const merged = mergeBp(
-            (BP_BY_NAME.get(`weapon::${slot}::${nameKey}`) || []).concat(BP_BY_NAME.get(`weapon::::${nameKey}`) || [])
-          );
-          out.push({
-            category: "weapon",
-            slot,
-            rality: "named",
-            brand: "",
-            name_key: nameKey,
-            name: String(r.name || "").trim(),
-            blueprint_exists: merged.blueprint_exists,
-            season_lock: merged.season_lock,
-            source: merged.source,
-          });
-        }
-        st.free();
-      }
-
-      if (hasWeaponExotic) {
-        const st = db.prepare("SELECT name_key, name, weapon_group, variant FROM items_weapon_exotic ORDER BY weapon_group, name");
-        while (st.step()) {
-          const r = st.getAsObject() || {};
-          const slot = skey(r.weapon_group);
-          if (!WEAPON_SLOTS.includes(slot)) continue;
-          const nameKey = nkey(r.name_key);
-          const merged = mergeBp(
-            (BP_BY_NAME.get(`weapon::${slot}::${nameKey}`) || []).concat(BP_BY_NAME.get(`weapon::::${nameKey}`) || [])
-          );
-          out.push({
-            category: "weapon",
-            slot,
-            rality: "exotic",
-            brand: "",
-            name_key: nameKey,
-            name: String(r.name || "").trim(),
-            blueprint_exists: merged.blueprint_exists,
-            season_lock: merged.season_lock,
-            source: merged.source,
-          });
-        }
-        st.free();
-      }
-
+      bpStmt.free();
       blueprintCache = out;
       return blueprintCache;
     } finally {
@@ -798,6 +571,13 @@
     const qRaw = String(state.search || "").trim().toLowerCase();
     const q = normalizeKey(state.search || "");
     const activeTypes = new Set(Array.isArray(state.typeFilter) ? state.typeFilter : []);
+    const gearTypeKeys = new Set(["mask", "backpack", "chest", "glove", "holster", "kneepads"]);
+    const weaponTypeKeys = new Set(["ar", "smg", "lmg", "shotgun", "rifle", "mmr", "pistol"]);
+    const rarityTypeKeys = new Set(["named", "exotic"]);
+    const selectedSlotTypes = new Set(Array.from(activeTypes).filter((t) => gearTypeKeys.has(t) || weaponTypeKeys.has(t)));
+    const selectedRarities = new Set(Array.from(activeTypes).filter((t) => rarityTypeKeys.has(t)));
+    const hasGearTypeFilter = Array.from(selectedSlotTypes).some((t) => gearTypeKeys.has(t));
+    const hasWeaponTypeFilter = Array.from(selectedSlotTypes).some((t) => weaponTypeKeys.has(t));
     const activeFactions = new Set(Array.isArray(state.factionFilter) ? state.factionFilter : []);
     const factionsFromSource = (text) => {
       const t = String(text || "").toLowerCase();
@@ -811,12 +591,16 @@
       if (t.includes("blacktusk") || t.includes("black tusk") || t.includes("ブラックタスク")) out.add("blacktusk");
       return out;
     };
+    const sourceSearchText = (row) => {
+      const available = (row && row.category === "weapon") ? !!(row && row.blueprint_exists) : isRowAvailable(row);
+      return sourceDisplayText(row && row.source, available, !!(row && row.season_lock));
+    };
     const rowSearchTextRaw = (row) => {
       if (row && row.kind === "brand_agg") {
         const slotNames = GEAR_SLOTS.map((s) => slotLabel(s)).join(" ");
-        return `${row.name || ""} ${row.source || ""} ${row.typeLabel || ""} ${slotNames}`.toLowerCase();
+        return `${row.name || ""} ${sourceSearchText(row)} ${row.typeLabel || ""} ${slotNames}`.toLowerCase();
       }
-      return `${row.name || ""} ${row.item_name || ""} ${row.source || ""} ${slotLabel(row && row.slot)} ${row.typeLabel || ""} ${rarityLabel(row && row.rality)}`.toLowerCase();
+      return `${row.name || ""} ${row.item_name || ""} ${sourceSearchText(row)} ${slotLabel(row && row.slot)} ${row.typeLabel || ""} ${rarityLabel(row && row.rality)}`.toLowerCase();
     };
     const rowFilterTokens = (row) => {
       const tokens = new Set();
@@ -830,13 +614,23 @@
       return tokens;
     };
     const pass = (row) => {
-      if (activeTypes.size) {
+      if (hasGearTypeFilter && (!hasWeaponTypeFilter) && normalizeKey(row && row.category) !== "gear") {
+        return false;
+      }
+      if (hasWeaponTypeFilter && (!hasGearTypeFilter) && normalizeKey(row && row.category) !== "weapon") {
+        return false;
+      }
+      if (selectedSlotTypes.size) {
         const toks = rowFilterTokens(row);
-        let hit = false;
-        activeTypes.forEach((t) => {
-          if (!hit && toks.has(t)) hit = true;
+        let slotHit = false;
+        selectedSlotTypes.forEach((t) => {
+          if (!slotHit && toks.has(t)) slotHit = true;
         });
-        if (!hit) return false;
+        if (!slotHit) return false;
+      }
+      if (selectedRarities.size) {
+        const rk = normalizeKey(row && row.rality ? row.rality : "");
+        if (!selectedRarities.has(rk)) return false;
       }
       if (activeFactions.size) {
         // When faction filter is active, show only faction-targeted exotic blueprint rows.
@@ -907,12 +701,13 @@
     const isJa = langSelect && langSelect.value === "ja";
     const srcRaw = String(sourceText || "").trim();
     if (srcRaw === "__EMPTY__") return "";
+    const seasonUnavailableText = isJa
+      ? "過去シーズン報酬限定（現在取得不可）"
+      : "Past season reward only (currently unobtainable)";
+    if (seasonLock) return seasonUnavailableText;
     const sourceNone = bpUi("source_none");
     const sourceMissing = !srcRaw || srcRaw === sourceNone;
     if (sourceMissing) {
-      if (available && seasonLock) {
-        return isJa ? "過去シーズン報酬限定" : "Past season reward only";
-      }
       if (available && !seasonLock) {
         return (isJa
           ? "プロジェクト・サミットチャレンジ・警戒レベル3以上のコントロールポイント"
@@ -922,7 +717,8 @@
     }
     const tokens = srcRaw.split(",").map((s) => s.trim()).filter(Boolean);
     const enriched = tokens.map(enrichSourceToken).filter(Boolean);
-    return enriched.length ? enriched.join(" / ") : srcRaw;
+    const text = enriched.length ? enriched.join(" / ") : srcRaw;
+    return text;
   }
 
   function renderSourceStatusCell(sourceText, available, seasonLock) {
