@@ -142,6 +142,11 @@
     return map[label] || label;
   }
 
+  function isCompactHeaderMode() {
+    if (typeof window === "undefined" || !window.matchMedia) return false;
+    return window.matchMedia("(max-width: 900px), (hover: none) and (pointer: coarse)").matches;
+  }
+
   function translateBundleLabel(label, isJa) {
     const s = String(label || "").trim();
     if (!s) return "";
@@ -196,6 +201,9 @@
     const k = canonicalMaterialLabel(labelJa);
     const raw = String(labelJa || "");
     if (k === "グレード") return "grade";
+    if (normalizeKey(raw) === "tier") return "grade";
+    if (k === "レシーバー部品" || k === "保護布") return "basic";
+    if (k === "スチール" || k === "ポリカーボネート" || k === "セラミック") return "normal";
     if (k === "エキゾチック部品") return "exotic";
     if (raw.includes("合金バンドル") || raw.includes("ウィーブバンドル")) return "highend";
     if (/\bAlloy\b/.test(raw) || /\bWeave\b/.test(raw)) return "highend";
@@ -314,7 +322,7 @@
       titleJa,
       titleEn,
       columns: [
-        { key: "grade", label: "LV" },
+        { key: "grade", label: "Tier" },
         { key: "primary_bundle", label: primaryLabel },
         { key: "tactical_bundle", label: tacticalLabel },
         { key: "field_recon_data", label: "フィールド偵察データ" },
@@ -433,7 +441,7 @@
       return;
     }
     const isJa = langSelect && langSelect.value === "ja";
-    const shortHeader = !!(window.matchMedia && window.matchMedia("(max-width: 768px)").matches);
+    const shortHeader = isCompactHeaderMode();
     const optionsHtml = categories.map((c, idx) => `<option value="${idx}">${escapeHtml(isJa ? c.titleJa : c.titleEn)}</option>`).join("");
     const panelHtmlList = categories.map((cat, idx) => {
       const cols = cat.columns.map((c) => ({ key: c.key, label: canonicalMaterialLabel(c.label), tier: materialTier(c.label) }));
