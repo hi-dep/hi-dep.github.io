@@ -15,7 +15,7 @@
       "enabled": true,
       "target": "weapon",
       "all": [
-        { "field": "attr_at", "op": "eq", "value": { "index": 3, "stat_key": "dmgtotargetofcover" } }
+        { "field": "attr_at", "op": "eq", "value": { "index": 3, "stat_key": "dmgtotargetoutofcover" } }
       ]
     },
     {
@@ -23,7 +23,7 @@
       "enabled": true,
       "target": "weapon",
       "all": [
-        { "field": "attr_at", "op": "eq", "value": { "index": 2, "stat_key": "dmgtotargetofcover" } },
+        { "field": "attr_at", "op": "eq", "value": { "index": 2, "stat_key": "dmgtotargetoutofcover" } },
         { "field": "attr_at", "op": "eq", "value": { "index": 3, "stat_key": "damagetoarmor" } }
       ]
     },
@@ -240,4 +240,5 @@
     }
   ]
 }
+
 

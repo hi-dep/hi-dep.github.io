@@ -134,7 +134,7 @@
       if (!k) return "";
       const red = new Set([
         "weapondamage", "totalweapondamage", "criticalhitchance", "criticalhitdamage",
-        "headshotdamage", "armordamage", "healthdamage", "dmgtotargetofcover",
+        "headshotdamage", "armordamage", "healthdamage", "dmgtotargetoutofcover",
         "ardamage", "mmrdamage", "rifledamage", "smgdamage", "shotgundamage", "lmgdamage", "pistoldamage",
         "weaponhandling"
       ]);
@@ -189,7 +189,7 @@
       ardamage: "AR Damage",
       healthdamage: "Health Damage",
       lmgdamage: "LMG Damage",
-      dmgtotargetofcover: "DMG to target of cover",
+      dmgtotargetoutofcover: "DMG to target out of cover",
       mmrdamage: "MMR Damage",
       headshotdamage: "Headshot Damage",
       rifledamage: "Rifle Damage",
@@ -293,7 +293,7 @@
         const wg = weaponGroupKey(r.weapon_group || "");
         const weaponCoreMap = {
           ar: ["ardamage", "healthdamage"],
-          lmg: ["lmgdamage", "dmgtotargetofcover"],
+          lmg: ["lmgdamage", "dmgtotargetoutofcover"],
           mmr: ["mmrdamage", "headshotdamage"],
           rifle: ["rifledamage", "criticalhitdamage"],
           shotgun: ["shotgundamage", "damagetoarmor"],
@@ -436,3 +436,5 @@
     }
   };
 })();
+
+

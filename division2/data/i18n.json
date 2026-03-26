@@ -631,7 +631,7 @@
       "damagebonusperenemy": "ダメージボーナス(敵1体ごと)",
       "damagereduction": "ダメージ軽減",
       "damagetoarmor": "アーマーへのダメージ",
-      "dmgtotargetofcover": "カバー外のターゲットへのダメージ",
+      "dmgtotargetoutofcover": "カバー外のターゲットへのダメージ",
       "duration": "持続時間",
       "effectduration": "効果持続時間",
       "explosiveresistance": "爆発物耐性",
