@@ -828,7 +828,7 @@
       "drop": []
     },
     {
-      "item_id": "93571dcdd1686c0c::highend",
+      "item_id": "93571dcdd1686c0c",
       "entity_type": "brandset",
       "category": "gear",
       "tier": "highend",
@@ -2460,7 +2460,7 @@
       ]
     },
     {
-      "item_id": "1e1894930cb0c1ac::highend",
+      "item_id": "1e1894930cb0c1ac",
       "entity_type": "gear_named",
       "category": "gear",
       "tier": "highend",
@@ -2469,38 +2469,7 @@
       "brand_name": "Gila Guard",
       "brand_key": "gilaguard",
       "slot_key": "mask",
-      "blueprint": [
-        {
-          "slot": "mask",
-          "type": "craft"
-        }
-      ],
-      "drop": [
-        "Event Hoarder",
-        "Mini Warhound"
-      ],
-      "target_looted": [
-        "Gila Guard",
-        "mask"
-      ]
-    },
-    {
-      "item_id": "1e1894930cb0c1ac::named",
-      "entity_type": "gear_named",
-      "category": "gear",
-      "tier": "named",
-      "name_key": "chillout",
-      "name": "Chill Out",
-      "brand_name": "Gila Guard",
-      "brand_key": "gilaguard",
-      "slot_key": "mask",
-      "blueprint": [
-        {
-          "slot": "mask",
-          "src": "Reconstructed Caches",
-          "type": "craft"
-        }
-      ],
+      "blueprint": [],
       "drop": [
         "Event Hoarder",
         "Mini Warhound"
