@@ -452,6 +452,8 @@
         source,
         season_lock: !!ag.season_lock,
         blueprint_exists: !!ag.blueprint_exists,
+        brand_key: normalizeKey(ag.brand_key || ""),
+        brand_scope: normalizeKey(ag.brand_scope || (ag.rality === "gearset" ? "gearset" : "brand")),
         search: normalizeKey(`${ag.name} ${slotSearch} ${source} ${ag.typeLabel || defaultTypeLabel || ""}`),
       });
     });
@@ -471,11 +473,21 @@
       if (r.rality === "highend" || (!r.rality && hasBrand && !hasName)) {
         const label = localizeBrand(r.brand) || r.brand || "-";
         addAggregateRow(brandAgg, r.brand || label, label, "highend", r.source, r.slot, r.blueprint_exists, r.season_lock, bpUi("type_brand"));
+        const ag = brandAgg.get(normalizeKey(r.brand || label || ""));
+        if (ag) {
+          if (!ag.brand_key) ag.brand_key = normalizeKey(r.brand_key || r.brand || label || "");
+          ag.brand_scope = "brand";
+        }
         return;
       }
       if (r.rality === "gearset") {
         const label = localizeBrand(r.brand) || localizeName(r.name_key, r.name) || r.brand || "-";
         addAggregateRow(gearsetAgg, r.brand || label, label, "gearset", r.source, r.slot, r.blueprint_exists, r.season_lock, bpUi("type_gearset"));
+        const ag = gearsetAgg.get(normalizeKey(r.brand || label || ""));
+        if (ag) {
+          if (!ag.brand_key) ag.brand_key = normalizeKey(r.brand_key || r.brand || label || "");
+          ag.brand_scope = "gearset";
+        }
         return;
       }
       const displayName = localizeName(r.name_key, r.name) || localizeBrand(r.brand) || "-";
@@ -493,6 +505,8 @@
         blueprint_exists: !!r.blueprint_exists,
         season_lock: !!r.season_lock,
         typeLabel: rarityLabel(inferredRarity),
+        brand_key: normalizeKey(r.brand_key || r.brand || ""),
+        brand_scope: "brand",
         search: normalizeKey(`${displayName} ${namedBrand} ${slotLabel(r.slot)} ${sourceLabel(r.source)} ${rarityLabel(inferredRarity)}`),
       };
       if (inferredRarity === "named" || inferredRarity === "exotic") {
@@ -505,6 +519,8 @@
           const ex = map.get(key);
           ex.blueprint_exists = ex.blueprint_exists || row.blueprint_exists;
           ex.season_lock = ex.season_lock || row.season_lock;
+          ex.brand_key = ex.brand_key || row.brand_key;
+          ex.brand_scope = ex.brand_scope || row.brand_scope;
           ex._sourceSet.add(row.source);
           ex.source = Array.from(ex._sourceSet).filter(Boolean).join(", ");
           ex.search = normalizeKey(`${ex.name} ${ex.item_name || ""} ${slotLabel(ex.slot)} ${ex.source} ${rarityLabel(ex.rality)}`);
@@ -708,7 +724,9 @@
       const onoff = row.blueprint_exists ? "is-on" : "is-off";
       const season = row.season_lock ? " has-season" : "";
       if (row.rality === "named") {
-        return `<span class="blueprint-slot-inline"><span class="blueprint-slot-pill ${onoff}${season}">${slotIcon(row.slot, "gear")}</span><span class="blueprint-slot-inline-name">${escapeHtml(row.item_name || row.name || "-")}</span></span>`;
+        const itemName = String(row.item_name || row.name || "-").trim();
+        const itemNameHtml = `<button type="button" class="inline-pop-trigger line__text-pop-trigger" data-pop-type="blueprint-named" data-named-kind="gear" data-named-name="${escapeHtml(itemName)}" data-named-name-key="${escapeHtml(String(row.name_key || ""))}">${escapeHtml(itemName)}</button>`;
+        return `<span class="blueprint-slot-inline"><span class="blueprint-slot-pill ${onoff}${season}">${slotIcon(row.slot, "gear")}</span><span class="blueprint-slot-inline-name">${itemNameHtml}</span></span>`;
       }
       return `<span class="blueprint-slot-pill ${onoff}${season}">${slotIcon(row.slot, "gear")}</span>`;
     }
@@ -764,6 +782,29 @@
     if (dir === "desc") return " ▼";
     if (dir === "asc") return " ▲";
     return "";
+  }
+
+  function renderBlueprintNameCell(row) {
+    const r = row || {};
+    const category = normalizeKey(r.category || "");
+    const rarity = normalizeKey(r.rality || "");
+    const name = String(r.name || "").trim();
+    if (!name) return escapeHtml("-");
+    if (rarity === "exotic") {
+      const exoticKind = category === "weapon" ? "weapon" : "gear";
+      return `<button type="button" class="inline-pop-trigger line__text-pop-trigger" data-pop-type="blueprint-exotic" data-exotic-kind="${escapeHtml(exoticKind)}" data-exotic-name="${escapeHtml(name)}" data-exotic-name-key="${escapeHtml(String(r.name_key || ""))}">${escapeHtml(name)}</button>`;
+    }
+    if (rarity === "named" && category === "weapon") {
+      const itemName = String(r.item_name || r.name || "").trim();
+      return `<button type="button" class="inline-pop-trigger line__text-pop-trigger" data-pop-type="blueprint-named" data-named-kind="weapon" data-named-name="${escapeHtml(itemName || name)}" data-named-name-key="${escapeHtml(String(r.name_key || ""))}">${escapeHtml(name)}</button>`;
+    }
+    if (category !== "gear") return escapeHtml(r.name || "");
+    const isBrandLabelRow = (String(r.kind || "").toLowerCase() === "brand_agg") || rarity === "named";
+    if (!isBrandLabelRow) return escapeHtml(r.name || "");
+    const brandKey = normalizeKey(r.brand_key || "");
+    const brandScope = normalizeKey(r.brand_scope || "brand");
+    if (!brandKey) return escapeHtml(name);
+    return `<button type="button" class="inline-pop-trigger line__text-pop-trigger" data-pop-type="brand" data-brand-scope="${escapeHtml(brandScope)}" data-brand-key="${escapeHtml(brandKey)}" data-brand-name="${escapeHtml(name)}">${escapeHtml(name)}</button>`;
   }
 
   function renderGearRowsWithSection(rows, sectionLabel) {
@@ -841,7 +882,7 @@
         return `
       <tr class="${rowClass}${selectedClass}" data-bp-rowkey="${escapeHtml(rowKey)}">
         <td class="blueprint-td-accent"><span class="blueprint-accent"></span></td>
-        <td class="blueprint-td-name">${escapeHtml(r.name)}</td>
+        <td class="blueprint-td-name">${renderBlueprintNameCell(r)}</td>
         <td class="blueprint-td-slots">${renderWeaponSlotTypeCell(r.slot, !!r.blueprint_exists, !!r.season_lock)}</td>
         <td class="blueprint-td-source">${renderSourceStatusCell(r.source, !!r.blueprint_exists, !!r.season_lock)}</td>
       </tr>`;
@@ -849,7 +890,7 @@
       return `
       <tr class="${rowClass}${selectedClass}" data-bp-rowkey="${escapeHtml(rowKey)}">
         <td class="blueprint-td-accent"><span class="blueprint-accent"></span></td>
-        <td class="blueprint-td-name">${escapeHtml(r.name)}</td>
+        <td class="blueprint-td-name">${renderBlueprintNameCell(r)}</td>
         <td class="blueprint-td-slots">${renderGearSlotsCell(r)}</td>
         <td class="blueprint-td-source">${renderSourceStatusCell(r.source, isRowAvailable(r), !!r.season_lock)}</td>
       </tr>`;

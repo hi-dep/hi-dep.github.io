@@ -96,6 +96,10 @@ let brandDescCache = null;
 let brandDescPromise = null;
 let gearsetPopupCache = null;
 let gearsetPopupPromise = null;
+let exoticGearPopupCache = null;
+let exoticGearPopupPromise = null;
+let namedItemPopupCache = null;
+let namedItemPopupPromise = null;
 let namedTalentLookupCache = null;
 let namedTalentLookupPromise = null;
 let itemTalentOverrideCache = null;
@@ -1117,7 +1121,7 @@ const UI = {
     loadingAssets: "asset_map 読み込み…",
     loadingGraph: "graph_config 読み込み…",
     loadingDb: "DB 読み込み…",
-    noData: "対象週のデータがありません。",
+    noData: "表示するデータがありません。",
     noChunk: "該当する月DBが見つかりません",
     error: "エラー",
     loadError: "読み込みエラー",
@@ -1618,6 +1622,7 @@ const FLOATING_INFO_KIND_CLASSES = [
   "floating-info-card--talent-named",
   "floating-info-card--gear-highend",
   "floating-info-card--gear-named",
+  "floating-info-card--gear-exotic",
   "floating-info-card--gearset",
   "floating-info-card--descent-pool",
   "floating-info-card--brand-core-weapon",
@@ -1637,6 +1642,7 @@ function applyFloatingInfoCardKind(kind, extraClass = "") {
   else if (kind === "talent-named") floatingInfoCardEl.classList.add("floating-info-card--talent-named");
   else if (kind === "gear-highend") floatingInfoCardEl.classList.add("floating-info-card--gear-highend");
   else if (kind === "gear-named") floatingInfoCardEl.classList.add("floating-info-card--gear-named");
+  else if (kind === "gear-exotic") floatingInfoCardEl.classList.add("floating-info-card--gear-exotic");
   else if (kind === "gearset") floatingInfoCardEl.classList.add("floating-info-card--gearset");
   else if (kind === "brand") floatingInfoCardEl.classList.add("floating-info-card--brand");
   if (extraClass) floatingInfoCardEl.classList.add(extraClass);
@@ -3140,8 +3146,16 @@ function renderLine(item, ln, colorOverride = "") {
 
   let lineTextHtml = escapeHtml(text);
   if (currentViewMode === "vendor" && lt === "talent" && statKey) {
-    const namedAttr = ln.is_named_talent ? "1" : "0";
-    lineTextHtml = `<button type="button" class="inline-pop-trigger line__text-pop-trigger" data-pop-type="talent" data-item-category="${escapeHtml(item.category || "")}" data-item-rarity="${escapeHtml(item.rarity || "")}" data-item-id="${escapeHtml(item.item_id || "")}" data-item-name-key="${escapeHtml(item.name_key || "")}" data-talent-key="${escapeHtml(statKey)}" data-talent-name="${escapeHtml(stat)}" data-talent-named="${namedAttr}">${escapeHtml(text)}</button>`;
+    lineTextHtml = window.buildTalentPopTriggerHtml({
+      text,
+      itemCategory: item.category || "",
+      itemRarity: item.rarity || "",
+      itemId: item.item_id || "",
+      itemNameKey: item.name_key || "",
+      talentKey: statKey,
+      talentName: stat,
+      talentNamed: !!ln.is_named_talent
+    });
   }
 
   return `
@@ -4493,6 +4507,503 @@ function handleVendorGearSummaryPopup(gearBtn) {
   openFloatingInfoCardRich(gearBtn, "", cloned.outerHTML, kind);
 }
 
+function blueprintPopupTextToHtmlPreserveNewline(text) {
+  return escapeHtml(String(text || "")).replace(/\r?\n/g, "<br>");
+}
+
+function blueprintPopupRandomTokenKind(v) {
+  const k = normalizeKey(v || "");
+  if (!k) return "";
+  if (k === "randomcoreattribute" || k === "randomcore") return "core";
+  if (k === "random" || k === "ramdom" || k === "randomattribute" || k === "ramdomattribute") return "attr";
+  return "";
+}
+
+function blueprintPopupAttrDotColorClass(attrKey) {
+  const k = normalizeKey(attrKey || "");
+  if (!k) return "";
+  const red = new Set([
+    "weapondamage", "totalweapondamage", "criticalhitchance", "criticalhitdamage",
+    "headshotdamage", "armordamage", "healthdamage", "dmgtotargetoutofcover",
+    "ardamage", "mmrdamage", "rifledamage", "smgdamage", "shotgundamage", "lmgdamage", "pistoldamage",
+    "weaponhandling"
+  ]);
+  const blue = new Set([
+    "armor", "totalarmor", "armorregen", "armoronkill", "health", "healthonkill",
+    "hazardprotection", "explosiveresistance", "disruptresistance", "pulseresistance",
+    "incomingrepairs", "incomingrepair"
+  ]);
+  const yellow = new Set([
+    "skilltier", "skilldamage", "skillhaste", "skillduration", "repairskills", "skillrepair",
+    "statusffects", "statuseffects", "skillhealth", "totalskillrepair"
+  ]);
+  if (red.has(k)) return "line--red";
+  if (blue.has(k)) return "line--blue";
+  if (yellow.has(k)) return "line--yellow";
+  return "";
+}
+
+function blueprintPopupExoticTalentIconHtml(talentKey, fallbackText = "", isWeapon = false) {
+  const baseKey = sanitizeFileKey(talentKey || normalizeKey(fallbackText || ""));
+  if (!baseKey) return "";
+  const cands = [];
+  const add = (u) => {
+    if (!u) return;
+    if (!cands.includes(u)) cands.push(u);
+  };
+  const primaryKind = isWeapon ? "weapon_talents" : "talents";
+  const fallbackKind = isWeapon ? "talents" : "weapon_talents";
+  const primaryDir = isWeapon ? "img/weapon_talents" : "img/talents";
+  const fallbackDir = isWeapon ? "img/talents" : "img/weapon_talents";
+  add(iconUrl(primaryKind, baseKey, primaryDir));
+  if (typeof talentKeyVariants === "function") {
+    for (const k of talentKeyVariants(baseKey)) add(iconUrl(primaryKind, k, primaryDir));
+    for (const k of talentKeyVariants(baseKey)) add(iconUrl(fallbackKind, k, fallbackDir));
+  }
+  add(iconUrl(fallbackKind, baseKey, fallbackDir));
+  if (!cands.length) return "";
+  return iconImgHtml(cands[0], "ico ico--talent", "talent", cands.slice(1));
+}
+
+async function ensureExoticGearPopupCache() {
+  if (exoticGearPopupCache) return exoticGearPopupCache;
+  if (exoticGearPopupPromise) return exoticGearPopupPromise;
+  exoticGearPopupPromise = (async () => {
+    const out = {
+      gearByNameKey: new Map(),
+      gearByName: new Map(),
+      weaponByNameKey: new Map(),
+      weaponByName: new Map()
+    };
+    const sql = await initSql();
+    const v = indexJson?.built_at ? `?v=${encodeURIComponent(indexJson.built_at)}` : `?v=${Date.now()}`;
+    const gz = await fetchArrayBuffer(`${DATA_BASE}/items.db.gz${v}`);
+    const dbBytes = await gunzipToUint8Array(gz);
+    const db = new sql.Database(dbBytes);
+    try {
+      const hasGear = db.exec("SELECT name FROM sqlite_master WHERE type='table' AND name='items_gear_exotic'").length > 0;
+      if (hasGear) {
+        const st = db.prepare(`
+          SELECT item_id, name_key, name, item_type, talent, talent_key, talent_desc, attr_types, attr_type_keys
+          FROM items_gear_exotic
+        `);
+        while (st.step()) {
+          const r = st.getAsObject();
+          const row = {
+            item_id: String(r.item_id || "").trim(),
+            name_key: normalizeKey(r.name_key || ""),
+            name: String(r.name || "").trim(),
+            item_type: String(r.item_type || "").trim(),
+            talent: String(r.talent || "").trim(),
+            talent_key: String(r.talent_key || "").trim(),
+            talent_desc: String(r.talent_desc || "").trim(),
+            attr_types: String(r.attr_types || "").trim(),
+            attr_type_keys: String(r.attr_type_keys || "").trim()
+          };
+          if (row.name_key && !out.gearByNameKey.has(row.name_key)) out.gearByNameKey.set(row.name_key, row);
+          const nn = normalizeKey(row.name || "");
+          if (nn && !out.gearByName.has(nn)) out.gearByName.set(nn, row);
+        }
+        st.free();
+      }
+      const hasWeapon = db.exec("SELECT name FROM sqlite_master WHERE type='table' AND name='items_weapon_exotic'").length > 0;
+      if (hasWeapon) {
+        const st = db.prepare(`
+          SELECT item_id, name_key, name, weapon_group, variant, talent, talent_key, talent_desc, exotic_mods, exotic_mod_type_keys
+          FROM items_weapon_exotic
+        `);
+        while (st.step()) {
+          const r = st.getAsObject();
+          const row = {
+            item_id: String(r.item_id || "").trim(),
+            name_key: normalizeKey(r.name_key || ""),
+            name: String(r.name || "").trim(),
+            weapon_group: String(r.weapon_group || "").trim(),
+            variant: String(r.variant || "").trim(),
+            talent: String(r.talent || "").trim(),
+            talent_key: String(r.talent_key || "").trim(),
+            talent_desc: String(r.talent_desc || "").trim(),
+            exotic_mods: String(r.exotic_mods || "").trim(),
+            exotic_mod_type_keys: String(r.exotic_mod_type_keys || "").trim()
+          };
+          if (row.name_key && !out.weaponByNameKey.has(row.name_key)) out.weaponByNameKey.set(row.name_key, row);
+          const nn = normalizeKey(row.name || "");
+          if (nn && !out.weaponByName.has(nn)) out.weaponByName.set(nn, row);
+        }
+        st.free();
+      }
+      exoticGearPopupCache = out;
+      return out;
+    } finally {
+      db.close();
+    }
+  })();
+  try {
+    return await exoticGearPopupPromise;
+  } finally {
+    exoticGearPopupPromise = null;
+  }
+}
+
+function blueprintPopupWeaponGroupKey(v) {
+  const k = normalizeKey(v || "");
+  if (k === "assaultrifle" || k === "assaultrifles" || k === "ar") return "ar";
+  if (k === "submachinegun" || k === "submachineguns" || k === "smg") return "smg";
+  if (k === "lightmachinegun" || k === "lightmachineguns" || k === "lmg") return "lmg";
+  if (k === "rifle" || k === "rifles" || k === "rf") return "rifle";
+  if (k === "marksmanrifle" || k === "marksmanrifles" || k === "mmr") return "mmr";
+  if (k === "shotgun" || k === "shotguns" || k === "sg") return "shotgun";
+  if (k === "pistol" || k === "pistols" || k === "hg") return "pistol";
+  return k;
+}
+
+function blueprintPopupWeaponTypeShortLabel(groupKey) {
+  const k = normalizeKey(groupKey || "");
+  if (k === "ar") return "AR";
+  if (k === "smg") return "SMG";
+  if (k === "lmg") return "LMG";
+  if (k === "shotgun") return "SG";
+  if (k === "rifle") return "RF";
+  if (k === "mmr") return "MMR";
+  if (k === "pistol") return "HG";
+  return String(groupKey || "").toUpperCase();
+}
+
+function blueprintPopupCoreLineClass(coreKey) {
+  const k = normalizeKey(coreKey || "");
+  if (k === "weapondamage") return "line line--red line--core-attr-weapon";
+  if (k === "armor") return "line line--blue line--core-attr-armor";
+  if (k === "skilltier") return "line line--yellow line--core-attr-skill";
+  return "line line--core";
+}
+
+async function ensureNamedItemPopupCache() {
+  if (namedItemPopupCache) return namedItemPopupCache;
+  if (namedItemPopupPromise) return namedItemPopupPromise;
+  namedItemPopupPromise = (async () => {
+    const out = {
+      gearByNameKey: new Map(),
+      gearByName: new Map(),
+      weaponByNameKey: new Map(),
+      weaponByName: new Map()
+    };
+    const sql = await initSql();
+    const v = indexJson?.built_at ? `?v=${encodeURIComponent(indexJson.built_at)}` : `?v=${Date.now()}`;
+    const gz = await fetchArrayBuffer(`${DATA_BASE}/items.db.gz${v}`);
+    const dbBytes = await gunzipToUint8Array(gz);
+    const db = new sql.Database(dbBytes);
+    try {
+      const hasGear = db.exec("SELECT name FROM sqlite_master WHERE type='table' AND name='items_gear_named'").length > 0;
+      if (hasGear) {
+        const st = db.prepare(`
+          SELECT item_id, name_key, name, item_type, core_attribute, core_attribute_key, attr, attr_type_keys, talent, talent_key, talent_desc
+          FROM items_gear_named
+        `);
+        while (st.step()) {
+          const r = st.getAsObject();
+          const row = {
+            item_id: String(r.item_id || "").trim(),
+            name_key: normalizeKey(r.name_key || ""),
+            name: String(r.name || "").trim(),
+            item_type: String(r.item_type || "").trim(),
+            core_attribute: String(r.core_attribute || "").trim(),
+            core_attribute_key: String(r.core_attribute_key || "").trim(),
+            attr: String(r.attr || "").trim(),
+            attr_type_keys: String(r.attr_type_keys || "").trim(),
+            talent: String(r.talent || "").trim(),
+            talent_key: String(r.talent_key || "").trim(),
+            talent_desc: String(r.talent_desc || "").trim()
+          };
+          if (row.name_key && !out.gearByNameKey.has(row.name_key)) out.gearByNameKey.set(row.name_key, row);
+          const nn = normalizeKey(row.name || "");
+          if (nn && !out.gearByName.has(nn)) out.gearByName.set(nn, row);
+        }
+        st.free();
+      }
+      const hasWeapon = db.exec("SELECT name FROM sqlite_master WHERE type='table' AND name='items_weapon_named'").length > 0;
+      if (hasWeapon) {
+        const st = db.prepare(`
+          SELECT item_id, name_key, name, weapon_group, variant, attr, attr_type_keys, talent, talent_key, talent_desc
+          FROM items_weapon_named
+        `);
+        while (st.step()) {
+          const r = st.getAsObject();
+          const row = {
+            item_id: String(r.item_id || "").trim(),
+            name_key: normalizeKey(r.name_key || ""),
+            name: String(r.name || "").trim(),
+            weapon_group: String(r.weapon_group || "").trim(),
+            variant: String(r.variant || "").trim(),
+            attr: String(r.attr || "").trim(),
+            attr_type_keys: String(r.attr_type_keys || "").trim(),
+            talent: String(r.talent || "").trim(),
+            talent_key: String(r.talent_key || "").trim(),
+            talent_desc: String(r.talent_desc || "").trim()
+          };
+          if (row.name_key && !out.weaponByNameKey.has(row.name_key)) out.weaponByNameKey.set(row.name_key, row);
+          const nn = normalizeKey(row.name || "");
+          if (nn && !out.weaponByName.has(nn)) out.weaponByName.set(nn, row);
+        }
+        st.free();
+      }
+      namedItemPopupCache = out;
+      return out;
+    } finally {
+      db.close();
+    }
+  })();
+  try {
+    return await namedItemPopupPromise;
+  } finally {
+    namedItemPopupPromise = null;
+  }
+}
+
+function buildBlueprintNamedPopupCardHtml(row, itemKind = "gear", fallbackName = "", talentDescResolved = "") {
+  if (!row || typeof row !== "object") return "";
+  const isWeapon = itemKind === "weapon";
+  const nameKeyNorm = normalizeKey(row?.name_key || "");
+  const title = (langSelect.value === "ja")
+    ? (i18n[row?.name_key] ?? i18n[nameKeyNorm] ?? row?.name ?? fallbackName)
+    : (row?.name || fallbackName || "");
+  const talentKey = String(row?.talent_key || "").trim();
+  const talentText = (langSelect.value === "ja")
+    ? (i18n[row?.talent_key] ?? trText(row?.talent || row?.talent_key || ""))
+    : (row?.talent || row?.talent_key || "");
+  const talentDescText = String(talentDescResolved || "").trim();
+  const talentIcon = blueprintPopupExoticTalentIconHtml(talentKey, talentText, isWeapon);
+  const lines = [];
+
+  const attrs = parseJsonObjectArrayText(row?.attr || "");
+  const attrTypeKeys = parseJsonArrayText(row?.attr_type_keys || "");
+  for (let i = 0; i < attrs.length; i++) {
+    const a = attrs[i] || {};
+    const num = formatDisplayNumber(a.num);
+    const unit = String(a.unit || "").trim();
+    const tv = String(a.type || "").trim();
+    const tk = String(attrTypeKeys[i] || "").trim();
+    const tDisp = (langSelect.value === "ja") ? (i18n[tk] ?? trText(tv)) : tv;
+    const nv = num ? `${num}${unit ? unit : ""}` : "";
+    const text = (nv && tDisp) ? `${nv} ${tDisp}` : (nv || tDisp);
+    if (text) lines.push({ cls: "line line--gray", text, key: tk || normalizeKey(tv) });
+  }
+
+  if (talentText) lines.push({ cls: "line line--named line--talent", text: talentText, key: talentKey, icon: talentIcon });
+  if (talentDescText) lines.push({ cls: "line line--named-meta line--talent-desc", text: talentDescText, textHtml: blueprintPopupTextToHtmlPreserveNewline(talentDescText), key: "" });
+  if (!lines.length) return "";
+
+  let bg = "";
+  let typeBadgeHtml = "";
+  if (isWeapon) {
+    const wg = blueprintPopupWeaponGroupKey(row?.weapon_group || "");
+    const wIcon = iconUrl("weapon_types", wg, "img/weapons");
+    bg = wIcon ? bgIconHtml(wIcon, "card__bg--tr", "weapon") : "";
+    typeBadgeHtml = `<span class="wt-inline-badges"><span class="wt-badge is-on">${escapeHtml(blueprintPopupWeaponTypeShortLabel(wg))}</span></span>`;
+  } else {
+    const slotKey = gearSlotKey(row?.item_type || "");
+    const slotIcon = iconUrl("gear_slots", slotKey, "img/gears");
+    bg = slotIcon ? bgIconHtml(slotIcon, "card__bg--tr", "slot") : "";
+  }
+
+  return `
+    <div class="card rarity-named">
+      ${bg}
+      <div class="card__head">
+        <div class="card__title-wrap card__title-wrap--gear">
+          <div class="card__titles">
+            <div class="card__title is-named"><span class="card__title-text">${escapeHtml(title)}</span></div>
+          </div>
+        </div>
+        ${typeBadgeHtml}
+      </div>
+      <div class="lines">
+        ${lines.map((ln) => `<div class="${ln.cls}" ${ln.key ? `data-stat-key="${escapeHtml(ln.key)}"` : ""}>${ln.icon || ""}<div class="line__body"><div class="line__text">${ln.textHtml || escapeHtml(ln.text)}</div></div></div>`).join("")}
+      </div>
+    </div>
+  `;
+}
+
+function findBlueprintNamedPopupRow(cache, itemKind, nameKey, name) {
+  const byNameKeyMap = itemKind === "weapon" ? cache?.weaponByNameKey : cache?.gearByNameKey;
+  const byNameMap = itemKind === "weapon" ? cache?.weaponByName : cache?.gearByName;
+  const normalizedName = normalizeKey(name || "");
+  const fallbackKey = (typeof i18nJaNormToKey !== "undefined" && i18nJaNormToKey && normalizedName)
+    ? normalizeKey(i18nJaNormToKey.get(normalizedName) || "")
+    : "";
+  const byKey = nameKey && byNameKeyMap ? byNameKeyMap.get(nameKey) : null;
+  const byFallbackKey = (!byKey && fallbackKey && byNameKeyMap) ? byNameKeyMap.get(fallbackKey) : null;
+  const byName = (!byKey && !byFallbackKey && byNameMap) ? byNameMap.get(normalizedName) : null;
+  let row = byKey || byFallbackKey || byName;
+  if (row || !byNameKeyMap || !normalizedName) return row;
+  for (const r of byNameKeyMap.values()) {
+    if (!r) continue;
+    const c1 = normalizeKey(r.name || "");
+    const c2 = normalizeKey(i18n?.[r.name_key] || "");
+    const c3 = normalizeKey(trText(r.name || ""));
+    if (normalizedName === c1 || normalizedName === c2 || normalizedName === c3) {
+      row = r;
+      break;
+    }
+  }
+  return row || null;
+}
+
+async function handleBlueprintNamedPopup(namedBtn) {
+  const itemKind = normalizeKey(namedBtn.getAttribute("data-named-kind") || "gear") === "weapon" ? "weapon" : "gear";
+  const name = stripHtml(namedBtn.getAttribute("data-named-name") || namedBtn.textContent || "");
+  const nameKey = normalizeKey(namedBtn.getAttribute("data-named-name-key") || "");
+  try {
+    const cache = await ensureNamedItemPopupCache();
+    const row = findBlueprintNamedPopupRow(cache, itemKind, nameKey, name);
+    if (!row) return;
+    let talentDescResolved = "";
+    try {
+      const cat = itemKind === "weapon" ? "weapon_talent_desc" : "gear_talent_desc";
+      talentDescResolved = trCategoryText(cat, row?.talent_key || row?.talent || "", row?.talent_desc || "");
+      if (!String(talentDescResolved || "").trim()) {
+        const descLookup = await ensureTalentDescLookup();
+        talentDescResolved = resolveTalentDescription(
+          itemKind === "weapon" ? "weapon" : "gear",
+          row?.talent_key || "",
+          row?.talent_desc || "",
+          descLookup,
+          row?.talent || ""
+        );
+      }
+    } catch (_) {
+      talentDescResolved = String(row?.talent_desc || "").trim();
+    }
+    const bodyHtml = buildBlueprintNamedPopupCardHtml(row, itemKind, name, talentDescResolved);
+    if (!String(bodyHtml || "").trim()) return;
+    openFloatingInfoCardRich(namedBtn, "", bodyHtml, "gear-named");
+  } catch (err) {}
+}
+
+function buildBlueprintExoticPopupCardHtml(row, itemKind = "gear", fallbackName = "") {
+  const isWeapon = itemKind === "weapon";
+  const nameKeyNorm = normalizeKey(row?.name_key || "");
+  const title = (langSelect.value === "ja")
+    ? (i18n[row?.name_key] ?? i18n[nameKeyNorm] ?? row?.name ?? fallbackName)
+    : (row?.name || fallbackName || "");
+  const talentKey = String(row?.talent_key || "").trim();
+  const talentText = (langSelect.value === "ja")
+    ? (i18n[row?.talent_key] ?? trText(row?.talent || row?.talent_key || ""))
+    : (row?.talent || row?.talent_key || "");
+  const talentDescCat = isWeapon ? "exotic_weapon_talent_desc" : "exotic_gear_talent_desc";
+  const talentDescText = trCategoryText(talentDescCat, talentKey, String(row?.talent_desc || "").replace(/\r/g, ""));
+  const talentIcon = blueprintPopupExoticTalentIconHtml(talentKey, talentText, isWeapon);
+  const attrs = [];
+  if (isWeapon) {
+    const mods = parseJsonObjectArrayText(row?.exotic_mods || "");
+    const modKeys = parseJsonArrayText(row?.exotic_mod_type_keys || "");
+    for (let i = 0; i < mods.length; i++) {
+      const m = mods[i] || {};
+      const num = formatDisplayNumber(m.num);
+      const unit = String(m.unit || "").trim();
+      const tv = String(m.type || "").trim();
+      if (!tv && !num) continue;
+      const tk = String(modKeys[i] || "").trim();
+      const tDisp = (langSelect.value === "ja") ? (i18n[tk] ?? trText(tv)) : tv;
+      const nv = num ? `${num}${unit ? unit : ""}` : "";
+      const text = nv && tDisp ? `${nv} ${tDisp}` : (nv || tDisp);
+      if (text) attrs.push({ key: tk || normalizeKey(tv), text, cls: "line line--gray" });
+    }
+  } else {
+    const attrTypes = parseJsonArrayText(row?.attr_types || "");
+    const attrTypeKeys = parseJsonArrayText(row?.attr_type_keys || "");
+    for (let i = 0; i < attrTypes.length; i++) {
+      const tk = String(attrTypeKeys[i] || "").trim();
+      const tv = String(attrTypes[i] || "").trim();
+      if (!tv) continue;
+      const rk = blueprintPopupRandomTokenKind(tk || tv);
+      const key = rk === "core" ? "randomcoreattribute" : (rk === "attr" ? "randomattribute" : (tk || normalizeKey(tv)));
+      const text = rk
+        ? ((langSelect.value === "ja")
+          ? trText(rk === "core" ? "Random Core Attribute" : "Random Attribute")
+          : (rk === "core" ? "Random Core Attribute" : "Random Attribute"))
+        : ((langSelect.value === "ja") ? (i18n[tk] ?? trText(tv)) : tv);
+      attrs.push({ key, text });
+    }
+  }
+  const coreKeySet = new Set(["weapondamage", "armor", "skilltier", "randomcoreattribute"]);
+  const coreAttrKeys = new Set(attrs.map((a) => normalizeKey(a.key || "")).filter((k) => coreKeySet.has(k)));
+  const lines = [];
+  attrs.forEach((a) => {
+    if (a.cls) {
+      lines.push({ cls: a.cls, text: a.text, key: String(a.key || "").trim(), icon: "" });
+      return;
+    }
+    const ak = normalizeKey(a.key || "");
+    const isCore = coreAttrKeys.has(ak);
+    const dotColorCls = blueprintPopupAttrDotColorClass(ak);
+    const textCls = (ak === "weapondamage")
+      ? "line--core-attr-weapon"
+      : (ak === "armor")
+        ? "line--core-attr-armor"
+        : (ak === "skilltier")
+          ? "line--core-attr-skill"
+          : "";
+    const coreColorCls = (ak === "weapondamage")
+      ? "line--red"
+      : (ak === "armor")
+        ? "line--blue"
+        : (ak === "skilltier")
+          ? "line--yellow"
+          : "";
+    const cls = isCore && coreColorCls
+      ? `line ${coreColorCls} ${textCls}`
+      : (isCore ? "line line--core" : (dotColorCls ? `line ${dotColorCls} line--noncore-attr` : "line line--gray"));
+    lines.push({ cls, text: a.text, key: String(a.key || "").trim(), icon: "" });
+  });
+  if (talentText) lines.push({ cls: "line line--gray line--talent", text: talentText, key: talentKey, icon: talentIcon });
+  if (talentDescText) lines.push({ cls: "line line--named-meta line--talent-desc", text: talentDescText, textHtml: blueprintPopupTextToHtmlPreserveNewline(talentDescText), key: "", icon: "" });
+  if (!lines.length) lines.push({ cls: "line line--gray", text: ui("noData"), key: "", icon: "" });
+  let bg = "";
+  if (isWeapon) {
+    const wg = blueprintPopupWeaponGroupKey(row?.weapon_group || "");
+    const wIcon = iconUrl("weapon_types", wg, "img/weapons");
+    bg = wIcon ? bgIconHtml(wIcon, "card__bg--tr", "weapon") : "";
+  } else {
+    const slotKey = gearSlotKey(row?.item_type || "");
+    const slotIcon = iconUrl("gear_slots", slotKey, "img/gears");
+    bg = slotIcon ? bgIconHtml(slotIcon, "card__bg--tr", "slot") : "";
+  }
+  return `
+    <div class="card rarity-exotic">
+      ${bg}
+      <div class="card__head">
+        <div class="card__title-wrap card__title-wrap--gear">
+          <div class="card__titles">
+            <div class="card__title"><span class="card__title-text">${escapeHtml(title)}</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="lines">
+        ${lines.map((ln) => `<div class="${ln.cls}" ${ln.key ? `data-stat-key="${escapeHtml(ln.key)}"` : ""}>${ln.icon || ""}<div class="line__body"><div class="line__text">${ln.textHtml || escapeHtml(ln.text)}</div></div></div>`).join("")}
+      </div>
+    </div>
+  `;
+}
+
+async function handleBlueprintExoticPopup(exoticBtn) {
+  const itemKind = normalizeKey(exoticBtn.getAttribute("data-exotic-kind") || "gear") === "weapon" ? "weapon" : "gear";
+  const name = stripHtml(exoticBtn.getAttribute("data-exotic-name") || exoticBtn.textContent || "");
+  const nameKey = normalizeKey(exoticBtn.getAttribute("data-exotic-name-key") || "");
+  try {
+    const cache = await ensureExoticGearPopupCache();
+    const byNameKeyMap = itemKind === "weapon" ? cache?.weaponByNameKey : cache?.gearByNameKey;
+    const byNameMap = itemKind === "weapon" ? cache?.weaponByName : cache?.gearByName;
+    const byKey = nameKey && byNameKeyMap ? byNameKeyMap.get(nameKey) : null;
+    const byName = byNameMap ? byNameMap.get(normalizeKey(name || "")) : null;
+    const row = byKey || byName;
+    const bodyHtml = buildBlueprintExoticPopupCardHtml(row, itemKind, name);
+    openFloatingInfoCardRich(exoticBtn, "", bodyHtml, "gear-exotic");
+  } catch (err) {
+    const bodyHtml = buildBlueprintExoticPopupCardHtml(null, itemKind, name);
+    openFloatingInfoCardRich(exoticBtn, "", bodyHtml, "gear-exotic");
+  }
+}
+
 // event delegation: line tap => toggle filter, card tap => select
 function handleViewInteractionClick(e) {
   if (currentViewMode === "trello" || currentViewMode === "patches") {
@@ -4647,8 +5158,9 @@ function handleViewInteractionClick(e) {
       return;
     }
   }
-  if (currentViewMode === "vendor") {
-    if (!filtersOpen) {
+  if (currentViewMode === "vendor" || currentViewMode === "brand" || currentViewMode === "gear_talent" || currentViewMode === "blueprint") {
+    const isPopupBlockedByFilter = !!filtersOpen || (currentViewMode === "blueprint" && !!window.blueprintFiltersOpen);
+    if (!isPopupBlockedByFilter) {
       const talentBtn = e.target.closest(".inline-pop-trigger[data-pop-type='talent']");
       if (talentBtn) {
         e.preventDefault();
@@ -4661,6 +5173,20 @@ function handleViewInteractionClick(e) {
         e.preventDefault();
         e.stopPropagation();
         void handleVendorBrandPopup(brandBtn);
+        return;
+      }
+      const exoticBtn = e.target.closest(".inline-pop-trigger[data-pop-type='blueprint-exotic']");
+      if (exoticBtn) {
+        e.preventDefault();
+        e.stopPropagation();
+        void handleBlueprintExoticPopup(exoticBtn);
+        return;
+      }
+      const namedBtn = e.target.closest(".inline-pop-trigger[data-pop-type='blueprint-named']");
+      if (namedBtn) {
+        e.preventDefault();
+        e.stopPropagation();
+        void handleBlueprintNamedPopup(namedBtn);
         return;
       }
       const gearBtn = e.target.closest(".inline-pop-trigger[data-pop-type='gear-summary']");

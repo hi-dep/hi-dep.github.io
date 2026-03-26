@@ -777,25 +777,9 @@ body.only-selected .card::before {
   word-break: break-word;
 }
 
-.gear-talent-item-two-line {
-  display: flex;
-  flex-direction: column;
-  gap: 1px;
-  white-space: normal;
-  overflow: visible;
-  text-overflow: clip;
-}
-
-.gear-talent-item-brand {
-  display: block;
-}
-
 .gear-talent-item-name {
-  display: inline-flex;
-  align-items: center;
-  gap: 2px;
+  display: inline-block;
   min-width: 0;
-  margin-left: -1px;
 }
 
 .card__bg {

@@ -618,6 +618,7 @@
       "ammo": "弾薬",
       "ardamage": "アサルトライフルダメージ",
       "armor": "アーマー",
+      "basedamage": "基礎ダメージ",
       "armoronkill": "キルによるアーマー",
       "armorregen": "アーマー回復",
       "blastradius": "ブラスト範囲",

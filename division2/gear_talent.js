@@ -426,10 +426,16 @@
               : (it.brandset || "");
             const nk = normalizeKey(it.nameKey || it.name || "");
             const itemName = (langSelect.value === "ja") ? (i18n[it.nameKey] ?? i18n[nk] ?? it.name) : it.name;
-            const brandHtml = brandName
-              ? `<span class="gear-talent-item-brand">${escapeHtml(brandName)}</span>`
+            const brandKey = normalizeKey(it.brandsetKey || bk || brandName || "");
+            const brandLabel = String(brandName || "").trim();
+            const brandTextHtml = (brandKey && brandLabel)
+              ? `<button type="button" class="inline-pop-trigger line__text-pop-trigger" data-pop-type="brand" data-brand-scope="brand" data-brand-key="${escapeHtml(brandKey)}" data-brand-name="${escapeHtml(brandLabel)}">${escapeHtml(brandLabel)}</button>`
+              : escapeHtml(brandLabel);
+            const brandLine = (brandIcon || brandName)
+              ? `<div class="line line--named">${brandIcon}<div class="line__body"><div class="line__text">${brandTextHtml}</div></div></div>`
               : "";
-            return `<div class="line line--named">${brandIcon}<div class="line__body"><div class="line__text gear-talent-item-two-line">${brandHtml}<span class="gear-talent-item-name">${slotIcon}${escapeHtml(itemName)}</span></div></div></div>`;
+            const itemLine = `<div class="line line--named line--named-attr">${slotIcon}<div class="line__body"><div class="line__text"><span class="gear-talent-item-name">${escapeHtml(itemName)}</span></div></div></div>`;
+            return `${brandLine}${itemLine}`;
           }).join("")}
         </div>
       `;

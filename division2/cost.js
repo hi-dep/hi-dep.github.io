@@ -1,6 +1,35 @@
 /* cost specific view logic */
 (function () {
   let costCache = null;
+  let compactHeaderModeAtRender = null;
+  let compactHeaderWatcherBound = false;
+
+  function isJaLang() {
+    const v1 = String((langSelect && langSelect.value) || "").trim().toLowerCase();
+    const v2 = String((document && document.documentElement && document.documentElement.lang) || "").trim().toLowerCase();
+    let v3 = "";
+    try {
+      v3 = String(localStorage.getItem("division2_lang") || "").trim().toLowerCase();
+    } catch (_e) {
+      v3 = "";
+    }
+    return v1.startsWith("ja") || v2.startsWith("ja") || v3.startsWith("ja");
+  }
+
+  function shouldUseShortHeader() {
+    return isCompactHeaderMode();
+  }
+
+  function viewportWidth() {
+    if (typeof window === "undefined") return 0;
+    const cands = [
+      Number(window.innerWidth || 0),
+      Number(document && document.documentElement ? document.documentElement.clientWidth : 0),
+      Number(window.visualViewport ? window.visualViewport.width : 0),
+    ].filter((n) => Number.isFinite(n) && n > 0);
+    if (!cands.length) return 0;
+    return Math.min.apply(null, cands);
+  }
 
   async function fetchCostData() {
     if (costCache) return costCache;
@@ -64,93 +93,163 @@
   }
 
   function materialLabel(labelJa, shortMode) {
-    const isJa = langSelect && langSelect.value === "ja";
+    const isJa = isJaLang();
     const label = canonicalMaterialLabel(labelJa);
-    const bundleTranslated = translateBundleLabel(label, isJa);
+    const bundleTranslated = translateBundleLabel(label, isJa, shortMode);
     if (bundleTranslated) {
       return bundleTranslated;
     }
-    const mapJaFull = {
-      "グレード": "グレード",
-      "レシーバー部品": "レシーバー部品",
-      "保護布": "保護布",
-      "スチール": "スチール",
-      "ポリカーボネート": "ポリカーボネート",
-      "セラミック": "セラミック",
-      "チタン": "チタン",
-      "カーボンファイバー": "カーボンファイバー",
-      "電子機器": "電子機器",
-      "プリンターフィラメント": "プリンターフィラメント",
-      "フィールド偵察データ": "フィールド偵察データ",
-      "SHDカリブレーション": "SHDカリブレーション",
-      "エキゾチック部品": "エキゾチック部品",
-      "合金/ウィーブ": "合金/ウィーブ",
-      "戦術評価": "戦術評価",
+    const labelToKey = {
+      "グレード": "grade",
+      "Grade": "grade",
+      Tier: "tier",
+      "レシーバー部品": "receivercomponents",
+      "Receiver Components": "receivercomponents",
+      "保護布": "protectivefabric",
+      "Protective Fabric": "protectivefabric",
+      "スチール": "steel",
+      Steel: "steel",
+      "ポリカーボネート": "polycarbonate",
+      Polycarbonate: "polycarbonate",
+      "セラミック": "ceramics",
+      Ceramics: "ceramics",
+      Titanium: "titanium",
+      "チタン": "titanium",
+      "カーボンファイバー": "carbonfiber",
+      "Carbon Fiber": "carbonfiber",
+      "電子機器": "electronics",
+      Electronics: "electronics",
+      "プリンターフィラメント": "printerfilament",
+      "Printer Filament": "printerfilament",
+      "フィールド偵察データ": "fieldrecondata",
+      "Field Recon Data": "fieldrecondata",
+      "SHDカリブレーション": "shdcalibration",
+      "SHD Calibration": "shdcalibration",
+      "エキゾチック部品": "exoticcomponents",
+      "Exotic Components": "exoticcomponents",
+      "合金/ウィーブ": "alloyweave",
+      "Alloy/Weave": "alloyweave",
+      "戦術評価": "tacticalassessment",
+      "Tactical Assessment": "tacticalassessment",
+      合金: "alloyweave",
+      Alloy: "alloyweave",
+      "ウィーブ": "alloyweave",
+      Weave: "alloyweave",
     };
-    const mapEnFull = {
-      "グレード": "Grade",
-      "レシーバー部品": "Receiver Components",
-      "保護布": "Protective Fabric",
-      "スチール": "Steel",
-      "ポリカーボネート": "Polycarbonate",
-      "セラミック": "Ceramics",
-      "チタン": "Titanium",
-      "カーボンファイバー": "Carbon Fiber",
-      "電子機器": "Electronics",
-      "プリンターフィラメント": "Printer Filament",
-      "フィールド偵察データ": "Field Recon Data",
-      "SHDカリブレーション": "SHD Calibration",
-      "エキゾチック部品": "Exotic Components",
-      "合金/ウィーブ": "Alloy/Weave",
-      "戦術評価": "Tactical Assessment",
+    const key = labelToKey[label] || normalizeKey(label);
+    const jaFullByKey = {
+      grade: "グレード",
+      tier: "Tier",
+      receivercomponents: "レシーバー部品",
+      protectivefabric: "保護布",
+      steel: "スチール",
+      polycarbonate: "ポリカーボネート",
+      ceramics: "セラミック",
+      titanium: "チタン",
+      carbonfiber: "カーボンファイバー",
+      electronics: "電子機器",
+      printerfilament: "プリンターフィラメント",
+      fieldrecondata: "フィールド偵察データ",
+      shdcalibration: "SHDカリブレーション",
+      exoticcomponents: "エキゾチック部品",
+      alloyweave: "合金/ウィーブ",
+      tacticalassessment: "戦術評価",
     };
-    const mapJa = {
-      "グレード": "GR",
-      "レシーバー部品": "レシーバー",
-      "保護布": "保護布",
-      "スチール": "スチール",
-      "ポリカーボネート": "ポリカ",
-      "セラミック": "セラミック",
-      "チタン": "チタン",
-      "カーボンファイバー": "カーボン",
-      "電子機器": "電子機器",
-      "プリンターフィラメント": "フィラメント",
-      "フィールド偵察データ": "偵察データ",
-      "SHDカリブレーション": "SHD",
-      "エキゾチック部品": "エキゾ",
-      "合金/ウィーブ": "合金",
-      "戦術評価": "戦術評価",
+    const jaShortByKey = {
+      grade: "GR",
+      tier: "Tier",
+      receivercomponents: "レシーバー",
+      protectivefabric: "布",
+      steel: "スチール",
+      polycarbonate: "ポリカ",
+      ceramics: "セラミック",
+      titanium: "チタン",
+      carbonfiber: "カーボン",
+      electronics: "電子",
+      printerfilament: "フィラメント",
+      fieldrecondata: "偵察データ",
+      shdcalibration: "SHD",
+      exoticcomponents: "エキゾ部品",
+      alloyweave: "合金",
+      tacticalassessment: "戦術",
     };
-    const mapEn = {
-      "グレード": "GR",
-      "レシーバー部品": "Receiver",
-      "保護布": "Fabric",
-      "スチール": "Steel",
-      "ポリカーボネート": "Poly",
-      "セラミック": "Ceramic",
-      "チタン": "Titanium",
-      "カーボンファイバー": "Carbon",
-      "電子機器": "Electronics",
-      "プリンターフィラメント": "Filament",
-      "フィールド偵察データ": "Recon",
-      "SHDカリブレーション": "SHD",
-      "エキゾチック部品": "Exotic",
-      "合金/ウィーブ": "Alloy",
-      "戦術評価": "Tactical",
+    const enFullByKey = {
+      grade: "Grade",
+      tier: "Tier",
+      receivercomponents: "Receiver Components",
+      protectivefabric: "Protective Fabric",
+      steel: "Steel",
+      polycarbonate: "Polycarbonate",
+      ceramics: "Ceramics",
+      titanium: "Titanium",
+      carbonfiber: "Carbon Fiber",
+      electronics: "Electronics",
+      printerfilament: "Printer Filament",
+      fieldrecondata: "Field Recon Data",
+      shdcalibration: "SHD Calibration",
+      exoticcomponents: "Exotic Components",
+      alloyweave: "Alloy/Weave",
+      tacticalassessment: "Tactical Assessment",
     };
-    const map = shortMode ? (isJa ? mapJa : mapEn) : (isJa ? mapJaFull : mapEnFull);
-    return map[label] || label;
+    const enShortByKey = {
+      grade: "GR",
+      tier: "Tier",
+      receivercomponents: "Receiver",
+      protectivefabric: "Fabric",
+      steel: "Steel",
+      polycarbonate: "Poly",
+      ceramics: "Ceramic",
+      titanium: "Titanium",
+      carbonfiber: "Carbon",
+      electronics: "Electronics",
+      printerfilament: "Filament",
+      fieldrecondata: "Recon",
+      shdcalibration: "SHD",
+      exoticcomponents: "Exotic",
+      alloyweave: "Alloy",
+      tacticalassessment: "Tactical",
+    };
+    const dict = isJa
+      ? (shortMode ? jaShortByKey : jaFullByKey)
+      : (shortMode ? enShortByKey : enFullByKey);
+    return dict[key] || label;
   }
 
   function isCompactHeaderMode() {
-    if (typeof window === "undefined" || !window.matchMedia) return false;
-    return window.matchMedia("(max-width: 900px), (hover: none) and (pointer: coarse)").matches;
+    const w = viewportWidth();
+    return w > 0 && w <= 900;
   }
 
-  function translateBundleLabel(label, isJa) {
+  function applyHeaderLabelMode() {
+    if (!contentEl) return;
+    const shortHeader = shouldUseShortHeader();
+    compactHeaderModeAtRender = shortHeader;
+    const nodes = contentEl.querySelectorAll("th[data-label-full][data-label-short]");
+    nodes.forEach((th) => {
+      const full = th.getAttribute("data-label-full") || "";
+      const short = th.getAttribute("data-label-short") || full;
+      th.textContent = shortHeader ? short : full;
+    });
+  }
+
+  function translateBundleLabel(label, isJa, shortMode) {
     const s = String(label || "").trim();
     if (!s) return "";
-    if (isJa) return s;
+    if (isJa) {
+      if (s.endsWith("合金バンドル")) {
+        const prefix = s.slice(0, -("合金バンドル".length)).trim();
+        return shortMode ? `${prefix}合金` : `${prefix}合金バンドル`;
+      }
+      if (s.endsWith("ウィーブバンドル")) {
+        const prefix = s.slice(0, -("ウィーブバンドル".length)).trim();
+        return shortMode ? `${prefix}ウィーブ` : `${prefix}ウィーブバンドル`;
+      }
+      if (s.endsWith("戦術評価バンドル")) {
+        const prefix = s.slice(0, -("戦術評価バンドル".length)).trim();
+        return shortMode ? `${prefix}戦術` : `${prefix}戦術評価バンドル`;
+      }
+      return "";
+    }
 
     const alloyMap = {
       LMG: "LMG",
@@ -192,7 +291,7 @@
     if (s.endsWith("戦術評価バンドル")) {
       const prefix = s.slice(0, -("戦術評価バンドル".length)).trim();
       const head = factionMap[prefix] || prefix;
-      return `${head} Tactical Assessment`;
+      return shortMode ? `${head} Tactical` : `${head} Tactical Assessment`;
     }
     return "";
   }
@@ -206,6 +305,7 @@
     if (k === "スチール" || k === "ポリカーボネート" || k === "セラミック") return "normal";
     if (k === "エキゾチック部品") return "exotic";
     if (raw.includes("合金バンドル") || raw.includes("ウィーブバンドル")) return "highend";
+    if (k === "合金/ウィーブ" || k === "合金" || k === "ウィーブ") return "highend";
     if (/\bAlloy\b/.test(raw) || /\bWeave\b/.test(raw)) return "highend";
     if (k === "フィールド偵察データ" || k === "SHDカリブレーション" || k === "戦術評価") return "highend";
     if (raw.includes("戦術評価")) return "highend";
@@ -217,7 +317,7 @@
   }
 
   function uiText(key) {
-    const isJa = langSelect && langSelect.value === "ja";
+    const isJa = isJaLang();
     const ja = { from: "From", to: "To", category: "カテゴリ" };
     const en = { from: "From", to: "To", category: "Category" };
     return (isJa ? ja : en)[key] || key;
@@ -440,17 +540,33 @@
       contentEl.innerHTML = `<div class="status">${escapeHtml(ui("noData"))}</div>`;
       return;
     }
-    const isJa = langSelect && langSelect.value === "ja";
-    const shortHeader = isCompactHeaderMode();
+    const isJa = isJaLang();
+    const shortHeader = shouldUseShortHeader();
+    compactHeaderModeAtRender = shortHeader;
     const optionsHtml = categories.map((c, idx) => `<option value="${idx}">${escapeHtml(isJa ? c.titleJa : c.titleEn)}</option>`).join("");
     const panelHtmlList = categories.map((cat, idx) => {
-      const cols = cat.columns.map((c) => ({ key: c.key, label: canonicalMaterialLabel(c.label), tier: materialTier(c.label) }));
+      const resolveCategoryLabel = (label) => {
+        const base = canonicalMaterialLabel(label);
+        if (base !== "合金/ウィーブ") return base;
+        const id = String((cat && cat.id) || "");
+        if (id.startsWith("optimization_weapon_")) return isJa ? "合金" : "Alloy";
+        if (id.startsWith("optimization_gear_")) return isJa ? "ウィーブ" : "Weave";
+        return base;
+      };
+      const cols = cat.columns.map((c) => {
+        const resolvedLabel = resolveCategoryLabel(c.label);
+        return { key: c.key, label: resolvedLabel, tier: materialTier(resolvedLabel) };
+      });
       const rows = cat.rows || [];
       const validGrades = rows.map((r) => parseNum(cellValue(r, cols[0].key))).filter((n) => Number.isFinite(n)).sort((a, b) => a - b);
       const maxGrade = validGrades.length ? validGrades[validGrades.length - 1] : 10;
       const gradeList = [0].concat(validGrades);
       const uniqueGradeList = Array.from(new Set(gradeList)).sort((a, b) => a - b);
-      const headHtml = cols.map((c) => `<th class="grade-cost-col grade-cost-col--${escapeHtml(c.tier || "neutral")}">${escapeHtml(materialLabel(c.label, shortHeader))}</th>`).join("");
+      const headHtml = cols.map((c) => {
+        const fullLabel = materialLabel(c.label, false);
+        const shortLabel = materialLabel(c.label, true);
+        return `<th class="grade-cost-col grade-cost-col--${escapeHtml(c.tier || "neutral")}" data-label-full="${escapeHtml(fullLabel)}" data-label-short="${escapeHtml(shortLabel)}">${escapeHtml(shortHeader ? shortLabel : fullLabel)}</th>`;
+      }).join("");
       const bodyHtml = rows.map((row) => {
         const tds = cols.map((c) => `<td class="grade-cost-col grade-cost-col--${escapeHtml(c.tier || "neutral")}">${escapeHtml(String((cellValue(row, c.key) != null) ? cellValue(row, c.key) : ""))}</td>`).join("");
         return `<tr>${tds}</tr>`;
@@ -489,6 +605,7 @@
         ${panelHtmlList.join("")}
       </div>
     `;
+    applyHeaderLabelMode();
 
     const tables = Array.from(contentEl.querySelectorAll("[data-cost-table]"));
     tables.forEach((tableEl, idx) => {
@@ -535,7 +652,31 @@
 
   async function costViewRender() {
     const payload = await fetchCostData();
+    bindCompactHeaderWatcher();
     renderCost(payload);
+  }
+
+  function bindCompactHeaderWatcher() {
+    if (compactHeaderWatcherBound || typeof window === "undefined") return;
+    compactHeaderWatcherBound = true;
+
+    const handleViewportMaybeChanged = () => {
+      if (!contentEl || !contentEl.querySelector(".grade-cost-view")) return;
+      const next = shouldUseShortHeader();
+      if (compactHeaderModeAtRender == null || next === compactHeaderModeAtRender) return;
+      compactHeaderModeAtRender = next;
+      applyHeaderLabelMode();
+    };
+
+    window.addEventListener("resize", handleViewportMaybeChanged, { passive: true });
+    if (window.matchMedia) {
+      const mql = window.matchMedia("(max-width: 900px), (hover: none) and (pointer: coarse)");
+      if (mql && typeof mql.addEventListener === "function") {
+        mql.addEventListener("change", handleViewportMaybeChanged);
+      } else if (mql && typeof mql.addListener === "function") {
+        mql.addListener(handleViewportMaybeChanged);
+      }
+    }
   }
 
   window.costViewRender = costViewRender;

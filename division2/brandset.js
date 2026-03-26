@@ -238,7 +238,13 @@
               .filter(Boolean);
             if (attrs.length) details.push({ kind: "attr", text: attrs.join(" / "), talentKey: "" });
           }
-          if (nm) namedLines.push({ name: nm, details, slotIcon });
+          if (nm) namedLines.push({
+            name: nm,
+            details,
+            slotIcon,
+            itemId: String(n.itemId || ""),
+            nameKey: String(n.nameKey || "")
+          });
         });
       }
 
@@ -282,6 +288,21 @@
               const cls = (d && d.kind === "talent")
                 ? "line line--named-meta line--talent"
                 : "line line--named-meta line--named-attr";
+              if (d && d.kind === "talent") {
+                const talentName = String(d.text || "").trim();
+                const talentKey = normalizeKey(d.talentKey || talentName || "");
+                const popText = window.buildTalentPopTriggerHtml({
+                  text: talentName,
+                  itemCategory: "gear",
+                  itemRarity: "named",
+                  itemId: String(n.itemId || ""),
+                  itemNameKey: String(n.nameKey || ""),
+                  talentKey,
+                  talentName,
+                  talentNamed: true
+                });
+                return `<div class="${cls}">${icon}<div class="line__body"><div class="line__text">${popText}</div></div></div>`;
+              }
               return `<div class="${cls}">${icon}<div class="line__body"><div class="line__text">${escapeHtml(d.text || "")}</div></div></div>`;
             }).join("")}
           `).join("")}
