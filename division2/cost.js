@@ -392,6 +392,63 @@
     return base;
   }
 
+  function enforceMonotoneNonDecreasing(values, orderKeys) {
+    const out = Array.isArray(values) ? values.slice() : [];
+    const n = out.length;
+    if (!n) return out;
+    const order = Array.from({ length: n }, (_, i) => i)
+      .sort((a, b) => {
+        const ka = Number(orderKeys && orderKeys[a]);
+        const kb = Number(orderKeys && orderKeys[b]);
+        const fa = Number.isFinite(ka) ? ka : Number.POSITIVE_INFINITY;
+        const fb = Number.isFinite(kb) ? kb : Number.POSITIVE_INFINITY;
+        return fa - fb || a - b;
+      });
+    for (let j = 1; j < order.length; j++) {
+      const prev = order[j - 1];
+      const cur = order[j];
+      if (Number(out[cur]) < Number(out[prev])) out[cur] = out[prev];
+    }
+    return out;
+  }
+
+  function allocateIntegerMonotoneByGrade(values, grades) {
+    const src = Array.isArray(values) ? values : [];
+    if (!src.length) return [];
+    const target = Math.round(src.reduce((a, b) => a + (Number.isFinite(Number(b)) ? Number(b) : 0), 0));
+    let allocated = allocateIntegerByLargestRemainder(src);
+    allocated = enforceMonotoneNonDecreasing(allocated, grades);
+
+    // Keep the rounded total when possible while preserving monotone order.
+    let current = allocated.reduce((a, b) => a + (Number.isFinite(Number(b)) ? Number(b) : 0), 0);
+    if (current > target) {
+      let excess = current - target;
+      const n = allocated.length;
+      const order = Array.from({ length: n }, (_, i) => i)
+        .sort((a, b) => {
+          const ga = Number(grades && grades[a]);
+          const gb = Number(grades && grades[b]);
+          const fa = Number.isFinite(ga) ? ga : Number.POSITIVE_INFINITY;
+          const fb = Number.isFinite(gb) ? gb : Number.POSITIVE_INFINITY;
+          return fa - fb || a - b;
+        });
+      for (let j = order.length - 1; j >= 0 && excess > 0; j--) {
+        const cur = order[j];
+        const minAllowed = (j > 0) ? Number(allocated[order[j - 1]]) : 0;
+        const reducible = Math.max(0, Number(allocated[cur]) - minAllowed);
+        if (reducible <= 0) continue;
+        const dec = Math.min(reducible, excess);
+        allocated[cur] = Number(allocated[cur]) - dec;
+        excess -= dec;
+      }
+      current = allocated.reduce((a, b) => a + (Number.isFinite(Number(b)) ? Number(b) : 0), 0);
+      if (current > target) {
+        // Fallback: keep monotone result even if exact total cannot be preserved under constraints.
+      }
+    }
+    return allocated;
+  }
+
   function buildDisplayRows(rows, cols, useY8S1) {
     const srcRows = Array.isArray(rows) ? rows : [];
     const outRows = srcRows.map((r) => {
@@ -406,14 +463,17 @@
       if (cidx === 0) return;
       const numericIndex = [];
       const transformed = [];
+      const gradeOrder = [];
       srcRows.forEach((r, ridx) => {
         const raw = (cellValue(r, c.key) != null) ? cellValue(r, c.key) : "";
         const n = parseNum(raw);
         if (!Number.isFinite(n)) return;
+        const g = parseNum(cellValue(r, cols[0] && cols[0].key));
         numericIndex.push(ridx);
         transformed.push(applyY8S1Reduction(n, c && c.tier, useY8S1));
+        gradeOrder.push(Number.isFinite(g) ? g : ridx);
       });
-      const allocated = allocateIntegerByLargestRemainder(transformed);
+      const allocated = allocateIntegerMonotoneByGrade(transformed, gradeOrder);
       numericIndex.forEach((ridx, i) => {
         outRows[ridx][c.key] = allocated[i];
       });
