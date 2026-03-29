@@ -851,15 +851,7 @@
           "type": "craft"
         }
       ],
-      "target_looted": [
-        "Richter & Kaiser GmbH",
-        "mask",
-        "chest",
-        "holster",
-        "backpack",
-        "gloves",
-        "kneepads"
-      ],
+      "target_looted": [],
       "drop": []
     },
     {

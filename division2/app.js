@@ -2223,9 +2223,20 @@ function buildGearsetPopupCardHtml(it, fallbackTitle = "") {
         for (const k of talentKeyVariants(baseKey)) add(iconUrl("talents", k, "img/talents"));
       }
     }
-    if (cands.length) return iconImgHtml(cands[0], "ico ico--talent", "talent", cands.slice(1));
+    if (isFourPc) {
+      if (cands.length) {
+        const fourPcFallbacks = cands.slice(1);
+        if (setIconPrimary && !fourPcFallbacks.includes(setIconPrimary)) fourPcFallbacks.push(setIconPrimary);
+        (setFallbacks || []).forEach((u) => {
+          if (u && !fourPcFallbacks.includes(u)) fourPcFallbacks.push(u);
+        });
+        return iconImgHtml(cands[0], "ico ico--talent", "talent", fourPcFallbacks);
+      }
+      if (setIconPrimary) return iconImgHtml(setIconPrimary, "ico ico--talent", "gearset", setFallbacks || []);
+      return "";
+    }
     if (pieceIcon) return pieceIcon;
-    if (isFourPc && setIconPrimary) return iconImgHtml(setIconPrimary, "ico ico--talent", "gearset", setFallbacks || []);
+    if (cands.length) return iconImgHtml(cands[0], "ico ico--talent", "talent", cands.slice(1));
     return "";
   }
 
@@ -2243,8 +2254,10 @@ function buildGearsetPopupCardHtml(it, fallbackTitle = "") {
       const td = b.talentDesc || "";
       const labelList = gs.map((x) => String(x.label || "").trim()).filter(Boolean);
       const labelNorm = labelList.map((x) => normalizeKey(x)).join(" ");
-      const slotNum = Number.parseInt(String(b.slot || "0"), 10) || 0;
-      const isFourPc = slotNum >= 4 || labelNorm.includes("4pc") || labelNorm.includes("4piece");
+      const slotNorm = normalizeKey(String(b.slot || ""));
+      const isBackpackTalent = slotNorm.includes("backpack") || labelNorm.includes("backpack");
+      const isChestTalent = slotNorm.includes("chest") || labelNorm.includes("chest");
+      const isFourPc = !(isBackpackTalent || isChestTalent);
       const pieceIcon = gearPieceIconByLabels(labelList);
       const talentKey = normalizeKey(tn || "");
       const talentIcon = gearsetTalentIconHtml(talentKey, pieceIcon, isFourPc, setIconPrimary, setFallbacks);
@@ -5251,4 +5264,3 @@ boot().catch(err => {
 // world time tick (once per second)
 updateWorldTime();
 setInterval(updateWorldTime, 1000);
-
