@@ -44,7 +44,7 @@
     "Field Research Technician": { ja: "フィールドリサーチ テクニシャン", en: "Field Research Technician" },
     "Field Research Firewall": { ja: "フィールドリサーチ ファイアウォール", en: "Field Research Firewall" },
     "Field Research Gunner": { ja: "フィールドリサーチ ガンナー", en: "Field Research Gunner" },
-    "Reconstructed Caches": { ja: "復元キャッシュ", en: "Reconstructed Caches" },
+    "Reconstructed Caches": { ja: "復元されたキャッシュ", en: "Reconstructed Caches" },
     "Kill Squad": { ja: "キルスクワッド", en: "Kill Squad" },
     "Hyenas completion": { ja: "ハイエナ 報復完了", en: "Hyenas retaliation completion" },
     "Outcasts completion": { ja: "アウトキャスト 報復完了", en: "Outcasts retaliation completion" },

@@ -193,7 +193,7 @@
       "Field Research Technician": { ja: "フィールドリサーチ テクニシャン", en: "Field Research Technician" },
       "Field Research Firewall": { ja: "フィールドリサーチ ファイアウォール", en: "Field Research Firewall" },
       "Field Research Gunner": { ja: "フィールドリサーチ ガンナー", en: "Field Research Gunner" },
-      "Reconstructed Caches": { ja: "復元キャッシュ", en: "Reconstructed Caches" },
+      "Reconstructed Caches": { ja: "復元されたキャッシュ", en: "Reconstructed Caches" },
       "Kill Squad": { ja: "キルスクワッド", en: "Kill Squad" },
       "completion": { ja: "報復完了", en: "retaliation completion" },
       "Hyenas retaliation completion": { ja: "ハイエナ 報復完了", en: "Hyenas retaliation completion" },
@@ -451,7 +451,7 @@
       sourceText = (langSelect.value === "ja") ? " / CP設計図" : " / CP Blueprint";
     } else if (c.source === "rc") {
       sourceBadge = `<span class="item-source-scope">RC</span>`;
-      sourceText = (langSelect.value === "ja") ? " / 復元キャッシュ設計図" : " / Reconstructed Cache Blueprint";
+      sourceText = (langSelect.value === "ja") ? " / 復元されたキャッシュ設計図" : " / Reconstructed Cache Blueprint";
     }
     return `<span class="item-source-icon" title="${escapeHtml(`${tagLabel("craft")}: ${alt}${sourceText}`)}">${iconImgHtml(src, "ico ico--item-source", alt)}${sourceBadge}</span>`;
   }
