@@ -106,6 +106,7 @@
     section.className = "catgroup catgroup--gear gearset-view";
     section.innerHTML = `
       <div class="trello-group-toggle">
+        ${typeof buildInlineConditionFilterHtml === "function" ? buildInlineConditionFilterHtml() : ""}
         <button class="btn btn--ghost talent-desc-btn ${window.talentShowDesc ? "is-on" : ""}" type="button" data-toggle-talent-desc="1">Desc</button>
       </div>
       <div class="grid grid--gear"></div>

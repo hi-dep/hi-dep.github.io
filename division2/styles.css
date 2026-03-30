@@ -194,6 +194,10 @@ body::before {
   display: none !important;
 }
 
+[data-vendor-filter-control="1"][hidden] {
+  display: none !important;
+}
+
 .view-toolbar {
   display: flex;
   flex-wrap: wrap;
@@ -472,30 +476,6 @@ body::before {
       rgba(var(--rarity-rgb), .40) 0 4px,
       rgba(var(--rarity-rgb), .10) 4px 100%),
     rgba(22, 26, 39, 0.74);
-}
-
-body.only-selected .card {
-  overflow: visible;
-  margin-top: 8px;
-}
-
-body.only-selected .card::before {
-  content: attr(data-vendor);
-  position: absolute;
-  top: 0;
-  right: 8px;
-  transform: translateY(-50%);
-  font-size: 10px;
-  line-height: 1;
-  padding: 4px 6px;
-  border-radius: 6px;
-  background: linear-gradient(rgba(0, 0, 0, .35), rgba(0, 0, 0, .35)), rgb(var(--rarity-rgb));
-  border: 1px solid rgb(var(--rarity-rgb));
-  color: #fff;
-  text-shadow: 0 1px 0 rgba(0, 0, 0, .35);
-  letter-spacing: .04em;
-  white-space: nowrap;
-  pointer-events: none;
 }
 
 .card .line__body,

@@ -239,6 +239,15 @@ function buildToolbarHtmlFromDef(def) {
   return `<div class="vendor-toolbar">${html}</div>`;
 }
 
+function buildInlineConditionFilterHtml() {
+  return `
+    <button id="filterToggleBtn" class="btn btn--ghost topbar__toggle" type="button">${ui("filtersOpen")}</button>
+    <button id="onlySelectedBtn" class="btn btn--toggle" type="button" data-vendor-filter-control="1" hidden aria-hidden="true" disabled>${ui("selectedOnly")}</button>
+    <button id="clearSelectedBtn" class="btn btn--ghost" type="button" data-vendor-filter-control="1" hidden aria-hidden="true" disabled>${ui("clearSelected")}</button>
+  `;
+}
+window.buildInlineConditionFilterHtml = buildInlineConditionFilterHtml;
+
 function findViewToolbarNodes(viewMode) {
   if (!contentEl) return [];
   const mode = String(viewMode || "");
@@ -291,6 +300,10 @@ function syncHeaderToolbarFromContent() {
     nodes.forEach((n) => shell.appendChild(n));
     vendorToolbarHostEl.appendChild(shell);
     vendorToolbarHostEl.style.display = "";
+    bindVendorToolbarRefs();
+    bindVendorToolbarEvents();
+    setFiltersOpen(filtersOpen);
+    applyUiLang();
   } finally {
     toolbarSyncLock = false;
   }
@@ -334,6 +347,8 @@ function bindVendorToolbarRefs() {
 
 function bindVendorToolbarEvents() {
   if (dateInput) {
+    if (dateInput.dataset.boundChange !== "1") {
+      dateInput.dataset.boundChange = "1";
     dateInput.addEventListener("change", () => {
       const d = dateInput.value;
       if (!d) return;
@@ -342,16 +357,22 @@ function bindVendorToolbarEvents() {
         loadWeek(d).catch(err => setStatus(`${ui("error")}: ${err.message}`));
       }
     });
+    }
   }
   if (modeSelect) {
+    if (modeSelect.dataset.boundChange !== "1") {
+      modeSelect.dataset.boundChange = "1";
     modeSelect.addEventListener("change", () => {
       if (!filtersOpen) return;
       filterMode = modeSelect.value === "or" ? "or" : "and";
       applyUiLang();
       applyFiltersToDom();
     });
+    }
   }
   if (filterInput) {
+    if (filterInput.dataset.boundKeydown !== "1") {
+      filterInput.dataset.boundKeydown = "1";
     filterInput.addEventListener("keydown", (e) => {
       if (!filtersOpen) return;
       if (e.key !== "Enter") return;
@@ -359,35 +380,48 @@ function bindVendorToolbarEvents() {
       if (term) addFilterKey(term);
       filterInput.value = "";
     });
+    }
   }
   if (onlySelectedBtn) {
+    if (onlySelectedBtn.dataset.boundClick !== "1") {
+      onlySelectedBtn.dataset.boundClick = "1";
     onlySelectedBtn.addEventListener("click", () => {
       if (!filtersOpen) return;
       onlySelected = !onlySelected;
-      updateViewMode();
       applyFiltersToDom();
     });
+    }
   }
   if (recommendSelectedBtn) {
+    if (recommendSelectedBtn.dataset.boundClick !== "1") {
+      recommendSelectedBtn.dataset.boundClick = "1";
     recommendSelectedBtn.addEventListener("click", () => {
       if (!filtersOpen) return;
       applyVendorRecommendedSelection({ force: true });
     });
+    }
   }
   if (clearSelectedBtn) {
+    if (clearSelectedBtn.dataset.boundClick !== "1") {
+      clearSelectedBtn.dataset.boundClick = "1";
     clearSelectedBtn.addEventListener("click", () => {
       if (!filtersOpen) return;
       clearSelection();
-      updateViewMode();
     });
+    }
   }
   if (clearFiltersBtn) {
+    if (clearFiltersBtn.dataset.boundClick !== "1") {
+      clearFiltersBtn.dataset.boundClick = "1";
     clearFiltersBtn.addEventListener("click", () => {
       if (!filtersOpen) return;
       clearFilters();
     });
+    }
   }
   if (chipsEl) {
+    if (chipsEl.dataset.boundClick !== "1") {
+      chipsEl.dataset.boundClick = "1";
     chipsEl.addEventListener("click", (e) => {
       if (!filtersOpen) return;
       const x = e.target.closest(".chip__x");
@@ -397,12 +431,16 @@ function bindVendorToolbarEvents() {
       const k = chip.dataset.key;
       removeFilterKey(k);
     });
+    }
   }
   if (filterToggleBtn) {
+    if (filterToggleBtn.dataset.boundClick !== "1") {
+      filterToggleBtn.dataset.boundClick = "1";
     filterToggleBtn.addEventListener("click", () => {
       setFiltersOpen(!filtersOpen);
       applyUiLang();
     });
+    }
   }
 }
 
@@ -784,9 +822,40 @@ function setFiltersOpen(isOpen) {
 // selection & filters
 let onlySelected = false;
 const selectedIds = new Set();        // item_id
+const selectionStateByView = new Map(); // view -> { onlySelected:boolean, ids:string[] }
 let filterMode = "and";               // and/or
 let activeFilterKeys = [];            // stat_key[]
 const statLabelEnByKey = new Map();   // stat_key -> English label
+
+function selectableViewKey(mode) {
+  const m = String(mode || "");
+  if (m === "vendor" || m === "brand" || m === "gearset" || m === "exotic_gear") return m;
+  return "";
+}
+
+function saveSelectionStateForView(mode) {
+  const key = selectableViewKey(mode);
+  if (!key) return;
+  selectionStateByView.set(key, {
+    onlySelected: !!onlySelected,
+    ids: Array.from(selectedIds)
+  });
+}
+
+function loadSelectionStateForView(mode) {
+  const key = selectableViewKey(mode);
+  selectedIds.clear();
+  onlySelected = false;
+  if (!key) return;
+  const state = selectionStateByView.get(key);
+  if (!state || typeof state !== "object") return;
+  onlySelected = !!state.onlySelected;
+  const ids = Array.isArray(state.ids) ? state.ids : [];
+  ids.forEach((id) => {
+    const v = String(id || "").trim();
+    if (v) selectedIds.add(v);
+  });
+}
 
 function setStatus(msg, mode = "loading") {
   statusMode = msg ? mode : "";
@@ -952,6 +1021,26 @@ function getUrlParam(name) {
   }
 }
 
+function resolveViewMode(rawView) {
+  const view = String(rawView || "").trim().toLowerCase();
+  if (!view) return "";
+  if (view === "vendor" || view === "vendo") return "vendor";
+  if (view === "weapons" || view === "weapon") return "weapons";
+  if (view === "brand" || view === "brands") return "brand";
+  if (view === "gearset" || view === "gearsets") return "gearset";
+  if (view === "exotic_gear" || view === "exoticgear") return "exotic_gear";
+  if (view === "gear_talent" || view === "geartalent") return "gear_talent";
+  if (view === "weapon_talent" || view === "weapontalent") return "weapon_talent";
+  if (view === "descent_talent" || view === "descenttalent") return "descent_talent";
+  if (view === "prototype") return "prototype";
+  if (view === "cost" || view === "grade_cost" || view === "gradecost") return "cost";
+  if (view === "blueprint" || view === "blueprints") return "blueprint";
+  if (view === "item_sources" || view === "itemsources") return "item_sources";
+  if (view === "trello") return "trello";
+  if (view === "patches") return "patches";
+  return "";
+}
+
 function applyUrlParams() {
   // lang=ja|en
   const lang = getUrlParam("lang");
@@ -965,22 +1054,34 @@ function applyUrlParams() {
     setVendorDateValue(date);
   }
 
-  // view=vendor|weapons|brand|gearset|exotic_gear|gear_talent|weapon_talent|descent_talent|prototype|cost|blueprint|item_sources|trello|patches (accept typo: vendo)
-  const view = getUrlParam("view").toLowerCase();
-  if (view === "vendor" || view === "vendo") initialViewMode = "vendor";
-  else if (view === "weapons" || view === "weapon") initialViewMode = "weapons";
-  else if (view === "brand" || view === "brands") initialViewMode = "brand";
-  else if (view === "gearset" || view === "gearsets") initialViewMode = "gearset";
-  else if (view === "exotic_gear" || view === "exoticgear") initialViewMode = "exotic_gear";
-  else if (view === "gear_talent" || view === "geartalent") initialViewMode = "gear_talent";
-  else if (view === "weapon_talent" || view === "weapontalent") initialViewMode = "weapon_talent";
-  else if (view === "descent_talent" || view === "descenttalent") initialViewMode = "descent_talent";
-  else if (view === "prototype") initialViewMode = "prototype";
-  else if (view === "cost" || view === "grade_cost" || view === "gradecost") initialViewMode = "cost";
-  else if (view === "blueprint" || view === "blueprints") initialViewMode = "blueprint";
-  else if (view === "item_sources" || view === "itemsources") initialViewMode = "item_sources";
-  else if (view === "trello") initialViewMode = "trello";
-  else if (view === "patches") initialViewMode = "patches";
+  // view mode resolution policy:
+  // - /web/<view>/ is canonical and has priority over query.
+  // - query view is honored only on /web/ (root page).
+  let pathViewMode = "";
+  let isRootPage = false;
+  const queryViewRaw = getUrlParam("view") || getUrlParam("veiw"); // typo tolerance
+  try {
+    const segs = String(window.location.pathname || "")
+      .split("/")
+      .filter(Boolean)
+      .map((x) => String(x || "").toLowerCase());
+    const last = segs.length ? segs[segs.length - 1] : "";
+    const cand = (last === "index.html" && segs.length >= 2) ? segs[segs.length - 2] : last;
+    pathViewMode = (cand && cand !== "division2") ? resolveViewMode(cand) : "";
+    isRootPage = (!cand || cand === "division2" || cand === "web");
+  } catch (e) {
+    // ignore path parse errors
+  }
+  // Canonicalize /<view>/ pages: query view is not allowed there.
+  // Keep other query params (lang/date/...) and just remove view key.
+  if (pathViewMode && queryViewRaw) {
+    replaceUrlParams({ view: null, veiw: null });
+  }
+  let nextViewMode = pathViewMode || "";
+  if (!nextViewMode && isRootPage) {
+    nextViewMode = resolveViewMode(queryViewRaw);
+  }
+  if (nextViewMode) initialViewMode = nextViewMode;
 
   // descent_pool=<pool_key>
   const descentPool = normalizeKey(getUrlParam("descent_pool"));
@@ -990,6 +1091,20 @@ function applyUrlParams() {
   const trelloGroup = getUrlParam("trello_group").toLowerCase();
   if (trelloGroup === "planned") window.trelloGroupBy = "planned";
   else if (trelloGroup === "name") window.trelloGroupBy = "name";
+}
+
+function isRootViewPagePath() {
+  try {
+    const segs = String(window.location.pathname || "")
+      .split("/")
+      .filter(Boolean)
+      .map((x) => String(x || "").toLowerCase());
+    const last = segs.length ? segs[segs.length - 1] : "";
+    const cand = (last === "index.html" && segs.length >= 2) ? segs[segs.length - 2] : last;
+    return (!cand || cand === "division2" || cand === "web");
+  } catch (e) {
+    return true;
+  }
 }
 
 function replaceUrlParams(patch) {
@@ -1008,8 +1123,44 @@ function replaceUrlParams(patch) {
   }
 }
 
+function replaceUrlPathAndParams(pathname, patch) {
+  try {
+    const u = new URL(window.location.href);
+    u.pathname = pathname;
+    const params = u.searchParams;
+    Object.entries(patch || {}).forEach(([k, v]) => {
+      if (v == null || v === "") params.delete(k);
+      else params.set(k, String(v));
+    });
+    const qs = params.toString();
+    const next = `${u.pathname}${qs ? "?" + qs : ""}${u.hash || ""}`;
+    history.replaceState(null, "", next);
+  } catch (e) {
+    // ignore URL rewrite errors
+  }
+}
+
+function buildPathForViewMode(mode) {
+  try {
+    const segs = String(window.location.pathname || "")
+      .split("/")
+      .filter(Boolean);
+    if (segs.length && String(segs[segs.length - 1] || "").toLowerCase() === "index.html") {
+      segs.pop();
+    }
+    if (segs.length && resolveViewMode(segs[segs.length - 1])) {
+      segs.pop();
+    }
+    segs.push(String(mode || "vendor"));
+    return `/${segs.join("/")}/`;
+  } catch (e) {
+    return `/${String(mode || "vendor")}/`;
+  }
+}
+
 function updateModeUi() {
   const isVendorView = currentViewMode === "vendor";
+  const sharedFilterViews = new Set(["vendor", "brand", "gearset", "exotic_gear"]);
   if (isVendorView) {
     ensureVendorToolbarMounted();
   } else {
@@ -1063,7 +1214,7 @@ function updateModeUi() {
   }
   document.title = nextTitle;
   if (vendorToolbarHostEl && isVendorView) vendorToolbarHostEl.style.display = "";
-  if (!isVendorView && filtersOpen) {
+  if (!sharedFilterViews.has(currentViewMode) && filtersOpen) {
     setFiltersOpen(false);
   }
 }
@@ -3601,19 +3752,25 @@ function applyFiltersToDom() {
   }
 
   const keys = activeFilterKeys.slice();
-  const isVendor = currentViewMode === "vendor";
+  const isSelectableView = currentViewMode === "vendor" || currentViewMode === "brand" || currentViewMode === "gearset" || currentViewMode === "exotic_gear";
+  const useKeyFilter = currentViewMode === "vendor";
+  syncCardSelectionClasses();
 
-  document.body.classList.toggle("only-selected", isVendor && onlySelected);
+  document.body.classList.toggle("only-selected", isSelectableView && onlySelected);
 
   document.querySelectorAll("[data-item-id][data-search]").forEach(card => {
     const id = card.dataset.itemId;
-    const okSel = (!isVendor || !onlySelected) || selectedIds.has(id);
-    const okKeys = cardHasKeys(card, keys);
+    const okSel = (!isSelectableView || !onlySelected) || selectedIds.has(id);
+    const okKeys = !useKeyFilter || cardHasKeys(card, keys);
     card.style.display = (okSel && okKeys) ? "" : "none";
   });
 
   // line highlight
   document.querySelectorAll(".line[data-stat-key]").forEach(line => {
+    if (!useKeyFilter) {
+      line.classList.remove("is-filter-hit");
+      return;
+    }
     const k = line.dataset.statKey;
     if (activeFilterKeys.includes(k)) line.classList.add("is-filter-hit");
     else line.classList.remove("is-filter-hit");
@@ -3878,7 +4035,8 @@ window.vendorApplyRecommendations = function vendorApplyRecommendations(items, o
 };
 
 function toggleCardSelection(cardEl) {
-  if (currentViewMode !== "vendor") return;
+  const isSelectableView = currentViewMode === "vendor" || currentViewMode === "brand" || currentViewMode === "gearset" || currentViewMode === "exotic_gear";
+  if (!isSelectableView) return;
   const id = cardEl?.dataset?.itemId;
   if (!id) return;
   if (selectedIds.has(id)) {
@@ -4006,7 +4164,16 @@ function toggleNavMenu() {
 }
 
 async function switchViewMode(mode) {
+  const prevViewMode = currentViewMode;
+  saveSelectionStateForView(prevViewMode);
   currentViewMode = (mode === "weapons" || mode === "brand" || mode === "gearset" || mode === "exotic_gear" || mode === "gear_talent" || mode === "weapon_talent" || mode === "descent_talent" || mode === "prototype" || mode === "cost" || mode === "blueprint" || mode === "item_sources" || mode === "trello" || mode === "patches") ? mode : "vendor";
+  loadSelectionStateForView(currentViewMode);
+  const shouldResetSharedFilterOpen =
+    prevViewMode !== currentViewMode &&
+    (currentViewMode === "brand" || currentViewMode === "gearset" || currentViewMode === "exotic_gear");
+  if (shouldResetSharedFilterOpen) {
+    setFiltersOpen(false);
+  }
   window.currentViewMode = currentViewMode;
   syncDescToggleForCurrentView();
   closeNavMenu();
@@ -4015,10 +4182,20 @@ async function switchViewMode(mode) {
     setStatus("");
   }
   if (worldTimeWrapEl) worldTimeWrapEl.style.display = "";
-  replaceUrlParams({
-    view: currentViewMode,
-    descent_pool: currentViewMode === "descent_talent" ? (window.descentTalentInitialPoolKey || null) : null
-  });
+  const descentPoolParam = currentViewMode === "descent_talent" ? (window.descentTalentInitialPoolKey || null) : null;
+  if (isRootViewPagePath()) {
+    replaceUrlParams({
+      view: currentViewMode,
+      veiw: null,
+      descent_pool: descentPoolParam
+    });
+  } else {
+    replaceUrlPathAndParams(buildPathForViewMode(currentViewMode), {
+      view: null,
+      veiw: null,
+      descent_pool: descentPoolParam
+    });
+  }
   if (currentViewMode === "weapons") {
     await renderWeaponsView();
     requestToolbarSync();
@@ -5213,6 +5390,7 @@ function handleViewInteractionClick(e) {
   }
   const line = e.target.closest(".line[data-stat-key]");
   if (line) {
+    if (currentViewMode !== "vendor") return;
     if (!filtersOpen) return;
     const lineTextTapTarget = e.target.closest(".line__text, .line__text-pop-trigger");
     if (!lineTextTapTarget) return;
@@ -5222,7 +5400,7 @@ function handleViewInteractionClick(e) {
   }
   const card = e.target.closest("[data-item-id][data-search]");
   if (card) {
-    if (!window.talentShowDesc && (
+    if (!filtersOpen && !window.talentShowDesc && (
       currentViewMode === "gear_talent" ||
       currentViewMode === "weapon_talent" ||
       currentViewMode === "gearset" ||
@@ -5234,7 +5412,8 @@ function handleViewInteractionClick(e) {
       toggleCardDesc(card);
       return;
     }
-    if (currentViewMode !== "vendor") return;
+    const isSelectableView = currentViewMode === "vendor" || currentViewMode === "brand" || currentViewMode === "gearset" || currentViewMode === "exotic_gear";
+    if (!isSelectableView) return;
     if (!filtersOpen) return;
     const selectedText = (window.getSelection && window.getSelection().toString()) || "";
     if (selectedText.trim()) return;

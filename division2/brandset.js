@@ -151,6 +151,7 @@
     section.className = "catgroup catgroup--gear brandset-view";
     section.innerHTML = `
       <div class="trello-group-toggle">
+        ${typeof buildInlineConditionFilterHtml === "function" ? buildInlineConditionFilterHtml() : ""}
         <button class="btn btn--ghost brand-named-btn ${window.brandShowNamed ? "is-on" : ""}" type="button" data-toggle-brand-named="1">Named</button>
       </div>
       <div class="grid grid--gear"></div>
