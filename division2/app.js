@@ -4716,7 +4716,7 @@ function blueprintPopupAttrDotColorClass(attrKey) {
     "weapondamage", "totalweapondamage", "criticalhitchance", "criticalhitdamage",
     "headshotdamage", "armordamage", "healthdamage", "dmgtotargetoutofcover",
     "ardamage", "mmrdamage", "rifledamage", "smgdamage", "shotgundamage", "lmgdamage", "pistoldamage",
-    "weaponhandling"
+    "weaponhandling", "damagetoarmor", "ammocapacity", "accuracy", "rateoffire", "swapspeed"
   ]);
   const blue = new Set([
     "armor", "totalarmor", "armorregen", "armoronkill", "health", "healthonkill",
@@ -4725,7 +4725,8 @@ function blueprintPopupAttrDotColorClass(attrKey) {
   ]);
   const yellow = new Set([
     "skilltier", "skilldamage", "skillhaste", "skillduration", "repairskills", "skillrepair",
-    "statusffects", "statuseffects", "skillhealth", "totalskillrepair"
+    "statusffects", "statuseffects", "skillhealth", "totalskillrepair",
+    "optimalrange", "reducedthreat", "scannerpulsehaste", "meleedamage", "shieldhealth"
   ]);
   if (red.has(k)) return "line--red";
   if (blue.has(k)) return "line--blue";
@@ -5348,7 +5349,7 @@ function handleViewInteractionClick(e) {
       return;
     }
   }
-  if (currentViewMode === "vendor" || currentViewMode === "brand" || currentViewMode === "gear_talent" || currentViewMode === "blueprint") {
+  if (currentViewMode === "vendor" || currentViewMode === "brand" || currentViewMode === "gear_talent" || currentViewMode === "blueprint" || currentViewMode === "prototype") {
     const isPopupBlockedByFilter = !!filtersOpen || (currentViewMode === "blueprint" && !!window.blueprintFiltersOpen);
     if (!isPopupBlockedByFilter) {
       const talentBtn = e.target.closest(".inline-pop-trigger[data-pop-type='talent']");
