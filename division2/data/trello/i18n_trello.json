@@ -1,5 +1,5 @@
 {
-  "built_at": "2026-03-26T16:30:07.860324Z",
+  "built_at": "2026-04-01T15:30:06.455721Z",
   "source": "division_trello_loader/i18n_trello.temp.json",
   "text_map": {
     "[Loadouts] There is a visual bug causing agents' loadouts not to appear when inspected.": "【ロードアウト】エージェントのロードアウトを確認した際に表示されない視覚的な不具合が発生しています。",
@@ -618,6 +618,13 @@
     "Visual color tone appears warmer after recent visual improvements": "",
     "After the recent visual improvements, some players have reported a warmer or yellow color tone in the game. We are aware of the feedback and will adjust the color tone in an upcoming update.": "",
     "This issue has been resolved and should no longer occur for newly affected players.": "",
-    "However, the fix may not apply retroactively to players who previously encountered this issue. If you are still unable to redeem the reward for the Summit Combat Mastery Merit, please contact Support.": ""
+    "However, the fix may not apply retroactively to players who previously encountered this issue. If you are still unable to redeem the reward for the Summit Combat Mastery Merit, please contact Support.": "",
+    "BUG REPORTER NOW AVAILABLE": "",
+    "We’ve updated how bug reporting works for The Division 2.": "",
+    "Our Known Issues board will no longer be used to track incoming issues. Instead, we’ve launched a dedicated Bug Reporter.": "",
+    "🐞If you encounter a bug, please submit it using the new tool here:": "",
+    "[https://www.ubisoft.com/en-us/game/the-division/the-division-2/bug-reporter/issues](https://www.ubisoft.com/en-us/game/the-division/the-division-2/bug-reporter/issues \"smartCard-block\")": "",
+    "🧐Not sure how to use the Bug Reporter? Visit our FAQ page:": "",
+    "[https://www.ubisoft.com/en-us/game/the-division/the-division-2/bug-reporter/faq](https://www.ubisoft.com/en-us/game/the-division/the-division-2/bug-reporter/faq \"\")": ""
   }
 }
