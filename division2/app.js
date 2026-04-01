@@ -388,7 +388,7 @@ function bindVendorToolbarEvents() {
     onlySelectedBtn.addEventListener("click", () => {
       if (!filtersOpen) return;
       onlySelected = !onlySelected;
-      applyFiltersToDom();
+      refreshSelectionUi({ forceVendorRerender: currentViewMode === "vendor" });
     });
     }
   }
@@ -3620,9 +3620,15 @@ function renderOnlySelectedView() {
     const items = sortItemsByVendorAndOrd(selectedItems.filter(x => x.category === cat));
     if (!items.length) continue;
 
+    const label = (cat === "gear") ? ui("catGear")
+      : (cat === "weapon") ? ui("catWeapon")
+      : (cat === "mod") ? ui("catMod")
+      : ui("catCache");
+
     const section = document.createElement("section");
     section.className = `catgroup catgroup--${cat} vendor-selected-group`;
     section.innerHTML = `
+      <div class="catgroup__title">${escapeHtml(label)}</div>
       <div class="grid grid--${escapeHtml(cat)}"></div>
     `;
 
@@ -3651,6 +3657,15 @@ function updateViewMode() {
   } else if (lastVendorMap) {
     renderVendors(lastVendorMap);
   }
+}
+
+function refreshSelectionUi(options = {}) {
+  const forceVendorRerender = !!options.forceVendorRerender;
+  if (currentViewMode === "vendor" && (forceVendorRerender || onlySelected)) {
+    updateViewMode();
+    return;
+  }
+  applyFiltersToDom();
 }
 
 function renderVendors(vendorMap) {
@@ -3868,10 +3883,11 @@ function clearFilters() {
 }
 
 function clearSelection() {
+  const wasOnlySelected = onlySelected;
   selectedIds.clear();
   onlySelected = false;
   syncCardSelectionClasses();
-  applyFiltersToDom();
+  refreshSelectionUi({ forceVendorRerender: currentViewMode === "vendor" && wasOnlySelected });
 }
 
 function normalizeRuleValue(value) {
@@ -4041,7 +4057,7 @@ function applyVendorRecommendedSelection(options = {}) {
   selectedIds.clear();
   for (const id of ids) selectedIds.add(id);
   syncCardSelectionClasses();
-  applyFiltersToDom();
+  refreshSelectionUi();
   return ids.length;
 }
 
@@ -4062,7 +4078,7 @@ function toggleCardSelection(cardEl) {
     selectedIds.add(id);
     cardEl.classList.add("is-selected");
   }
-  applyFiltersToDom();
+  refreshSelectionUi();
 }
 
 /* ---------------------------
