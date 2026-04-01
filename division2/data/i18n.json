@@ -882,8 +882,7 @@
       "wicked": "ウィキッド",
       "perfectkineticmomentum": "パーフェクト・キネクティックモーメンタム",
       "perfectcomposure": "パーフェクト・コンポージャー",
-      "perfectgunslinger": "パーフェクト・ガンスリンガー",
-      "perfectlyskilled": "TODO:perfectlyskilled"
+      "perfectgunslinger": "パーフェクト・ガンスリンガー"
     },
     "weapon_talent": {
       "closepersonal": "接近戦",
@@ -1045,8 +1044,7 @@
       "perturb": "Perturb",
       "fasterthanreloading": "リロードより高速",
       "perfectbackandforth": "Perfect Back and Forth",
-      "backandforth": "Back and Forth",
-      "perfectunhinged": "TODO:perfectunhinged"
+      "backandforth": "Back and Forth"
     },
     "cache": {
       "amount": "数量",
