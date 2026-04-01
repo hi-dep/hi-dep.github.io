@@ -29,3 +29,7 @@
   text-overflow: clip;
   word-break: break-word;
 }
+
+.tdr-card-bg.is-missing {
+  display: none;
+}

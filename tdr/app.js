@@ -6,6 +6,28 @@ const gearGridEl = document.getElementById("gearGrid");
 const talentGridEl = document.getElementById("talentGrid");
 const contentEl = document.getElementById("content");
 
+function buildIconHtml(kind, key, altText) {
+  const dir = kind === "gear" ? "gear_sets" : "weapon_talents";
+  const iconKey = String(key || "").trim();
+  if (!iconKey) return "";
+  return `
+    <div class="card__bg card__bg--tr tdr-card-bg">
+      <img class="card__bgimg tdr-card-bgimg" src="./img/${dir}/${escapeHtml(iconKey)}.png" alt="${escapeHtml(altText || "")}" loading="lazy" decoding="async" />
+    </div>
+  `;
+}
+
+function bindMissingImages(root) {
+  root.querySelectorAll(".tdr-card-bgimg").forEach((img) => {
+    if (img.dataset.boundError === "1") return;
+    img.dataset.boundError = "1";
+    img.addEventListener("error", () => {
+      img.closest(".tdr-card-bg")?.classList.add("is-missing");
+      img.remove();
+    });
+  });
+}
+
 function escapeHtml(value) {
   return String(value ?? "")
     .replace(/&/g, "&amp;")
@@ -42,6 +64,7 @@ function renderGearCards(items) {
       .join("");
     card.innerHTML = `
       <div class="card__head">
+        ${buildIconHtml("gear", item.key, item.name)}
         <div class="card__title-wrap">
           <div class="card__titles">
             <div class="card__title"><span class="card__title-text">${escapeHtml(item.name)}</span></div>
@@ -50,6 +73,7 @@ function renderGearCards(items) {
       </div>
       <div class="lines">${bonusLines}</div>
     `;
+    bindMissingImages(card);
     gearGridEl.appendChild(card);
   });
 }
@@ -65,6 +89,7 @@ function renderTalentCards(items) {
     card.className = "card";
     card.innerHTML = `
       <div class="card__head">
+        ${buildIconHtml("talent", item.key, item.name)}
         <div class="card__title-wrap">
           <div class="card__titles">
             <div class="card__title"><span class="card__title-text">${escapeHtml(item.name)}</span></div>
@@ -79,6 +104,7 @@ function renderTalentCards(items) {
         </div>
       </div>
     `;
+    bindMissingImages(card);
     talentGridEl.appendChild(card);
   });
 }
