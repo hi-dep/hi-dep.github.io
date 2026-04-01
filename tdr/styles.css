@@ -1,0 +1,31 @@
+@import url("../web/styles.css");
+
+.tdr-grid {
+  margin-top: 0;
+}
+
+.tdr-empty {
+  grid-column: 1 / -1;
+  padding: 18px;
+  border: 1px dashed var(--border);
+  border-radius: var(--radius);
+  color: var(--muted);
+  text-align: center;
+  background: rgba(20, 22, 34, 0.42);
+}
+
+.footer {
+  width: min(var(--maxw), 100%);
+  margin: 0 auto;
+}
+
+.card {
+  --rarity-rgb: var(--rarity-default);
+}
+
+#talentGrid .line__text {
+  white-space: normal;
+  overflow: visible;
+  text-overflow: clip;
+  word-break: break-word;
+}

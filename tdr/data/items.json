@@ -1,0 +1,63 @@
+{
+  "built_at": "2026-04-01T04:06:07Z",
+  "source_url": "https://docs.google.com/spreadsheets/d/1PDpDoKTYVJ4LqgAC-zAYbs6gVulfoCymfSVaPto4nUI/edit?usp=sharing",
+  "weapon_type_labels": {
+    "ar": "AR",
+    "lmg": "LMG",
+    "mmr": "MMR",
+    "pistol": "Pistol",
+    "rifle": "Rifle",
+    "shotgun": "Shotgun",
+    "smg": "SMG"
+  },
+  "gear_sets": [
+    {
+      "key": "フィアレスウォリアー",
+      "name": "フィアレスウォリアー",
+      "bonuses": [
+        {
+          "pieces": 2,
+          "description": "ダメージ軽減 +6%"
+        },
+        {
+          "pieces": 3,
+          "description": "ダメージボーナス +9%"
+        },
+        {
+          "pieces": 4,
+          "description": "タフネス +18%"
+        }
+      ]
+    }
+  ],
+  "weapon_talents": [
+    {
+      "key": "ターゲット捕捉",
+      "name": "ターゲット捕捉",
+      "description": "同じ敵に5回連続命中させると、5秒間、その敵の被ダメージが+2.50%増加する。累積上限3",
+      "weapon_types": [
+        "ar"
+      ]
+    },
+    {
+      "key": "冷静沈着",
+      "name": "冷静沈着||",
+      "description": "遮蔽物に隠れている間はリロード速度を+42%付与する。",
+      "weapon_types": [
+        "ar"
+      ]
+    },
+    {
+      "key": "安定射撃",
+      "name": "安定射撃",
+      "description": "腰だめ撃ちにより安定性を+20%、武器ダメージを+15%付与する。",
+      "weapon_types": [
+        "ar"
+      ]
+    }
+  ],
+  "stats": {
+    "gear_sets": 1,
+    "weapon_talents": 3
+  }
+}

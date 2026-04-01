@@ -957,6 +957,22 @@ function openDescentPoolStatusPopup(anchorEl, poolKeyHint = "") {
     if (!byGroup.has(g)) byGroup.set(g, []);
     byGroup.get(g).push(t);
   });
+  const textUnits = (s) => {
+    const str = String(s || "");
+    let n = 0;
+    for (const ch of str) {
+      // Rough full-width estimate for JA/CJK so we can reduce columns for wider text.
+      n += /[^\u0000-\u00ff]/.test(ch) ? 2 : 1;
+    }
+    return n;
+  };
+  const maxNameUnits = talentsSorted.reduce((mx, t) => {
+    const key = normalizeKey(String(t?.talent_key || t?.name || ""));
+    const name = String(t?.name || t?.talent_name || key || "").trim();
+    const disp = (langSelect.value === "ja") ? (i18n[key] ?? name) : name;
+    return Math.max(mx, textUnits(disp));
+  }, 0);
+  const poolCols = maxNameUnits >= 30 ? 3 : (maxNameUnits >= 20 ? 4 : 5);
   const sections = [];
   groupOrder.forEach((g) => {
     const list = byGroup.get(g) || [];
@@ -979,7 +995,7 @@ function openDescentPoolStatusPopup(anchorEl, poolKeyHint = "") {
     sections.push(`
       <section class="descent-pool-section">
         <div class="descent-pool-section__title">${escapeHtml(groupLabel(g))}</div>
-        <div class="descent-pool-grid">${tiles}</div>
+        <div class="descent-pool-grid" style="--descent-pool-cols:${poolCols}">${tiles}</div>
       </section>
     `);
   });
