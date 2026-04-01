@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "built_at": "2026-03-24T14:05:02.840424Z",
+  "built_at": "2026-04-01T01:35:03.647014Z",
   "categories": {
     "vendor": {
       "benitez": "ベニテス",
@@ -882,7 +882,8 @@
       "wicked": "ウィキッド",
       "perfectkineticmomentum": "パーフェクト・キネクティックモーメンタム",
       "perfectcomposure": "パーフェクト・コンポージャー",
-      "perfectgunslinger": "パーフェクト・ガンスリンガー"
+      "perfectgunslinger": "パーフェクト・ガンスリンガー",
+      "perfectlyskilled": "TODO:perfectlyskilled"
     },
     "weapon_talent": {
       "closepersonal": "接近戦",
@@ -1044,7 +1045,8 @@
       "perturb": "Perturb",
       "fasterthanreloading": "リロードより高速",
       "perfectbackandforth": "Perfect Back and Forth",
-      "backandforth": "Back and Forth"
+      "backandforth": "Back and Forth",
+      "perfectunhinged": "TODO:perfectunhinged"
     },
     "cache": {
       "amount": "数量",
