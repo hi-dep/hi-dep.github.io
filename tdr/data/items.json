@@ -11,6 +11,42 @@
   },
   "gear_sets": [
     {
+      "key": "ガニー・ジョニー",
+      "name": "ガニー・ジョニー",
+      "bonuses": [
+        {
+          "pieces": 2,
+          "description": "連射速度 +12%"
+        },
+        {
+          "pieces": 3,
+          "description": "リロード速度 +18%"
+        },
+        {
+          "pieces": 4,
+          "description": "武器チャージ +12%"
+        }
+      ]
+    },
+    {
+      "key": "キャプテンカウ",
+      "name": "キャプテンカウ",
+      "bonuses": [
+        {
+          "pieces": 2,
+          "description": "移動速度 +3.6%"
+        },
+        {
+          "pieces": 3,
+          "description": "スキル持続時間 +14.4%"
+        },
+        {
+          "pieces": 4,
+          "description": "回復速度 +20%"
+        }
+      ]
+    },
+    {
       "key": "クイックドロー",
       "name": "クイックドロー",
       "bonuses": [
@@ -25,6 +61,78 @@
         {
           "pieces": 4,
           "description": "ヘッドショットダメージ上昇 +28.8%"
+        }
+      ]
+    },
+    {
+      "key": "ジャックポット",
+      "name": "ジャックポット",
+      "bonuses": [
+        {
+          "pieces": 2,
+          "description": "スキル効果範囲 +12%"
+        },
+        {
+          "pieces": 3,
+          "description": "スキル・クリティカル率 +10.8%"
+        },
+        {
+          "pieces": 4,
+          "description": "スキルクリティカルダメージ +24%"
+        }
+      ]
+    },
+    {
+      "key": "ドクターメディック",
+      "name": "ドクターメディック",
+      "bonuses": [
+        {
+          "pieces": 2,
+          "description": "回復強度 +10%"
+        },
+        {
+          "pieces": 3,
+          "description": "スキル強度 +9%"
+        },
+        {
+          "pieces": 4,
+          "description": "追加防具解除 +20%"
+        }
+      ]
+    },
+    {
+      "key": "ファイアサイクル",
+      "name": "ファイアサイクル",
+      "bonuses": [
+        {
+          "pieces": 2,
+          "description": "スキルクリティカルダメージ +12%"
+        },
+        {
+          "pieces": 3,
+          "description": "シグニチャーアビリティ・チャージ効率 +18%"
+        },
+        {
+          "pieces": 4,
+          "description": "スキル・マルチショット率 +12%"
+        }
+      ]
+    },
+    {
+      "key": "ファランクスアタック",
+      "name": "ファランクスアタック",
+      "bonuses": [
+        {
+          "pieces": 2,
+          "description": "装弾数 +18%"
+        },
+        {
+          "pieces": 3,
+          "description": "連射速度 +18%"
+        },
+        {
+          "pieces": 4,
+          "description": "武器・マルチショット率 +12%"
         }
       ]
     },
@@ -63,6 +171,132 @@
           "description": "武器クリティカルダメージ +24%"
         }
       ]
+    },
+    {
+      "key": "ブーム・シャカラカ",
+      "name": "ブーム・シャカラカ",
+      "bonuses": [
+        {
+          "pieces": 2,
+          "description": "スキル・クールダウン -6%"
+        },
+        {
+          "pieces": 3,
+          "description": "スキル効果範囲 +18%"
+        },
+        {
+          "pieces": 4,
+          "description": "スキル強度 +12%"
+        }
+      ]
+    },
+    {
+      "key": "メカニカルエキスパート",
+      "name": "メカニカルエキスパート",
+      "bonuses": [
+        {
+          "pieces": 2,
+          "description": "スキル持続時間 +9.6%"
+        },
+        {
+          "pieces": 3,
+          "description": "スキル・クールダウン -9%"
+        },
+        {
+          "pieces": 4,
+          "description": "シグニチャーアビリティ・チャージ効率 +24%"
+        }
+      ]
+    },
+    {
+      "key": "メカニカルエネミー",
+      "name": "メカニカルエネミー",
+      "bonuses": [
+        {
+          "pieces": 2,
+          "description": "武器クリティカル率 +7.2%"
+        },
+        {
+          "pieces": 3,
+          "description": "最適射程 +15%"
+        },
+        {
+          "pieces": 4,
+          "description": "スキル・クールダウン -12%"
+        }
+      ]
+    },
+    {
+      "key": "ロングターム効果",
+      "name": "ロングターム効果",
+      "bonuses": [
+        {
+          "pieces": 2,
+          "description": "スキルHP +12%"
+        },
+        {
+          "pieces": 3,
+          "description": "スキル持続時間 +14.4%"
+        },
+        {
+          "pieces": 4,
+          "description": "エンジニアリング +18%"
+        }
+      ]
+    },
+    {
+      "key": "ワンショット・ワンキル",
+      "name": "ワンショット・ワンキル",
+      "bonuses": [
+        {
+          "pieces": 2,
+          "description": "命中率 +24%"
+        },
+        {
+          "pieces": 3,
+          "description": "ヘッドショットダメージ上昇 +21.6%"
+        },
+        {
+          "pieces": 4,
+          "description": "火力 +18%"
+        }
+      ]
+    },
+    {
+      "key": "回復エリート",
+      "name": "回復エリート",
+      "bonuses": [
+        {
+          "pieces": 2,
+          "description": "受ける回復量 +14.4%"
+        },
+        {
+          "pieces": 3,
+          "description": "追加武器解除 +15%"
+        },
+        {
+          "pieces": 4,
+          "description": "アーマー +28%"
+        }
+      ]
+    },
+    {
+      "key": "自動制御シールド",
+      "name": "自動制御シールド",
+      "bonuses": [
+        {
+          "pieces": 2,
+          "description": "アーマー +14%"
+        },
+        {
+          "pieces": 3,
+          "description": "移動速度 +5.4%"
+        },
+        {
+          "pieces": 4,
+          "description": "最大HP +24%"
+        }
+      ]
     }
   ],
   "weapon_talents": [
@@ -92,7 +326,7 @@
     }
   ],
   "stats": {
-    "gear_sets": 3,
+    "gear_sets": 16,
     "weapon_talents": 3
   }
 }
