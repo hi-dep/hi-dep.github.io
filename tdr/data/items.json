@@ -11,6 +11,24 @@
   },
   "gear_sets": [
     {
+      "key": "クイックドロー",
+      "name": "クイックドロー",
+      "bonuses": [
+        {
+          "pieces": 2,
+          "description": "リロード速度 +12%"
+        },
+        {
+          "pieces": 3,
+          "description": "装弾数 +27%"
+        },
+        {
+          "pieces": 4,
+          "description": "ヘッドショットダメージ上昇 +28.8%"
+        }
+      ]
+    },
+    {
       "key": "フィアレスウォリアー",
       "name": "フィアレスウォリアー",
       "bonuses": [
@@ -25,6 +43,24 @@
         {
           "pieces": 4,
           "description": "タフネス +18%"
+        }
+      ]
+    },
+    {
+      "key": "フューリーストライク",
+      "name": "フューリーストライク",
+      "bonuses": [
+        {
+          "pieces": 2,
+          "description": "最適射程 +10%"
+        },
+        {
+          "pieces": 3,
+          "description": "武器クリティカル率 +10.8%"
+        },
+        {
+          "pieces": 4,
+          "description": "武器クリティカルダメージ +24%"
         }
       ]
     }
@@ -56,7 +92,7 @@
     }
   ],
   "stats": {
-    "gear_sets": 1,
+    "gear_sets": 3,
     "weapon_talents": 3
   }
 }
