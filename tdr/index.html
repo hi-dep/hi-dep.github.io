@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Division Resurgence</title>
+  <title>Division Resurgence Library</title>
   <meta name="description" content="Division Resurgence のギアセットと武器タレント一覧" />
   <meta name="theme-color" content="#ff6a00" />
   <link rel="icon" type="image/svg+xml" href="./img/site_icon.svg" />
@@ -12,26 +12,18 @@
 <body>
   <header class="topbar">
     <div class="topbar__left">
+      <button id="navMenuBtn" class="btn btn--ghost navmenu__btn" type="button" aria-label="Menu">☰</button>
       <div class="title">Division Resurgence Library</div>
     </div>
   </header>
 
-  <main class="main">
-    <section id="content" class="content">
-      <section id="gearSection" class="catgroup catgroup--gear prototype-view">
-        <div class="prototype-view__meta">
-          <strong>ギア</strong>
-        </div>
-        <div id="gearGrid" class="grid grid--gear tdr-grid"></div>
-      </section>
+  <div id="navMenuPanel" class="navmenu" aria-hidden="true">
+    <button id="navGearBtn" class="navmenu__item" type="button">Gear</button>
+    <button id="navWeaponTalentBtn" class="navmenu__item" type="button">Weapon Talents</button>
+  </div>
 
-      <section id="talentSection" class="catgroup catgroup--gear prototype-view">
-        <div class="prototype-view__meta">
-          <strong>武器タレント</strong>
-        </div>
-        <div id="talentGrid" class="grid grid--gear tdr-grid"></div>
-      </section>
-    </section>
+  <main class="main">
+    <section id="content" class="content"></section>
   </main>
 
   <footer class="footer">

@@ -1901,7 +1901,7 @@ th {
   min-height: 30px;
   margin: 0 auto;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.5);
 }
 
 .blueprint-row:last-child td {
