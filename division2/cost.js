@@ -318,8 +318,8 @@
 
   function uiText(key) {
     const isJa = isJaLang();
-    const ja = { from: "From", to: "To", category: "カテゴリ", y8s1: "Y8S1" };
-    const en = { from: "From", to: "To", category: "Category", y8s1: "Y8S1" };
+    const ja = { from: "From", to: "To", category: "カテゴリ" };
+    const en = { from: "From", to: "To", category: "Category" };
     return (isJa ? ja : en)[key] || key;
   }
 
@@ -358,20 +358,6 @@
       });
     });
     return totals;
-  }
-
-  function isGradeCategory(cat) {
-    const id = normalizeKey(cat && cat.id);
-    return id === "weapongrade" || id === "geargrade" || id === "skillgrade";
-  }
-
-  function applyY8S1Reduction(value, tier, enabled) {
-    const n = Number(value);
-    if (!enabled || !Number.isFinite(n)) return n;
-    const t = String(tier || "").trim().toLowerCase();
-    if (t === "grade") return n;
-    if (t === "exotic") return n * 0.5;
-    return n * 0.8;
   }
 
   function allocateIntegerByLargestRemainder(values) {
@@ -449,7 +435,7 @@
     return allocated;
   }
 
-  function buildDisplayRows(rows, cols, useY8S1) {
+  function buildDisplayRows(rows, cols) {
     const srcRows = Array.isArray(rows) ? rows : [];
     const outRows = srcRows.map((r) => {
       const d = {};
@@ -470,7 +456,7 @@
         if (!Number.isFinite(n)) return;
         const g = parseNum(cellValue(r, cols[0] && cols[0].key));
         numericIndex.push(ridx);
-        transformed.push(applyY8S1Reduction(n, c && c.tier, useY8S1));
+        transformed.push(n);
         gradeOrder.push(Number.isFinite(g) ? g : ridx);
       });
       const allocated = allocateIntegerMonotoneByGrade(transformed, gradeOrder);
@@ -666,7 +652,6 @@
     const shortHeader = shouldUseShortHeader();
     compactHeaderModeAtRender = shortHeader;
     const tableMetaList = [];
-    let y8s1Enabled = false;
     const optionsHtml = categories.map((c, idx) => `<option value="${idx}">${escapeHtml(isJa ? c.titleJa : c.titleEn)}</option>`).join("");
     const panelHtmlList = categories.map((cat, idx) => {
       const resolveCategoryLabel = (label) => {
@@ -730,7 +715,6 @@
         <div class="grade-cost-switch">
           <label class="grade-cost-switch__label">${escapeHtml(uiText("category"))}</label>
           <select class="grade-cost-switch__select" data-cost-switch>${optionsHtml}</select>
-          <button class="btn btn--toggle grade-cost-switch__y8s1" type="button" data-cost-y8s1 hidden>${escapeHtml(uiText("y8s1"))}</button>
         </div>
         ${panelHtmlList.join("")}
       </div>
@@ -742,7 +726,6 @@
     const bodyRefreshers = [];
     tables.forEach((tableEl, idx) => {
       const meta = tableMetaList[idx] || {};
-      const cat = meta.cat || categories[idx];
       const cols = Array.isArray(meta.cols) ? meta.cols : [];
       const rows = Array.isArray(meta.rows) ? meta.rows : [];
       const fromEl = tableEl.querySelector("[data-cost-from]");
@@ -750,11 +733,10 @@
       const totalEl = tableEl.querySelector("[data-cost-total]");
       const tbodyEl = tableEl.querySelector("tbody");
       if (!fromEl || !toEl || !totalEl) return;
-      let displayRows = buildDisplayRows(rows, cols, false);
+      let displayRows = buildDisplayRows(rows, cols);
       const refreshBody = () => {
         if (!tbodyEl) return;
-        const useY8S1 = y8s1Enabled && isGradeCategory(cat);
-        displayRows = buildDisplayRows(rows, cols, useY8S1);
+        displayRows = buildDisplayRows(rows, cols);
         const bodyHtml = displayRows.map((drow) => {
           const tds = cols.map((c) => {
             const text = (drow[c.key] != null) ? drow[c.key] : "";
@@ -791,20 +773,6 @@
     });
 
     const switchEl = contentEl.querySelector("[data-cost-switch]");
-    const y8s1El = contentEl.querySelector("[data-cost-y8s1]");
-    const syncY8S1Visibility = () => {
-      if (!switchEl || !y8s1El) return;
-      const active = Number.parseInt(String(switchEl.value || "0"), 10) || 0;
-      const meta = tableMetaList[active] || {};
-      const show = isGradeCategory(meta.cat);
-      if (show) {
-        y8s1El.removeAttribute("hidden");
-        y8s1El.style.display = "";
-      } else {
-        y8s1El.setAttribute("hidden", "hidden");
-        y8s1El.style.display = "none";
-      }
-    };
     const refreshAllVisible = () => {
       tables.forEach((el, i) => {
         if (el.hasAttribute("hidden")) return;
@@ -814,14 +782,6 @@
         if (typeof fn === "function") fn();
       });
     };
-    if (y8s1El) {
-      y8s1El.classList.toggle("is-on", !!y8s1Enabled);
-      y8s1El.addEventListener("click", () => {
-        y8s1Enabled = !y8s1Enabled;
-        y8s1El.classList.toggle("is-on", !!y8s1Enabled);
-        refreshAllVisible();
-      });
-    }
     if (switchEl) {
       switchEl.addEventListener("change", () => {
         const active = Number.parseInt(String(switchEl.value || "0"), 10) || 0;
@@ -829,11 +789,9 @@
           if (i === active) el.removeAttribute("hidden");
           else el.setAttribute("hidden", "hidden");
         });
-        syncY8S1Visibility();
         refreshAllVisible();
       });
     }
-    syncY8S1Visibility();
   }
 
   async function costViewRender() {
