@@ -40,6 +40,7 @@ let weekFieldEl = null;
 const navMenuBtn = document.getElementById("navMenuBtn");
 const navMenuPanel = document.getElementById("navMenuPanel");
 const navVendorBtn = document.getElementById("navVendorBtn");
+const navEventBtn = document.getElementById("navEventBtn");
 const navWeaponsBtn = document.getElementById("navWeaponsBtn");
 const navBrandBtn = document.getElementById("navBrandBtn");
 const navGearsetBtn = document.getElementById("navGearsetBtn");
@@ -77,7 +78,7 @@ let isWorldTimePopupOpen = false;
 let statusMode = "";
 const JST_OFFSET_MS = 9 * 60 * 60 * 1000;
 let filtersOpen = false;
-let currentViewMode = "vendor"; // vendor | weapons | brand | gearset | exotic_gear | gear_talent | weapon_talent | descent_talent | prototype | cost | blueprint | item_sources | trello | patches
+let currentViewMode = "vendor"; // vendor | event | weapons | brand | gearset | exotic_gear | gear_talent | weapon_talent | descent_talent | prototype | cost | blueprint | item_sources | trello | patches
 let trelloSummaryCache = null;
 let descentPoolState = {
   loaded: false,
@@ -1041,6 +1042,7 @@ function resolveViewMode(rawView) {
   const view = String(rawView || "").trim().toLowerCase();
   if (!view) return "";
   if (view === "vendor" || view === "vendo") return "vendor";
+  if (view === "event" || view === "events") return "event";
   if (view === "weapons" || view === "weapon") return "weapons";
   if (view === "brand" || view === "brands") return "brand";
   if (view === "gearset" || view === "gearsets") return "gearset";
@@ -1186,6 +1188,9 @@ function updateModeUi() {
   if (titleEl) {
     if (currentViewMode === "brand") {
       nextTitle = "Division 2 Brandset";
+      titleEl.textContent = nextTitle;
+    } else if (currentViewMode === "event") {
+      nextTitle = "Division 2 Event";
       titleEl.textContent = nextTitle;
     } else if (currentViewMode === "weapons") {
       nextTitle = "Division 2 Weapons";
@@ -1410,6 +1415,7 @@ function applyUiLang() {
   const filterGroupLabelEl = document.getElementById("filterGroupLabel");
   if (selectGroupLabelEl) selectGroupLabelEl.textContent = ui("selectGroup");
   if (filterGroupLabelEl) filterGroupLabelEl.textContent = ui("filterGroup");
+  if (navEventBtn) navEventBtn.textContent = "Event";
   if (navExoticGearBtn) navExoticGearBtn.textContent = "Exotic Items";
 
   if (isWorldTimePopupOpen) updateWorldTime();
@@ -4102,6 +4108,13 @@ async function renderTrelloView() {
   syncDescToggleStateFromDom();
 }
 
+async function renderEventView() {
+  if (typeof window.eventViewRender !== "function") {
+    throw new Error("eventViewRender is not available");
+  }
+  await window.eventViewRender();
+}
+
 async function renderBrandView() {
   if (typeof window.brandViewRender !== "function") {
     throw new Error("brandViewRender is not available");
@@ -4198,7 +4211,7 @@ function toggleNavMenu() {
 async function switchViewMode(mode) {
   const prevViewMode = currentViewMode;
   saveSelectionStateForView(prevViewMode);
-  currentViewMode = (mode === "weapons" || mode === "brand" || mode === "gearset" || mode === "exotic_gear" || mode === "gear_talent" || mode === "weapon_talent" || mode === "descent_talent" || mode === "prototype" || mode === "cost" || mode === "blueprint" || mode === "item_sources" || mode === "trello" || mode === "patches") ? mode : "vendor";
+  currentViewMode = (mode === "event" || mode === "weapons" || mode === "brand" || mode === "gearset" || mode === "exotic_gear" || mode === "gear_talent" || mode === "weapon_talent" || mode === "descent_talent" || mode === "prototype" || mode === "cost" || mode === "blueprint" || mode === "item_sources" || mode === "trello" || mode === "patches") ? mode : "vendor";
   loadSelectionStateForView(currentViewMode);
   const shouldResetSharedFilterOpen =
     prevViewMode !== currentViewMode &&
@@ -4230,6 +4243,11 @@ async function switchViewMode(mode) {
   }
   if (currentViewMode === "weapons") {
     await renderWeaponsView();
+    requestToolbarSync();
+    return;
+  }
+  if (currentViewMode === "event") {
+    await renderEventView();
     requestToolbarSync();
     return;
   }
@@ -4412,6 +4430,8 @@ async function boot() {
           const d = getVendorDateValue() || indexJson.target_week || new Date().toISOString().slice(0, 10);
           setVendorDateValue(d);
           await loadWeek(d, { preserveSelection: true });
+        } else if (currentViewMode === "event") {
+          await renderEventView();
         } else if (currentViewMode === "weapons") {
           await renderWeaponsView();
         } else if (currentViewMode === "brand") {
@@ -4456,6 +4476,8 @@ langSelect.addEventListener("change", () => {
   const d = getVendorDateValue();
   if (currentViewMode === "vendor") {
     if (d) loadWeek(d, { preserveSelection: true }).catch(err => setStatus(`${ui("error")}: ${err.message}`));
+  } else if (currentViewMode === "event") {
+    renderEventView().catch(err => setStatus(`${ui("error")}: ${err.message}`));
   } else if (currentViewMode === "weapons") {
     renderWeaponsView().catch(err => setStatus(`${ui("error")}: ${err.message}`));
   } else if (currentViewMode === "brand") {
@@ -4492,6 +4514,11 @@ if (navMenuBtn) {
 if (navVendorBtn) {
   navVendorBtn.addEventListener("click", () => {
     switchViewMode("vendor").catch(err => setStatus(`${ui("error")}: ${err.message}`));
+  });
+}
+if (navEventBtn) {
+  navEventBtn.addEventListener("click", () => {
+    switchViewMode("event").catch(err => setStatus(`${ui("error")}: ${err.message}`));
   });
 }
 if (navWeaponsBtn) {

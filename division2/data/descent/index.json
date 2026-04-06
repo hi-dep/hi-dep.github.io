@@ -1,12 +1,12 @@
 {
   "version": 1,
-  "generated_at_jst": "2026-04-06 09:05:03",
+  "generated_at_jst": "2026-04-07 08:45:28",
   "source_url": "https://docs.google.com/spreadsheets/d/1l71rXsXoekxIFeB7xdETU7q8x5GK-TeDT39YZfwRZcM/edit?resourcekey=&gid=1373613541#gid=1373613541",
   "source_resolved": "https://docs.google.com/spreadsheets/d/1l71rXsXoekxIFeB7xdETU7q8x5GK-TeDT39YZfwRZcM/export?format=csv&gid=1373613541",
   "sheet_gid": "1373613541",
-  "pool_map_source_url": "",
-  "pool_map_source_resolved": "",
-  "pool_map_sheet_gid": "",
+  "pool_map_source_url": "https://docs.google.com/spreadsheets/u/1/d/e/2PACX-1vTJEX5DerCvOj3a_m36TRy1gPBAUvrduOIdmXI9j1Y0MpQk1wIXaZ9KOcPa7HzXzp_N5qGmjDj6yEfL/pubhtml#gid=603810878",
+  "pool_map_source_resolved": "https://docs.google.com/spreadsheets/d/e/2PACX-1vTJEX5DerCvOj3a_m36TRy1gPBAUvrduOIdmXI9j1Y0MpQk1wIXaZ9KOcPa7HzXzp_N5qGmjDj6yEfL/pub?gid=603810878&single=true&output=csv",
+  "pool_map_sheet_gid": "603810878",
   "pool_map_keys": [
     "envy",
     "gluttony",
