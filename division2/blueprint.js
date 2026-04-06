@@ -45,6 +45,8 @@
     "Field Research Firewall": { ja: "フィールドリサーチ ファイアウォール", en: "Field Research Firewall" },
     "Field Research Gunner": { ja: "フィールドリサーチ ガンナー", en: "Field Research Gunner" },
     "Reconstructed Caches": { ja: "復元されたキャッシュ", en: "Reconstructed Caches" },
+    "Y8S1 Journey 7 reward": { ja: "Y8S1のジャーニー7報酬", en: "Y8S1 Journey 7 reward" },
+    "Y8S1 Journey 7 Reward": { ja: "Y8S1のジャーニー7報酬", en: "Y8S1 Journey 7 Reward" },
     "Kill Squad": { ja: "キルスクワッド", en: "Kill Squad" },
     "Hyenas completion": { ja: "ハイエナ 報復完了", en: "Hyenas retaliation completion" },
     "Outcasts completion": { ja: "アウトキャスト 報復完了", en: "Outcasts retaliation completion" },

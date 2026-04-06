@@ -3879,7 +3879,38 @@
       "brand_name": "Core Strength",
       "brand_key": "corestrength",
       "slot_key": "",
-      "blueprint": [],
+      "blueprint": [
+        {
+          "slot": "backpack",
+          "src": "Y8S1 Journey 7 reward",
+          "type": "craft"
+        },
+        {
+          "slot": "chest",
+          "src": "Y8S1 Journey 7 reward",
+          "type": "craft"
+        },
+        {
+          "slot": "gloves",
+          "src": "Y8S1 Journey 7 reward",
+          "type": "craft"
+        },
+        {
+          "slot": "holster",
+          "src": "Y8S1 Journey 7 reward",
+          "type": "craft"
+        },
+        {
+          "slot": "kneepads",
+          "src": "Y8S1 Journey 7 reward",
+          "type": "craft"
+        },
+        {
+          "slot": "mask",
+          "src": "Y8S1 Journey 7 reward",
+          "type": "craft"
+        }
+      ],
       "target_looted": [],
       "drop": []
     },
