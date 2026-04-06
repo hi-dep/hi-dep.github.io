@@ -20,6 +20,10 @@
   min-width: 0;
 }
 
+.grid--talent {
+  grid-template-columns: repeat(auto-fill, minmax(var(--card-min), 1fr));
+}
+
 .footer {
   width: min(var(--maxw), 100%);
   margin: 0 auto;
@@ -33,84 +37,10 @@
   display: none;
 }
 
-.tdr-talent-th {
-  padding: 8px 10px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
-  font-size: 0.92em;
-  color: var(--muted);
-}
-
-.tdr-talent-table {
-  width: 100%;
-  min-width: 0;
-  table-layout: auto;
-}
-
-.tdr-talent-table td,
-.tdr-talent-table th {
-  font-size: 12px;
-  line-height: 1.35;
-  -webkit-text-size-adjust: 100%;
-  text-size-adjust: 100%;
-}
-
-.table-list-th-accent,
-.table-list-td-accent {
-  width: 8px;
-  min-width: 8px;
-  max-width: 8px;
-  padding: 0 !important;
-  position: relative;
-}
-
-.table-list-td-accent .table-list-accent {
-  position: absolute;
-  top: 3px;
-  bottom: 3px;
-  left: 2px;
-  width: 4px;
-  border-radius: 999px;
-  background: color-mix(in srgb, var(--table-list-accent-color) 60%, transparent);
-}
-
-.table-list-wrap {
-  overflow: hidden;
-}
-
-.table-list-scroll {
-  overflow-x: hidden;
-  overflow-y: visible;
-}
-
-.tdr-talent-row td {
-  vertical-align: top;
-  background: rgba(255, 255, 255, 0.03);
-  padding-top: 10px;
-  padding-bottom: 10px;
-}
-
-.tdr-talent-row td:first-child {
-  position: relative;
-  padding: 0 !important;
-  background: rgba(14, 15, 20, 0.96);
-  border-bottom: 0;
-}
-
-.tdr-talent-row .tdr-talent-detail-cell {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.28);
-}
-
-.tdr-talent-detail-cell {
-  white-space: normal;
-  position: relative;
-  overflow: visible;
-  word-break: break-word;
-}
-
 .tdr-talent-row__bg {
   position: absolute;
   inset: 0;
-  opacity: 0.11;
+  opacity: 0.16;
   pointer-events: none;
   overflow: hidden;
 }
@@ -121,28 +51,12 @@
   right: 8px;
   width: 52px;
   height: 52px;
-  opacity: 0.85;
+  opacity: 0.95;
+  filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.08));
 }
 
-.tdr-talent-pack {
-  display: grid;
-  gap: 3px;
+.tdr-talent-card {
   position: relative;
-  z-index: 1;
-}
-
-.tdr-talent-pack__title {
-  font-size: 1em;
-  font-weight: 700;
-  color: var(--text);
-  line-height: 1.3;
-  padding-right: 64px;
-}
-
-.tdr-talent-entry + .tdr-talent-entry {
-  margin-top: 6px;
-  padding-top: 6px;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .tdr-talent-icon {
@@ -152,25 +66,6 @@
 
 .tdr-talent-bg.is-missing {
   display: none;
-}
-
-.tdr-talent-entry__desc {
-  margin-top: 0;
-  color: var(--text);
-  font-size: 1em;
-  white-space: pre-wrap;
-  overflow-wrap: anywhere;
-  line-height: 1.35;
-}
-
-.tdr-talent-entry__name {
-  font-weight: 700;
-  color: var(--text);
-  font-size: 1em;
-  white-space: pre-wrap;
-  overflow-wrap: anywhere;
-  line-height: 1.25;
-  margin-bottom: 3px;
 }
 
 .gear-talent-diff {

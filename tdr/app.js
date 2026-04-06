@@ -170,46 +170,45 @@ function renderGearView(items) {
 }
 
 function renderWeaponTalentView(items) {
-  const rows = items.length
-    ? items.map((item) => `
-      <tr class="table-list-row tdr-talent-row">
-        <td class="table-list-td-accent"><span class="table-list-accent"></span></td>
-        <td class="tdr-talent-detail-cell">
-          <div class="card__bg card__bg--tr tdr-card-bg tdr-talent-bg tdr-talent-row__bg">
-            <img class="card__bgimg tdr-card-bgimg tdr-talent-icon" src="./img/weapon_talents/${escapeHtml(item.key)}.png" alt="${escapeHtml(item.name1 || item.name || "")}" loading="lazy" decoding="async" />
-          </div>
-          <div class="tdr-talent-pack">
-            <div class="tdr-talent-pack__title">${escapeHtml(item.name1 || item.name || "")}</div>
-            <div class="tdr-talent-entry tdr-talent-entry--base">
-              <div class="tdr-talent-entry__desc">${escapeHtml(item.desc1 || "")}</div>
+  const body = items.length
+    ? items.map((item) => {
+        const titleText = item.name1 || item.name2 || item.name || "";
+        const hasSecondTitle = Boolean(item.name1 && item.name2);
+        return `
+      <article class="card tdr-talent-card">
+        <div class="card__bg card__bg--tr tdr-card-bg tdr-talent-bg tdr-talent-row__bg">
+          <img class="card__bgimg tdr-card-bgimg tdr-talent-icon" src="./img/weapon_talents/${escapeHtml(item.key)}.png" alt="${escapeHtml(item.name1 || item.name || "")}" loading="lazy" decoding="async" />
+        </div>
+        <div class="card__head">
+          <div class="card__title-wrap">
+            <div class="card__titles">
+              <div class="card__title"><span class="card__title-text">${escapeHtml(titleText)}</span></div>
             </div>
-            ${item.name2 || item.desc2 ? `
-            <div class="tdr-talent-entry tdr-talent-entry--sub">
-              <div class="tdr-talent-entry__name">${escapeHtml(item.name2 || "")}</div>
-              <div class="tdr-talent-entry__desc">${escapeHtmlWithDiff(item.desc1 || "", item.desc2 || "", "gear-talent-diff")}</div>
-            </div>` : ""}
           </div>
-        </td>
-      </tr>
-    `).join("")
-    : `<tr><td colspan="2">${escapeHtml("条件に一致する武器タレントはありません。")}</td></tr>`;
+        </div>
+        <div class="lines">
+          ${item.desc1 ? `
+          <div class="line line--gray line--talent-desc">
+            <div class="line__body"><div class="line__text">${escapeHtml(item.desc1 || "")}</div></div>
+          </div>` : ""}
+          ${hasSecondTitle ? `<hr class="brand-named-sep" />` : ""}
+          ${hasSecondTitle ? `
+          <div class="card__title"><span class="card__title-text">${escapeHtml(item.name2 || "")}</span></div>
+          ` : ""}
+          ${item.desc2 ? `
+          <div class="line line--named-meta line--talent-desc">
+            <div class="line__body"><div class="line__text">${escapeHtmlWithDiff(item.desc1 || "", item.desc2 || "", "gear-talent-diff")}</div></div>
+          </div>` : ""}
+        </div>
+      </article>
+    `;
+      }).join("")
+    : createEmptyState("条件に一致する武器タレントはありません。");
 
   return `
-    <section class="table-list-view">
+    <section class="catgroup catgroup--talent">
       <h3 class="catgroup__title">武器タレント</h3>
-      <section class="table-list-wrap">
-        <div class="table-list-scroll">
-          <table class="table-list-table tdr-talent-table">
-            <thead>
-              <tr>
-                <th class="table-list-th-accent"></th>
-                <th class="tdr-talent-th tdr-talent-th--detail">名前 / 説明</th>
-              </tr>
-            </thead>
-            <tbody>${rows}</tbody>
-          </table>
-        </div>
-      </section>
+      <div class="grid grid--talent tdr-grid">${body}</div>
     </section>
   `;
 }
