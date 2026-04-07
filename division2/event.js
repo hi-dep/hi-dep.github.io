@@ -96,30 +96,13 @@
   }
 
   function normalizeToShopWeekStartJst(nowDate) {
-    const d = (nowDate instanceof Date) ? new Date(nowDate.getTime()) : new Date();
-    const utcMs = d.getTime() + (d.getTimezoneOffset() * 60000);
-    const jst = new Date(utcMs + (9 * 60 * 60000));
-    const wd = jst.getUTCDay(); // Sun=0..Sat=6
-    const diffDays = (wd >= 2) ? (wd - 2) : (wd + 5); // Tue=2
-    const cand = new Date(Date.UTC(
-      jst.getUTCFullYear(),
-      jst.getUTCMonth(),
-      jst.getUTCDate(),
-      17 - 9, // JST 17:00 -> UTC 08:00
-      0,
-      0,
-      0,
-    ));
-    cand.setUTCDate(cand.getUTCDate() - diffDays);
-    const jstNowMs = jst.getTime();
-    const candAsJstMs = cand.getTime() + (9 * 60 * 60000);
-    if (jstNowMs < candAsJstMs) {
-      cand.setUTCDate(cand.getUTCDate() - 7);
+    const nowMs = (nowDate instanceof Date) ? nowDate.getTime() : Date.now();
+    if (typeof lastWeeklyUtcMs !== "function" || typeof formatJstDateTimeFromUtcMs !== "function") {
+      throw new Error("shop-week helpers are unavailable");
     }
-    const y = cand.getUTCFullYear();
-    const m = String(cand.getUTCMonth() + 1).padStart(2, "0");
-    const day = String(cand.getUTCDate()).padStart(2, "0");
-    return `${y}-${m}-${day}`;
+    const weekUtc = lastWeeklyUtcMs(nowMs, 2, 17, 0); // Tue 17:00 JST
+    const s = String(formatJstDateTimeFromUtcMs(weekUtc) || "");
+    return s.slice(0, 10);
   }
 
   window.eventViewRender = async function eventViewRender() {

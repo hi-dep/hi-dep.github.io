@@ -205,6 +205,16 @@ body::before {
   margin-top: 8px;
 }
 
+.event-view .event-table {
+  min-width: 0;
+  width: 100%;
+  table-layout: fixed;
+}
+
+.event-view .event-table thead th {
+  white-space: normal;
+}
+
 .event-section {
   margin-bottom: 10px;
 }
@@ -227,10 +237,14 @@ body::before {
 
 .event-table td {
   white-space: normal;
+  word-break: break-word;
 }
 
 .event-table tbody th {
-  width: 38px;
+  width: 1%;
+  min-width: 22px;
+  max-width: 28px;
+  padding: 8px 6px;
   text-align: center;
   font-weight: 700;
   color: rgba(232, 232, 232, 0.95);
