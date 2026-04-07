@@ -9,6 +9,16 @@
         "Potomac Event Center",
         "Coney Island Ballpark"
       ]
+    },
+    {
+      "week": "2026-04-07",
+      "missions": [
+        "Army Terminal",
+        "Bank Headquarters",
+        "Space Administration HQ",
+        "Roosevelt Island",
+        "Coney Island Amusement Park"
+      ]
     }
   ]
 }
