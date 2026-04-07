@@ -1616,7 +1616,7 @@
       "drop": []
     },
     {
-      "item_id": "d338fb8b14a21257",
+      "item_id": "d338fb8b14a21257::exotic",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -1638,7 +1638,29 @@
       ]
     },
     {
-      "item_id": "00d60d7369ac5c0f",
+      "item_id": "d338fb8b14a21257::named",
+      "entity_type": "gear_exotic",
+      "category": "gear",
+      "tier": "named",
+      "name_key": "beacon",
+      "name": "Beacon",
+      "brand_name": "",
+      "brand_key": "",
+      "slot_key": "chest",
+      "blueprint": [
+        {
+          "slot": "chest",
+          "src": "Rikers Kill Squad",
+          "type": "craft"
+        }
+      ],
+      "drop": [],
+      "target_looted": [
+        "chest"
+      ]
+    },
+    {
+      "item_id": "00d60d7369ac5c0f::exotic",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -1660,7 +1682,29 @@
       ]
     },
     {
-      "item_id": "6bac23d6c45f2acd",
+      "item_id": "00d60d7369ac5c0f::named",
+      "entity_type": "gear_exotic",
+      "category": "gear",
+      "tier": "named",
+      "name_key": "birdiesquickfixpack",
+      "name": "Birdie's Quick Fix Pack",
+      "brand_name": "",
+      "brand_key": "",
+      "slot_key": "backpack",
+      "blueprint": [
+        {
+          "slot": "backpack",
+          "src": "Reconstructed Caches",
+          "type": "craft"
+        }
+      ],
+      "drop": [],
+      "target_looted": [
+        "backpack"
+      ]
+    },
+    {
+      "item_id": "6bac23d6c45f2acd::exotic",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -1673,6 +1717,28 @@
         {
           "slot": "kneepads",
           "src": "Blacktusk Kill Squad",
+          "type": "craft"
+        }
+      ],
+      "drop": [],
+      "target_looted": [
+        "kneepads"
+      ]
+    },
+    {
+      "item_id": "6bac23d6c45f2acd::named",
+      "entity_type": "gear_exotic",
+      "category": "gear",
+      "tier": "named",
+      "name_key": "blacklisters",
+      "name": "Blacklisters",
+      "brand_name": "",
+      "brand_key": "",
+      "slot_key": "kneepads",
+      "blueprint": [
+        {
+          "slot": "kneepads",
+          "src": "Reconstructed Caches",
           "type": "craft"
         }
       ],
@@ -2067,7 +2133,7 @@
       ]
     },
     {
-      "item_id": "2c628090c7e6c47b",
+      "item_id": "2c628090c7e6c47b::exotic",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -2087,10 +2153,50 @@
       "drop": []
     },
     {
-      "item_id": "492cf75b38d37f30",
+      "item_id": "492cf75b38d37f30::exotic",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
+      "name_key": "harrierpride",
+      "name": "Harrier Pride",
+      "brand_name": "",
+      "brand_key": "",
+      "slot_key": "backpack",
+      "blueprint": [
+        {
+          "slot": "backpack",
+          "src": "Outcasts retaliation completion",
+          "type": "craft"
+        }
+      ],
+      "target_looted": [],
+      "drop": []
+    },
+    {
+      "item_id": "2c628090c7e6c47b::named",
+      "entity_type": "gear_exotic",
+      "category": "gear",
+      "tier": "named",
+      "name_key": "harrierpride",
+      "name": "Harrier Pride",
+      "brand_name": "",
+      "brand_key": "",
+      "slot_key": "backpack",
+      "blueprint": [
+        {
+          "slot": "backpack",
+          "src": "Outcasts retaliation completion",
+          "type": "craft"
+        }
+      ],
+      "target_looted": [],
+      "drop": []
+    },
+    {
+      "item_id": "492cf75b38d37f30::named",
+      "entity_type": "gear_exotic",
+      "category": "gear",
+      "tier": "named",
       "name_key": "harrierpride",
       "name": "Harrier Pride",
       "brand_name": "",
@@ -2385,7 +2491,7 @@
       ]
     },
     {
-      "item_id": "e060a2c945905194",
+      "item_id": "e060a2c945905194::exotic",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -2398,6 +2504,26 @@
         {
           "slot": "chest",
           "src": "Blacktusk Kill Squad",
+          "type": "craft"
+        }
+      ],
+      "drop": [],
+      "target_looted": []
+    },
+    {
+      "item_id": "e060a2c945905194::named",
+      "entity_type": "gear_exotic",
+      "category": "gear",
+      "tier": "named",
+      "name_key": "provocator",
+      "name": "Provocator",
+      "brand_name": "",
+      "brand_key": "",
+      "slot_key": "chest",
+      "blueprint": [
+        {
+          "slot": "chest",
+          "src": "Reconstructed Caches",
           "type": "craft"
         }
       ],
@@ -2602,7 +2728,7 @@
       ]
     },
     {
-      "item_id": "8570ace83012f3ad",
+      "item_id": "8570ace83012f3ad::exotic",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -2615,6 +2741,28 @@
         {
           "slot": "mask",
           "src": "Blacktusk Kill Squad",
+          "type": "craft"
+        }
+      ],
+      "drop": [],
+      "target_looted": [
+        "mask"
+      ]
+    },
+    {
+      "item_id": "8570ace83012f3ad::named",
+      "entity_type": "gear_exotic",
+      "category": "gear",
+      "tier": "named",
+      "name_key": "tinkerer",
+      "name": "Tinkerer",
+      "brand_name": "",
+      "brand_key": "",
+      "slot_key": "mask",
+      "blueprint": [
+        {
+          "slot": "mask",
+          "src": "Reconstructed Caches",
           "type": "craft"
         }
       ],
@@ -5755,10 +5903,6 @@
         {
           "src": "Cleaners Kill Squad",
           "type": "craft"
-        },
-        {
-          "src": "True Sons Kill Squad",
-          "type": "craft"
         }
       ],
       "target_looted": [],
@@ -6677,7 +6821,7 @@
           "type": "craft"
         },
         {
-          "src": "True Sons Kill Squad",
+          "src": "completion",
           "type": "craft"
         }
       ],
@@ -10064,6 +10208,10 @@
         {
           "src": "Blacktusk Kill Squad",
           "type": "craft"
+        },
+        {
+          "src": "Reconstructed Caches",
+          "type": "craft"
         }
       ],
       "target_looted": [],
@@ -10285,7 +10433,7 @@
           "type": "craft"
         },
         {
-          "src": "Hyenas Kill Squad",
+          "src": "completion",
           "type": "craft"
         }
       ],
@@ -10646,7 +10794,7 @@
           "type": "craft"
         },
         {
-          "src": "Hyenas Kill Squad",
+          "src": "Reconstructed Caches",
           "type": "craft"
         }
       ],
