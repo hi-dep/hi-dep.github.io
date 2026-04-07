@@ -21,7 +21,7 @@
     "The Pentagon": "ペンタゴン",
     "DARPA Research Labs": "DARPA",
     "Coney Island Ballpark": "コニーアイランド球場",
-    "Coney Island Amusement Park": "コニーアイランドパーク",
+    "Coney Island Amusement Park": "コニーアイランド遊園地",
     "The Tombs": "墓所",
     "Stranded Tanker": "座礁タンカー",
     "Pathway Park": "パスウェイパーク",

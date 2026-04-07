@@ -208,7 +208,7 @@ body::before {
 .event-view .event-table {
   min-width: 0;
   width: 100%;
-  table-layout: fixed;
+  table-layout: auto;
 }
 
 .event-view .event-table thead th {
@@ -233,6 +233,12 @@ body::before {
 .event-table td,
 .event-table th {
   font-size: 12px;
+}
+
+.event-table th:first-child,
+.event-table td:first-child {
+  width: 1%;
+  white-space: nowrap;
 }
 
 .event-table td {
