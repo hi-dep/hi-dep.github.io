@@ -12,7 +12,7 @@
     },
     {
       "id": "weapon_attr3_ooc",
-      "enabled": true,
+      "enabled": false,
       "target": "weapon",
       "all": [
         { "field": "attr_at", "op": "eq", "value": { "index": 3, "stat_key": "dmgtotargetoutofcover" } }
@@ -20,7 +20,7 @@
     },
     {
       "id": "weapon_attr2_ooc_attr3_dta",
-      "enabled": true,
+      "enabled": false,
       "target": "weapon",
       "all": [
         { "field": "attr_at", "op": "eq", "value": { "index": 2, "stat_key": "dmgtotargetoutofcover" } },
