@@ -608,8 +608,8 @@
       "smartcover": "スマートカバー"
     },
     "mod_kind": {
-      "defensive": "ディフェンス",
-      "offensive": "オフェンス",
+      "defensive": "防衛",
+      "offensive": "攻撃",
       "utility": "ユーティリティ"
     },
     "stat": {

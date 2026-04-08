@@ -1,0 +1,740 @@
+{
+  "season_id": "y8s1",
+  "season_label": "Y8S1",
+  "global_modifier": {
+    "name_en": "Recombinant",
+    "name_ja": "Recombinant"
+  },
+  "max_equipped_passives": 3,
+  "equip_layout": {
+    "active_slots": 1,
+    "passive_slots": 3,
+    "passive_apply_order": "equipped_order"
+  },
+  "active_modifiers": [
+    {
+      "id": "blackout_pulse",
+      "name_en": "Blackout Pulse",
+      "name_ja": "ブラックアウトPulse",
+      "icon": "blackout_pulse.png",
+      "base_module": "offense",
+      "cooldown_seconds": 90,
+      "desc": {
+        "en": "Activate to release an EMP pulse that destroys enemy gadgets and shocks all enemies in a radius (10m base, plus 0.5m per Offensive stack).",
+        "ja": "発動するとEMP Pulseが放たれ、敵ガジェットを破壊して35m範囲内(基本10mに加え、攻撃累積1につき0.5m)の敵すべてにショックを与える"
+      },
+      "level_effects": [
+        {
+          "level": 2,
+          "effect": {
+            "type": "increase_all_base_module_stacks",
+            "value": 1
+          }
+        },
+        {
+          "level": 3,
+          "effect": {
+            "type": "increase_all_base_module_stacks",
+            "value": 1
+          },
+          "extra_effect": {
+            "type": "cooldown_reduction",
+            "value_seconds_per_stack": 1,
+            "stack_source_module": "defense"
+          }
+        },
+        {
+          "level": 4,
+          "effect": {
+            "type": "increase_all_base_module_stacks",
+            "value": 1
+          }
+        },
+        {
+          "level": 5,
+          "effect": {
+            "type": "increase_all_base_module_stacks",
+            "value": 1
+          },
+          "extra_effect": {
+            "type": "pulse_duration_bonus",
+            "base_seconds": 4,
+            "value_seconds_per_stack": 0.1,
+            "stack_source_module": "utility"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cloud_armor",
+      "name_en": "Cloud Armor",
+      "name_ja": "クラウドアーマー",
+      "icon": "cloud_armor.png",
+      "base_module": "defense",
+      "cooldown_seconds": 90,
+      "desc": {
+        "en": "Activate to repair armor for yourself and allies inside a 10m radius, at a rate of total Armor/second (5% base, plus 0.2% per Defensive stack). This effect lasts for a total of 10 seconds.",
+        "ja": "発動すると自分と10m範囲内の味方のアーマーを修復する。毎秒合計7%アーマー(基本5%に加え、防衛累積1ごとに0.2%)。この効果は合計10秒間持続する"
+      },
+      "level_effects": [
+        {
+          "level": 2,
+          "effect": {
+            "type": "increase_all_base_module_stacks",
+            "value": 1
+          }
+        },
+        {
+          "level": 3,
+          "effect": {
+            "type": "increase_all_base_module_stacks",
+            "value": 1
+          },
+          "extra_effect": {
+            "type": "cooldown_reduction",
+            "value_seconds_per_stack": 1,
+            "stack_source_module": "utility"
+          }
+        },
+        {
+          "level": 4,
+          "effect": {
+            "type": "increase_all_base_module_stacks",
+            "value": 1
+          }
+        },
+        {
+          "level": 5,
+          "effect": {
+            "type": "increase_all_base_module_stacks",
+            "value": 1
+          },
+          "extra_effect": {
+            "type": "blind_duration_bonus",
+            "base_seconds": 4,
+            "value_seconds_per_stack": 0.1,
+            "stack_source_module": "offense"
+          }
+        }
+      ]
+    },
+    {
+      "id": "optimize_overload",
+      "name_en": "Optimize / Overload",
+      "name_ja": "最適化／オーバーロード",
+      "icon": "optimize_overload.png",
+      "base_module": "utility",
+      "cooldown_seconds": 90,
+      "desc": {
+        "en": "Activate to reduce your active skill cooldowns (30% base, plus 0.8% per Utility stack).",
+        "ja": "発動すると自分に発生しているスキルクールダウンが38.0%短縮される(基本30%に加え、ユーティリティ累積1ごとに0.8%)"
+      },
+      "level_effects": [
+        {
+          "level": 2,
+          "effect": {
+            "type": "increase_all_base_module_stacks",
+            "value": 1
+          }
+        },
+        {
+          "level": 3,
+          "effect": {
+            "type": "increase_all_base_module_stacks",
+            "value": 1
+          },
+          "extra_effect": {
+            "type": "cooldown_reduction",
+            "value_seconds_per_stack": 1,
+            "stack_source_module": "offense"
+          }
+        },
+        {
+          "level": 4,
+          "effect": {
+            "type": "increase_all_base_module_stacks",
+            "value": 1
+          }
+        },
+        {
+          "level": 5,
+          "effect": {
+            "type": "increase_all_base_module_stacks",
+            "value": 1
+          },
+          "extra_effect": {
+            "type": "overcharge_duration_bonus",
+            "base_seconds": 5,
+            "value_seconds_per_stack": 0.2,
+            "stack_source_module": "defense"
+          }
+        }
+      ]
+    }
+  ],
+  "modules": [
+    "offense",
+    "defense",
+    "utility"
+  ],
+  "base_stacks": {
+    "offense": 8,
+    "defense": 8,
+    "utility": 8
+  },
+  "module_stack_effects": {
+    "offense": {
+      "stat": "weapon_handling",
+      "rate_percent_per_stack": 1
+    },
+    "defense": {
+      "stat": "max_armor",
+      "rate_percent_per_stack": 0.5
+    },
+    "utility": {
+      "stat": "skill_damage",
+      "rate_percent_per_stack": 1
+    }
+  },
+  "passive_modifiers": [
+    {
+      "id": "offense_amplify",
+      "group": "offense",
+      "name_en": "Amplify",
+      "name_ja": "増幅",
+      "effect": {
+        "type": "add_target",
+        "target": "offense",
+        "value": 5
+      },
+      "desc": {
+        "en": "Increase Offense stacks by 5.",
+        "ja": "攻撃累積を5増加させる。"
+      }
+    },
+    {
+      "id": "offense_consume",
+      "group": "offense",
+      "name_en": "Consume",
+      "name_ja": "消費",
+      "effect": {
+        "type": "add_target_and_subtract_others",
+        "target": "offense",
+        "target_add": 10,
+        "others_subtract": 5
+      },
+      "desc": {
+        "en": "Increase Offense stacks by 10, decrease Defense and Utility stacks by 5 each.",
+        "ja": "攻撃累積を10増加させ、防衛累積とユーティリティ累積をそれぞれ5減少させる。"
+      }
+    },
+    {
+      "id": "offense_saturate",
+      "group": "offense",
+      "name_en": "Saturate",
+      "name_ja": "飽和",
+      "effect": {
+        "type": "saturate_target",
+        "target": "offense",
+        "value": 25,
+        "disable_stats": [
+          "weapon_handling",
+          "headshot_damage",
+          "magazine_size"
+        ]
+      },
+      "desc": {
+        "en": "Increase Offense stacks by 25, but Offense stacks no longer affect Weapon Handling, Headshot Damage, or Magazine Size.",
+        "ja": "攻撃累積を25増加させる。ただし攻撃累積は武器ハンドリング、ヘッドショットダメージ、装弾数に影響しなくなる。"
+      }
+    },
+    {
+      "id": "offense_pivot",
+      "group": "offense",
+      "name_en": "Pivot",
+      "name_ja": "旋回",
+      "effect": {
+        "type": "pivot_to_lowest",
+        "target": "offense",
+        "lowest_add": 15,
+        "target_subtract": 10
+      },
+      "desc": {
+        "en": "Increase the lowest module stacks by 15, decrease Offense stacks by 10. If Offense is lowest, or Defense and Utility tie for lowest, nothing happens.",
+        "ja": "最も低いモジュール累積を15増加させ、攻撃累積を10減少させる。攻撃が最下位、または防衛とユーティリティが同率最下位の場合は何も起こらない。"
+      }
+    },
+    {
+      "id": "offense_split",
+      "group": "offense",
+      "name_en": "Split",
+      "name_ja": "分割",
+      "effect": {
+        "type": "split_from_target",
+        "target": "offense",
+        "target_subtract": 15,
+        "others_add": 10
+      },
+      "desc": {
+        "en": "Decrease Offense stacks by 15, increase Defense and Utility stacks by 10 each.",
+        "ja": "攻撃累積を15減少させ、防衛累積とユーティリティ累積をそれぞれ10増加させる。"
+      }
+    },
+    {
+      "id": "offense_compress",
+      "group": "offense",
+      "name_en": "Compress",
+      "name_ja": "圧縮",
+      "effect": {
+        "type": "compress_target",
+        "target": "offense",
+        "target_subtract": 10,
+        "potency_multiplier": 1.5
+      },
+      "desc": {
+        "en": "Decrease Offense stacks by 10, but each Offense stack is 50% more potent when calculating affected stats.",
+        "ja": "攻撃累積を10減少させる。ただし影響ステータス計算時、攻撃累積1あたりの効果が50%強化される。"
+      }
+    },
+    {
+      "id": "offense_convert_1",
+      "group": "offense",
+      "name_en": "Convert 1",
+      "name_ja": "変換1",
+      "effect": {
+        "type": "convert_target_stat",
+        "target": "offense",
+        "from_stat": "weapon_handling",
+        "to_stat": "headshot_damage",
+        "base_rate_percent_per_stack": 3
+      },
+      "desc": {
+        "en": "Offense stacks no longer affect Weapon Handling; instead they increase Headshot Damage at 3% per Offense stack.",
+        "ja": "攻撃累積は武器ハンドリングに影響しなくなり、代わりに攻撃累積1ごとにヘッドショットダメージを3%増加させる。"
+      }
+    },
+    {
+      "id": "offense_convert_2",
+      "group": "offense",
+      "name_en": "Convert 2",
+      "name_ja": "変換2",
+      "effect": {
+        "type": "convert_target_stat",
+        "target": "offense",
+        "from_stat": "weapon_handling",
+        "to_stat": "magazine_size",
+        "base_rate_percent_per_stack": 1
+      },
+      "desc": {
+        "en": "Offense stacks no longer affect Weapon Handling; instead they increase Magazine Size at 1% per Offense stack.",
+        "ja": "攻撃累積は武器ハンドリングに影響しなくなり、代わりに攻撃累積1ごとに装弾数を1%増加させる。"
+      }
+    },
+    {
+      "id": "offense_stabilize",
+      "group": "offense",
+      "name_en": "Stabilize",
+      "name_ja": "固定",
+      "effect": {
+        "type": "lock_target",
+        "target": "offense"
+      },
+      "desc": {
+        "en": "Offense stacks are locked and cannot change. Their base value may still increase by leveling up Blackout Pulse.",
+        "ja": "攻撃累積は固定され、変化しなくなる。ブラックアウトPulseのレベルアップによる基本値増加は引き続き適用される。"
+      }
+    },
+    {
+      "id": "offense_invert",
+      "group": "offense",
+      "name_en": "Invert",
+      "name_ja": "反転",
+      "effect": {
+        "type": "invert_with_highest",
+        "target": "offense"
+      },
+      "desc": {
+        "en": "Swap Offense stacks with the current highest module stacks. If Offense is already highest, or Defense and Utility tie for highest, nothing happens.",
+        "ja": "攻撃累積を現在の最高モジュール累積と入れ替える。攻撃がすでに最高、または防衛とユーティリティが同率最高の場合は何も起こらない。"
+      }
+    },
+    {
+      "id": "defense_amplify",
+      "group": "defense",
+      "name_en": "Amplify",
+      "name_ja": "増幅",
+      "effect": {
+        "type": "add_target",
+        "target": "defense",
+        "value": 5
+      },
+      "desc": {
+        "en": "Increase Defense stacks by 5.",
+        "ja": "防衛累積を5増加させる。"
+      }
+    },
+    {
+      "id": "defense_consume",
+      "group": "defense",
+      "name_en": "Consume",
+      "name_ja": "消費",
+      "effect": {
+        "type": "add_target_and_subtract_others",
+        "target": "defense",
+        "target_add": 10,
+        "others_subtract": 5
+      },
+      "desc": {
+        "en": "Increase Defense stacks by 10, decrease Offense and Utility stacks by 5 each.",
+        "ja": "防衛累積を10増加させ、攻撃累積とユーティリティ累積をそれぞれ5減少させる。"
+      }
+    },
+    {
+      "id": "defense_saturate",
+      "group": "defense",
+      "name_en": "Saturate",
+      "name_ja": "飽和",
+      "effect": {
+        "type": "saturate_target",
+        "target": "defense",
+        "value": 25,
+        "disable_stats": [
+          "armor",
+          "protection_from_elites",
+          "hazard_protection"
+        ]
+      },
+      "desc": {
+        "en": "Increase Defense stacks by 25, but Defense stacks no longer affect Armor, Protection from Elites, or Hazard Protection.",
+        "ja": "防衛累積を25増加させる。ただし防衛累積はアーマー、エリート防御、状態異常耐性に影響しなくなる。"
+      }
+    },
+    {
+      "id": "defense_pivot",
+      "group": "defense",
+      "name_en": "Pivot",
+      "name_ja": "旋回",
+      "effect": {
+        "type": "pivot_to_lowest",
+        "target": "defense",
+        "lowest_add": 15,
+        "target_subtract": 10
+      },
+      "desc": {
+        "en": "Increase the lowest module stacks by 15, decrease Defense stacks by 10. If Defense is lowest, or Offense and Utility tie for lowest, nothing happens.",
+        "ja": "最も低いモジュール累積を15増加させ、防衛累積を10減少させる。防衛が最下位、または攻撃とユーティリティが同率最下位の場合は何も起こらない。"
+      }
+    },
+    {
+      "id": "defense_split",
+      "group": "defense",
+      "name_en": "Split",
+      "name_ja": "分割",
+      "effect": {
+        "type": "split_from_target",
+        "target": "defense",
+        "target_subtract": 15,
+        "others_add": 10
+      },
+      "desc": {
+        "en": "Decrease Defense stacks by 15, increase Offense and Utility stacks by 10 each.",
+        "ja": "防衛累積を15減少させ、攻撃累積とユーティリティ累積をそれぞれ10増加させる。"
+      }
+    },
+    {
+      "id": "defense_compress",
+      "group": "defense",
+      "name_en": "Compress",
+      "name_ja": "圧縮",
+      "effect": {
+        "type": "compress_target",
+        "target": "defense",
+        "target_subtract": 10,
+        "potency_multiplier": 1.5
+      },
+      "desc": {
+        "en": "Decrease Defense stacks by 10, but each Defense stack is 50% more potent when calculating affected stats.",
+        "ja": "防衛累積を10減少させる。ただし影響ステータス計算時、防衛累積1あたりの効果が50%強化される。"
+      }
+    },
+    {
+      "id": "defense_convert_1",
+      "group": "defense",
+      "name_en": "Convert 1",
+      "name_ja": "変換1",
+      "effect": {
+        "type": "convert_target_stat",
+        "target": "defense",
+        "from_stat": "armor",
+        "to_stat": "protection_from_elites",
+        "base_rate_percent_per_stack": 0.5
+      },
+      "desc": {
+        "en": "Defense stacks no longer affect Armor; instead they increase Protection from Elites at 0.5% per Defense stack.",
+        "ja": "防衛累積はアーマーに影響しなくなり、代わりに防衛累積1ごとにエリート防御を0.5%増加させる。"
+      }
+    },
+    {
+      "id": "defense_convert_2",
+      "group": "defense",
+      "name_en": "Convert 2",
+      "name_ja": "変換2",
+      "effect": {
+        "type": "convert_target_stat",
+        "target": "defense",
+        "from_stat": "armor",
+        "to_stat": "hazard_protection",
+        "base_rate_percent_per_stack": 1
+      },
+      "desc": {
+        "en": "Defense stacks no longer affect Armor; instead they increase Hazard Protection at 1% per Defense stack.",
+        "ja": "防衛累積はアーマーに影響しなくなり、代わりに防衛累積1ごとに状態異常耐性を1%増加させる。"
+      }
+    },
+    {
+      "id": "defense_stabilize",
+      "group": "defense",
+      "name_en": "Stabilize",
+      "name_ja": "固定",
+      "effect": {
+        "type": "lock_target",
+        "target": "defense"
+      },
+      "desc": {
+        "en": "Defense stacks are locked and cannot change. Their base value may still increase by leveling up Cloud Armor.",
+        "ja": "防衛累積は固定され、変化しなくなる。クラウドアーマーのレベルアップによる基本値増加は引き続き適用される。"
+      }
+    },
+    {
+      "id": "defense_invert",
+      "group": "defense",
+      "name_en": "Invert",
+      "name_ja": "反転",
+      "effect": {
+        "type": "invert_with_highest",
+        "target": "defense"
+      },
+      "desc": {
+        "en": "Swap Defense stacks with the current highest module stacks. If Defense is already highest, or Offense and Utility tie for highest, nothing happens.",
+        "ja": "防衛累積を現在の最高モジュール累積と入れ替える。防衛がすでに最高、または攻撃とユーティリティが同率最高の場合は何も起こらない。"
+      }
+    },
+    {
+      "id": "utility_amplify",
+      "group": "utility",
+      "name_en": "Amplify",
+      "name_ja": "増幅",
+      "effect": {
+        "type": "add_target",
+        "target": "utility",
+        "value": 5
+      },
+      "desc": {
+        "en": "Increase Utility stacks by 5.",
+        "ja": "ユーティリティ累積を5増加させる。"
+      }
+    },
+    {
+      "id": "utility_consume",
+      "group": "utility",
+      "name_en": "Consume",
+      "name_ja": "消費",
+      "effect": {
+        "type": "add_target_and_subtract_others",
+        "target": "utility",
+        "target_add": 10,
+        "others_subtract": 5
+      },
+      "desc": {
+        "en": "Increase Utility stacks by 10, decrease Offense and Defense stacks by 5 each.",
+        "ja": "ユーティリティ累積を10増加させ、攻撃累積と防衛累積をそれぞれ5減少させる。"
+      }
+    },
+    {
+      "id": "utility_saturate",
+      "group": "utility",
+      "name_en": "Saturate",
+      "name_ja": "飽和",
+      "effect": {
+        "type": "saturate_target",
+        "target": "utility",
+        "value": 25,
+        "disable_stats": [
+          "skill_damage",
+          "skill_repair",
+          "status_effects"
+        ]
+      },
+      "desc": {
+        "en": "Increase Utility stacks by 25, but Utility stacks no longer affect Skill Damage, Skill Repair, or Status Effects.",
+        "ja": "ユーティリティ累積を25増加させる。ただしユーティリティ累積はスキルダメージ、スキル修復、ステータス効果に影響しなくなる。"
+      }
+    },
+    {
+      "id": "utility_pivot",
+      "group": "utility",
+      "name_en": "Pivot",
+      "name_ja": "旋回",
+      "effect": {
+        "type": "pivot_to_lowest",
+        "target": "utility",
+        "lowest_add": 15,
+        "target_subtract": 10
+      },
+      "desc": {
+        "en": "Increase the lowest module stacks by 15, decrease Utility stacks by 10. If Utility is lowest, or Offense and Defense tie for lowest, nothing happens.",
+        "ja": "最も低いモジュール累積を15増加させ、ユーティリティ累積を10減少させる。ユーティリティが最下位、または攻撃と防衛が同率最下位の場合は何も起こらない。"
+      }
+    },
+    {
+      "id": "utility_split",
+      "group": "utility",
+      "name_en": "Split",
+      "name_ja": "分割",
+      "effect": {
+        "type": "split_from_target",
+        "target": "utility",
+        "target_subtract": 15,
+        "others_add": 10
+      },
+      "desc": {
+        "en": "Decrease Utility stacks by 15, increase Offense and Defense stacks by 10 each.",
+        "ja": "ユーティリティ累積を15減少させ、攻撃累積と防衛累積をそれぞれ10増加させる。"
+      }
+    },
+    {
+      "id": "utility_compress",
+      "group": "utility",
+      "name_en": "Compress",
+      "name_ja": "圧縮",
+      "effect": {
+        "type": "compress_target",
+        "target": "utility",
+        "target_subtract": 10,
+        "potency_multiplier": 1.5
+      },
+      "desc": {
+        "en": "Decrease Utility stacks by 10, but each Utility stack is 50% more potent when calculating affected stats.",
+        "ja": "ユーティリティ累積を10減少させる。ただし影響ステータス計算時、ユーティリティ累積1あたりの効果が50%強化される。"
+      }
+    },
+    {
+      "id": "utility_convert_1",
+      "group": "utility",
+      "name_en": "Convert 1",
+      "name_ja": "変換1",
+      "effect": {
+        "type": "convert_target_stat",
+        "target": "utility",
+        "from_stat": "skill_damage",
+        "to_stat": "skill_repair",
+        "base_rate_percent_per_stack": 1
+      },
+      "desc": {
+        "en": "Utility stacks no longer affect Skill Damage; instead they increase Skill Repair at 1% per Utility stack.",
+        "ja": "ユーティリティ累積はスキルダメージに影響しなくなり、代わりにユーティリティ累積1ごとにスキル修復を1%増加させる。"
+      }
+    },
+    {
+      "id": "utility_convert_2",
+      "group": "utility",
+      "name_en": "Convert 2",
+      "name_ja": "変換2",
+      "effect": {
+        "type": "convert_target_stat",
+        "target": "utility",
+        "from_stat": "skill_damage",
+        "to_stat": "status_effects",
+        "base_rate_percent_per_stack": 1
+      },
+      "desc": {
+        "en": "Utility stacks no longer affect Skill Damage; instead they increase Status Effects at 1% per Utility stack.",
+        "ja": "ユーティリティ累積はスキルダメージに影響しなくなり、代わりにユーティリティ累積1ごとにステータス効果を1%増加させる。"
+      }
+    },
+    {
+      "id": "utility_stabilize",
+      "group": "utility",
+      "name_en": "Stabilize",
+      "name_ja": "固定",
+      "effect": {
+        "type": "lock_target",
+        "target": "utility"
+      },
+      "desc": {
+        "en": "Utility stacks are locked and cannot change. Their base value may still increase by leveling up Optimize/Overload.",
+        "ja": "ユーティリティ累積は固定され、変化しなくなる。最適化／オーバーロードのレベルアップによる基本値増加は引き続き適用される。"
+      }
+    },
+    {
+      "id": "utility_invert",
+      "group": "utility",
+      "name_en": "Invert",
+      "name_ja": "反転",
+      "effect": {
+        "type": "invert_with_highest",
+        "target": "utility"
+      },
+      "desc": {
+        "en": "Swap Utility stacks with the current highest module stacks. If Utility is already highest, or Offense and Defense tie for highest, nothing happens.",
+        "ja": "ユーティリティ累積を現在の最高モジュール累積と入れ替える。ユーティリティがすでに最高、または攻撃と防衛が同率最高の場合は何も起こらない。"
+      }
+    },
+    {
+      "id": "wildcard_cascade",
+      "group": "wildcard",
+      "name_en": "Cascade",
+      "name_ja": "カスケード",
+      "effect": {
+        "type": "cascade_from_highest",
+        "split_ratio": 0.5
+      },
+      "desc": {
+        "en": "Stats and Active Modifiers are no longer affected by the highest module stacks, but half of that value is added to each of the other two modules. If two or more modules tie for highest, nothing happens.",
+        "ja": "ステータスとアクティブMODは最高モジュール累積の影響を受けなくなるが、その値の半分が他2つのモジュールにそれぞれ加算される。2つ以上のモジュールが同率最高の場合は何も起こらない。"
+      }
+    },
+    {
+      "id": "wildcard_converge",
+      "group": "wildcard",
+      "name_en": "Converge",
+      "name_ja": "収束",
+      "effect": {
+        "type": "converge_to_lowest"
+      },
+      "desc": {
+        "en": "Increase the lowest module stacks by the average of the other two stacks, but set those two stacks to 0. If two or more modules tie for lowest, nothing happens.",
+        "ja": "最も低いモジュール累積を他2つの平均値分だけ増加させ、同時にその2つの累積を0にする。2つ以上のモジュールが同率最下位の場合は何も起こらない。"
+      }
+    },
+    {
+      "id": "wildcard_equalize",
+      "group": "wildcard",
+      "name_en": "Equalize",
+      "name_ja": "等化",
+      "effect": {
+        "type": "equalize_to_middle"
+      },
+      "desc": {
+        "en": "All module stacks become equal to the middle-value stack. If the middle-value stack equals either highest or lowest, nothing happens.",
+        "ja": "すべてのモジュール累積を中央値の累積値に揃える。中央値が最高値または最下位値と同じ場合は何も起こらない。"
+      }
+    },
+    {
+      "id": "wildcard_nullify",
+      "group": "wildcard",
+      "name_en": "Nullify",
+      "name_ja": "無効化",
+      "effect": {
+        "type": "nullify_lowest_changes",
+        "exclude_effect_types": [
+          "invert_with_highest"
+        ]
+      },
+      "desc": {
+        "en": "Reverse value changes that have been applied to the lowest module stacks (additions become subtractions and vice versa). Invert modifiers are not affected.",
+        "ja": "最も低いモジュール累積に適用された値変化を反転する（加算は減算に、減算は加算に）。反転系MODは影響を受けない。"
+      }
+    }
+  ]
+}

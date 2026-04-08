@@ -1,0 +1,11 @@
+{
+  "latest": "y8s1",
+  "seasons": [
+    {
+      "id": "y8s1",
+      "label": "Y8S1",
+      "file": "season_mod/y8s1_modifiers.json"
+    }
+  ]
+}
+
