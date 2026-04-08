@@ -117,7 +117,7 @@
               item.category || "",
               item.item_id || "",
               item.name_key || "",
-              ln.stat_key || ""
+              ln.override_talent_key || ln.stat_key || ""
             );
             if (hit) ln.is_named_talent = true;
           }
