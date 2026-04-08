@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "built_at": "2026-03-24T14:05:02.840424Z",
+  "built_at": "2026-04-08T08:20:03.645417Z",
   "categories": {
     "vendor": {
       "benitez": "ベニテス",
@@ -1047,7 +1047,8 @@
       "perturb": "Perturb",
       "fasterthanreloading": "リロードより高速",
       "perfectbackandforth": "パーフェクト・バック&フォース",
-      "backandforth": "バック&フォース"
+      "backandforth": "バック&フォース",
+      "perfectmeasured": "TODO:perfectmeasured"
     },
     "cache": {
       "amount": "数量",

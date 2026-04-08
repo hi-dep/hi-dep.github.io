@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "built_at": "2026-04-08T01:10:03.949427Z",
+  "built_at": "2026-04-08T08:20:03.645417Z",
   "sanitize": {
     "enabled": true,
     "safe_chars": "a-z 0-9 . _ -"
@@ -93,6 +93,7 @@
     "accelerando": "img/talents/accelerando.png",
     "aceinthesleeve": "img/talents/aceinthesleeve.png",
     "adrenalinerush": "img/talents/adrenalinerush.png",
+    "allforone": "img/talents/allforone.png",
     "alternatingcurrent": "img/talents/alternatingcurrent.png",
     "bestbuds": "img/talents/bestbuds.png",
     "bewildered": "img/talents/bewildered.png",
@@ -153,6 +154,7 @@
     "maxbpm": "img/talents/maxbpm.png",
     "nolimit": "img/talents/nolimit.png",
     "obliterate": "img/talents/obliterate.png",
+    "oneforall": "img/talents/oneforall.png",
     "oneinthehandtwointhebag": "img/talents/oneinthehandtwointhebag.png",
     "opportunistic": "img/talents/opportunistic.png",
     "ostracize": "img/talents/ostracize.png",
@@ -352,6 +354,7 @@
     "perfectlysteadyhanded": "img/weapon_talents/steadyhanded.png",
     "perfectlystrained": "img/weapon_talents/strained.png",
     "perfectlyunhinged": "img/weapon_talents/unhinged.png",
+    "perfectmeasured": "img/weapon_talents/measured.png",
     "perfectonempty": "img/weapon_talents/onempty.png",
     "perfectoptimist": "img/weapon_talents/optimist.png",
     "perfectoutsider": "img/weapon_talents/outsider.png",
