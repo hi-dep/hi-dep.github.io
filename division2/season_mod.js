@@ -331,13 +331,11 @@
         : (String(m?.name_en || "").trim() || String(m?.name_ja || "").trim());
       const desc = textByLang(m?.desc);
       const levelEffectsHtml = buildActiveLevelEffectsHtml(m);
-      const cd = Number(m?.cooldown_seconds || 0);
       return `
         <tr>
           <td class="seasonmod-icon-cell">${icon ? `<img class="seasonmod-icon" src="${esc(icon)}" alt="${esc(name)}" loading="lazy" decoding="async" />` : ""}</td>
           <td>${esc(name)}</td>
           <td>${esc(desc)}${levelEffectsHtml ? `<br>${levelEffectsHtml}` : ""}</td>
-          <td>${cd > 0 ? esc(`${cd}s`) : "-"}</td>
         </tr>
       `;
     }).join("");
@@ -427,11 +425,10 @@
                         <th></th>
                         <th>${esc(ui.name)}</th>
                         <th>${esc(ui.desc)}</th>
-                        <th>${esc(ui.cooldown)}</th>
                       </tr>
                     </thead>
                     <tbody>
-                      ${activeRows || `<tr><td colspan="4">${esc(ui.noData)}</td></tr>`}
+                      ${activeRows || `<tr><td colspan="3">${esc(ui.noData)}</td></tr>`}
                     </tbody>
                   </table>
                 </div>
