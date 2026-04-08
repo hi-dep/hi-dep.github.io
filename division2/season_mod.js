@@ -152,6 +152,7 @@
       }
       return enText;
     };
+    if (k === "armor") return pick("armor", "Armor");
     if (k === "weaponhandling") return pick("weaponhandling", "Weapon Handling");
     if (k === "maxarmor") return pick("armor", "Max Armor");
     if (k === "skilldamage") return pick("skilldamage", "Skill Damage");
@@ -302,6 +303,87 @@
     return `${group} / ${name}`;
   }
 
+  function passiveOptionPreview(mod) {
+    const ef = mod?.effect || {};
+    const type = String(ef.type || "");
+    const ja = getLang() === "ja";
+    const m = (k) => moduleLabel(k);
+    const ordered = ["offense", "defense", "utility"];
+    const deltasText = (deltas) => ordered
+      .map((k) => {
+        const d = Number(deltas[k] || 0);
+        if (!d) return "";
+        return `${m(k)} ${d > 0 ? `+${d}` : String(d)}`;
+      })
+      .filter(Boolean)
+      .join(" / ");
+    if (type === "add_target") {
+      const deltas = { offense: 0, defense: 0, utility: 0 };
+      deltas[String(ef.target || "")] = Number(ef.value || 0);
+      return deltasText(deltas);
+    }
+    if (type === "add_target_and_subtract_others") {
+      const deltas = { offense: 0, defense: 0, utility: 0 };
+      const target = String(ef.target || "");
+      if (Object.prototype.hasOwnProperty.call(deltas, target)) deltas[target] = Number(ef.target_add || 0);
+      ordered.forEach((k) => {
+        if (k !== target) deltas[k] -= Number(ef.others_subtract || 0);
+      });
+      return deltasText(deltas);
+    }
+    if (type === "saturate_target") {
+      const deltas = { offense: 0, defense: 0, utility: 0 };
+      deltas[String(ef.target || "")] = Number(ef.value || 0);
+      const deltaText = deltasText(deltas);
+      return `${deltaText}${deltaText ? " / " : ""}${ja ? "ステータス補正無効" : "stat bonus disabled"}`;
+    }
+    if (type === "pivot_to_lowest") {
+      return ja ? "最下位モジュールへ移譲" : "shift to lowest module";
+    }
+    if (type === "split_from_target") {
+      const deltas = { offense: 0, defense: 0, utility: 0 };
+      const target = String(ef.target || "");
+      if (Object.prototype.hasOwnProperty.call(deltas, target)) deltas[target] -= Number(ef.target_subtract || 0);
+      ordered.forEach((k) => {
+        if (k !== target) deltas[k] += Number(ef.others_add || 0);
+      });
+      return deltasText(deltas);
+    }
+    if (type === "compress_target") {
+      const deltas = { offense: 0, defense: 0, utility: 0 };
+      deltas[String(ef.target || "")] -= Number(ef.target_subtract || 0);
+      const deltaText = deltasText(deltas);
+      const multText = ja
+        ? `ステータス計算 x${Number(ef.potency_multiplier || 1)}`
+        : `stat calc x${Number(ef.potency_multiplier || 1)}`;
+      return `${deltaText}${deltaText ? " / " : ""}${multText}`;
+    }
+    if (type === "convert_target_stat") {
+      return ja
+        ? `${m(ef.target)}: ${statLabel(ef.from_stat)} → ${statLabel(ef.to_stat)}`
+        : `${m(ef.target)}: ${statLabel(ef.from_stat)} -> ${statLabel(ef.to_stat)}`;
+    }
+    if (type === "lock_target") {
+      return `${m(ef.target)} ${ja ? "固定" : "locked"}`;
+    }
+    if (type === "invert_with_highest") {
+      return `${m(ef.target)} ${ja ? "↔ 最高値" : "↔ highest"}`;
+    }
+    if (type === "cascade_from_highest") {
+      return ja ? "最高値除外 / 他へ分配" : "exclude highest / split to others";
+    }
+    if (type === "converge_to_lowest") {
+      return ja ? "最下位へ収束 / 他0" : "converge to lowest / others 0";
+    }
+    if (type === "equalize_to_middle") {
+      return ja ? "中央値へ等化" : "equalize to middle";
+    }
+    if (type === "nullify_lowest_changes") {
+      return ja ? "最下位の変化反転" : "reverse lowest changes";
+    }
+    return textByLang(mod?.desc) || "";
+  }
+
   function orderedPassiveModifiers(list) {
     const src = Array.isArray(list) ? list : [];
     const rank = { offense: 1, defense: 2, utility: 3, wildcard: 4 };
@@ -342,15 +424,12 @@
 
     const passiveRows = passiveMods.map((m, i) => {
       const icon = passiveIconPath(seasonId, m);
-      const name = getLang() === "ja"
-        ? (String(m?.name_ja || "").trim() || String(m?.name_en || "").trim())
-        : (String(m?.name_en || "").trim() || String(m?.name_ja || "").trim());
+      const name = passiveOptionLabel(m);
       const desc = textByLang(m?.desc);
       const g = nk(m?.group);
       return `
         <tr class="seasonmod-passive-row seasonmod-passive-row--${esc(g)}">
           <td class="seasonmod-icon-cell">${icon ? `<img class="seasonmod-icon" src="${esc(icon)}" alt="${esc(name)}" loading="lazy" decoding="async" />` : ""}</td>
-          <td>${esc(passiveGroupLabel(m?.group))}</td>
           <td>${esc(name)}</td>
           <td>${esc(desc)}</td>
         </tr>
@@ -374,7 +453,7 @@
                 <option value="2">Lv2</option>
                 <option value="3">Lv3</option>
                 <option value="4">Lv4</option>
-                <option value="5">Lv5</option>
+                <option value="5" selected>Lv5</option>
               </select>
             </label>
             <div class="field seasonmod-field seasonmod-passive-group">
@@ -447,13 +526,12 @@
                     <thead>
                       <tr>
                         <th></th>
-                        <th>${esc(ui.group)}</th>
-                        <th>${esc(ui.name)}</th>
+                        <th>${esc(ui.mod)}</th>
                         <th>${esc(ui.desc)}</th>
                       </tr>
                     </thead>
                     <tbody>
-                      ${passiveRows || `<tr><td colspan="4">${esc(ui.noData)}</td></tr>`}
+                      ${passiveRows || `<tr><td colspan="3">${esc(ui.noData)}</td></tr>`}
                     </tbody>
                   </table>
                 </div>
@@ -548,10 +626,10 @@
         Array.from(listEl.querySelectorAll(".seasonmod-picker__option")).forEach((opt) => {
           opt.addEventListener("click", () => {
             const v = String(opt.getAttribute("data-value") || "");
-            inputEl.value = v;
-            inputEl.dispatchEvent(new Event("change"));
             listEl.hidden = true;
             buttonEl.setAttribute("aria-expanded", "false");
+            inputEl.value = v;
+            inputEl.dispatchEvent(new Event("change"));
             renderButton();
             renderList();
             buttonEl.focus();
@@ -661,20 +739,72 @@
 
       const renderList = () => {
         const current = String(inputEl.value || "");
+        const simApi = window.SeasonModSimulator;
+        const canSim = !!(simApi && typeof simApi.simulateLoadout === "function");
+        const basePassiveIds = [String(p1El.value || ""), String(p2El.value || ""), String(p3El.value || "")];
+        const baseResult = canSim
+          ? simApi.simulateLoadout(seasonData, {
+            active_modifier_id: String(activeEl.value || ""),
+            active_level: Number(activeLvEl.value || 1),
+            passive_modifier_ids: basePassiveIds
+          })
+          : null;
+        const beforeStacks = (baseResult && baseResult.state && baseResult.state.stacks) || {};
+        const slotIndex = inputEl === p1El ? 0 : (inputEl === p2El ? 1 : 2);
+        const stackImpactParts = (candidateId) => {
+          if (!canSim) return "";
+          const testIds = [String(p1El.value || ""), String(p2El.value || ""), String(p3El.value || "")];
+          testIds[slotIndex] = String(candidateId || "");
+          const r = simApi.simulateLoadout(seasonData, {
+            active_modifier_id: String(activeEl.value || ""),
+            active_level: Number(activeLvEl.value || 1),
+            passive_modifier_ids: testIds
+          });
+          const after = (r && r.state && r.state.stacks) || {};
+          const mk = (k) => {
+            const b = Number(beforeStacks[k] || 0);
+            const a = Number(after[k] || 0);
+            const d = a - b;
+            return { key: k, value: a, delta: d };
+          };
+          return [mk("offense"), mk("defense"), mk("utility")];
+        };
+        const impactHtml = (candidateId) => {
+          const parts = stackImpactParts(candidateId);
+          if (!Array.isArray(parts) || !parts.length) return "";
+          const cells = parts.map((p) => {
+            const deltaText = p.delta ? `[${p.delta > 0 ? `+${p.delta}` : String(p.delta)}]` : "";
+            const deltaCls = p.delta > 0 ? "seasonmod-picker__impact-delta is-plus"
+              : p.delta < 0 ? "seasonmod-picker__impact-delta is-minus"
+                : "seasonmod-picker__impact-delta";
+            return `<span class="seasonmod-picker__impact-chip seasonmod-picker__impact-chip--${esc(p.key)}"><span class="seasonmod-picker__impact-val">${esc(String(p.value))}</span>${deltaText ? `<span class="${deltaCls}">${esc(deltaText)}</span>` : ""}</span>`;
+          }).join("");
+          return `<span class="seasonmod-picker__impact">${cells}</span>`;
+        };
         const noneRow = `
           <button type="button" class="seasonmod-picker__option${current === "" ? " is-active" : ""}" data-value="">
-            <span class="seasonmod-picker__label">${esc(uiLocal.none)}</span>
+            <span class="seasonmod-picker__icon seasonmod-picker__icon--empty" aria-hidden="true"></span>
+            <span class="seasonmod-picker__option-main">
+              <span class="seasonmod-picker__label">${esc(uiLocal.none)}</span>
+              ${canSim ? impactHtml("") : ""}
+            </span>
           </button>
         `;
         const rows = passiveMods.map((m) => {
           const id = String(m?.id || "").trim();
           const icon = passiveIconPath(seasonId, m);
           const label = passiveOptionLabel(m);
+          const preview = passiveOptionPreview(m);
+          const impact = impactHtml(id);
           const active = current === id ? " is-active" : "";
           return `
             <button type="button" class="seasonmod-picker__option seasonmod-picker__option--${esc(nk(m?.group))}${active}" data-value="${esc(id)}">
               ${icon ? `<img class="seasonmod-picker__icon" src="${esc(icon)}" alt="${esc(label)}" loading="lazy" decoding="async" />` : ""}
-              <span class="seasonmod-picker__label">${esc(label)}</span>
+              <span class="seasonmod-picker__option-main">
+                <span class="seasonmod-picker__label">${esc(label)}</span>
+                ${preview ? `<span class="seasonmod-picker__meta">${esc(preview)}</span>` : ""}
+                ${impact || ""}
+              </span>
             </button>
           `;
         }).join("");
@@ -682,10 +812,10 @@
         Array.from(listEl.querySelectorAll(".seasonmod-picker__option")).forEach((opt) => {
           opt.addEventListener("click", () => {
             const v = String(opt.getAttribute("data-value") || "");
-            inputEl.value = v;
-            inputEl.dispatchEvent(new Event("change"));
             listEl.hidden = true;
             buttonEl.setAttribute("aria-expanded", "false");
+            inputEl.value = v;
+            inputEl.dispatchEvent(new Event("change"));
             renderButton();
             renderList();
             buttonEl.focus();
@@ -971,7 +1101,7 @@
       const selectedRowsHtml = selectedRows.map((row, idx) => `
         <tr>
           <td>${row.modHtml || "-"}</td>
-          <td>${esc(row.effect || "-")}</td>
+          <td class="seasonmod-selected-desc">${esc(row.effect || "-")}</td>
         </tr>
       `).join("");
       const dropped = Array.isArray(result.dropped_passive_modifier_ids) ? result.dropped_passive_modifier_ids : [];
@@ -1000,7 +1130,7 @@
           </section>
           <section class="blueprint-table-wrap">
             <div class="blueprint-table-scroll">
-              <table class="blueprint-table seasonmod-table seasonmod-result-table">
+              <table class="blueprint-table seasonmod-table seasonmod-result-table seasonmod-selected-table">
                 <thead>
                   <tr>
                     <th>${esc(ui.mod)}</th>

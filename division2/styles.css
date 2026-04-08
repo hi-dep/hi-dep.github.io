@@ -369,7 +369,7 @@ body::before {
   border: 1px solid var(--border);
   border-radius: 8px;
   padding: 6px 28px 6px 10px;
-  font-size: 12px;
+  font-size: 11px;
   cursor: pointer;
 }
 
@@ -455,8 +455,84 @@ body::before {
   flex: 0 0 auto;
 }
 
+.seasonmod-picker__icon--empty {
+  border-color: transparent;
+  background: transparent;
+}
+
 .seasonmod-picker__label {
   min-width: 0;
+  font-size: 11px;
+  line-height: 1.15;
+}
+
+.seasonmod-selected-table .seasonmod-selected-desc {
+  font-size: 11px;
+  line-height: 1.15;
+}
+
+.seasonmod-picker__option-main {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.seasonmod-picker__meta {
+  min-width: 0;
+  color: var(--muted);
+  font-size: 9px;
+  line-height: 1.3;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+.seasonmod-picker__impact {
+  min-width: 0;
+  display: inline-flex;
+  gap: 4px;
+  flex-wrap: wrap;
+  font-size: 9px;
+  line-height: 1.2;
+  font-variant-numeric: tabular-nums;
+}
+
+.seasonmod-picker__impact-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  padding: 1px 5px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.seasonmod-picker__impact-chip--offense {
+  background: rgba(255, 120, 120, 0.12);
+}
+
+.seasonmod-picker__impact-chip--defense {
+  background: rgba(120, 150, 255, 0.12);
+}
+
+.seasonmod-picker__impact-chip--utility {
+  background: rgba(255, 220, 120, 0.12);
+}
+
+.seasonmod-picker__impact-val {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.seasonmod-picker__impact-delta {
+  opacity: 0.9;
+}
+
+.seasonmod-picker__impact-delta.is-plus {
+  color: #9be27a;
+}
+
+.seasonmod-picker__impact-delta.is-minus {
+  color: #ff9a9a;
 }
 
 .seasonmod-modcell {
@@ -2884,5 +2960,20 @@ th {
     flex-direction: column;
     align-items: flex-start;
     gap: 4px;
+  }
+
+  .seasonmod-picker__button {
+    font-size: 10px;
+    padding: 6px 24px 6px 8px;
+  }
+
+  .seasonmod-picker__label {
+    font-size: 10px;
+    line-height: 1.1;
+  }
+
+  .seasonmod-selected-table .seasonmod-selected-desc {
+    font-size: 10px;
+    line-height: 1.1;
   }
 }
