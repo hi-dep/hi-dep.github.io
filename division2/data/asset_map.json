@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "built_at": "2026-04-01T01:35:03.647014Z",
+  "built_at": "2026-04-08T01:10:03.949427Z",
   "sanitize": {
     "enabled": true,
     "safe_chars": "a-z 0-9 . _ -"
@@ -322,7 +322,7 @@
     "pakhan": "img/weapon_talents/pakhan.png",
     "paymentinkind": "img/weapon_talents/paymentinkind.png",
     "perfectallegro": "img/weapon_talents/allegro.png",
-    "perfectbackandforth": "img/weapon_talents/perfectbackandforth.png",
+    "perfectbackandforth": "img/weapon_talents/backandforth.png",
     "perfectboomerang": "img/weapon_talents/boomerang.png",
     "perfectbrazen": "img/weapon_talents/brazen.png",
     "perfectbreadbasket": "img/weapon_talents/breadbasket.png",

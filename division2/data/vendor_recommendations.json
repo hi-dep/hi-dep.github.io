@@ -28,11 +28,11 @@
       ]
     },
     {
-      "id": "weapon_talent_immortal",
+      "id": "weapon_talent_backandforth",
       "enabled": true,
       "target": "weapon",
       "all": [
-        { "field": "stat_keys", "op": "has_any", "value": ["immobilize", "perfectimmobilize", "perfectlyimmobilize"] }
+        { "field": "stat_keys", "op": "has_any", "value": ["backandforth", "perfectbackandforth", "perfectbackandforth"] }
       ]
     },
     {
@@ -237,8 +237,15 @@
         { "field": "name_key", "op": "eq", "value": "clawsout" },
         { "field": "attr_stat_keys", "op": "has_all", "value": ["headshotdamage", "weaponhandling"] }
       ]
+    },
+    {
+      "id": "gear_new_named_gear",
+      "enabled": true,
+      "target": "gear",
+      "all": [
+        { "field": "is_named", "op": "eq", "value": true },
+        { "field": "name_key", "op": "in", "value": ["bulldog", "robin"] }
+      ]
     }
   ]
 }
-
-
