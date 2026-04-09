@@ -6,6 +6,12 @@
     return Number.isFinite(n) ? n : fallback;
   }
 
+  function roundHalfAwayFromZero(v) {
+    const n = toNum(v, 0);
+    if (n >= 0) return Math.floor(n + 0.5);
+    return -Math.floor(Math.abs(n) + 0.5);
+  }
+
   function cloneObj(o) {
     return JSON.parse(JSON.stringify(o));
   }
@@ -47,7 +53,8 @@
     const prev = toNum(state.stacks[moduleName], 0);
     // Allow temporary negative stacks during sequential modifier resolution.
     // Some in-game combinations (e.g. split -> compress -> nullify) depend on this.
-    const next = prev + toNum(delta, 0);
+    // Module stacks are integer-only in game behavior; always round after each operation.
+    const next = roundHalfAwayFromZero(prev + toNum(delta, 0));
     const actual = next - prev;
     if (!actual) return 0;
     state.stacks[moduleName] = next;
@@ -119,12 +126,15 @@
       state.potency[t] = toNum(ef.potency_multiplier, 1);
       applied = !!a || true;
     } else if (type === "convert_target_stat") {
-      state.statMode[t] = "converted";
-      state.conversions[t].push({
-        from_stat: ef.from_stat || "",
-        to_stat: ef.to_stat || "",
-        base_rate_percent_per_stack: toNum(ef.base_rate_percent_per_stack, 0)
-      });
+      // Saturate has higher priority: once a module is disabled, convert cannot re-enable stat scaling.
+      if (state.statMode[t] !== "disabled") {
+        state.statMode[t] = "converted";
+        state.conversions[t].push({
+          from_stat: ef.from_stat || "",
+          to_stat: ef.to_stat || "",
+          base_rate_percent_per_stack: toNum(ef.base_rate_percent_per_stack, 0)
+        });
+      }
       applied = true;
     } else if (type === "lock_target") {
       state.locked[t] = true;
@@ -142,7 +152,8 @@
       const high = uniqueHighest(state);
       if (high) {
         const v = toNum(state.stacks[high], 0);
-        const addVal = v * toNum(ef.split_ratio, 0.5);
+        // In-game behavior: use integer stack deltas for cascade-derived additions (e.g. 52.5 -> 53).
+        const addVal = roundHalfAwayFromZero(v * toNum(ef.split_ratio, 0.5));
         otherModules(high).forEach((m) => changeStack(state, m, addVal, type, false));
         state.statMode[high] = "ignored_by_cascade";
         state.activeMode[high] = "ignored_by_cascade";
