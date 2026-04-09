@@ -1,7 +1,7 @@
 {
-  "built_at": "2026-04-01T15:30:06.513746Z",
+  "built_at": "2026-04-09T17:30:07.310599Z",
   "board_name": "The Division 2 Known Issues",
-  "date_last_activity": "2026-04-01T15:21:35.330Z",
+  "date_last_activity": "2026-04-09T17:02:01.459Z",
   "db_file": "trello_latest.db.gz",
   "snapshot_file": "",
   "i18n_file": "trello/i18n_trello.json",
@@ -22,6 +22,6 @@
     "checklists": 0,
     "checkitems": 0,
     "actions": 1000,
-    "attachments": 77
+    "attachments": 70
   }
 }
