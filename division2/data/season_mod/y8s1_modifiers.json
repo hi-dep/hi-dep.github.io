@@ -1030,9 +1030,9 @@
       "note_ja": "変換を含むため、圧縮×変換×無効化の構成。",
       "note_en": "Includes converted stat; Compress x Convert x Nullify preset.",
       "passive_modifier_ids": [
-        "offense_compress",
+        "offense_saturate",
         "offense_convert_2",
-        "wildcard_nullify"
+        "utility_split"
       ]
     },
     {
@@ -1066,9 +1066,9 @@
       "note_ja": "変換を含むため、圧縮×変換×無効化の構成。",
       "note_en": "Includes converted stat; Compress x Convert x Nullify preset.",
       "passive_modifier_ids": [
-        "offense_compress",
+        "offense_saturate",
         "offense_convert_1",
-        "wildcard_nullify"
+        "utility_split"
       ]
     },
     {
@@ -1078,9 +1078,9 @@
       "note_ja": "変換を含むため、圧縮×変換×無効化の構成。",
       "note_en": "Includes converted stat; Compress x Convert x Nullify preset.",
       "passive_modifier_ids": [
-        "defense_compress",
         "defense_convert_1",
-        "wildcard_nullify"
+        "utility_saturate",
+        "wildcard_cascade"
       ]
     },
     {
@@ -1090,9 +1090,9 @@
       "note_ja": "変換を含むため、圧縮×変換×無効化の構成。",
       "note_en": "Includes converted stat; Compress x Convert x Nullify preset.",
       "passive_modifier_ids": [
-        "defense_compress",
         "defense_convert_2",
-        "wildcard_nullify"
+        "utility_saturate",
+        "wildcard_cascade"
       ]
     },
     {
@@ -1114,9 +1114,9 @@
       "note_ja": "変換を含むため、圧縮×変換×無効化の構成。",
       "note_en": "Includes converted stat; Compress x Convert x Nullify preset.",
       "passive_modifier_ids": [
-        "offense_compress",
+        "defense_saturate",
         "offense_convert_2",
-        "wildcard_nullify"
+        "wildcard_cascade"
       ]
     },
     {
@@ -1150,9 +1150,9 @@
       "note_ja": "変換を含むため、圧縮×変換×無効化の構成。",
       "note_en": "Includes converted stat; Compress x Convert x Nullify preset.",
       "passive_modifier_ids": [
-        "offense_compress",
-        "offense_convert_1",
-        "wildcard_nullify"
+        "defense_split",
+        "offense_saturate",
+        "offense_convert_1"
       ]
     },
     {
@@ -1198,9 +1198,9 @@
       "note_ja": "変換を含むため、圧縮×変換×無効化の構成。",
       "note_en": "Includes converted stat; Compress x Convert x Nullify preset.",
       "passive_modifier_ids": [
-        "utility_compress",
+        "defense_saturate",
         "utility_convert_2",
-        "wildcard_nullify"
+        "wildcard_cascade"
       ]
     },
     {
@@ -1210,9 +1210,9 @@
       "note_ja": "変換を含むため、圧縮×変換×無効化の構成。",
       "note_en": "Includes converted stat; Compress x Convert x Nullify preset.",
       "passive_modifier_ids": [
-        "utility_compress",
+        "defense_saturate",
         "utility_convert_1",
-        "wildcard_nullify"
+        "wildcard_cascade"
       ]
     },
     {
@@ -1222,9 +1222,9 @@
       "note_ja": "変換を含むため、圧縮×変換×無効化の構成。",
       "note_en": "Includes converted stat; Compress x Convert x Nullify preset.",
       "passive_modifier_ids": [
-        "defense_compress",
         "defense_convert_1",
-        "wildcard_nullify"
+        "offense_saturate",
+        "wildcard_cascade"
       ]
     },
     {
@@ -1258,9 +1258,9 @@
       "note_ja": "変換を含むため、圧縮×変換×無効化の構成。",
       "note_en": "Includes converted stat; Compress x Convert x Nullify preset.",
       "passive_modifier_ids": [
-        "defense_compress",
         "defense_convert_2",
-        "wildcard_nullify"
+        "offense_saturate",
+        "wildcard_cascade"
       ]
     },
     {
@@ -1306,9 +1306,9 @@
       "note_ja": "変換を含むため、圧縮×変換×無効化の構成。",
       "note_en": "Includes converted stat; Compress x Convert x Nullify preset.",
       "passive_modifier_ids": [
-        "utility_compress",
-        "utility_convert_2",
-        "wildcard_nullify"
+        "offense_split",
+        "utility_saturate",
+        "utility_convert_2"
       ]
     },
     {
@@ -1318,9 +1318,9 @@
       "note_ja": "変換を含むため、圧縮×変換×無効化の構成。",
       "note_en": "Includes converted stat; Compress x Convert x Nullify preset.",
       "passive_modifier_ids": [
-        "utility_compress",
-        "utility_convert_1",
-        "wildcard_nullify"
+        "offense_split",
+        "utility_saturate",
+        "utility_convert_1"
       ]
     }
   ]
