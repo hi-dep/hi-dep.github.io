@@ -4,6 +4,7 @@
   const SEASON_MOD_URL_KEYS = Object.freeze({
     active: "sm_active",
     level: "sm_level",
+    preset: "sm_preset",
     passive1: "sm_p1",
     passive2: "sm_p2",
     passive3: "sm_p3",
@@ -29,9 +30,11 @@
       globalModifier: ja ? "グローバルMOD" : "Global Modifier",
       activeModifier: ja ? "アクティブMOD" : "Active Modifier",
       activeLevel: ja ? "アクティブレベル" : "Active Level",
-      passiveSlot1: ja ? "パッシブスロット" : "Passive Slot",
-      passiveSlot2: ja ? "パッシブスロット" : "Passive Slot",
-      passiveSlot3: ja ? "パッシブスロット" : "Passive Slot",
+      preset: ja ? "プリセット" : "Preset",
+      selectPreset: ja ? "プリセット選択" : "Select Preset",
+      passiveSlot1: ja ? "パッシブMOD" : "Passive MOD",
+      passiveSlot2: ja ? "パッシブMOD" : "Passive MOD",
+      passiveSlot3: ja ? "パッシブMOD" : "Passive MOD",
       none: ja ? "なし" : "None",
       result: ja ? "結果" : "Result",
       module: ja ? "モジュール" : "Module",
@@ -50,6 +53,7 @@
       icon: ja ? "アイコン" : "Icon",
       orderApplied: ja ? "適用順" : "Apply Order",
       activeDerived: ja ? "アクティブ効果(現在値)" : "Active Effect (Current)"
+      , formula: ja ? "計算式" : "Formula"
       , moduleStacks: ja ? "モジュール累積" : "Module Stacks"
       , stackValue: ja ? "累積値" : "Stacks"
       , buffEffect: ja ? "効果" : "Effect"
@@ -255,40 +259,98 @@
     return `<div class="seasonmod-level-effects"><strong>${esc(ui.levelEffects)}:</strong><br>${lines.map((s) => esc(s)).join("<br>")}</div>`;
   }
 
-  function buildActiveDerivedRows(activeId, activeLevel, stacks) {
+  function buildActiveDerivedRows(activeId, activeLevel, stacks, activeMode) {
     const ui = t();
-    const off = Number(stacks?.offense || 0);
-    const def = Number(stacks?.defense || 0);
-    const utl = Number(stacks?.utility || 0);
+    const mode = activeMode || {};
+    const offIgnored = String(mode?.offense || "") === "ignored_by_cascade";
+    const defIgnored = String(mode?.defense || "") === "ignored_by_cascade";
+    const utlIgnored = String(mode?.utility || "") === "ignored_by_cascade";
+    const offRaw = Number(stacks?.offense || 0);
+    const defRaw = Number(stacks?.defense || 0);
+    const utlRaw = Number(stacks?.utility || 0);
+    const off = offIgnored ? 0 : Math.max(0, offRaw);
+    const def = defIgnored ? 0 : Math.max(0, defRaw);
+    const utl = utlIgnored ? 0 : Math.max(0, utlRaw);
     const rows = [];
     const level = Math.max(1, Math.min(5, Number(activeLevel || 1)));
     const cdBase = 90;
+    const ignoredNote = getLang() === "ja" ? " (カスケードで無効)" : " (ignored by Cascade)";
+    const srcLabel = (moduleKey, rawVal, ignored) => {
+      const clamped = Math.max(0, Number(rawVal || 0));
+      const base = `${moduleLabel(moduleKey)} ${clamped}`;
+      return ignored ? `${base}${ignoredNote}` : base;
+    };
 
     if (activeId === "blackout_pulse") {
       const radius = 10 + (off * 0.5);
       const cd = Math.max(0, cdBase - (level >= 3 ? def : 0));
-      rows.push([ui.activeModifier, activeNameById(activeId)]);
-      rows.push([ui.empRadius, `${radius.toFixed(1)}m`]);
-      rows.push([ui.cooldown, `${cd.toFixed(0)}s`]);
-      if (level >= 5) rows.push([ui.pulseDuration, `${(4 + (utl * 0.1)).toFixed(1)}s`]);
+      rows.push([
+        ui.empRadius,
+        `${radius.toFixed(1)}m`,
+        `10m + (0.5m x ${srcLabel("offense", offRaw, offIgnored)})`
+      ]);
+      rows.push([
+        ui.cooldown,
+        `${cd.toFixed(0)}s`,
+        (level >= 3)
+          ? `90s - (1s x ${srcLabel("defense", defRaw, defIgnored)})`
+          : (getLang() === "ja" ? "90秒 (Lv3以上)" : "90s (Lv3+)")
+      ]);
+      if (level >= 5) {
+        rows.push([
+          ui.pulseDuration,
+          `${(4 + (utl * 0.1)).toFixed(1)}s`,
+          `4s + (0.1s x ${srcLabel("utility", utlRaw, utlIgnored)})`
+        ]);
+      }
       return rows;
     }
     if (activeId === "cloud_armor") {
       const repair = 5 + (def * 0.2);
       const cd = Math.max(0, cdBase - (level >= 3 ? utl : 0));
-      rows.push([ui.activeModifier, activeNameById(activeId)]);
-      rows.push([ui.repairPerSec, `${repair.toFixed(1)}%`]);
-      rows.push([ui.cooldown, `${cd.toFixed(0)}s`]);
-      if (level >= 5) rows.push([ui.blindDuration, `${(4 + (off * 0.1)).toFixed(1)}s`]);
+      rows.push([
+        ui.repairPerSec,
+        `${repair.toFixed(1)}%`,
+        `5% + (0.2% x ${srcLabel("defense", defRaw, defIgnored)})`
+      ]);
+      rows.push([
+        ui.cooldown,
+        `${cd.toFixed(0)}s`,
+        (level >= 3)
+          ? `90s - (1s x ${srcLabel("utility", utlRaw, utlIgnored)})`
+          : (getLang() === "ja" ? "90秒 (Lv3以上)" : "90s (Lv3+)")
+      ]);
+      if (level >= 5) {
+        rows.push([
+          ui.blindDuration,
+          `${(4 + (off * 0.1)).toFixed(1)}s`,
+          `4s + (0.1s x ${srcLabel("offense", offRaw, offIgnored)})`
+        ]);
+      }
       return rows;
     }
     if (activeId === "optimize_overload") {
       const cdr = 30 + (utl * 0.8);
       const cd = Math.max(0, cdBase - (level >= 3 ? off : 0));
-      rows.push([ui.activeModifier, activeNameById(activeId)]);
-      rows.push([ui.skillCdr, `${cdr.toFixed(1)}%`]);
-      rows.push([ui.cooldown, `${cd.toFixed(0)}s`]);
-      if (level >= 5) rows.push([ui.overchargeDuration, `${(5 + (def * 0.2)).toFixed(1)}s`]);
+      rows.push([
+        ui.skillCdr,
+        `${cdr.toFixed(1)}%`,
+        `30% + (0.8% x ${srcLabel("utility", utlRaw, utlIgnored)})`
+      ]);
+      rows.push([
+        ui.cooldown,
+        `${cd.toFixed(0)}s`,
+        (level >= 3)
+          ? `90s - (1s x ${srcLabel("offense", offRaw, offIgnored)})`
+          : (getLang() === "ja" ? "90秒 (Lv3以上)" : "90s (Lv3+)")
+      ]);
+      if (level >= 5) {
+        rows.push([
+          ui.overchargeDuration,
+          `${(5 + (def * 0.2)).toFixed(1)}s`,
+          `5s + (0.2s x ${srcLabel("defense", defRaw, defIgnored)})`
+        ]);
+      }
       return rows;
     }
     return rows;
@@ -400,12 +462,59 @@
       .map((x) => x.m);
   }
 
+  function getSeasonPresets(seasonData, passiveIdSet) {
+    const src = Array.isArray(seasonData?.presets)
+      ? seasonData.presets
+      : (Array.isArray(seasonData?.loadout_presets)
+        ? seasonData.loadout_presets
+        : (Array.isArray(seasonData?.passive_presets) ? seasonData.passive_presets : []));
+    const out = [];
+    const seen = new Set();
+    src.forEach((p, idx) => {
+      if (!p || typeof p !== "object") return;
+      const rawId = String(p.id || p.key || p.code || `preset_${idx + 1}`).trim();
+      if (!rawId || seen.has(rawId)) return;
+      seen.add(rawId);
+      const rawPassives = Array.isArray(p.passive_modifier_ids)
+        ? p.passive_modifier_ids
+        : (Array.isArray(p.passive_ids) ? p.passive_ids : []);
+      const passives = [];
+      const passivesSeen = new Set();
+      rawPassives.forEach((id) => {
+        const v = String(id || "").trim();
+        if (!v || passivesSeen.has(v)) return;
+        if (passiveIdSet && !passiveIdSet.has(v)) return;
+        passivesSeen.add(v);
+        passives.push(v);
+      });
+      out.push({
+        id: rawId,
+        active_modifier_id: String(p.active_modifier_id || p.active_id || "").trim(),
+        name_ja: String(p.name_ja || p.label_ja || "").trim(),
+        name_en: String(p.name_en || p.label_en || "").trim(),
+        name: String(p.name || p.label || "").trim(),
+        note_ja: String(p.note_ja || "").trim(),
+        note_en: String(p.note_en || "").trim(),
+        passive_modifier_ids: passives.slice(0, 3)
+      });
+    });
+    return out;
+  }
+
   function buildViewHtml(payload) {
     const ui = t();
     const seasonId = String(payload?.current?.id || payload?.data?.season_id || "").trim();
     const seasonLabel = String(payload?.current?.label || payload?.data?.season_label || seasonId).trim();
     const activeMods = Array.isArray(payload?.data?.active_modifiers) ? payload.data.active_modifiers : [];
     const passiveMods = orderedPassiveModifiers(payload?.data?.passive_modifiers);
+    const passiveIdSet = new Set(passiveMods.map((m) => String(m?.id || "").trim()).filter(Boolean));
+    const presets = getSeasonPresets(payload?.data || {}, passiveIdSet);
+    const presetOptionsHtml = presets.map((p) => {
+      const nm = getLang() === "ja"
+        ? (p.name_ja || p.name_en || p.name || p.id)
+        : (p.name_en || p.name_ja || p.name || p.id);
+      return `<option value="${esc(p.id)}">${esc(nm)}</option>`;
+    }).join("");
     const activeRows = activeMods.map((m, i) => {
       const icon = activeIconPath(seasonId, m);
       const name = getLang() === "ja"
@@ -441,21 +550,31 @@
         <section class="seasonmod-section seasonmod-section--simulator">
           <h3 class="seasonmod-section__title">${esc(ui.sectionSimulator)}</h3>
           <div class="seasonmod-controls">
-            <label class="field seasonmod-field">
+            <div class="field seasonmod-field seasonmod-active-group">
               <span>${esc(ui.activeModifier)}</span>
-              <input id="seasonModActiveSelect" type="hidden" value="" />
-              <div id="seasonModActivePicker" class="seasonmod-picker"></div>
-            </label>
-            <label class="field seasonmod-field">
-              <span>${esc(ui.activeLevel)}</span>
-              <select id="seasonModActiveLevel" class="seasonmod-select">
-                <option value="1">Lv1</option>
-                <option value="2">Lv2</option>
-                <option value="3">Lv3</option>
-                <option value="4">Lv4</option>
-                <option value="5" selected>Lv5</option>
-              </select>
-            </label>
+              <div class="seasonmod-active-group__grid">
+                <label class="field seasonmod-field">
+                  <input id="seasonModActiveSelect" type="hidden" value="" />
+                  <div id="seasonModActivePicker" class="seasonmod-picker"></div>
+                </label>
+                <label class="field seasonmod-field seasonmod-active-level-field">
+                  <select id="seasonModActiveLevel" class="seasonmod-select">
+                    <option value="1">Lv1</option>
+                    <option value="2">Lv2</option>
+                    <option value="3">Lv3</option>
+                    <option value="4">Lv4</option>
+                    <option value="5" selected>Lv5</option>
+                  </select>
+                </label>
+                <label class="field seasonmod-field seasonmod-preset-field">
+                  <span>${esc(ui.preset)}</span>
+                  <select id="seasonModPresetSelect" class="seasonmod-select">
+                    <option value="">${esc(ui.selectPreset)}</option>
+                    ${presetOptionsHtml}
+                  </select>
+                </label>
+              </div>
+            </div>
             <div class="field seasonmod-field seasonmod-passive-group">
               <span>${esc(ui.passiveSlot1)}</span>
               <div class="seasonmod-passive-group__grid">
@@ -481,21 +600,6 @@
           <details id="seasonModActiveAccordion" class="seasonmod-accordion" open>
             <summary class="seasonmod-accordion__summary">${esc(ui.sectionActive)}</summary>
             <div class="seasonmod-accordion__body">
-              <section class="blueprint-table-wrap">
-                <div class="blueprint-table-scroll">
-                  <table class="blueprint-table seasonmod-table seasonmod-result-table">
-                    <thead>
-                      <tr>
-                        <th>${esc(ui.activeDerived)}</th>
-                        <th>${esc(ui.result)}</th>
-                      </tr>
-                    </thead>
-                    <tbody id="seasonModActiveDerivedBody">
-                      <tr><td colspan="2">-</td></tr>
-                    </tbody>
-                  </table>
-                </div>
-              </section>
               <section class="blueprint-table-wrap">
                 <div class="blueprint-table-scroll">
                   <table class="blueprint-table seasonmod-table">
@@ -546,11 +650,11 @@
   function bindSimulator(payload) {
     const activeEl = document.getElementById("seasonModActiveSelect");
     const activeLvEl = document.getElementById("seasonModActiveLevel");
+    const presetEl = document.getElementById("seasonModPresetSelect");
     const p1El = document.getElementById("seasonModPassive1");
     const p2El = document.getElementById("seasonModPassive2");
     const p3El = document.getElementById("seasonModPassive3");
     const outEl = document.getElementById("seasonModSimResult");
-    const activeDerivedBodyEl = document.getElementById("seasonModActiveDerivedBody");
     const activeAccordionEl = document.getElementById("seasonModActiveAccordion");
     const passiveAccordionEl = document.getElementById("seasonModPassiveAccordion");
     if (!activeEl || !activeLvEl || !p1El || !p2El || !p3El || !outEl) return;
@@ -562,6 +666,12 @@
     const passiveMods = orderedPassiveModifiers(seasonData?.passive_modifiers);
     const activeIdSet = new Set(activeMods.map((m) => String(m?.id || "").trim()).filter(Boolean));
     const passiveIdSet = new Set(passiveMods.map((m) => String(m?.id || "").trim()).filter(Boolean));
+    const presets = getSeasonPresets(seasonData, passiveIdSet);
+    const presetMap = new Map();
+    presets.forEach((p) => {
+      const id = String(p?.id || "").trim();
+      if (id) presetMap.set(id, p);
+    });
 
     const passiveMap = new Map();
     passiveMods.forEach((m) => {
@@ -932,6 +1042,68 @@
     buildPassivePicker(picker2, p2El);
     buildPassivePicker(picker3, p3El);
 
+    const tupleEq = (a, b) => {
+      if (!Array.isArray(a) || !Array.isArray(b) || a.length !== b.length) return false;
+      for (let i = 0; i < a.length; i += 1) {
+        if (String(a[i] || "") !== String(b[i] || "")) return false;
+      }
+      return true;
+    };
+    const currentPassivesTuple = () => [String(p1El.value || ""), String(p2El.value || ""), String(p3El.value || "")];
+    const presetTuple = (preset) => {
+      const src = Array.isArray(preset?.passive_modifier_ids) ? preset.passive_modifier_ids : [];
+      return [String(src[0] || ""), String(src[1] || ""), String(src[2] || "")];
+    };
+    const presetName = (preset) => {
+      const lang = getLang();
+      if (lang === "ja") return preset.name_ja || preset.name_en || preset.name || preset.id;
+      return preset.name_en || preset.name_ja || preset.name || preset.id;
+    };
+    const visiblePresets = () => {
+      const a = String(activeEl.value || "").trim();
+      return presets.filter((p) => {
+        const cond = String(p?.active_modifier_id || "").trim();
+        return !cond || cond === a;
+      });
+    };
+    const refreshPresetOptions = () => {
+      if (!presetEl) return;
+      const cur = String(presetEl.value || "").trim();
+      const items = visiblePresets();
+      let html = `<option value="">${esc(ui.selectPreset)}</option>`;
+      items.forEach((p) => {
+        html += `<option value="${esc(String(p.id || ""))}">${esc(presetName(p))}</option>`;
+      });
+      presetEl.innerHTML = html;
+      if (cur && items.some((p) => String(p.id || "") === cur)) presetEl.value = cur;
+    };
+    const syncPresetFromPassives = () => {
+      if (!presetEl) return;
+      const cur = currentPassivesTuple();
+      let matched = "";
+      visiblePresets().some((p) => {
+        if (tupleEq(cur, presetTuple(p))) {
+          matched = String(p.id || "");
+          return true;
+        }
+        return false;
+      });
+      presetEl.value = matched;
+    };
+    const applyPresetById = (presetId) => {
+      const id = String(presetId || "").trim();
+      if (!id) return false;
+      const preset = presetMap.get(id);
+      if (!preset) return false;
+      const cond = String(preset?.active_modifier_id || "").trim();
+      if (cond && cond !== String(activeEl.value || "").trim()) return false;
+      const ids = Array.isArray(preset.passive_modifier_ids) ? preset.passive_modifier_ids : [];
+      p1El.value = String(ids[0] || "");
+      p2El.value = String(ids[1] || "");
+      p3El.value = String(ids[2] || "");
+      return true;
+    };
+
     const readStateFromUrl = () => {
       let q = null;
       try {
@@ -945,15 +1117,21 @@
       const p1 = String(q.get(SEASON_MOD_URL_KEYS.passive1) || "").trim();
       const p2 = String(q.get(SEASON_MOD_URL_KEYS.passive2) || "").trim();
       const p3 = String(q.get(SEASON_MOD_URL_KEYS.passive3) || "").trim();
+      const ps = String(q.get(SEASON_MOD_URL_KEYS.preset) || "").trim();
       const ao = String(q.get(SEASON_MOD_URL_KEYS.activeOpen) || "").trim();
       const po = String(q.get(SEASON_MOD_URL_KEYS.passiveOpen) || "").trim();
 
       if (a && activeIdSet.has(a)) activeEl.value = a;
+      refreshPresetOptions();
       const lvNum = Number(lvRaw || "0");
       if (Number.isFinite(lvNum) && lvNum >= 1 && lvNum <= 5) activeLvEl.value = String(Math.floor(lvNum));
       p1El.value = (p1 && passiveIdSet.has(p1)) ? p1 : "";
       p2El.value = (p2 && passiveIdSet.has(p2)) ? p2 : "";
       p3El.value = (p3 && passiveIdSet.has(p3)) ? p3 : "";
+      if (presetEl && ps && presetMap.has(ps)) {
+        presetEl.value = ps;
+        applyPresetById(ps);
+      }
       if (activeAccordionEl && (ao === "0" || ao === "1")) activeAccordionEl.open = ao === "1";
       if (passiveAccordionEl && (po === "0" || po === "1")) passiveAccordionEl.open = po === "1";
 
@@ -965,12 +1143,14 @@
         if (seen.has(v)) el.value = "";
         else seen.add(v);
       });
+      syncPresetFromPassives();
     };
 
     const writeStateToUrl = () => {
       const updates = {
         [SEASON_MOD_URL_KEYS.active]: String(activeEl.value || "").trim() || null,
         [SEASON_MOD_URL_KEYS.level]: String(activeLvEl.value || "").trim() || null,
+        [SEASON_MOD_URL_KEYS.preset]: presetEl ? (String(presetEl.value || "").trim() || null) : null,
         [SEASON_MOD_URL_KEYS.passive1]: String(p1El.value || "").trim() || null,
         [SEASON_MOD_URL_KEYS.passive2]: String(p2El.value || "").trim() || null,
         [SEASON_MOD_URL_KEYS.passive3]: String(p3El.value || "").trim() || null,
@@ -1028,7 +1208,8 @@
       });
 
       const buffRows = ["offense", "defense", "utility"].map((k) => {
-        const f = Number(stacks[k] || 0);
+        const fRaw = Number(stacks[k] || 0);
+        const f = Math.max(0, fRaw);
         const baseDef = stackEffects[k] || {};
         const convList = Array.isArray(conversions[k]) ? conversions[k] : [];
         const p = Number(potency[k] || 1);
@@ -1080,8 +1261,8 @@
         `;
       }).join("");
 
-      const derivedRows = buildActiveDerivedRows(result.active_modifier_id, result.active_level, stacks)
-        .map((r) => `<tr><td>${esc(String(r[0] || ""))}</td><td>${esc(String(r[1] || ""))}</td></tr>`)
+      const derivedRows = buildActiveDerivedRows(result.active_modifier_id, result.active_level, stacks, activeMode)
+        .map((r) => `<tr><td>${esc(String(r[0] || ""))}</td><td>${esc(String(r[1] || ""))}</td><td>${esc(String(r[2] || "-"))}</td></tr>`)
         .join("");
       const selectedPassiveIds = [String(p1El.value || ""), String(p2El.value || ""), String(p3El.value || "")];
       const selectedRows = [
@@ -1116,6 +1297,20 @@
         <div class="seasonmod-result-grid">
           <section class="blueprint-table-wrap">
             <div class="blueprint-table-scroll">
+              <table class="blueprint-table seasonmod-table seasonmod-result-table seasonmod-active-derived-table">
+                <thead>
+                  <tr>
+                    <th>${esc(ui.activeDerived)}</th>
+                    <th>${esc(ui.result)}</th>
+                    <th>${esc(ui.formula)}</th>
+                  </tr>
+                </thead>
+                <tbody>${derivedRows || `<tr><td colspan="3">-</td></tr>`}</tbody>
+              </table>
+            </div>
+          </section>
+          <section class="blueprint-table-wrap">
+            <div class="blueprint-table-scroll">
               <table class="blueprint-table seasonmod-table seasonmod-result-table">
                 <thead>
                   <tr>
@@ -1145,20 +1340,69 @@
         ${droppedHtml}
         ${dupedHtml}
       `;
-      if (activeDerivedBodyEl) {
-        activeDerivedBodyEl.innerHTML = derivedRows || `<tr><td colspan="2">-</td></tr>`;
-      }
+      requestAnimationFrame(syncResultRowHeights);
     };
 
     [activeEl, activeLvEl, p1El, p2El, p3El].forEach((el) => {
       el.addEventListener("change", renderResult);
       el.addEventListener("change", writeStateToUrl);
     });
+    [p1El, p2El, p3El].forEach((el) => {
+      el.addEventListener("change", syncPresetFromPassives);
+    });
+    if (presetEl) {
+      presetEl.addEventListener("change", () => {
+        const id = String(presetEl.value || "").trim();
+        if (!id) {
+          writeStateToUrl();
+          return;
+        }
+        applyPresetById(id);
+        syncDuplicateDisabled();
+        [picker1, picker2, picker3].forEach((r) => {
+          if (r && typeof r.__refresh === "function") r.__refresh();
+        });
+        renderResult();
+        writeStateToUrl();
+      });
+    }
     activeEl.addEventListener("change", () => {
       if (activePicker && typeof activePicker.__refresh === "function") activePicker.__refresh();
+      refreshPresetOptions();
+      syncPresetFromPassives();
+      writeStateToUrl();
     });
     if (activeAccordionEl) activeAccordionEl.addEventListener("toggle", writeStateToUrl);
     if (passiveAccordionEl) passiveAccordionEl.addEventListener("toggle", writeStateToUrl);
+    if (!window.__seasonModRowSyncResizeBound) {
+      window.addEventListener("resize", () => {
+        const root = document.getElementById("content");
+        if (!root || !root.querySelector(".seasonmod-result-grid")) return;
+        requestAnimationFrame(() => {
+          const grid = root.querySelector(".seasonmod-result-grid");
+          if (!grid) return;
+          const bodies = Array.from(grid.querySelectorAll("table tbody"));
+          const allRows = bodies.map((tb) => Array.from(tb.querySelectorAll("tr")));
+          const maxLen = allRows.reduce((m, rows) => Math.max(m, rows.length), 0);
+          allRows.forEach((rows) => rows.forEach((r) => { r.style.height = ""; }));
+          for (let i = 0; i < maxLen; i += 1) {
+            let h = 0;
+            for (let t = 0; t < allRows.length; t += 1) {
+              const row = allRows[t][i];
+              if (!row) continue;
+              h = Math.max(h, row.getBoundingClientRect().height);
+            }
+            if (!h) continue;
+            for (let t = 0; t < allRows.length; t += 1) {
+              const row = allRows[t][i];
+              if (!row) continue;
+              row.style.height = `${Math.ceil(h)}px`;
+            }
+          }
+        });
+      });
+      window.__seasonModRowSyncResizeBound = true;
+    }
     const syncDuplicateDisabled = () => {
       const values = [String(p1El.value || ""), String(p2El.value || ""), String(p3El.value || "")];
       const roots = [picker1, picker2, picker3];
@@ -1217,6 +1461,7 @@
       window.__seasonModPickerOutsideBound = true;
     }
 
+    refreshPresetOptions();
     readStateFromUrl();
     [activePicker, picker1, picker2, picker3].forEach((r) => {
       if (r && typeof r.__refresh === "function") r.__refresh();
@@ -1240,3 +1485,32 @@
     }
   };
 })();
+    const syncResultRowHeights = () => {
+      if (!outEl) return;
+      const grid = outEl.querySelector(".seasonmod-result-grid");
+      if (!grid) return;
+      const bodies = Array.from(grid.querySelectorAll("table tbody"));
+      if (!bodies.length) return;
+
+      const allRows = bodies.map((tb) => Array.from(tb.querySelectorAll("tr")));
+      const maxLen = allRows.reduce((m, rows) => Math.max(m, rows.length), 0);
+
+      allRows.forEach((rows) => {
+        rows.forEach((r) => { r.style.height = ""; });
+      });
+
+      for (let i = 0; i < maxLen; i += 1) {
+        let h = 0;
+        for (let t = 0; t < allRows.length; t += 1) {
+          const row = allRows[t][i];
+          if (!row) continue;
+          h = Math.max(h, row.getBoundingClientRect().height);
+        }
+        if (!h) continue;
+        for (let t = 0; t < allRows.length; t += 1) {
+          const row = allRows[t][i];
+          if (!row) continue;
+          row.style.height = `${Math.ceil(h)}px`;
+        }
+      }
+    };
