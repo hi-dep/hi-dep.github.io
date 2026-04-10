@@ -577,7 +577,7 @@
               </div>
               <div id="seasonModPickerSummary" class="seasonmod-targetpicker__summary"></div>
               <div id="seasonModPickerTableWrap" class="blueprint-table-wrap" hidden>
-                <div class="blueprint-table-scroll">
+                <div class="blueprint-table-scroll seasonmod-targetpicker__table-scroll">
                   <table class="blueprint-table seasonmod-table seasonmod-result-table seasonmod-targetpicker__table">
                     <thead>
                       <tr>
@@ -649,6 +649,8 @@
   }
 
   function bindSimulator(payload) {
+    document.body.classList.remove("seasonmod-modal-open");
+    document.body.style.top = "";
     const activeEl = document.getElementById("seasonModActiveSelect");
     const activeLvEl = document.getElementById("seasonModActiveLevel");
     const pickerOpenBtn = document.getElementById("seasonModPickerOpenBtn");
@@ -659,6 +661,7 @@
     const pickerCondChipsEl = document.getElementById("seasonModPickerCondChips");
     const pickerBodyEl = document.getElementById("seasonModPickerBody");
     const pickerTableWrapEl = document.getElementById("seasonModPickerTableWrap");
+    const pickerTableScrollEl = pickerModalEl ? pickerModalEl.querySelector(".seasonmod-targetpicker__table-scroll") : null;
     const pickerSummaryEl = document.getElementById("seasonModPickerSummary");
     const pickerHeadA1El = document.getElementById("seasonModPickerHeadA1");
     const pickerHeadA2El = document.getElementById("seasonModPickerHeadA2");
@@ -725,29 +728,36 @@
       optimize_overload: ["optimize_skill_cdr", "optimize_cooldown", "optimize_overcharge_duration"]
     };
 
-    const parseTsv = (text) => {
-      const lines = String(text || "").split(/\r?\n/).filter((x) => x.length > 0);
-      if (!lines.length) return [];
-      const header = lines[0].split("\t");
-      const rows = [];
-      for (let i = 1; i < lines.length; i += 1) {
-        const cols = lines[i].split("\t");
-        const row = {};
-        for (let j = 0; j < header.length; j += 1) row[header[j]] = cols[j] == null ? "" : cols[j];
-        rows.push(row);
-      }
-      return rows;
-    };
-
     const loadPickerRows = async () => {
       if (Array.isArray(pickerState.rows)) return pickerState.rows;
       if (pickerState.loading) return [];
       pickerState.loading = true;
       try {
-        const res = await fetch(`./data/season_mod/y8s1_passive_patterns.tsv?ts=${Date.now()}`, { cache: "no-store" });
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        const text = await res.text();
-        pickerState.rows = parseTsv(text);
+        const SQL = await initSql();
+        const gz = await fetchArrayBuffer(`./data/season_mod/y8s1_passive_patterns.db.gz?ts=${Date.now()}`);
+        const dbBytes = await gunzipToUint8Array(gz);
+        const db = new SQL.Database(dbBytes);
+        try {
+          const hasTable = db.exec("SELECT name FROM sqlite_master WHERE type='table' AND name='passive_patterns'").length > 0;
+          if (!hasTable) throw new Error("passive_patterns table is missing");
+          const stmt = db.prepare(`
+            SELECT
+              slot1, slot2, slot3,
+              weapon_handling, headshot_damage, magazine_size,
+              max_armor, protection_from_elites, hazard_protection,
+              skill_damage, skill_repair, status_effects,
+              blackout_emp_radius, blackout_cooldown, blackout_pulse_duration,
+              cloud_repair_per_sec, cloud_cooldown, cloud_blind_duration,
+              optimize_skill_cdr, optimize_cooldown, optimize_overcharge_duration
+            FROM passive_patterns
+          `);
+          const rows = [];
+          while (stmt.step()) rows.push(stmt.getAsObject());
+          stmt.free();
+          pickerState.rows = rows;
+        } finally {
+          db.close();
+        }
       } finally {
         pickerState.loading = false;
       }
@@ -887,7 +897,7 @@
             p2El.value = String(rowEl.getAttribute("data-slot2") || "");
             p3El.value = String(rowEl.getAttribute("data-slot3") || "");
             [p1El, p2El, p3El].forEach((el) => el.dispatchEvent(new Event("change")));
-            if (pickerModalEl) pickerModalEl.hidden = true;
+            closePickerModal();
           });
         });
       }
@@ -1253,25 +1263,49 @@
     buildPassivePicker(picker2, p2El);
     buildPassivePicker(picker3, p3El);
     refreshPickerCondOptions();
+    let pickerBodyLockScrollY = 0;
+    const openPickerModal = async () => {
+      if (!pickerModalEl) return;
+      pickerBodyLockScrollY = window.scrollY || window.pageYOffset || 0;
+      document.body.classList.add("seasonmod-modal-open");
+      document.body.style.top = `-${pickerBodyLockScrollY}px`;
+      pickerModalEl.hidden = false;
+      refreshPickerCondOptions();
+      await renderPicker();
+    };
+    const closePickerModal = () => {
+      if (!pickerModalEl) return;
+      pickerModalEl.hidden = true;
+      const prevY = pickerBodyLockScrollY || 0;
+      document.body.classList.remove("seasonmod-modal-open");
+      document.body.style.top = "";
+      window.scrollTo(0, prevY);
+    };
 
     if (pickerOpenBtn && pickerModalEl) {
       pickerOpenBtn.addEventListener("click", async () => {
-        pickerModalEl.hidden = false;
-        refreshPickerCondOptions();
-        await renderPicker();
+        await openPickerModal();
       });
     }
     if (pickerCloseBtn && pickerModalEl) {
       pickerCloseBtn.addEventListener("click", () => {
-        pickerModalEl.hidden = true;
+        closePickerModal();
       });
     }
     if (pickerModalEl) {
       pickerModalEl.addEventListener("click", (e) => {
         if (e.target === pickerModalEl || (e.target && e.target.classList && e.target.classList.contains("seasonmod-targetpicker__backdrop"))) {
-          pickerModalEl.hidden = true;
+          closePickerModal();
         }
       });
+    }
+    if (pickerTableScrollEl) {
+      pickerTableScrollEl.addEventListener("wheel", (e) => {
+        e.stopPropagation();
+      }, { passive: true });
+      pickerTableScrollEl.addEventListener("touchmove", (e) => {
+        e.stopPropagation();
+      }, { passive: true });
     }
     if (pickerAddCondBtn && pickerCondSelectEl) {
       pickerAddCondBtn.addEventListener("click", async () => {

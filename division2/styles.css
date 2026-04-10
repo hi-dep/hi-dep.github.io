@@ -393,6 +393,17 @@ body::before {
   display: none !important;
 }
 
+body.seasonmod-modal-open {
+  overflow: hidden;
+}
+
+@media (pointer: coarse) {
+  body.seasonmod-modal-open {
+    position: fixed;
+    width: 100%;
+  }
+}
+
 .seasonmod-targetpicker {
   position: fixed;
   inset: 0;
@@ -412,13 +423,31 @@ body::before {
   transform: translate(-50%, -50%);
   width: min(1200px, calc(100vw - 24px));
   max-height: calc(100vh - 24px);
-  overflow: auto;
+  overflow: hidden;
   background: rgba(14, 15, 22, 0.98);
   border: 1px solid var(--border);
   border-radius: 10px;
   padding: 12px;
   display: grid;
   gap: 10px;
+  overscroll-behavior: contain;
+}
+
+.seasonmod-targetpicker__dialog .blueprint-table-scroll {
+  overflow-x: auto;
+  overflow-y: auto;
+  max-width: 100%;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+  touch-action: pan-x pan-y;
+}
+
+#seasonModPickerTableWrap {
+  min-height: 0;
+}
+
+.seasonmod-targetpicker__table-scroll {
+  max-height: min(62vh, calc(100vh - 260px));
 }
 
 .seasonmod-targetpicker__close {
