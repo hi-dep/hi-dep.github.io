@@ -727,6 +727,11 @@
       cloud_armor: ["cloud_repair_per_sec", "cloud_cooldown", "cloud_blind_duration"],
       optimize_overload: ["optimize_skill_cdr", "optimize_cooldown", "optimize_overcharge_duration"]
     };
+    const PICKER_ASC_SORT_COLS = new Set([
+      "blackout_cooldown",
+      "cloud_cooldown",
+      "optimize_cooldown"
+    ]);
 
     const loadPickerRows = async () => {
       if (Array.isArray(pickerState.rows)) return pickerState.rows;
@@ -846,7 +851,9 @@
       const sorted = filtered.slice().sort((a, b) => {
         for (let i = 0; i < sortCols.length; i += 1) {
           const c = sortCols[i];
-          const d = Number(b[c] || 0) - Number(a[c] || 0);
+          const av = Number(a[c] || 0);
+          const bv = Number(b[c] || 0);
+          const d = PICKER_ASC_SORT_COLS.has(c) ? (av - bv) : (bv - av);
           if (d !== 0) return d;
           const pair = PICKER_CONVERT_PAIR[c];
           if (pair) {
