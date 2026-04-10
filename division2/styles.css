@@ -304,6 +304,18 @@ body::before {
   font-size: var(--card-title-size);
 }
 
+.seasonmod-section__heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.seasonmod-section__heading .seasonmod-section__title {
+  margin: 0;
+}
+
 .seasonmod-section--simulator .field,
 .seasonmod-section--simulator .field > span,
 .seasonmod-section--simulator .seasonmod-select,
@@ -339,7 +351,7 @@ body::before {
 
 .seasonmod-active-group__grid {
   display: grid;
-  grid-template-columns: minmax(220px, 1fr) minmax(120px, 180px) minmax(180px, 1fr);
+  grid-template-columns: minmax(220px, 1fr) minmax(120px, 180px);
   gap: 8px;
 }
 
@@ -347,32 +359,14 @@ body::before {
   display: none;
 }
 
-.seasonmod-preset-field > span {
-  display: inline;
-}
-
-.seasonmod-preset-field .seasonmod-select {
-  width: 100%;
-  min-width: 0;
+.seasonmod-picker-open-btn {
+  width: auto;
+  min-height: 32px;
 }
 
 @media (min-width: 1025px) {
   .seasonmod-active-group {
     position: relative;
-  }
-
-  .seasonmod-preset-field {
-    position: relative;
-    padding-top: 0;
-  }
-
-  .seasonmod-preset-field > span {
-    position: absolute;
-    left: 0;
-    top: -18px;
-    margin: 0;
-    line-height: 1.2;
-    white-space: nowrap;
   }
 }
 
@@ -393,6 +387,157 @@ body::before {
   display: grid;
   grid-template-columns: repeat(3, minmax(180px, 1fr));
   gap: 8px;
+}
+
+.seasonmod-targetpicker[hidden] {
+  display: none !important;
+}
+
+.seasonmod-targetpicker {
+  position: fixed;
+  inset: 0;
+  z-index: 1200;
+}
+
+.seasonmod-targetpicker__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+}
+
+.seasonmod-targetpicker__dialog {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: min(1200px, calc(100vw - 24px));
+  max-height: calc(100vh - 24px);
+  overflow: auto;
+  background: rgba(14, 15, 22, 0.98);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px;
+  display: grid;
+  gap: 10px;
+}
+
+.seasonmod-targetpicker__close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 28px;
+  height: 28px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text);
+  font-size: 16px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.seasonmod-targetpicker__controls {
+  padding-right: 34px;
+}
+
+.seasonmod-targetpicker__addrow {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.seasonmod-targetpicker__chips-wrap {
+  display: grid;
+  gap: 6px;
+}
+
+.seasonmod-targetpicker__chips-title {
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.seasonmod-targetpicker__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  min-height: 26px;
+  align-items: center;
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.seasonmod-targetpicker__summary {
+  color: var(--muted);
+  font-size: 11px;
+  min-height: 16px;
+}
+
+.seasonmod-targetpicker__chip {
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text);
+  border-radius: 999px;
+  padding: 3px 8px;
+  font-size: 11px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.seasonmod-targetpicker__chipx {
+  opacity: 0.9;
+  font-weight: 700;
+}
+
+.seasonmod-targetpicker__table {
+  width: max-content;
+}
+
+.seasonmod-targetpicker__table th,
+.seasonmod-targetpicker__table td {
+  width: auto !important;
+  white-space: nowrap !important;
+  overflow-wrap: normal !important;
+  word-break: keep-all !important;
+  font-size: 11px !important;
+  line-height: 1.15;
+}
+
+.seasonmod-targetpicker__table tbody th,
+.seasonmod-targetpicker__table tbody td {
+  background: transparent !important;
+  color: inherit !important;
+  font-weight: 400;
+}
+
+.seasonmod-targetpicker__table thead {
+  display: table-header-group !important;
+}
+
+.seasonmod-view .seasonmod-targetpicker__table th:last-child,
+.seasonmod-view .seasonmod-targetpicker__table td:last-child,
+.seasonmod-view .seasonmod-targetpicker__table th,
+.seasonmod-view .seasonmod-targetpicker__table td {
+  white-space: nowrap !important;
+  overflow-wrap: normal !important;
+  word-break: keep-all !important;
+}
+
+.seasonmod-targetpicker__row {
+  cursor: pointer;
+}
+
+.seasonmod-targetpicker__row:hover td {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.seasonmod-targetpicker__divider-right {
+  border-right: 2px solid rgba(255, 255, 255, 0.18);
+}
+
+.seasonmod-targetpicker__divider-left {
+  border-left: 2px solid rgba(255, 255, 255, 0.18);
 }
 
 .seasonmod-select {
@@ -731,6 +876,161 @@ body::before {
 
 .seasonmod-passive-row--wildcard td {
   background: rgba(180, 180, 180, 0.08);
+}
+
+.seasonmodpicker-view {
+  width: min(var(--maxw), 100%);
+  margin: 0 auto;
+  display: grid;
+  gap: 10px;
+}
+
+.seasonmodpicker-title {
+  margin: 0;
+  font-size: var(--card-title-size);
+}
+
+.seasonmodpicker-controls {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 8px;
+  align-items: end;
+  position: relative;
+  z-index: 2;
+  margin-bottom: 4px;
+}
+
+.seasonmodpicker-controls--inline {
+  grid-template-columns: minmax(220px, 1fr) minmax(220px, 1fr) auto;
+  align-items: end;
+}
+
+.seasonmodpicker-field {
+  gap: 4px;
+}
+
+.seasonmodpicker-summary {
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.seasonmodpicker-view .seasonmod-table {
+  table-layout: auto;
+  width: max-content;
+  min-width: 0;
+}
+
+.seasonmodpicker-col {
+  width: 1%;
+}
+
+.seasonmodpicker-view .seasonmod-table th,
+.seasonmodpicker-view .seasonmod-table td {
+  white-space: nowrap;
+  width: 1%;
+  padding: 4px 8px;
+  font-size: 11px;
+}
+
+.seasonmodpicker-addrow {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  min-width: 0;
+}
+
+.seasonmodpicker-addrow select {
+  flex: 1 1 auto;
+  min-width: 0;
+  width: 100%;
+  height: 30px;
+  padding: 4px 8px;
+  font-size: 11px;
+}
+
+.seasonmodpicker-addrow .btn {
+  flex: 0 0 auto;
+  height: 30px;
+  padding: 0 10px;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.seasonmodpicker-addbtn {
+  height: 30px;
+  align-self: end;
+  white-space: nowrap;
+}
+
+.seasonmodpicker-field > input,
+.seasonmodpicker-field > select {
+  height: 30px;
+  min-width: 0;
+  width: 100%;
+  padding: 4px 8px;
+  font-size: 11px;
+}
+
+.seasonmodpicker-condbox {
+  display: grid;
+  gap: 6px;
+}
+
+.seasonmodpicker-condbox__title {
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.seasonmodpicker-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  min-height: 26px;
+  align-items: center;
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.seasonmodpicker-chip {
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text);
+  border-radius: 999px;
+  padding: 3px 8px;
+  font-size: 11px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.seasonmodpicker-chip__x {
+  opacity: 0.9;
+  font-weight: 700;
+}
+
+.seasonmodpicker-divider-right {
+  border-right: 2px solid rgba(255, 255, 255, 0.18);
+}
+
+.seasonmodpicker-divider-left {
+  border-left: 2px solid rgba(255, 255, 255, 0.18);
+}
+
+@media (max-width: 768px) {
+  .seasonmodpicker-controls {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) auto;
+  }
+  .seasonmodpicker-controls--inline {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) auto;
+    column-gap: 6px;
+  }
+  .seasonmodpicker-field {
+    min-width: 0;
+  }
+  .seasonmodpicker-addbtn {
+    padding: 0 8px;
+  }
 }
 
 [data-vendor-filter-control="1"][hidden] {
@@ -3067,10 +3367,6 @@ th {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .seasonmod-preset-field {
-    grid-column: 1 / -1;
-  }
-
   .seasonmod-passive-group__grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -3107,4 +3403,20 @@ th {
   .seasonmod-result-grid {
     grid-template-columns: 1fr;
   }
+}
+
+/* Target-picker modal table: do not inherit mobile wrapping/hide rules */
+.seasonmod-view .seasonmod-targetpicker__table.seasonmod-result-table thead {
+  display: table-header-group !important;
+}
+
+.seasonmod-view .seasonmod-targetpicker__table th,
+.seasonmod-view .seasonmod-targetpicker__table td,
+.seasonmod-view .seasonmod-targetpicker__table th:last-child,
+.seasonmod-view .seasonmod-targetpicker__table td:last-child {
+  white-space: nowrap !important;
+  overflow-wrap: normal !important;
+  word-break: keep-all !important;
+  writing-mode: horizontal-tb !important;
+  text-orientation: mixed !important;
 }
