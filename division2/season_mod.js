@@ -829,7 +829,8 @@
       if (pickerHeadA3El) pickerHeadA3El.textContent = statLabel(activeCols[2]);
       const allCols = Array.from(new Set(PICKER_STAT_COLS.concat(activeCols)));
       const excluded = excludedByExclusiveRule();
-      const selectable = allCols.filter((c) => !excluded.has(c));
+      const selected = new Set(pickerState.conditions || []);
+      const selectable = allCols.filter((c) => !excluded.has(c) && !selected.has(c));
       pickerCondSelectEl.innerHTML = selectable.map((c) => `<option value="${esc(c)}">${esc(statLabel(c))}</option>`).join("");
     };
 
