@@ -65,6 +65,7 @@
       , perStack: ja ? "1累積ごと" : "per stack"
       , noStatBuff: ja ? "ステータス補正なし" : "No stat buff"
       , selectedMods: ja ? "選択中MOD" : "Selected Mods"
+      , passiveMods: ja ? "パッシブMOD" : "Passive MOD"
       , slot: ja ? "スロット" : "Slot"
       , mod: ja ? "MOD" : "MOD"
       , effect: ja ? "効果" : "Effect"
@@ -288,11 +289,9 @@
     const rows = [];
     const level = Math.max(1, Math.min(5, Number(activeLevel || 1)));
     const cdBase = 90;
-    const ignoredNote = getLang() === "ja" ? " (カスケードで無効)" : " (ignored by Cascade)";
-    const srcLabel = (moduleKey, rawVal, ignored) => {
+    const srcLabel = (moduleKey, rawVal) => {
       const clamped = Math.max(0, Number(rawVal || 0));
-      const base = `${moduleLabel(moduleKey)} ${clamped}`;
-      return ignored ? `${base}${ignoredNote}` : base;
+      return `${moduleLabel(moduleKey)} ${clamped}`;
     };
 
     if (activeId === "blackout_pulse") {
@@ -301,20 +300,20 @@
       rows.push([
         ui.empRadius,
         `${radius.toFixed(1)}m`,
-        `10m + (0.5m x ${srcLabel("offense", offRaw, offIgnored)})`
+        offIgnored ? "10.0m" : `10m + (0.5m x ${srcLabel("offense", offRaw)})`
       ]);
       rows.push([
         ui.cooldown,
         `${cd.toFixed(0)}s`,
         (level >= 3)
-          ? `90s - (1s x ${srcLabel("defense", defRaw, defIgnored)})`
+          ? (defIgnored ? "90s" : `90s - (1s x ${srcLabel("defense", defRaw)})`)
           : (getLang() === "ja" ? "90秒 (Lv3以上)" : "90s (Lv3+)")
       ]);
       if (level >= 5) {
         rows.push([
           ui.pulseDuration,
           `${(4 + (utl * 0.1)).toFixed(1)}s`,
-          `4s + (0.1s x ${srcLabel("utility", utlRaw, utlIgnored)})`
+          utlIgnored ? "4.0s" : `4s + (0.1s x ${srcLabel("utility", utlRaw)})`
         ]);
       }
       return rows;
@@ -325,20 +324,20 @@
       rows.push([
         ui.repairPerSec,
         `${repair.toFixed(1)}%`,
-        `5% + (0.2% x ${srcLabel("defense", defRaw, defIgnored)})`
+        defIgnored ? "5.0%" : `5% + (0.2% x ${srcLabel("defense", defRaw)})`
       ]);
       rows.push([
         ui.cooldown,
         `${cd.toFixed(0)}s`,
         (level >= 3)
-          ? `90s - (1s x ${srcLabel("utility", utlRaw, utlIgnored)})`
+          ? (utlIgnored ? "90s" : `90s - (1s x ${srcLabel("utility", utlRaw)})`)
           : (getLang() === "ja" ? "90秒 (Lv3以上)" : "90s (Lv3+)")
       ]);
       if (level >= 5) {
         rows.push([
           ui.blindDuration,
           `${(4 + (off * 0.1)).toFixed(1)}s`,
-          `4s + (0.1s x ${srcLabel("offense", offRaw, offIgnored)})`
+          offIgnored ? "4.0s" : `4s + (0.1s x ${srcLabel("offense", offRaw)})`
         ]);
       }
       return rows;
@@ -349,20 +348,20 @@
       rows.push([
         ui.skillCdr,
         `${cdr.toFixed(1)}%`,
-        `30% + (0.8% x ${srcLabel("utility", utlRaw, utlIgnored)})`
+        utlIgnored ? "30.0%" : `30% + (0.8% x ${srcLabel("utility", utlRaw)})`
       ]);
       rows.push([
         ui.cooldown,
         `${cd.toFixed(0)}s`,
         (level >= 3)
-          ? `90s - (1s x ${srcLabel("offense", offRaw, offIgnored)})`
+          ? (offIgnored ? "90s" : `90s - (1s x ${srcLabel("offense", offRaw)})`)
           : (getLang() === "ja" ? "90秒 (Lv3以上)" : "90s (Lv3+)")
       ]);
       if (level >= 5) {
         rows.push([
           ui.overchargeDuration,
           `${(5 + (def * 0.2)).toFixed(1)}s`,
-          `5s + (0.2s x ${srcLabel("defense", defRaw, defIgnored)})`
+          defIgnored ? "5.0s" : `5s + (0.2s x ${srcLabel("defense", defRaw)})`
         ]);
       }
       return rows;
@@ -581,7 +580,8 @@
                   <table class="blueprint-table seasonmod-table seasonmod-result-table seasonmod-targetpicker__table">
                     <thead>
                       <tr>
-                        <th>${esc(ui.offense)}</th>
+                        <th>${esc(ui.passiveMods)}</th>
+                        <th class="seasonmod-targetpicker__divider-after-passive">${esc(ui.offense)}</th>
                         <th>${esc(ui.defense)}</th>
                         <th class="seasonmod-targetpicker__divider-right">${esc(ui.utility)}</th>
                         <th id="seasonModPickerHeadA1" class="seasonmod-targetpicker__divider-left">-</th>
@@ -589,7 +589,7 @@
                         <th id="seasonModPickerHeadA3">-</th>
                       </tr>
                     </thead>
-                    <tbody id="seasonModPickerBody"><tr><td colspan="6">${esc(ui.noData)}</td></tr></tbody>
+                    <tbody id="seasonModPickerBody"><tr><td colspan="7">${esc(ui.noData)}</td></tr></tbody>
                   </table>
                 </div>
               </div>
@@ -662,6 +662,7 @@
     const pickerBodyEl = document.getElementById("seasonModPickerBody");
     const pickerTableWrapEl = document.getElementById("seasonModPickerTableWrap");
     const pickerTableScrollEl = pickerModalEl ? pickerModalEl.querySelector(".seasonmod-targetpicker__table-scroll") : null;
+    const pickerDialogEl = pickerModalEl ? pickerModalEl.querySelector(".seasonmod-targetpicker__dialog") : null;
     const pickerSummaryEl = document.getElementById("seasonModPickerSummary");
     const pickerHeadA1El = document.getElementById("seasonModPickerHeadA1");
     const pickerHeadA2El = document.getElementById("seasonModPickerHeadA2");
@@ -842,7 +843,7 @@
       if (!condCols.length) {
         if (pickerTableWrapEl) pickerTableWrapEl.hidden = true;
         if (pickerSummaryEl) pickerSummaryEl.textContent = "";
-        pickerBodyEl.innerHTML = `<tr><td colspan="6">${esc(ui.noData)}</td></tr>`;
+        pickerBodyEl.innerHTML = `<tr><td colspan="7">${esc(ui.noData)}</td></tr>`;
         renderPickerConditionChips();
         return;
       }
@@ -886,12 +887,21 @@
       }
       if (!selected.length) {
         if (pickerSummaryEl) pickerSummaryEl.textContent = `${ui.pickerCandidates}: 0`;
-        pickerBodyEl.innerHTML = `<tr><td colspan="6">${esc(ui.noData)}</td></tr>`;
+        pickerBodyEl.innerHTML = `<tr><td colspan="7">${esc(ui.noData)}</td></tr>`;
       } else {
         if (pickerSummaryEl) pickerSummaryEl.textContent = `${ui.pickerCandidates}: ${selected.length}`;
         pickerBodyEl.innerHTML = selected.map((r) => `
           <tr class="seasonmod-targetpicker__row" data-slot1="${esc(r.slot1 || "")}" data-slot2="${esc(r.slot2 || "")}" data-slot3="${esc(r.slot3 || "")}">
-            <td>${pickerTraitText(r, "offense").map((x) => esc(x)).join("<br>")}</td>
+            <td>${[r.slot1, r.slot2, r.slot3].map((id) => {
+              const v = String(id || "").trim();
+              if (!v || v === "-") return `<span class="seasonmod-targetpicker__passive-chip">-</span>`;
+              const mod = passiveMap.get(v);
+              const g = nk(mod?.group);
+              const cls = g ? ` seasonmod-targetpicker__passive-chip--${esc(g)}` : "";
+              const label = esc(mod ? passiveOptionLabel(mod) : v);
+              return `<span class="seasonmod-targetpicker__passive-chip${cls}">${label}</span>`;
+            }).join("")}</td>
+            <td class="seasonmod-targetpicker__divider-after-passive">${pickerTraitText(r, "offense").map((x) => esc(x)).join("<br>")}</td>
             <td>${pickerTraitText(r, "defense").map((x) => esc(x)).join("<br>")}</td>
             <td class="seasonmod-targetpicker__divider-right">${pickerTraitText(r, "utility").map((x) => esc(x)).join("<br>")}</td>
             <td class="seasonmod-targetpicker__divider-left">${esc(String(r[activeCols[0]] || "0"))}</td>
@@ -1065,12 +1075,22 @@
       if (!buttonEl || !listEl) return;
 
       const renderButton = () => {
+        buttonEl.classList.remove(
+          "seasonmod-picker__button--offense",
+          "seasonmod-picker__button--defense",
+          "seasonmod-picker__button--utility",
+          "seasonmod-picker__button--wildcard"
+        );
         const id = String(inputEl.value || "");
         if (!id) {
           buttonEl.innerHTML = `<span class="seasonmod-picker__label">${esc(uiLocal.none)}</span>`;
           return;
         }
         const mod = passiveMap.get(id);
+        const g = nk(mod?.group);
+        if (g === "offense" || g === "defense" || g === "utility" || g === "wildcard") {
+          buttonEl.classList.add(`seasonmod-picker__button--${g}`);
+        }
         const icon = passiveIconPath(seasonId, mod || { id });
         const label = mod ? passiveOptionLabel(mod) : id;
         buttonEl.innerHTML = `${icon ? `<img class="seasonmod-picker__icon" src="${esc(icon)}" alt="${esc(label)}" loading="lazy" decoding="async" />` : ""}<span class="seasonmod-picker__label">${esc(label)}</span>`;
@@ -1271,6 +1291,15 @@
     buildPassivePicker(picker2, p2El);
     buildPassivePicker(picker3, p3El);
     refreshPickerCondOptions();
+    const positionPickerModal = () => {
+      if (!pickerDialogEl) return;
+      const fallbackTop = 12;
+      const openRect = pickerOpenBtn ? pickerOpenBtn.getBoundingClientRect() : null;
+      const idealTop = openRect ? (openRect.bottom + 8) : fallbackTop;
+      const maxTop = Math.max(fallbackTop, window.innerHeight - 140);
+      const top = Math.max(fallbackTop, Math.min(idealTop, maxTop));
+      pickerDialogEl.style.top = `${Math.round(top)}px`;
+    };
     let pickerBodyLockScrollY = 0;
     const openPickerModal = async () => {
       if (!pickerModalEl) return;
@@ -1278,6 +1307,7 @@
       document.body.classList.add("seasonmod-modal-open");
       document.body.style.top = `-${pickerBodyLockScrollY}px`;
       pickerModalEl.hidden = false;
+      positionPickerModal();
       refreshPickerCondOptions();
       await renderPicker();
     };
@@ -1389,32 +1419,9 @@
     };
     const syncResultRowHeights = () => {
       if (!outEl) return;
-      const grid = outEl.querySelector(".seasonmod-result-grid");
-      if (!grid) return;
-      const bodies = Array.from(grid.querySelectorAll("table tbody"));
-      if (!bodies.length) return;
-
-      const allRows = bodies.map((tb) => Array.from(tb.querySelectorAll("tr")));
-      const maxLen = allRows.reduce((m, rows) => Math.max(m, rows.length), 0);
-
-      allRows.forEach((rows) => {
-        rows.forEach((r) => { r.style.height = ""; });
+      outEl.querySelectorAll(".seasonmod-result-grid table tbody tr").forEach((r) => {
+        r.style.height = "";
       });
-
-      for (let i = 0; i < maxLen; i += 1) {
-        let h = 0;
-        for (let tIdx = 0; tIdx < allRows.length; tIdx += 1) {
-          const row = allRows[tIdx][i];
-          if (!row) continue;
-          h = Math.max(h, row.getBoundingClientRect().height);
-        }
-        if (!h) continue;
-        for (let tIdx = 0; tIdx < allRows.length; tIdx += 1) {
-          const row = allRows[tIdx][i];
-          if (!row) continue;
-          row.style.height = `${Math.ceil(h)}px`;
-        }
-      }
     };
 
     const renderResult = () => {
@@ -1460,8 +1467,8 @@
         let effectText = "";
         let effectLines = [];
         if (mode === "disabled" || aMode === "ignored_by_cascade") {
-          effectText = ui.noStatBuff;
-          effectLines = [ui.noStatBuff];
+          effectText = "";
+          effectLines = [];
         } else {
           if (convList.length > 0) {
             convList.forEach((conv) => {
@@ -1479,8 +1486,7 @@
               effectLines.push(`+${fmtPct(total)} ${statLabel(stat)} (${fmtPct(rate)} ${ui.perStack})`);
             }
           }
-          effectText = effectLines.length ? effectLines.join(" / ") : ui.noStatBuff;
-          if (!effectLines.length) effectLines = [ui.noStatBuff];
+          effectText = effectLines.length ? effectLines.join(" / ") : "";
         }
         return {
           key: k,
@@ -1498,7 +1504,7 @@
             <td>${esc(String(r.stackValue))} <span class="seasonmod-stack-base">[${esc(String(r.baseValue))}]</span></td>
             <td>${(b && Array.isArray(b.effectLines) && b.effectLines.length)
               ? b.effectLines.map((line) => esc(line)).join("<br>")
-              : "-"}</td>
+              : ""}</td>
           </tr>
         `;
       }).join("");
@@ -1515,15 +1521,17 @@
         const modDef = passiveMap.get(row.id);
         const nm = modDef ? passiveOptionLabel(modDef) : "-";
         const icon = modDef ? passiveIconPath(seasonId, modDef) : "";
+        const g = modDef ? nk(modDef?.group) : "";
+        const tdCls = g ? ` seasonmod-selected-mod-cell--${esc(g)}` : "";
         const modHtml = modDef
           ? `<span class="seasonmod-modcell">${icon ? `<img class="seasonmod-picker__icon" src="${esc(icon)}" alt="${esc(nm)}" loading="lazy" decoding="async">` : ""}<span class="seasonmod-picker__label">${esc(nm)}</span></span>`
           : "-";
         const ef = modDef ? (textByLang(modDef?.desc) || "-") : "-";
-        return { id: row.id, name: nm, modHtml, effect: ef };
+        return { id: row.id, name: nm, modHtml, effect: ef, tdCls };
       });
       const selectedRowsHtml = selectedRows.map((row, idx) => `
         <tr>
-          <td>${row.modHtml || "-"}</td>
+          <td class="seasonmod-selected-mod-cell${row.tdCls || ""}">${row.modHtml || "-"}</td>
           <td class="seasonmod-selected-desc">${esc(row.effect || "-")}</td>
         </tr>
       `).join("");
@@ -1604,25 +1612,11 @@
         const root = document.getElementById("content");
         if (!root || !root.querySelector(".seasonmod-result-grid")) return;
         requestAnimationFrame(() => {
-          const grid = root.querySelector(".seasonmod-result-grid");
-          if (!grid) return;
-          const bodies = Array.from(grid.querySelectorAll("table tbody"));
-          const allRows = bodies.map((tb) => Array.from(tb.querySelectorAll("tr")));
-          const maxLen = allRows.reduce((m, rows) => Math.max(m, rows.length), 0);
-          allRows.forEach((rows) => rows.forEach((r) => { r.style.height = ""; }));
-          for (let i = 0; i < maxLen; i += 1) {
-            let h = 0;
-            for (let t = 0; t < allRows.length; t += 1) {
-              const row = allRows[t][i];
-              if (!row) continue;
-              h = Math.max(h, row.getBoundingClientRect().height);
-            }
-            if (!h) continue;
-            for (let t = 0; t < allRows.length; t += 1) {
-              const row = allRows[t][i];
-              if (!row) continue;
-              row.style.height = `${Math.ceil(h)}px`;
-            }
+          root.querySelectorAll(".seasonmod-result-grid table tbody tr").forEach((r) => {
+            r.style.height = "";
+          });
+          if (pickerModalEl && !pickerModalEl.hidden) {
+            positionPickerModal();
           }
         });
       });

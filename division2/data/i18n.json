@@ -1044,11 +1044,11 @@
       "doctorhome": "ドクターホーム",
       "pakhan": "パハン",
       "covershooter": "カバーシューター",
-      "perturb": "Perturb",
+      "perturb": "パーターブ",
       "fasterthanreloading": "リロードより高速",
       "perfectbackandforth": "パーフェクト・バック&フォース",
       "backandforth": "バック&フォース",
-      "perfectmeasured": "パーフェクト・メジャード"
+      "perfectmeasured": "TODO:perfectmeasured"
     },
     "cache": {
       "amount": "数量",
@@ -1093,7 +1093,7 @@
       "viciouscycle": "ヴィシャスサイクル",
       "weakestlink": "ウィーケストリンク",
       "rebalance": "リバランス",
-      "slotted": "Slotted"
+      "slotted": "スロット"
     },
     "preserved": {
       "conflict_cache": "コンフリクトキャッシュ",

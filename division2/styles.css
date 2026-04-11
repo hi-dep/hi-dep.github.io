@@ -419,8 +419,8 @@ body.seasonmod-modal-open {
 .seasonmod-targetpicker__dialog {
   position: absolute;
   left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
+  top: 12px;
+  transform: translateX(-50%);
   width: min(1200px, calc(100vw - 24px));
   max-height: calc(100vh - 24px);
   overflow: hidden;
@@ -540,6 +540,13 @@ body.seasonmod-modal-open {
   font-weight: 400;
 }
 
+.seasonmod-targetpicker__table tbody td:first-child {
+  padding-top: 2px !important;
+  padding-bottom: 2px !important;
+  padding-left: 4px !important;
+  padding-right: 4px !important;
+}
+
 .seasonmod-targetpicker__table thead {
   display: table-header-group !important;
 }
@@ -563,6 +570,34 @@ body.seasonmod-modal-open {
 
 .seasonmod-targetpicker__divider-right {
   border-right: 2px solid rgba(255, 255, 255, 0.18);
+}
+
+.seasonmod-targetpicker__divider-after-passive {
+  border-left: 2px solid rgba(255, 255, 255, 0.18);
+}
+
+.seasonmod-targetpicker__passive-chip {
+  display: block;
+  margin: 0;
+  padding: 0 4px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.seasonmod-targetpicker__passive-chip--offense {
+  background: rgba(255, 120, 120, 0.12);
+}
+
+.seasonmod-targetpicker__passive-chip--defense {
+  background: rgba(120, 150, 255, 0.12);
+}
+
+.seasonmod-targetpicker__passive-chip--utility {
+  background: rgba(255, 220, 120, 0.12);
+}
+
+.seasonmod-targetpicker__passive-chip--wildcard {
+  background: rgba(255, 255, 255, 0.06);
 }
 
 .seasonmod-targetpicker__divider-left {
@@ -598,6 +633,22 @@ body.seasonmod-modal-open {
   padding: 6px 28px 6px 10px;
   font-size: 11px;
   cursor: pointer;
+}
+
+.seasonmod-picker__button--offense {
+  background: rgba(255, 120, 120, 0.12);
+}
+
+.seasonmod-picker__button--defense {
+  background: rgba(120, 150, 255, 0.12);
+}
+
+.seasonmod-picker__button--utility {
+  background: rgba(255, 220, 120, 0.12);
+}
+
+.seasonmod-picker__button--wildcard {
+  background: transparent;
 }
 
 .seasonmod-picker__button::after {
@@ -662,11 +713,12 @@ body.seasonmod-modal-open {
 }
 
 .seasonmod-picker__option--wildcard {
-  background: rgba(180, 180, 180, 0.12);
+  background: transparent;
 }
 
 .seasonmod-picker__option.is-active {
-  background: rgba(255, 127, 0, 0.16);
+  background: transparent;
+  box-shadow: inset 0 0 0 1px rgba(255, 127, 0, 0.7);
 }
 
 .seasonmod-picker__option.is-disabled {
@@ -768,12 +820,57 @@ body.seasonmod-modal-open {
   gap: 8px;
   vertical-align: middle;
   white-space: nowrap;
+  padding: 2px 0;
+}
+
+.seasonmod-selected-mod-cell {
+  border-radius: 6px;
+}
+
+.seasonmod-selected-mod-cell--offense {
+  background: rgba(255, 120, 120, 0.12);
+}
+
+.seasonmod-selected-mod-cell--defense {
+  background: rgba(120, 150, 255, 0.12);
+}
+
+.seasonmod-selected-mod-cell--utility {
+  background: rgba(255, 220, 120, 0.12);
+}
+
+.seasonmod-selected-mod-cell--wildcard {
+  background: transparent;
+}
+
+.seasonmod-view .seasonmod-selected-table td.seasonmod-selected-mod-cell {
+  border-radius: 6px;
+}
+
+.seasonmod-view .seasonmod-selected-table td.seasonmod-selected-mod-cell--offense {
+  background: rgba(255, 120, 120, 0.12) !important;
+}
+
+.seasonmod-view .seasonmod-selected-table td.seasonmod-selected-mod-cell--defense {
+  background: rgba(120, 150, 255, 0.12) !important;
+}
+
+.seasonmod-view .seasonmod-selected-table td.seasonmod-selected-mod-cell--utility {
+  background: rgba(255, 220, 120, 0.12) !important;
+}
+
+.seasonmod-view .seasonmod-selected-table td.seasonmod-selected-mod-cell--wildcard {
+  background: transparent !important;
 }
 
 .seasonmod-result-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 8px;
+}
+
+.seasonmod-result-grid .seasonmod-table tbody td {
+  min-height: 32px !important;
 }
 
 .seasonmod-result {
@@ -3370,10 +3467,6 @@ th {
 
   .seasonmod-result-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .seasonmod-result-grid .seasonmod-table tbody tr {
-    height: auto;
   }
 
   .seasonmod-result-grid .seasonmod-selected-desc {
