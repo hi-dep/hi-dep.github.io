@@ -39,6 +39,7 @@
     "Roosevelt Island": "ルーズベルト島",
     "Capitol Building": "キャピトルビル",
     "Tidal Basin": "タイダルベイスン",
+    "Manning National Zoo": "マニング国立動物園",
   };
 
   function getLang() {
