@@ -19,6 +19,16 @@
         "Roosevelt Island",
         "Coney Island Amusement Park"
       ]
+    },
+    {
+      "week": "2026-04-14",
+      "missions": [
+        "Liberty Island",
+        "Capitol Building",
+        "Federal Emergency Bunker",
+        "ViewPoint Museum",
+        "Manning National Zoo"
+      ]
     }
   ]
 }
