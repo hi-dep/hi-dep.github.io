@@ -15,28 +15,36 @@
         console.warn("Prototype table is missing in items.db", { hasTable });
         throw new Error("data_unavailable");
       }
-      const readPayloadRows = (tableName) => {
+      const readTableRows = (tableName) => {
         const has = db.exec(`SELECT name FROM sqlite_master WHERE type='table' AND name='${tableName}'`).length > 0;
         if (!has) return [];
-        const stmt = db.prepare(`SELECT payload FROM ${tableName} ORDER BY row_id ASC`);
+        const cols = db.exec(`PRAGMA table_info(${tableName})`);
+        const colNames = ((cols[0] && cols[0].values) ? cols[0].values : []).map((row) => String(row[1] || ""));
+        const hasPayloadSchema = colNames.includes("payload");
+        const stmt = db.prepare(`SELECT * FROM ${tableName} ORDER BY row_id ASC`);
         const out = [];
         while (stmt.step()) {
           const rec = stmt.getAsObject() || {};
-          const raw = String(rec.payload || "").trim();
-          if (!raw) continue;
-          try {
-            const obj = JSON.parse(raw);
-            if (obj && typeof obj === "object") out.push(obj);
-          } catch (_e) {
-            // Keep rendering robust even if one row is malformed.
+          if (hasPayloadSchema) {
+            const raw = String(rec.payload || "").trim();
+            if (!raw) continue;
+            try {
+              const obj = JSON.parse(raw);
+              if (obj && typeof obj === "object") out.push(obj);
+            } catch (_e) {
+              // Keep rendering robust even if one row is malformed.
+            }
+            continue;
           }
+          delete rec.row_id;
+          out.push(rec);
         }
         stmt.free();
         return out;
       };
 
-      const rows = readPayloadRows("items_prototype");
-      const attrs = readPayloadRows("items_prototype_attributes");
+      const rows = readTableRows("items_prototype");
+      const attrs = readTableRows("items_prototype_attributes");
       const readNamedLookup = (tableName, colName, extraCol) => {
         const has = db.exec(`SELECT name FROM sqlite_master WHERE type='table' AND name='${tableName}'`).length > 0;
         const byNameKey = {};
@@ -83,6 +91,50 @@
 
   function textToHtmlPreserveNewline(text) {
     return escapeHtml(String(text || "")).replace(/\r?\n/g, "<br>");
+  }
+
+  function escapeRegExp(text) {
+    return String(text || "").replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  }
+
+  function collectPrototypeLevels(row) {
+    const out = [];
+    for (let i = 1; i <= 10; i += 1) {
+      const key = `lv${i}`;
+      const value = cellText(row, key);
+      if (!value) continue;
+      out.push({ level: i, value });
+    }
+    return out;
+  }
+
+  function renderPrototypeLevels(row) {
+    const levels = collectPrototypeLevels(row);
+    if (!levels.length) return "";
+    const first = levels[0];
+    const last = levels[levels.length - 1];
+    const stepText = computePrototypeStepText(levels);
+    const edgeChipHtml = (entry) => `
+      <span class="prototype-card__levels-edge prototype-card__levels-edge--chip">
+        <span class="prototype-card__levels-edge-label">Lv${entry.level}</span>
+        <span class="prototype-card__levels-edge-value">${escapeHtml(formatPrototypeDisplayValue(entry.value))}</span>
+      </span>
+    `;
+    return `
+      <details class="prototype-card__levels">
+        <summary class="prototype-card__levels-summary">
+          ${edgeChipHtml(first)}
+          <span class="prototype-card__levels-range">
+            <span class="prototype-card__levels-range-line"></span>
+            ${stepText ? `<span class="prototype-card__levels-step">${escapeHtml(stepText)}</span>` : ""}
+          </span>
+          ${edgeChipHtml(last)}
+        </summary>
+        <div class="prototype-card__levels-grid">
+          ${levels.map((entry) => `<span class="prototype-card__lv-chip">Lv${entry.level} ${escapeHtml(formatPrototypeDisplayValue(entry.value))}</span>`).join("")}
+        </div>
+      </details>
+    `;
   }
 
   function prototypeIconKey(row) {
@@ -260,8 +312,69 @@
     return `${m[1]}.${frac}%`;
   }
 
+  function formatPrototypeDisplayValue(v) {
+    return compactPercentText(v);
+  }
+
+  function highlightPrototypeBaseValue(text, row) {
+    const raw = String(text || "");
+    const lv1 = cellText(row, "lv1");
+    const formatted = formatPrototypeDisplayValue(lv1);
+    if (!formatted) return textToHtmlPreserveNewline(raw);
+    const patterns = [formatted, lv1].filter(Boolean);
+    let html = escapeHtml(raw);
+    for (const value of patterns) {
+      const escapedValue = escapeRegExp(escapeHtml(value));
+      html = html.replace(new RegExp(escapedValue, "g"), `<span class="prototype-inline-value">$&</span>`);
+    }
+    return html.replace(/\r?\n/g, "<br>");
+  }
+
+  function parsePrototypeNumericValue(v) {
+    const s = String(v == null ? "" : v).trim().replace(/,/g, "");
+    if (!s) return null;
+    const m = s.match(/^(-?\d+(?:\.\d+)?)(%)?$/);
+    if (!m) return null;
+    return { text: m[1], suffix: m[2] || "" };
+  }
+
+  function computeDecimalStepText(aText, bText, suffix) {
+    const a = String(aText || "").trim();
+    const b = String(bText || "").trim();
+    if (!a || !b) return "";
+    const aNeg = a.startsWith("-");
+    const bNeg = b.startsWith("-");
+    if (aNeg || bNeg) return "";
+    const aParts = a.split(".");
+    const bParts = b.split(".");
+    const aInt = aParts[0] || "0";
+    const bInt = bParts[0] || "0";
+    const aFrac = aParts[1] || "";
+    const bFrac = bParts[1] || "";
+    const scale = Math.max(aFrac.length, bFrac.length);
+    const aScaled = `${aInt}${aFrac.padEnd(scale, "0")}`;
+    const bScaled = `${bInt}${bFrac.padEnd(scale, "0")}`;
+    if (!/^\d+$/.test(aScaled) || !/^\d+$/.test(bScaled)) return "";
+    const diff = BigInt(bScaled) - BigInt(aScaled);
+    const sign = diff > 0n ? "+" : (diff < 0n ? "-" : "");
+    const abs = diff < 0n ? -diff : diff;
+    const absText = abs.toString().padStart(scale + 1, "0");
+    const whole = scale > 0 ? absText.slice(0, -scale) : absText;
+    const frac = scale > 0 ? absText.slice(-scale).replace(/0+$/, "") : "";
+    const numText = frac ? `${whole}.${frac}` : whole;
+    return `${sign}${formatPrototypeDisplayValue(`${numText}${suffix || ""}`)}`;
+  }
+
+  function computePrototypeStepText(levels) {
+    if (!Array.isArray(levels) || levels.length < 2) return "";
+    const first = parsePrototypeNumericValue(levels[0].value);
+    const second = parsePrototypeNumericValue(levels[1].value);
+    if (!first || !second || first.suffix !== second.suffix) return "";
+    return computeDecimalStepText(first.text, second.text, first.suffix);
+  }
+
   function renderValueCellText(v) {
-    const text = compactPercentText(v);
+    const text = formatPrototypeDisplayValue(v);
     if (normalizeKey(text) === "unknown") {
       return `<span class="prototype-value-unknown">${escapeHtml(text)}</span>`;
     }
@@ -345,6 +458,7 @@
         cellText(row, "desc_ja"),
         cellText(row, "attr"),
         cellText(row, "attr_ja"),
+        ...collectPrototypeLevels(row).map((entry) => `lv${entry.level} ${entry.value}`),
       ].map((s) => normalizeKey(stripHtml(s || ""))).filter(Boolean);
 
       return `
@@ -353,7 +467,8 @@
           <div class="lines">
             ${nameText ? `<div class="line line--named"><div class="line__body"><div class="line__text">${escapeHtml(nameText)}</div></div></div>` : ""}
             ${attrText ? `<div class="line line--core"><div class="line__body"><div class="line__text">${escapeHtml(attrText)}</div></div></div>` : ""}
-            ${descText ? `<div class="line line--gray"><div class="line__body"><div class="line__text">${textToHtmlPreserveNewline(descText)}</div></div></div>` : ""}
+            ${descText ? `<div class="line line--gray"><div class="line__body"><div class="line__text">${highlightPrototypeBaseValue(descText, row)}</div></div></div>` : ""}
+            ${renderPrototypeLevels(row)}
           </div>
         </article>
       `;
