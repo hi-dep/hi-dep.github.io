@@ -30,6 +30,7 @@
       activeModifier: ja ? "アクティブMOD" : "Active Modifier",
       activeLevel: ja ? "アクティブレベル" : "Active Level",
       picker: ja ? "候補選択" : "Candidate Picker",
+      share: ja ? "共有" : "Share",
       pickerAddTrait: ja ? "指定特性" : "Target Trait",
       pickerAdd: ja ? "追加" : "Add",
       pickerConds: ja ? "条件" : "Conditions",
@@ -96,6 +97,33 @@
     const content = document.getElementById("content");
     if (!content) return;
     content.innerHTML = html;
+  }
+
+  async function copySeasonModUrl() {
+    const url = window.location.href;
+    try {
+      if (navigator.clipboard && typeof navigator.clipboard.writeText === "function") {
+        await navigator.clipboard.writeText(url);
+        return true;
+      }
+    } catch (_e) {
+      // fall through to the legacy path below
+    }
+    try {
+      const ta = document.createElement("textarea");
+      ta.value = url;
+      ta.setAttribute("readonly", "readonly");
+      ta.style.position = "fixed";
+      ta.style.left = "-9999px";
+      ta.style.top = "0";
+      document.body.appendChild(ta);
+      ta.select();
+      const ok = document.execCommand("copy");
+      document.body.removeChild(ta);
+      return !!ok;
+    } catch (_e) {
+      return false;
+    }
   }
 
   function textByLang(obj) {
@@ -193,6 +221,32 @@
     return `${s}%`;
   }
 
+  function fmtNumber(v, digits) {
+    const n = Number(v || 0);
+    const d = Number.isFinite(Number(digits)) ? Math.max(0, Math.floor(Number(digits))) : 1;
+    if (!Number.isFinite(n)) return "0";
+    if (d === 0) return String(Math.round(n));
+    return n.toFixed(d).replace(/\.?0+$/, "");
+  }
+
+  function computeSeasonActiveBaseStacks(seasonData, activeLevel) {
+    const baseFromSeason = ((seasonData && seasonData.base_stacks) || {});
+    const effectiveBase = {
+      offense: Number(baseFromSeason.offense || 0),
+      defense: Number(baseFromSeason.defense || 0),
+      utility: Number(baseFromSeason.utility || 0)
+    };
+    const level = Math.max(1, Math.min(5, Number(activeLevel || 1)));
+    const activeCount = Array.isArray(seasonData && seasonData.active_modifiers)
+      ? seasonData.active_modifiers.length
+      : 3;
+    const activeBaseBonus = Math.max(0, Math.min(4, level - 1)) * Math.max(1, activeCount);
+    effectiveBase.offense += activeBaseBonus;
+    effectiveBase.defense += activeBaseBonus;
+    effectiveBase.utility += activeBaseBonus;
+    return effectiveBase;
+  }
+
   function activeIconPath(seasonId, mod) {
     const file = String(mod?.icon || "").trim();
     if (!file) return "";
@@ -274,6 +328,13 @@
     return `<div class="seasonmod-level-effects"><strong>${esc(ui.levelEffects)}:</strong><br>${lines.map((s) => esc(s)).join("<br>")}</div>`;
   }
 
+  function fmtUnitValue(v, unit, digits) {
+    const u = String(unit || "");
+    const ja = getLang() === "ja";
+    const renderedUnit = ja && u === "s" ? "秒" : u;
+    return `${fmtNumber(v, digits)}${renderedUnit}`;
+  }
+
   function buildActiveDerivedRows(activeId, activeLevel, stacks, activeMode) {
     const ui = t();
     const mode = activeMode || {};
@@ -289,6 +350,7 @@
     const rows = [];
     const level = Math.max(1, Math.min(5, Number(activeLevel || 1)));
     const cdBase = 90;
+    const ja = getLang() === "ja";
     const srcLabel = (moduleKey, rawVal) => {
       const clamped = Math.max(0, Number(rawVal || 0));
       return `${moduleLabel(moduleKey)} ${clamped}`;
@@ -299,21 +361,21 @@
       const cd = Math.max(0, cdBase - (level >= 3 ? def : 0));
       rows.push([
         ui.empRadius,
-        `${radius.toFixed(1)}m`,
+        fmtUnitValue(radius, "m", 1),
         offIgnored ? "10.0m" : `10m + (0.5m x ${srcLabel("offense", offRaw)})`
       ]);
       rows.push([
         ui.cooldown,
-        `${cd.toFixed(0)}s`,
+        fmtUnitValue(cd, "s", 0),
         (level >= 3)
-          ? (defIgnored ? "90s" : `90s - (1s x ${srcLabel("defense", defRaw)})`)
-          : (getLang() === "ja" ? "90秒 (Lv3以上)" : "90s (Lv3+)")
+          ? (defIgnored ? (ja ? "90秒" : "90s") : (ja ? `90秒 - (1秒 x ${srcLabel("defense", defRaw)})` : `90s - (1s x ${srcLabel("defense", defRaw)})`))
+          : (ja ? "90秒 (Lv3以上)" : "90s (Lv3+)")
       ]);
       if (level >= 5) {
         rows.push([
           ui.pulseDuration,
-          `${(4 + (utl * 0.1)).toFixed(1)}s`,
-          utlIgnored ? "4.0s" : `4s + (0.1s x ${srcLabel("utility", utlRaw)})`
+          fmtUnitValue(4 + (utl * 0.1), "s", 1),
+          utlIgnored ? (ja ? "4秒" : "4s") : (ja ? `4秒 + (0.1秒 x ${srcLabel("utility", utlRaw)})` : `4s + (0.1s x ${srcLabel("utility", utlRaw)})`)
         ]);
       }
       return rows;
@@ -323,21 +385,21 @@
       const cd = Math.max(0, cdBase - (level >= 3 ? utl : 0));
       rows.push([
         ui.repairPerSec,
-        `${repair.toFixed(1)}%`,
+        fmtUnitValue(repair, "%", 1),
         defIgnored ? "5.0%" : `5% + (0.2% x ${srcLabel("defense", defRaw)})`
       ]);
       rows.push([
         ui.cooldown,
-        `${cd.toFixed(0)}s`,
+        fmtUnitValue(cd, "s", 0),
         (level >= 3)
-          ? (utlIgnored ? "90s" : `90s - (1s x ${srcLabel("utility", utlRaw)})`)
-          : (getLang() === "ja" ? "90秒 (Lv3以上)" : "90s (Lv3+)")
+          ? (utlIgnored ? (ja ? "90秒" : "90s") : (ja ? `90秒 - (1秒 x ${srcLabel("utility", utlRaw)})` : `90s - (1s x ${srcLabel("utility", utlRaw)})`))
+          : (ja ? "90秒 (Lv3以上)" : "90s (Lv3+)")
       ]);
       if (level >= 5) {
         rows.push([
           ui.blindDuration,
-          `${(4 + (off * 0.1)).toFixed(1)}s`,
-          offIgnored ? "4.0s" : `4s + (0.1s x ${srcLabel("offense", offRaw)})`
+          fmtUnitValue(4 + (off * 0.1), "s", 1),
+          offIgnored ? (ja ? "4秒" : "4s") : (ja ? `4秒 + (0.1秒 x ${srcLabel("offense", offRaw)})` : `4s + (0.1s x ${srcLabel("offense", offRaw)})`)
         ]);
       }
       return rows;
@@ -347,24 +409,140 @@
       const cd = Math.max(0, cdBase - (level >= 3 ? off : 0));
       rows.push([
         ui.skillCdr,
-        `${cdr.toFixed(1)}%`,
+        fmtUnitValue(cdr, "%", 1),
         utlIgnored ? "30.0%" : `30% + (0.8% x ${srcLabel("utility", utlRaw)})`
       ]);
       rows.push([
         ui.cooldown,
-        `${cd.toFixed(0)}s`,
+        fmtUnitValue(cd, "s", 0),
         (level >= 3)
-          ? (offIgnored ? "90s" : `90s - (1s x ${srcLabel("offense", offRaw)})`)
-          : (getLang() === "ja" ? "90秒 (Lv3以上)" : "90s (Lv3+)")
+          ? (offIgnored ? (ja ? "90秒" : "90s") : (ja ? `90秒 - (1秒 x ${srcLabel("offense", offRaw)})` : `90s - (1s x ${srcLabel("offense", offRaw)})`))
+          : (ja ? "90秒 (Lv3以上)" : "90s (Lv3+)")
       ]);
       if (level >= 5) {
         rows.push([
           ui.overchargeDuration,
-          `${(5 + (def * 0.2)).toFixed(1)}s`,
-          defIgnored ? "5.0s" : `5s + (0.2s x ${srcLabel("defense", defRaw)})`
+          fmtUnitValue(5 + (def * 0.2), "s", 1),
+          defIgnored ? (ja ? "5秒" : "5s") : (ja ? `5秒 + (0.2秒 x ${srcLabel("defense", defRaw)})` : `5s + (0.2s x ${srcLabel("defense", defRaw)})`)
         ]);
       }
       return rows;
+    }
+    return rows;
+  }
+
+  function buildActiveDescTokens(activeId, activeLevel, stacks, activeMode) {
+    const mode = activeMode || {};
+    const offIgnored = String(mode?.offense || "") === "ignored_by_cascade";
+    const defIgnored = String(mode?.defense || "") === "ignored_by_cascade";
+    const utlIgnored = String(mode?.utility || "") === "ignored_by_cascade";
+    const offRaw = Number(stacks?.offense || 0);
+    const defRaw = Number(stacks?.defense || 0);
+    const utlRaw = Number(stacks?.utility || 0);
+    const off = offIgnored ? 0 : Math.max(0, offRaw);
+    const def = defIgnored ? 0 : Math.max(0, defRaw);
+    const utl = utlIgnored ? 0 : Math.max(0, utlRaw);
+    const out = {};
+
+    if (activeId === "blackout_pulse") {
+      out.emp_radius = { text: `${fmtNumber(10 + (off * 0.5), 1)}m`, moduleKey: "offense" };
+    } else if (activeId === "cloud_armor") {
+      out.repair_per_sec = { text: `${fmtNumber(5 + (def * 0.2), 1)}%`, moduleKey: "defense" };
+    } else if (activeId === "optimize_overload") {
+      out.skill_cdr = { text: `${fmtNumber(30 + (utl * 0.8), 1)}%`, moduleKey: "utility" };
+    }
+    return out;
+  }
+
+  function normalizeSeasonModToken(token) {
+    if (token && typeof token === "object" && !Array.isArray(token)) {
+      return {
+        text: String(token.text == null ? "" : token.text),
+        moduleKey: String(token.moduleKey || "").trim()
+      };
+    }
+    return { text: String(token == null ? "" : token), moduleKey: "" };
+  }
+
+  function renderTextTemplate(templateText, tokens) {
+    const src = String(templateText || "");
+    const values = (tokens && typeof tokens === "object") ? tokens : {};
+    return src.replace(/\{\{\s*([a-zA-Z0-9_]+)\s*\}\}/g, (_m, key) => {
+      const v = normalizeSeasonModToken(values[key]);
+      return v.text;
+    });
+  }
+
+  function renderTextTemplateHtml(templateText, tokens) {
+    const src = String(templateText || "");
+    const values = (tokens && typeof tokens === "object") ? tokens : {};
+    let out = "";
+    let last = 0;
+    const re = /\{\{\s*([a-zA-Z0-9_]+)\s*\}\}/g;
+    let m;
+    while ((m = re.exec(src)) !== null) {
+      out += esc(src.slice(last, m.index));
+      const key = String(m[1] || "");
+      const v = normalizeSeasonModToken(values[key]);
+      const cls = v.moduleKey ? ` seasonmod-inline-value--${esc(nk(v.moduleKey))}` : "";
+      out += `<span class="seasonmod-inline-value${cls}">${esc(v.text)}</span>`;
+      last = m.index + m[0].length;
+    }
+    out += esc(src.slice(last));
+    return out;
+  }
+
+  function renderActiveModifierDescription(mod, context) {
+    const tpl = textByLang(mod?.desc_template);
+    if (tpl) {
+      const ctx = context || {};
+      const activeId = String(ctx.activeId || mod?.id || "").trim();
+      const activeLevel = Number(ctx.activeLevel || 1);
+      const stacks = ctx.stacks || {};
+      const activeMode = ctx.activeMode || {};
+      const tokens = buildActiveDescTokens(activeId, activeLevel, stacks, activeMode);
+      return renderTextTemplate(tpl, tokens).trim();
+    }
+    return textByLang(mod?.desc) || "";
+  }
+
+  function renderActiveModifierDescriptionHtml(mod, context) {
+    const tpl = textByLang(mod?.desc_template);
+    if (tpl) {
+      const ctx = context || {};
+      const activeId = String(ctx.activeId || mod?.id || "").trim();
+      const activeLevel = Number(ctx.activeLevel || 1);
+      const stacks = ctx.stacks || {};
+      const activeMode = ctx.activeMode || {};
+      const tokens = buildActiveDescTokens(activeId, activeLevel, stacks, activeMode);
+      return renderTextTemplateHtml(tpl, tokens).trim();
+    }
+    return esc(textByLang(mod?.desc) || "");
+  }
+
+  function buildActiveModifierExtraRows(activeId, activeLevel, stacks, activeMode) {
+    const level = Math.max(1, Math.min(5, Number(activeLevel || 1)));
+    const mode = activeMode || {};
+    const offIgnored = String(mode?.offense || "") === "ignored_by_cascade";
+    const defIgnored = String(mode?.defense || "") === "ignored_by_cascade";
+    const utlIgnored = String(mode?.utility || "") === "ignored_by_cascade";
+    const offRaw = Number(stacks?.offense || 0);
+    const defRaw = Number(stacks?.defense || 0);
+    const utlRaw = Number(stacks?.utility || 0);
+    const off = offIgnored ? 0 : Math.max(0, offRaw);
+    const def = defIgnored ? 0 : Math.max(0, defRaw);
+    const utl = utlIgnored ? 0 : Math.max(0, utlRaw);
+    const ui = t();
+    const rows = [];
+    if (activeId === "blackout_pulse") {
+      if (level >= 3) rows.push({ label: ui.cooldown, value: fmtUnitValue(Math.max(0, 90 - def), "s", 0), moduleKey: "defense" });
+      if (level >= 5) rows.push({ label: ui.pulseDuration, value: fmtUnitValue(4 + (utl * 0.1), "s", 1), moduleKey: "utility" });
+    } else if (activeId === "cloud_armor") {
+      if (level >= 3) rows.push({ label: ui.cooldown, value: fmtUnitValue(Math.max(0, 90 - utl), "s", 0), moduleKey: "utility" });
+      if (level >= 5) rows.push({ label: ui.blindDuration, value: fmtUnitValue(4 + (off * 0.1), "s", 1), moduleKey: "offense" });
+    } else if (activeId === "optimize_overload") {
+      if (level >= 3) rows.push({ label: ui.cooldown, value: fmtUnitValue(Math.max(0, 90 - off), "s", 0), moduleKey: "offense" });
+      if (level >= 5) rows.push({ label: ui.overchargeDuration, value: fmtUnitValue(5 + (def * 0.2), "s", 1), moduleKey: "defense" });
     }
     return rows;
   }
@@ -481,19 +659,25 @@
     const seasonLabel = String(payload?.current?.label || payload?.data?.season_label || seasonId).trim();
     const activeMods = Array.isArray(payload?.data?.active_modifiers) ? payload.data.active_modifiers : [];
     const passiveMods = orderedPassiveModifiers(payload?.data?.passive_modifiers);
+    const activeListStacks = computeSeasonActiveBaseStacks(payload?.data, 5);
     const passiveIdSet = new Set(passiveMods.map((m) => String(m?.id || "").trim()).filter(Boolean));
     const activeRows = activeMods.map((m, i) => {
       const icon = activeIconPath(seasonId, m);
       const name = getLang() === "ja"
         ? (String(m?.name_ja || "").trim() || String(m?.name_en || "").trim())
         : (String(m?.name_en || "").trim() || String(m?.name_ja || "").trim());
-      const desc = textByLang(m?.desc);
+      const desc = renderActiveModifierDescriptionHtml(m, {
+        activeId: String(m?.id || ""),
+        activeLevel: 5,
+        stacks: activeListStacks,
+        activeMode: {}
+      });
       const levelEffectsHtml = buildActiveLevelEffectsHtml(m);
       return `
         <tr>
           <td class="seasonmod-icon-cell">${icon ? `<img class="seasonmod-icon" src="${esc(icon)}" alt="${esc(name)}" loading="lazy" decoding="async" />` : ""}</td>
           <td>${esc(name)}</td>
-          <td>${esc(desc)}${levelEffectsHtml ? `<br>${levelEffectsHtml}` : ""}</td>
+          <td>${desc}${levelEffectsHtml ? `<br>${levelEffectsHtml}` : ""}</td>
         </tr>
       `;
     }).join("");
@@ -517,7 +701,14 @@
         <section class="seasonmod-section seasonmod-section--simulator">
           <div class="seasonmod-section__heading">
             <h3 class="seasonmod-section__title">${esc(ui.sectionSimulator)}</h3>
-            <button id="seasonModPickerOpenBtn" type="button" class="btn btn--ghost seasonmod-picker-open-btn">${esc(ui.picker)}</button>
+            <div class="seasonmod-section__heading-actions">
+              <button id="seasonModShareBtn" type="button" class="btn btn--ghost seasonmod-share-btn" aria-label="${esc(ui.share)}" title="${esc(ui.share)}">
+                <svg class="seasonmod-share-btn__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                  <path d="M16 5a3 3 0 0 0-2.64 1.57l-4.72 2.36a3 3 0 1 0 0 5.14l4.72 2.36A3 3 0 1 0 14 15.3l-4.72-2.36a3.05 3.05 0 0 0 0-1.88L14 8.7A3 3 0 1 0 16 5Zm0 2a1 1 0 1 1 0 2 1 1 0 0 1 0-2ZM8 11a1 1 0 1 1 0 2 1 1 0 0 1 0-2Zm8 5a1 1 0 1 1 0 2 1 1 0 0 1 0-2Z" fill="currentColor"></path>
+                </svg>
+              </button>
+              <button id="seasonModPickerOpenBtn" type="button" class="btn btn--ghost seasonmod-picker-open-btn">${esc(ui.picker)}</button>
+            </div>
           </div>
           <div class="seasonmod-controls">
             <div class="field seasonmod-field seasonmod-active-group">
@@ -598,7 +789,7 @@
         </section>
 
         <section class="seasonmod-section seasonmod-section--active">
-          <details id="seasonModActiveAccordion" class="seasonmod-accordion" open>
+          <details id="seasonModActiveAccordion" class="seasonmod-accordion">
             <summary class="seasonmod-accordion__summary">${esc(ui.sectionActive)}</summary>
             <div class="seasonmod-accordion__body">
               <section class="blueprint-table-wrap">
@@ -622,7 +813,7 @@
         </section>
 
         <section class="seasonmod-section seasonmod-section--passive">
-          <details id="seasonModPassiveAccordion" class="seasonmod-accordion" open>
+          <details id="seasonModPassiveAccordion" class="seasonmod-accordion">
             <summary class="seasonmod-accordion__summary">${esc(ui.sectionPassive)}</summary>
             <div class="seasonmod-accordion__body">
               <section class="blueprint-table-wrap">
@@ -673,6 +864,7 @@
     const outEl = document.getElementById("seasonModSimResult");
     const activeAccordionEl = document.getElementById("seasonModActiveAccordion");
     const passiveAccordionEl = document.getElementById("seasonModPassiveAccordion");
+    const shareBtn = document.getElementById("seasonModShareBtn");
     if (!activeEl || !activeLvEl || !p1El || !p2El || !p3El || !outEl) return;
     const ui = t();
     const seasonData = payload.data || {};
@@ -1325,6 +1517,14 @@
         await openPickerModal();
       });
     }
+    if (shareBtn) {
+      shareBtn.addEventListener("click", async () => {
+        const ok = await copySeasonModUrl();
+        if (typeof setStatus === "function") {
+          setStatus(ok ? (getLang() === "ja" ? "URLをコピーしました。" : "URL copied.") : (getLang() === "ja" ? "URLのコピーに失敗しました。" : "Failed to copy URL."));
+        }
+      });
+    }
     if (pickerCloseBtn && pickerModalEl) {
       pickerCloseBtn.addEventListener("click", () => {
         closePickerModal();
@@ -1509,9 +1709,53 @@
         `;
       }).join("");
 
-      const derivedRows = buildActiveDerivedRows(result.active_modifier_id, result.active_level, stacks, activeMode)
-        .map((r) => `<tr><td>${esc(String(r[0] || ""))}</td><td>${esc(String(r[1] || ""))}</td><td>${esc(String(r[2] || "-"))}</td></tr>`)
-        .join("");
+      const activeDerivedRows = buildActiveDerivedRows(result.active_modifier_id, result.active_level, stacks, activeMode);
+      const activeModDef = activeMap.get(String(result.active_modifier_id || activeEl.value || ""));
+      const activeModName = activeModDef
+        ? (getLang() === "ja"
+          ? (String(activeModDef?.name_ja || "").trim() || String(activeModDef?.name_en || "").trim())
+          : (String(activeModDef?.name_en || "").trim() || String(activeModDef?.name_ja || "").trim()))
+        : "-";
+      const activeModDesc = activeModDef
+        ? (renderActiveModifierDescriptionHtml(activeModDef, {
+          activeId: String(result.active_modifier_id || activeEl.value || ""),
+          activeLevel: result.active_level,
+          stacks,
+          activeMode
+        }) || "-")
+        : "-";
+      const activeModIcon = activeModDef ? activeIconPath(seasonId, activeModDef) : "";
+      const activeModExtraRows = activeModDef ? activeDerivedRows : [];
+      const activeModExtraHtml = activeModExtraRows.length
+        ? `<div class="seasonmod-active-desc-extra">${activeModExtraRows.map((r, idx) => {
+          const label = String(r[0] || "");
+          const value = String(r[1] || "");
+          const formula = String(r[2] || "-");
+          let moduleKey = "";
+          if (nk(label) === nk(ui.empRadius)) moduleKey = "offense";
+          else if (nk(label) === nk(ui.repairPerSec)) moduleKey = "defense";
+          else if (nk(label) === nk(ui.skillCdr)) moduleKey = "utility";
+          else if (nk(label) === nk(ui.cooldown)) {
+            if (String(result.active_modifier_id || activeEl.value || "") === "blackout_pulse") moduleKey = "defense";
+            else if (String(result.active_modifier_id || activeEl.value || "") === "cloud_armor") moduleKey = "utility";
+            else if (String(result.active_modifier_id || activeEl.value || "") === "optimize_overload") moduleKey = "offense";
+          } else if (nk(label) === nk(ui.pulseDuration)) moduleKey = "utility";
+          else if (nk(label) === nk(ui.blindDuration)) moduleKey = "offense";
+          else if (nk(label) === nk(ui.overchargeDuration)) moduleKey = "defense";
+          return `
+            ${idx > 0 ? '<hr class="seasonmod-active-desc-extra-sep" />' : ""}
+            <div class="seasonmod-active-desc-extra-row">
+              <div class="seasonmod-active-desc-extra-name">${esc(label)}</div>
+              <div class="seasonmod-active-desc-extra-value">
+                <span class="seasonmod-inline-value seasonmod-inline-value--${esc(nk(moduleKey || ""))}">${esc(value)}</span>
+              </div>
+              <div class="seasonmod-active-desc-extra-formula">${esc(formula)}</div>
+            </div>`;
+        }).join("")}</div>`
+        : "";
+      const activeModDescHtml = activeModDef
+        ? `<div class="seasonmod-active-desc-head">${activeModIcon ? `<img class="seasonmod-icon seasonmod-active-desc-icon" src="${esc(activeModIcon)}" alt="${esc(activeModName)}" loading="lazy" decoding="async" />` : ""}<span class="seasonmod-active-desc-name">${esc(activeModName)}</span></div><span class="seasonmod-active-desc-text">${activeModDesc}</span>${activeModExtraHtml}`
+        : "-";
       const selectedPassiveIds = [String(p1El.value || ""), String(p2El.value || ""), String(p3El.value || "")];
       const selectedRows = [
         { id: selectedPassiveIds[0], effect: "-" },
@@ -1547,15 +1791,17 @@
         <div class="seasonmod-result-grid">
           <section class="blueprint-table-wrap">
             <div class="blueprint-table-scroll">
-              <table class="blueprint-table seasonmod-table seasonmod-result-table seasonmod-active-derived-table">
+              <table class="blueprint-table seasonmod-table seasonmod-result-table seasonmod-active-desc-table">
                 <thead>
                   <tr>
-                    <th>${esc(ui.activeDerived)}</th>
-                    <th>${esc(ui.result)}</th>
-                    <th>${esc(ui.formula)}</th>
+                    <th>${esc(ui.activeModifier)}</th>
                   </tr>
                 </thead>
-                <tbody>${derivedRows || `<tr><td colspan="3">-</td></tr>`}</tbody>
+                <tbody>
+                  <tr>
+                    <td class="seasonmod-active-desc-cell">${activeModDescHtml}</td>
+                  </tr>
+                </tbody>
               </table>
             </div>
           </section>

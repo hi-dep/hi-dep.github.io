@@ -23,6 +23,10 @@
         "en": "Activate to release an EMP pulse that destroys enemy gadgets and shocks all enemies in a radius (10m base, plus 0.5m per Offensive stack).",
         "ja": "発動するとEMP Pulseが放たれ、敵ガジェットを破壊して35m範囲内(基本10mに加え、攻撃累積1につき0.5m)の敵すべてにショックを与える"
       },
+      "desc_template": {
+        "en": "Activate to release an EMP pulse that destroys enemy gadgets and shocks all enemies within {{emp_radius}} (10m base, plus 0.5m per Offensive stack).",
+        "ja": "発動するとEMP Pulseが放たれ、敵ガジェットを破壊して{{emp_radius}}範囲内(基本10mに加え、攻撃累積1につき0.5m)の敵すべてにショックを与える"
+      },
       "level_effects": [
         {
           "level": 2,
@@ -76,6 +80,10 @@
         "en": "Activate to repair armor for yourself and allies inside a 10m radius, at a rate of total Armor/second (5% base, plus 0.2% per Defensive stack). This effect lasts for a total of 10 seconds.",
         "ja": "発動すると自分と10m範囲内の味方のアーマーを修復する。毎秒合計7%アーマー(基本5%に加え、防衛累積1ごとに0.2%)。この効果は合計10秒間持続する"
       },
+      "desc_template": {
+        "en": "Activate to repair armor for yourself and allies inside a 10m radius, at a rate of {{repair_per_sec}} total Armor/second (5% base, plus 0.2% per Defensive stack). This effect lasts for a total of 10 seconds.",
+        "ja": "発動すると自分と10m範囲内の味方のアーマーを修復する。毎秒合計{{repair_per_sec}}アーマー(基本5%に加え、防衛累積1ごとに0.2%)。この効果は合計10秒間持続する"
+      },
       "level_effects": [
         {
           "level": 2,
@@ -128,6 +136,10 @@
       "desc": {
         "en": "Activate to reduce your active skill cooldowns (30% base, plus 0.8% per Utility stack).",
         "ja": "発動すると自分に発生しているスキルクールダウンが38.0%短縮される(基本30%に加え、ユーティリティ累積1ごとに0.8%)"
+      },
+      "desc_template": {
+        "en": "Activate to reduce your active skill cooldowns by {{skill_cdr}} (30% base, plus 0.8% per Utility stack).",
+        "ja": "発動すると自分に発生しているスキルクールダウンが{{skill_cdr}}短縮される(基本30%に加え、ユーティリティ累積1ごとに0.8%)"
       },
       "level_effects": [
         {
