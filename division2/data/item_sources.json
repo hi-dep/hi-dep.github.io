@@ -6040,6 +6040,38 @@
       "drop": []
     },
     {
+      "item_id": "f5a422c29ac21362",
+      "entity_type": "weapon",
+      "category": "weapon",
+      "tier": "highend",
+      "name_key": "blackmarketrpk74e",
+      "name": "Black Market RPK-74 E",
+      "brand_name": "",
+      "brand_key": "",
+      "slot_key": "lmg",
+      "blueprint": [],
+      "target_looted": [],
+      "drop": []
+    },
+    {
+      "item_id": "0ac9d609e313b5a1",
+      "entity_type": "weapon",
+      "category": "weapon",
+      "tier": "highend",
+      "name_key": "blackmarketrpk74ereplica",
+      "name": "Black Market RPK-74 E Replica",
+      "brand_name": "",
+      "brand_key": "",
+      "slot_key": "lmg",
+      "blueprint": [
+        {
+          "type": "craft"
+        }
+      ],
+      "target_looted": [],
+      "drop": []
+    },
+    {
       "item_id": "556a3722f0ecf739",
       "entity_type": "weapon",
       "category": "weapon",
@@ -8441,6 +8473,20 @@
       "tier": "highend",
       "name_key": "militaryrpk74",
       "name": "Military RPK-74",
+      "brand_name": "",
+      "brand_key": "",
+      "slot_key": "lmg",
+      "blueprint": [],
+      "target_looted": [],
+      "drop": []
+    },
+    {
+      "item_id": "3e835d651b6ca959",
+      "entity_type": "weapon",
+      "category": "weapon",
+      "tier": "highend",
+      "name_key": "militaryrpk74m",
+      "name": "Military RPK-74 M",
       "brand_name": "",
       "brand_key": "",
       "slot_key": "lmg",
