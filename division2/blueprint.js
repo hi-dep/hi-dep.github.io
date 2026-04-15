@@ -59,7 +59,7 @@
     "True Sons Kill Squad": { ja: "トゥルーサンズ キルスクワッド", en: "True Sons Kill Squad" },
     "Cleaners Kill Squad": { ja: "クリーナーズ キルスクワッド", en: "Cleaners Kill Squad" },
     "Blacktusk Kill Squad": { ja: "ブラックタスク キルスクワッド", en: "Blacktusk Kill Squad" },
-    "Blacktusk retaliation completion": { ja: "ブラックタスク 報復完了", en: "Blacktusk retaliation completion" },
+    "Blacktusk completion": { ja: "ブラックタスク 報復完了", en: "Blacktusk retaliation completion" },
     "Friend Referral Reward": { ja: "フレンド紹介特典", en: "Friend Referral Reward" },
     "Project: Dodge City Gunslinger's Holster": { ja: "ドッジシティガンスリンガーホルスターのプロジェクト", en: "Project: Dodge City Gunslinger's Holster" },
     "Project: Ridgeway's Pride": { ja: "リッジウェイプライドのプロジェクト", en: "Project: Ridgeway's Pride" },
