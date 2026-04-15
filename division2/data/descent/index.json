@@ -1,12 +1,12 @@
 {
   "version": 1,
-  "generated_at_jst": "2026-04-14 17:14:32",
+  "generated_at_jst": "2026-04-15 09:05:03",
   "source_url": "https://docs.google.com/spreadsheets/d/1l71rXsXoekxIFeB7xdETU7q8x5GK-TeDT39YZfwRZcM/edit?resourcekey=&gid=1373613541#gid=1373613541",
   "source_resolved": "https://docs.google.com/spreadsheets/d/1l71rXsXoekxIFeB7xdETU7q8x5GK-TeDT39YZfwRZcM/export?format=csv&gid=1373613541",
   "sheet_gid": "1373613541",
-  "pool_map_source_url": "https://docs.google.com/spreadsheets/u/1/d/e/2PACX-1vTJEX5DerCvOj3a_m36TRy1gPBAUvrduOIdmXI9j1Y0MpQk1wIXaZ9KOcPa7HzXzp_N5qGmjDj6yEfL/pubhtml#gid=603810878",
-  "pool_map_source_resolved": "https://docs.google.com/spreadsheets/d/e/2PACX-1vTJEX5DerCvOj3a_m36TRy1gPBAUvrduOIdmXI9j1Y0MpQk1wIXaZ9KOcPa7HzXzp_N5qGmjDj6yEfL/pub?gid=603810878&single=true&output=csv",
-  "pool_map_sheet_gid": "603810878",
+  "pool_map_source_url": "",
+  "pool_map_source_resolved": "",
+  "pool_map_sheet_gid": "",
   "pool_map_keys": [
     "envy",
     "gluttony",
@@ -16,11 +16,11 @@
   ],
   "anchor_jst": "2026-03-07 09:00:00",
   "cycle_days": 3,
-  "timestamp_rows": 14,
-  "timestamp_rows_raw": 15,
+  "timestamp_rows": 15,
+  "timestamp_rows_raw": 16,
   "pool_map_rows": 200,
   "db_plain": "division_descent_loader/batch/descent_talent_pool_latest.db",
   "db_gz": "data/descent/descent_talent_pool_latest.db.gz",
-  "timestamp_hash": "5bfc56151e7f6a50569e129bb675fe508d984a369eb54d9328dab2b7a7b4cf8c",
-  "content_hash": "ce1c73c5bd3138dc33c7398fbf5ce15207191fad5ce652956d23a056741eecd3"
+  "timestamp_hash": "8ffedefcf089330dda09659334139cde3d8c369f65f55e7a49672a7c7cb23a72",
+  "content_hash": "c4280f4b4d485be0c3e47b44b5017e797a129e76b4cbe6a5a0799ce8128821fb"
 }
