@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generated_at_jst": "2026-04-15 09:05:03",
+  "generated_at_jst": "2026-04-18 09:05:03",
   "source_url": "https://docs.google.com/spreadsheets/d/1l71rXsXoekxIFeB7xdETU7q8x5GK-TeDT39YZfwRZcM/edit?resourcekey=&gid=1373613541#gid=1373613541",
   "source_resolved": "https://docs.google.com/spreadsheets/d/1l71rXsXoekxIFeB7xdETU7q8x5GK-TeDT39YZfwRZcM/export?format=csv&gid=1373613541",
   "sheet_gid": "1373613541",
@@ -16,11 +16,11 @@
   ],
   "anchor_jst": "2026-03-07 09:00:00",
   "cycle_days": 3,
-  "timestamp_rows": 15,
-  "timestamp_rows_raw": 16,
+  "timestamp_rows": 16,
+  "timestamp_rows_raw": 17,
   "pool_map_rows": 200,
   "db_plain": "division_descent_loader/batch/descent_talent_pool_latest.db",
   "db_gz": "data/descent/descent_talent_pool_latest.db.gz",
-  "timestamp_hash": "8ffedefcf089330dda09659334139cde3d8c369f65f55e7a49672a7c7cb23a72",
-  "content_hash": "c4280f4b4d485be0c3e47b44b5017e797a129e76b4cbe6a5a0799ce8128821fb"
+  "timestamp_hash": "92b27cf9c5ab5fdc291336dbfc06f36c25fa93ee336ef83863d6d1cb25a6ffcd",
+  "content_hash": "6c4111b4b280107e120cd8bb03e3a2d00c6d5818365d1a982807ddfe1a87071a"
 }
