@@ -29,6 +29,16 @@
         "ViewPoint Museum",
         "Manning National Zoo"
       ]
+    },
+    {
+      "week": "2026-04-21",
+      "missions": [
+        "The Art Museum",
+        "Manning National Zoo",
+        "Camp White Oak",
+        "The Pentagon",
+        "DARPA Research Labs"
+      ]
     }
   ]
 }
