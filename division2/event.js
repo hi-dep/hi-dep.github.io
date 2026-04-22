@@ -1,7 +1,8 @@
 /* event-specific view logic */
 (function () {
   const SECTION_I18N = {
-    weeklyescalation: { ja: "ウィークリーエスカレーション", en: "Weekly Escalation" },
+    weeklyescalation: { ja: "エスカレーション", en: "Escalation" },
+    escalation: { ja: "エスカレーション", en: "Escalation" },
   };
 
   const MISSION_I18N_JA = {
@@ -55,6 +56,7 @@
       failed: ja ? "イベント情報の取得に失敗しました。" : "Failed to load event data.",
       section: ja ? "セクション" : "Section",
       weekOf: ja ? "週" : "Week of",
+      targetLootDate: ja ? "目標アイテム日付" : "Target Loot Date",
       mission: ja ? "ミッション" : "Mission",
       targetLoot: ja ? "目標アイテム" : "Target Loot",
       fallbackSection: ja ? "イベント" : "Event",
@@ -127,15 +129,23 @@
     const raw = String(name || "").trim();
     if (!raw) return "";
     if (getLang() !== "ja") return raw;
-    const key = nk(raw);
-    if (!key) return raw;
+    const key = resolveTargetLootKey(raw);
+    if (key) {
+      const weaponType = getI18nCategoryText("weapon_type", key);
+      if (weaponType) return weaponType;
+      const gearSlot = getI18nCategoryText("gear_slot", key);
+      if (gearSlot) return gearSlot;
+    }
     const tr = (typeof i18n === "object" && i18n) ? (i18n[key] || i18n[raw] || "") : "";
     return tr || raw;
   }
 
   function targetLootIconUrl(name) {
-    const key = nk(name);
+    const resolved = resolveTargetLoot(name);
+    const key = resolved.key;
     if (!key || typeof iconUrl !== "function") return "";
+    if (resolved.kind === "weapon_types") return iconUrl("weapon_types", key, "img/weapons");
+    if (resolved.kind === "gear_slots") return iconUrl("gear_slots", key, "img/gears");
     return iconUrl("brands", key, "img/brands");
   }
 
@@ -150,6 +160,33 @@
     return `<span class="event-targetloot-cell">${icon}<span>${esc(label || raw)}</span></span>`;
   }
 
+  function getI18nCategoryText(category, key) {
+    if (!category || !key || typeof i18nCategories !== "object" || !i18nCategories) return "";
+    const bucket = i18nCategories[category];
+    if (!bucket || typeof bucket !== "object") return "";
+    if (Object.prototype.hasOwnProperty.call(bucket, key)) return String(bucket[key] || "");
+    const alias = (typeof i18nAliases === "object" && i18nAliases) ? i18nAliases[key] : "";
+    if (alias && Object.prototype.hasOwnProperty.call(bucket, alias)) return String(bucket[alias] || "");
+    return "";
+  }
+
+  function resolveTargetLootKey(name) {
+    const raw = String(name || "").trim();
+    if (!raw) return "";
+    const key = nk(raw);
+    if (!key) return "";
+    const alias = (typeof i18nAliases === "object" && i18nAliases) ? i18nAliases[key] : "";
+    return String(alias || key).trim();
+  }
+
+  function resolveTargetLoot(name) {
+    const key = resolveTargetLootKey(name);
+    if (!key) return { key: "", kind: "brands" };
+    if (getI18nCategoryText("weapon_type", key)) return { key, kind: "weapon_types" };
+    if (getI18nCategoryText("gear_slot", key)) return { key, kind: "gear_slots" };
+    return { key, kind: "brands" };
+  }
+
   function pickTargetLootByDay(entry, targetDay) {
     const rows = Array.isArray(entry?.target_loot_by_day)
       ? entry.target_loot_by_day
@@ -160,12 +197,12 @@
           }))
           .filter((x) => x.day)
       : [];
-    if (!rows.length) return [];
+    if (!rows.length) return { day: String(targetDay || "").trim(), targetLoot: [] };
     const exact = rows.find((x) => x.day === targetDay);
-    if (exact) return exact.targetLoot;
-    const prev = rows.filter((x) => x.day <= targetDay);
-    if (prev.length) return prev[prev.length - 1].targetLoot;
-    return rows[rows.length - 1].targetLoot;
+    if (exact) return exact;
+    // Do not fall back to previous-day loot after daily reset.
+    // If the exact day row is missing, treat as no data for that day.
+    return { day: String(targetDay || "").trim(), targetLoot: [] };
   }
 
   window.eventViewRender = async function eventViewRender() {
@@ -196,12 +233,14 @@
         const missions = Array.isArray(section.missions)
           ? section.missions.map((x) => String(x || "").trim()).filter(Boolean)
           : [];
-        const targetLoot = pickTargetLootByDay(hit, targetDay);
+        const targetLootPick = pickTargetLootByDay(hit, targetDay);
+        const targetLoot = Array.isArray(targetLootPick?.targetLoot) ? targetLootPick.targetLoot : [];
+        const targetLootDay = String(targetLootPick?.day || targetDay || "").trim();
         if (!missions.length) {
           return `
             <section class="event-section">
               <h3 class="event-section__title">${esc(sectionLabel(section))}</h3>
-              <div class="event-weekof">${esc(t.weekOf)}: ${esc(section.week)}</div>
+              <div class="event-weekof">${esc(t.weekOf)}: ${esc(section.week)} / ${esc(t.targetLootDate)}: ${esc(targetLootDay || t.noData)}</div>
               <section class="blueprint-table-wrap">
                 <div class="blueprint-table-scroll">
                   <table class="blueprint-table event-table">
@@ -228,7 +267,7 @@
         return `
           <section class="event-section">
             <h3 class="event-section__title">${esc(sectionLabel(section))}</h3>
-            <div class="event-weekof">${esc(t.weekOf)}: ${esc(week)}</div>
+            <div class="event-weekof">${esc(t.weekOf)}: ${esc(week)} / ${esc(t.targetLootDate)}: ${esc(targetLootDay || t.noData)}</div>
             <section class="blueprint-table-wrap">
               <div class="blueprint-table-scroll">
                 <table class="blueprint-table event-table">

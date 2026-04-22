@@ -52,6 +52,16 @@
             "Zwiadowka Sp.z o.o.",
             "Striker's Battlegear"
           ]
+        },
+        {
+          "day": "2026-04-22",
+          "target_loot": [
+            "Tip of the Spear",
+            "Golan Gear Ltd",
+            "Grupo Sombra S.A.",
+            "shotgun",
+            "Ongoing Directive"
+          ]
         }
       ]
     }
