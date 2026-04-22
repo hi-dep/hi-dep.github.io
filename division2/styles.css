@@ -246,6 +246,23 @@ body::before {
   word-break: break-word;
 }
 
+.event-targetloot-cell {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.event-targetloot-icon {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+  flex: 0 0 auto;
+}
+
+.event-targetloot-empty {
+  color: var(--muted);
+}
+
 .event-table tbody th {
   width: 1%;
   min-width: 22px;

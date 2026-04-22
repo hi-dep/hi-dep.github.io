@@ -56,6 +56,7 @@
       section: ja ? "セクション" : "Section",
       weekOf: ja ? "週" : "Week of",
       mission: ja ? "ミッション" : "Mission",
+      targetLoot: ja ? "目標アイテム" : "Target Loot",
       fallbackSection: ja ? "イベント" : "Event",
     };
   }
@@ -106,6 +107,67 @@
     return s.slice(0, 10);
   }
 
+  function normalizeToShopDayStartJst(nowDate) {
+    const nowMs = (nowDate instanceof Date) ? nowDate.getTime() : Date.now();
+    if (typeof formatJstDateTimeFromUtcMs !== "function") {
+      throw new Error("day-reset helpers are unavailable");
+    }
+    const dayMs = 24 * 60 * 60 * 1000;
+    const jstNow = new Date(nowMs + 9 * 60 * 60 * 1000);
+    const y = jstNow.getUTCFullYear();
+    const mo = jstNow.getUTCMonth();
+    const d = jstNow.getUTCDate();
+    const resetUtc = Date.UTC(y, mo, d, 8, 0, 0, 0); // 17:00 JST
+    const activeUtc = nowMs < resetUtc ? (resetUtc - dayMs) : resetUtc;
+    const s = String(formatJstDateTimeFromUtcMs(activeUtc) || "");
+    return s.slice(0, 10);
+  }
+
+  function targetLootLabel(name) {
+    const raw = String(name || "").trim();
+    if (!raw) return "";
+    if (getLang() !== "ja") return raw;
+    const key = nk(raw);
+    if (!key) return raw;
+    const tr = (typeof i18n === "object" && i18n) ? (i18n[key] || i18n[raw] || "") : "";
+    return tr || raw;
+  }
+
+  function targetLootIconUrl(name) {
+    const key = nk(name);
+    if (!key || typeof iconUrl !== "function") return "";
+    return iconUrl("brands", key, "img/brands");
+  }
+
+  function targetLootCellHtml(name, t) {
+    const raw = String(name || "").trim();
+    if (!raw) return `<span class="event-targetloot-empty">${esc(t.noData)}</span>`;
+    const src = targetLootIconUrl(raw);
+    const label = targetLootLabel(raw);
+    const icon = src
+      ? `<img class="ico ico--brand-inline event-targetloot-icon" src="${esc(src)}" alt="${esc(label || raw)}" loading="lazy" onerror="this.style.display='none'">`
+      : "";
+    return `<span class="event-targetloot-cell">${icon}<span>${esc(label || raw)}</span></span>`;
+  }
+
+  function pickTargetLootByDay(entry, targetDay) {
+    const rows = Array.isArray(entry?.target_loot_by_day)
+      ? entry.target_loot_by_day
+          .filter((x) => x && typeof x === "object")
+          .map((x) => ({
+            day: String(x.day || "").trim(),
+            targetLoot: Array.isArray(x.target_loot) ? x.target_loot.map((v) => String(v || "").trim()) : [],
+          }))
+          .filter((x) => x.day)
+      : [];
+    if (!rows.length) return [];
+    const exact = rows.find((x) => x.day === targetDay);
+    if (exact) return exact.targetLoot;
+    const prev = rows.filter((x) => x.day <= targetDay);
+    if (prev.length) return prev[prev.length - 1].targetLoot;
+    return rows[rows.length - 1].targetLoot;
+  }
+
   window.eventViewRender = async function eventViewRender() {
     const t = labels();
     if (typeof setStatus === "function") setStatus(t.loading);
@@ -115,6 +177,7 @@
       const data = await res.json();
       const events = (data && typeof data === "object") ? data : {};
       const targetWeek = normalizeToShopWeekStartJst(new Date());
+      const targetDay = normalizeToShopDayStartJst(new Date());
       const sectionNames = Object.keys(events).sort((a, b) => String(a).localeCompare(String(b)));
       if (!sectionNames.length) {
         setContentHtml(`<section class="event-view"><p class="event-empty">${esc(t.noData)}</p></section>`);
@@ -127,11 +190,13 @@
         const section = {
           section_name: name,
           missions: Array.isArray(hit?.missions) ? hit.missions : [],
+          target_loot_by_day: Array.isArray(hit?.target_loot_by_day) ? hit.target_loot_by_day : [],
           week: hit ? String(hit?.week || "").trim() : targetWeek,
         };
         const missions = Array.isArray(section.missions)
           ? section.missions.map((x) => String(x || "").trim()).filter(Boolean)
           : [];
+        const targetLoot = pickTargetLootByDay(hit, targetDay);
         if (!missions.length) {
           return `
             <section class="event-section">
@@ -144,10 +209,11 @@
                       <tr>
                         <th>#</th>
                         <th>${esc(t.mission)}</th>
+                        <th>${esc(t.targetLoot)}</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr><th scope="row">-</th><td>${esc(t.noData)}</td></tr>
+                      <tr><th scope="row">-</th><td>${esc(t.noData)}</td><td>${esc(t.noData)}</td></tr>
                     </tbody>
                   </table>
                 </div>
@@ -156,7 +222,7 @@
           `;
         }
         const missionRows = missions
-          .map((m, i) => `<tr><th scope="row">${esc(String(i + 1))}</th><td>${esc(missionLabel(m))}</td></tr>`)
+          .map((m, i) => `<tr><th scope="row">${esc(String(i + 1))}</th><td>${esc(missionLabel(m))}</td><td>${targetLootCellHtml(targetLoot[i], t)}</td></tr>`)
           .join("");
         const week = String(section?.week || "").trim();
         return `
@@ -170,6 +236,7 @@
                     <tr>
                       <th>#</th>
                       <th>${esc(t.mission)}</th>
+                      <th>${esc(t.targetLoot)}</th>
                     </tr>
                   </thead>
                   <tbody>

@@ -8,7 +8,8 @@
         "Jefferson Plaza",
         "Potomac Event Center",
         "Coney Island Ballpark"
-      ]
+      ],
+      "target_loot_by_day": []
     },
     {
       "week": "2026-04-07",
@@ -18,7 +19,8 @@
         "Space Administration HQ",
         "Roosevelt Island",
         "Coney Island Amusement Park"
-      ]
+      ],
+      "target_loot_by_day": []
     },
     {
       "week": "2026-04-14",
@@ -28,7 +30,8 @@
         "Federal Emergency Bunker",
         "ViewPoint Museum",
         "Manning National Zoo"
-      ]
+      ],
+      "target_loot_by_day": []
     },
     {
       "week": "2026-04-21",
@@ -38,6 +41,18 @@
         "Camp White Oak",
         "The Pentagon",
         "DARPA Research Labs"
+      ],
+      "target_loot_by_day": [
+        {
+          "day": "2026-04-21",
+          "target_loot": [
+            "Murakami Industries",
+            "Ortiz: Exuro",
+            "Habsburg Guard",
+            "Zwiadowka Sp.z o.o.",
+            "Striker's Battlegear"
+          ]
+        }
       ]
     }
   ]
