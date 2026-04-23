@@ -62,6 +62,16 @@
             "shotgun",
             "Ongoing Directive"
           ]
+        },
+        {
+          "day": "2026-04-23",
+          "target_loot": [
+            "Concentrated Company",
+            "Umbra Initiative",
+            "Hotshot",
+            "Overlord Armaments",
+            "Petrov Defense Group"
+          ]
         }
       ]
     }
