@@ -250,7 +250,8 @@
       "ludsocommk16": "TODO:ludsocommk16",
       "manicblackmarketakm": "TODO:manicblackmarketakm",
       "stregafal": "TODO:stregafal",
-      "interchange": "インターチェンジ"
+      "interchange": "インターチェンジ",
+      "firstbloom": "ファーストブルーム"
     },
     "weapon_item_name_lmg": {
       "blackmarketrpk74e": "ブラックマーケット RPK-74 E",
@@ -308,7 +309,8 @@
       "classicm60replica": "クラシック M60 模造品",
       "customl86a2replica": "カスタム L86 A2 模造品",
       "infantrymg5replica": "インファントリー MG5 模造品",
-      "militarymk46replica": "ミリタリー MK46 模造品"
+      "militarymk46replica": "ミリタリー MK46 模造品",
+      "theheadlinegrabber": "ヘッドライン・グラバー"
     },
     "weapon_item_name_smg": {
       "blackmarkett821": "ブラックマーケット T821",
@@ -1048,7 +1050,7 @@
       "fasterthanreloading": "リロードより高速",
       "perfectbackandforth": "パーフェクト・バック&フォース",
       "backandforth": "バック&フォース",
-      "perfectmeasured": "TODO:perfectmeasured"
+      "blossomharvest": "ブロッサム・ハーヴェスト"
     },
     "cache": {
       "amount": "数量",
