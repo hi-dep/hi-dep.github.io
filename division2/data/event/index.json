@@ -72,6 +72,16 @@
             "Overlord Armaments",
             "Petrov Defense Group"
           ]
+        },
+        {
+          "day": "2026-04-24",
+          "target_loot": [
+            "Alps Summit Armaments",
+            "shotgun",
+            "gloves",
+            "mask",
+            "Royal Works"
+          ]
         }
       ]
     }
