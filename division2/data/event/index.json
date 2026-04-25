@@ -82,6 +82,16 @@
             "mask",
             "Royal Works"
           ]
+        },
+        {
+          "day": "2026-04-25",
+          "target_loot": [
+            "Umbra Initiative",
+            "Electrique",
+            "Virtuoso",
+            "Uzina Getica",
+            "Measured Assembly"
+          ]
         }
       ]
     }
