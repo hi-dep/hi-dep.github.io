@@ -92,6 +92,16 @@
             "Uzina Getica",
             "Measured Assembly"
           ]
+        },
+        {
+          "day": "2026-04-26",
+          "target_loot": [
+            "Heartbreaker",
+            "Tip of the Spear",
+            "Česká Výroba s.r.o.",
+            "gloves",
+            "True Patriot"
+          ]
         }
       ]
     }
