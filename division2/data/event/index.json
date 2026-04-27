@@ -102,6 +102,16 @@
             "gloves",
             "True Patriot"
           ]
+        },
+        {
+          "day": "2026-04-27",
+          "target_loot": [
+            "Belstone Armory",
+            "Zwiadowka Sp.z o.o.",
+            "Airaldi Holdings",
+            "smg",
+            "China Light Industries Corporation"
+          ]
         }
       ]
     }
