@@ -60,6 +60,9 @@
       mission: ja ? "ミッション" : "Mission",
       targetLoot: ja ? "目標アイテム" : "Target Loot",
       fallbackSection: ja ? "イベント" : "Event",
+      copy: ja ? "コピー" : "Copy",
+      copyDone: ja ? "エスカレーションをコピーしました。" : "Escalation copied.",
+      copyFailed: ja ? "コピーに失敗しました。" : "Failed to copy.",
     };
   }
 
@@ -97,6 +100,68 @@
     if (getLang() !== "ja") return raw;
     const ja = MISSION_I18N_JA[raw];
     return (ja != null && ja !== "") ? ja : raw;
+  }
+
+  function isEscalationSection(section) {
+    const key = nk(section?.section_key || section?.section_name || "");
+    return key === "weeklyescalation" || key === "escalation";
+  }
+
+  function compactDate(dateText) {
+    const raw = String(dateText || "").trim();
+    const m = raw.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+    return m ? `${m[1]}${m[2]}${m[3]}` : raw.replace(/[^0-9]/g, "");
+  }
+
+  async function copyTextToClipboard(text) {
+    try {
+      if (navigator.clipboard && typeof navigator.clipboard.writeText === "function") {
+        await navigator.clipboard.writeText(String(text || ""));
+        return true;
+      }
+    } catch (_e) {
+      // fall back to legacy copy API
+    }
+    try {
+      const ta = document.createElement("textarea");
+      ta.value = String(text || "");
+      ta.setAttribute("readonly", "readonly");
+      ta.style.position = "fixed";
+      ta.style.left = "-9999px";
+      ta.style.top = "0";
+      document.body.appendChild(ta);
+      ta.select();
+      const ok = document.execCommand("copy");
+      document.body.removeChild(ta);
+      return !!ok;
+    } catch (_e) {
+      return false;
+    }
+  }
+
+  function buildEscalationCopyText(payload) {
+    const lang = getLang();
+    const isJa = lang === "ja";
+    const dateCompact = compactDate(payload?.targetLootDay || "");
+    const hashTag = isJa ? "#ディビジョン2" : "#theDivision2";
+    const title = isJa
+      ? `${hashTag} エスカレーション 目標アイテム ${dateCompact}`
+      : `${hashTag} Escalation Target Loot ${dateCompact}`;
+    const rows = Array.isArray(payload?.rows) ? payload.rows : [];
+    const body = rows.map((row) => `- ${String(row?.mission || "").trim()}: ${String(row?.targetLoot || "").trim()}`);
+    let url = "";
+    try {
+      const u = new URL(String(window.location.href || ""));
+      const langParam = (lang === "ja" || lang === "en") ? lang : "en";
+      u.search = "";
+      u.searchParams.set("view", "event");
+      u.searchParams.set("lang", langParam);
+      url = u.toString();
+    } catch (_e) {
+      url = "";
+    }
+    if (!url) url = `https://hi-dep.github.io/division2/?view=event&lang=${lang}`;
+    return [title, ...body, "", `👉 ${url}`].join("\n");
   }
 
   function normalizeToShopWeekStartJst(nowDate) {
@@ -221,6 +286,7 @@
         if (typeof setStatus === "function") setStatus("");
         return;
       }
+      const copyPayloads = [];
       const rowHtml = sectionNames.map((name) => {
         const entries = Array.isArray(events[name]) ? events[name] : [];
         const hit = entries.find((e) => String(e?.week || "").trim() === targetWeek);
@@ -236,10 +302,35 @@
         const targetLootPick = pickTargetLootByDay(hit, targetDay);
         const targetLoot = Array.isArray(targetLootPick?.targetLoot) ? targetLootPick.targetLoot : [];
         const targetLootDay = String(targetLootPick?.day || targetDay || "").trim();
+        const canCopyEscalation = isEscalationSection(section) && missions.length > 0;
+        let copyButtonHtml = "";
+        if (canCopyEscalation) {
+          const copyIndex = copyPayloads.length;
+          copyPayloads.push({
+            targetLootDay,
+            rows: missions.map((m, i) => ({
+              mission: missionLabel(m),
+              targetLoot: targetLootLabel(targetLoot[i]) || t.noData,
+            })),
+          });
+          copyButtonHtml = `
+            <button type="button" class="btn btn--ghost seasonmod-share-btn event-copy-btn" data-event-copy-index="${copyIndex}" aria-label="${esc(t.copy)}" title="${esc(t.copy)}">
+              <svg class="seasonmod-share-btn__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M16 5a3 3 0 0 0-2.64 1.57l-4.72 2.36a3 3 0 1 0 0 5.14l4.72 2.36A3 3 0 1 0 14 15.3l-4.72-2.36a3.05 3.05 0 0 0 0-1.88L14 8.7A3 3 0 1 0 16 5Zm0 2a1 1 0 1 1 0 2 1 1 0 0 1 0-2ZM8 11a1 1 0 1 1 0 2 1 1 0 0 1 0-2Zm8 5a1 1 0 1 1 0 2 1 1 0 0 1 0-2Z" fill="currentColor"></path>
+              </svg>
+            </button>
+          `;
+        }
+        const sectionTitleHtml = `
+          <div class="event-section__title-row">
+            <h3 class="event-section__title">${esc(sectionLabel(section))}</h3>
+            ${copyButtonHtml}
+          </div>
+        `;
         if (!missions.length) {
           return `
             <section class="event-section">
-              <h3 class="event-section__title">${esc(sectionLabel(section))}</h3>
+              ${sectionTitleHtml}
               <div class="event-weekof">${esc(t.weekOf)}: ${esc(section.week)} / ${esc(t.targetLootDate)}: ${esc(targetLootDay || t.noData)}</div>
               <section class="blueprint-table-wrap">
                 <div class="blueprint-table-scroll">
@@ -266,7 +357,7 @@
         const week = String(section?.week || "").trim();
         return `
           <section class="event-section">
-            <h3 class="event-section__title">${esc(sectionLabel(section))}</h3>
+            ${sectionTitleHtml}
             <div class="event-weekof">${esc(t.weekOf)}: ${esc(week)} / ${esc(t.targetLootDate)}: ${esc(targetLootDay || t.noData)}</div>
             <section class="blueprint-table-wrap">
               <div class="blueprint-table-scroll">
@@ -293,6 +384,17 @@
           ${rowHtml}
         </section>
       `);
+      const copyButtons = Array.from(document.querySelectorAll("button[data-event-copy-index]"));
+      copyButtons.forEach((btn) => {
+        btn.addEventListener("click", async () => {
+          const idx = Number(btn.getAttribute("data-event-copy-index"));
+          const payload = (idx >= 0) ? copyPayloads[idx] : null;
+          if (!payload) return;
+          const text = buildEscalationCopyText(payload);
+          const ok = await copyTextToClipboard(text);
+          if (typeof setStatus === "function") setStatus(ok ? t.copyDone : t.copyFailed);
+        });
+      });
       if (typeof setStatus === "function") setStatus("");
     } catch (err) {
       setContentHtml(`<section class="event-view"><p class="event-empty">${esc(t.failed)}</p></section>`);

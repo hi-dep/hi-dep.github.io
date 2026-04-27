@@ -122,6 +122,54 @@
     return String(text || "");
   }
 
+  async function copyTextToClipboard(text) {
+    try {
+      if (navigator.clipboard && typeof navigator.clipboard.writeText === "function") {
+        await navigator.clipboard.writeText(String(text || ""));
+        return true;
+      }
+    } catch (_e) {
+      // fall through to legacy copy API
+    }
+    try {
+      const ta = document.createElement("textarea");
+      ta.value = String(text || "");
+      ta.setAttribute("readonly", "readonly");
+      ta.style.position = "fixed";
+      ta.style.left = "-9999px";
+      ta.style.top = "0";
+      document.body.appendChild(ta);
+      ta.select();
+      const ok = document.execCommand("copy");
+      document.body.removeChild(ta);
+      return !!ok;
+    } catch (_e) {
+      return false;
+    }
+  }
+
+  function buildDescentPoolCopyText(active, cycleDays) {
+    const lang = safeLang();
+    const poolLabel = safeTrText(String(active?.pool || active?.poolKey || "")).trim() || "---";
+    const days = Number.isFinite(Number(cycleDays)) ? Math.max(1, Math.floor(Number(cycleDays))) : 3;
+    const line1 = (lang === "ja")
+      ? `今日から${days}日間のディセントは${poolLabel}でした`
+      : `The ${days}-day Descent pool starting today was ${poolLabel}.`;
+    let url = "";
+    try {
+      const u = new URL(String(window.location.href || ""));
+      const langParam = (lang === "ja" || lang === "en") ? lang : "en";
+      u.search = "";
+      u.searchParams.set("view", "descent_talent");
+      u.searchParams.set("lang", langParam);
+      url = u.toString();
+    } catch (_e) {
+      url = "";
+    }
+    if (!url) url = `http://localhost:8000/web/?view=descent_talent&lang=${lang}`;
+    return `${line1}\n\n👉 ${url}`;
+  }
+
   function renderShellOnly(extraStatusText) {
     const contentEl = getContentEl();
     if (!contentEl) return;
@@ -430,6 +478,11 @@
           <div class="descent-controls__row descent-controls__row--top">
             <button class="btn btn--ghost talent-desc-btn ${window.talentShowDesc ? "is-on" : ""}" type="button" data-toggle-talent-desc="1">Desc</button>
             ${window.talentShowDesc ? `<select id="descentTierSelect" style="height:24px;padding:0 9px;border-radius:999px;font-size:11px;line-height:1;min-width:92px;max-width:120px;">${tierSelectOpts}</select>` : ""}
+            <button id="descentPoolCopyBtn" type="button" class="btn btn--ghost seasonmod-share-btn descent-copy-btn" aria-label="${escapeHtml(safeLang() === "ja" ? "共有" : "Share")}" title="${escapeHtml(safeLang() === "ja" ? "共有" : "Share")}">
+              <svg class="seasonmod-share-btn__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M16 5a3 3 0 0 0-2.64 1.57l-4.72 2.36a3 3 0 1 0 0 5.14l4.72 2.36A3 3 0 1 0 14 15.3l-4.72-2.36a3.05 3.05 0 0 0 0-1.88L14 8.7A3 3 0 1 0 16 5Zm0 2a1 1 0 1 1 0 2 1 1 0 0 1 0-2ZM8 11a1 1 0 1 1 0 2 1 1 0 0 1 0-2Zm8 5a1 1 0 1 1 0 2 1 1 0 0 1 0-2Z" fill="currentColor"></path>
+              </svg>
+            </button>
           </div>
           <div class="descent-controls__row descent-controls__row--filters">
             ${poolButtons}
@@ -455,6 +508,17 @@
       tierSel.addEventListener("change", () => {
         state.selectedTier = normalizeTier(tierSel.value);
         render(payload);
+      });
+    }
+    const copyBtn = contentEl.querySelector("#descentPoolCopyBtn");
+    if (copyBtn) {
+      copyBtn.addEventListener("click", async () => {
+        const text = buildDescentPoolCopyText(active, payload?.cycleDays);
+        const ok = await copyTextToClipboard(text);
+        if (typeof setStatus === "function") {
+          const ja = safeLang() === "ja";
+          setStatus(ok ? (ja ? "共有文をコピーしました。" : "Copied share text.") : (ja ? "コピーに失敗しました。" : "Failed to copy."));
+        }
       });
     }
     const showDesc = !!window.talentShowDesc;

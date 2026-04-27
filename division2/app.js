@@ -276,6 +276,26 @@ function findViewToolbarNodes(viewMode) {
   return [];
 }
 
+function viewUsesHeaderToolbar(viewMode) {
+  const mode = String(viewMode || "");
+  return mode === "item_sources"
+    || mode === "descent_talent"
+    || mode === "trello"
+    || mode === "patches"
+    || mode === "weapons"
+    || mode === "brand"
+    || mode === "gearset"
+    || mode === "exotic_gear"
+    || mode === "gear_talent"
+    || mode === "weapon_talent";
+}
+
+function clearHeaderToolbarHost() {
+  if (!vendorToolbarHostEl) return;
+  vendorToolbarHostEl.innerHTML = "";
+  vendorToolbarHostEl.style.display = "none";
+}
+
 function syncHeaderToolbarFromContent() {
   if (!vendorToolbarHostEl || toolbarSyncLock) return;
   if (currentViewMode === "vendor") {
@@ -288,12 +308,15 @@ function syncHeaderToolbarFromContent() {
   toolbarSyncLock = true;
   try {
     if (!nodes.length) {
+      if (!viewUsesHeaderToolbar(currentViewMode)) {
+        clearHeaderToolbarHost();
+        return;
+      }
       if (hasExistingHeaderToolbar) {
         vendorToolbarHostEl.style.display = "";
         return;
       }
-      vendorToolbarHostEl.innerHTML = "";
-      vendorToolbarHostEl.style.display = "none";
+      clearHeaderToolbarHost();
       return;
     }
     vendorToolbarHostEl.innerHTML = "";
@@ -4236,6 +4259,9 @@ async function switchViewMode(mode) {
   syncDescToggleForCurrentView();
   closeNavMenu();
   updateModeUi();
+  if (currentViewMode !== "vendor" && !viewUsesHeaderToolbar(currentViewMode)) {
+    clearHeaderToolbarHost();
+  }
   if (currentViewMode !== "vendor") {
     setStatus("");
   }
