@@ -73,10 +73,12 @@
   "gear_slots": {
     "backpack": "img/gears/backpack.png",
     "chest": "img/gears/chest.png",
+    "gearmod": "img/gears/gearmod.png",
     "gloves": "img/gears/gloves.png",
     "holster": "img/gears/holster.png",
     "kneepads": "img/gears/kneepads.png",
-    "mask": "img/gears/mask.png"
+    "mask": "img/gears/mask.png",
+    "skillmod": "img/gears/skillmod.png"
   },
   "weapon_types": {
     "ar": "img/weapons/ar.png",

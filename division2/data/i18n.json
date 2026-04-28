@@ -584,7 +584,9 @@
       "gloves": "グローブ",
       "holster": "ホルスター",
       "kneepads": "ニーパッド",
-      "mask": "マスク"
+      "mask": "マスク",
+      "gearmod": "装備MOD",
+      "skillmod": "スキルMOD"
     },
     "weapon_type": {
       "ar": "アサルトライフル",
