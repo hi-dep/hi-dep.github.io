@@ -114,6 +114,17 @@
           ]
         }
       ]
+    },
+    {
+      "week": "2026-04-28",
+      "missions": [
+        "Stranded Tanker",
+        "ViewPoint Museum",
+        "Jefferson Trade Center",
+        "Bank Headquarters",
+        "DCD Headquarters"
+      ],
+      "target_loot_by_day": []
     }
   ]
 }
