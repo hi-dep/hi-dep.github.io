@@ -124,7 +124,18 @@
         "Bank Headquarters",
         "DCD Headquarters"
       ],
-      "target_loot_by_day": []
+      "target_loot_by_day": [
+        {
+          "day": "2026-04-28",
+          "target_loot": [
+            "Ortiz: Exuro",
+            "Rigger",
+            "Palisade Steelworks",
+            "Česká Výroba s.r.o.",
+            "Gear MOD"
+          ]
+        }
+      ]
     }
   ]
 }
