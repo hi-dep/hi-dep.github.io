@@ -134,6 +134,16 @@
             "Česká Výroba s.r.o.",
             "Gear MOD"
           ]
+        },
+        {
+          "day": "2026-04-29",
+          "target_loot": [
+            "Negotiator's Dilemma",
+            "lmg",
+            "Sokolov Concern",
+            "Umbra Initiative",
+            "Hana-U Corporation"
+          ]
         }
       ]
     }
