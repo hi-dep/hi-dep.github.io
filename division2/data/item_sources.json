@@ -6940,25 +6940,6 @@
       "drop": []
     },
     {
-      "item_id": "8485f187cf9dece3",
-      "entity_type": "weapon",
-      "category": "weapon",
-      "tier": "named",
-      "name_key": "interchange",
-      "name": "Interchange",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "ar",
-      "blueprint": [
-        {
-          "src": "Reconstructed Caches",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
       "item_id": "bbb1d2e565c10949",
       "entity_type": "weapon",
       "category": "weapon",
@@ -10145,20 +10126,6 @@
           "type": "craft"
         }
       ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "2b26f7a76bab594e",
-      "entity_type": "weapon",
-      "category": "weapon",
-      "tier": "exotic",
-      "name_key": "whiplash",
-      "name": "Whiplash",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "pistol",
-      "blueprint": [],
       "target_looted": [],
       "drop": []
     },
