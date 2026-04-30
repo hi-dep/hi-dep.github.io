@@ -144,6 +144,16 @@
             "Umbra Initiative",
             "Hana-U Corporation"
           ]
+        },
+        {
+          "day": "2026-04-30",
+          "target_loot": [
+            "Umbra Initiative",
+            "Legatus S.p.A.",
+            "Habsburg Guard",
+            "Refactor",
+            "Unit Alloys"
+          ]
         }
       ]
     }
