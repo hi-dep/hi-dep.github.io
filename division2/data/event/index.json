@@ -154,6 +154,16 @@
             "Refactor",
             "Unit Alloys"
           ]
+        },
+        {
+          "day": "2026-05-01",
+          "target_loot": [
+            "5.11 Tactical",
+            "Measured Assembly",
+            "Negotiator's Dilemma",
+            "Foundry Bulwark",
+            "Ongoing Directive"
+          ]
         }
       ]
     }
