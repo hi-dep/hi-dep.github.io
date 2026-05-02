@@ -164,6 +164,16 @@
             "Foundry Bulwark",
             "Ongoing Directive"
           ]
+        },
+        {
+          "day": "2026-05-02",
+          "target_loot": [
+            "Brazos de Arcabuz",
+            "Fenris Group AB",
+            "Breaking Point",
+            "Airaldi Holdings",
+            "Electrique"
+          ]
         }
       ]
     }
