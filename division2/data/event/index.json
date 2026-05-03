@@ -174,6 +174,16 @@
             "Airaldi Holdings",
             "Electrique"
           ]
+        },
+        {
+          "day": "2026-05-03",
+          "target_loot": [
+            "mask",
+            "Ortiz: Exuro",
+            "Legatus S.p.A.",
+            "Brazos de Arcabuz",
+            "ar"
+          ]
         }
       ]
     }

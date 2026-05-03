@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generated_at_jst": "2026-05-03 09:12:04",
+  "generated_at_jst": "2026-05-03 17:03:04",
   "source_url": "https://docs.google.com/spreadsheets/d/1l71rXsXoekxIFeB7xdETU7q8x5GK-TeDT39YZfwRZcM/edit?resourcekey=&gid=1373613541#gid=1373613541",
   "source_resolved": "https://docs.google.com/spreadsheets/d/1l71rXsXoekxIFeB7xdETU7q8x5GK-TeDT39YZfwRZcM/export?format=csv&gid=1373613541",
   "sheet_gid": "1373613541",
@@ -17,7 +17,7 @@
   "anchor_jst": "2026-03-07 09:00:00",
   "cycle_days": 3,
   "timestamp_rows": 21,
-  "timestamp_rows_raw": 22,
+  "timestamp_rows_raw": 23,
   "pool_map_rows": 200,
   "db_plain": "division_descent_loader/batch/descent_talent_pool_latest.db",
   "db_gz": "data/descent/descent_talent_pool_latest.db.gz",
