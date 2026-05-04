@@ -184,6 +184,16 @@
             "Brazos de Arcabuz",
             "ar"
           ]
+        },
+        {
+          "day": "2026-05-04",
+          "target_loot": [
+            "backpack",
+            "Measured Assembly",
+            "Empress International",
+            "Uzina Getica",
+            "shotgun"
+          ]
         }
       ]
     }
