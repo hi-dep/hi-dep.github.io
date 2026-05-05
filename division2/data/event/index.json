@@ -196,6 +196,28 @@
           ]
         }
       ]
+    },
+    {
+      "week": "2026-05-05",
+      "missions": [
+        "The Tombs",
+        "Manning National Zoo",
+        "Bank Headquarters",
+        "American History Museum",
+        "Space Administration HQ"
+      ],
+      "target_loot_by_day": [
+        {
+          "day": "2026-05-05",
+          "target_loot": [
+            "Lengmo",
+            "Negotiator's Dilemma",
+            "pistol",
+            "Measured Assembly",
+            "kneepads"
+          ]
+        }
+      ]
     }
   ]
 }
