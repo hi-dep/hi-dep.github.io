@@ -216,6 +216,16 @@
             "Measured Assembly",
             "kneepads"
           ]
+        },
+        {
+          "day": "2026-05-06",
+          "target_loot": [
+            "Walker, Harris & Co.",
+            "Hard Wired",
+            "Core Strength",
+            "Aces & Eights",
+            "Hana-U Corporation"
+          ]
         }
       ]
     }
