@@ -1,6 +1,11 @@
 {
   "season_id": "y8s1",
   "season_label": "Y8S1",
+  "languages": [
+    { "code": "ja", "label": "JA" },
+    { "code": "en", "label": "EN" }
+  ],
+  "passive_patterns_db": "y8s1_passive_patterns.db.gz",
   "global_modifier": {
     "name_en": "Recombinant",
     "name_ja": "Recombinant"
@@ -16,6 +21,7 @@
       "id": "blackout_pulse",
       "name_en": "Blackout Pulse",
       "name_ja": "ブラックアウトPulse",
+      "name_pt": "Pulso de Apagão",
       "icon": "blackout_pulse.png",
       "base_module": "offense",
       "cooldown_seconds": 90,

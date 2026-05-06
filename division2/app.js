@@ -1036,7 +1036,8 @@ function openDescentPoolStatusPopup(anchorEl, poolKeyHint = "") {
 function saveLangSetting() {
   if (!langSelect) return;
   try {
-    localStorage.setItem(LANG_STORAGE_KEY, langSelect.value || "en");
+    const v = String(langSelect.value || "").trim().toLowerCase();
+    localStorage.setItem(LANG_STORAGE_KEY, (v === "ja" || v === "en") ? v : "en");
   } catch (e) {
     // ignore storage errors (private mode, quota, etc.)
   }
@@ -4265,6 +4266,9 @@ async function switchViewMode(mode) {
   if (currentViewMode !== "vendor") {
     setStatus("");
   }
+  if (currentViewMode !== "season_mod" && typeof window.seasonModResetGlobalLangOptions === "function") {
+    window.seasonModResetGlobalLangOptions();
+  }
   if (worldTimeWrapEl) worldTimeWrapEl.style.display = "";
   const descentPoolParam = currentViewMode === "descent_talent" ? (window.descentTalentInitialPoolKey || null) : null;
   if (isRootViewPagePath()) {
@@ -4516,8 +4520,9 @@ async function boot() {
  * ------------------------- */
 
 langSelect.addEventListener("change", () => {
+  const nextLang = String(langSelect.value || "").trim().toLowerCase();
   saveLangSetting();
-  replaceUrlParams({ lang: langSelect.value || "en" });
+  replaceUrlParams({ lang: (nextLang === "ja" || nextLang === "en") ? nextLang : null });
   applyUiLang();
   const d = getVendorDateValue();
   if (currentViewMode === "vendor") {

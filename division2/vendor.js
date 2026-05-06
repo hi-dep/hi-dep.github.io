@@ -21,9 +21,22 @@
     setStatus(ui("loadingDb"));
 
     const SQL = await initSql();
-    const gz = await fetchArrayBuffer(chunkUrl);
-    const dbBytes = await gunzipToUint8Array(gz);
-    const db = new SQL.Database(dbBytes);
+    let db = null;
+    try {
+      const gz = await fetchArrayBuffer(chunkUrl);
+      const dbBytes = await gunzipToUint8Array(gz);
+      db = new SQL.Database(dbBytes);
+    } catch (err) {
+      const msg = String(err && err.message ? err.message : err || "");
+      const isNotFound = /fetch failed:\s*404\b/i.test(msg) || /\b404\b/.test(msg);
+      if (isNotFound) {
+        // Missing monthly chunk should be treated as normal "no data" view, not an error.
+        renderVendors(new Map());
+        setStatus("");
+        return;
+      }
+      throw err;
+    }
 
     try {
       const stmt = db.prepare(`
@@ -135,7 +148,7 @@
       renderVendors(vendorMap);
       setStatus("");
     } finally {
-      db.close();
+      if (db) db.close();
     }
   };
 })();

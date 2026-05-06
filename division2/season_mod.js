@@ -2,6 +2,7 @@
 (function () {
   let seasonModCache = null;
   const SEASON_MOD_URL_KEYS = Object.freeze({
+    season: "sm_season",
     active: "sm_active",
     level: "sm_level",
     passive1: "sm_p1",
@@ -13,7 +14,7 @@
 
   function getLang() {
     const sel = document.getElementById("langSelect");
-    return (sel && (sel.value === "ja" || sel.value === "en")) ? sel.value : "en";
+    return (sel && String(sel.value || "").trim()) ? String(sel.value || "").trim() : "en";
   }
 
   function t() {
@@ -22,7 +23,7 @@
       loading: ja ? "シーズンMOD情報を読み込み中..." : "Loading season modifier data...",
       failed: ja ? "シーズンMOD情報の取得に失敗しました。" : "Failed to load season modifier data.",
       noData: ja ? "データなし" : "No Data",
-      sectionSimulator: ja ? "Y8S1シミュレータ" : "Y8S1 Simulator",
+      sectionSimulator: ja ? "シミュレータ" : "Simulator",
       sectionActive: ja ? "アクティブMODリスト" : "Active Modifier List",
       sectionPassive: ja ? "パッシブMODリスト" : "Passive Modifier List",
       season: ja ? "シーズン" : "Season",
@@ -147,18 +148,82 @@
     return res.json();
   }
 
-  async function loadSeasonModData() {
-    if (seasonModCache) return seasonModCache;
-    const index = await fetchJsonNoStore(`./data/season_mod/index.json?ts=${Date.now()}`);
+  function normalizeSeasonLanguages(data) {
+    const src = Array.isArray(data?.languages) ? data.languages : [];
+    const out = [];
+    const seen = new Set();
+    src.forEach((it) => {
+      let code = "";
+      let label = "";
+      if (typeof it === "string") {
+        code = String(it || "").trim().toLowerCase();
+      } else if (it && typeof it === "object") {
+        code = String(it.code || it.id || it.lang || "").trim().toLowerCase();
+        label = String(it.label || it.name || "").trim();
+      }
+      if (!code || seen.has(code)) return;
+      seen.add(code);
+      const defaultLabel = (code === "ja") ? "JA" : (code === "en" ? "EN" : code.toUpperCase());
+      out.push({ code, label: label || defaultLabel });
+    });
+    if (!out.length) return [{ code: "ja", label: "JA" }, { code: "en", label: "EN" }];
+    return out;
+  }
+
+  function setGlobalLangOptionsForSeason(data) {
+    const sel = document.getElementById("langSelect");
+    if (!sel) return;
+    const languages = normalizeSeasonLanguages(data);
+    const currentValue = String(sel.value || "").trim().toLowerCase();
+    const base = [{ code: "ja", label: "JA" }, { code: "en", label: "EN" }];
+    const merged = [];
+    const seen = new Set();
+    [...base, ...languages].forEach((x) => {
+      const code = String(x?.code || "").trim().toLowerCase();
+      if (!code || seen.has(code)) return;
+      seen.add(code);
+      const label = String(x?.label || (code === "ja" ? "JA" : code === "en" ? "EN" : code.toUpperCase())).trim();
+      merged.push({ code, label });
+    });
+    sel.innerHTML = merged.map((x) => `<option value="${esc(x.code)}">${esc(x.label)}</option>`).join("");
+    const nextValue = merged.some((x) => x.code === currentValue) ? currentValue : merged[0].code;
+    sel.value = nextValue;
+    if (typeof applyUiLang === "function") applyUiLang();
+  }
+
+  function resetGlobalLangOptionsToDefault() {
+    const sel = document.getElementById("langSelect");
+    if (!sel) return;
+    const currentValue = String(sel.value || "").trim().toLowerCase();
+    sel.innerHTML = `<option value="ja">JA</option><option value="en">EN</option>`;
+    sel.value = (currentValue === "ja" || currentValue === "en") ? currentValue : "en";
+    if (typeof applyUiLang === "function") applyUiLang();
+  }
+
+  async function loadSeasonModData(selectedSeasonId) {
+    if (!seasonModCache) {
+      const index = await fetchJsonNoStore(`./data/season_mod/index.json?ts=${Date.now()}`);
+      const seasons = Array.isArray(index?.seasons) ? index.seasons : [];
+      if (!seasons.length) throw new Error("season list is empty");
+      seasonModCache = { index, dataBySeason: {} };
+    }
+    const index = seasonModCache.index;
     const seasons = Array.isArray(index?.seasons) ? index.seasons : [];
-    if (!seasons.length) throw new Error("season list is empty");
     const latestId = String(index?.latest || "").trim();
-    const current = seasons.find((s) => String(s?.id || "").trim() === latestId) || seasons[0];
-    const file = String(current?.file || "").trim();
-    if (!file) throw new Error("season file is missing");
-    const data = await fetchJsonNoStore(`./data/${file}?ts=${Date.now()}`);
-    seasonModCache = { index, current, data };
-    return seasonModCache;
+    const requestedId = String(selectedSeasonId || "").trim();
+    const current = seasons.find((s) => String(s?.id || "").trim() === requestedId)
+      || seasons.find((s) => String(s?.id || "").trim() === latestId)
+      || seasons[0];
+    const currentId = String(current?.id || "").trim();
+    if (!currentId) throw new Error("season id is missing");
+    if (!seasonModCache.dataBySeason[currentId]) {
+      const file = String(current?.file || "").trim();
+      if (!file) throw new Error("season file is missing");
+      const data = await fetchJsonNoStore(`./data/${file}?ts=${Date.now()}`);
+      seasonModCache.dataBySeason[currentId] = data;
+    }
+    const data = seasonModCache.dataBySeason[currentId];
+    return { index, current, data };
   }
 
   function moduleLabel(moduleKey) {
@@ -548,10 +613,7 @@
   }
 
   function passiveOptionLabel(mod) {
-    const lang = getLang();
-    const name = (lang === "ja")
-      ? (String(mod?.name_ja || "").trim() || String(mod?.name_en || "").trim())
-      : (String(mod?.name_en || "").trim() || String(mod?.name_ja || "").trim());
+    const name = textByLang(mod) || String(mod?.id || "");
     const group = passiveGroupLabel(mod?.group);
     return `${group} / ${name}`;
   }
@@ -663,9 +725,7 @@
     const passiveIdSet = new Set(passiveMods.map((m) => String(m?.id || "").trim()).filter(Boolean));
     const activeRows = activeMods.map((m, i) => {
       const icon = activeIconPath(seasonId, m);
-      const name = getLang() === "ja"
-        ? (String(m?.name_ja || "").trim() || String(m?.name_en || "").trim())
-        : (String(m?.name_en || "").trim() || String(m?.name_ja || "").trim());
+      const name = textByLang(m) || String(m?.id || "");
       const desc = renderActiveModifierDescriptionHtml(m, {
         activeId: String(m?.id || ""),
         activeLevel: 5,
@@ -699,8 +759,19 @@
     return `
       <section class="blueprint-view seasonmod-view">
         <section class="seasonmod-section seasonmod-section--simulator">
+          <label class="field seasonmod-field">
+            <span>${esc(ui.season)}</span>
+            <select id="seasonModSeasonSelect" class="seasonmod-select">
+              ${((payload?.index?.seasons) || []).map((s) => {
+                const sid = String(s?.id || "").trim();
+                const slabel = String(s?.label || sid).trim() || sid;
+                const selected = sid === seasonId ? " selected" : "";
+                return `<option value="${esc(sid)}"${selected}>${esc(slabel)}</option>`;
+              }).join("")}
+            </select>
+          </label>
           <div class="seasonmod-section__heading">
-            <h3 class="seasonmod-section__title">${esc(ui.sectionSimulator)}</h3>
+            <h3 class="seasonmod-section__title">${esc(`${seasonLabel} ${ui.sectionSimulator}`.trim())}</h3>
             <div class="seasonmod-section__heading-actions">
               <button id="seasonModShareBtn" type="button" class="btn btn--ghost seasonmod-share-btn" aria-label="${esc(ui.share)}" title="${esc(ui.share)}">
                 <svg class="seasonmod-share-btn__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
@@ -843,6 +914,7 @@
     document.body.classList.remove("seasonmod-modal-open");
     document.body.style.top = "";
     const activeEl = document.getElementById("seasonModActiveSelect");
+    const seasonEl = document.getElementById("seasonModSeasonSelect");
     const activeLvEl = document.getElementById("seasonModActiveLevel");
     const pickerOpenBtn = document.getElementById("seasonModPickerOpenBtn");
     const pickerModalEl = document.getElementById("seasonModPickerModal");
@@ -926,13 +998,34 @@
       "optimize_cooldown"
     ]);
 
+    if (seasonEl) {
+      seasonEl.addEventListener("change", () => {
+        const nextSeason = String(seasonEl.value || "").trim();
+        if (!nextSeason) return;
+        if (typeof replaceUrlParams === "function") replaceUrlParams({ [SEASON_MOD_URL_KEYS.season]: nextSeason });
+        else {
+          try {
+            const p = new URLSearchParams(window.location.search || "");
+            p.set(SEASON_MOD_URL_KEYS.season, nextSeason);
+            history.replaceState(null, "", `${window.location.pathname}?${p.toString()}${window.location.hash || ""}`);
+          } catch (_e) {
+            // ignore URL update failures
+          }
+        }
+        window.seasonModViewRender({ seasonId: nextSeason }).catch((err) => {
+          if (typeof setStatus === "function") setStatus(`${t().failed} ${err?.message || ""}`.trim());
+        });
+      });
+    }
+
     const loadPickerRows = async () => {
       if (Array.isArray(pickerState.rows)) return pickerState.rows;
       if (pickerState.loading) return [];
       pickerState.loading = true;
       try {
         const SQL = await initSql();
-        const gz = await fetchArrayBuffer(`./data/season_mod/y8s1_passive_patterns.db.gz?ts=${Date.now()}`);
+        const dbFile = String(seasonData?.passive_patterns_db || `${seasonId}_passive_patterns.db.gz`).trim();
+        const gz = await fetchArrayBuffer(`./data/season_mod/${dbFile}?ts=${Date.now()}`);
         const dbBytes = await gunzipToUint8Array(gz);
         const db = new SQL.Database(dbBytes);
         try {
@@ -1116,10 +1209,7 @@
     };
 
     const activeOptionLabel = (mod) => {
-      const lang = getLang();
-      const ja = String(mod?.name_ja || "").trim();
-      const en = String(mod?.name_en || "").trim();
-      return lang === "ja" ? (ja || en || mod?.id || "") : (en || ja || mod?.id || "");
+      return textByLang(mod) || String(mod?.id || "");
     };
 
     const buildActivePicker = (rootEl, inputEl) => {
@@ -1592,6 +1682,7 @@
 
     const writeStateToUrl = () => {
       const updates = {
+        [SEASON_MOD_URL_KEYS.season]: seasonId || null,
         [SEASON_MOD_URL_KEYS.active]: String(activeEl.value || "").trim() || null,
         [SEASON_MOD_URL_KEYS.level]: String(activeLvEl.value || "").trim() || null,
         [SEASON_MOD_URL_KEYS.passive1]: String(p1El.value || "").trim() || null,
@@ -1712,9 +1803,7 @@
       const activeDerivedRows = buildActiveDerivedRows(result.active_modifier_id, result.active_level, stacks, activeMode);
       const activeModDef = activeMap.get(String(result.active_modifier_id || activeEl.value || ""));
       const activeModName = activeModDef
-        ? (getLang() === "ja"
-          ? (String(activeModDef?.name_ja || "").trim() || String(activeModDef?.name_en || "").trim())
-          : (String(activeModDef?.name_en || "").trim() || String(activeModDef?.name_ja || "").trim()))
+        ? (textByLang(activeModDef) || String(activeModDef?.id || ""))
         : "-";
       const activeModDesc = activeModDef
         ? (renderActiveModifierDescriptionHtml(activeModDef, {
@@ -1935,11 +2024,20 @@
     writeStateToUrl();
   }
 
-  window.seasonModViewRender = async function seasonModViewRender() {
+  window.seasonModViewRender = async function seasonModViewRender(options) {
     const ui = t();
     if (typeof setStatus === "function") setStatus(ui.loading);
     try {
-      const payload = await loadSeasonModData();
+      let seasonIdFromUrl = "";
+      try {
+        const p = new URLSearchParams(window.location.search || "");
+        seasonIdFromUrl = String(p.get(SEASON_MOD_URL_KEYS.season) || "").trim();
+      } catch (_e) {
+        seasonIdFromUrl = "";
+      }
+      const requestedSeason = String(options?.seasonId || seasonIdFromUrl || "").trim();
+      const payload = await loadSeasonModData(requestedSeason);
+      setGlobalLangOptionsForSeason(payload?.data || {});
       setContentHtml(buildViewHtml(payload));
       bindSimulator(payload);
       if (typeof setStatus === "function") setStatus("");
@@ -1947,5 +2045,9 @@
       setContentHtml(`<section class="seasonmod-view"><p class="event-empty">${esc(ui.failed)}</p></section>`);
       if (typeof setStatus === "function") setStatus(`${ui.failed} ${err?.message || ""}`.trim());
     }
+  };
+
+  window.seasonModResetGlobalLangOptions = function seasonModResetGlobalLangOptions() {
+    resetGlobalLangOptionsToDefault();
   };
 })();
