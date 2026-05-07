@@ -69,198 +69,198 @@
     "stackSuffix": ""
   },
   "global_modifier": {
-    "name": "Recombinante"
+    "name": "TODO:Recombinant"
   },
   "active_modifiers": [
     {
       "id": "blackout_pulse",
-      "name": "Pulso Blackout",
-      "desc": "Ative para liberar um pulso EMP que destrói dispositivos inimigos e causa choque em todos os inimigos em um raio de 35 m (base de 10 m, mais 0,5 m por acúmulo de Ataque).",
-      "desc_template": "Ative para liberar um pulso EMP que destrói dispositivos inimigos e causa choque em todos os inimigos dentro de {{emp_radius}} (base de 10 m, mais 0,5 m por acúmulo de Ataque)."
+      "name": "TODO:Blackout Pulse",
+      "desc": "TODO:Activate to release an EMP pulse that destroys enemy gadgets and shocks all enemies in a radius (10m base, plus 0.5m per Offensive stack).",
+      "desc_template": "TODO:Activate to release an EMP pulse that destroys enemy gadgets and shocks all enemies within {{emp_radius}} (10m base, plus 0.5m per Offensive stack)."
     },
     {
       "id": "cloud_armor",
-      "name": "Armadura de Nuvem",
-      "desc": "Ative para reparar a sua armadura e a de aliados em um raio de 10 m, a uma taxa total de 7% de Armadura por segundo (base de 5%, mais 0,2% por acúmulo de Defesa). Esse efeito dura 10 segundos no total.",
-      "desc_template": "Ative para reparar a sua armadura e a de aliados em um raio de 10 m, a uma taxa total de {{repair_per_sec}} de Armadura por segundo (base de 5%, mais 0,2% por acúmulo de Defesa). Esse efeito dura 10 segundos no total."
+      "name": "TODO:Cloud Armor",
+      "desc": "TODO:Activate to repair armor for yourself and allies inside a 10m radius, at a rate of total Armor/second (5% base, plus 0.2% per Defensive stack). This effect lasts for a total of 10 seconds.",
+      "desc_template": "TODO:Activate to repair armor for yourself and allies inside a 10m radius, at a rate of {{repair_per_sec}} total Armor/second (5% base, plus 0.2% per Defensive stack). This effect lasts for a total of 10 seconds."
     },
     {
       "id": "optimize_overload",
-      "name": "Otimizar / Sobrecarga",
-      "desc": "Ative para reduzir os tempos de recarga das suas habilidades ativas em 38,0% (base de 30%, mais 0,8% por acúmulo de Utilitário).",
-      "desc_template": "Ative para reduzir os tempos de recarga das suas habilidades ativas em {{skill_cdr}} (base de 30%, mais 0,8% por acúmulo de Utilitário)."
+      "name": "TODO:Optimize / Overload",
+      "desc": "TODO:Activate to reduce your active skill cooldowns (30% base, plus 0.8% per Utility stack).",
+      "desc_template": "TODO:Activate to reduce your active skill cooldowns by {{skill_cdr}} (30% base, plus 0.8% per Utility stack)."
     }
   ],
   "passive_modifiers": [
     {
       "id": "offense_amplify",
-      "name": "Amplificar",
-      "desc": "Aumenta os acúmulos de Ataque em 5."
+      "name": "TODO:Amplify",
+      "desc": "TODO:Increase Offense stacks by 5."
     },
     {
       "id": "offense_consume",
-      "name": "Consumir",
-      "desc": "Aumenta os acúmulos de Ataque em 10 e reduz os acúmulos de Defesa e Utilitário em 5 cada."
+      "name": "TODO:Consume",
+      "desc": "TODO:Increase Offense stacks by 10, decrease Defense and Utility stacks by 5 each."
     },
     {
       "id": "offense_saturate",
-      "name": "Saturar",
-      "desc": "Aumenta os acúmulos de Ataque em 25. Porém, os acúmulos de Ataque deixam de afetar Manuseio de Arma, Dano de Tiro na Cabeça e Tamanho do Carregador."
+      "name": "TODO:Saturate",
+      "desc": "TODO:Increase Offense stacks by 25, but Offense stacks no longer affect Weapon Handling, Headshot Damage, or Magazine Size."
     },
     {
       "id": "offense_pivot",
-      "name": "Pivotar",
-      "desc": "Aumenta os acúmulos do módulo mais baixo em 15 e reduz os acúmulos de Ataque em 10. Se Ataque for o mais baixo, ou se Defesa e Utilitário estiverem empatados como os mais baixos, nada acontece."
+      "name": "TODO:Pivot",
+      "desc": "TODO:Increase the lowest module stacks by 15, decrease Offense stacks by 10. If Offense is lowest, or Defense and Utility tie for lowest, nothing happens."
     },
     {
       "id": "offense_split",
-      "name": "Dividir",
-      "desc": "Reduz os acúmulos de Ataque em 15 e aumenta os acúmulos de Defesa e Utilitário em 10 cada."
+      "name": "TODO:Split",
+      "desc": "TODO:Decrease Offense stacks by 15, increase Defense and Utility stacks by 10 each."
     },
     {
       "id": "offense_compress",
-      "name": "Comprimir",
-      "desc": "Reduz os acúmulos de Ataque em 10. Porém, ao calcular atributos afetados, o efeito de cada acúmulo de Ataque é aumentado em 50%."
+      "name": "TODO:Compress",
+      "desc": "TODO:Decrease Offense stacks by 10, but each Offense stack is 50% more potent when calculating affected stats."
     },
     {
       "id": "offense_convert_1",
-      "name": "Converter 1",
-      "desc": "Os acúmulos de Ataque deixam de afetar Manuseio de Arma; em vez disso, aumentam o Dano de Tiro na Cabeça em 3% por acúmulo de Ataque."
+      "name": "TODO:Convert 1",
+      "desc": "TODO:Offense stacks no longer affect Weapon Handling; instead they increase Headshot Damage at 3% per Offense stack."
     },
     {
       "id": "offense_convert_2",
-      "name": "Converter 2",
-      "desc": "Os acúmulos de Ataque deixam de afetar Manuseio de Arma; em vez disso, aumentam o Tamanho do Carregador em 1% por acúmulo de Ataque."
+      "name": "TODO:Convert 2",
+      "desc": "TODO:Offense stacks no longer affect Weapon Handling; instead they increase Magazine Size at 1% per Offense stack."
     },
     {
       "id": "offense_stabilize",
-      "name": "Estabilizar",
-      "desc": "Os acúmulos de Ataque ficam fixos e não podem mudar. Aumentos no valor base ao subir o nível do Pulso Blackout ainda são aplicados."
+      "name": "TODO:Stabilize",
+      "desc": "TODO:Offense stacks are locked and cannot change. Their base value may still increase by leveling up Blackout Pulse."
     },
     {
       "id": "offense_invert",
-      "name": "Inverter",
-      "desc": "Troca os acúmulos de Ataque com os acúmulos do módulo atualmente mais alto. Se Ataque já for o mais alto, ou se Defesa e Utilitário estiverem empatados como os mais altos, nada acontece."
+      "name": "TODO:Invert",
+      "desc": "TODO:Swap Offense stacks with the current highest module stacks. If Offense is already highest, or Defense and Utility tie for highest, nothing happens."
     },
     {
       "id": "defense_amplify",
-      "name": "Amplificar",
-      "desc": "Aumenta os acúmulos de Defesa em 5."
+      "name": "TODO:Amplify",
+      "desc": "TODO:Increase Defense stacks by 5."
     },
     {
       "id": "defense_consume",
-      "name": "Consumir",
-      "desc": "Aumenta os acúmulos de Defesa em 10 e reduz os acúmulos de Ataque e Utilitário em 5 cada."
+      "name": "TODO:Consume",
+      "desc": "TODO:Increase Defense stacks by 10, decrease Offense and Utility stacks by 5 each."
     },
     {
       "id": "defense_saturate",
-      "name": "Saturar",
-      "desc": "Aumenta os acúmulos de Defesa em 25. Porém, os acúmulos de Defesa deixam de afetar Armadura, Proteção contra Elites e Proteção contra Perigos."
+      "name": "TODO:Saturate",
+      "desc": "TODO:Increase Defense stacks by 25, but Defense stacks no longer affect Armor, Protection from Elites, or Hazard Protection."
     },
     {
       "id": "defense_pivot",
-      "name": "Pivotar",
-      "desc": "Aumenta os acúmulos do módulo mais baixo em 15 e reduz os acúmulos de Defesa em 10. Se Defesa for o mais baixo, ou se Ataque e Utilitário estiverem empatados como os mais baixos, nada acontece."
+      "name": "TODO:Pivot",
+      "desc": "TODO:Increase the lowest module stacks by 15, decrease Defense stacks by 10. If Defense is lowest, or Offense and Utility tie for lowest, nothing happens."
     },
     {
       "id": "defense_split",
-      "name": "Dividir",
-      "desc": "Reduz os acúmulos de Defesa em 15 e aumenta os acúmulos de Ataque e Utilitário em 10 cada."
+      "name": "TODO:Split",
+      "desc": "TODO:Decrease Defense stacks by 15, increase Offense and Utility stacks by 10 each."
     },
     {
       "id": "defense_compress",
-      "name": "Comprimir",
-      "desc": "Reduz os acúmulos de Defesa em 10. Porém, ao calcular atributos afetados, o efeito de cada acúmulo de Defesa é aumentado em 50%."
+      "name": "TODO:Compress",
+      "desc": "TODO:Decrease Defense stacks by 10, but each Defense stack is 50% more potent when calculating affected stats."
     },
     {
       "id": "defense_convert_1",
-      "name": "Converter 1",
-      "desc": "Os acúmulos de Defesa deixam de afetar Armadura; em vez disso, aumentam a Proteção contra Elites em 0,5% por acúmulo de Defesa."
+      "name": "TODO:Convert 1",
+      "desc": "TODO:Defense stacks no longer affect Armor; instead they increase Protection from Elites at 0.5% per Defense stack."
     },
     {
       "id": "defense_convert_2",
-      "name": "Converter 2",
-      "desc": "Os acúmulos de Defesa deixam de afetar Armadura; em vez disso, aumentam a Proteção contra Perigos em 1% por acúmulo de Defesa."
+      "name": "TODO:Convert 2",
+      "desc": "TODO:Defense stacks no longer affect Armor; instead they increase Hazard Protection at 1% per Defense stack."
     },
     {
       "id": "defense_stabilize",
-      "name": "Estabilizar",
-      "desc": "Os acúmulos de Defesa ficam fixos e não podem mudar. Aumentos no valor base ao subir o nível da Armadura de Nuvem ainda são aplicados."
+      "name": "TODO:Stabilize",
+      "desc": "TODO:Defense stacks are locked and cannot change. Their base value may still increase by leveling up Cloud Armor."
     },
     {
       "id": "defense_invert",
-      "name": "Inverter",
-      "desc": "Troca os acúmulos de Defesa com os acúmulos do módulo atualmente mais alto. Se Defesa já for o mais alto, ou se Ataque e Utilitário estiverem empatados como os mais altos, nada acontece."
+      "name": "TODO:Invert",
+      "desc": "TODO:Swap Defense stacks with the current highest module stacks. If Defense is already highest, or Offense and Utility tie for highest, nothing happens."
     },
     {
       "id": "utility_amplify",
-      "name": "Amplificar",
-      "desc": "Aumenta os acúmulos de Utilitário em 5."
+      "name": "TODO:Amplify",
+      "desc": "TODO:Increase Utility stacks by 5."
     },
     {
       "id": "utility_consume",
-      "name": "Consumir",
-      "desc": "Aumenta os acúmulos de Utilitário em 10 e reduz os acúmulos de Ataque e Defesa em 5 cada."
+      "name": "TODO:Consume",
+      "desc": "TODO:Increase Utility stacks by 10, decrease Offense and Defense stacks by 5 each."
     },
     {
       "id": "utility_saturate",
-      "name": "Saturar",
-      "desc": "Aumenta os acúmulos de Utilitário em 25. Porém, os acúmulos de Utilitário deixam de afetar Dano de Habilidade, Reparo de Habilidade e Efeitos de Status."
+      "name": "TODO:Saturate",
+      "desc": "TODO:Increase Utility stacks by 25, but Utility stacks no longer affect Skill Damage, Skill Repair, or Status Effects."
     },
     {
       "id": "utility_pivot",
-      "name": "Pivotar",
-      "desc": "Aumenta os acúmulos do módulo mais baixo em 15 e reduz os acúmulos de Utilitário em 10. Se Utilitário for o mais baixo, ou se Ataque e Defesa estiverem empatados como os mais baixos, nada acontece."
+      "name": "TODO:Pivot",
+      "desc": "TODO:Increase the lowest module stacks by 15, decrease Utility stacks by 10. If Utility is lowest, or Offense and Defense tie for lowest, nothing happens."
     },
     {
       "id": "utility_split",
-      "name": "Dividir",
-      "desc": "Reduz os acúmulos de Utilitário em 15 e aumenta os acúmulos de Ataque e Defesa em 10 cada."
+      "name": "TODO:Split",
+      "desc": "TODO:Decrease Utility stacks by 15, increase Offense and Defense stacks by 10 each."
     },
     {
       "id": "utility_compress",
-      "name": "Comprimir",
-      "desc": "Reduz os acúmulos de Utilitário em 10. Porém, ao calcular atributos afetados, o efeito de cada acúmulo de Utilitário é aumentado em 50%."
+      "name": "TODO:Compress",
+      "desc": "TODO:Decrease Utility stacks by 10, but each Utility stack is 50% more potent when calculating affected stats."
     },
     {
       "id": "utility_convert_1",
-      "name": "Converter 1",
-      "desc": "Os acúmulos de Utilitário deixam de afetar Dano de Habilidade; em vez disso, aumentam o Reparo de Habilidade em 1% por acúmulo de Utilitário."
+      "name": "TODO:Convert 1",
+      "desc": "TODO:Utility stacks no longer affect Skill Damage; instead they increase Skill Repair at 1% per Utility stack."
     },
     {
       "id": "utility_convert_2",
-      "name": "Converter 2",
-      "desc": "Os acúmulos de Utilitário deixam de afetar Dano de Habilidade; em vez disso, aumentam os Efeitos de Status em 1% por acúmulo de Utilitário."
+      "name": "TODO:Convert 2",
+      "desc": "TODO:Utility stacks no longer affect Skill Damage; instead they increase Status Effects at 1% per Utility stack."
     },
     {
       "id": "utility_stabilize",
-      "name": "Estabilizar",
-      "desc": "Os acúmulos de Utilitário ficam fixos e não podem mudar. Aumentos no valor base ao subir o nível de Otimizar / Sobrecarga ainda são aplicados."
+      "name": "TODO:Stabilize",
+      "desc": "TODO:Utility stacks are locked and cannot change. Their base value may still increase by leveling up Optimize/Overload."
     },
     {
       "id": "utility_invert",
-      "name": "Inverter",
-      "desc": "Troca os acúmulos de Utilitário com os acúmulos do módulo atualmente mais alto. Se Utilitário já for o mais alto, ou se Ataque e Defesa estiverem empatados como os mais altos, nada acontece."
+      "name": "TODO:Invert",
+      "desc": "TODO:Swap Utility stacks with the current highest module stacks. If Utility is already highest, or Offense and Defense tie for highest, nothing happens."
     },
     {
       "id": "wildcard_cascade",
-      "name": "Cascata",
-      "desc": "Atributos e MODs ativos deixam de ser afetados pelos acúmulos do módulo mais alto, mas metade desse valor é adicionada a cada um dos outros dois módulos. Se dois ou mais módulos estiverem empatados como os mais altos, nada acontece."
+      "name": "TODO:Cascade",
+      "desc": "TODO:Stats and Active Modifiers are no longer affected by the highest module stacks, but half of that value is added to each of the other two modules. If two or more modules tie for highest, nothing happens."
     },
     {
       "id": "wildcard_converge",
-      "name": "Convergir",
-      "desc": "Aumenta os acúmulos do módulo mais baixo pela média dos outros dois acúmulos e, ao mesmo tempo, define esses dois acúmulos como 0. Se dois ou mais módulos estiverem empatados como os mais baixos, nada acontece."
+      "name": "TODO:Converge",
+      "desc": "TODO:Increase the lowest module stacks by the average of the other two stacks, but set those two stacks to 0. If two or more modules tie for lowest, nothing happens."
     },
     {
       "id": "wildcard_equalize",
-      "name": "Equalizar",
-      "desc": "Todos os acúmulos de módulo ficam iguais ao valor acumulado mediano. Se o valor mediano for igual ao valor mais alto ou ao mais baixo, nada acontece."
+      "name": "TODO:Equalize",
+      "desc": "TODO:All module stacks become equal to the middle-value stack. If the middle-value stack equals either highest or lowest, nothing happens."
     },
     {
       "id": "wildcard_nullify",
-      "name": "Anular",
-      "desc": "Inverte as mudanças de valor aplicadas aos acúmulos do módulo mais baixo (adições viram subtrações e vice-versa). MODs de Inverter não são afetados."
+      "name": "TODO:Nullify",
+      "desc": "TODO:Reverse value changes that have been applied to the lowest module stacks (additions become subtractions and vice versa). Invert modifiers are not affected."
     }
   ]
 }
