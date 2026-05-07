@@ -226,6 +226,16 @@
             "Aces & Eights",
             "Hana-U Corporation"
           ]
+        },
+        {
+          "day": "2026-05-07",
+          "target_loot": [
+            "Petrov Defense Group",
+            "Urban Lookout",
+            "True Patriot",
+            "Breaking Point",
+            "Providence Defense"
+          ]
         }
       ]
     }
