@@ -4,7 +4,11 @@
     {
       "id": "y8s1",
       "label": "Y8S1",
-      "file": "season_mod/y8s1_modifiers.json"
+      "file": "season_mod/y8s1_modifiers.json",
+      "lang_files": {
+        "ja": "season_mod/y8s1_modifiers_ja.json",
+        "pt": "season_mod/y8s1_modifiers_pt.json"
+      }
     }
   ]
 }

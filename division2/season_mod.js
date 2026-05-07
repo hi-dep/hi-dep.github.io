@@ -1,6 +1,7 @@
 /* season_mod-specific view logic */
 (function () {
   let seasonModCache = null;
+  let seasonModUi = {};
   const SEASON_MOD_URL_KEYS = Object.freeze({
     season: "sm_season",
     active: "sm_active",
@@ -18,66 +19,13 @@
   }
 
   function t() {
-    const ja = getLang() === "ja";
-    return {
-      loading: ja ? "シーズンMOD情報を読み込み中..." : "Loading season modifier data...",
-      failed: ja ? "シーズンMOD情報の取得に失敗しました。" : "Failed to load season modifier data.",
-      noData: ja ? "データなし" : "No Data",
-      sectionSimulator: ja ? "シミュレータ" : "Simulator",
-      sectionActive: ja ? "アクティブMODリスト" : "Active Modifier List",
-      sectionPassive: ja ? "パッシブMODリスト" : "Passive Modifier List",
-      season: ja ? "シーズン" : "Season",
-      globalModifier: ja ? "グローバルMOD" : "Global Modifier",
-      activeModifier: ja ? "アクティブMOD" : "Active Modifier",
-      activeLevel: ja ? "アクティブレベル" : "Active Level",
-      picker: ja ? "候補選択" : "Candidate Picker",
-      share: ja ? "共有" : "Share",
-      pickerAddTrait: ja ? "指定特性" : "Target Trait",
-      pickerAdd: ja ? "追加" : "Add",
-      pickerConds: ja ? "条件" : "Conditions",
-      pickerNoCond: ja ? "条件なし" : "No Conditions",
-      pickerCandidates: ja ? "候補件数" : "Candidates",
-      pickerClose: ja ? "閉じる" : "Close",
-      passiveSlot1: ja ? "パッシブMOD" : "Passive MOD",
-      passiveSlot2: ja ? "パッシブMOD" : "Passive MOD",
-      passiveSlot3: ja ? "パッシブMOD" : "Passive MOD",
-      none: ja ? "なし" : "None",
-      result: ja ? "結果" : "Result",
-      module: ja ? "モジュール" : "Module",
-      base: ja ? "基礎値" : "Base",
-      final: ja ? "最終値" : "Final",
-      delta: ja ? "差分" : "Delta",
-      offense: ja ? "攻撃" : "Offense",
-      defense: ja ? "防衛" : "Defense",
-      utility: ja ? "ユーティリティ" : "Utility",
-      dropped: ja ? "装備上限により除外" : "Dropped (slot limit)",
-      duplicated: ja ? "重複により除外" : "Dropped (duplicate)",
-      cooldown: ja ? "クールダウン" : "Cooldown",
-      desc: ja ? "説明" : "Description",
-      group: ja ? "グループ" : "Group",
-      name: ja ? "名称" : "Name",
-      icon: ja ? "アイコン" : "Icon",
-      orderApplied: ja ? "適用順" : "Apply Order",
-      activeDerived: ja ? "アクティブ効果(現在値)" : "Active Effect (Current)"
-      , formula: ja ? "計算式" : "Formula"
-      , moduleStacks: ja ? "モジュール累積" : "Module Stacks"
-      , stackValue: ja ? "累積値" : "Stacks"
-      , buffEffect: ja ? "効果" : "Effect"
-      , levelEffects: ja ? "レベル効果" : "Level Effects"
-      , perStack: ja ? "1累積ごと" : "per stack"
-      , noStatBuff: ja ? "ステータス補正なし" : "No stat buff"
-      , selectedMods: ja ? "選択中MOD" : "Selected Mods"
-      , passiveMods: ja ? "パッシブMOD" : "Passive MOD"
-      , slot: ja ? "スロット" : "Slot"
-      , mod: ja ? "MOD" : "MOD"
-      , effect: ja ? "効果" : "Effect"
-      , empRadius: ja ? "EMP範囲" : "EMP Radius"
-      , repairPerSec: ja ? "回復 / 秒" : "Repair / sec"
-      , skillCdr: ja ? "スキルクールダウン削減" : "Skill Cooldown Reduction"
-      , pulseDuration: ja ? "Pulse持続時間" : "Pulse Duration"
-      , blindDuration: ja ? "視聴覚持続時間" : "Blind Duration"
-      , overchargeDuration: ja ? "オーバーチャージ持続時間" : "Overcharge Duration"
-    };
+    return seasonModUi || {};
+  }
+
+  function uiText(key, fallback) {
+    const v = t()[key];
+    if (v == null || v === "") return String(fallback == null ? key : fallback);
+    return String(v);
   }
 
   function esc(s) {
@@ -133,6 +81,7 @@
       const v = obj[lang]
         || obj.en
         || obj.ja
+        || obj.name
         || obj[`name_${lang}`]
         || obj.name_en
         || obj.name_ja
@@ -148,7 +97,7 @@
     return res.json();
   }
 
-  function normalizeSeasonLanguages(data) {
+  function normalizeSeasonLanguages(data, seasonConfig) {
     const src = Array.isArray(data?.languages) ? data.languages : [];
     const out = [];
     const seen = new Set();
@@ -167,13 +116,21 @@
       out.push({ code, label: label || defaultLabel });
     });
     if (!out.length) return [{ code: "ja", label: "JA" }, { code: "en", label: "EN" }];
+    const langFiles = (seasonConfig && typeof seasonConfig.lang_files === "object" && seasonConfig.lang_files) ? seasonConfig.lang_files : {};
+    Object.keys(langFiles).forEach((codeRaw) => {
+      const code = String(codeRaw || "").trim().toLowerCase();
+      if (!code || seen.has(code)) return;
+      seen.add(code);
+      const defaultLabel = (code === "ja") ? "JA" : (code === "en" ? "EN" : code.toUpperCase());
+      out.push({ code, label: defaultLabel });
+    });
     return out;
   }
 
-  function setGlobalLangOptionsForSeason(data) {
+  function setGlobalLangOptionsForSeason(data, seasonConfig) {
     const sel = document.getElementById("langSelect");
     if (!sel) return;
-    const languages = normalizeSeasonLanguages(data);
+    const languages = normalizeSeasonLanguages(data, seasonConfig);
     const currentValue = String(sel.value || "").trim().toLowerCase();
     const base = [{ code: "ja", label: "JA" }, { code: "en", label: "EN" }];
     const merged = [];
@@ -200,12 +157,45 @@
     if (typeof applyUiLang === "function") applyUiLang();
   }
 
+  function deepMergeSeasonData(baseValue, patchValue) {
+    if (patchValue == null) return baseValue;
+    if (Array.isArray(baseValue) && Array.isArray(patchValue)) {
+      const patchById = new Map();
+      let allPatchHaveId = patchValue.length > 0;
+      patchValue.forEach((it) => {
+        const id = String(it?.id || "").trim();
+        if (!id) allPatchHaveId = false;
+        else patchById.set(id, it);
+      });
+      if (allPatchHaveId) {
+        const out = (baseValue || []).map((it) => {
+          const id = String(it?.id || "").trim();
+          if (!id || !patchById.has(id)) return it;
+          const merged = deepMergeSeasonData(it, patchById.get(id));
+          patchById.delete(id);
+          return merged;
+        });
+        patchById.forEach((v) => out.push(v));
+        return out;
+      }
+      return patchValue;
+    }
+    if (baseValue && typeof baseValue === "object" && patchValue && typeof patchValue === "object" && !Array.isArray(baseValue) && !Array.isArray(patchValue)) {
+      const out = { ...baseValue };
+      Object.keys(patchValue).forEach((k) => {
+        out[k] = deepMergeSeasonData(baseValue[k], patchValue[k]);
+      });
+      return out;
+    }
+    return patchValue;
+  }
+
   async function loadSeasonModData(selectedSeasonId) {
     if (!seasonModCache) {
       const index = await fetchJsonNoStore(`./data/season_mod/index.json?ts=${Date.now()}`);
       const seasons = Array.isArray(index?.seasons) ? index.seasons : [];
       if (!seasons.length) throw new Error("season list is empty");
-      seasonModCache = { index, dataBySeason: {} };
+      seasonModCache = { index, rawBySeason: {}, patchBySeasonLang: {}, mergedBySeasonLang: {} };
     }
     const index = seasonModCache.index;
     const seasons = Array.isArray(index?.seasons) ? index.seasons : [];
@@ -216,13 +206,31 @@
       || seasons[0];
     const currentId = String(current?.id || "").trim();
     if (!currentId) throw new Error("season id is missing");
-    if (!seasonModCache.dataBySeason[currentId]) {
-      const file = String(current?.file || "").trim();
-      if (!file) throw new Error("season file is missing");
-      const data = await fetchJsonNoStore(`./data/${file}?ts=${Date.now()}`);
-      seasonModCache.dataBySeason[currentId] = data;
+    const rawFile = String(current?.file || "").trim();
+    if (!rawFile) throw new Error("season file is missing");
+    if (!seasonModCache.rawBySeason[currentId]) {
+      const rawData = await fetchJsonNoStore(`./data/${rawFile}?ts=${Date.now()}`);
+      seasonModCache.rawBySeason[currentId] = rawData;
     }
-    const data = seasonModCache.dataBySeason[currentId];
+    const lang = String(getLang() || "").trim().toLowerCase();
+    const effectiveLang = lang || "en";
+    const mergedKey = `${currentId}::${effectiveLang}`;
+    if (!seasonModCache.mergedBySeasonLang[mergedKey]) {
+      let merged = seasonModCache.rawBySeason[currentId];
+      const langFiles = (current && typeof current.lang_files === "object" && current.lang_files) ? current.lang_files : {};
+      if (effectiveLang !== "en") {
+        const patchRel = String(langFiles[effectiveLang] || "").trim();
+        if (patchRel) {
+          const patchKey = `${currentId}::${effectiveLang}`;
+          if (!seasonModCache.patchBySeasonLang[patchKey]) {
+            seasonModCache.patchBySeasonLang[patchKey] = await fetchJsonNoStore(`./data/${patchRel}?ts=${Date.now()}`);
+          }
+          merged = deepMergeSeasonData(merged, seasonModCache.patchBySeasonLang[patchKey]);
+        }
+      }
+      seasonModCache.mergedBySeasonLang[mergedKey] = merged;
+    }
+    const data = seasonModCache.mergedBySeasonLang[mergedKey];
     return { index, current, data };
   }
 
@@ -236,12 +244,11 @@
   }
 
   function passiveGroupLabel(groupKey) {
-    const lang = getLang();
     const k = nk(groupKey);
-    if (k === "offense") return lang === "ja" ? "攻撃" : "Offense";
-    if (k === "defense") return lang === "ja" ? "防衛" : "Defense";
-    if (k === "utility") return lang === "ja" ? "ユーティリティ" : "Utility";
-    if (k === "wildcard") return lang === "ja" ? "ワイルドカード" : "Wildcard";
+    if (k === "offense") return uiText("offense", "Offense");
+    if (k === "defense") return uiText("defense", "Defense");
+    if (k === "utility") return uiText("utility", "Utility");
+    if (k === "wildcard") return uiText("wildcard", "Wildcard");
     return String(groupKey || "");
   }
 
@@ -326,55 +333,37 @@
     return `./img/season/${seasonId}/${file}`;
   }
 
-  function activeNameById(activeId) {
-    const ja = getLang() === "ja";
-    const k = nk(activeId);
-    if (k === "blackoutpulse") return ja ? "ブラックアウトPulse" : "Blackout Pulse";
-    if (k === "cloudarmor") return ja ? "クラウドアーマー" : "Cloud Armor";
-    if (k === "optimizeoverload") return ja ? "最適化/オーバーロード" : "Optimize / Overload";
-    return String(activeId || "");
-  }
-
   function formatLevelEffectText(effect) {
     if (!effect || typeof effect !== "object") return "";
-    const ja = getLang() === "ja";
-    const t = String(effect.type || "");
-    if (t === "increase_all_base_module_stacks") {
+    const type = String(effect.type || "");
+    if (type === "increase_all_base_module_stacks") {
       const v = Number(effect.value || 0);
-      return ja ? `全モジュールの基礎累積値+${v}` : `All base module stacks +${v}`;
+      return `${uiText("levelIncreaseBaseStacks", "All base module stacks +")}${v}`;
     }
-    if (t === "cooldown_reduction") {
+    if (type === "cooldown_reduction") {
       const v = Number(effect.value_seconds_per_stack || 0);
       const m = moduleLabel(effect.stack_source_module);
-      return ja
-        ? `クールダウン短縮: ${m}${v ? `1累積ごとに${v}秒` : ""}`
-        : `Cooldown reduction: ${v}s per ${m} stack`;
+      return `${uiText("cooldownReductionPrefix", "Cooldown reduction:")} ${v}s ${uiText("perStackByModule", "per")} ${m} ${uiText("stackSuffix", "stack")}`;
     }
-    if (t === "pulse_duration_bonus") {
+    if (type === "pulse_duration_bonus") {
       const b = Number(effect.base_seconds || 0);
       const v = Number(effect.value_seconds_per_stack || 0);
       const m = moduleLabel(effect.stack_source_module);
-      return ja
-        ? `Pulse持続時間: 基本${b}秒 + ${m}1累積ごとに${v}秒`
-        : `Pulse Duration: ${b}s base + ${v}s per ${m} stack`;
+      return `${uiText("pulseDuration", "Pulse Duration")}: ${b}s + ${v}s/${m}`;
     }
-    if (t === "blind_duration_bonus") {
+    if (type === "blind_duration_bonus") {
       const b = Number(effect.base_seconds || 0);
       const v = Number(effect.value_seconds_per_stack || 0);
       const m = moduleLabel(effect.stack_source_module);
-      return ja
-        ? `視聴覚持続時間: 基本${b}秒 + ${m}1累積ごとに${v}秒`
-        : `Blind Duration: ${b}s base + ${v}s per ${m} stack`;
+      return `${uiText("blindDuration", "Blind Duration")}: ${b}s + ${v}s/${m}`;
     }
-    if (t === "overcharge_duration_bonus") {
+    if (type === "overcharge_duration_bonus") {
       const b = Number(effect.base_seconds || 0);
       const v = Number(effect.value_seconds_per_stack || 0);
       const m = moduleLabel(effect.stack_source_module);
-      return ja
-        ? `オーバーチャージ持続時間: 基本${b}秒 + ${m}1累積ごとに${v}秒`
-        : `Overcharge Duration: ${b}s base + ${v}s per ${m} stack`;
+      return `${uiText("overchargeDuration", "Overcharge Duration")}: ${b}s + ${v}s/${m}`;
     }
-    return t;
+    return type;
   }
 
   function buildActiveLevelEffectsHtml(mod) {
@@ -395,8 +384,7 @@
 
   function fmtUnitValue(v, unit, digits) {
     const u = String(unit || "");
-    const ja = getLang() === "ja";
-    const renderedUnit = ja && u === "s" ? "秒" : u;
+    const renderedUnit = u === "s" ? uiText("unitSecond", "s") : u;
     return `${fmtNumber(v, digits)}${renderedUnit}`;
   }
 
@@ -1611,7 +1599,7 @@
       shareBtn.addEventListener("click", async () => {
         const ok = await copySeasonModUrl();
         if (typeof setStatus === "function") {
-          setStatus(ok ? (getLang() === "ja" ? "URLをコピーしました。" : "URL copied.") : (getLang() === "ja" ? "URLのコピーに失敗しました。" : "Failed to copy URL."));
+          setStatus(ok ? uiText("copyUrlSuccess", "URL copied.") : uiText("copyUrlFailed", "Failed to copy URL."));
         }
       });
     }
@@ -2037,7 +2025,10 @@
       }
       const requestedSeason = String(options?.seasonId || seasonIdFromUrl || "").trim();
       const payload = await loadSeasonModData(requestedSeason);
-      setGlobalLangOptionsForSeason(payload?.data || {});
+      seasonModUi = (payload && payload.data && payload.data.ui && typeof payload.data.ui === "object")
+        ? payload.data.ui
+        : {};
+      setGlobalLangOptionsForSeason(payload?.data || {}, payload?.current || {});
       setContentHtml(buildViewHtml(payload));
       bindSimulator(payload);
       if (typeof setStatus === "function") setStatus("");

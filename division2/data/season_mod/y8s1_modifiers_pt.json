@@ -1,0 +1,266 @@
+{
+  "season_id": "y8s1",
+  "lang": "pt",
+  "ui": {
+    "loading": "Carregando dados de MODs da temporada...",
+    "failed": "Falha ao carregar dados de MODs da temporada.",
+    "noData": "Sem dados",
+    "sectionSimulator": "Simulador",
+    "sectionActive": "Lista de MODs ativos",
+    "sectionPassive": "Lista de MODs passivos",
+    "season": "Temporada",
+    "globalModifier": "MOD global",
+    "activeModifier": "MOD ativo",
+    "activeLevel": "Nível ativo",
+    "picker": "Seleção de candidatos",
+    "share": "Compartilhar",
+    "pickerAddTrait": "Característica especificada",
+    "pickerAdd": "Adicionar",
+    "pickerConds": "Condições",
+    "pickerNoCond": "Sem condições",
+    "pickerCandidates": "Número de candidatos",
+    "pickerClose": "Fechar",
+    "passiveSlot1": "MOD passivo",
+    "passiveSlot2": "MOD passivo",
+    "passiveSlot3": "MOD passivo",
+    "none": "Nenhum",
+    "result": "Resultado",
+    "module": "Módulo",
+    "base": "Base",
+    "final": "Final",
+    "delta": "Diferença",
+    "offense": "Ataque",
+    "defense": "Defesa",
+    "utility": "Utilitário",
+    "wildcard": "Curinga",
+    "dropped": "Excluído pelo limite de equipamento",
+    "duplicated": "Excluído por duplicidade",
+    "cooldown": "Recarga",
+    "desc": "Descrição",
+    "group": "Grupo",
+    "name": "Nome",
+    "icon": "Ícone",
+    "orderApplied": "Ordem de aplicação",
+    "activeDerived": "Efeito ativo (valor atual)",
+    "formula": "Fórmula",
+    "moduleStacks": "Acúmulos de módulo",
+    "stackValue": "Valor acumulado",
+    "buffEffect": "Efeito",
+    "levelEffects": "Efeitos de nível",
+    "perStack": "Por acúmulo",
+    "noStatBuff": "Sem bônus de atributo",
+    "selectedMods": "MODs selecionados",
+    "passiveMods": "MODs passivos",
+    "slot": "Slot",
+    "mod": "MOD",
+    "effect": "Efeito",
+    "empRadius": "Raio do EMP",
+    "repairPerSec": "Reparo / s",
+    "skillCdr": "Redução da recarga de habilidades",
+    "pulseDuration": "Duração do pulso",
+    "blindDuration": "Duração da cegueira",
+    "overchargeDuration": "Duração da Sobrecarga",
+    "copyUrlSuccess": "URL copiada.",
+    "copyUrlFailed": "Falha ao copiar URL.",
+    "unitSecond": "s",
+    "levelIncreaseBaseStacks": "Acúmulos base de todos os módulos +",
+    "cooldownReductionPrefix": "Redução de recarga:",
+    "perStackByModule": "por acúmulo de",
+    "stackSuffix": ""
+  },
+  "global_modifier": {
+    "name": "Recombinante"
+  },
+  "active_modifiers": [
+    {
+      "id": "blackout_pulse",
+      "name": "Pulso Blackout",
+      "desc": "Ative para liberar um pulso EMP que destrói dispositivos inimigos e causa choque em todos os inimigos em um raio de 35 m (base de 10 m, mais 0,5 m por acúmulo de Ataque).",
+      "desc_template": "Ative para liberar um pulso EMP que destrói dispositivos inimigos e causa choque em todos os inimigos dentro de {{emp_radius}} (base de 10 m, mais 0,5 m por acúmulo de Ataque)."
+    },
+    {
+      "id": "cloud_armor",
+      "name": "Armadura de Nuvem",
+      "desc": "Ative para reparar a sua armadura e a de aliados em um raio de 10 m, a uma taxa total de 7% de Armadura por segundo (base de 5%, mais 0,2% por acúmulo de Defesa). Esse efeito dura 10 segundos no total.",
+      "desc_template": "Ative para reparar a sua armadura e a de aliados em um raio de 10 m, a uma taxa total de {{repair_per_sec}} de Armadura por segundo (base de 5%, mais 0,2% por acúmulo de Defesa). Esse efeito dura 10 segundos no total."
+    },
+    {
+      "id": "optimize_overload",
+      "name": "Otimizar / Sobrecarga",
+      "desc": "Ative para reduzir os tempos de recarga das suas habilidades ativas em 38,0% (base de 30%, mais 0,8% por acúmulo de Utilitário).",
+      "desc_template": "Ative para reduzir os tempos de recarga das suas habilidades ativas em {{skill_cdr}} (base de 30%, mais 0,8% por acúmulo de Utilitário)."
+    }
+  ],
+  "passive_modifiers": [
+    {
+      "id": "offense_amplify",
+      "name": "Amplificar",
+      "desc": "Aumenta os acúmulos de Ataque em 5."
+    },
+    {
+      "id": "offense_consume",
+      "name": "Consumir",
+      "desc": "Aumenta os acúmulos de Ataque em 10 e reduz os acúmulos de Defesa e Utilitário em 5 cada."
+    },
+    {
+      "id": "offense_saturate",
+      "name": "Saturar",
+      "desc": "Aumenta os acúmulos de Ataque em 25. Porém, os acúmulos de Ataque deixam de afetar Manuseio de Arma, Dano de Tiro na Cabeça e Tamanho do Carregador."
+    },
+    {
+      "id": "offense_pivot",
+      "name": "Pivotar",
+      "desc": "Aumenta os acúmulos do módulo mais baixo em 15 e reduz os acúmulos de Ataque em 10. Se Ataque for o mais baixo, ou se Defesa e Utilitário estiverem empatados como os mais baixos, nada acontece."
+    },
+    {
+      "id": "offense_split",
+      "name": "Dividir",
+      "desc": "Reduz os acúmulos de Ataque em 15 e aumenta os acúmulos de Defesa e Utilitário em 10 cada."
+    },
+    {
+      "id": "offense_compress",
+      "name": "Comprimir",
+      "desc": "Reduz os acúmulos de Ataque em 10. Porém, ao calcular atributos afetados, o efeito de cada acúmulo de Ataque é aumentado em 50%."
+    },
+    {
+      "id": "offense_convert_1",
+      "name": "Converter 1",
+      "desc": "Os acúmulos de Ataque deixam de afetar Manuseio de Arma; em vez disso, aumentam o Dano de Tiro na Cabeça em 3% por acúmulo de Ataque."
+    },
+    {
+      "id": "offense_convert_2",
+      "name": "Converter 2",
+      "desc": "Os acúmulos de Ataque deixam de afetar Manuseio de Arma; em vez disso, aumentam o Tamanho do Carregador em 1% por acúmulo de Ataque."
+    },
+    {
+      "id": "offense_stabilize",
+      "name": "Estabilizar",
+      "desc": "Os acúmulos de Ataque ficam fixos e não podem mudar. Aumentos no valor base ao subir o nível do Pulso Blackout ainda são aplicados."
+    },
+    {
+      "id": "offense_invert",
+      "name": "Inverter",
+      "desc": "Troca os acúmulos de Ataque com os acúmulos do módulo atualmente mais alto. Se Ataque já for o mais alto, ou se Defesa e Utilitário estiverem empatados como os mais altos, nada acontece."
+    },
+    {
+      "id": "defense_amplify",
+      "name": "Amplificar",
+      "desc": "Aumenta os acúmulos de Defesa em 5."
+    },
+    {
+      "id": "defense_consume",
+      "name": "Consumir",
+      "desc": "Aumenta os acúmulos de Defesa em 10 e reduz os acúmulos de Ataque e Utilitário em 5 cada."
+    },
+    {
+      "id": "defense_saturate",
+      "name": "Saturar",
+      "desc": "Aumenta os acúmulos de Defesa em 25. Porém, os acúmulos de Defesa deixam de afetar Armadura, Proteção contra Elites e Proteção contra Perigos."
+    },
+    {
+      "id": "defense_pivot",
+      "name": "Pivotar",
+      "desc": "Aumenta os acúmulos do módulo mais baixo em 15 e reduz os acúmulos de Defesa em 10. Se Defesa for o mais baixo, ou se Ataque e Utilitário estiverem empatados como os mais baixos, nada acontece."
+    },
+    {
+      "id": "defense_split",
+      "name": "Dividir",
+      "desc": "Reduz os acúmulos de Defesa em 15 e aumenta os acúmulos de Ataque e Utilitário em 10 cada."
+    },
+    {
+      "id": "defense_compress",
+      "name": "Comprimir",
+      "desc": "Reduz os acúmulos de Defesa em 10. Porém, ao calcular atributos afetados, o efeito de cada acúmulo de Defesa é aumentado em 50%."
+    },
+    {
+      "id": "defense_convert_1",
+      "name": "Converter 1",
+      "desc": "Os acúmulos de Defesa deixam de afetar Armadura; em vez disso, aumentam a Proteção contra Elites em 0,5% por acúmulo de Defesa."
+    },
+    {
+      "id": "defense_convert_2",
+      "name": "Converter 2",
+      "desc": "Os acúmulos de Defesa deixam de afetar Armadura; em vez disso, aumentam a Proteção contra Perigos em 1% por acúmulo de Defesa."
+    },
+    {
+      "id": "defense_stabilize",
+      "name": "Estabilizar",
+      "desc": "Os acúmulos de Defesa ficam fixos e não podem mudar. Aumentos no valor base ao subir o nível da Armadura de Nuvem ainda são aplicados."
+    },
+    {
+      "id": "defense_invert",
+      "name": "Inverter",
+      "desc": "Troca os acúmulos de Defesa com os acúmulos do módulo atualmente mais alto. Se Defesa já for o mais alto, ou se Ataque e Utilitário estiverem empatados como os mais altos, nada acontece."
+    },
+    {
+      "id": "utility_amplify",
+      "name": "Amplificar",
+      "desc": "Aumenta os acúmulos de Utilitário em 5."
+    },
+    {
+      "id": "utility_consume",
+      "name": "Consumir",
+      "desc": "Aumenta os acúmulos de Utilitário em 10 e reduz os acúmulos de Ataque e Defesa em 5 cada."
+    },
+    {
+      "id": "utility_saturate",
+      "name": "Saturar",
+      "desc": "Aumenta os acúmulos de Utilitário em 25. Porém, os acúmulos de Utilitário deixam de afetar Dano de Habilidade, Reparo de Habilidade e Efeitos de Status."
+    },
+    {
+      "id": "utility_pivot",
+      "name": "Pivotar",
+      "desc": "Aumenta os acúmulos do módulo mais baixo em 15 e reduz os acúmulos de Utilitário em 10. Se Utilitário for o mais baixo, ou se Ataque e Defesa estiverem empatados como os mais baixos, nada acontece."
+    },
+    {
+      "id": "utility_split",
+      "name": "Dividir",
+      "desc": "Reduz os acúmulos de Utilitário em 15 e aumenta os acúmulos de Ataque e Defesa em 10 cada."
+    },
+    {
+      "id": "utility_compress",
+      "name": "Comprimir",
+      "desc": "Reduz os acúmulos de Utilitário em 10. Porém, ao calcular atributos afetados, o efeito de cada acúmulo de Utilitário é aumentado em 50%."
+    },
+    {
+      "id": "utility_convert_1",
+      "name": "Converter 1",
+      "desc": "Os acúmulos de Utilitário deixam de afetar Dano de Habilidade; em vez disso, aumentam o Reparo de Habilidade em 1% por acúmulo de Utilitário."
+    },
+    {
+      "id": "utility_convert_2",
+      "name": "Converter 2",
+      "desc": "Os acúmulos de Utilitário deixam de afetar Dano de Habilidade; em vez disso, aumentam os Efeitos de Status em 1% por acúmulo de Utilitário."
+    },
+    {
+      "id": "utility_stabilize",
+      "name": "Estabilizar",
+      "desc": "Os acúmulos de Utilitário ficam fixos e não podem mudar. Aumentos no valor base ao subir o nível de Otimizar / Sobrecarga ainda são aplicados."
+    },
+    {
+      "id": "utility_invert",
+      "name": "Inverter",
+      "desc": "Troca os acúmulos de Utilitário com os acúmulos do módulo atualmente mais alto. Se Utilitário já for o mais alto, ou se Ataque e Defesa estiverem empatados como os mais altos, nada acontece."
+    },
+    {
+      "id": "wildcard_cascade",
+      "name": "Cascata",
+      "desc": "Atributos e MODs ativos deixam de ser afetados pelos acúmulos do módulo mais alto, mas metade desse valor é adicionada a cada um dos outros dois módulos. Se dois ou mais módulos estiverem empatados como os mais altos, nada acontece."
+    },
+    {
+      "id": "wildcard_converge",
+      "name": "Convergir",
+      "desc": "Aumenta os acúmulos do módulo mais baixo pela média dos outros dois acúmulos e, ao mesmo tempo, define esses dois acúmulos como 0. Se dois ou mais módulos estiverem empatados como os mais baixos, nada acontece."
+    },
+    {
+      "id": "wildcard_equalize",
+      "name": "Equalizar",
+      "desc": "Todos os acúmulos de módulo ficam iguais ao valor acumulado mediano. Se o valor mediano for igual ao valor mais alto ou ao mais baixo, nada acontece."
+    },
+    {
+      "id": "wildcard_nullify",
+      "name": "Anular",
+      "desc": "Inverte as mudanças de valor aplicadas aos acúmulos do módulo mais baixo (adições viram subtrações e vice-versa). MODs de Inverter não são afetados."
+    }
+  ]
+}
