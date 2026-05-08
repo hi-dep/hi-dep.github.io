@@ -236,6 +236,16 @@
             "Breaking Point",
             "Providence Defense"
           ]
+        },
+        {
+          "day": "2026-05-08",
+          "target_loot": [
+            "Refactor",
+            "Hana-U Corporation",
+            "gloves",
+            "Umbra Initiative",
+            "Česká Výroba s.r.o."
+          ]
         }
       ]
     }
