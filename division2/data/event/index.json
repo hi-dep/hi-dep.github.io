@@ -246,6 +246,16 @@
             "Umbra Initiative",
             "Česká Výroba s.r.o."
           ]
+        },
+        {
+          "day": "2026-05-09",
+          "target_loot": [
+            "Umbra Initiative",
+            "holster",
+            "Aegis",
+            "Tipping Scales",
+            "pistol"
+          ]
         }
       ]
     }
