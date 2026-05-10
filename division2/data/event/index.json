@@ -256,6 +256,16 @@
             "Tipping Scales",
             "pistol"
           ]
+        },
+        {
+          "day": "2026-05-10",
+          "target_loot": [
+            "mmr",
+            "Brazos de Arcabuz",
+            "Electrique",
+            "Royal Works",
+            "Hotshot"
+          ]
         }
       ]
     }
