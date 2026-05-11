@@ -9,10 +9,6 @@
     {
       "code": "en",
       "label": "EN"
-    },
-    {
-      "code": "pt",
-      "label": "PT"
     }
   ],
   "passive_patterns_db": "y8s1_passive_patterns.db.gz",
