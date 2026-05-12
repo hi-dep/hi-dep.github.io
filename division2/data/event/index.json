@@ -320,6 +320,17 @@
           "prototype_weapon_cache": ""
         }
       ]
+    },
+    {
+      "week": "2026-05-12",
+      "missions": [
+        "Pathway Park",
+        "Camp White Oak",
+        "Grand Washington Hotel",
+        "Jefferson Trade Center",
+        "Federal Emergency Bunker"
+      ],
+      "target_loot_by_day": []
     }
   ]
 }
