@@ -330,7 +330,20 @@
         "Jefferson Trade Center",
         "Federal Emergency Bunker"
       ],
-      "target_loot_by_day": []
+      "target_loot_by_day": [
+        {
+          "day": "2026-05-12",
+          "target_loot": [
+            "Unit Alloys",
+            "Ongoing Directive",
+            "Imminence Armaments",
+            "Striker's Battlegear",
+            "Measured Assembly"
+          ],
+          "prototype_gear_cache": "holster",
+          "prototype_weapon_cache": "shotgun"
+        }
+      ]
     }
   ]
 }
