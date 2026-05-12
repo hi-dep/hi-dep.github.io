@@ -20,7 +20,7 @@
     "Federal Emergency Bunker": "フェデラルエマージェンシーバンカー",
     "Camp White Oak": "キャンプホワイトオーク",
     "The Pentagon": "ペンタゴン",
-    "DARPA Research Labs": "DARPA",
+    "DARPA Research Labs": "DARPA研究所",
     "Coney Island Ballpark": "コニーアイランド球場",
     "Coney Island Amusement Park": "コニーアイランド遊園地",
     "The Tombs": "墓所",
@@ -43,6 +43,22 @@
     "Manning National Zoo": "マニング国立動物園",
   };
 
+  const TARGET_LOOT_LABEL_EN = {
+    ar: "Assault Rifle",
+    lmg: "LMG",
+    mmr: "Marksman Rifle",
+    pistol: "Pistol",
+    rifle: "Rifle",
+    shotgun: "Shotgun",
+    smg: "SMG",
+    mask: "Mask",
+    backpack: "Backpack",
+    chest: "Body Armor",
+    gloves: "Gloves",
+    holster: "Holster",
+    kneepads: "Kneepads",
+  };
+
   function getLang() {
     const sel = document.getElementById("langSelect");
     return (sel && (sel.value === "ja" || sel.value === "en")) ? sel.value : "en";
@@ -59,6 +75,12 @@
       targetLootDate: ja ? "目標アイテム日付" : "Target Loot Date",
       mission: ja ? "ミッション" : "Mission",
       targetLoot: ja ? "目標アイテム" : "Target Loot",
+      escalationTargetLoot: ja ? "エスカレーション目標アイテム" : "Escalation Target Loot",
+      requisitionShop: ja ? "エスカレーションリクイシジョンショップ" : "Escalation Requisition Vendor",
+      vendorType: ja ? "種別" : "Type",
+      vendorLineup: ja ? "ラインナップ" : "Lineup",
+      prototypeGearCache: ja ? "プロトタイプ装備キャッシュ" : "Prototype Gear Cache",
+      prototypeWeaponCache: ja ? "プロトタイプ武器キャッシュ" : "Prototype Weapon Cache",
       fallbackSection: ja ? "イベント" : "Event",
       copy: ja ? "コピー" : "Copy",
       copyDone: ja ? "エスカレーションをコピーしました。" : "Escalation copied.",
@@ -145,10 +167,24 @@
     const dateCompact = compactDate(payload?.targetLootDay || "");
     const hashTag = isJa ? "#ディビジョン2" : "#theDivision2";
     const title = isJa
-      ? `${hashTag} エスカレーション 目標アイテム ${dateCompact}`
-      : `${hashTag} Escalation Target Loot ${dateCompact}`;
-    const rows = Array.isArray(payload?.rows) ? payload.rows : [];
-    const body = rows.map((row) => `- ${String(row?.mission || "").trim()}: ${String(row?.targetLoot || "").trim()}`);
+      ? `${hashTag} エスカレーション ${dateCompact}`
+      : `${hashTag} Escalation ${dateCompact}`;
+    const missionRows = Array.isArray(payload?.missionRows) ? payload.missionRows : [];
+    const vendorRows = Array.isArray(payload?.vendorRows) ? payload.vendorRows : [];
+    const missionHead = isJa ? "目標アイテム" : "Target Loot";
+    const vendorHead = isJa ? "ショップ" : "Vendor";
+    const body = [];
+    body.push(missionHead);
+    missionRows.forEach((row) => {
+      body.push(`- ${String(row?.mission || "").trim()}: ${String(row?.targetLoot || "").trim()}`);
+    });
+    if (vendorRows.length) {
+      body.push("");
+      body.push(vendorHead);
+      vendorRows.forEach((row) => {
+        body.push(`- ${String(row?.mission || "").trim()}: ${String(row?.targetLoot || "").trim()}`);
+      });
+    }
     let url = "";
     try {
       const u = new URL(String(window.location.href || ""));
@@ -161,7 +197,7 @@
       url = "";
     }
     if (!url) url = `https://hi-dep.github.io/division2/?view=event&lang=${lang}`;
-    return [title, ...body, "", `👉 ${url}`].join("\n");
+    return [title, "", ...body, "", `👉 ${url}`].join("\n");
   }
 
   function normalizeToShopWeekStartJst(nowDate) {
@@ -193,8 +229,13 @@
   function targetLootLabel(name) {
     const raw = String(name || "").trim();
     if (!raw) return "";
-    if (getLang() !== "ja") return raw;
     const key = resolveTargetLootKey(raw);
+    if (getLang() !== "ja") {
+      if (key && Object.prototype.hasOwnProperty.call(TARGET_LOOT_LABEL_EN, key)) {
+        return TARGET_LOOT_LABEL_EN[key];
+      }
+      return raw;
+    }
     if (key) {
       const weaponType = getI18nCategoryText("weapon_type", key);
       if (weaponType) return weaponType;
@@ -259,15 +300,17 @@
           .map((x) => ({
             day: String(x.day || "").trim(),
             targetLoot: Array.isArray(x.target_loot) ? x.target_loot.map((v) => String(v || "").trim()) : [],
+            prototypeGearCache: String(x.prototype_gear_cache || "").trim(),
+            prototypeWeaponCache: String(x.prototype_weapon_cache || "").trim(),
           }))
           .filter((x) => x.day)
       : [];
-    if (!rows.length) return { day: String(targetDay || "").trim(), targetLoot: [] };
+    if (!rows.length) return { day: String(targetDay || "").trim(), targetLoot: [], prototypeGearCache: "", prototypeWeaponCache: "" };
     const exact = rows.find((x) => x.day === targetDay);
     if (exact) return exact;
     // Do not fall back to previous-day loot after daily reset.
     // If the exact day row is missing, treat as no data for that day.
-    return { day: String(targetDay || "").trim(), targetLoot: [] };
+    return { day: String(targetDay || "").trim(), targetLoot: [], prototypeGearCache: "", prototypeWeaponCache: "" };
   }
 
   window.eventViewRender = async function eventViewRender() {
@@ -302,16 +345,47 @@
         const targetLootPick = pickTargetLootByDay(hit, targetDay);
         const targetLoot = Array.isArray(targetLootPick?.targetLoot) ? targetLootPick.targetLoot : [];
         const targetLootDay = String(targetLootPick?.day || targetDay || "").trim();
+        const prototypeGearCache = String(targetLootPick?.prototypeGearCache || "").trim();
+        const prototypeWeaponCache = String(targetLootPick?.prototypeWeaponCache || "").trim();
+        const missionRowsData = missions.map((m, i) => ({
+          mission: missionLabel(m),
+          targetLootRaw: targetLoot[i],
+        }));
+        const shopRowsData = [];
+        if (prototypeGearCache) {
+          shopRowsData.push({
+            mission: t.prototypeGearCache,
+            targetLootRaw: prototypeGearCache,
+          });
+        }
+        if (prototypeWeaponCache) {
+          shopRowsData.push({
+            mission: t.prototypeWeaponCache,
+            targetLootRaw: prototypeWeaponCache,
+          });
+        }
         const canCopyEscalation = isEscalationSection(section) && missions.length > 0;
         let copyButtonHtml = "";
         if (canCopyEscalation) {
           const copyIndex = copyPayloads.length;
+          const missionCopyRows = missionRowsData.map((r) => ({
+            mission: r.mission,
+            targetLoot: targetLootLabel(r.targetLootRaw) || t.noData,
+          }));
+          const vendorCopyRows = shopRowsData.map((r) => {
+            const isGear = String(r.mission || "").includes("Gear") || String(r.mission || "").includes("装備");
+            const missionName = (langSelect && langSelect.value === "ja")
+              ? (isGear ? "装備キャッシュ" : "武器キャッシュ")
+              : (isGear ? "Gear Cache" : "Weapon Cache");
+            return {
+              mission: missionName,
+              targetLoot: targetLootLabel(r.targetLootRaw) || t.noData,
+            };
+          });
           copyPayloads.push({
             targetLootDay,
-            rows: missions.map((m, i) => ({
-              mission: missionLabel(m),
-              targetLoot: targetLootLabel(targetLoot[i]) || t.noData,
-            })),
+            missionRows: missionCopyRows,
+            vendorRows: vendorCopyRows,
           });
           copyButtonHtml = `
             <button type="button" class="btn btn--ghost seasonmod-share-btn event-copy-btn" data-event-copy-index="${copyIndex}" aria-label="${esc(t.copy)}" title="${esc(t.copy)}">
@@ -351,14 +425,39 @@
             </section>
           `;
         }
-        const missionRows = missions
-          .map((m, i) => `<tr><th scope="row">${esc(String(i + 1))}</th><td>${esc(missionLabel(m))}</td><td>${targetLootCellHtml(targetLoot[i], t)}</td></tr>`)
+        const missionRows = missionRowsData
+          .map((r, i) => `<tr><th scope="row">${esc(String(i + 1))}</th><td>${esc(r.mission)}</td><td>${targetLootCellHtml(r.targetLootRaw, t)}</td></tr>`)
           .join("");
+        const shopRows = shopRowsData
+          .map((r, i) => `<tr><th scope="row">${esc(String(i + 1))}</th><td>${esc(r.mission)}</td><td>${targetLootCellHtml(r.targetLootRaw, t)}</td></tr>`)
+          .join("");
+        const shopTableHtml = shopRows
+          ? `
+            <h4 class="event-subsection-title">${esc(t.requisitionShop)}</h4>
+            <section class="blueprint-table-wrap">
+              <div class="blueprint-table-scroll">
+                <table class="blueprint-table event-table">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>${esc(t.vendorType)}</th>
+                      <th>${esc(t.vendorLineup)}</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    ${shopRows}
+                  </tbody>
+                </table>
+              </div>
+            </section>
+          `
+          : "";
         const week = String(section?.week || "").trim();
         return `
           <section class="event-section">
             ${sectionTitleHtml}
             <div class="event-weekof">${esc(t.weekOf)}: ${esc(week)} / ${esc(t.targetLootDate)}: ${esc(targetLootDay || t.noData)}</div>
+            <h4 class="event-subsection-title">${esc(t.escalationTargetLoot)}</h4>
             <section class="blueprint-table-wrap">
               <div class="blueprint-table-scroll">
                 <table class="blueprint-table event-table">
@@ -375,6 +474,7 @@
                 </table>
               </div>
             </section>
+            ${shopTableHtml}
           </section>
         `;
       }).join("");
