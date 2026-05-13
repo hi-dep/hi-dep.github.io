@@ -165,7 +165,7 @@
     const lang = getLang();
     const isJa = lang === "ja";
     const dateCompact = compactDate(payload?.targetLootDay || "");
-    const hashTag = isJa ? "#ディビジョン2" : "#theDivision2";
+    const hashTag = isJa ? "#ディビジョン2" : "#TheDivision2";
     const title = isJa
       ? `${hashTag} エスカレーション ${dateCompact}`
       : `${hashTag} Escalation ${dateCompact}`;
@@ -176,13 +176,13 @@
     const body = [];
     body.push(missionHead);
     missionRows.forEach((row) => {
-      body.push(`- ${String(row?.mission || "").trim()}: ${String(row?.targetLoot || "").trim()}`);
+      body.push(`- ${String(row?.targetLoot || "").trim()}`);
     });
     if (vendorRows.length) {
       body.push("");
       body.push(vendorHead);
       vendorRows.forEach((row) => {
-        body.push(`- ${String(row?.mission || "").trim()}: ${String(row?.targetLoot || "").trim()}`);
+        body.push(`- ${String(row?.targetLoot || "").trim()}`);
       });
     }
     let url = "";

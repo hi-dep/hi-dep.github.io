@@ -113,6 +113,14 @@
     return trText(raw);
   }
 
+  function normalizeTalentFamilyKey(raw) {
+    const k = normalizeKey(raw || "");
+    if (!k) return "";
+    if (k.startsWith("perfectly")) return `perfect#${k.slice("perfectly".length)}`;
+    if (k.startsWith("perfect")) return `perfect#${k.slice("perfect".length)}`;
+    return k;
+  }
+
   function weaponGroupKey(v) {
     const k = normalizeKey(v || "");
     if (k === "assaultrifle" || k === "assaultrifles") return "ar";
@@ -312,7 +320,60 @@
         for (const row of missingTalentRows.values()) rows.push(row);
       }
 
-      weaponTalentRowsCache = { rows, weaponByTalent };
+      // Dedupe talents by family (Perfect / Perfectly wobble), but keep the
+      // policy-selected naming when available from named/exotic talent keys.
+      const dedupMap = new Map();
+      const weaponTypeKeys = ["ar", "lmg", "mmr", "pistol", "rifle", "shotgun", "smg"];
+      const preferredKeyByFamily = new Map();
+      for (const k of weaponByTalent.keys()) {
+        const nk = normalizeKey(k || "");
+        if (!nk) continue;
+        const fam = normalizeTalentFamilyKey(nk);
+        const prev = preferredKeyByFamily.get(fam);
+        // Prefer non-"perfectly" form when both exist; otherwise first seen.
+        if (!prev) preferredKeyByFamily.set(fam, nk);
+        else if (prev.startsWith("perfectly") && nk.startsWith("perfect")) preferredKeyByFamily.set(fam, nk);
+      }
+      for (const r of rows) {
+        // Use perfect_talent first so normal row (talent + perfect_talent)
+        // and named-only row (perfect-only wording) land in the same family.
+        const rawKey = normalizeKey(r.perfect_talent || r.talent || "");
+        if (!rawKey) continue;
+        const fam = normalizeTalentFamilyKey(rawKey);
+        // Always dedupe by family key so Perfect/Perfectly variants collapse
+        // into one logical talent regardless of display-key preference.
+        const key = fam;
+        if (!dedupMap.has(key)) {
+          dedupMap.set(key, { ...r, __canonical_family_key: fam });
+          continue;
+        }
+        const prev = dedupMap.get(key);
+        const merged = { ...prev };
+        const prevNamedOnly = String(prev.__named_only || "") === "1";
+        const curNamedOnly = String(r.__named_only || "") === "1";
+        const preferredKey = preferredKeyByFamily.get(fam) || "";
+        const prevHasPreferredKey = normalizeKey(prev.perfect_talent || prev.talent || "") === preferredKey;
+        const curHasPreferredKey = normalizeKey(r.perfect_talent || r.talent || "") === preferredKey;
+        if (prevNamedOnly && !curNamedOnly) {
+          Object.assign(merged, r);
+        } else if (prevNamedOnly === curNamedOnly && !prevHasPreferredKey && curHasPreferredKey) {
+          Object.assign(merged, r);
+        }
+        const prevTalent = String(prev.talent || "").trim();
+        const curTalent = String(r.talent || "").trim();
+        if (!prevTalent && curTalent) merged.talent = curTalent;
+        if (!String(merged.talent_desc || "").trim() && String(r.talent_desc || "").trim()) merged.talent_desc = r.talent_desc;
+        if (!String(merged.perfect_talent || "").trim() && String(r.perfect_talent || "").trim()) merged.perfect_talent = r.perfect_talent;
+        if (!String(merged.perfect_talent_desc || "").trim() && String(r.perfect_talent_desc || "").trim()) merged.perfect_talent_desc = r.perfect_talent_desc;
+        for (const wk of weaponTypeKeys) {
+          if (parseTruthy(prev[wk]) || parseTruthy(r[wk])) merged[wk] = "1";
+        }
+        if (!String(merged.__canonical_family_key || "")) merged.__canonical_family_key = fam;
+        dedupMap.set(key, merged);
+      }
+      const rowsDeduped = Array.from(dedupMap.values());
+
+      weaponTalentRowsCache = { rows: rowsDeduped, weaponByTalent };
       return weaponTalentRowsCache;
     } finally {
       db.close();
