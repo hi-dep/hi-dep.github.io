@@ -3925,7 +3925,7 @@
       ]
     },
     {
-      "item_id": "bb6ffb94163bd601",
+      "item_id": "4db3e7660a8fb416",
       "entity_type": "gearset",
       "category": "gear",
       "tier": "gearset",
@@ -3970,7 +3970,7 @@
       "drop": []
     },
     {
-      "item_id": "107d0d66c41ae007",
+      "item_id": "baccd1f134e7bff1",
       "entity_type": "gearset",
       "category": "gear",
       "tier": "gearset",
@@ -4005,19 +4005,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": [
-        "Eclipse Protocol",
-        "mask",
-        "chest",
-        "holster",
-        "backpack",
-        "gloves",
-        "kneepads"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "c2f6204034a42c59",
+      "item_id": "0a8e0bd26249d903",
       "entity_type": "gearset",
       "category": "gear",
       "tier": "gearset",
@@ -4052,19 +4044,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": [
-        "Foundry Bulwark",
-        "mask",
-        "chest",
-        "holster",
-        "backpack",
-        "gloves",
-        "kneepads"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "7b2fee2f1df373c0",
+      "item_id": "c964791c2d5f8e64",
       "entity_type": "gearset",
       "category": "gear",
       "tier": "gearset",
@@ -4099,19 +4083,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": [
-        "Future Initiative",
-        "mask",
-        "chest",
-        "holster",
-        "backpack",
-        "gloves",
-        "kneepads"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "83680b74d1e95e0d",
+      "item_id": "c61e33c8d34376ea",
       "entity_type": "gearset",
       "category": "gear",
       "tier": "gearset",
@@ -4146,19 +4122,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": [
-        "Hard Wired",
-        "mask",
-        "chest",
-        "holster",
-        "backpack",
-        "gloves",
-        "kneepads"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "b8726d13f4e809e2",
+      "item_id": "cdbecc88d3d9a0ec",
       "entity_type": "gearset",
       "category": "gear",
       "tier": "gearset",
@@ -4199,19 +4167,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": [
-        "Heartbreaker",
-        "mask",
-        "chest",
-        "holster",
-        "backpack",
-        "gloves",
-        "kneepads"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "aaa90d5a5ee3b9cd",
+      "item_id": "c97bdb9bff8df7e1",
       "entity_type": "gearset",
       "category": "gear",
       "tier": "gearset",
@@ -4246,19 +4206,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": [
-        "Hotshot",
-        "mask",
-        "chest",
-        "holster",
-        "backpack",
-        "gloves",
-        "kneepads"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "7a3b87c8abfd7aff",
+      "item_id": "dcbd8b50879636af",
       "entity_type": "gearset",
       "category": "gear",
       "tier": "gearset",
@@ -4299,19 +4251,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": [
-        "Hunter's Fury",
-        "mask",
-        "chest",
-        "holster",
-        "backpack",
-        "gloves",
-        "kneepads"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "47c332738933ff3d",
+      "item_id": "6dde348199fa78fa",
       "entity_type": "gearset",
       "category": "gear",
       "tier": "gearset",
@@ -4346,19 +4290,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": [
-        "Measured Assembly",
-        "mask",
-        "chest",
-        "holster",
-        "backpack",
-        "gloves",
-        "kneepads"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "2e24e3cc5bf5d1b7",
+      "item_id": "f58d81e6dc71b0b4",
       "entity_type": "gearset",
       "category": "gear",
       "tier": "gearset",
@@ -4393,19 +4329,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": [
-        "Negotiator's Dilemma",
-        "mask",
-        "chest",
-        "holster",
-        "backpack",
-        "gloves",
-        "kneepads"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "c10006577d54e67f",
+      "item_id": "98004f3af7ec7238",
       "entity_type": "gearset",
       "category": "gear",
       "tier": "gearset",
@@ -4415,19 +4343,11 @@
       "brand_key": "ongoingdirective",
       "slot_key": "",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "Ongoing Directive",
-        "mask",
-        "chest",
-        "holster",
-        "backpack",
-        "gloves",
-        "kneepads"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "6ad859aa7d2e9b33",
+      "item_id": "87b0bea2afc555df",
       "entity_type": "gearset",
       "category": "gear",
       "tier": "gearset",
@@ -4462,19 +4382,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": [
-        "Ortiz: Exuro",
-        "mask",
-        "chest",
-        "holster",
-        "backpack",
-        "gloves",
-        "kneepads"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "2d44f190ca5a8e34",
+      "item_id": "4516f63347b5eef2",
       "entity_type": "gearset",
       "category": "gear",
       "tier": "gearset",
@@ -4509,19 +4421,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": [
-        "Refactor",
-        "mask",
-        "chest",
-        "holster",
-        "backpack",
-        "gloves",
-        "kneepads"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "2a37be4b78e79a78",
+      "item_id": "4f9a972ae825247d",
       "entity_type": "gearset",
       "category": "gear",
       "tier": "gearset",
@@ -4562,19 +4466,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": [
-        "Rigger",
-        "mask",
-        "chest",
-        "holster",
-        "backpack",
-        "gloves",
-        "kneepads"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "399b25135837e20f",
+      "item_id": "9e27eeab3fa18335",
       "entity_type": "gearset",
       "category": "gear",
       "tier": "gearset",
@@ -4609,19 +4505,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": [
-        "Striker's Battlegear",
-        "mask",
-        "chest",
-        "holster",
-        "backpack",
-        "gloves",
-        "kneepads"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "505b43aaabc088b9",
+      "item_id": "70e3d1fdbdc5c44d",
       "entity_type": "gearset",
       "category": "gear",
       "tier": "gearset",
@@ -4656,21 +4544,13 @@
           "type": "craft"
         }
       ],
+      "target_looted": [],
       "drop": [
         "dz"
-      ],
-      "target_looted": [
-        "System Corruption",
-        "mask",
-        "chest",
-        "holster",
-        "backpack",
-        "gloves",
-        "kneepads"
       ]
     },
     {
-      "item_id": "67cc6d5df8fb8cb9",
+      "item_id": "ff5d884bd9434827",
       "entity_type": "gearset",
       "category": "gear",
       "tier": "gearset",
@@ -4705,19 +4585,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": [
-        "Tip of the Spear",
-        "mask",
-        "chest",
-        "holster",
-        "backpack",
-        "gloves",
-        "kneepads"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "dad12144c6550004",
+      "item_id": "be9edd88288970d5",
       "entity_type": "gearset",
       "category": "gear",
       "tier": "gearset",
@@ -4752,19 +4624,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": [
-        "Tipping Scales",
-        "mask",
-        "chest",
-        "holster",
-        "backpack",
-        "gloves",
-        "kneepads"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "53a5433d2658fb2a",
+      "item_id": "8d6eafc677eaf51b",
       "entity_type": "gearset",
       "category": "gear",
       "tier": "gearset",
@@ -4774,19 +4638,11 @@
       "brand_key": "truepatriot",
       "slot_key": "",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "True Patriot",
-        "mask",
-        "chest",
-        "holster",
-        "backpack",
-        "gloves",
-        "kneepads"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "797728d7dbed5587",
+      "item_id": "1fb1345bb80d1b1b",
       "entity_type": "gearset",
       "category": "gear",
       "tier": "gearset",
@@ -4822,19 +4678,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": [
-        "Umbra Initiative",
-        "mask",
-        "chest",
-        "holster",
-        "backpack",
-        "gloves",
-        "kneepads"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "03c3a951c073a48f",
+      "item_id": "e3e09af5d683305e",
       "entity_type": "gearset",
       "category": "gear",
       "tier": "gearset",
@@ -4869,16 +4717,8 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": [
-        "Virtuoso",
-        "mask",
-        "chest",
-        "holster",
-        "backpack",
-        "gloves",
-        "kneepads"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
       "item_id": "272daf044cb7b344",
