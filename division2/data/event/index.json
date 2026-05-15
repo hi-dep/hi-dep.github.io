@@ -45,6 +45,18 @@
           ],
           "prototype_gear_cache": "mask",
           "prototype_weapon_cache": "smg"
+        },
+        {
+          "day": "2026-05-15",
+          "target_loot": [
+            "Palisade Steelworks",
+            "Breaking Point",
+            "shotgun",
+            "Habsburg Guard",
+            "Empress International"
+          ],
+          "prototype_gear_cache": "holster",
+          "prototype_weapon_cache": "smg"
         }
       ]
     }
