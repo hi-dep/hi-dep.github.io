@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "built_at": "2026-05-13T02:10:03.552236Z",
+  "built_at": "2026-05-20T02:05:03.753237Z",
   "categories": {
     "vendor": {
       "benitez": "ベニテス",
@@ -717,7 +717,8 @@
       "stingercharges": "スティンガーチャージ",
       "totalarmor": "合計アーマー",
       "stat": "TODO:stat",
-      "strapduration": "TODO:strapduration"
+      "strapduration": "TODO:strapduration",
+      "bonusarmor": "TODO:bonusarmor"
     },
     "gear_talent": {
       "companion": "コンパニオン",
