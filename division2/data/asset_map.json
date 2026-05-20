@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "built_at": "2026-05-13T02:10:03.552236Z",
+  "built_at": "2026-05-20T08:25:03.919088Z",
   "sanitize": {
     "enabled": true,
     "safe_chars": "a-z 0-9 . _ -"
@@ -146,6 +146,7 @@
     "hoarder": "img/talents/hoarder.png",
     "improvedmaterials": "img/talents/improvedmaterials.png",
     "increasedinterest": "img/talents/increasedinterest.png",
+    "innercore": "img/talents/innercore.png",
     "intimidate": "img/talents/intimidate.png",
     "intothelight": "img/talents/intothelight.png",
     "irongrip": "img/talents/irongrip.png",
