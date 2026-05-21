@@ -253,7 +253,8 @@
       "interchange": "インターチェンジ",
       "firstbloom": "ファーストブルーム",
       "thearchivist": "ザ・アーキビスト",
-      "caduceus": "TODO:caduceus"
+      "caduceus": "TODO:caduceus",
+      "caduceuspts": "TODO:caduceuspts"
     },
     "weapon_item_name_lmg": {
       "blackmarketrpk74e": "ブラックマーケット RPK-74 E",
@@ -1057,7 +1058,8 @@
       "backandforth": "バック&フォース",
       "blossomharvest": "ブロッサム・ハーヴェスト",
       "asyoufirethegunwillplaychristmasmusic": "TODO:asyoufirethegunwillplaychristmasmusic",
-      "perfectoverflowing": "パーフェクト・オーバーフロー"
+      "perfectoverflowing": "パーフェクト・オーバーフロー",
+      "caduceus": "TODO:caduceus"
     },
     "cache": {
       "amount": "数量",
