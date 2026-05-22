@@ -14,6 +14,13 @@
   });
 
   function getLang() {
+    try {
+      const p = new URLSearchParams(window.location.search || "");
+      const qLang = String(p.get("lang") || "").trim().toLowerCase();
+      if (qLang) return qLang;
+    } catch (_e) {
+      // ignore
+    }
     const sel = document.getElementById("langSelect");
     return (sel && String(sel.value || "").trim()) ? String(sel.value || "").trim() : "en";
   }
@@ -97,7 +104,7 @@
     return res.json();
   }
 
-  function normalizeSeasonLanguages(data, seasonConfig) {
+  function normalizeSeasonLanguages(data) {
     const src = Array.isArray(data?.languages) ? data.languages : [];
     const out = [];
     const seen = new Set();
@@ -115,35 +122,36 @@
       const defaultLabel = (code === "ja") ? "JA" : (code === "en" ? "EN" : code.toUpperCase());
       out.push({ code, label: label || defaultLabel });
     });
-    if (!out.length) return [{ code: "ja", label: "JA" }, { code: "en", label: "EN" }];
-    const langFiles = (seasonConfig && typeof seasonConfig.lang_files === "object" && seasonConfig.lang_files) ? seasonConfig.lang_files : {};
-    Object.keys(langFiles).forEach((codeRaw) => {
-      const code = String(codeRaw || "").trim().toLowerCase();
-      if (!code || seen.has(code)) return;
-      seen.add(code);
-      const defaultLabel = (code === "ja") ? "JA" : (code === "en" ? "EN" : code.toUpperCase());
-      out.push({ code, label: defaultLabel });
-    });
-    return out;
+    return out.length ? out : [{ code: "ja", label: "JA" }, { code: "en", label: "EN" }];
+  }
+
+  function getUrlLangParam() {
+    try {
+      const p = new URLSearchParams(window.location.search || "");
+      return String(p.get("lang") || "").trim().toLowerCase();
+    } catch (_e) {
+      return "";
+    }
   }
 
   function setGlobalLangOptionsForSeason(data, seasonConfig) {
     const sel = document.getElementById("langSelect");
     if (!sel) return;
-    const languages = normalizeSeasonLanguages(data, seasonConfig);
+    const languages = normalizeSeasonLanguages(data);
+    const urlLang = getUrlLangParam();
     const currentValue = String(sel.value || "").trim().toLowerCase();
-    const base = [{ code: "ja", label: "JA" }, { code: "en", label: "EN" }];
-    const merged = [];
-    const seen = new Set();
-    [...base, ...languages].forEach((x) => {
-      const code = String(x?.code || "").trim().toLowerCase();
-      if (!code || seen.has(code)) return;
-      seen.add(code);
-      const label = String(x?.label || (code === "ja" ? "JA" : code === "en" ? "EN" : code.toUpperCase())).trim();
-      merged.push({ code, label });
-    });
+    const merged = languages.map((x) => ({
+      code: String(x?.code || "").trim().toLowerCase(),
+      label: String(x?.label || "").trim() || String(x?.code || "").trim().toUpperCase(),
+    })).filter((x) => x.code);
+    if (urlLang && !merged.some((x) => x.code === urlLang)) {
+      const label = (urlLang === "ja") ? "JA" : (urlLang === "en" ? "EN" : urlLang.toUpperCase());
+      merged.push({ code: urlLang, label });
+    }
     sel.innerHTML = merged.map((x) => `<option value="${esc(x.code)}">${esc(x.label)}</option>`).join("");
-    const nextValue = merged.some((x) => x.code === currentValue) ? currentValue : merged[0].code;
+    const nextValue = merged.some((x) => x.code === currentValue)
+      ? currentValue
+      : (urlLang && merged.some((x) => x.code === urlLang) ? urlLang : merged[0].code);
     sel.value = nextValue;
     if (typeof applyUiLang === "function") applyUiLang();
   }
