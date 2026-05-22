@@ -16,18 +16,18 @@
   ],
   "rows": [
     {
-      "item_id": "03e698aae89f978b::highend",
+      "item_id": "0dbcdf3575072768::highend",
       "entity_type": "brandset",
       "category": "gear",
       "tier": "highend",
       "name_key": "",
       "name": "",
-      "brand_name": "Providence Defense",
-      "brand_key": "providencedefense",
+      "brand_name": "Petrov Defense Group",
+      "brand_key": "petrovdefensegroup",
       "slot_key": "",
       "blueprint": [
         {
-          "slot": "chest",
+          "slot": "backpack",
           "type": "craft"
         },
         {
@@ -35,19 +35,11 @@
           "type": "craft"
         },
         {
-          "slot": "mask",
+          "slot": "kneepads",
           "type": "craft"
         }
       ],
-      "target_looted": [
-        "Providence Defense",
-        "mask",
-        "chest",
-        "holster",
-        "backpack",
-        "gloves",
-        "kneepads"
-      ],
+      "target_looted": [],
       "drop": []
     },
     {
@@ -98,20 +90,16 @@
       "drop": []
     },
     {
-      "item_id": "1c41fadd2c8bd94b::highend",
+      "item_id": "1c350bbe76c2ac2d::highend",
       "entity_type": "brandset",
       "category": "gear",
       "tier": "highend",
       "name_key": "",
       "name": "",
-      "brand_name": "Urban Lookout",
-      "brand_key": "urbanlookout",
+      "brand_name": "Sokolov Concern",
+      "brand_key": "sokolovconcern",
       "slot_key": "",
       "blueprint": [
-        {
-          "slot": "backpack",
-          "type": "craft"
-        },
         {
           "slot": "chest",
           "type": "craft"
@@ -121,7 +109,26 @@
           "type": "craft"
         },
         {
-          "slot": "holster",
+          "slot": "kneepads",
+          "type": "craft"
+        }
+      ],
+      "target_looted": [],
+      "drop": []
+    },
+    {
+      "item_id": "26124e6cb5edcb52::highend",
+      "entity_type": "brandset",
+      "category": "gear",
+      "tier": "highend",
+      "name_key": "",
+      "name": "",
+      "brand_name": "Douglas & Harding",
+      "brand_key": "douglasharding",
+      "slot_key": "",
+      "blueprint": [
+        {
+          "slot": "chest",
           "type": "craft"
         },
         {
@@ -184,7 +191,7 @@
       "drop": []
     },
     {
-      "item_id": "2a55a4935bc943bf::highend",
+      "item_id": "33c91c7296e57d16::highend",
       "entity_type": "brandset",
       "category": "gear",
       "tier": "highend",
@@ -207,26 +214,18 @@
           "type": "craft"
         }
       ],
-      "target_looted": [
-        "Wyvern Wear",
-        "mask",
-        "chest",
-        "holster",
-        "backpack",
-        "gloves",
-        "kneepads"
-      ],
+      "target_looted": [],
       "drop": []
     },
     {
-      "item_id": "2d27a14ceb25ab1c::highend",
+      "item_id": "364cbf968f77309e::highend",
       "entity_type": "brandset",
       "category": "gear",
       "tier": "highend",
       "name_key": "",
       "name": "",
-      "brand_name": "Grupo Sombra S.A.",
-      "brand_key": "gruposombrasa",
+      "brand_name": "Overlord Armaments",
+      "brand_key": "overlordarmaments",
       "slot_key": "",
       "blueprint": [
         {
@@ -235,92 +234,6 @@
         },
         {
           "slot": "gloves",
-          "type": "craft"
-        },
-        {
-          "slot": "holster",
-          "type": "craft"
-        },
-        {
-          "slot": "kneepads",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [
-        "Grupo Sombra S.A.",
-        "mask",
-        "chest",
-        "holster",
-        "backpack",
-        "gloves",
-        "kneepads"
-      ],
-      "drop": []
-    },
-    {
-      "item_id": "33a93085e39661a7::highend",
-      "entity_type": "brandset",
-      "category": "gear",
-      "tier": "highend",
-      "name_key": "",
-      "name": "",
-      "brand_name": "Petrov Defense Group",
-      "brand_key": "petrovdefensegroup",
-      "slot_key": "",
-      "blueprint": [
-        {
-          "slot": "backpack",
-          "type": "craft"
-        },
-        {
-          "slot": "holster",
-          "type": "craft"
-        },
-        {
-          "slot": "kneepads",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [
-        "Petrov Defense Group",
-        "mask",
-        "chest",
-        "holster",
-        "backpack",
-        "gloves",
-        "kneepads"
-      ],
-      "drop": []
-    },
-    {
-      "item_id": "3747ba716e0d47bd::highend",
-      "entity_type": "brandset",
-      "category": "gear",
-      "tier": "highend",
-      "name_key": "",
-      "name": "",
-      "brand_name": "Legatus S.p.A.",
-      "brand_key": "legatusspa",
-      "slot_key": "",
-      "blueprint": [
-        {
-          "slot": "backpack",
-          "type": "craft"
-        },
-        {
-          "slot": "chest",
-          "type": "craft"
-        },
-        {
-          "slot": "gloves",
-          "type": "craft"
-        },
-        {
-          "slot": "holster",
-          "type": "craft"
-        },
-        {
-          "slot": "kneepads",
           "type": "craft"
         },
         {
@@ -328,15 +241,7 @@
           "type": "craft"
         }
       ],
-      "target_looted": [
-        "Legatus S.p.A.",
-        "mask",
-        "chest",
-        "holster",
-        "backpack",
-        "gloves",
-        "kneepads"
-      ],
+      "target_looted": [],
       "drop": []
     },
     {
@@ -372,6 +277,45 @@
         "gloves",
         "kneepads"
       ],
+      "drop": []
+    },
+    {
+      "item_id": "3f7c5c64ba1448a5::highend",
+      "entity_type": "brandset",
+      "category": "gear",
+      "tier": "highend",
+      "name_key": "",
+      "name": "",
+      "brand_name": "Walker, Harris & Co.",
+      "brand_key": "walkerharrisco",
+      "slot_key": "",
+      "blueprint": [
+        {
+          "slot": "backpack",
+          "type": "craft"
+        },
+        {
+          "slot": "chest",
+          "type": "craft"
+        },
+        {
+          "slot": "gloves",
+          "type": "craft"
+        },
+        {
+          "slot": "holster",
+          "type": "craft"
+        },
+        {
+          "slot": "kneepads",
+          "type": "craft"
+        },
+        {
+          "slot": "mask",
+          "type": "craft"
+        }
+      ],
+      "target_looted": [],
       "drop": []
     },
     {
@@ -533,6 +477,82 @@
       "drop": []
     },
     {
+      "item_id": "521d4db3facaea85::highend",
+      "entity_type": "brandset",
+      "category": "gear",
+      "tier": "highend",
+      "name_key": "",
+      "name": "",
+      "brand_name": "Royal Works",
+      "brand_key": "royalworks",
+      "slot_key": "",
+      "blueprint": [
+        {
+          "slot": "backpack",
+          "src": "Y8S1 Season Reward",
+          "type": "craft"
+        },
+        {
+          "slot": "chest",
+          "src": "Y8S1 Season Reward",
+          "type": "craft"
+        },
+        {
+          "slot": "gloves",
+          "src": "Y8S1 Season Reward",
+          "type": "craft"
+        },
+        {
+          "slot": "holster",
+          "src": "Y8S1 Season Reward",
+          "type": "craft"
+        },
+        {
+          "slot": "kneepads",
+          "src": "Y8S1 Season Reward",
+          "type": "craft"
+        },
+        {
+          "slot": "mask",
+          "src": "Y8S1 Season Reward",
+          "type": "craft"
+        }
+      ],
+      "target_looted": [],
+      "drop": []
+    },
+    {
+      "item_id": "531b423062b724a2::highend",
+      "entity_type": "brandset",
+      "category": "gear",
+      "tier": "highend",
+      "name_key": "",
+      "name": "",
+      "brand_name": "Česká Výroba s.r.o.",
+      "brand_key": "ceskavyrobasro",
+      "slot_key": "",
+      "blueprint": [
+        {
+          "slot": "backpack",
+          "type": "craft"
+        },
+        {
+          "slot": "holster",
+          "type": "craft"
+        },
+        {
+          "slot": "kneepads",
+          "type": "craft"
+        },
+        {
+          "slot": "mask",
+          "type": "craft"
+        }
+      ],
+      "target_looted": [],
+      "drop": []
+    },
+    {
       "item_id": "57bc988f9cfa00e9::highend",
       "entity_type": "brandset",
       "category": "gear",
@@ -565,33 +585,6 @@
         "gloves",
         "kneepads"
       ],
-      "drop": []
-    },
-    {
-      "item_id": "5c556710748690c3::highend",
-      "entity_type": "brandset",
-      "category": "gear",
-      "tier": "highend",
-      "name_key": "",
-      "name": "",
-      "brand_name": "Sokolov Concern",
-      "brand_key": "sokolovconcern",
-      "slot_key": "",
-      "blueprint": [
-        {
-          "slot": "chest",
-          "type": "craft"
-        },
-        {
-          "slot": "gloves",
-          "type": "craft"
-        },
-        {
-          "slot": "kneepads",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
       "drop": []
     },
     {
@@ -630,20 +623,16 @@
       "drop": []
     },
     {
-      "item_id": "718db337e462dedd::highend",
+      "item_id": "719360ad6b87b98b::highend",
       "entity_type": "brandset",
       "category": "gear",
       "tier": "highend",
       "name_key": "",
       "name": "",
-      "brand_name": "Imminence Armaments",
-      "brand_key": "imminencearmaments",
+      "brand_name": "Grupo Sombra S.A.",
+      "brand_key": "gruposombrasa",
       "slot_key": "",
       "blueprint": [
-        {
-          "slot": "backpack",
-          "type": "craft"
-        },
         {
           "slot": "chest",
           "type": "craft"
@@ -659,21 +648,36 @@
         {
           "slot": "kneepads",
           "type": "craft"
+        }
+      ],
+      "target_looted": [],
+      "drop": []
+    },
+    {
+      "item_id": "72187442b3de841c::highend",
+      "entity_type": "brandset",
+      "category": "gear",
+      "tier": "highend",
+      "name_key": "",
+      "name": "",
+      "brand_name": "Airaldi Holdings",
+      "brand_key": "airaldiholdings",
+      "slot_key": "",
+      "blueprint": [
+        {
+          "slot": "backpack",
+          "type": "craft"
         },
         {
-          "slot": "mask",
+          "slot": "gloves",
+          "type": "craft"
+        },
+        {
+          "slot": "kneepads",
           "type": "craft"
         }
       ],
-      "target_looted": [
-        "Imminence Armaments",
-        "mask",
-        "chest",
-        "holster",
-        "backpack",
-        "gloves",
-        "kneepads"
-      ],
+      "target_looted": [],
       "drop": []
     },
     {
@@ -724,14 +728,14 @@
       "drop": []
     },
     {
-      "item_id": "84b130a33d86e388::highend",
+      "item_id": "80b8386b40ace6cb::highend",
       "entity_type": "brandset",
       "category": "gear",
       "tier": "highend",
       "name_key": "",
       "name": "",
-      "brand_name": "Walker, Harris & Co.",
-      "brand_key": "walkerharrisco",
+      "brand_name": "Imminence Armaments",
+      "brand_key": "imminencearmaments",
       "slot_key": "",
       "blueprint": [
         {
@@ -851,41 +855,6 @@
       "drop": []
     },
     {
-      "item_id": "8f7b9e5a186d98e7::highend",
-      "entity_type": "brandset",
-      "category": "gear",
-      "tier": "highend",
-      "name_key": "",
-      "name": "",
-      "brand_name": "Airaldi Holdings",
-      "brand_key": "airaldiholdings",
-      "slot_key": "",
-      "blueprint": [
-        {
-          "slot": "backpack",
-          "type": "craft"
-        },
-        {
-          "slot": "gloves",
-          "type": "craft"
-        },
-        {
-          "slot": "kneepads",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [
-        "Airaldi Holdings",
-        "mask",
-        "chest",
-        "holster",
-        "backpack",
-        "gloves",
-        "kneepads"
-      ],
-      "drop": []
-    },
-    {
       "item_id": "93571dcdd1686c0c",
       "entity_type": "brandset",
       "category": "gear",
@@ -913,7 +882,46 @@
       "drop": []
     },
     {
-      "item_id": "a2a9c495bb657c47::highend",
+      "item_id": "9b17adc1d9cc8660::highend",
+      "entity_type": "brandset",
+      "category": "gear",
+      "tier": "highend",
+      "name_key": "",
+      "name": "",
+      "brand_name": "Zwiadowka Sp.z o.o.",
+      "brand_key": "zwiadowkaspzoo",
+      "slot_key": "",
+      "blueprint": [
+        {
+          "slot": "backpack",
+          "type": "craft"
+        },
+        {
+          "slot": "chest",
+          "type": "craft"
+        },
+        {
+          "slot": "gloves",
+          "type": "craft"
+        },
+        {
+          "slot": "holster",
+          "type": "craft"
+        },
+        {
+          "slot": "kneepads",
+          "type": "craft"
+        },
+        {
+          "slot": "mask",
+          "type": "craft"
+        }
+      ],
+      "target_looted": [],
+      "drop": []
+    },
+    {
+      "item_id": "a4828d6a1b2011d1::highend",
       "entity_type": "brandset",
       "category": "gear",
       "tier": "highend",
@@ -948,15 +956,34 @@
           "type": "craft"
         }
       ],
-      "target_looted": [
-        "Unit Alloys",
-        "mask",
-        "chest",
-        "holster",
-        "backpack",
-        "gloves",
-        "kneepads"
+      "target_looted": [],
+      "drop": []
+    },
+    {
+      "item_id": "b288be13c2b5b272::highend",
+      "entity_type": "brandset",
+      "category": "gear",
+      "tier": "highend",
+      "name_key": "",
+      "name": "",
+      "brand_name": "Providence Defense",
+      "brand_key": "providencedefense",
+      "slot_key": "",
+      "blueprint": [
+        {
+          "slot": "chest",
+          "type": "craft"
+        },
+        {
+          "slot": "holster",
+          "type": "craft"
+        },
+        {
+          "slot": "mask",
+          "type": "craft"
+        }
       ],
+      "target_looted": [],
       "drop": []
     },
     {
@@ -1199,49 +1226,14 @@
       "drop": []
     },
     {
-      "item_id": "d3dfbe8831b074cd::highend",
+      "item_id": "e08898911dda5efd::highend",
       "entity_type": "brandset",
       "category": "gear",
       "tier": "highend",
       "name_key": "",
       "name": "",
-      "brand_name": "Overlord Armaments",
-      "brand_key": "overlordarmaments",
-      "slot_key": "",
-      "blueprint": [
-        {
-          "slot": "chest",
-          "type": "craft"
-        },
-        {
-          "slot": "gloves",
-          "type": "craft"
-        },
-        {
-          "slot": "mask",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [
-        "Overlord Armaments",
-        "mask",
-        "chest",
-        "holster",
-        "backpack",
-        "gloves",
-        "kneepads"
-      ],
-      "drop": []
-    },
-    {
-      "item_id": "dd047ded3edab07d::highend",
-      "entity_type": "brandset",
-      "category": "gear",
-      "tier": "highend",
-      "name_key": "",
-      "name": "",
-      "brand_name": "Zwiadowka Sp.z o.o.",
-      "brand_key": "zwiadowkaspzoo",
+      "brand_name": "Urban Lookout",
+      "brand_key": "urbanlookout",
       "slot_key": "",
       "blueprint": [
         {
@@ -1273,18 +1265,26 @@
       "drop": []
     },
     {
-      "item_id": "e9a51e9068baa019::highend",
+      "item_id": "e8eecda1edf50c80::highend",
       "entity_type": "brandset",
       "category": "gear",
       "tier": "highend",
       "name_key": "",
       "name": "",
-      "brand_name": "Česká Výroba s.r.o.",
-      "brand_key": "ceskavyrobasro",
+      "brand_name": "Legatus S.p.A.",
+      "brand_key": "legatusspa",
       "slot_key": "",
       "blueprint": [
         {
           "slot": "backpack",
+          "type": "craft"
+        },
+        {
+          "slot": "chest",
+          "type": "craft"
+        },
+        {
+          "slot": "gloves",
           "type": "craft"
         },
         {
@@ -1300,50 +1300,7 @@
           "type": "craft"
         }
       ],
-      "target_looted": [
-        "Česká Výroba s.r.o.",
-        "mask",
-        "chest",
-        "holster",
-        "backpack",
-        "gloves",
-        "kneepads"
-      ],
-      "drop": []
-    },
-    {
-      "item_id": "eadf16a8b9dec121::highend",
-      "entity_type": "brandset",
-      "category": "gear",
-      "tier": "highend",
-      "name_key": "",
-      "name": "",
-      "brand_name": "Douglas & Harding",
-      "brand_key": "douglasharding",
-      "slot_key": "",
-      "blueprint": [
-        {
-          "slot": "chest",
-          "type": "craft"
-        },
-        {
-          "slot": "kneepads",
-          "type": "craft"
-        },
-        {
-          "slot": "mask",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [
-        "Douglas & Harding",
-        "mask",
-        "chest",
-        "holster",
-        "backpack",
-        "gloves",
-        "kneepads"
-      ],
+      "target_looted": [],
       "drop": []
     },
     {
@@ -1382,52 +1339,7 @@
       "drop": []
     },
     {
-      "item_id": "f30da51d1aa3d1d7::highend",
-      "entity_type": "brandset",
-      "category": "gear",
-      "tier": "highend",
-      "name_key": "",
-      "name": "",
-      "brand_name": "Royal Works",
-      "brand_key": "royalworks",
-      "slot_key": "",
-      "blueprint": [
-        {
-          "slot": "backpack",
-          "src": "Y8S1 Season Reward",
-          "type": "craft"
-        },
-        {
-          "slot": "chest",
-          "src": "Y8S1 Season Reward",
-          "type": "craft"
-        },
-        {
-          "slot": "gloves",
-          "src": "Y8S1 Season Reward",
-          "type": "craft"
-        },
-        {
-          "slot": "holster",
-          "src": "Y8S1 Season Reward",
-          "type": "craft"
-        },
-        {
-          "slot": "kneepads",
-          "src": "Y8S1 Season Reward",
-          "type": "craft"
-        },
-        {
-          "slot": "mask",
-          "src": "Y8S1 Season Reward",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "f9f75011d0c030ce::highend",
+      "item_id": "fe8e477bbdf5f458::highend",
       "entity_type": "brandset",
       "category": "gear",
       "tier": "highend",
@@ -1450,15 +1362,21 @@
           "type": "craft"
         }
       ],
-      "target_looted": [
-        "Fenris Group AB",
-        "mask",
-        "chest",
-        "holster",
-        "backpack",
-        "gloves",
-        "kneepads"
-      ],
+      "target_looted": [],
+      "drop": []
+    },
+    {
+      "item_id": "c39ad4424e63130c",
+      "entity_type": "brandset",
+      "category": "gear",
+      "tier": "",
+      "name_key": "edelweissgpzpts",
+      "name": "Edelweiss GPz (PTS)",
+      "brand_name": "Edelweiss GPz (PTS)",
+      "brand_key": "edelweissgpzpts",
+      "slot_key": "",
+      "blueprint": [],
+      "target_looted": [],
       "drop": []
     },
     {
@@ -1524,7 +1442,47 @@
       "drop": []
     },
     {
+      "item_id": "de692fad7a424fdc",
+      "entity_type": "gear_exotic",
+      "category": "gear",
+      "tier": "exotic",
+      "name_key": "acostasgobag",
+      "name": "Acosta's Go-Bag",
+      "brand_name": "",
+      "brand_key": "",
+      "slot_key": "backpack",
+      "blueprint": [
+        {
+          "slot": "backpack",
+          "src": "Outcasts Kill Squad",
+          "type": "craft"
+        }
+      ],
+      "target_looted": [],
+      "drop": []
+    },
+    {
       "item_id": "029962c42fde5542",
+      "entity_type": "gear_exotic",
+      "category": "gear",
+      "tier": "exotic",
+      "name_key": "acostaskneepads",
+      "name": "Acosta's Kneepads",
+      "brand_name": "",
+      "brand_key": "",
+      "slot_key": "kneepads",
+      "blueprint": [
+        {
+          "slot": "kneepads",
+          "src": "Outcasts Kill Squad",
+          "type": "craft"
+        }
+      ],
+      "target_looted": [],
+      "drop": []
+    },
+    {
+      "item_id": "23e12a458f8bffe2",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -1627,6 +1585,26 @@
     },
     {
       "item_id": "7bd803e143a0e6a1",
+      "entity_type": "gear_exotic",
+      "category": "gear",
+      "tier": "exotic",
+      "name_key": "beacon",
+      "name": "Beacon",
+      "brand_name": "",
+      "brand_key": "",
+      "slot_key": "chest",
+      "blueprint": [
+        {
+          "slot": "chest",
+          "src": "Rikers Kill Squad",
+          "type": "craft"
+        }
+      ],
+      "target_looted": [],
+      "drop": []
+    },
+    {
+      "item_id": "826aa819479e66a8",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -1832,6 +1810,26 @@
       ]
     },
     {
+      "item_id": "6db56cec6c8f6452",
+      "entity_type": "gear_exotic",
+      "category": "gear",
+      "tier": "exotic",
+      "name_key": "blacklisters",
+      "name": "Blacklisters",
+      "brand_name": "",
+      "brand_key": "",
+      "slot_key": "kneepads",
+      "blueprint": [
+        {
+          "slot": "kneepads",
+          "src": "Blacktusk Kill Squad",
+          "type": "craft"
+        }
+      ],
+      "target_looted": [],
+      "drop": []
+    },
+    {
       "item_id": "b1643ab681a9df41",
       "entity_type": "gear_exotic",
       "category": "gear",
@@ -1954,6 +1952,26 @@
       "drop": []
     },
     {
+      "item_id": "872417cc7711acfb",
+      "entity_type": "gear_exotic",
+      "category": "gear",
+      "tier": "exotic",
+      "name_key": "bloodyknuckles",
+      "name": "Bloody Knuckles",
+      "brand_name": "",
+      "brand_key": "",
+      "slot_key": "gloves",
+      "blueprint": [
+        {
+          "slot": "gloves",
+          "src": "Rikers Kill Squad",
+          "type": "craft"
+        }
+      ],
+      "target_looted": [],
+      "drop": []
+    },
+    {
       "item_id": "2630c88ef3f7748d",
       "entity_type": "gear_exotic",
       "category": "gear",
@@ -2036,6 +2054,26 @@
       "drop": []
     },
     {
+      "item_id": "db4eaa7cbb96f7c3",
+      "entity_type": "gear_exotic",
+      "category": "gear",
+      "tier": "exotic",
+      "name_key": "btsudatagloves",
+      "name": "BTSU Datagloves",
+      "brand_name": "",
+      "brand_key": "",
+      "slot_key": "gloves",
+      "blueprint": [
+        {
+          "slot": "gloves",
+          "src": "True Sons retaliation completion",
+          "type": "craft"
+        }
+      ],
+      "target_looted": [],
+      "drop": []
+    },
+    {
       "item_id": "f0adfbb1bdc8403b",
       "entity_type": "gear_exotic",
       "category": "gear",
@@ -2086,6 +2124,26 @@
       "target_looted": [
         "mask"
       ]
+    },
+    {
+      "item_id": "0f7b4085a96c4632",
+      "entity_type": "gear_exotic",
+      "category": "gear",
+      "tier": "exotic",
+      "name_key": "catharsis",
+      "name": "Catharsis",
+      "brand_name": "",
+      "brand_key": "",
+      "slot_key": "mask",
+      "blueprint": [
+        {
+          "slot": "mask",
+          "src": "True Sons Kill Squad",
+          "type": "craft"
+        }
+      ],
+      "target_looted": [],
+      "drop": []
     },
     {
       "item_id": "483cc0d2d5318bdf",
@@ -2230,7 +2288,47 @@
       "drop": []
     },
     {
+      "item_id": "fead7c34f430f5f8",
+      "entity_type": "gear_exotic",
+      "category": "gear",
+      "tier": "exotic",
+      "name_key": "centurionsscabbard",
+      "name": "Centurion's Scabbard",
+      "brand_name": "",
+      "brand_key": "",
+      "slot_key": "holster",
+      "blueprint": [
+        {
+          "slot": "holster",
+          "src": "Hyenas Kill Squad",
+          "type": "craft"
+        }
+      ],
+      "target_looted": [],
+      "drop": []
+    },
+    {
       "item_id": "2c134c8835dd0d2e",
+      "entity_type": "gear_exotic",
+      "category": "gear",
+      "tier": "exotic",
+      "name_key": "collector",
+      "name": "Collector",
+      "brand_name": "",
+      "brand_key": "",
+      "slot_key": "chest",
+      "blueprint": [
+        {
+          "slot": "chest",
+          "src": "Outcasts Kill Squad",
+          "type": "craft"
+        }
+      ],
+      "target_looted": [],
+      "drop": []
+    },
+    {
+      "item_id": "403f95c23e66a01a",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -2305,6 +2403,26 @@
         {
           "slot": "chest",
           "src": "Outcasts Kill Squad",
+          "type": "craft"
+        }
+      ],
+      "target_looted": [],
+      "drop": []
+    },
+    {
+      "item_id": "59e34b3f11fafefc",
+      "entity_type": "gear_exotic",
+      "category": "gear",
+      "tier": "exotic",
+      "name_key": "coyotesmask",
+      "name": "Coyote’s Mask",
+      "brand_name": "",
+      "brand_key": "",
+      "slot_key": "mask",
+      "blueprint": [
+        {
+          "slot": "mask",
+          "src": "Hyenas Kill Squad",
           "type": "craft"
         }
       ],
@@ -2452,6 +2570,45 @@
       "drop": []
     },
     {
+      "item_id": "ca82ee4a2064db32",
+      "entity_type": "gear_exotic",
+      "category": "gear",
+      "tier": "exotic",
+      "name_key": "dodgecitygunslingersholster",
+      "name": "Dodge City Gunslinger's Holster",
+      "brand_name": "",
+      "brand_key": "",
+      "slot_key": "holster",
+      "blueprint": [
+        {
+          "slot": "holster",
+          "type": "craft"
+        }
+      ],
+      "target_looted": [],
+      "drop": []
+    },
+    {
+      "item_id": "339e3b112a44f89d",
+      "entity_type": "gear_exotic",
+      "category": "gear",
+      "tier": "exotic",
+      "name_key": "exodusgloves",
+      "name": "Exodus Gloves",
+      "brand_name": "",
+      "brand_key": "",
+      "slot_key": "gloves",
+      "blueprint": [
+        {
+          "slot": "gloves",
+          "src": "True Sons retaliation completion",
+          "type": "craft"
+        }
+      ],
+      "target_looted": [],
+      "drop": []
+    },
+    {
       "item_id": "914fadec1af650f0",
       "entity_type": "gear_exotic",
       "category": "gear",
@@ -2535,6 +2692,26 @@
     },
     {
       "item_id": "2c628090c7e6c47b",
+      "entity_type": "gear_exotic",
+      "category": "gear",
+      "tier": "exotic",
+      "name_key": "harrierpride",
+      "name": "Harrier Pride",
+      "brand_name": "",
+      "brand_key": "",
+      "slot_key": "backpack",
+      "blueprint": [
+        {
+          "slot": "backpack",
+          "src": "Outcasts retaliation completion",
+          "type": "craft"
+        }
+      ],
+      "target_looted": [],
+      "drop": []
+    },
+    {
+      "item_id": "3bf950d06177b4cf",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -2656,6 +2833,26 @@
       ]
     },
     {
+      "item_id": "b42fb87a68ac73b8",
+      "entity_type": "gear_exotic",
+      "category": "gear",
+      "tier": "exotic",
+      "name_key": "imperialdynasty",
+      "name": "Imperial Dynasty",
+      "brand_name": "",
+      "brand_key": "",
+      "slot_key": "holster",
+      "blueprint": [
+        {
+          "slot": "holster",
+          "src": "Cleaners Kill Squad",
+          "type": "craft"
+        }
+      ],
+      "target_looted": [],
+      "drop": []
+    },
+    {
       "item_id": "d16c6588a86dff2a",
       "entity_type": "gear_exotic",
       "category": "gear",
@@ -2752,7 +2949,47 @@
       "drop": []
     },
     {
+      "item_id": "d1f3dfc0899a85ef",
+      "entity_type": "gear_exotic",
+      "category": "gear",
+      "tier": "exotic",
+      "name_key": "memento",
+      "name": "Memento",
+      "brand_name": "",
+      "brand_key": "",
+      "slot_key": "backpack",
+      "blueprint": [
+        {
+          "slot": "backpack",
+          "src": "Outcasts Kill Squad",
+          "type": "craft"
+        }
+      ],
+      "target_looted": [],
+      "drop": []
+    },
+    {
       "item_id": "30dc4b917a2a0f5a",
+      "entity_type": "gear_exotic",
+      "category": "gear",
+      "tier": "exotic",
+      "name_key": "nimbleholster",
+      "name": "Nimble Holster",
+      "brand_name": "",
+      "brand_key": "",
+      "slot_key": "holster",
+      "blueprint": [
+        {
+          "slot": "holster",
+          "src": "Outcasts retaliation completion",
+          "type": "craft"
+        }
+      ],
+      "target_looted": [],
+      "drop": []
+    },
+    {
+      "item_id": "433244ba2191a698",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -2874,6 +3111,26 @@
       "drop": []
     },
     {
+      "item_id": "aaacc7778f179f1d",
+      "entity_type": "gear_exotic",
+      "category": "gear",
+      "tier": "exotic",
+      "name_key": "ninjabikemessengerbackpack",
+      "name": "NinjaBike Messenger Backpack",
+      "brand_name": "",
+      "brand_key": "",
+      "slot_key": "backpack",
+      "blueprint": [
+        {
+          "slot": "backpack",
+          "src": "Rikers Kill Squad",
+          "type": "craft"
+        }
+      ],
+      "target_looted": [],
+      "drop": []
+    },
+    {
       "item_id": "c4a221a58bc1b9b7",
       "entity_type": "gear_exotic",
       "category": "gear",
@@ -2897,6 +3154,26 @@
     },
     {
       "item_id": "0e46535089ef9d33",
+      "entity_type": "gear_exotic",
+      "category": "gear",
+      "tier": "exotic",
+      "name_key": "ninjabikemessengerkneepads",
+      "name": "NinjaBike Messenger Kneepads",
+      "brand_name": "",
+      "brand_key": "",
+      "slot_key": "kneepads",
+      "blueprint": [
+        {
+          "slot": "kneepads",
+          "src": "Cleaners Kill Squad",
+          "type": "craft"
+        }
+      ],
+      "target_looted": [],
+      "drop": []
+    },
+    {
+      "item_id": "0f5bb2e9b3c61fa9",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -3032,6 +3309,26 @@
       "drop": []
     },
     {
+      "item_id": "56bc1ef8c072bb7a",
+      "entity_type": "gear_exotic",
+      "category": "gear",
+      "tier": "exotic",
+      "name_key": "overdogs",
+      "name": "Overdogs",
+      "brand_name": "",
+      "brand_key": "",
+      "slot_key": "gloves",
+      "blueprint": [
+        {
+          "slot": "gloves",
+          "src": "Hyenas retaliation completion",
+          "type": "craft"
+        }
+      ],
+      "target_looted": [],
+      "drop": []
+    },
+    {
       "item_id": "a80cee0da3b6717e",
       "entity_type": "gear_exotic",
       "category": "gear",
@@ -3067,6 +3364,26 @@
         {
           "slot": "gloves",
           "src": "Hyenas retaliation completion",
+          "type": "craft"
+        }
+      ],
+      "target_looted": [],
+      "drop": []
+    },
+    {
+      "item_id": "09addf5d60d1af90",
+      "entity_type": "gear_exotic",
+      "category": "gear",
+      "tier": "exotic",
+      "name_key": "provocator",
+      "name": "Provocator",
+      "brand_name": "",
+      "brand_key": "",
+      "slot_key": "chest",
+      "blueprint": [
+        {
+          "slot": "chest",
+          "src": "Blacktusk Kill Squad",
           "type": "craft"
         }
       ],
@@ -3194,6 +3511,25 @@
       "drop": []
     },
     {
+      "item_id": "9de495d180090456",
+      "entity_type": "gear_exotic",
+      "category": "gear",
+      "tier": "exotic",
+      "name_key": "ridgewayspride",
+      "name": "Ridgeway's Pride",
+      "brand_name": "",
+      "brand_key": "",
+      "slot_key": "chest",
+      "blueprint": [
+        {
+          "slot": "chest",
+          "type": "craft"
+        }
+      ],
+      "target_looted": [],
+      "drop": []
+    },
+    {
       "item_id": "aa75ac741e0bf1d3",
       "entity_type": "gear_exotic",
       "category": "gear",
@@ -3275,6 +3611,26 @@
     },
     {
       "item_id": "9e206b9cc2dc72cb",
+      "entity_type": "gear_exotic",
+      "category": "gear",
+      "tier": "exotic",
+      "name_key": "ruggedgauntlets",
+      "name": "Rugged Gauntlets",
+      "brand_name": "",
+      "brand_key": "",
+      "slot_key": "gloves",
+      "blueprint": [
+        {
+          "slot": "gloves",
+          "src": "Outcasts retaliation completion",
+          "type": "craft"
+        }
+      ],
+      "target_looted": [],
+      "drop": []
+    },
+    {
+      "item_id": "ae51b50e458369b0",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -3376,6 +3732,26 @@
       ]
     },
     {
+      "item_id": "9c1101b6a7746553",
+      "entity_type": "gear_exotic",
+      "category": "gear",
+      "tier": "exotic",
+      "name_key": "sawyerskneepads",
+      "name": "Sawyer's Kneepads",
+      "brand_name": "",
+      "brand_key": "",
+      "slot_key": "kneepads",
+      "blueprint": [
+        {
+          "slot": "kneepads",
+          "src": "Hyenas Kill Squad",
+          "type": "craft"
+        }
+      ],
+      "target_looted": [],
+      "drop": []
+    },
+    {
       "item_id": "ab4f794525ace4aa",
       "entity_type": "gear_exotic",
       "category": "gear",
@@ -3458,6 +3834,26 @@
       "drop": []
     },
     {
+      "item_id": "f859d40507c33c31",
+      "entity_type": "gear_exotic",
+      "category": "gear",
+      "tier": "exotic",
+      "name_key": "shockerpunch",
+      "name": "Shocker Punch",
+      "brand_name": "",
+      "brand_key": "",
+      "slot_key": "holster",
+      "blueprint": [
+        {
+          "slot": "holster",
+          "src": "True Sons Kill Squad",
+          "type": "craft"
+        }
+      ],
+      "target_looted": [],
+      "drop": []
+    },
+    {
       "item_id": "fa5a38b354ee34f7",
       "entity_type": "gear_exotic",
       "category": "gear",
@@ -3499,6 +3895,26 @@
     },
     {
       "item_id": "1697535f4f790c52",
+      "entity_type": "gear_exotic",
+      "category": "gear",
+      "tier": "exotic",
+      "name_key": "tardigradearmorsystem",
+      "name": "Tardigrade Armor System",
+      "brand_name": "",
+      "brand_key": "",
+      "slot_key": "chest",
+      "blueprint": [
+        {
+          "slot": "chest",
+          "src": "True Sons retaliation completion",
+          "type": "craft"
+        }
+      ],
+      "target_looted": [],
+      "drop": []
+    },
+    {
+      "item_id": "45e400df09e4c1b9",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -3600,6 +4016,26 @@
       "target_looted": [
         "mask"
       ]
+    },
+    {
+      "item_id": "492442439907d1eb",
+      "entity_type": "gear_exotic",
+      "category": "gear",
+      "tier": "exotic",
+      "name_key": "vile",
+      "name": "Vile",
+      "brand_name": "",
+      "brand_key": "",
+      "slot_key": "mask",
+      "blueprint": [
+        {
+          "slot": "mask",
+          "src": "Outcasts retaliation completion",
+          "type": "craft"
+        }
+      ],
+      "target_looted": [],
+      "drop": []
     },
     {
       "item_id": "60d3baafef83d6d9",
@@ -3746,6 +4182,26 @@
       ]
     },
     {
+      "item_id": "c23e0a388938495b",
+      "entity_type": "gear_exotic",
+      "category": "gear",
+      "tier": "exotic",
+      "name_key": "waveform",
+      "name": "Waveform",
+      "brand_name": "",
+      "brand_key": "",
+      "slot_key": "holster",
+      "blueprint": [
+        {
+          "slot": "holster",
+          "src": "Outcasts retaliation completion",
+          "type": "craft"
+        }
+      ],
+      "target_looted": [],
+      "drop": []
+    },
+    {
       "item_id": "1226fe3a30ddf697",
       "entity_type": "gear_named",
       "category": "gear",
@@ -3767,6 +4223,26 @@
     },
     {
       "item_id": "cb80c73b213563bd",
+      "entity_type": "gear_named",
+      "category": "gear",
+      "tier": "named",
+      "name_key": "ammodump",
+      "name": "Ammo Dump",
+      "brand_name": "Badger Tuff",
+      "brand_key": "badgertuff",
+      "slot_key": "holster",
+      "blueprint": [
+        {
+          "slot": "holster",
+          "src": "Field Research Firewall",
+          "type": "craft"
+        }
+      ],
+      "target_looted": [],
+      "drop": []
+    },
+    {
+      "item_id": "d71aa5fcd92767f5",
       "entity_type": "gear_named",
       "category": "gear",
       "tier": "named",
@@ -3901,6 +4377,20 @@
       ]
     },
     {
+      "item_id": "3d2050cb3e8b6a78",
+      "entity_type": "gear_named",
+      "category": "gear",
+      "tier": "named",
+      "name_key": "benefactor",
+      "name": "Benefactor",
+      "brand_name": "",
+      "brand_key": "edelweissgpz",
+      "slot_key": "chest",
+      "blueprint": [],
+      "target_looted": [],
+      "drop": []
+    },
+    {
       "item_id": "0a3bac2bb1d387e6",
       "entity_type": "gear_named",
       "category": "gear",
@@ -3942,6 +4432,26 @@
         "Zwiadowka Sp.z o.o.",
         "chest"
       ]
+    },
+    {
+      "item_id": "e9db2d07a01c710d",
+      "entity_type": "gear_named",
+      "category": "gear",
+      "tier": "named",
+      "name_key": "bober",
+      "name": "Bober",
+      "brand_name": "Zwiadowka Sp.z o.o.",
+      "brand_key": "zwiadowkaspzoo",
+      "slot_key": "chest",
+      "blueprint": [
+        {
+          "slot": "chest",
+          "src": "Reconstructed Caches",
+          "type": "craft"
+        }
+      ],
+      "target_looted": [],
+      "drop": []
     },
     {
       "item_id": "4fabd7d9f6a1f281",
@@ -4027,6 +4537,26 @@
       ]
     },
     {
+      "item_id": "ef31b56871528df0",
+      "entity_type": "gear_named",
+      "category": "gear",
+      "tier": "named",
+      "name_key": "caesarsguard",
+      "name": "Caesar's Guard",
+      "brand_name": "Empress International",
+      "brand_key": "empressinternational",
+      "slot_key": "chest",
+      "blueprint": [
+        {
+          "slot": "chest",
+          "src": "Reconstructed Caches",
+          "type": "craft"
+        }
+      ],
+      "target_looted": [],
+      "drop": []
+    },
+    {
       "item_id": "34f730c57a716e90",
       "entity_type": "gear_named",
       "category": "gear",
@@ -4093,6 +4623,46 @@
       ]
     },
     {
+      "item_id": "991c0080d098205e",
+      "entity_type": "gear_named",
+      "category": "gear",
+      "tier": "named",
+      "name_key": "carpenter",
+      "name": "Carpenter",
+      "brand_name": "Lengmo",
+      "brand_key": "lengmo",
+      "slot_key": "chest",
+      "blueprint": [
+        {
+          "slot": "chest",
+          "src": "Reconstructed Caches",
+          "type": "craft"
+        }
+      ],
+      "target_looted": [],
+      "drop": []
+    },
+    {
+      "item_id": "566459394ec0912f",
+      "entity_type": "gear_named",
+      "category": "gear",
+      "tier": "named",
+      "name_key": "chainkiller",
+      "name": "Chainkiller",
+      "brand_name": "Walker, Harris & Co.",
+      "brand_key": "walkerharrisco",
+      "slot_key": "chest",
+      "blueprint": [
+        {
+          "slot": "chest",
+          "src": "Reconstructed Caches",
+          "type": "craft"
+        }
+      ],
+      "target_looted": [],
+      "drop": []
+    },
+    {
       "item_id": "c8ccd00c30131f2e",
       "entity_type": "gear_named",
       "category": "gear",
@@ -4157,6 +4727,26 @@
         "Habsburg Guard",
         "chest"
       ]
+    },
+    {
+      "item_id": "9f5b3018af04b4df",
+      "entity_type": "gear_named",
+      "category": "gear",
+      "tier": "named",
+      "name_key": "cherished",
+      "name": "Cherished",
+      "brand_name": "Habsburg Guard",
+      "brand_key": "habsburgguard",
+      "slot_key": "chest",
+      "blueprint": [
+        {
+          "slot": "chest",
+          "src": "Reconstructed Caches",
+          "type": "craft"
+        }
+      ],
+      "target_looted": [],
+      "drop": []
     },
     {
       "item_id": "db927d5c30a42a8f",
@@ -4243,6 +4833,28 @@
       ]
     },
     {
+      "item_id": "9d8c847228ce85e8",
+      "entity_type": "gear_named",
+      "category": "gear",
+      "tier": "named",
+      "name_key": "clawsout",
+      "name": "Claws Out",
+      "brand_name": "Wyvern Wear",
+      "brand_key": "wyvernwear",
+      "slot_key": "holster",
+      "blueprint": [
+        {
+          "slot": "holster",
+          "src": "Reconstructed Caches",
+          "type": "craft"
+        }
+      ],
+      "target_looted": [],
+      "drop": [
+        "dz"
+      ]
+    },
+    {
       "item_id": "e235ae78138a0017",
       "entity_type": "gear_named",
       "category": "gear",
@@ -4266,6 +4878,26 @@
         "Wyvern Wear:dz",
         "holster:dz"
       ]
+    },
+    {
+      "item_id": "0dd27be43ea399c5",
+      "entity_type": "gear_named",
+      "category": "gear",
+      "tier": "named",
+      "name_key": "cloak",
+      "name": "Cloak",
+      "brand_name": "Imminence Armaments",
+      "brand_key": "imminencearmaments",
+      "slot_key": "kneepads",
+      "blueprint": [
+        {
+          "slot": "kneepads",
+          "src": "Reconstructed Caches",
+          "type": "craft"
+        }
+      ],
+      "target_looted": [],
+      "drop": []
     },
     {
       "item_id": "315e534a2054adcb",
@@ -4323,6 +4955,26 @@
       "blueprint": [
         {
           "slot": "kneepads",
+          "src": "Reconstructed Caches",
+          "type": "craft"
+        }
+      ],
+      "target_looted": [],
+      "drop": []
+    },
+    {
+      "item_id": "03cb07f5a9eb00e0",
+      "entity_type": "gear_named",
+      "category": "gear",
+      "tier": "named",
+      "name_key": "closer",
+      "name": "Closer",
+      "brand_name": "Uzina Getica",
+      "brand_key": "uzinagetica",
+      "slot_key": "chest",
+      "blueprint": [
+        {
+          "slot": "chest",
           "src": "Reconstructed Caches",
           "type": "craft"
         }
@@ -4397,6 +5049,26 @@
       ]
     },
     {
+      "item_id": "4e38afd706a8f616",
+      "entity_type": "gear_named",
+      "category": "gear",
+      "tier": "named",
+      "name_key": "combustor",
+      "name": "Combustor",
+      "brand_name": "Palisade Steelworks",
+      "brand_key": "palisadesteelworks",
+      "slot_key": "chest",
+      "blueprint": [
+        {
+          "slot": "chest",
+          "src": "Reconstructed Caches",
+          "type": "craft"
+        }
+      ],
+      "target_looted": [],
+      "drop": []
+    },
+    {
       "item_id": "de872871a1803ada",
       "entity_type": "gear_named",
       "category": "gear",
@@ -4460,6 +5132,26 @@
       ]
     },
     {
+      "item_id": "b5f9e41070797186",
+      "entity_type": "gear_named",
+      "category": "gear",
+      "tier": "named",
+      "name_key": "contractorsgloves",
+      "name": "Contractor’s Gloves",
+      "brand_name": "Petrov Defense Group",
+      "brand_key": "petrovdefensegroup",
+      "slot_key": "gloves",
+      "blueprint": [
+        {
+          "slot": "gloves",
+          "src": "Reconstructed Caches",
+          "type": "craft"
+        }
+      ],
+      "target_looted": [],
+      "drop": []
+    },
+    {
       "item_id": "e8d95ed810c82b84",
       "entity_type": "gear_named",
       "category": "gear",
@@ -4503,6 +5195,28 @@
     },
     {
       "item_id": "6724686fce1ba23f",
+      "entity_type": "gear_named",
+      "category": "gear",
+      "tier": "named",
+      "name_key": "deathgrips",
+      "name": "Deathgrips",
+      "brand_name": "5.11 Tactical",
+      "brand_key": "511tactical",
+      "slot_key": "gloves",
+      "blueprint": [
+        {
+          "slot": "gloves",
+          "src": "Reconstructed Caches",
+          "type": "craft"
+        }
+      ],
+      "target_looted": [],
+      "drop": [
+        "dz"
+      ]
+    },
+    {
+      "item_id": "6d7da675047fff88",
       "entity_type": "gear_named",
       "category": "gear",
       "tier": "named",
@@ -4596,6 +5310,28 @@
       ]
     },
     {
+      "item_id": "752e4c631e47ab04",
+      "entity_type": "gear_named",
+      "category": "gear",
+      "tier": "named",
+      "name_key": "doorkickersknock",
+      "name": "Door-Kicker’s Knock",
+      "brand_name": "Grupo Sombra S.A.",
+      "brand_key": "gruposombrasa",
+      "slot_key": "chest",
+      "blueprint": [
+        {
+          "slot": "chest",
+          "src": "Reconstructed Caches",
+          "type": "craft"
+        }
+      ],
+      "target_looted": [],
+      "drop": [
+        "dz"
+      ]
+    },
+    {
       "item_id": "a83f28d45e93f564",
       "entity_type": "gear_named",
       "category": "gear",
@@ -4619,6 +5355,26 @@
         "Grupo Sombra S.A.:dz",
         "chest:dz"
       ]
+    },
+    {
+      "item_id": "23beb8de3d0d5068",
+      "entity_type": "gear_named",
+      "category": "gear",
+      "tier": "named",
+      "name_key": "eaglesgrasp",
+      "name": "Eagles Grasp",
+      "brand_name": "Zwiadowka Sp.z o.o.",
+      "brand_key": "zwiadowkaspzoo",
+      "slot_key": "gloves",
+      "blueprint": [
+        {
+          "slot": "gloves",
+          "src": "Reconstructed Caches",
+          "type": "craft"
+        }
+      ],
+      "target_looted": [],
+      "drop": []
     },
     {
       "item_id": "39640e469bc69c02",
@@ -4753,6 +5509,28 @@
       ]
     },
     {
+      "item_id": "eca8491501b072a1",
+      "entity_type": "gear_named",
+      "category": "gear",
+      "tier": "named",
+      "name_key": "emperorsguard",
+      "name": "Emperor’s Guard",
+      "brand_name": "Murakami Industries",
+      "brand_key": "murakamiindustries",
+      "slot_key": "kneepads",
+      "blueprint": [
+        {
+          "slot": "kneepads",
+          "src": "Reconstructed Caches",
+          "type": "craft"
+        }
+      ],
+      "target_looted": [],
+      "drop": [
+        "dz"
+      ]
+    },
+    {
       "item_id": "0a7c7969ae9c0ceb",
       "entity_type": "gear_named",
       "category": "gear",
@@ -4796,6 +5574,26 @@
       "drop": []
     },
     {
+      "item_id": "840cf68044a3d0d4",
+      "entity_type": "gear_named",
+      "category": "gear",
+      "tier": "named",
+      "name_key": "equalizer",
+      "name": "Equalizer",
+      "brand_name": "Unit Alloys",
+      "brand_key": "unitalloys",
+      "slot_key": "chest",
+      "blueprint": [
+        {
+          "slot": "chest",
+          "src": "Reconstructed Caches",
+          "type": "craft"
+        }
+      ],
+      "target_looted": [],
+      "drop": []
+    },
+    {
       "item_id": "d60a3c40ee04d41b",
       "entity_type": "gear_named",
       "category": "gear",
@@ -4804,6 +5602,26 @@
       "name": "Equalizer",
       "brand_name": "Unit Alloys",
       "brand_key": "unitalloys",
+      "slot_key": "chest",
+      "blueprint": [
+        {
+          "slot": "chest",
+          "src": "Reconstructed Caches",
+          "type": "craft"
+        }
+      ],
+      "target_looted": [],
+      "drop": []
+    },
+    {
+      "item_id": "5349be0d50c18cc6",
+      "entity_type": "gear_named",
+      "category": "gear",
+      "tier": "named",
+      "name_key": "everydaycarrier",
+      "name": "Everyday Carrier",
+      "brand_name": "Belstone Armory",
+      "brand_key": "belstonearmory",
       "slot_key": "chest",
       "blueprint": [
         {
@@ -4906,6 +5724,45 @@
       ]
     },
     {
+      "item_id": "597cece2580a5cfb",
+      "entity_type": "gear_named",
+      "category": "gear",
+      "tier": "named",
+      "name_key": "ferociouscalm",
+      "name": "Ferocious Calm",
+      "brand_name": "Fenris Group AB",
+      "brand_key": "fenrisgroupab",
+      "slot_key": "chest",
+      "blueprint": [
+        {
+          "slot": "chest",
+          "src": "Reconstructed Caches",
+          "type": "craft"
+        }
+      ],
+      "target_looted": [],
+      "drop": [
+        "dz"
+      ]
+    },
+    {
+      "item_id": "6852e5b7fb78a6bc",
+      "entity_type": "gear_named",
+      "category": "gear",
+      "tier": "named",
+      "name_key": "festivedelivery",
+      "name": "Festive Delivery",
+      "brand_name": "",
+      "brand_key": "gruposombrasa",
+      "slot_key": "backpack",
+      "blueprint": [],
+      "target_looted": [],
+      "drop": [
+        "Event Hoarder",
+        "Mini Warhound"
+      ]
+    },
+    {
       "item_id": "80f5be4e6df3dc09",
       "entity_type": "gear_named",
       "category": "gear",
@@ -5005,6 +5862,26 @@
       ]
     },
     {
+      "item_id": "f20538bd33ed3885",
+      "entity_type": "gear_named",
+      "category": "gear",
+      "tier": "named",
+      "name_key": "firmhandshake",
+      "name": "Firm Handshake",
+      "brand_name": "Sokolov Concern",
+      "brand_key": "sokolovconcern",
+      "slot_key": "gloves",
+      "blueprint": [
+        {
+          "slot": "gloves",
+          "src": "Reconstructed Caches",
+          "type": "craft"
+        }
+      ],
+      "target_looted": [],
+      "drop": []
+    },
+    {
       "item_id": "6a09c3e119ad99ee",
       "entity_type": "gear_named",
       "category": "gear",
@@ -5091,6 +5968,26 @@
       "drop": []
     },
     {
+      "item_id": "90f01196e5fcf714",
+      "entity_type": "gear_named",
+      "category": "gear",
+      "tier": "named",
+      "name_key": "forge",
+      "name": "Forge",
+      "brand_name": "Richter & Kaiser GmbH",
+      "brand_key": "richterkaisergmbh",
+      "slot_key": "holster",
+      "blueprint": [
+        {
+          "slot": "holster",
+          "src": "Reconstructed Caches",
+          "type": "craft"
+        }
+      ],
+      "target_looted": [],
+      "drop": []
+    },
+    {
       "item_id": "1b45c4521643afd3",
       "entity_type": "gear_named",
       "category": "gear",
@@ -5115,6 +6012,26 @@
     },
     {
       "item_id": "5f1111964e872454",
+      "entity_type": "gear_named",
+      "category": "gear",
+      "tier": "named",
+      "name_key": "foxsprayer",
+      "name": "Fox’s Prayer",
+      "brand_name": "Overlord Armaments",
+      "brand_key": "overlordarmaments",
+      "slot_key": "kneepads",
+      "blueprint": [
+        {
+          "slot": "kneepads",
+          "src": "Reconstructed Caches",
+          "type": "craft"
+        }
+      ],
+      "target_looted": [],
+      "drop": []
+    },
+    {
+      "item_id": "7b706cfd075cf4b3",
       "entity_type": "gear_named",
       "category": "gear",
       "tier": "named",
@@ -5217,6 +6134,46 @@
       "drop": []
     },
     {
+      "item_id": "8b0749154666558a",
+      "entity_type": "gear_named",
+      "category": "gear",
+      "tier": "named",
+      "name_key": "grease",
+      "name": "Grease",
+      "brand_name": "Shiny Monkey Gear",
+      "brand_key": "shinymonkeygear",
+      "slot_key": "kneepads",
+      "blueprint": [
+        {
+          "slot": "kneepads",
+          "src": "Reconstructed Caches",
+          "type": "craft"
+        }
+      ],
+      "target_looted": [],
+      "drop": []
+    },
+    {
+      "item_id": "7f50240f2a47a620",
+      "entity_type": "gear_named",
+      "category": "gear",
+      "tier": "named",
+      "name_key": "henri",
+      "name": "Henri",
+      "brand_name": "Electrique",
+      "brand_key": "electrique",
+      "slot_key": "chest",
+      "blueprint": [
+        {
+          "slot": "chest",
+          "src": "Reconstructed Caches",
+          "type": "craft"
+        }
+      ],
+      "target_looted": [],
+      "drop": []
+    },
+    {
       "item_id": "896214b39fb32eb0",
       "entity_type": "gear_named",
       "category": "gear",
@@ -5283,6 +6240,26 @@
       ]
     },
     {
+      "item_id": "aaf7b84a65cf8c17",
+      "entity_type": "gear_named",
+      "category": "gear",
+      "tier": "named",
+      "name_key": "hunterkiller",
+      "name": "Hunter-Killer",
+      "brand_name": "Golan Gear Ltd",
+      "brand_key": "golangearltd",
+      "slot_key": "chest",
+      "blueprint": [
+        {
+          "slot": "chest",
+          "src": "Purchase from Inaya after defeating WoNY Hunters",
+          "type": "craft"
+        }
+      ],
+      "target_looted": [],
+      "drop": []
+    },
+    {
       "item_id": "cd5054aed7e86ebb",
       "entity_type": "gear_named",
       "category": "gear",
@@ -5347,6 +6324,26 @@
     },
     {
       "item_id": "9ba13c65f51a7ddb",
+      "entity_type": "gear_named",
+      "category": "gear",
+      "tier": "named",
+      "name_key": "impetus",
+      "name": "Impetus",
+      "brand_name": "Wyvern Wear",
+      "brand_key": "wyvernwear",
+      "slot_key": "chest",
+      "blueprint": [
+        {
+          "slot": "chest",
+          "src": "Reconstructed Caches",
+          "type": "craft"
+        }
+      ],
+      "target_looted": [],
+      "drop": []
+    },
+    {
+      "item_id": "ec6fbb5d87c89c0d",
       "entity_type": "gear_named",
       "category": "gear",
       "tier": "named",
@@ -5459,6 +6456,20 @@
       ]
     },
     {
+      "item_id": "126c9b126e96c1fc",
+      "entity_type": "gear_named",
+      "category": "gear",
+      "tier": "named",
+      "name_key": "mommabadger",
+      "name": "Momma Badger",
+      "brand_name": "",
+      "brand_key": "edelweissgpz",
+      "slot_key": "backpack",
+      "blueprint": [],
+      "target_looted": [],
+      "drop": []
+    },
+    {
       "item_id": "49d2d80fe4425da1",
       "entity_type": "gear_named",
       "category": "gear",
@@ -5503,6 +6514,26 @@
     },
     {
       "item_id": "a68d1345dd2c638d",
+      "entity_type": "gear_named",
+      "category": "gear",
+      "tier": "named",
+      "name_key": "motherlylove",
+      "name": "Motherly Love",
+      "brand_name": "Alps Summit Armaments",
+      "brand_key": "alpssummitarmaments",
+      "slot_key": "gloves",
+      "blueprint": [
+        {
+          "slot": "gloves",
+          "src": "Field Research Technician",
+          "type": "craft"
+        }
+      ],
+      "target_looted": [],
+      "drop": []
+    },
+    {
+      "item_id": "ba912ba090578f33",
       "entity_type": "gear_named",
       "category": "gear",
       "tier": "named",
@@ -5611,6 +6642,26 @@
       ]
     },
     {
+      "item_id": "8142c223a20bf760",
+      "entity_type": "gear_named",
+      "category": "gear",
+      "tier": "named",
+      "name_key": "picarosholster",
+      "name": "Picaros Holster",
+      "brand_name": "Brazos de Arcabuz",
+      "brand_key": "brazosdearcabuz",
+      "slot_key": "holster",
+      "blueprint": [
+        {
+          "slot": "holster",
+          "src": "Reconstructed Caches",
+          "type": "craft"
+        }
+      ],
+      "target_looted": [],
+      "drop": []
+    },
+    {
       "item_id": "8fc8c099796d2eba",
       "entity_type": "gear_named",
       "category": "gear",
@@ -5623,6 +6674,26 @@
       "blueprint": [
         {
           "slot": "holster",
+          "src": "Reconstructed Caches",
+          "type": "craft"
+        }
+      ],
+      "target_looted": [],
+      "drop": []
+    },
+    {
+      "item_id": "7ae079f06ecb5005",
+      "entity_type": "gear_named",
+      "category": "gear",
+      "tier": "named",
+      "name_key": "pointman",
+      "name": "Pointman",
+      "brand_name": "Gila Guard",
+      "brand_key": "gilaguard",
+      "slot_key": "chest",
+      "blueprint": [
+        {
+          "slot": "chest",
           "src": "Reconstructed Caches",
           "type": "craft"
         }
@@ -5672,6 +6743,26 @@
         "Gila Guard",
         "chest"
       ]
+    },
+    {
+      "item_id": "3597a8201123d695",
+      "entity_type": "gear_named",
+      "category": "gear",
+      "tier": "named",
+      "name_key": "pristineexample",
+      "name": "Pristine Example",
+      "brand_name": "Airaldi Holdings",
+      "brand_key": "airaldiholdings",
+      "slot_key": "chest",
+      "blueprint": [
+        {
+          "slot": "chest",
+          "src": "Reconstructed Caches",
+          "type": "craft"
+        }
+      ],
+      "target_looted": [],
+      "drop": []
     },
     {
       "item_id": "38cf300b3b721ce0",
@@ -5823,6 +6914,46 @@
       "drop": []
     },
     {
+      "item_id": "74702878249d82ca",
+      "entity_type": "gear_named",
+      "category": "gear",
+      "tier": "named",
+      "name_key": "robin",
+      "name": "Robin",
+      "brand_name": "Royal Works",
+      "brand_key": "royalworks",
+      "slot_key": "chest",
+      "blueprint": [
+        {
+          "slot": "chest",
+          "src": "Reconstructed Caches",
+          "type": "craft"
+        }
+      ],
+      "target_looted": [],
+      "drop": []
+    },
+    {
+      "item_id": "6c9cba06750faa9b",
+      "entity_type": "gear_named",
+      "category": "gear",
+      "tier": "named",
+      "name_key": "salvo",
+      "name": "Salvo",
+      "brand_name": "Unit Alloys",
+      "brand_key": "unitalloys",
+      "slot_key": "holster",
+      "blueprint": [
+        {
+          "slot": "holster",
+          "src": "Reconstructed Caches",
+          "type": "craft"
+        }
+      ],
+      "target_looted": [],
+      "drop": []
+    },
+    {
       "item_id": "71745c76d2e2a343",
       "entity_type": "gear_named",
       "category": "gear",
@@ -5878,6 +7009,26 @@
       "blueprint": [
         {
           "slot": "holster",
+          "src": "Reconstructed Caches",
+          "type": "craft"
+        }
+      ],
+      "target_looted": [],
+      "drop": []
+    },
+    {
+      "item_id": "c794a5846f253695",
+      "entity_type": "gear_named",
+      "category": "gear",
+      "tier": "named",
+      "name_key": "sleight",
+      "name": "Sleight",
+      "brand_name": "Urban Lookout",
+      "brand_key": "urbanlookout",
+      "slot_key": "chest",
+      "blueprint": [
+        {
+          "slot": "chest",
           "src": "Reconstructed Caches",
           "type": "craft"
         }
@@ -5954,6 +7105,23 @@
       ]
     },
     {
+      "item_id": "4bf011822a46dbb5",
+      "entity_type": "gear_named",
+      "category": "gear",
+      "tier": "named",
+      "name_key": "snowmachine",
+      "name": "Snow Machine",
+      "brand_name": "",
+      "brand_key": "electrique",
+      "slot_key": "kneepads",
+      "blueprint": [],
+      "target_looted": [],
+      "drop": [
+        "Event Hoarder",
+        "Mini Warhound"
+      ]
+    },
+    {
       "item_id": "87f412d04be7d225",
       "entity_type": "gear_named",
       "category": "gear",
@@ -5986,6 +7154,26 @@
         "Event Hoarder",
         "Mini Warhound"
       ]
+    },
+    {
+      "item_id": "4a1d5883231ee4fa",
+      "entity_type": "gear_named",
+      "category": "gear",
+      "tier": "named",
+      "name_key": "spoton",
+      "name": "Spot-On",
+      "brand_name": "Urban Lookout",
+      "brand_key": "urbanlookout",
+      "slot_key": "holster",
+      "blueprint": [
+        {
+          "slot": "holster",
+          "src": "Reconstructed Caches",
+          "type": "craft"
+        }
+      ],
+      "target_looted": [],
+      "drop": []
     },
     {
       "item_id": "6b94b0b1bb94019c",
@@ -6147,6 +7335,26 @@
       ]
     },
     {
+      "item_id": "74019c51a29a41c4",
+      "entity_type": "gear_named",
+      "category": "gear",
+      "tier": "named",
+      "name_key": "thesacrifice",
+      "name": "The Sacrifice",
+      "brand_name": "Providence Defense",
+      "brand_key": "providencedefense",
+      "slot_key": "chest",
+      "blueprint": [
+        {
+          "slot": "chest",
+          "src": "Reconstructed Caches",
+          "type": "craft"
+        }
+      ],
+      "target_looted": [],
+      "drop": []
+    },
+    {
       "item_id": "8b4f870102feb577",
       "entity_type": "gear_named",
       "category": "gear",
@@ -6249,6 +7457,20 @@
       "drop": []
     },
     {
+      "item_id": "b2cd59699c9d8ac2",
+      "entity_type": "gear_named",
+      "category": "gear",
+      "tier": "named",
+      "name_key": "turmoil",
+      "name": "Turmoil",
+      "brand_name": "",
+      "brand_key": "ceskavyrobasro",
+      "slot_key": "kneepads",
+      "blueprint": [],
+      "target_looted": [],
+      "drop": []
+    },
+    {
       "item_id": "f426352a44b1aced",
       "entity_type": "gear_named",
       "category": "gear",
@@ -6287,6 +7509,26 @@
     },
     {
       "item_id": "4b4623494e6860e5",
+      "entity_type": "gear_named",
+      "category": "gear",
+      "tier": "named",
+      "name_key": "vedmedytsyavest",
+      "name": "Vedmedytsya Vest",
+      "brand_name": "Petrov Defense Group",
+      "brand_key": "petrovdefensegroup",
+      "slot_key": "chest",
+      "blueprint": [
+        {
+          "slot": "chest",
+          "src": "Field Research Gunner",
+          "type": "craft"
+        }
+      ],
+      "target_looted": [],
+      "drop": []
+    },
+    {
+      "item_id": "cdcc629f239d4887",
       "entity_type": "gear_named",
       "category": "gear",
       "tier": "named",
@@ -6376,6 +7618,26 @@
     },
     {
       "item_id": "a1391856261d343a",
+      "entity_type": "gear_named",
+      "category": "gear",
+      "tier": "named",
+      "name_key": "zerofs",
+      "name": "Zero F’s",
+      "brand_name": "Badger Tuff",
+      "brand_key": "badgertuff",
+      "slot_key": "chest",
+      "blueprint": [
+        {
+          "slot": "chest",
+          "src": "Reconstructed Caches",
+          "type": "craft"
+        }
+      ],
+      "target_looted": [],
+      "drop": []
+    },
+    {
+      "item_id": "b7bf725e9d6edb26",
       "entity_type": "gear_named",
       "category": "gear",
       "tier": "named",
@@ -7440,7 +8702,7 @@
       "drop": []
     },
     {
-      "item_id": "ee568c644be8613a",
+      "item_id": "fce5aac80fbbb8a5",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -7454,7 +8716,7 @@
       "drop": []
     },
     {
-      "item_id": "4f9512a565956ba0",
+      "item_id": "6fc2be932636295e",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -7468,7 +8730,7 @@
       "drop": []
     },
     {
-      "item_id": "f49425002143528e",
+      "item_id": "1ec1836a9f695ca7",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -7482,7 +8744,7 @@
       "drop": []
     },
     {
-      "item_id": "427e524e37ee653f",
+      "item_id": "61688881a41b2007",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -7533,7 +8795,7 @@
       ]
     },
     {
-      "item_id": "692856676fa53aad",
+      "item_id": "346b0e1f806723c8",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -7547,7 +8809,7 @@
       "drop": []
     },
     {
-      "item_id": "6c924439094ae2a6",
+      "item_id": "93bd14e6397bc5b5",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -7561,7 +8823,7 @@
       "drop": []
     },
     {
-      "item_id": "7af4dec8c621bbe7",
+      "item_id": "8cf94f2e71165c82",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -7605,7 +8867,7 @@
       ]
     },
     {
-      "item_id": "2da13e78ffb41acf",
+      "item_id": "359b8d6b56cc4f0e",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -7654,7 +8916,7 @@
       "drop": []
     },
     {
-      "item_id": "b51342a265f75095",
+      "item_id": "a5516c83102bf702",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "exotic",
@@ -7673,7 +8935,7 @@
       "drop": []
     },
     {
-      "item_id": "4c45ef85cf85df9b",
+      "item_id": "591513be73a761a3",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -7692,7 +8954,7 @@
       "drop": []
     },
     {
-      "item_id": "dce433eaa9e370d8",
+      "item_id": "a514b27f6c44a839",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -7766,7 +9028,7 @@
       "drop": []
     },
     {
-      "item_id": "60adde9e8ea8d2dd",
+      "item_id": "b118db93427ce5f0",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "exotic",
@@ -7932,7 +9194,7 @@
       "drop": []
     },
     {
-      "item_id": "8775f507c4a14153",
+      "item_id": "b996e9f4feef3630",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -7946,7 +9208,7 @@
       "drop": []
     },
     {
-      "item_id": "0f5bcef47e65b800",
+      "item_id": "f50856456d313937",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -8015,7 +9277,7 @@
       "drop": []
     },
     {
-      "item_id": "1d51270dfc27f50a",
+      "item_id": "f3081fbb4cc45623",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -8053,7 +9315,7 @@
       "drop": []
     },
     {
-      "item_id": "ab31bef5322e1f41",
+      "item_id": "fe345c50c156cd40",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -8110,7 +9372,7 @@
       "drop": []
     },
     {
-      "item_id": "93aecf8de339691c",
+      "item_id": "a62ad19eab72c239",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "exotic",
@@ -8249,7 +9511,7 @@
       "drop": []
     },
     {
-      "item_id": "e9d2a0a985d6773c",
+      "item_id": "5d4e5508c614c76a",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -8263,7 +9525,7 @@
       "drop": []
     },
     {
-      "item_id": "e7cb7b31b613134a",
+      "item_id": "e59970cd7cc98490",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -8277,7 +9539,7 @@
       "drop": []
     },
     {
-      "item_id": "69f817caea789cbe",
+      "item_id": "daf5058dd49dad51",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -8378,7 +9640,7 @@
       "drop": []
     },
     {
-      "item_id": "3834dd8af3a28fe7",
+      "item_id": "b0ec94c9359841ae",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -8443,7 +9705,7 @@
       "drop": []
     },
     {
-      "item_id": "617c9dae1b6e7e9b",
+      "item_id": "f4e4a40edb419cc0",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -8457,7 +9719,7 @@
       "drop": []
     },
     {
-      "item_id": "2d210ad37db89332",
+      "item_id": "25f30d1e1eee9f11",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -8504,7 +9766,7 @@
       "drop": []
     },
     {
-      "item_id": "3241a033caa933a1",
+      "item_id": "32651dd1298b599f",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -8555,7 +9817,7 @@
       "drop": []
     },
     {
-      "item_id": "67de60ac1229edc0",
+      "item_id": "2df2d320e4d3f394",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -8569,7 +9831,7 @@
       "drop": []
     },
     {
-      "item_id": "9cdb6837835a940c",
+      "item_id": "097c5d1f7e1bb7b1",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -8587,7 +9849,7 @@
       "drop": []
     },
     {
-      "item_id": "56140bbd024d109f",
+      "item_id": "93b4ac92a278dc3a",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -8601,7 +9863,7 @@
       "drop": []
     },
     {
-      "item_id": "824cb3a645542591",
+      "item_id": "9f16161604644f52",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -8633,7 +9895,7 @@
       "drop": []
     },
     {
-      "item_id": "101a0952a274fa61",
+      "item_id": "47267f1df4c97a11",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -8647,7 +9909,7 @@
       "drop": []
     },
     {
-      "item_id": "7dbd7b6e36c365a5",
+      "item_id": "ea14a3f2340f5504",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -8701,7 +9963,7 @@
       ]
     },
     {
-      "item_id": "eeaa7c6521f9bbce",
+      "item_id": "9edd1f59a8f67c61",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -8720,7 +9982,7 @@
       "drop": []
     },
     {
-      "item_id": "40168ae7cbe13683",
+      "item_id": "8fe0ed8d1845dcb2",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "exotic",
@@ -8739,7 +10001,7 @@
       "drop": []
     },
     {
-      "item_id": "f47e7eaa6655fee8",
+      "item_id": "b457694921600cdd",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -8753,7 +10015,7 @@
       "drop": []
     },
     {
-      "item_id": "f214389eeac8cfaa",
+      "item_id": "c252d9ec26d8b1d0",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -8771,7 +10033,7 @@
       "drop": []
     },
     {
-      "item_id": "c869871a48c4c392",
+      "item_id": "838b52e540ffbef5",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -8785,7 +10047,7 @@
       "drop": []
     },
     {
-      "item_id": "4b6aa986ea8586fe",
+      "item_id": "257d64fee1beee49",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "exotic",
@@ -8804,7 +10066,7 @@
       "drop": []
     },
     {
-      "item_id": "bdd1229a29f22439",
+      "item_id": "aa7385b54f239d32",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -8818,7 +10080,7 @@
       "drop": []
     },
     {
-      "item_id": "49ac90bb5f502a4a",
+      "item_id": "8344b21672484ca8",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -8832,7 +10094,7 @@
       "drop": []
     },
     {
-      "item_id": "45b267cb1f573d01",
+      "item_id": "0ad845e9a6abacc6",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -8850,7 +10112,7 @@
       "drop": []
     },
     {
-      "item_id": "65de5cb4de11f148",
+      "item_id": "cc3d0cfc8ff59afe",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "exotic",
@@ -8888,7 +10150,7 @@
       "drop": []
     },
     {
-      "item_id": "b71266403331f01e",
+      "item_id": "aa350f86ebfb17d8",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -8907,7 +10169,7 @@
       "drop": []
     },
     {
-      "item_id": "b34a13129e453644",
+      "item_id": "457d7ec1dc1bebe3",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -8926,7 +10188,7 @@
       "drop": []
     },
     {
-      "item_id": "6c5dc1eae07e80c5",
+      "item_id": "d45c366f9893a073",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -8968,7 +10230,7 @@
       "drop": []
     },
     {
-      "item_id": "10d95b71fb7a8ee7",
+      "item_id": "c6630dfad8de57b1",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -9115,7 +10377,7 @@
       "drop": []
     },
     {
-      "item_id": "970f41ebb0c1e612",
+      "item_id": "f53f43383e6f2858",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -9160,7 +10422,7 @@
       "target_looted": []
     },
     {
-      "item_id": "d6f935bb711d5178",
+      "item_id": "1e5ae807959a8dbe",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -9193,7 +10455,7 @@
       "drop": []
     },
     {
-      "item_id": "bb59027004aed031",
+      "item_id": "449f5310015d6233",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -9373,7 +10635,7 @@
       "drop": []
     },
     {
-      "item_id": "1075079b9a083757",
+      "item_id": "e6ef2c8e6260413f",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -9390,7 +10652,7 @@
       ]
     },
     {
-      "item_id": "87d5d075a3c93d59",
+      "item_id": "8e4f2ae2ab64d6f9",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -9425,7 +10687,7 @@
       "drop": []
     },
     {
-      "item_id": "0f0e48f1693c707a",
+      "item_id": "355164e669f37fd7",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -9490,7 +10752,7 @@
       "drop": []
     },
     {
-      "item_id": "18ef2b60519dd625",
+      "item_id": "3c3610b5067a3e2e",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -9586,7 +10848,7 @@
       "drop": []
     },
     {
-      "item_id": "d0216d1bd890cbb1",
+      "item_id": "4c389d94dd1d952a",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -9623,7 +10885,7 @@
       "drop": []
     },
     {
-      "item_id": "5fbc46f69d181b14",
+      "item_id": "17e689316d157c09",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -9656,7 +10918,7 @@
       "drop": []
     },
     {
-      "item_id": "6d6e6cc6733695e1",
+      "item_id": "5ddc20088f9f25f4",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -9689,7 +10951,7 @@
       "drop": []
     },
     {
-      "item_id": "4e48544fde41015c",
+      "item_id": "ed88b1d9cb025b45",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "exotic",
@@ -9707,7 +10969,7 @@
       "drop": []
     },
     {
-      "item_id": "5681ecbae5ccf85f",
+      "item_id": "cad6a99a61964197",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -9726,7 +10988,7 @@
       "drop": []
     },
     {
-      "item_id": "eb3e5c2a307c1a98",
+      "item_id": "5af3914ff22f5cb0",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -9740,7 +11002,7 @@
       "drop": []
     },
     {
-      "item_id": "6107ad4b9d60f31a",
+      "item_id": "17e87d1e5881733b",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -9759,7 +11021,7 @@
       "drop": []
     },
     {
-      "item_id": "fa03e6f07c2ac3f4",
+      "item_id": "5dd2185d80d8902b",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -9797,7 +11059,7 @@
       "drop": []
     },
     {
-      "item_id": "bc1d1b0170bbe88c",
+      "item_id": "0721e2ad16afd79c",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "exotic",
@@ -9811,7 +11073,7 @@
       "drop": []
     },
     {
-      "item_id": "7a82e7187a93b766",
+      "item_id": "141dfe26fba6a100",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -9825,7 +11087,7 @@
       "drop": []
     },
     {
-      "item_id": "7ae79c0a964ae317",
+      "item_id": "aa921c35b62d38d9",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -9843,7 +11105,7 @@
       "drop": []
     },
     {
-      "item_id": "374ae6cf0f6ab0d6",
+      "item_id": "42cd223184d4a43c",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -9857,7 +11119,7 @@
       "drop": []
     },
     {
-      "item_id": "898106120de82bc6",
+      "item_id": "a0f6de90893c0769",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -9875,7 +11137,7 @@
       "drop": []
     },
     {
-      "item_id": "ae5b93fc53a2343f",
+      "item_id": "84adee3fb598f1fd",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -9903,7 +11165,7 @@
       "drop": []
     },
     {
-      "item_id": "ebc0b62e16b283e8",
+      "item_id": "f956a417caa7ad5e",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -9917,7 +11179,7 @@
       "drop": []
     },
     {
-      "item_id": "98e0c8ba9576f7f5",
+      "item_id": "e9365a9d77bd0a6d",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -9949,7 +11211,7 @@
       "drop": []
     },
     {
-      "item_id": "c35d7317ec793c11",
+      "item_id": "ce222f0c99262ec7",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -9963,7 +11225,7 @@
       "drop": []
     },
     {
-      "item_id": "15783543f04804f4",
+      "item_id": "12c9e6c3fa3b3f0b",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -9977,7 +11239,7 @@
       "drop": []
     },
     {
-      "item_id": "3ca7516673a4ace9",
+      "item_id": "ab852798873ac911",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -9995,7 +11257,7 @@
       "drop": []
     },
     {
-      "item_id": "b8e6f3f947ef8833",
+      "item_id": "c3b8ffdacc757387",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -10009,7 +11271,7 @@
       "drop": []
     },
     {
-      "item_id": "a4a0f1537170d959",
+      "item_id": "2b1f7ad35443ef64",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -10023,7 +11285,7 @@
       "drop": []
     },
     {
-      "item_id": "9b6f1aa5a7016214",
+      "item_id": "726a3f0cc6780d46",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -10064,7 +11326,7 @@
       ]
     },
     {
-      "item_id": "a7af94ca301b483a",
+      "item_id": "eb3594ae54aa34d1",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "exotic",
@@ -10083,7 +11345,7 @@
       "drop": []
     },
     {
-      "item_id": "b2eeb4e8d683ed79",
+      "item_id": "075bca509c7f8c55",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -10097,7 +11359,7 @@
       "drop": []
     },
     {
-      "item_id": "6b82e0a68f409e1f",
+      "item_id": "4fee8cb717f79332",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -10130,7 +11392,7 @@
       "drop": []
     },
     {
-      "item_id": "08a6002efd72c5f9",
+      "item_id": "f092a680566c6a5f",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "exotic",
@@ -10221,7 +11483,7 @@
       "drop": []
     },
     {
-      "item_id": "7723a6962abe4235",
+      "item_id": "bd573ae29fab3448",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -10235,7 +11497,7 @@
       "drop": []
     },
     {
-      "item_id": "6944f7b5b5395121",
+      "item_id": "f2175fe188e8c360",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -10249,7 +11511,7 @@
       "drop": []
     },
     {
-      "item_id": "3ee683efae288412",
+      "item_id": "a0177d9d76851093",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -10267,7 +11529,7 @@
       "drop": []
     },
     {
-      "item_id": "03106ea4eafde3b4",
+      "item_id": "96f130989bd5ecfe",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -10369,7 +11631,7 @@
       "drop": []
     },
     {
-      "item_id": "f5274f8fc8f354ee",
+      "item_id": "934b0c0507522717",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -10383,7 +11645,7 @@
       "drop": []
     },
     {
-      "item_id": "aac3b03524d7220b",
+      "item_id": "0724024c5472074a",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -10401,7 +11663,7 @@
       "drop": []
     },
     {
-      "item_id": "f183ed8297978490",
+      "item_id": "947e3ea5d7112eee",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "exotic",
@@ -10420,7 +11682,7 @@
       "drop": []
     },
     {
-      "item_id": "38a816d16c8e695e",
+      "item_id": "cee199d1a577346b",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -10513,7 +11775,7 @@
       "drop": []
     },
     {
-      "item_id": "68f20dd354126a80",
+      "item_id": "da0a84cc5d71fe35",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -10527,7 +11789,7 @@
       "drop": []
     },
     {
-      "item_id": "397c0a1773534674",
+      "item_id": "7f1c29a2c21fd8f9",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "exotic",
@@ -10564,7 +11826,7 @@
       "drop": []
     },
     {
-      "item_id": "be0221d68db84c56",
+      "item_id": "eb624802d1c99036",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -10578,7 +11840,7 @@
       "drop": []
     },
     {
-      "item_id": "d0809ac96423116d",
+      "item_id": "6e57c32a5ecaaace",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -10595,7 +11857,7 @@
       ]
     },
     {
-      "item_id": "417b995e67bc7f2c",
+      "item_id": "a53b78324bb9193d",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -10635,7 +11897,7 @@
       "drop": []
     },
     {
-      "item_id": "3f6516317f8a426b",
+      "item_id": "4437cc4dd2a1d341",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "exotic",
@@ -10673,7 +11935,7 @@
       "drop": []
     },
     {
-      "item_id": "9d81289a488cc4a4",
+      "item_id": "389297a3c5e0a83e",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -10687,7 +11949,7 @@
       "drop": []
     },
     {
-      "item_id": "0c024e0cb2179b73",
+      "item_id": "7568f576327c01a7",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -10701,7 +11963,7 @@
       "drop": []
     },
     {
-      "item_id": "87f5061613b38bc2",
+      "item_id": "d78d3a5568b66af0",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -10738,7 +12000,7 @@
       "drop": []
     },
     {
-      "item_id": "07ddbff2c4b7ac8d",
+      "item_id": "69a4d2556ccdc0a6",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -10789,7 +12051,7 @@
       "drop": []
     },
     {
-      "item_id": "8f04d37293ea5596",
+      "item_id": "d1d50cac81b9ba64",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -10808,7 +12070,7 @@
       "drop": []
     },
     {
-      "item_id": "03534b76beaf635e",
+      "item_id": "d50067fda17d2d57",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -10827,7 +12089,7 @@
       "drop": []
     },
     {
-      "item_id": "4befa27dfdb82a9c",
+      "item_id": "b47be53b02b57967",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -10877,7 +12139,7 @@
       "drop": []
     },
     {
-      "item_id": "f4d03d7548301763",
+      "item_id": "4697b8ae8b239b7a",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -10891,7 +12153,7 @@
       "drop": []
     },
     {
-      "item_id": "55ddd260576f39f0",
+      "item_id": "d35eec1fc1d7fbd2",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -10951,7 +12213,7 @@
       "drop": []
     },
     {
-      "item_id": "06432e2b8065ca66",
+      "item_id": "830f3dacbf279c09",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -10984,7 +12246,7 @@
       "drop": []
     },
     {
-      "item_id": "ca465aec24255b93",
+      "item_id": "b2244571932332d8",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -10998,7 +12260,7 @@
       "drop": []
     },
     {
-      "item_id": "9d63e7191c0c4329",
+      "item_id": "b72026b71a7985a7",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -11012,7 +12274,7 @@
       "drop": []
     },
     {
-      "item_id": "31515dd07dfb2135",
+      "item_id": "70f9303c8dce48b8",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -11049,7 +12311,7 @@
       "drop": []
     },
     {
-      "item_id": "0908e54b99aa23af",
+      "item_id": "3467fa2eb114b8fd",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -11085,7 +12347,7 @@
       "drop": []
     },
     {
-      "item_id": "e1cd5c734b42ba23",
+      "item_id": "db65c2b533c45b9b",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "exotic",
@@ -11103,7 +12365,7 @@
       "drop": []
     },
     {
-      "item_id": "83ce9aada04872a2",
+      "item_id": "33ecaadb508071d5",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -11117,7 +12379,7 @@
       "drop": []
     },
     {
-      "item_id": "f6b7cc164f82b413",
+      "item_id": "96e49cdf051f7568",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -11135,7 +12397,7 @@
       "drop": []
     },
     {
-      "item_id": "f2d05a465b3a284c",
+      "item_id": "c8955757a992f496",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -11175,7 +12437,7 @@
       "drop": []
     },
     {
-      "item_id": "8ca42cbd28d928b5",
+      "item_id": "6cd2bb1597cdce02",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "exotic",
@@ -11189,7 +12451,7 @@
       "drop": []
     },
     {
-      "item_id": "686f19fba4ac3bce",
+      "item_id": "12ff2042e7be0d6c",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "exotic",
@@ -11208,7 +12470,7 @@
       "drop": []
     },
     {
-      "item_id": "66ce05bdb686723f",
+      "item_id": "7c91b68a8488d1c9",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -11227,7 +12489,7 @@
       "drop": []
     },
     {
-      "item_id": "a1ba7b386c1b5ec3",
+      "item_id": "821763d6cf75840c",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -11260,7 +12522,7 @@
       "drop": []
     },
     {
-      "item_id": "c99a4da81b66d966",
+      "item_id": "8c54e97b6fb82bbe",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -11279,7 +12541,7 @@
       "drop": []
     },
     {
-      "item_id": "db54d13b1e954da5",
+      "item_id": "d37a3453b9485319",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "exotic",
@@ -11298,7 +12560,7 @@
       "drop": []
     },
     {
-      "item_id": "ec74ca2db156c27d",
+      "item_id": "8955f0ba334b736a",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -11333,7 +12595,7 @@
       ]
     },
     {
-      "item_id": "c2a5b2796af658e4",
+      "item_id": "8b155caa3dd8cd72",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "exotic",
@@ -11370,7 +12632,7 @@
       "drop": []
     },
     {
-      "item_id": "eac82469ac4b4a37",
+      "item_id": "931c9fdd04470b3e",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -11384,7 +12646,7 @@
       "drop": []
     },
     {
-      "item_id": "0d7a64453893a333",
+      "item_id": "a20002758cbc85d8",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -11398,7 +12660,7 @@
       "drop": []
     },
     {
-      "item_id": "352cb9820fbdd8f7",
+      "item_id": "d37c040c94bbc254",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -11416,7 +12678,7 @@
       "drop": []
     },
     {
-      "item_id": "3a7b84b2049ec1bb",
+      "item_id": "4cc520230fdbfa0d",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -11471,7 +12733,7 @@
       ]
     },
     {
-      "item_id": "861e0f27c68b650e",
+      "item_id": "241b142b7d2ba141",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -11485,7 +12747,7 @@
       "drop": []
     },
     {
-      "item_id": "b628b292945c8d9a",
+      "item_id": "908f96a33164ba2c",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -11517,7 +12779,7 @@
       "drop": []
     },
     {
-      "item_id": "c7ee632f0ac12b35",
+      "item_id": "9d60b281dab80b63",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -11531,7 +12793,7 @@
       "drop": []
     },
     {
-      "item_id": "991d231b1a93a12d",
+      "item_id": "c2ceaa146d8d9ccc",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -11549,7 +12811,7 @@
       "drop": []
     },
     {
-      "item_id": "da070ebeba27d050",
+      "item_id": "8760a4d2767cfdab",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -11563,7 +12825,7 @@
       "drop": []
     },
     {
-      "item_id": "758cfbe1570b7997",
+      "item_id": "fb4020347a8badf8",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -11581,7 +12843,7 @@
       "drop": []
     },
     {
-      "item_id": "3aad32e681165a89",
+      "item_id": "96e55898811aa338",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -11595,7 +12857,7 @@
       "drop": []
     },
     {
-      "item_id": "f0553cba8d78cf26",
+      "item_id": "cfe2b09c27d51106",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -11613,7 +12875,7 @@
       "drop": []
     },
     {
-      "item_id": "cccbd747717752c1",
+      "item_id": "adf2109df5b24875",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -11627,7 +12889,7 @@
       "drop": []
     },
     {
-      "item_id": "7d8ea4c648e5d1a1",
+      "item_id": "58f69be462c12959",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -11645,7 +12907,7 @@
       "drop": []
     },
     {
-      "item_id": "327356e77853a6dd",
+      "item_id": "7102a4ed70b86679",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -11659,7 +12921,7 @@
       "drop": []
     },
     {
-      "item_id": "4608f42740f119ea",
+      "item_id": "bc74ba4d312771d8",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -11730,7 +12992,7 @@
       "drop": []
     },
     {
-      "item_id": "5c2958ce42e0384e",
+      "item_id": "c037b124666e88d4",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -11744,7 +13006,7 @@
       "drop": []
     },
     {
-      "item_id": "2d2ab21bd70f6e39",
+      "item_id": "e41d22fc6f85d46a",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -11762,7 +13024,7 @@
       "drop": []
     },
     {
-      "item_id": "1f1350367902c08c",
+      "item_id": "829f5ea6aec7ed57",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -11781,7 +13043,7 @@
       "drop": []
     },
     {
-      "item_id": "4f0128724a94f6df",
+      "item_id": "e81a8d332c63541d",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -11795,7 +13057,7 @@
       "drop": []
     },
     {
-      "item_id": "a8adaaf04d5c40aa",
+      "item_id": "cb98b255b7ec2418",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -11828,7 +13090,7 @@
       "drop": []
     },
     {
-      "item_id": "29dfecb1d9436271",
+      "item_id": "c1b694005ac747b6",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "exotic",
@@ -11866,7 +13128,7 @@
       "drop": []
     },
     {
-      "item_id": "9b4989b54e30286a",
+      "item_id": "53e440efb33b4a69",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -11917,7 +13179,7 @@
       "drop": []
     },
     {
-      "item_id": "c726a301a3fae45e",
+      "item_id": "2223273e203a8e81",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -11931,7 +13193,7 @@
       "drop": []
     },
     {
-      "item_id": "0ed68ddddbd05d97",
+      "item_id": "32b9b0bf5ed3e036",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -11995,7 +13257,7 @@
       "drop": []
     },
     {
-      "item_id": "aadf354358efea43",
+      "item_id": "632d6685cff5760d",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -12009,7 +13271,7 @@
       "drop": []
     },
     {
-      "item_id": "66d403ee38ca288b",
+      "item_id": "08be2849231f4ccb",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -12023,7 +13285,7 @@
       "drop": []
     },
     {
-      "item_id": "c642d0f03bfffbf2",
+      "item_id": "25d65cbcf0a9aa52",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -12087,7 +13349,7 @@
       "drop": []
     },
     {
-      "item_id": "2bd2ada3fea22afa",
+      "item_id": "875b195f69cbc878",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -12108,7 +13370,7 @@
       ]
     },
     {
-      "item_id": "1f4f914ab936e60f",
+      "item_id": "692c7aec5b8d1f56",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "exotic",
@@ -12146,7 +13408,7 @@
       "drop": []
     },
     {
-      "item_id": "52cf7759af54eacd",
+      "item_id": "fc6021f4dd8a07bd",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -12186,7 +13448,7 @@
       "target_looted": []
     },
     {
-      "item_id": "0bfad38e8df3f253",
+      "item_id": "ee244309b855130b",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "exotic",
@@ -12204,7 +13466,7 @@
       "drop": []
     },
     {
-      "item_id": "c2e46c4896701fbb",
+      "item_id": "2ce3b1b4a44c8035",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -12263,7 +13525,7 @@
       "drop": []
     },
     {
-      "item_id": "f228449d7dc2d13d",
+      "item_id": "d9f8e0703fafc9a5",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -12294,7 +13556,7 @@
       "drop": []
     },
     {
-      "item_id": "e42c4d61ecd64a4e",
+      "item_id": "7076c533a1f88452",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -12334,7 +13596,7 @@
       ]
     },
     {
-      "item_id": "0b659728d9bc6204",
+      "item_id": "57dbb71a27d67895",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "exotic",
@@ -12353,7 +13615,7 @@
       "drop": []
     },
     {
-      "item_id": "10d9477ffeec2bc4",
+      "item_id": "dac693ef71a102de",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -12372,7 +13634,7 @@
       "drop": []
     },
     {
-      "item_id": "0b8b3c9a3fad0974",
+      "item_id": "13f2dbd7d7ffe053",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -12427,7 +13689,7 @@
       "drop": []
     },
     {
-      "item_id": "6f5589225523a979",
+      "item_id": "796d361bea7bf7fb",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -12448,7 +13710,7 @@
       ]
     },
     {
-      "item_id": "19ace8d659b98076",
+      "item_id": "9cec88daa89b888e",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -12467,7 +13729,7 @@
       "drop": []
     },
     {
-      "item_id": "1b998bf0c4757419",
+      "item_id": "89823af6c25a3d90",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -12518,7 +13780,7 @@
       "drop": []
     },
     {
-      "item_id": "d831ff5948db1d6a",
+      "item_id": "999176043be89cf2",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -12537,7 +13799,7 @@
       "drop": []
     },
     {
-      "item_id": "4c655a4d922ffcdb",
+      "item_id": "a0ed7f0dad263068",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -12556,7 +13818,7 @@
       "drop": []
     },
     {
-      "item_id": "fa60ef36e5f894e0",
+      "item_id": "cf0f708759110718",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -12570,7 +13832,21 @@
       "drop": []
     },
     {
-      "item_id": "445ed807cdd01cd6",
+      "item_id": "b371ab992a02eb29",
+      "entity_type": "weapon",
+      "category": "weapon",
+      "tier": "exotic",
+      "name_key": "underboss",
+      "name": "Underboss",
+      "brand_name": "",
+      "brand_key": "",
+      "slot_key": "smg",
+      "blueprint": [],
+      "target_looted": [],
+      "drop": []
+    },
+    {
+      "item_id": "4da340324f0f8d7f",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -12584,7 +13860,7 @@
       "drop": []
     },
     {
-      "item_id": "752acf44a3c77c62",
+      "item_id": "8f7b724ac7f10de9",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -12602,7 +13878,7 @@
       "drop": []
     },
     {
-      "item_id": "d7adfd1c04938c49",
+      "item_id": "c1e3f61554edb8cf",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -12616,7 +13892,7 @@
       "drop": []
     },
     {
-      "item_id": "b13624b1271bd4cf",
+      "item_id": "b6b1443751bbcc45",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -12680,7 +13956,7 @@
       "drop": []
     },
     {
-      "item_id": "6101a87a57aea6bc",
+      "item_id": "a83b34ae7d747faa",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "exotic",
@@ -12699,7 +13975,7 @@
       "drop": []
     },
     {
-      "item_id": "1e3a3cd67a0aa568",
+      "item_id": "c44b496d59bc9501",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "exotic",
@@ -12713,7 +13989,7 @@
       "drop": []
     },
     {
-      "item_id": "27db433cf2d68cee",
+      "item_id": "03aadcb5fc19840a",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -12732,7 +14008,7 @@
       "drop": []
     },
     {
-      "item_id": "97820d4962a49a41",
+      "item_id": "14d77a7483c70744",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -12746,7 +14022,7 @@
       "drop": []
     },
     {
-      "item_id": "aa04103f21897447",
+      "item_id": "6420bdd0c2fba6bd",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -12760,7 +14036,7 @@
       "drop": []
     },
     {
-      "item_id": "436578e43bea6862",
+      "item_id": "d9908abe7608cd3d",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",

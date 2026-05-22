@@ -180,7 +180,9 @@
       "bulldog": "ブルドッグ",
       "robin": "ロビン",
       "investor": "インベスター",
-      "nurseskneepads": "Nurse's Kneepads"
+      "nurseskneepads": "Nurse's Kneepads",
+      "benefactor": "TODO:benefactor",
+      "mommabadger": "TODO:mommabadger"
     },
     "weapon_item_name_ar": {
       "acr": "ACR",
@@ -375,7 +377,9 @@
       "p90replica": "P90 模造品",
       "tacticalauga3preplica": "タクティカル AUG A3P 模造品",
       "tacticalump45replica": "タクティカル UMP-45 模造品",
-      "vectorsbr45acpreplica": "ヴェクター SBR .45 ACP 模造品"
+      "vectorsbr45acpreplica": "ヴェクター SBR .45 ACP 模造品",
+      "underboss": "TODO:underboss",
+      "underbosspts": "TODO:underbosspts"
     },
     "weapon_item_name_rifle": {
       "bakersdozen": "ベイカーズダズン",
@@ -894,7 +898,9 @@
       "perfectgunslinger": "パーフェクト・ガンスリンガー",
       "coreexercise": "コアエクササイズ",
       "innercore": "インナーコア",
-      "outercore": "アウターコア"
+      "outercore": "アウターコア",
+      "peerfectsafeguard": "TODO:peerfectsafeguard",
+      "perfectempathicresolve": "TODO:perfectempathicresolve"
     },
     "weapon_talent": {
       "closepersonal": "接近戦",
@@ -1060,7 +1066,10 @@
       "blossomharvest": "ブロッサム・ハーヴェスト",
       "asyoufirethegunwillplaychristmasmusic": "placeholder:asyoufirethegunwillplaychristmasmusic",
       "perfectoverflowing": "パーフェクト・オーバーフロー",
-      "caduceus": "カドゥケウス"
+      "caduceus": "カドゥケウス",
+      "ganglandhit": "TODO:ganglandhit",
+      "headscratcher": "TODO:headscratcher",
+      "perfectheadscratcher": "TODO:perfectheadscratcher"
     },
     "cache": {
       "amount": "数量",
