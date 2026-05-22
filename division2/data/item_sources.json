@@ -7077,7 +7077,21 @@
       "drop": []
     },
     {
-      "item_id": "7c0f42e5e9d7a4cf",
+      "item_id": "bf81030a49fb818e",
+      "entity_type": "gearset",
+      "category": "gear",
+      "tier": "gearset",
+      "name_key": "ortizreficere",
+      "name": "Ortiz: Reficere",
+      "brand_name": "Ortiz: Reficere",
+      "brand_key": "ortizreficere",
+      "slot_key": "",
+      "blueprint": [],
+      "target_looted": [],
+      "drop": []
+    },
+    {
+      "item_id": "cb40b3ca7a88796b",
       "entity_type": "gearset",
       "category": "gear",
       "tier": "gearset",
@@ -7116,7 +7130,7 @@
       "drop": []
     },
     {
-      "item_id": "679cbcce88d7ddb2",
+      "item_id": "c15c1fad5bcb2c19",
       "entity_type": "gearset",
       "category": "gear",
       "tier": "gearset",
@@ -7161,7 +7175,7 @@
       "drop": []
     },
     {
-      "item_id": "3d594121f9216e6d",
+      "item_id": "4e89f60d3997d05f",
       "entity_type": "gearset",
       "category": "gear",
       "tier": "gearset",
@@ -7200,7 +7214,7 @@
       "drop": []
     },
     {
-      "item_id": "ddfb86b6d4a30a0e",
+      "item_id": "74660815988031a9",
       "entity_type": "gearset",
       "category": "gear",
       "tier": "gearset",
@@ -7241,7 +7255,7 @@
       ]
     },
     {
-      "item_id": "75087f04b26e9cc7",
+      "item_id": "b28b2ef8f544ba35",
       "entity_type": "gearset",
       "category": "gear",
       "tier": "gearset",
@@ -7280,7 +7294,7 @@
       "drop": []
     },
     {
-      "item_id": "3cd81b01616556d4",
+      "item_id": "e187fd669c747eaa",
       "entity_type": "gearset",
       "category": "gear",
       "tier": "gearset",
@@ -7319,7 +7333,7 @@
       "drop": []
     },
     {
-      "item_id": "1b435e2ed3bdef11",
+      "item_id": "6ff7e4f23e2f6938",
       "entity_type": "gearset",
       "category": "gear",
       "tier": "gearset",
@@ -7333,7 +7347,7 @@
       "drop": []
     },
     {
-      "item_id": "2fb214c8aea585a4",
+      "item_id": "806831d5fca70a30",
       "entity_type": "gearset",
       "category": "gear",
       "tier": "gearset",
@@ -7373,7 +7387,7 @@
       "drop": []
     },
     {
-      "item_id": "4e3b35c2481675b6",
+      "item_id": "4556d2b9434d99b0",
       "entity_type": "gearset",
       "category": "gear",
       "tier": "gearset",
