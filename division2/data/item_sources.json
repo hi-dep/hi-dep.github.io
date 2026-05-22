@@ -2978,6 +2978,20 @@
       ]
     },
     {
+      "item_id": "5e861b1e170cc943",
+      "entity_type": "gear_exotic",
+      "category": "gear",
+      "tier": "exotic",
+      "name_key": "nurseskneepads",
+      "name": "Nurse's Kneepads",
+      "brand_name": "",
+      "brand_key": "",
+      "slot_key": "kneepads",
+      "blueprint": [],
+      "target_looted": [],
+      "drop": []
+    },
+    {
       "item_id": "1139e38f819ddd4e",
       "entity_type": "gear_exotic",
       "category": "gear",
