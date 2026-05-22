@@ -179,7 +179,8 @@
       "antumbrabackpack": "placeholder:antumbrabackpack",
       "bulldog": "ブルドッグ",
       "robin": "ロビン",
-      "investor": "インベスター"
+      "investor": "インベスター",
+      "nurseskneepads": "Nurse's Kneepads"
     },
     "weapon_item_name_ar": {
       "acr": "ACR",
@@ -1104,7 +1105,8 @@
       "viciouscycle": "ヴィシャスサイクル",
       "weakestlink": "ウィーケストリンク",
       "rebalance": "リバランス",
-      "slotted": "スロット"
+      "slotted": "スロット",
+      "impervious": "Impervious"
     },
     "preserved": {
       "conflict_cache": "コンフリクトキャッシュ",

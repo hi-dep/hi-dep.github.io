@@ -262,7 +262,8 @@
     "vigilance": "img/talents/vigilance.png",
     "wavingtheflag": "img/talents/wavingtheflag.png",
     "weakestlink": "img/talents/weakestlink.png",
-    "wicked": "img/talents/wicked.png"
+    "wicked": "img/talents/wicked.png",
+    "impervious": "img/talents/impervious.png"
   },
   "weapon_talents": {
     "actumest": "img/weapon_talents/actumest.png",
