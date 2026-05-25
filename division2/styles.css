@@ -1576,11 +1576,31 @@ body.seasonmod-modal-open {
 #y8s2DiffList.cards {
   display: grid;
   gap: var(--card-gap);
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
-#y8s2DiffList .card .line__text,
-#y8s2DiffList .card strong {
+#y8s2DiffList .card .line__text {
   font-size: var(--card-line-size);
+  line-height: 1.35;
+}
+
+#y8s2DiffList .card strong {
+  font-size: inherit;
+  line-height: inherit;
+}
+
+#y8s2DiffList .card .line--named .line__text {
+  font-size: var(--card-title-size);
+}
+
+#y8s2DiffList .card .line--named-meta .line__text {
+  font-size: var(--card-line-size);
+}
+
+#y8s2DiffList .card .line--talent-desc .line__text {
+  font-size: var(--card-line-size);
+  line-height: 1.35;
 }
 
 .card {
