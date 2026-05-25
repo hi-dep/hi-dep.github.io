@@ -48,6 +48,7 @@ const navGearsetBtn = document.getElementById("navGearsetBtn");
 const navExoticGearBtn = document.getElementById("navExoticGearBtn");
 const navGearTalentBtn = document.getElementById("navGearTalentBtn");
 const navWeaponTalentBtn = document.getElementById("navWeaponTalentBtn");
+const navY8s2TalentDiffBtn = document.getElementById("navY8s2TalentDiffBtn");
 const navDescentTalentBtn = document.getElementById("navDescentTalentBtn");
 const navPrototypeBtn = document.getElementById("navPrototypeBtn");
 const navCostBtn = document.getElementById("navCostBtn");
@@ -79,7 +80,7 @@ let isWorldTimePopupOpen = false;
 let statusMode = "";
 const JST_OFFSET_MS = 9 * 60 * 60 * 1000;
 let filtersOpen = false;
-let currentViewMode = "vendor"; // vendor | event | season_mod | weapons | brand | gearset | exotic_gear | gear_talent | weapon_talent | descent_talent | prototype | cost | blueprint | item_sources | trello | patches
+let currentViewMode = "vendor"; // vendor | event | season_mod | weapons | brand | gearset | exotic_gear | gear_talent | weapon_talent | y8s2_talent_diff | descent_talent | prototype | cost | blueprint | item_sources | trello | patches
 let trelloSummaryCache = null;
 let descentPoolState = {
   loaded: false,
@@ -1075,6 +1076,7 @@ function resolveViewMode(rawView) {
   if (view === "exotic_gear" || view === "exoticgear") return "exotic_gear";
   if (view === "gear_talent" || view === "geartalent") return "gear_talent";
   if (view === "weapon_talent" || view === "weapontalent") return "weapon_talent";
+  if (view === "y8s2_talent_diff" || view === "y8s2talentdiff") return "y8s2_talent_diff";
   if (view === "descent_talent" || view === "descenttalent") return "descent_talent";
   if (view === "prototype") return "prototype";
   if (view === "cost" || view === "grade_cost" || view === "gradecost") return "cost";
@@ -1236,6 +1238,9 @@ function updateModeUi() {
     } else if (currentViewMode === "weapon_talent") {
       nextTitle = "Division 2 Weapon Talent";
       titleEl.textContent = nextTitle;
+    } else if (currentViewMode === "y8s2_talent_diff") {
+      nextTitle = "Division 2 Y8S2 Talent Diff";
+      titleEl.textContent = nextTitle;
     } else if (currentViewMode === "descent_talent") {
       nextTitle = "Division 2 Descent Talent";
       titleEl.textContent = nextTitle;
@@ -1263,10 +1268,32 @@ function updateModeUi() {
     }
   }
   document.title = nextTitle;
+  applyGlobalLangConstraintForView();
   if (vendorToolbarHostEl && isVendorView) vendorToolbarHostEl.style.display = "";
   if (!sharedFilterViews.has(currentViewMode) && filtersOpen) {
     setFiltersOpen(false);
   }
+}
+
+function applyGlobalLangConstraintForView() {
+  if (!langSelect) return;
+  const isY8s2DiffView = currentViewMode === "y8s2_talent_diff";
+  const optJa = langSelect.querySelector('option[value="ja"]');
+  const optEn = langSelect.querySelector('option[value="en"]');
+  if (isY8s2DiffView) {
+    if (langSelect.value !== "en") {
+      langSelect.value = "en";
+      saveLangSetting();
+      applyUiLang();
+    }
+    langSelect.disabled = true;
+    if (optJa) optJa.disabled = true;
+    if (optEn) optEn.disabled = false;
+    return;
+  }
+  langSelect.disabled = false;
+  if (optJa) optJa.disabled = false;
+  if (optEn) optEn.disabled = false;
 }
 
 function refreshDescButtons() {
@@ -4248,7 +4275,7 @@ function toggleNavMenu() {
 async function switchViewMode(mode) {
   const prevViewMode = currentViewMode;
   saveSelectionStateForView(prevViewMode);
-  currentViewMode = (mode === "event" || mode === "season_mod" || mode === "weapons" || mode === "brand" || mode === "gearset" || mode === "exotic_gear" || mode === "gear_talent" || mode === "weapon_talent" || mode === "descent_talent" || mode === "prototype" || mode === "cost" || mode === "blueprint" || mode === "item_sources" || mode === "trello" || mode === "patches") ? mode : "vendor";
+  currentViewMode = (mode === "event" || mode === "season_mod" || mode === "weapons" || mode === "brand" || mode === "gearset" || mode === "exotic_gear" || mode === "gear_talent" || mode === "weapon_talent" || mode === "y8s2_talent_diff" || mode === "descent_talent" || mode === "prototype" || mode === "cost" || mode === "blueprint" || mode === "item_sources" || mode === "trello" || mode === "patches") ? mode : "vendor";
   loadSelectionStateForView(currentViewMode);
   const shouldResetSharedFilterOpen =
     prevViewMode !== currentViewMode &&
@@ -4321,6 +4348,11 @@ async function switchViewMode(mode) {
   }
   if (currentViewMode === "weapon_talent") {
     await renderWeaponTalentView();
+    requestToolbarSync();
+    return;
+  }
+  if (currentViewMode === "y8s2_talent_diff") {
+    await renderY8s2TalentDiffView();
     requestToolbarSync();
     return;
   }
@@ -4607,6 +4639,11 @@ if (navGearTalentBtn) {
 if (navWeaponTalentBtn) {
   navWeaponTalentBtn.addEventListener("click", () => {
     switchViewMode("weapon_talent").catch(err => setStatus(`${ui("error")}: ${err.message}`));
+  });
+}
+if (navY8s2TalentDiffBtn) {
+  navY8s2TalentDiffBtn.addEventListener("click", () => {
+    switchViewMode("y8s2_talent_diff").catch(err => setStatus(`${ui("error")}: ${err.message}`));
   });
 }
 if (navDescentTalentBtn) {

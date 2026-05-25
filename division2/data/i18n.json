@@ -181,8 +181,8 @@
       "robin": "ロビン",
       "investor": "インベスター",
       "nurseskneepads": "Nurse's Kneepads",
-      "benefactor": "TODO:benefactor",
-      "mommabadger": "TODO:mommabadger"
+      "benefactor": "Benefactor",
+      "mommabadger": "Momma Badger"
     },
     "weapon_item_name_ar": {
       "acr": "ACR",
@@ -378,8 +378,8 @@
       "tacticalauga3preplica": "タクティカル AUG A3P 模造品",
       "tacticalump45replica": "タクティカル UMP-45 模造品",
       "vectorsbr45acpreplica": "ヴェクター SBR .45 ACP 模造品",
-      "underboss": "TODO:underboss",
-      "underbosspts": "TODO:underbosspts"
+      "underboss": "Underboss",
+      "underbosspts": "Underboss"
     },
     "weapon_item_name_rifle": {
       "bakersdozen": "ベイカーズダズン",
@@ -578,7 +578,7 @@
       "quickstepm45a1": "placeholder:quickstepm45a1",
       "theharvestpolice686magnum": "placeholder:theharvestpolice686magnum",
       "diceros": "ダイセロス",
-      "whiplashdiceros": "TODO:whiplashdiceros",
+      "whiplashdiceros": "Whiplash",
       "dicerosreplica": "ダイセロス 模造品",
       "militarym9replica": "ミリタリー M9 模造品",
       "police686magnumreplica": "ポリス 686 マグナム 模造品",
@@ -899,8 +899,9 @@
       "coreexercise": "コアエクササイズ",
       "innercore": "インナーコア",
       "outercore": "アウターコア",
-      "peerfectsafeguard": "TODO:peerfectsafeguard",
-      "perfectempathicresolve": "TODO:perfectempathicresolve"
+      "peerfectsafeguard": "パーフェクト・セーフガード",
+      "perfectsafeguard": "パーフェクト・セーフガード",
+      "perfectempathicresolve": "パーフェクト・エンパシックリゾルブ"
     },
     "weapon_talent": {
       "closepersonal": "接近戦",
@@ -1067,9 +1068,9 @@
       "asyoufirethegunwillplaychristmasmusic": "placeholder:asyoufirethegunwillplaychristmasmusic",
       "perfectoverflowing": "パーフェクト・オーバーフロー",
       "caduceus": "カドゥケウス",
-      "ganglandhit": "TODO:ganglandhit",
-      "headscratcher": "TODO:headscratcher",
-      "perfectheadscratcher": "TODO:perfectheadscratcher"
+      "ganglandhit": "Gangland Hit",
+      "headscratcher": "Head Scratcher",
+      "perfectheadscratcher": "Perfect Head Scratcher"
     },
     "cache": {
       "amount": "数量",

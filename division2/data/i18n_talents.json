@@ -91,8 +91,8 @@
       "perfectkineticmomentum": "戦闘中にアクティブまたは非クールダウン中の場合、各スキルは累積する\n\n累積によりスキルダメージの合計が1.5%、スキル修復の合計が2%増加する。各スキルの最大累積数は18。クールダウンで消失する",
       "perfectcomposure": "カバー中、合計武器ダメージが20%増加する",
       "perfectgunslinger": "武器を切り替えると合計武器ダメージが28%増加する（5秒間）。このバフは有効時に武器を切り替えると効果が5秒間失われる",
-      "peerfectsafeguard": "TODO:While at full armor, increases total skill repair by (160%).",
-      "perfectempathicresolve": "TODO:Repairing an ally, increases their total weapon and skill damage by 3-20% for 10s. 1-15% if self. Effectiveness increased by your skill tier."
+      "peerfectsafeguard": "フルアーマー時、スキル修復の合計が160%増加する",
+      "perfectempathicresolve": "味方を修復すると、彼らの武器とスキルダメージの合計が3～20%増加する（10秒間）。自身なら1～15%\n\n効果はスキルクラスによって増加する"
     },
     "weapon_talent_desc": {
       "breadbasket": "ボディショットを決めるごとに、次のヘッドショットに対して+55%のダメージボーナスが10秒間累積する。最大累積数は3",
@@ -207,8 +207,8 @@
       "perfectbackandforth": "この武器に切り替えると+13%の連射速度と+12%の武器ダメージが10秒間付与される\n\nこの武器から別の武器に切り替えると+5%の連射速度と+4.5%の武器ダメージが10秒間付与される\n\nどちらかのボーナスグループを獲得した際に、もう1つのボーナスグループがまだ有効だった場合は先に獲得していたほうが無効になる\n\nこのタレントの2つのパターンの状況は同時には発生しない",
       "backandforth": "この武器に切り替えると+10%の連射速度と+9%の武器ダメージが10秒間付与される\n\nこの武器から別の武器に切り替えると+5%の連射速度と+4.5%の武器ダメージが10秒間付与される\n\nどちらかのボーナスグループを獲得した際に、もう1つのボーナスグループがまだ有効だった場合は先に獲得していたほうが無効になる\n\nこのタレントの2つのパターンの状況は同時には発生しない",
       "blossomharvest": "敵の残りアーマーとHPの合計が10%あるごとに、武器ダメージが3.3%増幅される",
-      "headscratcher": "TODO:Deal 30% Amplified Damage to confused enemies. After 4 kills, applies Confuse to the enemy you hit.",
-      "perfectheadscratcher": "TODO:Deal 35% Amplified Damage to confused enemies. After 4 kills, applies Confuse to the enemy you hit."
+      "headscratcher": "混乱状態の敵へのダメージが30%増幅する\n4人の敵を倒した後、次に攻撃を命中させた敵を混乱状態にする",
+      "perfectheadscratcher": "混乱状態の敵へのダメージが35%増幅する\n3人の敵を倒した後、次に攻撃を命中させた敵を混乱状態にする"
     },
     "gearset_talent_desc": {
       "deadmanshand": "ライフルまたはマークスマンライフルの射撃が命中するとカードを1枚めくる。\nカードが5枚めくられた後、次の射撃のダメージが30%増幅される。命中した分だけ良いカードが出る\n　フォーカード:4回命中\n　フルハウス:3回命中\n　エース&エイト:2回命中\nヘッドショットで1枚多くカードをめくる",
@@ -292,9 +292,9 @@
       "coreexercise": "装備の各コアごとに、残り2種類のコアのボーナスを40%獲得する\nこのボーナスの適用時、スキルクラスは15%のスキル効率として換算される\n\nバックパックを除く本装備セットの各部位には、ランダムなコアが付与される",
       "innercore": "他のコアから受けるボーナスが40%から75%に増加する",
       "outercore": "このタレントはコアエクササイズタレントを直接変化させない\nこのバックパックには3つのコア特性がある",
-      "ortizrapidapplicationnaniteprototype": "TODO:Healing Skills' Duration and Range are decreased by 75%, but their Healing Efficiency is increased by 100%.\nHealing an Ally with a Skill will provide them 30% Hazard Protection for 10s. Cooldown per ally: 10s.",
-      "overchargednanites": "TODO:Increase the Healing Efficiency bonus from 100% to 150%.",
-      "improveddampeners": "TODO:Decrease the Duration and Range reduction from 75% to 25%."
+      "ortizrapidapplicationnaniteprototype": "GPT:回復スキルの持続時間と効果範囲が75%減少するが、回復効率が100%増加する\nスキルで味方を回復すると、その味方に10秒間、状態異常耐性30%を付与する\n味方ごとのクールダウン：10秒",
+      "overchargednanites": "GPT:回復効率ボーナスを100%から150%に増加させる",
+      "improveddampeners": "GPT:持続時間と効果範囲の減少量を75%から25%に軽減する"
     },
     "exotic_gear_talent_desc": {
       "toxicdelivery": "ステータス効果は時間経過ダメージのデバフを10秒適用する\n与える全てのダメージは自身のコンカッショングレネードのダメージの50%で、ステータス効果の特性で増加",
@@ -371,7 +371,7 @@
       "perturb": "この武器をしまっている間、射撃時に生成される脅威が50%低下する。この武器をしまっている状態を10秒維持すると発動可能になる\n\n発動可能な状態の時に、この武器に切り替えると+25%の連射速度、+30%の武器ダメージを獲得し、20秒間射撃すると、生成する\n脅威が100%増加する時間切れになる前に武器を切り替えるとボーナスが解除される",
       "fasterthanreloading": "GPT:\nこの武器を5秒間ホルスターに収めていると、リロードされ、準備状態になる。準備状態中にこの武器へ切り替えると、メイン武器およびサブ武器がリロードされ、この武器のマガジンを撃ち切るまで、連射速度が+20%、武器ダメージが+50%上昇する。マガジンを撃ち切る前にリロードする、またはこの武器から切り替えると、そのステータスボーナスは解除される。",
       "caduceus": "GPT:クリティカルヒット時、そのヒットで与えたダメージの1.5%分、自分と味方を回復する。",
-      "ganglandhit": "TODO:Shooting an enemy with this weapon applies a mark. You can only apply one mark at a time. Shooting another enemy will transfer the mark. More marks can be applied on the same enemy by other agents using this weapon. Maximum amount of marks that can be applied on an enemy is 4. This weapon deals +20% Amplified Damage to marked enemies. The bonus is increased by 5% for each extra mark on the enemy other than your own."
+      "ganglandhit": "GPT:この武器で敵を撃つとマークを付与する\n付与できるマークは同時に1つまでで、別の敵を撃つとマークは移動する\n同じ敵には、この武器を装備した他のエージェントも追加でマークを付与できる\n敵1体につき最大4個までマーク可能\nこの武器はマークされた敵へのダメージが20%増幅する\n自身以外の追加マーク1つにつき、このボーナスがさらに5%増加する"
     },
     "descent_talent_desc": {
       "adrenalinerush": "敵から10m以内にいる場合、[3*tier]%のボーナスアーマーを5秒間得る。3回まで累積する\nクールダウン: [5.3-(0.3*tier)]秒",
