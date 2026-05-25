@@ -1572,6 +1572,17 @@ body.seasonmod-modal-open {
   gap: var(--card-gap);
 }
 
+/* y8s2_talent_diff list layout */
+#y8s2DiffList.cards {
+  display: grid;
+  gap: var(--card-gap);
+}
+
+#y8s2DiffList .card .line__text,
+#y8s2DiffList .card strong {
+  font-size: var(--card-line-size);
+}
+
 .card {
   position: relative;
   border: 1px solid var(--border);
@@ -2732,6 +2743,10 @@ th {
   .grid--cache {
     grid-template-columns: repeat(auto-fill, minmax(min(160px, 100%), 1fr));
     gap: 6px;
+  }
+
+  #y8s2DiffList.cards {
+    gap: 7px;
   }
 
   .card {
