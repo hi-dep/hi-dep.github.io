@@ -1,0 +1,237 @@
+{
+  "season": "Y8S2",
+  "lang": "ja",
+  "modifiers": {
+    "global": [
+      {
+        "name": "Cleaning Up The Streets",
+        "type": "グローバルMOD",
+        "description": [
+          "ハイエナに制圧されたダークゾーンからSample Canisterを回収する。Research Benchに納品すると、Sample Sizeが増加し、High-Quality Munitionsのスタックを獲得する。",
+          "High-Quality Munitionsは、Sample Sizeが大きくなるほど累積ボーナスを提供する。いずれかの武器をリロードすると、High-Quality Munitionsを1スタック消費する。"
+        ],
+        "effects": [
+          {
+            "sample_size": 0,
+            "effect": "High-Quality Munitionsは最適射程+40%を付与する"
+          },
+          {
+            "sample_size": 50,
+            "effect": "High-Quality Munitionsはさらに武器ハンドリング+35%を付与する"
+          },
+          {
+            "sample_size": 150,
+            "effect": "High-Quality Munitionsはさらに装弾数+20%を付与する"
+          },
+          {
+            "sample_size": 400,
+            "effect": "High-Quality Munitionsはさらにアーマーへのダメージ+15%を付与する"
+          },
+          {
+            "sample_size": 600,
+            "effect": "High-Quality Munitionsはさらに連射速度+15%を付与する"
+          }
+        ]
+      }
+    ],
+    "enemy": [
+      {
+        "name": "Folie à Deux",
+        "type": "敵MOD",
+        "description": [
+          "Folie à Deuxを持つ敵は、戦闘状態に入った後、毎秒ダメージ+10%を獲得する。最大+100%。",
+          "最初にダメージを受けてから4秒以内に倒されなかった場合、死亡時に最も近い味方へFolie à Deuxを転移する。",
+          "PvEダークゾーンでは、Folie à Deuxを持つ敵が死亡した時、その敵から20メートル以内にいる場合、Toxicityが100増加する。この効果は、敵が最初にダメージを受けてから4秒以内に倒された場合は発生しない。"
+        ]
+      },
+      {
+        "name": "Sopoforic",
+        "type": "敵MOD",
+        "description": [
+          "Sopoforicを持つ敵からダメージを受けた後、20秒間Lethargic状態になる。Lethargic中は、受ける他のダメージごとに20%の確率で3秒間混乱する。Sopoforicを持つ敵を倒すとLethargicは解除される。",
+          "PvEダークゾーンでは、Sopoforicを持つ敵から受けるすべてのダメージにより、Toxicityが20増加する。"
+        ]
+      },
+      {
+        "name": "Plague Doctor",
+        "type": "敵MOD",
+        "description": [
+          "Plague Doctorを持つ敵と、その20メートル以内にいる味方は、毎秒5%のHPを回復する。",
+          "PvEダークゾーンでは、同じ半径内にいる間、Toxicityが毎秒2増加する。"
+        ]
+      }
+    ],
+    "active": [
+      {
+        "name": "Vicarious",
+        "type": "アクティブMOD",
+        "description": [
+          "発動時、自身から15メートル以内にいる敵と味方は、次の35秒間、それぞれ別個のスタック効果を獲得する:",
+          "味方は1スタックごとに修復量20%を獲得する",
+          "敵は1スタックごとにスキルから受けるダメージが20%増加する",
+          "スタック数は、Vicarious発動時に半径内にいる味方と敵の合計数に等しい。",
+          "自身も35秒間、スキル効率20%を獲得する。",
+          "クールダウン: 180秒。"
+        ],
+        "surge": {
+          "description": [
+            "Vicariousは発動時に自動でSample Canisterを5個消費し、効果を強化する:",
+            "Vicarious発動中、スキル効率が40%に増加する",
+            "自身のアクティブなスキルから10メートル以内にいる敵と味方もVicariousの影響を受け、総スタック数に加算される",
+            "PvEダークゾーンでは、発動時にToxicityが50減少する。"
+          ]
+        },
+        "levels": [
+          {
+            "level": 2,
+            "description": "半径が自身の周囲25メートルに増加し、該当する場合はアクティブなスキルの周囲15メートルに増加する。"
+          },
+          {
+            "level": 3,
+            "description": "Surgeに必要なSample Canister数が4に減少する。"
+          }
+        ]
+      },
+      {
+        "name": "Pneuma",
+        "type": "アクティブMOD",
+        "description": [
+          "35秒間、切替速度が50%増加し、武器キルにより、使用した武器タイプに応じて3種類のスタックボーナスのいずれかを獲得する。",
+          "Inhale（マークスマンライフル、ライフル、ピストル）: 1スタックごとにヘッドショットダメージ5%、命中率3%",
+          "Hold（アサルトライフル、LMG）: 1スタックごとにクリティカル率2%、安定性3%",
+          "Exhale（ショットガン、SMG）: 1スタックごとにクリティカルダメージ3%、リロード速度3%",
+          "これらのボーナスはそれぞれ10スタックが上限であり、キルごとに対応するボーナスのスタックが1増加する。",
+          "クールダウン: 240秒。"
+        ],
+        "surge": {
+          "description": [
+            "Pneumaは発動時に自動でSample Canisterを5個消費し、効果を強化する:",
+            "最大スタック数が20に増加する",
+            "Inhale: ヘッドショットキルで3スタックを獲得する",
+            "Hold: 前回のキルから5秒以内のキルで3スタックを獲得する",
+            "Exhale: 7メートル以下の距離でのキルで3スタックを獲得する",
+            "PvEダークゾーンでは、発動時にToxicityが50減少する。"
+          ]
+        },
+        "levels": [
+          {
+            "level": 2,
+            "description": "持続時間が50秒に増加する。"
+          },
+          {
+            "level": 3,
+            "description": "Surgeに必要なSample Canister数が4に減少する。"
+          }
+        ]
+      },
+      {
+        "name": "Invincible",
+        "type": "アクティブMOD",
+        "description": [
+          "発動時、アーマーが完全に修復される。",
+          "20秒間、すべてのダメージソースに対して99%のダメージ軽減を獲得し、前方50メートル以内に敵がいる間、以下のボーナスを獲得する:",
+          "移動速度が20%増加する",
+          "Invincible終了まで、キル時にボーナスアーマー5%を獲得する",
+          "カバー外の敵へのダメージ10%を獲得する",
+          "Invincible終了時、Invincibleのダメージ軽減がなければ受けていたはずのダメージの150%を即座に受ける。",
+          "クールダウン: 180秒。"
+        ],
+        "surge": {
+          "description": [
+            "Invincibleは発動時に自動でSample Canisterを5個消費し、効果を強化する:",
+            "キル時ボーナスアーマーが10%に増加し、ボーナスアーマーはInvincible終了後60秒間持続する",
+            "カバー外の敵へのダメージが25%に増加する",
+            "Invincible終了時に受けるダメージが100%のみになる",
+            "PvEダークゾーンでは、発動時にToxicityが50減少する。"
+          ]
+        },
+        "levels": [
+          {
+            "level": 2,
+            "description": "クールダウンが120秒に減少する。"
+          },
+          {
+            "level": 3,
+            "description": "Surgeに必要なSample Canister数が4に減少する。"
+          }
+        ]
+      }
+    ],
+    "passive": {
+      "Gadgets": [
+        {
+          "name": "Canister Belt",
+          "type": "パッシブMOD",
+          "description": [
+            "Sample Canisterの最大所持数が45増加する。このMODを外すと、通常の所持上限を超えているSample Canisterは失われる。"
+          ]
+        },
+        {
+          "name": "Immune Response",
+          "type": "パッシブMOD",
+          "description": [
+            "アーマーキットを使用した後、30秒間20%のダメージ軽減を獲得する。",
+            "PvEダークゾーンでは、同じ持続時間中、Toxicityによる負の効果を受けない。（Toxicityメーターは通常通り増加する。）"
+          ]
+        },
+        {
+          "name": "Surge Drive",
+          "type": "パッシブMOD",
+          "description": [
+            "アクティブMODをSurgeするコストがSample Canister3個分減少する。",
+            "PvEダークゾーンでは、このコストがさらに1減少する。"
+          ]
+        }
+      ],
+      "Resistances": [
+        {
+          "name": "Sand And Stone",
+          "type": "パッシブMOD",
+          "description": [
+            "状態異常耐性が30%増加する。",
+            "PvEダークゾーンでは、状態異常耐性10%ごとにアーマーが50000増加する。"
+          ]
+        },
+        {
+          "name": "Spark And Flame",
+          "type": "パッシブMOD",
+          "description": [
+            "ステータス効果が30%増加する。",
+            "PvEダークゾーンでは、ステータス効果10%ごとに武器ダメージが2%増加する。"
+          ]
+        },
+        {
+          "name": "Inoculated",
+          "type": "パッシブMOD",
+          "description": [
+            "すべてのソースからのToxicity蓄積が50%減少する。"
+          ]
+        }
+      ],
+      "Offensive": [
+        {
+          "name": "Viper Bite",
+          "type": "パッシブMOD",
+          "description": [
+            "5キルごとに、次の5秒間、すべての射撃が2秒間の毒状態を付与する。"
+          ]
+        },
+        {
+          "name": "Contagion",
+          "type": "パッシブMOD",
+          "description": [
+            "Contagiousを獲得する。敵から7メートル以内に入ると、Contagiousがその敵へ転移する。Contagious状態の敵が死亡すると、Contagiousは7メートル以内にいる最も近い味方へ転移する。Contagiousの転移先がいない場合、代わりに自身へ戻る。",
+            "Contagiousは自身には効果がないが、Contagious状態の敵はすべてのソースから受けるダメージが50%増加する。"
+          ]
+        },
+        {
+          "name": "Unfriendly Fire",
+          "type": "パッシブMOD",
+          "description": [
+            "ハイエナのシールドを撃つと弾丸が偏向し、そのダメージの60%を、対象から10メートル以内にいる各敵へ与える。"
+          ]
+        }
+      ]
+    }
+  }
+}

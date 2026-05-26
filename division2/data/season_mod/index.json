@@ -1,5 +1,5 @@
 {
-  "latest": "y8s1",
+  "latest": "y8s2",
   "seasons": [
     {
       "id": "y8s1",
@@ -8,6 +8,14 @@
       "lang_files": {
         "ja": "season_mod/y8s1_modifiers_ja.json",
         "pt": "season_mod/y8s1_modifiers_pt.json"
+      }
+    },
+    {
+      "id": "y8s2",
+      "label": "Y8S2",
+      "file": "season_mod/y8s2_modifiers.json",
+      "lang_files": {
+        "ja": "season_mod/y8s2_modifiers_ja.json"
       }
     }
   ]

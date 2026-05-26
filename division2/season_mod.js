@@ -711,6 +711,168 @@
       .map((x) => x.m);
   }
 
+  function isSimpleSeasonModifiersFormat(data) {
+    return !!(data && typeof data === "object" && data.modifiers && typeof data.modifiers === "object");
+  }
+
+  function joinDescLines(lines) {
+    if (!Array.isArray(lines)) return esc(String(lines || ""));
+    return lines.map((s) => esc(String(s || ""))).join("<br>");
+  }
+
+  function buildSimpleSeasonRows(payload) {
+    const seasonId = String(payload?.current?.id || "").trim();
+    const modifiers = payload?.data?.modifiers || {};
+    const iconPathIfExists = (mod) => {
+      const file = String(mod?.icon || "").trim();
+      if (!file) return "";
+      if (typeof appPath === "function") return appPath(`img/season/${seasonId}/${file}`);
+      return `./img/season/${seasonId}/${file}`;
+    };
+
+    const makeRow = (_typeLabel, name, descHtml, icon) => {
+      return `
+        <tr>
+          <td class="seasonmod-icon-cell">${icon ? `<img class="seasonmod-icon" src="${esc(icon)}" alt="${esc(name)}" loading="lazy" decoding="async" />` : ""}</td>
+          <td>
+            <div class="seasonmod-active-desc-head"><span class="seasonmod-active-desc-name">${esc(name)}</span></div>
+            <div class="seasonmod-active-desc-text">${descHtml}</div>
+          </td>
+        </tr>
+      `;
+    };
+
+    const sections = {
+      global: [],
+      enemy: [],
+      active: [],
+      passive: {}
+    };
+
+    const globalList = Array.isArray(modifiers.global) ? modifiers.global : [];
+    globalList.forEach((m) => {
+      const name = String(m?.name || "").trim();
+      const desc = joinDescLines(m?.description);
+      const effects = Array.isArray(m?.effects) ? m.effects : [];
+      const effectsHtml = effects.length
+        ? `<br><div class="seasonmod-level-effects"><strong>Effects:</strong><br>${effects.map((e) => `${esc(String(e?.sample_size ?? ""))}: ${esc(String(e?.effect || ""))}`).join("<br>")}</div>`
+        : "";
+      sections.global.push(makeRow("Global Modifier", name, `${desc}${effectsHtml}`, iconPathIfExists(m)));
+    });
+
+    const enemyList = Array.isArray(modifiers.enemy) ? modifiers.enemy : [];
+    enemyList.forEach((m) => {
+      sections.enemy.push(makeRow("Enemy Modifier", String(m?.name || "").trim(), joinDescLines(m?.description), iconPathIfExists(m)));
+    });
+
+    const activeList = Array.isArray(modifiers.active) ? modifiers.active : [];
+    activeList.forEach((m) => {
+      const desc = joinDescLines(m?.description);
+      const surgeDesc = Array.isArray(m?.surge?.description) ? m.surge.description : [];
+      const surgeHtml = surgeDesc.length
+        ? `<br><div class="seasonmod-level-effects"><strong>Surge:</strong><br>${joinDescLines(surgeDesc)}</div>`
+        : "";
+      const levels = Array.isArray(m?.levels) ? m.levels : [];
+      const levelsHtml = levels.length
+        ? `<br><div class="seasonmod-level-effects"><strong>${esc(uiText("levelEffects", "Level Effects"))}:</strong><br>${levels.map((lv) => `Lv${esc(String(lv?.level || ""))}: ${esc(String(lv?.description || ""))}`).join("<br>")}</div>`
+        : "";
+      sections.active.push(makeRow("Active Modifier", String(m?.name || "").trim(), `${desc}${surgeHtml}${levelsHtml}`, iconPathIfExists(m)));
+    });
+
+    const passiveGroups = (modifiers.passive && typeof modifiers.passive === "object") ? modifiers.passive : {};
+    Object.keys(passiveGroups).forEach((groupName) => {
+      const list = Array.isArray(passiveGroups[groupName]) ? passiveGroups[groupName] : [];
+      if (!sections.passive[groupName]) sections.passive[groupName] = [];
+      list.forEach((m) => {
+        const name = String(m?.name || "").trim();
+        sections.passive[groupName].push(makeRow("Passive Modifier", name, joinDescLines(m?.description), iconPathIfExists(m)));
+      });
+    });
+
+    return sections;
+  }
+
+  function buildSimpleSeasonSectionHtml(title, rowsHtml, emptyText) {
+    return `
+      <section class="seasonmod-section seasonmod-section--active">
+        <details class="seasonmod-accordion" open>
+          <summary class="seasonmod-accordion__summary">${esc(title)}</summary>
+          <div class="seasonmod-accordion__body">
+            <section class="blueprint-table-wrap">
+              <div class="blueprint-table-scroll">
+                <table class="blueprint-table seasonmod-table seasonmod-table--simple">
+                  <thead>
+                    <tr>
+                      <th></th>
+                      <th>${esc(uiText("desc", "Description"))}</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    ${rowsHtml || `<tr><td colspan="2">${esc(emptyText)}</td></tr>`}
+                  </tbody>
+                </table>
+              </div>
+            </section>
+          </div>
+        </details>
+      </section>
+    `;
+  }
+
+  function buildSimpleSeasonViewHtml(payload) {
+    const seasonId = String(payload?.current?.id || "").trim();
+    const seasonLabel = String(payload?.current?.label || payload?.data?.season || seasonId).trim();
+    const sections = buildSimpleSeasonRows(payload);
+    const passiveGroupNames = Object.keys(sections.passive || {});
+    const passiveSectionsHtml = passiveGroupNames.map((groupName) => {
+      const rows = (sections.passive[groupName] || []).join("");
+      return buildSimpleSeasonSectionHtml(`${uiText("sectionPassive", "Passive")} - ${groupName}`, rows, uiText("noData", "No data"));
+    }).join("");
+    return `
+      <section class="blueprint-view seasonmod-view">
+        <section class="seasonmod-section seasonmod-section--simulator">
+          <label class="field seasonmod-field">
+            <span>${esc(uiText("season", "Season"))}</span>
+            <select id="seasonModSeasonSelectSimple" class="seasonmod-select">
+              ${((payload?.index?.seasons) || []).map((s) => {
+                const sid = String(s?.id || "").trim();
+                const slabel = String(s?.label || sid).trim() || sid;
+                const selected = sid === seasonId ? " selected" : "";
+                return `<option value="${esc(sid)}"${selected}>${esc(slabel)}</option>`;
+              }).join("")}
+            </select>
+          </label>
+        </section>
+
+        ${buildSimpleSeasonSectionHtml("Global Modifiers", (sections.global || []).join(""), uiText("noData", "No data"))}
+        ${buildSimpleSeasonSectionHtml("Enemy Modifiers", (sections.enemy || []).join(""), uiText("noData", "No data"))}
+        ${buildSimpleSeasonSectionHtml("Active Modifiers", (sections.active || []).join(""), uiText("noData", "No data"))}
+        ${passiveSectionsHtml || buildSimpleSeasonSectionHtml("Passive Modifiers", "", uiText("noData", "No data"))}
+      </section>
+    `;
+  }
+
+  function bindSimpleSeasonView(payload) {
+    const seasonEl = document.getElementById("seasonModSeasonSelectSimple");
+    if (!seasonEl) return;
+    seasonEl.addEventListener("change", () => {
+      const nextSeason = String(seasonEl.value || "").trim();
+      try {
+        if (typeof replaceUrlParams === "function") replaceUrlParams({ [SEASON_MOD_URL_KEYS.season]: nextSeason });
+        else {
+          const u = new URL(window.location.href);
+          const p = u.searchParams;
+          if (nextSeason) p.set(SEASON_MOD_URL_KEYS.season, nextSeason);
+          else p.delete(SEASON_MOD_URL_KEYS.season);
+          window.history.replaceState({}, "", u.toString());
+        }
+      } catch (_e) {
+        // ignore URL write errors
+      }
+      window.seasonModViewRender({ seasonId: nextSeason }).catch(() => {});
+    });
+  }
+
   function buildViewHtml(payload) {
     const ui = t();
     const seasonId = String(payload?.current?.id || payload?.data?.season_id || "").trim();
@@ -2037,8 +2199,13 @@
         ? payload.data.ui
         : {};
       setGlobalLangOptionsForSeason(payload?.data || {}, payload?.current || {});
-      setContentHtml(buildViewHtml(payload));
-      bindSimulator(payload);
+      if (isSimpleSeasonModifiersFormat(payload?.data)) {
+        setContentHtml(buildSimpleSeasonViewHtml(payload));
+        bindSimpleSeasonView(payload);
+      } else {
+        setContentHtml(buildViewHtml(payload));
+        bindSimulator(payload);
+      }
       if (typeof setStatus === "function") setStatus("");
     } catch (err) {
       setContentHtml(`<section class="seasonmod-view"><p class="event-empty">${esc(ui.failed)}</p></section>`);

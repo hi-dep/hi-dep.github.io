@@ -1,0 +1,236 @@
+{
+  "season": "Y8S2",
+  "modifiers": {
+    "global": [
+      {
+        "name": "Cleaning Up The Streets",
+        "type": "Global Modifier",
+        "description": [
+          "Collect Sample Canisters from the Hyena-overrun Dark Zone. Turn them in at the Research Bench to increase Sample Size and to earn stacks of High-Quality Munitions.",
+          "High-Quality Munitions provide cumulative bonuses the larger the Sample Size gets. Reloading any weapon consumes one stack of High-Quality Munitions."
+        ],
+        "effects": [
+          {
+            "sample_size": 0,
+            "effect": "High-Quality Munitions grant +40% Optimal Range"
+          },
+          {
+            "sample_size": 50,
+            "effect": "High-Quality Munitions also grant +35% Weapon Handling"
+          },
+          {
+            "sample_size": 150,
+            "effect": "High-Quality Munitions also grant +20% Magazine Size"
+          },
+          {
+            "sample_size": 400,
+            "effect": "High-Quality Munitions also grant +15% Damage to Armor"
+          },
+          {
+            "sample_size": 600,
+            "effect": "High-Quality Munitions also grant +15% Rate of Fire"
+          }
+        ]
+      }
+    ],
+    "enemy": [
+      {
+        "name": "Folie à Deux",
+        "type": "Enemy Modifier",
+        "description": [
+          "Enemies with Folie à Deux gain +10% damage every second after entering combat, up to a maximum of +100%.",
+          "If they are not killed within 4 seconds of first taking damage, they transfer Folie à Deux to their closest ally on death.",
+          "In the PvE Dark Zone, enemies with Folie à Deux also increase your Toxicity by 100 if you are within 20 meters of them when they die. This does not occur if the enemy is killed within 4 seconds of first receiving damage."
+        ]
+      },
+      {
+        "name": "Sopoforic",
+        "type": "Enemy Modifier",
+        "description": [
+          "After receiving damage from enemies with Sopoforic, you become Lethargic for 20 seconds. While Lethargic, any other damage you take has a 20% chance to Disorient you for 3 seconds. Killing any enemy with Sopoforic removes Lethargic.",
+          "In the PvE Dark Zone, any damage from enemies with Sopoforic increases your Toxicity by 20."
+        ]
+      },
+      {
+        "name": "Plague Doctor",
+        "type": "Enemy Modifier",
+        "description": [
+          "Enemies with Plague Doctor and their allies within 20 meters regenerate 5% Health per second.",
+          "In the PvE Dark Zone, your Toxicity increases by 2 per second while you are in that same radius."
+        ]
+      }
+    ],
+    "active": [
+      {
+        "name": "Vicarious",
+        "type": "Active Modifier",
+        "description": [
+          "On activation, enemies and allies within 15 meters of you gain separate, stacking effects for the next 35 seconds:",
+          "Allies receive 20% Incoming Repairs per stack",
+          "Enemies take 20% extra damage from Skills per stack",
+          "The number of stacks is equal to the total number of allies and enemies in the radius when Vicarious is activated.",
+          "You also gain 20% Skill Efficiency for 35 seconds.",
+          "Cooldown: 180 seconds."
+        ],
+        "surge": {
+          "description": [
+            "Vicarious automatically consumes 5 Sample Canisters on activation to improve its effects:",
+            "Skill Efficiency increases to 40% while Vicarious is active",
+            "Enemies and allies within 10 meters of your Active Skills are also affected by Vicarious, and count toward the total number of stacks",
+            "In the PvE Dark Zone, Toxicity is reduced by 50 on activation."
+          ]
+        },
+        "levels": [
+          {
+            "level": 2,
+            "description": "The radius is increased to 25 meters around you and 15 meters around your Active Skills, if applicable."
+          },
+          {
+            "level": 3,
+            "description": "The number of Sample Canisters needed to Surge is reduced to 4."
+          }
+        ]
+      },
+      {
+        "name": "Pneuma",
+        "type": "Active Modifier",
+        "description": [
+          "For 35 seconds, your Weapon Swap Speed increases by 50%, and weapon kills grant one of three stacking bonuses depending on the type of weapon used.",
+          "Inhale (Marksman Rifles, Rifles and Pistols): 5% Headshot Damage and 3% Accuracy per stack",
+          "Hold (Assault Rifles and LMGs): 2% Crit Chance and 3% Stability per stack",
+          "Exhale (Shotguns and SMGs): 3% Crit Damage and 3% Reload Speed per stack",
+          "These bonuses are capped at 10 stacks each, and each kill increases the corresponding bonus' stack by 1.",
+          "Cooldown: 240 seconds."
+        ],
+        "surge": {
+          "description": [
+            "Pneuma automatically consumes 5 Sample Canisters on activation to improve its effects:",
+            "The maximum stacks are increased to 20",
+            "Inhale: Headshot kills grant 3 stacks",
+            "Hold: Kills within 5 seconds of the previous kill grant 3 stacks",
+            "Exhale: Kills at a range of 7 meters or less grant 3 stacks",
+            "In the PvE Dark Zone, Toxicity is reduced by 50 on activation."
+          ]
+        },
+        "levels": [
+          {
+            "level": 2,
+            "description": "Duration is increased to 50 seconds."
+          },
+          {
+            "level": 3,
+            "description": "The number of Sample Canisters needed to Surge is reduced to 4."
+          }
+        ]
+      },
+      {
+        "name": "Invincible",
+        "type": "Active Modifier",
+        "description": [
+          "On activation, your armor is fully repaired.",
+          "For 20 seconds, you gain 99% damage reduction against all damage sources, and gain the following bonuses while there is an enemy within 50 meters in front of you:",
+          "your movement speed increases by 20%",
+          "you gain 5% Bonus Armor on Kill until Invincible ends",
+          "you gain 10% Damage to Targets Out of Cover",
+          "When Invincible ends, you immediately take 150% of the damage you would have taken without Invincible's damage reduction.",
+          "Cooldown: 180 seconds."
+        ],
+        "surge": {
+          "description": [
+            "Invincible automatically consumes 5 Sample Canisters on activation to improve its effects:",
+            "Bonus Armor on Kill increases to 10%, and Bonus Armor persists for 60 seconds after Invincible ends",
+            "Damage to Targets Out of Cover increases to 25%",
+            "You only take 100% damage when Invincible ends",
+            "In the PvE Dark Zone, Toxicity is reduced by 50 on activation."
+          ]
+        },
+        "levels": [
+          {
+            "level": 2,
+            "description": "Cooldown is reduced to 120 seconds."
+          },
+          {
+            "level": 3,
+            "description": "The number of Sample Canisters needed to Surge is reduced to 4."
+          }
+        ]
+      }
+    ],
+    "passive": {
+      "Gadgets": [
+        {
+          "name": "Canister Belt",
+          "type": "Passive Modifier",
+          "description": [
+            "Your maximum capacity for Sample Canisters is increased by 45. When this modifier is unequipped, any Sample Canisters beyond your regular capacity are lost."
+          ]
+        },
+        {
+          "name": "Immune Response",
+          "type": "Passive Modifier",
+          "description": [
+            "After using an Armor Kit, you gain 20% damage reduction for 30 seconds.",
+            "In the PvE Dark Zone, you suffer no negative effects from Toxicity for the same duration. (The Toxicity meter still increases normally.)"
+          ]
+        },
+        {
+          "name": "Surge Drive",
+          "type": "Passive Modifier",
+          "description": [
+            "The cost to Surge an Active Modifier is reduced by 3 Sample Canister.",
+            "In the PvE Dark Zone, this cost is further reduced by 1."
+          ]
+        }
+      ],
+      "Resistances": [
+        {
+          "name": "Sand And Stone",
+          "type": "Passive Modifier",
+          "description": [
+            "Increase Hazard Protection by 30%.",
+            "In the PvE Dark Zone, increase armor by 50000 for each 10% Hazard Protection."
+          ]
+        },
+        {
+          "name": "Spark And Flame",
+          "type": "Passive Modifier",
+          "description": [
+            "Increase Status Effects by 30%.",
+            "In the PvE Dark Zone, increase Weapon Damage by 2% for each 10% Status Effects."
+          ]
+        },
+        {
+          "name": "Inoculated",
+          "type": "Passive Modifier",
+          "description": [
+            "Toxicity accumulation from all sources is reduced by 50%."
+          ]
+        }
+      ],
+      "Offensive": [
+        {
+          "name": "Viper Bite",
+          "type": "Passive Modifier",
+          "description": [
+            "After every 5 kills, all of your shots for the next 5 seconds apply Poisoned for 2 seconds."
+          ]
+        },
+        {
+          "name": "Contagion",
+          "type": "Passive Modifier",
+          "description": [
+            "You gain Contagious. When you get within 7 meters of an enemy, Contagious transfers to them. When a Contagious enemy dies, Contagious transfers to their closest ally within 7 meters. If there is no one to transfer Contagious to, it reverts to you instead.",
+            "Contagious has no effect on you, but enemies with Contagious take 50% more damage from all sources."
+          ]
+        },
+        {
+          "name": "Unfriendly Fire",
+          "type": "Passive Modifier",
+          "description": [
+            "Shooting a Hyena's shield deflects your bullets, dealing 60% of that damage to each enemy within 10 meters of the target."
+          ]
+        }
+      ]
+    }
+  }
+}
