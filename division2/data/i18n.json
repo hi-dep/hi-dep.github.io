@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "built_at": "2026-05-27T01:25:07.688248Z",
+  "built_at": "2026-05-20T02:05:03.753237Z",
   "categories": {
     "vendor": {
       "benitez": "ベニテス",
@@ -567,7 +567,7 @@
       "theharvest": "ザ・ハーヴェスト",
       "x45": "X-45",
       "x45tactical": "X-45 タクティカル",
-      "whiplash": "Whiplash",
+      "whiplash": "ウィップラッシュ",
       "busylittlebeecustompf45": "placeholder:busylittlebeecustompf45",
       "dicerosspecialdiceros": "placeholder:dicerosspecialdiceros",
       "lightningrodcustompf45": "placeholder:lightningrodcustompf45",
@@ -578,7 +578,7 @@
       "quickstepm45a1": "placeholder:quickstepm45a1",
       "theharvestpolice686magnum": "placeholder:theharvestpolice686magnum",
       "diceros": "ダイセロス",
-      "whiplashdiceros": "Whiplash",
+      "whiplashdiceros": "ウィップラッシュ",
       "dicerosreplica": "ダイセロス 模造品",
       "militarym9replica": "ミリタリー M9 模造品",
       "police686magnumreplica": "ポリス 686 マグナム 模造品",
@@ -901,8 +901,7 @@
       "outercore": "アウターコア",
       "peerfectsafeguard": "パーフェクト・セーフガード",
       "perfectsafeguard": "パーフェクト・セーフガード",
-      "perfectempathicresolve": "パーフェクト・エンパシックリゾルブ",
-      "perfectlyefficient": "TODO:perfectlyefficient"
+      "perfectempathicresolve": "パーフェクト・エンパシックリゾルブ"
     },
     "weapon_talent": {
       "closepersonal": "接近戦",
