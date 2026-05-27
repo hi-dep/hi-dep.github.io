@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "built_at": "2026-05-20T02:05:10.753237Z",
+  "built_at": "2026-05-27T01:25:07.688248Z",
   "categories": {
     "vendor": {
       "benitez": "ベニテス",
@@ -901,7 +901,8 @@
       "outercore": "アウターコア",
       "peerfectsafeguard": "パーフェクト・セーフガード",
       "perfectsafeguard": "パーフェクト・セーフガード",
-      "perfectempathicresolve": "パーフェクト・エンパシックリゾルブ"
+      "perfectempathicresolve": "パーフェクト・エンパシックリゾルブ",
+      "perfectlyefficient": "TODO:perfectlyefficient"
     },
     "weapon_talent": {
       "closepersonal": "接近戦",

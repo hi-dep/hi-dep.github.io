@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "built_at": "2026-05-20T08:25:03.919088Z",
+  "built_at": "2026-05-27T01:25:07.688248Z",
   "sanitize": {
     "enabled": true,
     "safe_chars": "a-z 0-9 . _ -"
@@ -144,6 +144,7 @@
     "heatstroke": "img/talents/heatstroke.png",
     "hivemind": "img/talents/hivemind.png",
     "hoarder": "img/talents/hoarder.png",
+    "impervious": "img/talents/impervious.png",
     "improvedmaterials": "img/talents/improvedmaterials.png",
     "increasedinterest": "img/talents/increasedinterest.png",
     "innercore": "img/talents/innercore.png",
@@ -172,6 +173,7 @@
     "parabellumrounds": "img/talents/parabellumrounds.png",
     "parkour": "img/talents/parkour.png",
     "patrioticboost": "img/talents/patrioticboost.png",
+    "peerfectsafeguard": "img/talents/peerfectsafeguard.png",
     "perfectadrenalinerush": "img/talents/adrenalinerush.png",
     "perfectbloodsucker": "img/talents/bloodsucker.png",
     "perfectbraced": "img/talents/braced.png",
@@ -181,6 +183,7 @@
     "perfectcomposure": "img/talents/composure.png",
     "perfectcreepingdeath": "img/talents/creepingdeath.png",
     "perfectefficient": "img/talents/efficient.png",
+    "perfectempathicresolve": "img/talents/perfectempathicresolve.png",
     "perfectenergize": "img/talents/energize.png",
     "perfectentrench": "img/talents/entrench.png",
     "perfectfocus": "img/talents/focus.png",
@@ -192,6 +195,7 @@
     "perfectkineticmomentum": "img/talents/kineticmomentum.png",
     "perfectleadership": "img/talents/leadership.png",
     "perfectlycalculated": "img/talents/calculated.png",
+    "perfectlyefficient": "img/talents/efficient.png",
     "perfectlyexplosivedelivery": "img/talents/explosivedelivery.png",
     "perfectlymadbomber": "img/talents/madbomber.png",
     "perfectlyskilled": "img/talents/skilled.png",
@@ -262,10 +266,7 @@
     "vigilance": "img/talents/vigilance.png",
     "wavingtheflag": "img/talents/wavingtheflag.png",
     "weakestlink": "img/talents/weakestlink.png",
-    "wicked": "img/talents/wicked.png",
-    "impervious": "img/talents/impervious.png",
-    "peerfectsafeguard": "img/talents/peerfectsafeguard.png",
-    "perfectempathicresolve": "img/talents/perfectempathicresolve.png"
+    "wicked": "img/talents/wicked.png"
   },
   "weapon_talents": {
     "actumest": "img/weapon_talents/actumest.png",
@@ -286,6 +287,7 @@
     "breathefree": "img/weapon_talents/breathefree.png",
     "bullethell": "img/weapon_talents/bullethell.png",
     "busylittlebee": "img/weapon_talents/busylittlebee.png",
+    "caduceus": "img/weapon_talents/caduceus.png",
     "capacitance": "img/weapon_talents/capacitance.png",
     "capitulate": "img/weapon_talents/capitulate.png",
     "closepersonal": "img/weapon_talents/closepersonal.png",
@@ -308,7 +310,9 @@
     "fullstop": "img/weapon_talents/fullstop.png",
     "futureperfect": "img/weapon_talents/futureperfect.png",
     "futureperfection": "img/weapon_talents/futureperfect.png",
+    "ganglandhit": "img/weapon_talents/ganglandhit.png",
     "geriandfreki": "img/weapon_talents/geriandfreki.png",
+    "headscratcher": "img/weapon_talents/headscratcher.png",
     "hiddenrock": "img/weapon_talents/hiddenrock.png",
     "highprioritytarget": "img/weapon_talents/highprioritytarget.png",
     "ignited": "img/weapon_talents/ignited.png",
@@ -344,6 +348,7 @@
     "perfectfirstblood": "img/weapon_talents/firstblood.png",
     "perfectflatline": "img/weapon_talents/flatline.png",
     "perfectfrenzy": "img/weapon_talents/frenzy.png",
+    "perfectheadscratcher": "img/weapon_talents/perfectheadscratcher.png",
     "perfectimmobilize": "img/weapon_talents/immobilize.png",
     "perfectjazzhands": "img/weapon_talents/jazzhands.png",
     "perfectkiller": "img/weapon_talents/killer.png",
@@ -426,10 +431,6 @@
     "unhinged": "img/weapon_talents/unhinged.png",
     "unnerve": "img/weapon_talents/unnerve.png",
     "unwavering": "img/weapon_talents/unwavering.png",
-    "vindictive": "img/weapon_talents/vindictive.png",
-    "caduceus": "img/weapon_talents/caduceus.png",
-    "ganglandhit": "img/weapon_talents/ganglandhit.png",
-    "headscratcher": "img/weapon_talents/headscratcher.png",
-    "perfectheadscratcher": "img/weapon_talents/perfectheadscratcher.png"
+    "vindictive": "img/weapon_talents/vindictive.png"
   }
 }
