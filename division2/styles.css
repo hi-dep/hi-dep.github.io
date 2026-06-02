@@ -157,6 +157,15 @@ body::before {
   color: var(--text);
 }
 
+.topbar__descent:not(.topbar__descent--interactive) {
+  cursor: default;
+}
+
+.topbar__descent:not(.topbar__descent--interactive):hover,
+.topbar__descent:not(.topbar__descent--interactive):hover .time-value {
+  color: var(--muted);
+}
+
 .time-value {
   color: var(--text);
   font-weight: 700;

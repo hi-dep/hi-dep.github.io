@@ -89,7 +89,6 @@ let descentPoolState = {
   anchorUtcMs: 0,
   entries: [] // [{ startUtcMs, pools[], talents[] }]
 };
-const DESCENT_POOL_CONTRIB_URL = "https://forms.gle/DVZABnwSWacTGpi48";
 let floatingInfoCardEl = null;
 let floatingInfoCardTitleEl = null;
 let floatingInfoCardBodyEl = null;
@@ -567,11 +566,19 @@ function updateDescentPoolSummary(nowMs) {
     descentPoolValueEl.innerHTML = `<span class="topbar__descent-name">${escapeHtml(descent.poolText)}</span><span class="topbar__descent-remain">${escapeHtml(formatRemaining(descent.expireRemainMs))}</span>`;
     descentPoolSummaryEl.dataset.statusAction = "open_descent_talent";
     descentPoolSummaryEl.dataset.statusPoolKey = descent.poolKey || "";
+    descentPoolSummaryEl.classList.add("topbar__descent--interactive");
+    descentPoolSummaryEl.setAttribute("role", "button");
+    descentPoolSummaryEl.setAttribute("tabindex", "0");
+    descentPoolSummaryEl.removeAttribute("aria-disabled");
     return;
   }
   descentPoolValueEl.innerHTML = '<span class="topbar__descent-remain">---</span>';
-  descentPoolSummaryEl.dataset.statusAction = "open_descent_pool_contribute";
-  descentPoolSummaryEl.dataset.statusPoolKey = "";
+  delete descentPoolSummaryEl.dataset.statusAction;
+  delete descentPoolSummaryEl.dataset.statusPoolKey;
+  descentPoolSummaryEl.classList.remove("topbar__descent--interactive");
+  descentPoolSummaryEl.removeAttribute("role");
+  descentPoolSummaryEl.removeAttribute("tabindex");
+  descentPoolSummaryEl.setAttribute("aria-disabled", "true");
 }
 
 function parseJstDateTimeToUtcMs(text) {
@@ -4692,12 +4699,9 @@ if (descentPoolSummaryEl) {
   descentPoolSummaryEl.addEventListener("click", (e) => {
     e.stopPropagation();
     const action = String(descentPoolSummaryEl.dataset.statusAction || "");
-    if (action === "open_descent_talent") {
-      const poolKey = normalizeKey(String(descentPoolSummaryEl.dataset.statusPoolKey || ""));
-      openDescentPoolStatusPopup(descentPoolSummaryEl, poolKey);
-      return;
-    }
-    window.open(DESCENT_POOL_CONTRIB_URL, "_blank", "noopener,noreferrer");
+    if (action !== "open_descent_talent") return;
+    const poolKey = normalizeKey(String(descentPoolSummaryEl.dataset.statusPoolKey || ""));
+    openDescentPoolStatusPopup(descentPoolSummaryEl, poolKey);
   });
   descentPoolSummaryEl.addEventListener("keydown", (e) => {
     if (e.key !== "Enter" && e.key !== " ") return;
@@ -4732,10 +4736,6 @@ if (statusEl) {
       e.stopPropagation();
       openDescentPoolStatusPopup(row, poolKey);
       return;
-    }
-    if (action === "open_descent_pool_contribute") {
-      e.stopPropagation();
-      window.open(DESCENT_POOL_CONTRIB_URL, "_blank", "noopener,noreferrer");
     }
   });
 }
