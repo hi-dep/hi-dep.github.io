@@ -902,7 +902,7 @@
       "peerfectsafeguard": "パーフェクト・セーフガード",
       "perfectsafeguard": "パーフェクト・セーフガード",
       "perfectempathicresolve": "パーフェクト・エンパシックリゾルブ",
-      "perfectlyefficient": "TODO:perfectlyefficient"
+      "perfectlyefficient": "パーフェクト・エフィシャント"
     },
     "weapon_talent": {
       "closepersonal": "接近戦",
@@ -1072,7 +1072,7 @@
       "ganglandhit": "Gangland Hit",
       "headscratcher": "Head Scratcher",
       "perfectheadscratcher": "Perfect Head Scratcher",
-      "perfectdetermined": "TODO:perfectdetermined"
+      "perfectdetermined": "パーフェクト・ディターミネーション"
     },
     "cache": {
       "amount": "数量",
