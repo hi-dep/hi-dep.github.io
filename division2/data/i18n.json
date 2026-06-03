@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "built_at": "2026-05-27T02:05:03.069362Z",
+  "built_at": "2026-06-03T03:10:03.710040Z",
   "categories": {
     "vendor": {
       "benitez": "ベニテス",
@@ -1071,7 +1071,8 @@
       "caduceus": "カドゥケウス",
       "ganglandhit": "Gangland Hit",
       "headscratcher": "Head Scratcher",
-      "perfectheadscratcher": "Perfect Head Scratcher"
+      "perfectheadscratcher": "Perfect Head Scratcher",
+      "perfectdetermined": "TODO:perfectdetermined"
     },
     "cache": {
       "amount": "数量",

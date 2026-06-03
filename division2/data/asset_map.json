@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "built_at": "2026-05-27T01:25:07.688248Z",
+  "built_at": "2026-06-03T03:10:03.710040Z",
   "sanitize": {
     "enabled": true,
     "safe_chars": "a-z 0-9 . _ -"
@@ -341,6 +341,7 @@
     "perfectboomerang": "img/weapon_talents/boomerang.png",
     "perfectbrazen": "img/weapon_talents/brazen.png",
     "perfectbreadbasket": "img/weapon_talents/breadbasket.png",
+    "perfectdetermined": "img/weapon_talents/determined.png",
     "perfectdistance": "img/weapon_talents/distance.png",
     "perfecteyeless": "img/weapon_talents/eyeless.png",
     "perfectfasthands": "img/weapon_talents/fasthands.png",
