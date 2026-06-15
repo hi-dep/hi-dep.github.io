@@ -4088,7 +4088,13 @@
       "brand_name": "",
       "brand_key": "",
       "slot_key": "mask",
-      "blueprint": [],
+      "blueprint": [
+        {
+          "slot": "mask",
+          "src": "True Sons retaliation completion",
+          "type": "craft"
+        }
+      ],
       "target_looted": [],
       "drop": []
     },
@@ -11258,7 +11264,12 @@
       "brand_name": "",
       "brand_key": "",
       "slot_key": "ar",
-      "blueprint": [],
+      "blueprint": [
+        {
+          "src": "Hyenas retaliation completion",
+          "type": "craft"
+        }
+      ],
       "target_looted": [],
       "drop": []
     },
@@ -16423,7 +16434,12 @@
       "brand_name": "",
       "brand_key": "",
       "slot_key": "pistol",
-      "blueprint": [],
+      "blueprint": [
+        {
+          "src": "Blacktusk Kill Squad",
+          "type": "craft"
+        }
+      ],
       "target_looted": [],
       "drop": []
     },
