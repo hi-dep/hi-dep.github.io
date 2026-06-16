@@ -1366,20 +1366,6 @@
       "drop": []
     },
     {
-      "item_id": "c39ad4424e63130c",
-      "entity_type": "brandset",
-      "category": "gear",
-      "tier": "",
-      "name_key": "edelweissgpzpts",
-      "name": "Edelweiss GPz (PTS)",
-      "brand_name": "Edelweiss GPz (PTS)",
-      "brand_key": "edelweissgpzpts",
-      "slot_key": "",
-      "blueprint": [],
-      "target_looted": [],
-      "drop": []
-    },
-    {
       "item_id": "0a7bb8a70c3e8ce0",
       "entity_type": "gear_exotic",
       "category": "gear",

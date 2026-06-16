@@ -1,5 +1,14 @@
 /* vendor-specific view logic */
 (function () {
+  // Y8S1 through 2026-06-09; Y8S2 starts 2026-06-16.
+  const STATIC_CACHE_WEEK_CUTOFF = "2026-06-16";
+
+  function shouldInjectStaticCaches(dateStr) {
+    const week = String(dateStr || "").trim();
+    if (!week) return false;
+    return week < STATIC_CACHE_WEEK_CUTOFF;
+  }
+
   window.vendorViewLoadWeek = async function vendorViewLoadWeek(userDateStr, options = {}) {
     const preserveSelection = !!options.preserveSelection;
     const dateStr = normalizeToShopWeekStart(userDateStr);
@@ -139,7 +148,9 @@
         // Keep vendor rendering resilient when named lookup is unavailable.
       }
 
-      injectStaticCaches(vendorMap, dateStr);
+      if (shouldInjectStaticCaches(dateStr)) {
+        injectStaticCaches(vendorMap, dateStr);
+      }
       lastVendorMap = vendorMap;
       lastItems = Array.from(itemMap.values());
       if (typeof window.vendorApplyRecommendations === "function") {

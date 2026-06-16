@@ -168,22 +168,29 @@
   function deepMergeSeasonData(baseValue, patchValue) {
     if (patchValue == null) return baseValue;
     if (Array.isArray(baseValue) && Array.isArray(patchValue)) {
-      const patchById = new Map();
-      let allPatchHaveId = patchValue.length > 0;
-      patchValue.forEach((it) => {
-        const id = String(it?.id || "").trim();
-        if (!id) allPatchHaveId = false;
-        else patchById.set(id, it);
-      });
-      if (allPatchHaveId) {
-        const out = (baseValue || []).map((it) => {
+      const baseAllObjects = baseValue.every((it) => it && typeof it === "object" && !Array.isArray(it));
+      const patchAllObjects = patchValue.every((it) => it && typeof it === "object" && !Array.isArray(it));
+      if (baseAllObjects && patchAllObjects) {
+        const patchById = new Map();
+        let allPatchHaveId = patchValue.length > 0;
+        patchValue.forEach((it) => {
           const id = String(it?.id || "").trim();
-          if (!id || !patchById.has(id)) return it;
-          const merged = deepMergeSeasonData(it, patchById.get(id));
-          patchById.delete(id);
-          return merged;
+          if (!id) allPatchHaveId = false;
+          else patchById.set(id, it);
         });
-        patchById.forEach((v) => out.push(v));
+        if (allPatchHaveId) {
+          const out = (baseValue || []).map((it) => {
+            const id = String(it?.id || "").trim();
+            if (!id || !patchById.has(id)) return it;
+            const merged = deepMergeSeasonData(it, patchById.get(id));
+            patchById.delete(id);
+            return merged;
+          });
+          patchById.forEach((v) => out.push(v));
+          return out;
+        }
+        const out = (baseValue || []).map((it, idx) => (idx < patchValue.length ? deepMergeSeasonData(it, patchValue[idx]) : it));
+        if (patchValue.length > baseValue.length) out.push(...patchValue.slice(baseValue.length));
         return out;
       }
       return patchValue;
@@ -751,22 +758,23 @@
 
     const globalList = Array.isArray(modifiers.global) ? modifiers.global : [];
     globalList.forEach((m) => {
-      const name = String(m?.name || "").trim();
+      const name = textByLang(m) || String(m?.name || "").trim();
       const desc = joinDescLines(m?.description);
       const effects = Array.isArray(m?.effects) ? m.effects : [];
       const effectsHtml = effects.length
-        ? `<br><div class="seasonmod-level-effects"><strong>Effects:</strong><br>${effects.map((e) => `${esc(String(e?.sample_size ?? ""))}: ${esc(String(e?.effect || ""))}`).join("<br>")}</div>`
+        ? `<br><div class="seasonmod-level-effects"><strong>High Quality Munitions Effects:</strong><br>${effects.map((e) => `${esc(String(e?.sample_size ?? ""))}: ${esc(String(e?.effect || ""))}`).join("<br>")}</div>`
         : "";
       sections.global.push(makeRow("Global Modifier", name, `${desc}${effectsHtml}`, iconPathIfExists(m)));
     });
 
     const enemyList = Array.isArray(modifiers.enemy) ? modifiers.enemy : [];
     enemyList.forEach((m) => {
-      sections.enemy.push(makeRow("Enemy Modifier", String(m?.name || "").trim(), joinDescLines(m?.description), iconPathIfExists(m)));
+      sections.enemy.push(makeRow("Enemy Modifier", textByLang(m) || String(m?.name || "").trim(), joinDescLines(m?.description), iconPathIfExists(m)));
     });
 
     const activeList = Array.isArray(modifiers.active) ? modifiers.active : [];
     activeList.forEach((m) => {
+      const name = textByLang(m) || String(m?.name || "").trim();
       const desc = joinDescLines(m?.description);
       const surgeDesc = Array.isArray(m?.surge?.description) ? m.surge.description : [];
       const surgeHtml = surgeDesc.length
@@ -776,7 +784,7 @@
       const levelsHtml = levels.length
         ? `<br><div class="seasonmod-level-effects"><strong>${esc(uiText("levelEffects", "Level Effects"))}:</strong><br>${levels.map((lv) => `Lv${esc(String(lv?.level || ""))}: ${esc(String(lv?.description || ""))}`).join("<br>")}</div>`
         : "";
-      sections.active.push(makeRow("Active Modifier", String(m?.name || "").trim(), `${desc}${surgeHtml}${levelsHtml}`, iconPathIfExists(m)));
+      sections.active.push(makeRow("Active Modifier", name, `${desc}${surgeHtml}${levelsHtml}`, iconPathIfExists(m)));
     });
 
     const passiveGroups = (modifiers.passive && typeof modifiers.passive === "object") ? modifiers.passive : {};
@@ -784,7 +792,7 @@
       const list = Array.isArray(passiveGroups[groupName]) ? passiveGroups[groupName] : [];
       if (!sections.passive[groupName]) sections.passive[groupName] = [];
       list.forEach((m) => {
-        const name = String(m?.name || "").trim();
+        const name = textByLang(m) || String(m?.name || "").trim();
         sections.passive[groupName].push(makeRow("Passive Modifier", name, joinDescLines(m?.description), iconPathIfExists(m)));
       });
     });
