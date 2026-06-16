@@ -13,6 +13,10 @@
     passiveOpen: "sm_po"
   });
 
+  function shouldPersistSeasonModUrl(seasonId) {
+    return String(seasonId || "").trim().toLowerCase() === "y8s1";
+  }
+
   function getLang() {
     try {
       const p = new URLSearchParams(window.location.search || "");
@@ -1168,11 +1172,26 @@
       seasonEl.addEventListener("change", () => {
         const nextSeason = String(seasonEl.value || "").trim();
         if (!nextSeason) return;
-        if (typeof replaceUrlParams === "function") replaceUrlParams({ [SEASON_MOD_URL_KEYS.season]: nextSeason });
+        const urlPatch = shouldPersistSeasonModUrl(nextSeason)
+          ? { [SEASON_MOD_URL_KEYS.season]: nextSeason }
+          : {
+              [SEASON_MOD_URL_KEYS.season]: null,
+              [SEASON_MOD_URL_KEYS.active]: null,
+              [SEASON_MOD_URL_KEYS.level]: null,
+              [SEASON_MOD_URL_KEYS.passive1]: null,
+              [SEASON_MOD_URL_KEYS.passive2]: null,
+              [SEASON_MOD_URL_KEYS.passive3]: null,
+              [SEASON_MOD_URL_KEYS.activeOpen]: null,
+              [SEASON_MOD_URL_KEYS.passiveOpen]: null
+            };
+        if (typeof replaceUrlParams === "function") replaceUrlParams(urlPatch);
         else {
           try {
             const p = new URLSearchParams(window.location.search || "");
-            p.set(SEASON_MOD_URL_KEYS.season, nextSeason);
+            if (shouldPersistSeasonModUrl(nextSeason)) p.set(SEASON_MOD_URL_KEYS.season, nextSeason);
+            else {
+              Object.values(SEASON_MOD_URL_KEYS).forEach((k) => p.delete(k));
+            }
             history.replaceState(null, "", `${window.location.pathname}?${p.toString()}${window.location.hash || ""}`);
           } catch (_e) {
             // ignore URL update failures
@@ -1847,16 +1866,28 @@
     };
 
     const writeStateToUrl = () => {
-      const updates = {
-        [SEASON_MOD_URL_KEYS.season]: seasonId || null,
-        [SEASON_MOD_URL_KEYS.active]: String(activeEl.value || "").trim() || null,
-        [SEASON_MOD_URL_KEYS.level]: String(activeLvEl.value || "").trim() || null,
-        [SEASON_MOD_URL_KEYS.passive1]: String(p1El.value || "").trim() || null,
-        [SEASON_MOD_URL_KEYS.passive2]: String(p2El.value || "").trim() || null,
-        [SEASON_MOD_URL_KEYS.passive3]: String(p3El.value || "").trim() || null,
-        [SEASON_MOD_URL_KEYS.activeOpen]: activeAccordionEl ? (activeAccordionEl.open ? "1" : "0") : null,
-        [SEASON_MOD_URL_KEYS.passiveOpen]: passiveAccordionEl ? (passiveAccordionEl.open ? "1" : "0") : null
-      };
+      const persistSeason = shouldPersistSeasonModUrl(seasonId);
+      const updates = persistSeason
+        ? {
+            [SEASON_MOD_URL_KEYS.season]: seasonId || null,
+            [SEASON_MOD_URL_KEYS.active]: String(activeEl.value || "").trim() || null,
+            [SEASON_MOD_URL_KEYS.level]: String(activeLvEl.value || "").trim() || null,
+            [SEASON_MOD_URL_KEYS.passive1]: String(p1El.value || "").trim() || null,
+            [SEASON_MOD_URL_KEYS.passive2]: String(p2El.value || "").trim() || null,
+            [SEASON_MOD_URL_KEYS.passive3]: String(p3El.value || "").trim() || null,
+            [SEASON_MOD_URL_KEYS.activeOpen]: activeAccordionEl ? (activeAccordionEl.open ? "1" : "0") : null,
+            [SEASON_MOD_URL_KEYS.passiveOpen]: passiveAccordionEl ? (passiveAccordionEl.open ? "1" : "0") : null
+          }
+        : {
+            [SEASON_MOD_URL_KEYS.season]: null,
+            [SEASON_MOD_URL_KEYS.active]: null,
+            [SEASON_MOD_URL_KEYS.level]: null,
+            [SEASON_MOD_URL_KEYS.passive1]: null,
+            [SEASON_MOD_URL_KEYS.passive2]: null,
+            [SEASON_MOD_URL_KEYS.passive3]: null,
+            [SEASON_MOD_URL_KEYS.activeOpen]: null,
+            [SEASON_MOD_URL_KEYS.passiveOpen]: null
+          };
       if (typeof replaceUrlParams === "function") {
         replaceUrlParams(updates);
         return;
