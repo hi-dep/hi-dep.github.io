@@ -181,7 +181,7 @@
       "bulldog": "ブルドッグ",
       "robin": "ロビン",
       "investor": "インベスター",
-      "nurseskneepads": "Nurse's Kneepads",
+      "nurseskneepads": "看護師のニーパッド",
       "benefactor": "支援者",
       "mommabadger": "ママ・バジャー"
     },
@@ -903,7 +903,11 @@
       "peerfectsafeguard": "パーフェクト・セーフガード",
       "perfectsafeguard": "パーフェクト・セーフガード",
       "perfectempathicresolve": "パーフェクト・エンパシックリゾルブ",
-      "perfectlyefficient": "パーフェクト・エフィシャント"
+      "perfectlyefficient": "パーフェクト・エフィシャント",
+      "ortizrapidapplicationnaniteprototype": "オルティス・ラピッドアプリ・ナナイトプロトタイプ",
+      "overchargednanites": "オーバーチャージ・ナナイト",
+      "improveddampeners": "インプルーブド・ダンプナー"
+
     },
     "weapon_talent": {
       "closepersonal": "接近戦",
@@ -1119,7 +1123,7 @@
       "weakestlink": "ウィーケストリンク",
       "rebalance": "リバランス",
       "slotted": "スロット",
-      "impervious": "Impervious"
+      "impervious": "インパーヴィアス"
     },
     "preserved": {
       "conflict_cache": "コンフリクトキャッシュ",
