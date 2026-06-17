@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "built_at": "2026-06-03T03:10:03.710040Z",
+  "built_at": "2026-06-17T04:00:03.939371Z",
   "categories": {
     "vendor": {
       "benitez": "ベニテス",
@@ -907,8 +907,8 @@
       "perfectlyefficient": "パーフェクト・エフィシャント",
       "ortizrapidapplicationnaniteprototype": "オルティス・ラピッドアプリ・ナナイトプロトタイプ",
       "overchargednanites": "オーバーチャージ・ナナイト",
-      "improveddampeners": "インプルーブド・ダンプナー"
-
+      "improveddampeners": "インプルーブド・ダンプナー",
+      "perfectunbreakable": "TODO:perfectunbreakable"
     },
     "weapon_talent": {
       "closepersonal": "接近戦",

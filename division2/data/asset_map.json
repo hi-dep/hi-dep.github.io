@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "built_at": "2026-06-03T03:10:03.710040Z",
+  "built_at": "2026-06-17T04:00:03.939371Z",
   "sanitize": {
     "enabled": true,
     "safe_chars": "a-z 0-9 . _ -"
@@ -22,6 +22,7 @@
     "corestrength": "img/brands/corestrength.png",
     "douglasharding": "img/brands/douglasharding.png",
     "eclipseprotocol": "img/brands/eclipseprotocol.png",
+    "edelweissgpz": "img/brands/edelweissgpz.png",
     "electrique": "img/brands/electrique.png",
     "empressinternational": "img/brands/empressinternational.png",
     "fenrisgroupab": "img/brands/fenrisgroupab.png",
@@ -208,12 +209,14 @@
     "perfectoverclock": "img/talents/overclock.png",
     "perfectoverwatch": "img/talents/overwatch.png",
     "perfectprotectedreload": "img/talents/protectedreload.png",
+    "perfectsafeguard": "img/talents/safeguard.png",
     "perfectshockandawe": "img/talents/shockandawe.png",
     "perfectskilled": "img/talents/skilled.png",
     "perfectspark": "img/talents/spark.png",
     "perfectspotter": "img/talents/spotter.png",
     "perfecttechsupport": "img/talents/techsupport.png",
     "perfecttrauma": "img/talents/trauma.png",
+    "perfectunbreakable": "img/talents/unbreakable.png",
     "perfectvanguard": "img/talents/vanguard.png",
     "perfectversatile": "img/talents/versatile.png",
     "perfectvigilance": "img/talents/vigilance.png",
@@ -266,8 +269,7 @@
     "vigilance": "img/talents/vigilance.png",
     "wavingtheflag": "img/talents/wavingtheflag.png",
     "weakestlink": "img/talents/weakestlink.png",
-    "wicked": "img/talents/wicked.png",
-    "perfectsafeguard": "img/talents/perfectsafeguard.png"
+    "wicked": "img/talents/wicked.png"
   },
   "weapon_talents": {
     "actumest": "img/weapon_talents/actumest.png",
