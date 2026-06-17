@@ -29,10 +29,18 @@
     },
     {
       "id": "weapon_talent_backandforth",
-      "enabled": true,
+      "enabled": false,
       "target": "weapon",
       "all": [
         { "field": "stat_keys", "op": "has_any", "value": ["backandforth", "perfectbackandforth", "perfectbackandforth"] }
+      ]
+    },
+    {
+      "id": "weapon_talent_headscratcher",
+      "enabled": true,
+      "target": "weapon",
+      "all": [
+        { "field": "stat_keys", "op": "has_any", "value": ["headscratcher", "perfectheadscratcher", "perfectheadscratcher"] }
       ]
     },
     {
