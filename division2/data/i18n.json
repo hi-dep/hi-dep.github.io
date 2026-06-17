@@ -83,7 +83,8 @@
       "skvrobasro": "placeholder:skvrobasro",
       "corestrength": "コア強度",
       "royalworks": "ロイヤルワークス",
-      "ortizreficere": "オルティス：レフィキオー"
+      "ortizreficere": "オルティス：レフィキオー",
+      "edelweissgpz": "エーデルワイスGPZ"
     },
     "gear_item_name": {
       "chainkiller": "チェインキラー",
@@ -1075,8 +1076,8 @@
       "perfectoverflowing": "パーフェクト・オーバーフロー",
       "caduceus": "カドゥケウス",
       "ganglandhit": "Gangland Hit",
-      "headscratcher": "Head Scratcher",
-      "perfectheadscratcher": "Perfect Head Scratcher",
+      "headscratcher": "ヘッドスクラッチャー",
+      "perfectheadscratcher": "パーフェクト・ヘッドスクラッチャー",
       "perfectdetermined": "パーフェクト・ディターミネーション"
     },
     "cache": {

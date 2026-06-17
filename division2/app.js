@@ -1245,9 +1245,9 @@ function updateModeUi() {
     } else if (currentViewMode === "weapon_talent") {
       nextTitle = "Division 2 Weapon Talent";
       titleEl.textContent = nextTitle;
-    } else if (currentViewMode === "y8s2_talent_diff") {
-      nextTitle = "Division 2 Y8S2 Talent Diff";
-      titleEl.textContent = nextTitle;
+    // } else if (currentViewMode === "y8s2_talent_diff") {
+    //   nextTitle = "Division 2 Y8S2 Talent Diff";
+    //   titleEl.textContent = nextTitle;
     } else if (currentViewMode === "descent_talent") {
       nextTitle = "Division 2 Descent Talent";
       titleEl.textContent = nextTitle;
