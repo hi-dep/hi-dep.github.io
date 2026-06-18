@@ -1517,6 +1517,7 @@ const VENDOR_ORDER = [
  * ------------------------- */
 // Some vendors always sell caches, but they may not exist in the DB.
 // Inject them at render-time so they are always visible in the UI.
+const STATIC_CACHE_WEEK_CUTOFF = "2026-06-16";
 const STATIC_VENDOR_EN = {
   countdown: "Countdown",
   dzeast: "DZ East",
@@ -1524,7 +1525,7 @@ const STATIC_VENDOR_EN = {
   dzwest: "DZ West"
 };
 
-const STATIC_CACHE_ITEMS = {
+const STATIC_CACHE_ITEMS_Y8S1 = {
   // Countdown vendor: always show these caches
   countdown: [
     { name_en: "Named Item Cache", price: 112, rarity: "named" },
@@ -1544,16 +1545,45 @@ const STATIC_CACHE_ITEMS = {
   ]
 };
 
+const STATIC_CACHE_ITEMS_Y8S2 = {
+  countdown: [
+    { name_en: "Named Item Cache", price: 112, rarity: "named" },
+    { name_en: "Optimization Cache", price: 145, rarity: "highend" },
+    { name_en: "Season Cache", price: 145, rarity: "highend" },
+    { name_en: "Exotic Cache", price: 224, rarity: "exotic" }
+  ],
+  dzeast: [
+    { name_en: "Exotic Cache", price: 170, rarity: "exotic" },
+    { name_en: "Recalibration Crafting Cache", price: 40, rarity: "highend" },
+    { name_en: "Optimization Cache", price: 60, rarity: "highend" }
+  ],
+  dzsouth: [
+    { name_en: "Exotic Cache", price: 170, rarity: "exotic" },
+    { name_en: "DZ Prototype Cores Cache", price: 125, rarity: "highend" },
+    { name_en: "DZ Prototype Random Cache", price: 260, rarity: "highend" }
+  ],
+  dzwest: [
+    { name_en: "Exotic Cache", price: 170, rarity: "exotic" },
+    { name_en: "DZ Exotic Compornents Cache", price: 120, rarity: "highend" },
+    { name_en: "Reconstructed Cache", price: 180, rarity: "highend" }
+  ]
+};
+
+function getStaticCacheItemsForWeek(dateStr) {
+  return String(dateStr || "").trim() < STATIC_CACHE_WEEK_CUTOFF
+    ? STATIC_CACHE_ITEMS_Y8S1
+    : STATIC_CACHE_ITEMS_Y8S2;
+}
+
 function injectStaticCaches(vendorMap, dateStr) {
   if (!vendorMap) return;
+  const staticCacheItems = getStaticCacheItemsForWeek(dateStr);
 
-  for (const [vendorKey, defs] of Object.entries(STATIC_CACHE_ITEMS)) {
+  for (const [vendorKey, defs] of Object.entries(staticCacheItems)) {
     if (!Array.isArray(defs) || defs.length === 0) continue;
 
     if (!vendorMap.has(vendorKey)) vendorMap.set(vendorKey, []);
     const arr = vendorMap.get(vendorKey);
-    // Align with image_create rule:
-    // inject static caches only when the vendor has at least one non-cache item in this week.
     const hasNonCacheItem = arr.some(it => it && it.category !== "cache");
     if (!hasNonCacheItem) continue;
 

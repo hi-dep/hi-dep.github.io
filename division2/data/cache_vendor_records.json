@@ -34,22 +34,96 @@
       "name_en": "Exotic Cache",
       "rarity": "exotic",
       "amount": 1,
-      "unit_price": 170
+      "unit_price": 170,
+      "until_week": "2026-06-09"
     },
     {
       "vendor_key": "dzsouth",
       "name_en": "Exotic Cache",
       "rarity": "exotic",
       "amount": 1,
-      "unit_price": 170
+      "unit_price": 170,
+      "until_week": "2026-06-09"
     },
     {
       "vendor_key": "dzwest",
       "name_en": "Exotic Cache",
       "rarity": "exotic",
       "amount": 1,
-      "unit_price": 170
+      "unit_price": 170,
+      "until_week": "2026-06-09"
+    },
+    {
+      "vendor_key": "dzeast",
+      "name_en": "Exotic Cache",
+      "rarity": "exotic",
+      "amount": 1,
+      "unit_price": 170,
+      "since_week": "2026-06-16"
+    },
+    {
+      "vendor_key": "dzeast",
+      "name_en": "Recalibration Crafting Cache",
+      "rarity": "highend",
+      "amount": 1,
+      "unit_price": 40,
+      "since_week": "2026-06-16"
+    },
+    {
+      "vendor_key": "dzeast",
+      "name_en": "Optimization Cache",
+      "rarity": "highend",
+      "amount": 1,
+      "unit_price": 60,
+      "since_week": "2026-06-16"
+    },
+    {
+      "vendor_key": "dzsouth",
+      "name_en": "Exotic Cache",
+      "rarity": "exotic",
+      "amount": 1,
+      "unit_price": 170,
+      "since_week": "2026-06-16"
+    },
+    {
+      "vendor_key": "dzsouth",
+      "name_en": "DZ Prototype Cores Cache",
+      "rarity": "highend",
+      "amount": 1,
+      "unit_price": 125,
+      "since_week": "2026-06-16"
+    },
+    {
+      "vendor_key": "dzsouth",
+      "name_en": "DZ Prototype Random Cache",
+      "rarity": "highend",
+      "amount": 1,
+      "unit_price": 260,
+      "since_week": "2026-06-16"
+    },
+    {
+      "vendor_key": "dzwest",
+      "name_en": "Exotic Cache",
+      "rarity": "exotic",
+      "amount": 1,
+      "unit_price": 170,
+      "since_week": "2026-06-16"
+    },
+    {
+      "vendor_key": "dzwest",
+      "name_en": "DZ Exotic Compornents Cache",
+      "rarity": "highend",
+      "amount": 1,
+      "unit_price": 120,
+      "since_week": "2026-06-16"
+    },
+    {
+      "vendor_key": "dzwest",
+      "name_en": "Reconstructed Cache",
+      "rarity": "highend",
+      "amount": 1,
+      "unit_price": 180,
+      "since_week": "2026-06-16"
     }
   ]
 }
-

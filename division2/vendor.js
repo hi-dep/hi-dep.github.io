@@ -1,12 +1,8 @@
 /* vendor-specific view logic */
 (function () {
-  // Y8S1 through 2026-06-09; Y8S2 starts 2026-06-16.
-  const STATIC_CACHE_WEEK_CUTOFF = "2026-06-16";
-
   function shouldInjectStaticCaches(dateStr) {
     const week = String(dateStr || "").trim();
-    if (!week) return false;
-    return week < STATIC_CACHE_WEEK_CUTOFF;
+    return !!week;
   }
 
   window.vendorViewLoadWeek = async function vendorViewLoadWeek(userDateStr, options = {}) {
