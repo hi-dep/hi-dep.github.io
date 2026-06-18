@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "built_at": "2026-06-17T04:00:03.939371Z",
+  "built_at": "2026-06-03T03:10:03.710040Z",
   "categories": {
     "vendor": {
       "benitez": "ベニテス",
@@ -84,7 +84,7 @@
       "corestrength": "コア強度",
       "royalworks": "ロイヤルワークス",
       "ortizreficere": "オルティス：レフィキオー",
-      "edelweissgpz": "エーデルワイスGPZ"
+      "edelweissgpz": "エーデルワイスGPz"
     },
     "gear_item_name": {
       "chainkiller": "チェインキラー",
@@ -907,8 +907,8 @@
       "perfectlyefficient": "パーフェクト・エフィシャント",
       "ortizrapidapplicationnaniteprototype": "オルティス・ラピッドアプリ・ナナイトプロトタイプ",
       "overchargednanites": "オーバーチャージ・ナナイト",
-      "improveddampeners": "インプルーブド・ダンプナー",
-      "perfectunbreakable": "TODO:perfectunbreakable"
+      "improveddampeners": "インプルーブド・ダンプナー"
+
     },
     "weapon_talent": {
       "closepersonal": "接近戦",
