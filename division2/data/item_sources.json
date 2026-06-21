@@ -489,6 +489,7 @@
       "blueprint": [
         {
           "slot": "backpack",
+          "src": "Season",
           "type": "craft"
         },
         {
@@ -508,6 +509,7 @@
         },
         {
           "slot": "gloves",
+          "src": "Season",
           "type": "craft"
         },
         {
@@ -527,6 +529,7 @@
         },
         {
           "slot": "kneepads",
+          "src": "Season",
           "type": "craft"
         },
         {
@@ -1002,6 +1005,11 @@
           "type": "craft"
         },
         {
+          "slot": "backpack",
+          "src": "Season",
+          "type": "craft"
+        },
+        {
           "slot": "chest",
           "type": "craft"
         },
@@ -1015,6 +1023,11 @@
           "type": "craft"
         },
         {
+          "slot": "gloves",
+          "src": "Season",
+          "type": "craft"
+        },
+        {
           "slot": "holster",
           "type": "craft"
         },
@@ -1025,6 +1038,11 @@
         },
         {
           "slot": "kneepads",
+          "type": "craft"
+        },
+        {
+          "slot": "kneepads",
+          "src": "Season",
           "type": "craft"
         },
         {
@@ -10386,6 +10404,11 @@
         {
           "slot": "holster",
           "src": "Y8S1 Journey 7 Reward",
+          "type": "craft"
+        },
+        {
+          "slot": "kneepads",
+          "src": "Season",
           "type": "craft"
         },
         {
