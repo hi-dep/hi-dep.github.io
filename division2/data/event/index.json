@@ -9,7 +9,20 @@
         "Jefferson Plaza",
         "Air & Space Museum"
       ],
-      "target_loot_by_day": []
+      "target_loot_by_day": [
+        {
+          "day": "2026-06-23",
+          "target_loot": [
+            "Providence Defense",
+            "Ongoing Directive",
+            "Murakami Industries",
+            "Petrov Defense Group",
+            "lmg"
+          ],
+          "prototype_gear_cache": "holster",
+          "prototype_weapon_cache": "smg"
+        }
+      ]
     }
   ]
 }
