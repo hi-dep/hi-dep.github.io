@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "built_at": "2026-06-24T00:50:03.303668Z",
+  "built_at": "2026-06-24T08:20:03.441245Z",
   "sanitize": {
     "enabled": true,
     "safe_chars": "a-z 0-9 . _ -"
@@ -165,6 +165,7 @@
     "opportunistic": "img/talents/opportunistic.png",
     "ostracize": "img/talents/ostracize.png",
     "outercore": "img/talents/outercore.png",
+    "overchargednanites": "img/talents/overchargednanites.png",
     "overcharging": "img/talents/overcharging.png",
     "overclock": "img/talents/overclock.png",
     "overengineered": "img/talents/overengineered.png",
