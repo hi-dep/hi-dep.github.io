@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "built_at": "2026-06-03T03:10:03.710040Z",
+  "built_at": "2026-06-24T00:50:03.303668Z",
   "categories": {
     "vendor": {
       "benitez": "ベニテス",
@@ -318,7 +318,8 @@
       "customl86a2replica": "カスタム L86 A2 模造品",
       "infantrymg5replica": "インファントリー MG5 模造品",
       "militarymk46replica": "ミリタリー MK46 模造品",
-      "theheadlinegrabber": "ヘッドライン・グラバー"
+      "theheadlinegrabber": "ヘッドライン・グラバー",
+      "insulttoinjury": "TODO:insulttoinjury"
     },
     "weapon_item_name_smg": {
       "blackmarkett821": "ブラックマーケット T821",
@@ -908,7 +909,6 @@
       "ortizrapidapplicationnaniteprototype": "オルティス・ラピッドアプリ・ナナイトプロトタイプ",
       "overchargednanites": "オーバーチャージ・ナナイト",
       "improveddampeners": "インプルーブド・ダンプナー"
-
     },
     "weapon_talent": {
       "closepersonal": "接近戦",

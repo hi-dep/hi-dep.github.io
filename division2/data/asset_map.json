@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "built_at": "2026-06-17T04:00:03.939371Z",
+  "built_at": "2026-06-24T00:50:03.303668Z",
   "sanitize": {
     "enabled": true,
     "safe_chars": "a-z 0-9 . _ -"
@@ -46,6 +46,7 @@
     "negotiatorsdilemma": "img/brands/negotiatorsdilemma.png",
     "ongoingdirective": "img/brands/ongoingdirective.png",
     "ortizexuro": "img/brands/ortizexuro.png",
+    "ortizreficere": "img/brands/ortizreficere.png",
     "overlordarmaments": "img/brands/overlordarmaments.png",
     "palisadesteelworks": "img/brands/palisadesteelworks.png",
     "petrovdefensegroup": "img/brands/petrovdefensegroup.png",
@@ -352,7 +353,7 @@
     "perfectfirstblood": "img/weapon_talents/firstblood.png",
     "perfectflatline": "img/weapon_talents/flatline.png",
     "perfectfrenzy": "img/weapon_talents/frenzy.png",
-    "perfectheadscratcher": "img/weapon_talents/perfectheadscratcher.png",
+    "perfectheadscratcher": "img/weapon_talents/headscratcher.png",
     "perfectimmobilize": "img/weapon_talents/immobilize.png",
     "perfectjazzhands": "img/weapon_talents/jazzhands.png",
     "perfectkiller": "img/weapon_talents/killer.png",
