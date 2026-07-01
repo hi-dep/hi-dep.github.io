@@ -95,8 +95,8 @@
       "perfectempathicresolve": "味方を修復すると、彼らの武器とスキルダメージの合計が3～20%増加する（20秒間）。自身なら1～15%\n\n効果はスキルクラスによって増加する",
       "perfectlyefficient": "アーマーキットを使っても、75%の確率でアーマーキットを消費しない\n\nスペシャリゼーションアーマーキットのボーナスが100%増加\n\nタレントの発動準備に10秒必要",
       "perfectsafeguard": "フルアーマー時、スキル修復の合計が160%増加する",
-      "perfectunbreakable": "TODO:When your armor is depleted, repair 100% of your armor. 55s cool down.",
-      "perfectlyopportunistic": "TODO:Enemies you hit with shotguns and marksman rifles amplifies the damage they take by 15% from all sources for 5s."
+      "perfectunbreakable": "アーマーが消耗するとアーマーの100%を修復する。\nクールダウン：55秒",
+      "perfectlyopportunistic": "ショットガンとマークスマンライフルで敵に攻撃がヒットすると、相手のダメージが15%5秒間増幅する\n\n必要条件：マークスマンライフルかショットガンを構えていること"
     },
     "weapon_talent_desc": {
       "breadbasket": "ボディショットを決めるごとに、次のヘッドショットに対して+55%のダメージボーナスが10秒間累積する。最大累積数は3",
