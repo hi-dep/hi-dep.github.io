@@ -7700,7 +7700,7 @@
       "drop": []
     },
     {
-      "item_id": "0f02352056f577cc",
+      "item_id": "754df29e493a17cf",
       "entity_type": "gearset",
       "category": "gear",
       "tier": "gearset",
@@ -7735,19 +7735,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": [
-        "Aces & Eights",
-        "mask",
-        "chest",
-        "holster",
-        "backpack",
-        "gloves",
-        "kneepads"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "76b7d28258049221",
+      "item_id": "513f10d4fe869726",
       "entity_type": "gearset",
       "category": "gear",
       "tier": "gearset",
@@ -7782,19 +7774,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": [
-        "Aegis",
-        "mask",
-        "chest",
-        "holster",
-        "backpack",
-        "gloves",
-        "kneepads"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "4a50ebc3cc1e64f1",
+      "item_id": "edb664c4d2433532",
       "entity_type": "gearset",
       "category": "gear",
       "tier": "gearset",
@@ -7829,19 +7813,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": [
-        "Breaking Point",
-        "mask",
-        "chest",
-        "holster",
-        "backpack",
-        "gloves",
-        "kneepads"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "229e0eb6b7f1f0e6",
+      "item_id": "70d761416fb5701f",
       "entity_type": "gearset",
       "category": "gear",
       "tier": "gearset",
@@ -7876,19 +7852,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": [
-        "Cavalier",
-        "mask",
-        "chest",
-        "holster",
-        "backpack",
-        "gloves",
-        "kneepads"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "9d74cfcd7f9584fc",
+      "item_id": "645b1adb913af5ba",
       "entity_type": "gearset",
       "category": "gear",
       "tier": "gearset",
@@ -7923,19 +7891,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": [
-        "Concentrated Company",
-        "mask",
-        "chest",
-        "holster",
-        "backpack",
-        "gloves",
-        "kneepads"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "c28f8dc9613f8cdb",
+      "item_id": "1e7d20901d2a4105",
       "entity_type": "gearset",
       "category": "gear",
       "tier": "gearset",
@@ -7980,7 +7940,7 @@
       "drop": []
     },
     {
-      "item_id": "27cf1d90960a3ec7",
+      "item_id": "0ee49fd88a4ccc96",
       "entity_type": "gearset",
       "category": "gear",
       "tier": "gearset",
@@ -8019,7 +7979,7 @@
       "drop": []
     },
     {
-      "item_id": "9c0febff8ee484ff",
+      "item_id": "a9eb6c09e9c0241c",
       "entity_type": "gearset",
       "category": "gear",
       "tier": "gearset",
@@ -8058,7 +8018,7 @@
       "drop": []
     },
     {
-      "item_id": "3308410e63a301aa",
+      "item_id": "82154fa1c6ad6534",
       "entity_type": "gearset",
       "category": "gear",
       "tier": "gearset",
@@ -8097,7 +8057,7 @@
       "drop": []
     },
     {
-      "item_id": "d4761cacaa58585a",
+      "item_id": "a8e61cd48c4771c1",
       "entity_type": "gearset",
       "category": "gear",
       "tier": "gearset",
@@ -8136,7 +8096,7 @@
       "drop": []
     },
     {
-      "item_id": "d44a01865f46a555",
+      "item_id": "22d84d56616afea9",
       "entity_type": "gearset",
       "category": "gear",
       "tier": "gearset",
@@ -8181,7 +8141,7 @@
       "drop": []
     },
     {
-      "item_id": "5fe406f420463f97",
+      "item_id": "6e2ab783b83449f5",
       "entity_type": "gearset",
       "category": "gear",
       "tier": "gearset",
@@ -8220,7 +8180,7 @@
       "drop": []
     },
     {
-      "item_id": "d98a4fec562224fd",
+      "item_id": "cb03abd1d2287d73",
       "entity_type": "gearset",
       "category": "gear",
       "tier": "gearset",
@@ -8265,7 +8225,7 @@
       "drop": []
     },
     {
-      "item_id": "d916dcd0d296f19e",
+      "item_id": "91853f9e23d18a6d",
       "entity_type": "gearset",
       "category": "gear",
       "tier": "gearset",
@@ -8304,7 +8264,7 @@
       "drop": []
     },
     {
-      "item_id": "e409e9e04b1fbcb7",
+      "item_id": "c4c5e6607e31052d",
       "entity_type": "gearset",
       "category": "gear",
       "tier": "gearset",
@@ -8343,7 +8303,7 @@
       "drop": []
     },
     {
-      "item_id": "f069997dc1154d51",
+      "item_id": "d75c9ad80c1d2b15",
       "entity_type": "gearset",
       "category": "gear",
       "tier": "gearset",
@@ -8357,7 +8317,7 @@
       "drop": []
     },
     {
-      "item_id": "36a7fe9d1ff1cdfe",
+      "item_id": "b15f5beac2cda2b8",
       "entity_type": "gearset",
       "category": "gear",
       "tier": "gearset",
@@ -8396,7 +8356,7 @@
       "drop": []
     },
     {
-      "item_id": "bf81030a49fb818e",
+      "item_id": "e389a71f8ab243ef",
       "entity_type": "gearset",
       "category": "gear",
       "tier": "gearset",
@@ -8435,7 +8395,7 @@
       "drop": []
     },
     {
-      "item_id": "cb40b3ca7a88796b",
+      "item_id": "2bd0222684ab0351",
       "entity_type": "gearset",
       "category": "gear",
       "tier": "gearset",
@@ -8474,7 +8434,7 @@
       "drop": []
     },
     {
-      "item_id": "c15c1fad5bcb2c19",
+      "item_id": "4cc513daaa6b6c58",
       "entity_type": "gearset",
       "category": "gear",
       "tier": "gearset",
@@ -8519,7 +8479,7 @@
       "drop": []
     },
     {
-      "item_id": "4e89f60d3997d05f",
+      "item_id": "7274246cf3fca753",
       "entity_type": "gearset",
       "category": "gear",
       "tier": "gearset",
@@ -8558,7 +8518,7 @@
       "drop": []
     },
     {
-      "item_id": "74660815988031a9",
+      "item_id": "34e4d9a5fdd04b73",
       "entity_type": "gearset",
       "category": "gear",
       "tier": "gearset",
@@ -8599,7 +8559,7 @@
       ]
     },
     {
-      "item_id": "b28b2ef8f544ba35",
+      "item_id": "b1023fa5018357e1",
       "entity_type": "gearset",
       "category": "gear",
       "tier": "gearset",
@@ -8638,7 +8598,7 @@
       "drop": []
     },
     {
-      "item_id": "e187fd669c747eaa",
+      "item_id": "4894805e5de715c6",
       "entity_type": "gearset",
       "category": "gear",
       "tier": "gearset",
@@ -8677,7 +8637,7 @@
       "drop": []
     },
     {
-      "item_id": "6ff7e4f23e2f6938",
+      "item_id": "d42ae59da2aa24a8",
       "entity_type": "gearset",
       "category": "gear",
       "tier": "gearset",
@@ -8691,7 +8651,7 @@
       "drop": []
     },
     {
-      "item_id": "806831d5fca70a30",
+      "item_id": "89da319089159573",
       "entity_type": "gearset",
       "category": "gear",
       "tier": "gearset",
@@ -8730,7 +8690,7 @@
       "drop": []
     },
     {
-      "item_id": "4556d2b9434d99b0",
+      "item_id": "3bb40ed4e9bbc84a",
       "entity_type": "gearset",
       "category": "gear",
       "tier": "gearset",
