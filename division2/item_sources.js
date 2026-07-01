@@ -379,7 +379,8 @@
     const brandNameKey = normalizeKey(brandName);
     const isBrand = !!bKey && (k === bKey || (brandNameKey && k === brandNameKey));
     if (isBrand) {
-      const src = iconUrl("brands", bKey, "img/brands");
+      const isGearset = normalizeKey(row.tier || row.rarity || row.brand_scope || "") === "gearset";
+      const src = isGearset ? iconUrl("gearsets", bKey, "img/gearset") : iconUrl("brands", bKey, "img/brands");
       const alt = trByKeyFallback(bKey, brandName || baseRaw || val);
       if (!src) return `<span class="item-source-tag${scope === "dz" ? " item-source-tag--dz" : ""}">${escapeHtml(alt)}${scopeText ? ` (${escapeHtml(scopeText)})` : ""}</span>`;
       return `<span class="item-source-icon item-sources-name-slot item-sources-target-entry${scopeEntryClass}" title="${escapeHtml(alt)}">${iconImgHtml(src, "ico ico--item-source", alt)}${scopeBadge}</span>`;
@@ -414,7 +415,8 @@
     if (tKey === "brand") {
       const bKey = normalizeKey(row.brand_key || "");
       const brandFallback = (brandNameByKey && brandNameByKey.get(bKey)) || row.brand_key || alt;
-      src = iconUrl("brands", bKey, "img/brands");
+      const isGearset = normalizeKey(row.tier || row.rarity || row.brand_scope || "") === "gearset";
+      src = isGearset ? iconUrl("gearsets", bKey, "img/gearset") : iconUrl("brands", bKey, "img/brands");
       alt = trByKeyFallback(bKey, brandFallback);
     } else {
       src = iconUrl("gear_slots", tKey, "img/gears");

@@ -2484,6 +2484,8 @@ function buildGearsetPopupCardHtml(it, fallbackTitle = "") {
       if (!u) return;
       if (!cands.includes(u)) cands.push(u);
     };
+    if (pieceIcon) add(pieceIcon);
+    if (setIconPrimary) add(setIconPrimary);
     if (baseKey) {
       add(iconUrl("talents", baseKey, "img/talents"));
       if (typeof talentKeyVariants === "function") {
@@ -2493,7 +2495,6 @@ function buildGearsetPopupCardHtml(it, fallbackTitle = "") {
     if (isFourPc) {
       if (cands.length) {
         const fourPcFallbacks = cands.slice(1);
-        if (setIconPrimary && !fourPcFallbacks.includes(setIconPrimary)) fourPcFallbacks.push(setIconPrimary);
         (setFallbacks || []).forEach((u) => {
           if (u && !fourPcFallbacks.includes(u)) fourPcFallbacks.push(u);
         });
@@ -2502,14 +2503,13 @@ function buildGearsetPopupCardHtml(it, fallbackTitle = "") {
       if (setIconPrimary) return iconImgHtml(setIconPrimary, "ico ico--talent", "gearset", setFallbacks || []);
       return "";
     }
-    if (pieceIcon) return pieceIcon;
     if (cands.length) return iconImgHtml(cands[0], "ico ico--talent", "talent", cands.slice(1));
     return "";
   }
 
   const keyNorm = normalizeKey(it.gearsetKey || titleRaw);
-  const setIconPrimary = iconUrl("brands", it.gearsetKey || keyNorm, "img/brands");
-  const setIconAlt = iconUrl("brands", keyNorm, "img/brands");
+  const setIconPrimary = gearsetIconUrl(it.gearsetKey || keyNorm);
+  const setIconAlt = gearsetIconUrl(keyNorm);
   const setFallbacks = [];
   if (setIconAlt && setIconAlt !== setIconPrimary) setFallbacks.push(setIconAlt);
   const setBgHtml = setIconPrimary ? bgIconHtml(setIconPrimary, "card__bg--tr", "gearset", setFallbacks) : "";
@@ -2525,7 +2525,11 @@ function buildGearsetPopupCardHtml(it, fallbackTitle = "") {
       const isBackpackTalent = slotNorm.includes("backpack") || labelNorm.includes("backpack");
       const isChestTalent = slotNorm.includes("chest") || labelNorm.includes("chest");
       const isFourPc = !(isBackpackTalent || isChestTalent);
-      const pieceIcon = gearPieceIconByLabels(labelList);
+      const pieceSuffix = isFourPc ? "4pc" : (isBackpackTalent ? "backpack" : (isChestTalent ? "chest" : ""));
+      const slotIcon = isBackpackTalent
+        ? iconImgHtml(iconUrl("gear_slots", "backpack", "img/gears"), "ico ico--talent", "backpack")
+        : (isChestTalent ? iconImgHtml(iconUrl("gear_slots", "chest", "img/gears"), "ico ico--talent", "chest") : "");
+      const pieceIcon = gearsetIconUrl(keyNorm, pieceSuffix) || gearPieceIconByLabels(labelList);
       const talentKey = normalizeKey(tn || "");
       const talentIcon = gearsetTalentIconHtml(talentKey, pieceIcon, isFourPc, setIconPrimary, setFallbacks);
       const tnDisp = (langSelect.value === "ja")
@@ -2534,7 +2538,7 @@ function buildGearsetPopupCardHtml(it, fallbackTitle = "") {
       const tdDisp = (langSelect.value === "ja")
         ? trCategoryText("gearset_talent_desc", talentKey, td)
         : td;
-      if (tnDisp) lines.push({ cls: "line line--gray line--talent", text: tnDisp.trim(), textHtml: "", icon: talentIcon });
+      if (tnDisp) lines.push({ cls: "line line--gray line--talent", text: tnDisp.trim(), textHtml: "", icon: `${slotIcon || ""}${talentIcon || ""}` });
       if (tdDisp) lines.push({ cls: "line line--named-meta line--talent-desc", text: tdDisp, textHtml: escapeHtml(tdDisp).replace(/\r?\n/g, "<br>") });
       continue;
     }
@@ -2553,12 +2557,19 @@ function buildGearsetPopupCardHtml(it, fallbackTitle = "") {
   if (!lines.some((x) => x.cls.includes("line--talent"))) {
     const bp = parseTalentRawTitleDesc(it.backpackTalentRaw || "");
     const ch = parseTalentRawTitleDesc(it.chestTalentRaw || "");
-    [bp, ch].forEach((t) => {
+    [bp, ch].forEach((t, idx) => {
       if (!t.title) return;
       const tk = normalizeKey(t.title);
       const tnDisp = (langSelect.value === "ja") ? (i18n[tk] ?? trText(t.title)) : t.title;
       const tdDisp = (langSelect.value === "ja") ? trCategoryText("gearset_talent_desc", tk, t.desc) : t.desc;
-      lines.push({ cls: "line line--gray line--talent", text: tnDisp, textHtml: "", icon: "" });
+      const rawSlot = idx === 0 ? "backpack" : "chest";
+      const slotIcon = iconImgHtml(iconUrl("gear_slots", rawSlot, "img/gears"), "ico ico--talent", rawSlot);
+      lines.push({
+        cls: "line line--gray line--talent",
+        text: tnDisp,
+        textHtml: "",
+        icon: slotIcon
+      });
       if (tdDisp) lines.push({ cls: "line line--named-meta line--talent-desc", text: tdDisp, textHtml: escapeHtml(tdDisp).replace(/\r?\n/g, "<br>") });
     });
   }
@@ -2842,6 +2853,13 @@ function iconUrl(kind, key, fallbackDir = "") {
   const safe = sanitizeFileKey(key);
   if (!safe) return "";
   return appPath(`${fallbackDir}/${safe}.png`);
+}
+
+function gearsetIconUrl(gearsetKey, suffix = "") {
+  const baseKey = normalizeKey(gearsetKey || "");
+  if (!baseKey) return "";
+  const iconKey = suffix ? `${baseKey}_${suffix}` : baseKey;
+  return iconUrl("gearsets", iconKey, "img/gearset");
 }
 
 /* ---------------------------
@@ -3515,8 +3533,8 @@ function buildCardBg(item, modCard = null) {
   if (item.category === "gear") {
     const bKey = item.brand_key || normalizeKey(item.brand_en);
     const sKey = item.slot_key || normalizeKey(item.slot_en);
-
-    const brandIcon = iconUrl("brands", bKey, "img/brands");
+    const isGearset = normalizeKey(item.rarity || "") === "gearset";
+    const brandIcon = isGearset ? gearsetIconUrl(bKey) : iconUrl("brands", bKey, "img/brands");
     const slotIcon = iconUrl("gear_slots", sKey, "img/gears");
 
     return [

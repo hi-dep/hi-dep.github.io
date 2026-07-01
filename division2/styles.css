@@ -1446,6 +1446,94 @@ body.seasonmod-modal-open {
   box-shadow: inset 0 0 0 1px rgba(255, 127, 0, 0.25);
 }
 
+.gearset-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.gearset-desc-mode-field {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0;
+  white-space: nowrap;
+}
+
+.gearset-desc-mode-select {
+  display: inline-flex;
+  align-items: center;
+  box-sizing: border-box;
+  min-height: var(--toolbar-control-h);
+  height: var(--toolbar-control-h);
+  min-width: 4.8em;
+  background-color: var(--panel);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0 12px;
+  font-size: 12px;
+  line-height: 1;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: none;
+  color-scheme: dark;
+}
+
+.gearset-desc-mode-select::-ms-expand {
+  display: none;
+}
+
+.gearset-compare-label {
+  display: inline-block;
+  min-width: 3.2em;
+  margin-right: 6px;
+  padding: 0 5px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--muted);
+  font-size: 10px;
+  line-height: 1.5;
+  vertical-align: top;
+}
+
+.gearset-compare-line--pve .gearset-compare-label {
+  color: rgba(120, 255, 180, 1);
+  background: rgba(120, 255, 180, 0.12);
+}
+
+.gearset-compare-line--pvp .gearset-compare-label {
+  color: var(--perfect-text);
+  background: rgba(255, 149, 58, 0.12);
+}
+
+.gearset-compare-text {
+  display: inline;
+  white-space: normal;
+}
+
+.gear-talent-diff--pve {
+  color: rgba(120, 255, 180, 1);
+  background: rgba(120, 255, 180, 0.14);
+}
+
+.gear-talent-diff--pvp {
+  color: rgba(255, 170, 96, 1);
+  background: rgba(255, 149, 58, 0.14);
+}
+
+.gearset-compare-line--pve .gear-talent-diff {
+  color: rgba(120, 255, 180, 1);
+  background: rgba(120, 255, 180, 0.14);
+}
+
+.gearset-compare-line--pvp .gear-talent-diff {
+  color: rgba(255, 170, 96, 1);
+  background: rgba(255, 149, 58, 0.14);
+}
+
 .status {
   color: var(--muted);
   font-size: 13px;

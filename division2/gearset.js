@@ -1,11 +1,83 @@
 /* gearset-specific view logic */
 (function () {
   let gearsetRowsCache = null;
+  let gearsetDescMode = String(window.gearsetDescMode || "pve").toLowerCase();
+  if (!["pve", "pvp", "compare"].includes(gearsetDescMode)) gearsetDescMode = "pve";
+  window.gearsetDescMode = gearsetDescMode;
+
   function textToHtmlPreserveNewline(text) {
     return escapeHtml(String(text || "")).replace(/\r?\n/g, "<br>");
   }
   function trGearsetTalentDesc(rawDesc, talentKey) {
     return trCategoryText("gearset_talent_desc", talentKey, String(rawDesc || "").replace(/\r/g, ""));
+  }
+  function trGearsetNormalizeTalentDesc(rawDesc, talentKey) {
+    return trCategoryText("gearset_normalize_talent_desc", talentKey, String(rawDesc || "").replace(/\r/g, ""));
+  }
+
+  function tokenizeForDiff(text) {
+    const s = String(text || "");
+    const re = /(\r\n|\n|[ \t]+|[A-Za-z0-9%+.\-]+|[^A-Za-z0-9\s])/g;
+    const out = [];
+    let m;
+    while ((m = re.exec(s)) !== null) out.push(m[0]);
+    return out;
+  }
+
+  function tokenToHtml(tok) {
+    if (tok === "\r\n" || tok === "\n") return "<br>";
+    return escapeHtml(tok);
+  }
+
+  function highlightDiffHtml(baseText, compareText, diffClass = "gear-talent-diff") {
+    const a = tokenizeForDiff(baseText);
+    const b = tokenizeForDiff(compareText);
+    if (!a.length || !b.length) return b.map(tokenToHtml).join("");
+
+    const n = a.length;
+    const m = b.length;
+    const dp = Array.from({ length: n + 1 }, () => new Array(m + 1).fill(0));
+    for (let i = n - 1; i >= 0; i--) {
+      for (let j = m - 1; j >= 0; j--) {
+        if (a[i] === b[j]) dp[i][j] = dp[i + 1][j + 1] + 1;
+        else dp[i][j] = Math.max(dp[i + 1][j], dp[i][j + 1]);
+      }
+    }
+
+    let i = 0;
+    let j = 0;
+    const chunks = [];
+    let diffBuf = [];
+    const flushDiff = () => {
+      if (!diffBuf.length) return;
+      chunks.push(`<span class="${diffClass}">${diffBuf.map(tokenToHtml).join("")}</span>`);
+      diffBuf = [];
+    };
+    while (i < n && j < m) {
+      if (a[i] === b[j]) {
+        flushDiff();
+        chunks.push(tokenToHtml(b[j]));
+        i++;
+        j++;
+      } else if (dp[i + 1][j] >= dp[i][j + 1]) {
+        i++;
+      } else {
+        diffBuf.push(b[j]);
+        j++;
+      }
+    }
+    while (j < m) {
+      diffBuf.push(b[j]);
+      j++;
+    }
+    flushDiff();
+    return chunks.join("");
+  }
+
+  function gearsetDescModeLabel(mode) {
+    if (mode === "pvp") return "PvP";
+    if (mode === "compare") return "Compare";
+    return "PvE";
   }
 
   async function loadGearsetRows() {
@@ -22,6 +94,22 @@
         console.warn("Gearset tables are missing in items.db", { hasGearsets, hasBonuses });
         throw new Error("data_unavailable");
       }
+      const bonusCols = new Set();
+      try {
+        const info = db.exec("PRAGMA table_info(items_gearset_bonuses)");
+        if (info && info[0] && Array.isArray(info[0].values)) {
+          const nameIdx = info[0].columns.indexOf("name");
+          if (nameIdx >= 0) {
+            for (const row of info[0].values) {
+              const name = String(row[nameIdx] || "").trim();
+              if (name) bonusCols.add(name);
+            }
+          }
+        }
+      } catch (e) {
+        // keep backward compatibility with older DB snapshots
+      }
+      const hasNormalizeDesc = bonusCols.has("talent_desc_normalize");
       const stmt = db.prepare(`
         SELECT
           g.item_id,
@@ -38,7 +126,7 @@
           b.type,
           b.type_key,
           b.talent_name,
-          b.talent_desc
+          b.talent_desc${hasNormalizeDesc ? ",\n          b.talent_desc_normalize" : ""}
         FROM items_gearsets g
         LEFT JOIN items_gearset_bonuses b ON b.parent_item_id = g.item_id
         ORDER BY g.gearset, g.item_id, b.bonus_ord, b.bonus_part_ord
@@ -81,7 +169,8 @@
           type: String(r.type || "").trim(),
           typeKey: String(r.type_key || "").trim(),
           talentName: String(r.talent_name || "").trim(),
-          talentDesc: String(r.talent_desc || "").trim()
+          talentDesc: String(r.talent_desc || "").trim(),
+          talentDescNormalize: String(r.talent_desc_normalize || "").trim()
         });
       }
     });
@@ -105,13 +194,29 @@
     const section = document.createElement("section");
     section.className = "catgroup catgroup--gear gearset-view";
     section.innerHTML = `
-      <div class="trello-group-toggle">
+      <div class="trello-group-toggle gearset-toolbar">
         ${typeof buildInlineConditionFilterHtml === "function" ? buildInlineConditionFilterHtml() : ""}
+        <label class="gearset-desc-mode-field">
+          <select class="gearset-desc-mode-select" data-gearset-desc-mode-select="1" aria-label="gearset desc mode">
+            <option value="pve"${gearsetDescMode === "pve" ? " selected" : ""}>${gearsetDescModeLabel("pve")}</option>
+            <option value="pvp"${gearsetDescMode === "pvp" ? " selected" : ""}>${gearsetDescModeLabel("pvp")}</option>
+            <option value="compare"${gearsetDescMode === "compare" ? " selected" : ""}>${gearsetDescModeLabel("compare")}</option>
+          </select>
+        </label>
         <button class="btn btn--ghost talent-desc-btn ${window.talentShowDesc ? "is-on" : ""}" type="button" data-toggle-talent-desc="1">Desc</button>
       </div>
       <div class="grid grid--gear"></div>
     `;
     const grid = section.querySelector(".grid");
+    const modeSelect = section.querySelector("[data-gearset-desc-mode-select]");
+    if (modeSelect) {
+      modeSelect.addEventListener("change", () => {
+        const nextMode = String(modeSelect.value || "pve").toLowerCase();
+        gearsetDescMode = ["pve", "pvp", "compare"].includes(nextMode) ? nextMode : "pve";
+        window.gearsetDescMode = gearsetDescMode;
+        renderGearsetViewFromRows(payload);
+      });
+    }
 
     function gearPieceIconByLabels(labels) {
       const all = (labels || []).map((x) => normalizeKey(x || "")).join(" ");
@@ -189,6 +294,8 @@
         if (!u) return;
         if (!cands.includes(u)) cands.push(u);
       };
+      if (pieceIcon) add(pieceIcon);
+      if (setIconPrimary) add(setIconPrimary);
       if (baseKey) {
         add(iconUrl("talents", baseKey, "img/talents"));
         if (typeof talentKeyVariants === "function") {
@@ -198,7 +305,6 @@
       if (isFourPc) {
         if (cands.length) {
           const fourPcFallbacks = cands.slice(1);
-          if (setIconPrimary && !fourPcFallbacks.includes(setIconPrimary)) fourPcFallbacks.push(setIconPrimary);
           (setIconFallbacks || []).forEach((u) => {
             if (u && !fourPcFallbacks.includes(u)) fourPcFallbacks.push(u);
           });
@@ -207,15 +313,43 @@
         if (setIconPrimary) return iconImgHtml(setIconPrimary, "ico ico--talent", "gearset", setIconFallbacks || []);
         return "";
       }
-      if (pieceIcon) return pieceIcon;
       if (cands.length) return iconImgHtml(cands[0], "ico ico--talent", "talent", cands.slice(1));
       return "";
     }
 
+    function gearsetTalentDescLines(talentKey, pveRaw, normalizeRaw) {
+      const pveText = trGearsetTalentDesc(pveRaw, talentKey);
+      const pvpText = trGearsetNormalizeTalentDesc(normalizeRaw, talentKey);
+      if (gearsetDescMode === "pvp") {
+        return pvpText ? [{ cls: "line line--named-meta line--talent-desc", text: pvpText, textHtml: textToHtmlPreserveNewline(pvpText), isDesc: true }] : [];
+      }
+      if (gearsetDescMode === "compare") {
+        const lines = [];
+        if (pveText) {
+          lines.push({
+            cls: "line line--named-meta line--talent-desc gearset-compare-line gearset-compare-line--pve",
+            text: pveText,
+            textHtml: `<span class="gearset-compare-label">PvE</span><span class="gearset-compare-text">${highlightDiffHtml(pvpText, pveText, "gear-talent-diff gear-talent-diff--pve")}</span>`,
+            isDesc: true
+          });
+        }
+        if (pvpText) {
+          lines.push({
+            cls: "line line--named-meta line--talent-desc gearset-compare-line gearset-compare-line--pvp",
+            text: pvpText,
+            textHtml: `<span class="gearset-compare-label">PvP</span><span class="gearset-compare-text">${highlightDiffHtml(pveText, pvpText, "gear-talent-diff gear-talent-diff--pvp")}</span>`,
+            isDesc: true
+          });
+        }
+        return lines;
+      }
+      return pveText ? [{ cls: "line line--named-meta line--talent-desc", text: pveText, textHtml: textToHtmlPreserveNewline(pveText), isDesc: true }] : [];
+    }
+
     items.forEach((it) => {
       const setKeyNorm = normalizeKey(it.gearsetKey || it.gearset || "");
-      const setIconPrimary = iconUrl("brands", it.gearsetKey || setKeyNorm, "img/brands");
-      const setIconAlt = iconUrl("brands", setKeyNorm, "img/brands");
+      const setIconPrimary = gearsetIconUrl(it.gearsetKey || setKeyNorm);
+      const setIconAlt = gearsetIconUrl(setKeyNorm);
       const setIconFallbacks = [];
       if (setIconAlt && setIconAlt !== setIconPrimary) setIconFallbacks.push(setIconAlt);
       const setBgHtml = setIconPrimary
@@ -263,7 +397,11 @@
           // Gearset talent rows are effectively: 4pc / chest / backpack.
           // If it's not chest/backpack, treat it as 4pc for icon fallback.
           const isFourPc = !(isBackpackTalent || isChestTalent);
-          const pieceIcon = gearPieceIconByLabels(labelList);
+          const pieceSuffix = isFourPc ? "4pc" : (isBackpackTalent ? "backpack" : (isChestTalent ? "chest" : ""));
+          const slotIcon = isBackpackTalent
+            ? iconImgHtml(iconUrl("gear_slots", "backpack", "img/gears"), "ico ico--talent", "backpack")
+            : (isChestTalent ? iconImgHtml(iconUrl("gear_slots", "chest", "img/gears"), "ico ico--talent", "chest") : "");
+          const pieceIcon = gearsetIconUrl(setKeyNorm, pieceSuffix) || gearPieceIconByLabels(labelList);
           const talentKey = normalizeKey(tn || "");
           const talentIcon = gearsetTalentIconHtml(talentKey, pieceIcon, isFourPc, setIconPrimary, setIconFallbacks);
           const tnDisp = (langSelect.value === "ja")
@@ -272,16 +410,16 @@
           const tdDisp = (langSelect.value === "ja")
             ? trGearsetTalentDesc(td, talentKey)
             : td;
-          if (tnDisp) lines.push({ cls: "line line--gray line--talent", text: tnDisp.trim(), key: talentKey, icon: talentIcon });
-          if (tdDisp) {
-            lines.push({
-              cls: "line line--named-meta line--talent-desc",
-              text: tdDisp,
-              textHtml: textToHtmlPreserveNewline(tdDisp),
-              key: "",
-              isDesc: true
-            });
-          }
+          const tdNormalize = (langSelect.value === "ja")
+            ? trGearsetNormalizeTalentDesc(String(b.talentDescNormalize || ""), talentKey)
+            : String(b.talentDescNormalize || "").trim();
+          if (tnDisp) lines.push({
+            cls: "line line--gray line--talent",
+            text: tnDisp.trim(),
+            key: talentKey,
+            icon: `${slotIcon || ""}${talentIcon || ""}`
+          });
+          gearsetTalentDescLines(talentKey, tdDisp, tdNormalize).forEach((descLine) => lines.push(descLine));
           continue;
         }
         const parts = [];
@@ -306,6 +444,10 @@
       pushSearch(it.gearset || "");
       pushSearch(title || "");
       pushSearch(coreText || "");
+      for (const itb of it.bonuses || []) {
+        pushSearch(itb.talentDesc || "");
+        pushSearch(itb.talentDescNormalize || "");
+      }
       lines.forEach((ln) => pushSearch(ln.text || ""));
 
       const card = document.createElement("div");
