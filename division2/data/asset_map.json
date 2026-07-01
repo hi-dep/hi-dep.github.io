@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "built_at": "2026-06-24T08:20:03.441245Z",
+  "built_at": "2026-07-01T01:10:03.112836Z",
   "sanitize": {
     "enabled": true,
     "safe_chars": "a-z 0-9 . _ -"
@@ -201,6 +201,7 @@
     "perfectlyefficient": "img/talents/efficient.png",
     "perfectlyexplosivedelivery": "img/talents/explosivedelivery.png",
     "perfectlymadbomber": "img/talents/madbomber.png",
+    "perfectlyopportunistic": "img/talents/opportunistic.png",
     "perfectlyskilled": "img/talents/skilled.png",
     "perfectlytamperproof": "img/talents/tamperproof.png",
     "perfectlyunbreakable": "img/talents/unbreakable.png",
