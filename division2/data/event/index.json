@@ -9,7 +9,20 @@
         "Capitol Building",
         "Potomac Event Center"
       ],
-      "target_loot_by_day": []
+      "target_loot_by_day": [
+        {
+          "day": "2026-07-07",
+          "target_loot": [
+            "Petrov Defense Group",
+            "lmg",
+            "Gear MOD",
+            "Legatus S.p.A.",
+            "Tipping Scales"
+          ],
+          "prototype_gear_cache": "kneepads",
+          "prototype_weapon_cache": "ar"
+        }
+      ]
     }
   ]
 }
