@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "built_at": "2026-07-01T01:10:03.112836Z",
+  "built_at": "2026-07-07T20:30:04.305641Z",
   "categories": {
     "vendor": {
       "benitez": "ベニテス",
@@ -434,7 +434,8 @@
       "policemk17replica": "ポリス Mk17 模造品",
       "sig716replica": "SIG 716 模造品",
       "urbanmdrreplica": "アーバン MDR 模造品",
-      "usc45acpreplica": "USC .45 ACP 模造品"
+      "usc45acpreplica": "USC .45 ACP 模造品",
+      "brainbreak": "TODO:brainbreak"
     },
     "weapon_item_name_mmr": {
       "classicm44carbine": "クラシック M44 カービン",
