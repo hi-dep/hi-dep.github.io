@@ -9,7 +9,20 @@
         "Lincoln Memorial",
         "Federal Emergency Bunker"
       ],
-      "target_loot_by_day": []
+      "target_loot_by_day": [
+        {
+          "day": "2026-07-14",
+          "target_loot": [
+            "Fenris Group AB",
+            "gloves",
+            "Wyvern Wear",
+            "Rigger",
+            "Lengmo"
+          ],
+          "prototype_gear_cache": "holster",
+          "prototype_weapon_cache": "shotgun"
+        }
+      ]
     }
   ]
 }
