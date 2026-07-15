@@ -123,7 +123,8 @@
       "rarity": "highend",
       "amount": 1,
       "unit_price": 180,
-      "since_week": "2026-06-16"
+      "since_week": "2026-06-16",
+      "until_week": "2026-06-30"
     }
   ]
 }

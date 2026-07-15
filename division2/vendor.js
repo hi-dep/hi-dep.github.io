@@ -1,5 +1,16 @@
 /* vendor-specific view logic */
 (function () {
+  let cacheVendorRecordsPromise = null;
+
+  async function loadCacheVendorRecords() {
+    if (!cacheVendorRecordsPromise) {
+      cacheVendorRecordsPromise = fetchJsonWithTimeout(`${DATA_BASE}/cache_vendor_records.json?ts=${Date.now()}`, 5000)
+        .then((cfg) => Array.isArray(cfg?.records) ? cfg.records : null)
+        .catch(() => null);
+    }
+    return cacheVendorRecordsPromise;
+  }
+
   function shouldInjectStaticCaches(dateStr) {
     const week = String(dateStr || "").trim();
     return !!week;
@@ -145,7 +156,8 @@
       }
 
       if (shouldInjectStaticCaches(dateStr)) {
-        injectStaticCaches(vendorMap, dateStr);
+        const cacheVendorRecords = await loadCacheVendorRecords();
+        injectStaticCaches(vendorMap, dateStr, cacheVendorRecords);
       }
       lastVendorMap = vendorMap;
       lastItems = Array.from(itemMap.values());

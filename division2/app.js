@@ -1517,7 +1517,6 @@ const VENDOR_ORDER = [
  * ------------------------- */
 // Some vendors always sell caches, but they may not exist in the DB.
 // Inject them at render-time so they are always visible in the UI.
-const STATIC_CACHE_WEEK_CUTOFF = "2026-06-16";
 const STATIC_VENDOR_EN = {
   countdown: "Countdown",
   dzeast: "DZ East",
@@ -1569,15 +1568,52 @@ const STATIC_CACHE_ITEMS_Y8S2 = {
   ]
 };
 
+const STATIC_CACHE_ITEMS_Y8S21 = {
+  countdown: STATIC_CACHE_ITEMS_Y8S2.countdown,
+  dzeast: STATIC_CACHE_ITEMS_Y8S2.dzeast,
+  dzsouth: STATIC_CACHE_ITEMS_Y8S2.dzsouth,
+  dzwest: [
+    { name_en: "Exotic Cache", price: 170, rarity: "exotic" },
+    { name_en: "DZ Exotic Compornents Cache", price: 120, rarity: "highend" }
+  ]
+};
+
 function getStaticCacheItemsForWeek(dateStr) {
-  return String(dateStr || "").trim() < STATIC_CACHE_WEEK_CUTOFF
-    ? STATIC_CACHE_ITEMS_Y8S1
-    : STATIC_CACHE_ITEMS_Y8S2;
+  const week = String(dateStr || "").trim();
+  if (week < "2026-06-16") return STATIC_CACHE_ITEMS_Y8S1;
+  if (week < "2026-07-01") return STATIC_CACHE_ITEMS_Y8S2;
+  return STATIC_CACHE_ITEMS_Y8S21;
 }
 
-function injectStaticCaches(vendorMap, dateStr) {
+function getConfiguredCacheItemsForWeek(dateStr, records) {
+  const week = String(dateStr || "").trim();
+  if (!Array.isArray(records)) return null;
+
+  const items = {};
+  for (const record of records) {
+    if (!record || typeof record !== "object") continue;
+    const since = String(record.since_week || "").trim();
+    const until = String(record.until_week || "").trim();
+    if (since && week && week < since) continue;
+    if (until && week && week > until) continue;
+
+    const vendorKey = normalizeKey(record.vendor_key || "");
+    const nameEn = String(record.name_en || "").trim();
+    if (!vendorKey || !nameEn) continue;
+    if (!items[vendorKey]) items[vendorKey] = [];
+    items[vendorKey].push({
+      name_en: nameEn,
+      price: record.unit_price,
+      rarity: record.rarity || "highend"
+    });
+  }
+  return items;
+}
+
+function injectStaticCaches(vendorMap, dateStr, configuredRecords = null) {
   if (!vendorMap) return;
-  const staticCacheItems = getStaticCacheItemsForWeek(dateStr);
+  const staticCacheItems = getConfiguredCacheItemsForWeek(dateStr, configuredRecords)
+    || getStaticCacheItemsForWeek(dateStr);
 
   for (const [vendorKey, defs] of Object.entries(staticCacheItems)) {
     if (!Array.isArray(defs) || defs.length === 0) continue;
