@@ -2,8 +2,11 @@
   "gear": [
     {
       "brand": "Douglas & Harding",
+      "brand_key": "douglasharding",
       "type": "mask",
+      "type_key": "mask",
       "name": "Punch Drunk",
+      "name_key": "punchdrunk",
       "drop location": {
         "lz": true,
         "dz": false,
@@ -12,8 +15,11 @@
     },
     {
       "brand": "Gila Guard",
+      "brand_key": "gilaguard",
       "type": "mask",
+      "type_key": "mask",
       "name": "Nightwatcher",
+      "name_key": "nightwatcher",
       "drop location": {
         "lz": true,
         "dz": false,
@@ -22,8 +28,11 @@
     },
     {
       "brand": "Gila Guard",
+      "brand_key": "gilaguard",
       "type": "mask",
+      "type_key": "mask",
       "name": "Chill Out",
+      "name_key": "chillout",
       "drop location": {
         "lz": false,
         "dz": false,
@@ -34,8 +43,11 @@
     },
     {
       "brand": "Legatus S.p.A.",
+      "brand_key": "legatusspa",
       "type": "mask",
+      "type_key": "mask",
       "name": "Visionario",
+      "name_key": "visionario",
       "drop location": {
         "lz": true,
         "dz": false,
@@ -44,8 +56,11 @@
     },
     {
       "brand": "Yaahl Gear",
+      "brand_key": "yaahlgear",
       "type": "mask",
+      "type_key": "mask",
       "name": "The Hollow Man",
+      "name_key": "thehollowman",
       "drop location": {
         "lz": false,
         "dz": true,
@@ -54,8 +69,11 @@
     },
     {
       "brand": "Belstone Armory",
+      "brand_key": "belstonearmory",
       "type": "backpack",
+      "type_key": "backpack",
       "name": "Liquid Engineer",
+      "name_key": "liquidengineer",
       "drop location": {
         "lz": false,
         "dz": true,
@@ -64,8 +82,11 @@
     },
     {
       "brand": "Brazos de Arcabuz",
+      "brand_key": "brazosdearcabuz",
       "type": "backpack",
+      "type_key": "backpack",
       "name": "Hermano",
+      "name_key": "hermano",
       "drop location": {
         "lz": true,
         "dz": false,
@@ -74,8 +95,11 @@
     },
     {
       "brand": "Habsburg Guard",
+      "brand_key": "habsburgguard",
       "type": "backpack",
+      "type_key": "backpack",
       "name": "The Courier",
+      "name_key": "thecourier",
       "drop location": {
         "lz": true,
         "dz": false,
@@ -86,8 +110,11 @@
     },
     {
       "brand": "Lengmo",
+      "brand_key": "lengmo",
       "type": "backpack",
+      "type_key": "backpack",
       "name": "Backbone",
+      "name_key": "backbone",
       "drop location": {
         "lz": true,
         "dz": false,
@@ -96,8 +123,11 @@
     },
     {
       "brand": "Golan Gear Ltd",
+      "brand_key": "golangearltd",
       "type": "backpack",
+      "type_key": "backpack",
       "name": "Anarchist's Cookbook",
+      "name_key": "anarchistscookbook",
       "drop location": {
         "lz": true,
         "dz": true,
@@ -108,8 +138,11 @@
     },
     {
       "brand": "China Light Industries Corporation",
+      "brand_key": "chinalightindustriescorporation",
       "type": "backpack",
+      "type_key": "backpack",
       "name": "Strategic Alignment",
+      "name_key": "strategicalignment",
       "drop location": {
         "lz": true,
         "dz": false,
@@ -118,8 +151,11 @@
     },
     {
       "brand": "Electrique",
+      "brand_key": "electrique",
       "type": "backpack",
+      "type_key": "backpack",
       "name": "Lavoisier",
+      "name_key": "lavoisier",
       "drop location": {
         "lz": true,
         "dz": false,
@@ -128,8 +164,11 @@
     },
     {
       "brand": "Walker, Harris & Co.",
+      "brand_key": "walkerharrisco",
       "type": "backpack",
+      "type_key": "backpack",
       "name": "Matador",
+      "name_key": "matador",
       "drop location": {
         "lz": false,
         "dz": true,
@@ -138,8 +177,11 @@
     },
     {
       "brand": "Providence Defense",
+      "brand_key": "providencedefense",
       "type": "backpack",
+      "type_key": "backpack",
       "name": "The Gift",
+      "name_key": "thegift",
       "drop location": {
         "lz": false,
         "dz": true,
@@ -148,8 +190,11 @@
     },
     {
       "brand": "Alps Summit Armaments",
+      "brand_key": "alpssummitarmaments",
       "type": "backpack",
+      "type_key": "backpack",
       "name": "Percussive Maintenance",
+      "name_key": "percussivemaintenance",
       "drop location": {
         "lz": true,
         "dz": false,
@@ -158,8 +203,11 @@
     },
     {
       "brand": "Legatus S.p.A.",
+      "brand_key": "legatusspa",
       "type": "backpack",
+      "type_key": "backpack",
       "name": "Vigil",
+      "name_key": "vigil",
       "drop location": {
         "lz": true,
         "dz": false,
@@ -168,8 +216,11 @@
     },
     {
       "brand": "Česká Výroba s.r.o.",
+      "brand_key": "ceskavyrobasro",
       "type": "backpack",
+      "type_key": "backpack",
       "name": "Devil's Due",
+      "name_key": "devilsdue",
       "drop location": {
         "lz": false,
         "dz": true,
@@ -178,8 +229,11 @@
     },
     {
       "brand": "Empress International",
+      "brand_key": "empressinternational",
       "type": "backpack",
+      "type_key": "backpack",
       "name": "Battery Pack",
+      "name_key": "batterypack",
       "drop location": {
         "lz": true,
         "dz": false,
@@ -188,8 +242,11 @@
     },
     {
       "brand": "Uzina Getica",
+      "brand_key": "uzinagetica",
       "type": "backpack",
+      "type_key": "backpack",
       "name": "The Setup",
+      "name_key": "thesetup",
       "drop location": {
         "lz": true,
         "dz": false,
@@ -198,8 +255,11 @@
     },
     {
       "brand": "Hana-U Corporation",
+      "brand_key": "hanaucorporation",
       "type": "backpack",
+      "type_key": "backpack",
       "name": "Force Multiplier",
+      "name_key": "forcemultiplier",
       "drop location": {
         "lz": true,
         "dz": false,
@@ -208,8 +268,11 @@
     },
     {
       "brand": "Palisade Steelworks",
+      "brand_key": "palisadesteelworks",
       "type": "backpack",
+      "type_key": "backpack",
       "name": "Proxy",
+      "name_key": "proxy",
       "drop location": {
         "lz": true,
         "dz": false,
@@ -218,8 +281,11 @@
     },
     {
       "brand": "Shiny Monkey Gear",
+      "brand_key": "shinymonkeygear",
       "type": "backpack",
+      "type_key": "backpack",
       "name": "Axel",
+      "name_key": "axel",
       "drop location": {
         "lz": true,
         "dz": false,
@@ -228,8 +294,11 @@
     },
     {
       "brand": "Imminence Armaments",
+      "brand_key": "imminencearmaments",
       "type": "backpack",
+      "type_key": "backpack",
       "name": "Cap'n",
+      "name_key": "capn",
       "drop location": {
         "lz": true,
         "dz": false,
@@ -238,8 +307,11 @@
     },
     {
       "brand": "Royal Works",
+      "brand_key": "royalworks",
       "type": "Backpack",
+      "type_key": "backpack",
       "name": "Bulldog",
+      "name_key": "bulldog",
       "drop location": {
         "lz": true,
         "dz": false,
@@ -248,8 +320,11 @@
     },
     {
       "brand": "Edelweiss GPz",
+      "brand_key": "edelweissgpz",
       "type": "backpack",
+      "type_key": "backpack",
       "name": "Momma Badger",
+      "name_key": "mommabadger",
       "drop location": {
         "lz": true,
         "dz": true,
@@ -258,8 +333,11 @@
     },
     {
       "brand": "Grupo Sombra S.A.",
+      "brand_key": "gruposombrasa",
       "type": "backpack",
+      "type_key": "backpack",
       "name": "Festive Delivery",
+      "name_key": "festivedelivery",
       "drop location": {
         "lz": false,
         "dz": false,
@@ -270,8 +348,11 @@
     },
     {
       "brand": "Electrique",
+      "brand_key": "electrique",
       "type": "chest",
+      "type_key": "chest",
       "name": "Henri",
+      "name_key": "henri",
       "drop location": {
         "lz": true,
         "dz": false,
@@ -280,8 +361,11 @@
     },
     {
       "brand": "Golan Gear Ltd",
+      "brand_key": "golangearltd",
       "type": "chest",
+      "type_key": "chest",
       "name": "Hunter-Killer",
+      "name_key": "hunterkiller",
       "drop location": {
         "lz": false,
         "dz": false,
@@ -292,8 +376,11 @@
     },
     {
       "brand": "Belstone Armory",
+      "brand_key": "belstonearmory",
       "type": "chest",
+      "type_key": "chest",
       "name": "Everyday Carrier",
+      "name_key": "everydaycarrier",
       "drop location": {
         "lz": true,
         "dz": false,
@@ -302,8 +389,11 @@
     },
     {
       "brand": "Walker, Harris & Co.",
+      "brand_key": "walkerharrisco",
       "type": "chest",
+      "type_key": "chest",
       "name": "Chainkiller",
+      "name_key": "chainkiller",
       "drop location": {
         "lz": true,
         "dz": false,
@@ -312,8 +402,11 @@
     },
     {
       "brand": "Gila Guard",
+      "brand_key": "gilaguard",
       "type": "chest",
+      "type_key": "chest",
       "name": "Pointman",
+      "name_key": "pointman",
       "drop location": {
         "lz": true,
         "dz": false,
@@ -324,8 +417,11 @@
     },
     {
       "brand": "Petrov Defense Group",
+      "brand_key": "petrovdefensegroup",
       "type": "chest",
+      "type_key": "chest",
       "name": "Vedmedytsya Vest",
+      "name_key": "vedmedytsyavest",
       "drop location": {
         "lz": false,
         "dz": false,
@@ -336,8 +432,11 @@
     },
     {
       "brand": "Providence Defense",
+      "brand_key": "providencedefense",
       "type": "chest",
+      "type_key": "chest",
       "name": "The Sacrifice",
+      "name_key": "thesacrifice",
       "drop location": {
         "lz": true,
         "dz": false,
@@ -346,8 +445,11 @@
     },
     {
       "brand": "Badger Tuff",
+      "brand_key": "badgertuff",
       "type": "chest",
+      "type_key": "chest",
       "name": "Zero F’s",
+      "name_key": "zerofs",
       "drop location": {
         "lz": true,
         "dz": false,
@@ -356,8 +458,11 @@
     },
     {
       "brand": "Fenris Group AB",
+      "brand_key": "fenrisgroupab",
       "type": "chest",
+      "type_key": "chest",
       "name": "Ferocious Calm",
+      "name_key": "ferociouscalm",
       "drop location": {
         "lz": false,
         "dz": true,
@@ -366,8 +471,11 @@
     },
     {
       "brand": "Grupo Sombra S.A.",
+      "brand_key": "gruposombrasa",
       "type": "chest",
+      "type_key": "chest",
       "name": "Door-Kicker’s Knock",
+      "name_key": "doorkickersknock",
       "drop location": {
         "lz": false,
         "dz": true,
@@ -376,8 +484,11 @@
     },
     {
       "brand": "Empress International",
+      "brand_key": "empressinternational",
       "type": "chest",
+      "type_key": "chest",
       "name": "Caesar's Guard",
+      "name_key": "caesarsguard",
       "drop location": {
         "lz": true,
         "dz": false,
@@ -386,8 +497,11 @@
     },
     {
       "brand": "Uzina Getica",
+      "brand_key": "uzinagetica",
       "type": "chest",
+      "type_key": "chest",
       "name": "Closer",
+      "name_key": "closer",
       "drop location": {
         "lz": true,
         "dz": false,
@@ -396,8 +510,11 @@
     },
     {
       "brand": "Habsburg Guard",
+      "brand_key": "habsburgguard",
       "type": "chest",
+      "type_key": "chest",
       "name": "Cherished",
+      "name_key": "cherished",
       "drop location": {
         "lz": true,
         "dz": false,
@@ -408,8 +525,11 @@
     },
     {
       "brand": "Lengmo",
+      "brand_key": "lengmo",
       "type": "chest",
+      "type_key": "chest",
       "name": "Carpenter",
+      "name_key": "carpenter",
       "drop location": {
         "lz": true,
         "dz": false,
@@ -418,8 +538,11 @@
     },
     {
       "brand": "Zwiadowka Sp.z o.o.",
+      "brand_key": "zwiadowkaspzoo",
       "type": "chest",
+      "type_key": "chest",
       "name": "Bober",
+      "name_key": "bober",
       "drop location": {
         "lz": true,
         "dz": false,
@@ -428,8 +551,11 @@
     },
     {
       "brand": "Airaldi Holdings",
+      "brand_key": "airaldiholdings",
       "type": "chest",
+      "type_key": "chest",
       "name": "Pristine Example",
+      "name_key": "pristineexample",
       "drop location": {
         "lz": true,
         "dz": false,
@@ -438,8 +564,11 @@
     },
     {
       "brand": "Urban Lookout",
+      "brand_key": "urbanlookout",
       "type": "chest",
+      "type_key": "chest",
       "name": "Sleight",
+      "name_key": "sleight",
       "drop location": {
         "lz": true,
         "dz": false,
@@ -448,8 +577,11 @@
     },
     {
       "brand": "Palisade Steelworks",
+      "brand_key": "palisadesteelworks",
       "type": "chest",
+      "type_key": "chest",
       "name": "Combustor",
+      "name_key": "combustor",
       "drop location": {
         "lz": true,
         "dz": false,
@@ -458,8 +590,11 @@
     },
     {
       "brand": "Wyvern Wear",
+      "brand_key": "wyvernwear",
       "type": "Chest",
+      "type_key": "chest",
       "name": "Impetus",
+      "name_key": "impetus",
       "drop location": {
         "lz": false,
         "dz": false,
@@ -468,8 +603,11 @@
     },
     {
       "brand": "Royal Works",
+      "brand_key": "royalworks",
       "type": "Chest",
+      "type_key": "chest",
       "name": "Robin",
+      "name_key": "robin",
       "drop location": {
         "lz": true,
         "dz": false,
@@ -478,8 +616,11 @@
     },
     {
       "brand": "Edelweiss GPz",
+      "brand_key": "edelweissgpz",
       "type": "chest",
+      "type_key": "chest",
       "name": "Benefactor",
+      "name_key": "benefactor",
       "drop location": {
         "lz": true,
         "dz": true,
@@ -488,8 +629,11 @@
     },
     {
       "brand": "Unit Alloys",
+      "brand_key": "unitalloys",
       "type": "chest",
+      "type_key": "chest",
       "name": "Equalizer",
+      "name_key": "equalizer",
       "drop location": {
         "lz": true,
         "dz": false,
@@ -498,8 +642,11 @@
     },
     {
       "brand": "5.11 Tactical",
+      "brand_key": "511tactical",
       "type": "gloves",
+      "type_key": "gloves",
       "name": "Deathgrips",
+      "name_key": "deathgrips",
       "drop location": {
         "lz": false,
         "dz": true,
@@ -508,8 +655,11 @@
     },
     {
       "brand": "Petrov Defense Group",
+      "brand_key": "petrovdefensegroup",
       "type": "gloves",
+      "type_key": "gloves",
       "name": "Contractor’s Gloves",
+      "name_key": "contractorsgloves",
       "drop location": {
         "lz": true,
         "dz": false,
@@ -518,8 +668,11 @@
     },
     {
       "brand": "Alps Summit Armaments",
+      "brand_key": "alpssummitarmaments",
       "type": "gloves",
+      "type_key": "gloves",
       "name": "Motherly Love",
+      "name_key": "motherlylove",
       "drop location": {
         "lz": false,
         "dz": false,
@@ -530,8 +683,11 @@
     },
     {
       "brand": "Zwiadowka Sp.z o.o.",
+      "brand_key": "zwiadowkaspzoo",
       "type": "gloves",
+      "type_key": "gloves",
       "name": "Eagles Grasp",
+      "name_key": "eaglesgrasp",
       "drop location": {
         "lz": true,
         "dz": false,
@@ -540,8 +696,11 @@
     },
     {
       "brand": "Sokolov Concern",
+      "brand_key": "sokolovconcern",
       "type": "gloves",
+      "type_key": "gloves",
       "name": "Firm Handshake",
+      "name_key": "firmhandshake",
       "drop location": {
         "lz": true,
         "dz": false,
@@ -550,8 +709,11 @@
     },
     {
       "brand": "Richter & Kaiser",
+      "brand_key": "richterkaisergmbh",
       "type": "holster",
+      "type_key": "holster",
       "name": "Forge",
+      "name_key": "forge",
       "drop location": {
         "lz": true,
         "dz": false,
@@ -560,8 +722,11 @@
     },
     {
       "brand": "Badger Tuff",
+      "brand_key": "badgertuff",
       "type": "holster",
+      "type_key": "holster",
       "name": "Ammo Dump",
+      "name_key": "ammodump",
       "drop location": {
         "lz": false,
         "dz": false,
@@ -572,8 +737,11 @@
     },
     {
       "brand": "Brazos de Arcabuz",
+      "brand_key": "brazosdearcabuz",
       "type": "holster",
+      "type_key": "holster",
       "name": "Picaros Holster",
+      "name_key": "picarosholster",
       "drop location": {
         "lz": true,
         "dz": false,
@@ -582,8 +750,11 @@
     },
     {
       "brand": "Urban Lookout",
+      "brand_key": "urbanlookout",
       "type": "holster",
+      "type_key": "holster",
       "name": "Spot-On",
+      "name_key": "spoton",
       "drop location": {
         "lz": true,
         "dz": false,
@@ -592,8 +763,11 @@
     },
     {
       "brand": "Unit Alloys",
+      "brand_key": "unitalloys",
       "type": "holster",
+      "type_key": "holster",
       "name": "Salvo",
+      "name_key": "salvo",
       "drop location": {
         "lz": true,
         "dz": false,
@@ -602,8 +776,11 @@
     },
     {
       "brand": "Wyvern Wear",
+      "brand_key": "wyvernwear",
       "type": "holster",
+      "type_key": "holster",
       "name": "Claws Out",
+      "name_key": "clawsout",
       "drop location": {
         "lz": false,
         "dz": true,
@@ -612,8 +789,11 @@
     },
     {
       "brand": "Overlord Armaments",
+      "brand_key": "overlordarmaments",
       "type": "kneepads",
+      "type_key": "kneepads",
       "name": "Fox’s Prayer",
+      "name_key": "foxsprayer",
       "drop location": {
         "lz": true,
         "dz": false,
@@ -622,8 +802,11 @@
     },
     {
       "brand": "Electrique",
+      "brand_key": "electrique",
       "type": "kneepads",
+      "type_key": "kneepads",
       "name": "Snow Machine",
+      "name_key": "snowmachine",
       "drop location": {
         "lz": false,
         "dz": false,
@@ -634,8 +817,11 @@
     },
     {
       "brand": "Česká Výroba s.r.o.",
+      "brand_key": "ceskavyrobasro",
       "type": "kneepads",
+      "type_key": "kneepads",
       "name": "Turmoil",
+      "name_key": "turmoil",
       "drop location": {
         "lz": false,
         "dz": false,
@@ -646,8 +832,11 @@
     },
     {
       "brand": "Murakami Industries",
+      "brand_key": "murakamiindustries",
       "type": "kneepads",
+      "type_key": "kneepads",
       "name": "Emperor’s Guard",
+      "name_key": "emperorsguard",
       "drop location": {
         "lz": false,
         "dz": true,
@@ -656,8 +845,11 @@
     },
     {
       "brand": "Shiny Monkey Gear",
+      "brand_key": "shinymonkeygear",
       "type": "kneepads",
+      "type_key": "kneepads",
       "name": "Grease",
+      "name_key": "grease",
       "drop location": {
         "lz": true,
         "dz": false,
@@ -666,8 +858,11 @@
     },
     {
       "brand": "Imminence Armaments",
+      "brand_key": "imminencearmaments",
       "type": "kneepads",
+      "type_key": "kneepads",
       "name": "Cloak",
+      "name_key": "cloak",
       "drop location": {
         "lz": true,
         "dz": false,
@@ -678,7 +873,9 @@
   "weapon": [
     {
       "weapon": "Assault Rifle",
+      "weapon_key": "ar",
       "name": "Caretaker",
+      "name_key": "caretaker",
       "drop location": {
         "lz": false,
         "dz": false,
@@ -689,7 +886,9 @@
     },
     {
       "weapon": "ar",
+      "weapon_key": "ar",
       "name": "The Archivist",
+      "name_key": "thearchivist",
       "drop location": {
         "lz": false,
         "dz": false,
@@ -700,7 +899,9 @@
     },
     {
       "weapon": "Assault Rifle",
+      "weapon_key": "ar",
       "name": "First Sight",
+      "name_key": "firstsight",
       "drop location": {
         "lz": false,
         "dz": false,
@@ -711,7 +912,9 @@
     },
     {
       "weapon": "Assault Rifle",
+      "weapon_key": "ar",
       "name": "Manic",
+      "name_key": "manic",
       "drop location": {
         "lz": false,
         "dz": true,
@@ -720,7 +923,9 @@
     },
     {
       "weapon": "Assault Rifle",
+      "weapon_key": "ar",
       "name": "The Drill",
+      "name_key": "thedrill",
       "drop location": {
         "lz": true,
         "dz": false,
@@ -729,7 +934,9 @@
     },
     {
       "weapon": "Assault Rifle",
+      "weapon_key": "ar",
       "name": "Invisible Hand",
+      "name_key": "invisiblehand",
       "drop location": {
         "lz": true,
         "dz": false,
@@ -738,7 +945,9 @@
     },
     {
       "weapon": "Assault Rifle",
+      "weapon_key": "ar",
       "name": "Shield Splinterer",
+      "name_key": "shieldsplinterer",
       "drop location": {
         "lz": false,
         "dz": false,
@@ -749,7 +958,9 @@
     },
     {
       "weapon": "Assault Rifle",
+      "weapon_key": "ar",
       "name": "Goalie",
+      "name_key": "goalie",
       "drop location": {
         "lz": true,
         "dz": false,
@@ -758,7 +969,9 @@
     },
     {
       "weapon": "Assault Rifle",
+      "weapon_key": "ar",
       "name": "Huntsman",
+      "name_key": "huntsman",
       "drop location": {
         "lz": false,
         "dz": false,
@@ -769,7 +982,9 @@
     },
     {
       "weapon": "Assault Rifle",
+      "weapon_key": "ar",
       "name": "Born Great",
+      "name_key": "borngreat",
       "drop location": {
         "lz": true,
         "dz": false,
@@ -778,7 +993,9 @@
     },
     {
       "weapon": "Assault Rifle",
+      "weapon_key": "ar",
       "name": "Burn Out",
+      "name_key": "burnout",
       "drop location": {
         "lz": true,
         "dz": false,
@@ -787,7 +1004,9 @@
     },
     {
       "weapon": "Assault Rifle",
+      "weapon_key": "ar",
       "name": "Savage Wolverine",
+      "name_key": "savagewolverine",
       "drop location": {
         "lz": false,
         "dz": false,
@@ -798,7 +1017,9 @@
     },
     {
       "weapon": "Assault Rifle",
+      "weapon_key": "ar",
       "name": "Pyromaniac",
+      "name_key": "pyromaniac",
       "drop location": {
         "lz": true,
         "dz": false,
@@ -807,7 +1028,9 @@
     },
     {
       "weapon": "Assault Rifle",
+      "weapon_key": "ar",
       "name": "Glory Daze",
+      "name_key": "glorydaze",
       "drop location": {
         "lz": true,
         "dz": false,
@@ -816,7 +1039,9 @@
     },
     {
       "weapon": "Assault Rifle",
+      "weapon_key": "ar",
       "name": "Mechanical Animal",
+      "name_key": "mechanicalanimal",
       "drop location": {
         "lz": true,
         "dz": false,
@@ -825,7 +1050,9 @@
     },
     {
       "weapon": "Assault Rifle",
+      "weapon_key": "ar",
       "name": "Test Subject",
+      "name_key": "testsubject",
       "drop location": {
         "lz": true,
         "dz": false,
@@ -834,7 +1061,9 @@
     },
     {
       "weapon": "Assault Rifle",
+      "weapon_key": "ar",
       "name": "First Bloom",
+      "name_key": "firstbloom",
       "drop location": {
         "lz": false,
         "dz": false,
@@ -845,7 +1074,9 @@
     },
     {
       "weapon": "Assault Rifle",
+      "weapon_key": "ar",
       "name": "Lud",
+      "name_key": "lud",
       "drop location": {
         "lz": true,
         "dz": false,
@@ -854,7 +1085,9 @@
     },
     {
       "weapon": "Assault Rifle",
+      "weapon_key": "ar",
       "name": "Kingbreaker",
+      "name_key": "kingbreaker",
       "drop location": {
         "lz": true,
         "dz": false,
@@ -865,7 +1098,9 @@
     },
     {
       "weapon": "Assault Rifle",
+      "weapon_key": "ar",
       "name": "Lexington",
+      "name_key": "lexington",
       "drop location": {
         "lz": false,
         "dz": false,
@@ -876,7 +1111,9 @@
     },
     {
       "weapon": "Assault Rifle",
+      "weapon_key": "ar",
       "name": "The Railsplitter",
+      "name_key": "therailsplitter",
       "drop location": {
         "lz": false,
         "dz": true,
@@ -885,7 +1122,9 @@
     },
     {
       "weapon": "Light Machine Gun",
+      "weapon_key": "lmg",
       "name": "Dare",
+      "name_key": "dare",
       "drop location": {
         "lz": true,
         "dz": false,
@@ -896,7 +1135,9 @@
     },
     {
       "weapon": "Light Machine Gun",
+      "weapon_key": "lmg",
       "name": "Tabula Rasa",
+      "name_key": "tabularasa",
       "drop location": {
         "lz": true,
         "dz": false,
@@ -905,7 +1146,9 @@
     },
     {
       "weapon": "Light Machine Gun",
+      "weapon_key": "lmg",
       "name": "Black Friday",
+      "name_key": "blackfriday",
       "drop location": {
         "lz": false,
         "dz": true,
@@ -914,7 +1157,9 @@
     },
     {
       "weapon": "Light Machine Gun",
+      "weapon_key": "lmg",
       "name": "Good Times",
+      "name_key": "goodtimes",
       "drop location": {
         "lz": false,
         "dz": true,
@@ -923,7 +1168,9 @@
     },
     {
       "weapon": "Light Machine Gun",
+      "weapon_key": "lmg",
       "name": "The Headline-grabber",
+      "name_key": "theheadlinegrabber",
       "drop location": {
         "lz": false,
         "dz": false,
@@ -934,7 +1181,9 @@
     },
     {
       "weapon": "Light Machine Gun",
+      "weapon_key": "lmg",
       "name": "The Stinger",
+      "name_key": "thestinger",
       "drop location": {
         "lz": false,
         "dz": false,
@@ -945,7 +1194,9 @@
     },
     {
       "weapon": "Light Machine Gun",
+      "weapon_key": "lmg",
       "name": "Gear Shift",
+      "name_key": "gearshift",
       "drop location": {
         "lz": false,
         "dz": false,
@@ -956,7 +1207,9 @@
     },
     {
       "weapon": "Light Machine Gun",
+      "weapon_key": "lmg",
       "name": "Sleipner",
+      "name_key": "sleipner",
       "drop location": {
         "lz": false,
         "dz": false,
@@ -967,7 +1220,9 @@
     },
     {
       "weapon": "Light Machine Gun",
+      "weapon_key": "lmg",
       "name": "Big Show",
+      "name_key": "bigshow",
       "drop location": {
         "lz": true,
         "dz": false,
@@ -978,7 +1233,9 @@
     },
     {
       "weapon": "Light Machine Gun",
+      "weapon_key": "lmg",
       "name": "Bellringer",
+      "name_key": "bellringer",
       "drop location": {
         "lz": false,
         "dz": false,
@@ -989,7 +1246,9 @@
     },
     {
       "weapon": "Light Machine Gun",
+      "weapon_key": "lmg",
       "name": "Carnage",
+      "name_key": "carnage",
       "drop location": {
         "lz": true,
         "dz": false,
@@ -998,7 +1257,9 @@
     },
     {
       "weapon": "Light Machine Gun",
+      "weapon_key": "lmg",
       "name": "New Reliable",
+      "name_key": "newreliable",
       "drop location": {
         "lz": true,
         "dz": false,
@@ -1007,7 +1268,9 @@
     },
     {
       "weapon": "Light Machine Gun",
+      "weapon_key": "lmg",
       "name": "Cricket",
+      "name_key": "cricket",
       "drop location": {
         "lz": true,
         "dz": false,
@@ -1016,7 +1279,9 @@
     },
     {
       "weapon": "Light Machine Gun",
+      "weapon_key": "lmg",
       "name": "Rusty",
+      "name_key": "rusty",
       "drop location": {
         "lz": true,
         "dz": false,
@@ -1025,7 +1290,9 @@
     },
     {
       "weapon": "Light Machine Gun",
+      "weapon_key": "lmg",
       "name": "Quiet Roar",
+      "name_key": "quietroar",
       "drop location": {
         "lz": true,
         "dz": false,
@@ -1034,7 +1301,9 @@
     },
     {
       "weapon": "Submachine Gun",
+      "weapon_key": "smg",
       "name": "The Grudge",
+      "name_key": "thegrudge",
       "drop location": {
         "lz": true,
         "dz": false,
@@ -1045,7 +1314,9 @@
     },
     {
       "weapon": "Assault Rifle",
+      "weapon_key": "ar",
       "name": "Interchange",
+      "name_key": "interchange",
       "drop location": {
         "lz": true,
         "dz": false,
@@ -1054,7 +1325,9 @@
     },
     {
       "weapon": "Submachine Gun",
+      "weapon_key": "smg",
       "name": "Cabaret",
+      "name_key": "cabaret",
       "drop location": {
         "lz": true,
         "dz": false,
@@ -1065,7 +1338,9 @@
     },
     {
       "weapon": "Submachine Gun",
+      "weapon_key": "smg",
       "name": "Grown Great",
+      "name_key": "growngreat",
       "drop location": {
         "lz": true,
         "dz": false,
@@ -1074,7 +1349,9 @@
     },
     {
       "weapon": "Submachine Gun",
+      "weapon_key": "smg",
       "name": "Swap Chain",
+      "name_key": "swapchain",
       "drop location": {
         "lz": true,
         "dz": false,
@@ -1083,7 +1360,9 @@
     },
     {
       "weapon": "Submachine Gun",
+      "weapon_key": "smg",
       "name": "Safety Distance",
+      "name_key": "safetydistance",
       "drop location": {
         "lz": true,
         "dz": false,
@@ -1092,7 +1371,9 @@
     },
     {
       "weapon": "Submachine Gun",
+      "weapon_key": "smg",
       "name": "The Apartment",
+      "name_key": "theapartment",
       "drop location": {
         "lz": false,
         "dz": true,
@@ -1101,7 +1382,9 @@
     },
     {
       "weapon": "Submachine Gun",
+      "weapon_key": "smg",
       "name": "Emeline's Guard",
+      "name_key": "emelinesguard",
       "drop location": {
         "lz": true,
         "dz": false,
@@ -1110,7 +1393,9 @@
     },
     {
       "weapon": "Submachine Gun",
+      "weapon_key": "smg",
       "name": "Purist",
+      "name_key": "purist",
       "drop location": {
         "lz": true,
         "dz": false,
@@ -1119,7 +1404,9 @@
     },
     {
       "weapon": "Submachine Gun",
+      "weapon_key": "smg",
       "name": "The Sleigher",
+      "name_key": "thesleigher",
       "drop location": {
         "lz": false,
         "dz": false,
@@ -1130,7 +1417,9 @@
     },
     {
       "weapon": "Submachine Gun",
+      "weapon_key": "smg",
       "name": "Cold Relations",
+      "name_key": "coldrelations",
       "drop location": {
         "lz": true,
         "dz": false,
@@ -1139,7 +1428,9 @@
     },
     {
       "weapon": "Submachine Gun",
+      "weapon_key": "smg",
       "name": "Slingshot",
+      "name_key": "slingshot",
       "drop location": {
         "lz": false,
         "dz": false,
@@ -1150,7 +1441,9 @@
     },
     {
       "weapon": "Submachine Gun",
+      "weapon_key": "smg",
       "name": "Froth",
+      "name_key": "froth",
       "drop location": {
         "lz": true,
         "dz": false,
@@ -1159,7 +1452,9 @@
     },
     {
       "weapon": "Submachine Gun",
+      "weapon_key": "smg",
       "name": "Dark Winter",
+      "name_key": "darkwinter",
       "drop location": {
         "lz": false,
         "dz": true,
@@ -1168,7 +1463,9 @@
     },
     {
       "weapon": "Shotgun",
+      "weapon_key": "shotgun",
       "name": "Rock n' Roll",
+      "name_key": "rocknroll",
       "drop location": {
         "lz": false,
         "dz": true,
@@ -1177,7 +1474,9 @@
     },
     {
       "weapon": "Shotgun",
+      "weapon_key": "shotgun",
       "name": "Lefty",
+      "name_key": "lefty",
       "drop location": {
         "lz": true,
         "dz": false,
@@ -1186,7 +1485,9 @@
     },
     {
       "weapon": "Shotgun",
+      "weapon_key": "shotgun",
       "name": "Boomstick",
+      "name_key": "boomstick",
       "drop location": {
         "lz": true,
         "dz": false,
@@ -1195,7 +1496,9 @@
     },
     {
       "weapon": "Shotgun",
+      "weapon_key": "shotgun",
       "name": "The Send-Off",
+      "name_key": "thesendoff",
       "drop location": {
         "lz": false,
         "dz": false,
@@ -1206,7 +1509,9 @@
     },
     {
       "weapon": "Shotgun",
+      "weapon_key": "shotgun",
       "name": "Cuélebre",
+      "name_key": "cuelebre",
       "drop location": {
         "lz": true,
         "dz": false,
@@ -1215,7 +1520,9 @@
     },
     {
       "weapon": "Shotgun",
+      "weapon_key": "shotgun",
       "name": "Lockdown",
+      "name_key": "lockdown",
       "drop location": {
         "lz": true,
         "dz": false,
@@ -1224,7 +1531,9 @@
     },
     {
       "weapon": "Shotgun",
+      "weapon_key": "shotgun",
       "name": "Tsunami",
+      "name_key": "tsunami",
       "drop location": {
         "lz": true,
         "dz": false,
@@ -1233,7 +1542,9 @@
     },
     {
       "weapon": "Shotgun",
+      "weapon_key": "shotgun",
       "name": "Backup Boomstick",
+      "name_key": "backupboomstick",
       "drop location": {
         "lz": true,
         "dz": false,
@@ -1242,7 +1553,9 @@
     },
     {
       "weapon": "Shotgun",
+      "weapon_key": "shotgun",
       "name": "Firestarter",
+      "name_key": "firestarter",
       "drop location": {
         "lz": false,
         "dz": false,
@@ -1253,7 +1566,9 @@
     },
     {
       "weapon": "Shotgun",
+      "weapon_key": "shotgun",
       "name": "Like Glue",
+      "name_key": "likeglue",
       "drop location": {
         "lz": true,
         "dz": false,
@@ -1262,7 +1577,9 @@
     },
     {
       "weapon": "Shotgun",
+      "weapon_key": "shotgun",
       "name": "Enforcer",
+      "name_key": "enforcer",
       "drop location": {
         "lz": false,
         "dz": false,
@@ -1273,7 +1590,9 @@
     },
     {
       "weapon": "Shotgun",
+      "weapon_key": "shotgun",
       "name": "Thorn",
+      "name_key": "thorn",
       "drop location": {
         "lz": true,
         "dz": false,
@@ -1282,7 +1601,9 @@
     },
     {
       "weapon": "Shotgun",
+      "weapon_key": "shotgun",
       "name": "The Mop",
+      "name_key": "themop",
       "drop location": {
         "lz": true,
         "dz": false,
@@ -1291,7 +1612,9 @@
     },
     {
       "weapon": "Rifle",
+      "weapon_key": "rifle",
       "name": "The Virginian",
+      "name_key": "thevirginian",
       "drop location": {
         "lz": false,
         "dz": true,
@@ -1300,7 +1623,9 @@
     },
     {
       "weapon": "Rifle",
+      "weapon_key": "rifle",
       "name": "Trader",
+      "name_key": "trader",
       "drop location": {
         "lz": true,
         "dz": false,
@@ -1309,7 +1634,9 @@
     },
     {
       "weapon": "Rifle",
+      "weapon_key": "rifle",
       "name": "Cooler",
+      "name_key": "cooler",
       "drop location": {
         "lz": false,
         "dz": false,
@@ -1320,7 +1647,9 @@
     },
     {
       "weapon": "Rifle",
+      "weapon_key": "rifle",
       "name": "Baker's Dozen",
+      "name_key": "bakersdozen",
       "drop location": {
         "lz": true,
         "dz": false,
@@ -1329,7 +1658,9 @@
     },
     {
       "weapon": "Rifle",
+      "weapon_key": "rifle",
       "name": "Stage Left",
+      "name_key": "stageleft",
       "drop location": {
         "lz": true,
         "dz": false,
@@ -1338,7 +1669,9 @@
     },
     {
       "weapon": "Rifle",
+      "weapon_key": "rifle",
       "name": "Surge",
+      "name_key": "surge",
       "drop location": {
         "lz": true,
         "dz": false,
@@ -1347,7 +1680,9 @@
     },
     {
       "weapon": "Rifle",
+      "weapon_key": "rifle",
       "name": "Everlasting Gaze",
+      "name_key": "everlastinggaze",
       "drop location": {
         "lz": false,
         "dz": true,
@@ -1356,7 +1691,9 @@
     },
     {
       "weapon": "Rifle",
+      "weapon_key": "rifle",
       "name": "Harmony",
+      "name_key": "harmony",
       "drop location": {
         "lz": false,
         "dz": true,
@@ -1365,7 +1702,9 @@
     },
     {
       "weapon": "Rifle",
+      "weapon_key": "rifle",
       "name": "Artist's Tool",
+      "name_key": "artiststool",
       "drop location": {
         "lz": true,
         "dz": false,
@@ -1374,7 +1713,9 @@
     },
     {
       "weapon": "Rifle",
+      "weapon_key": "rifle",
       "name": "Achilles",
+      "name_key": "achilles",
       "drop location": {
         "lz": true,
         "dz": false,
@@ -1383,7 +1724,9 @@
     },
     {
       "weapon": "Rifle",
+      "weapon_key": "rifle",
       "name": "Whisper",
+      "name_key": "whisper",
       "drop location": {
         "lz": true,
         "dz": false,
@@ -1392,7 +1735,9 @@
     },
     {
       "weapon": "Marksman Rifle",
+      "weapon_key": "mmr",
       "name": "The White Death",
+      "name_key": "thewhitedeath",
       "drop location": {
         "lz": true,
         "dz": false,
@@ -1401,7 +1746,9 @@
     },
     {
       "weapon": "Marksman Rifle",
+      "weapon_key": "mmr",
       "name": "Oh Carol",
+      "name_key": "ohcarol",
       "drop location": {
         "lz": false,
         "dz": false,
@@ -1412,7 +1759,9 @@
     },
     {
       "weapon": "Marksman Rifle",
+      "weapon_key": "mmr",
       "name": "Ekim's Long Stick",
+      "name_key": "ekimslongstick",
       "drop location": {
         "lz": true,
         "dz": false,
@@ -1421,7 +1770,9 @@
     },
     {
       "weapon": "Marksman Rifle",
+      "weapon_key": "mmr",
       "name": "The Darkness",
+      "name_key": "thedarkness",
       "drop location": {
         "lz": true,
         "dz": false,
@@ -1432,7 +1783,9 @@
     },
     {
       "weapon": "Marksman Rifle",
+      "weapon_key": "mmr",
       "name": "Designated Hitter",
+      "name_key": "designatedhitter",
       "drop location": {
         "lz": true,
         "dz": false,
@@ -1441,7 +1794,9 @@
     },
     {
       "weapon": "Marksman Rifle",
+      "weapon_key": "mmr",
       "name": "Pinprick",
+      "name_key": "pinprick",
       "drop location": {
         "lz": false,
         "dz": true,
@@ -1450,7 +1805,9 @@
     },
     {
       "weapon": "Marksman Rifle",
+      "weapon_key": "mmr",
       "name": "Commando",
+      "name_key": "commando",
       "drop location": {
         "lz": true,
         "dz": false,
@@ -1459,7 +1816,9 @@
     },
     {
       "weapon": "Marksman Rifle",
+      "weapon_key": "mmr",
       "name": "Handbasket",
+      "name_key": "handbasket",
       "drop location": {
         "lz": false,
         "dz": false,
@@ -1470,7 +1829,9 @@
     },
     {
       "weapon": "Marksman Rifle",
+      "weapon_key": "mmr",
       "name": "Relic",
+      "name_key": "relic",
       "drop location": {
         "lz": true,
         "dz": false,
@@ -1481,7 +1842,9 @@
     },
     {
       "weapon": "Marksman Rifle",
+      "weapon_key": "mmr",
       "name": "Scalpel",
+      "name_key": "scalpel",
       "drop location": {
         "lz": true,
         "dz": false,
@@ -1490,7 +1853,9 @@
     },
     {
       "weapon": "Marksman Rifle",
+      "weapon_key": "mmr",
       "name": "Instigator",
+      "name_key": "instigator",
       "drop location": {
         "lz": true,
         "dz": false,
@@ -1499,7 +1864,9 @@
     },
     {
       "weapon": "Marksman Rifle",
+      "weapon_key": "mmr",
       "name": "Brutus",
+      "name_key": "brutus",
       "drop location": {
         "lz": true,
         "dz": false,
@@ -1508,7 +1875,9 @@
     },
     {
       "weapon": "Pistol",
+      "weapon_key": "pistol",
       "name": "Orbit",
+      "name_key": "orbit",
       "drop location": {
         "lz": false,
         "dz": true,
@@ -1517,7 +1886,9 @@
     },
     {
       "weapon": "Pistol",
+      "weapon_key": "pistol",
       "name": "Prophet",
+      "name_key": "prophet",
       "drop location": {
         "lz": true,
         "dz": false,
@@ -1526,7 +1897,9 @@
     },
     {
       "weapon": "Pistol",
+      "weapon_key": "pistol",
       "name": "Sharpshooter's 93R",
+      "name_key": "sharpshooters93r",
       "drop location": {
         "lz": false,
         "dz": false,
@@ -1537,7 +1910,9 @@
     },
     {
       "weapon": "Pistol",
+      "weapon_key": "pistol",
       "name": "Survivalist D50",
+      "name_key": "survivalistd50",
       "drop location": {
         "lz": false,
         "dz": false,
@@ -1548,7 +1923,9 @@
     },
     {
       "weapon": "Pistol",
+      "weapon_key": "pistol",
       "name": "Mozambique Special",
+      "name_key": "mozambiquespecial",
       "drop location": {
         "lz": true,
         "dz": false,
@@ -1559,7 +1936,9 @@
     },
     {
       "weapon": "Pistol",
+      "weapon_key": "pistol",
       "name": "Quickstep",
+      "name_key": "quickstep",
       "drop location": {
         "lz": false,
         "dz": false,
@@ -1570,7 +1949,9 @@
     },
     {
       "weapon": "Pistol",
+      "weapon_key": "pistol",
       "name": "Maxim 9",
+      "name_key": "maxim9",
       "drop location": {
         "lz": false,
         "dz": false,
@@ -1581,7 +1962,9 @@
     },
     {
       "weapon": "Pistol",
+      "weapon_key": "pistol",
       "name": "P320 XCompact",
+      "name_key": "p320xcompact",
       "drop location": {
         "lz": false,
         "dz": false,
@@ -1592,7 +1975,9 @@
     },
     {
       "weapon": "Pistol",
+      "weapon_key": "pistol",
       "name": "Lightning Rod",
+      "name_key": "lightningrod",
       "drop location": {
         "lz": true,
         "dz": false,
@@ -1601,7 +1986,9 @@
     },
     {
       "weapon": "Pistol",
+      "weapon_key": "pistol",
       "name": "TDI \"Kard\" Custom",
+      "name_key": "tdikardcustom",
       "drop location": {
         "lz": false,
         "dz": true,
@@ -1612,7 +1999,9 @@
     },
     {
       "weapon": "Pistol",
+      "weapon_key": "pistol",
       "name": "The Harvest",
+      "name_key": "theharvest",
       "drop location": {
         "lz": false,
         "dz": false,
@@ -1623,7 +2012,9 @@
     },
     {
       "weapon": "Pistol",
+      "weapon_key": "pistol",
       "name": "Diceros Special",
+      "name_key": "dicerosspecial",
       "drop location": {
         "lz": false,
         "dz": false,
