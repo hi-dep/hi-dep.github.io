@@ -9,7 +9,20 @@
         "The Pentagon",
         "DARPA Research Labs"
       ],
-      "target_loot_by_day": []
+      "target_loot_by_day": [
+        {
+          "day": "2026-07-21",
+          "target_loot": [
+            "Lengmo",
+            "Airaldi Holdings",
+            "Edelweiss GPz",
+            "Unit Alloys",
+            "Shiny Monkey Gear"
+          ],
+          "prototype_gear_cache": "chest",
+          "prototype_weapon_cache": "pistol"
+        }
+      ]
     }
   ]
 }
