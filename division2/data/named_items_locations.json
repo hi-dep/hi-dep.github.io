@@ -1,0 +1,1636 @@
+{
+  "gear": [
+    {
+      "brand": "Douglas & Harding",
+      "type": "mask",
+      "name": "Punch Drunk",
+      "drop location": {
+        "lz": true,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "brand": "Gila Guard",
+      "type": "mask",
+      "name": "Nightwatcher",
+      "drop location": {
+        "lz": true,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "brand": "Gila Guard",
+      "type": "mask",
+      "name": "Chill Out",
+      "drop location": {
+        "lz": false,
+        "dz": false,
+        "other": [
+          "Special Event Hoarder"
+        ]
+      }
+    },
+    {
+      "brand": "Legatus S.p.A.",
+      "type": "mask",
+      "name": "Visionario",
+      "drop location": {
+        "lz": true,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "brand": "Yaahl Gear",
+      "type": "mask",
+      "name": "The Hollow Man",
+      "drop location": {
+        "lz": false,
+        "dz": true,
+        "other": []
+      }
+    },
+    {
+      "brand": "Belstone Armory",
+      "type": "backpack",
+      "name": "Liquid Engineer",
+      "drop location": {
+        "lz": false,
+        "dz": true,
+        "other": []
+      }
+    },
+    {
+      "brand": "Brazos de Arcabuz",
+      "type": "backpack",
+      "name": "Hermano",
+      "drop location": {
+        "lz": true,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "brand": "Habsburg Guard",
+      "type": "backpack",
+      "name": "The Courier",
+      "drop location": {
+        "lz": true,
+        "dz": false,
+        "other": [
+          "only"
+        ]
+      }
+    },
+    {
+      "brand": "Lengmo",
+      "type": "backpack",
+      "name": "Backbone",
+      "drop location": {
+        "lz": true,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "brand": "Golan Gear Ltd",
+      "type": "backpack",
+      "name": "Anarchist's Cookbook",
+      "drop location": {
+        "lz": true,
+        "dz": true,
+        "other": [
+          "Warlords Campaign Vivian Conley (story)"
+        ]
+      }
+    },
+    {
+      "brand": "China Light Industries Corporation",
+      "type": "backpack",
+      "name": "Strategic Alignment",
+      "drop location": {
+        "lz": true,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "brand": "Electrique",
+      "type": "backpack",
+      "name": "Lavoisier",
+      "drop location": {
+        "lz": true,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "brand": "Walker, Harris & Co.",
+      "type": "backpack",
+      "name": "Matador",
+      "drop location": {
+        "lz": false,
+        "dz": true,
+        "other": []
+      }
+    },
+    {
+      "brand": "Providence Defense",
+      "type": "backpack",
+      "name": "The Gift",
+      "drop location": {
+        "lz": false,
+        "dz": true,
+        "other": []
+      }
+    },
+    {
+      "brand": "Alps Summit Armaments",
+      "type": "backpack",
+      "name": "Percussive Maintenance",
+      "drop location": {
+        "lz": true,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "brand": "Legatus S.p.A.",
+      "type": "backpack",
+      "name": "Vigil",
+      "drop location": {
+        "lz": true,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "brand": "Česká Výroba s.r.o.",
+      "type": "backpack",
+      "name": "Devil's Due",
+      "drop location": {
+        "lz": false,
+        "dz": true,
+        "other": []
+      }
+    },
+    {
+      "brand": "Empress International",
+      "type": "backpack",
+      "name": "Battery Pack",
+      "drop location": {
+        "lz": true,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "brand": "Uzina Getica",
+      "type": "backpack",
+      "name": "The Setup",
+      "drop location": {
+        "lz": true,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "brand": "Hana-U Corporation",
+      "type": "backpack",
+      "name": "Force Multiplier",
+      "drop location": {
+        "lz": true,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "brand": "Palisade Steelworks",
+      "type": "backpack",
+      "name": "Proxy",
+      "drop location": {
+        "lz": true,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "brand": "Shiny Monkey Gear",
+      "type": "backpack",
+      "name": "Axel",
+      "drop location": {
+        "lz": true,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "brand": "Imminence Armaments",
+      "type": "backpack",
+      "name": "Cap'n",
+      "drop location": {
+        "lz": true,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "brand": "Royal Works",
+      "type": "Backpack",
+      "name": "Bulldog",
+      "drop location": {
+        "lz": true,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "brand": "Edelweiss GPz",
+      "type": "backpack",
+      "name": "Momma Badger",
+      "drop location": {
+        "lz": true,
+        "dz": true,
+        "other": []
+      }
+    },
+    {
+      "brand": "Grupo Sombra S.A.",
+      "type": "backpack",
+      "name": "Festive Delivery",
+      "drop location": {
+        "lz": false,
+        "dz": false,
+        "other": [
+          "Special Event Hoarder"
+        ]
+      }
+    },
+    {
+      "brand": "Electrique",
+      "type": "chest",
+      "name": "Henri",
+      "drop location": {
+        "lz": true,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "brand": "Golan Gear Ltd",
+      "type": "chest",
+      "name": "Hunter-Killer",
+      "drop location": {
+        "lz": false,
+        "dz": false,
+        "other": [
+          "Off-White cache then Cassie Mendoza"
+        ]
+      }
+    },
+    {
+      "brand": "Belstone Armory",
+      "type": "chest",
+      "name": "Everyday Carrier",
+      "drop location": {
+        "lz": true,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "brand": "Walker, Harris & Co.",
+      "type": "chest",
+      "name": "Chainkiller",
+      "drop location": {
+        "lz": true,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "brand": "Gila Guard",
+      "type": "chest",
+      "name": "Pointman",
+      "drop location": {
+        "lz": true,
+        "dz": false,
+        "other": [
+          "Warlords Campaign James Dragov (story)"
+        ]
+      }
+    },
+    {
+      "brand": "Petrov Defense Group",
+      "type": "chest",
+      "name": "Vedmedytsya Vest",
+      "drop location": {
+        "lz": false,
+        "dz": false,
+        "other": [
+          "Crafted"
+        ]
+      }
+    },
+    {
+      "brand": "Providence Defense",
+      "type": "chest",
+      "name": "The Sacrifice",
+      "drop location": {
+        "lz": true,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "brand": "Badger Tuff",
+      "type": "chest",
+      "name": "Zero F’s",
+      "drop location": {
+        "lz": true,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "brand": "Fenris Group AB",
+      "type": "chest",
+      "name": "Ferocious Calm",
+      "drop location": {
+        "lz": false,
+        "dz": true,
+        "other": []
+      }
+    },
+    {
+      "brand": "Grupo Sombra S.A.",
+      "type": "chest",
+      "name": "Door-Kicker’s Knock",
+      "drop location": {
+        "lz": false,
+        "dz": true,
+        "other": []
+      }
+    },
+    {
+      "brand": "Empress International",
+      "type": "chest",
+      "name": "Caesar's Guard",
+      "drop location": {
+        "lz": true,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "brand": "Uzina Getica",
+      "type": "chest",
+      "name": "Closer",
+      "drop location": {
+        "lz": true,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "brand": "Habsburg Guard",
+      "type": "chest",
+      "name": "Cherished",
+      "drop location": {
+        "lz": true,
+        "dz": false,
+        "other": [
+          "only"
+        ]
+      }
+    },
+    {
+      "brand": "Lengmo",
+      "type": "chest",
+      "name": "Carpenter",
+      "drop location": {
+        "lz": true,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "brand": "Zwiadowka Sp.z o.o.",
+      "type": "chest",
+      "name": "Bober",
+      "drop location": {
+        "lz": true,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "brand": "Airaldi Holdings",
+      "type": "chest",
+      "name": "Pristine Example",
+      "drop location": {
+        "lz": true,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "brand": "Urban Lookout",
+      "type": "chest",
+      "name": "Sleight",
+      "drop location": {
+        "lz": true,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "brand": "Palisade Steelworks",
+      "type": "chest",
+      "name": "Combustor",
+      "drop location": {
+        "lz": true,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "brand": "Wyvern Wear",
+      "type": "Chest",
+      "name": "Impetus",
+      "drop location": {
+        "lz": false,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "brand": "Royal Works",
+      "type": "Chest",
+      "name": "Robin",
+      "drop location": {
+        "lz": true,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "brand": "Edelweiss GPz",
+      "type": "chest",
+      "name": "Benefactor",
+      "drop location": {
+        "lz": true,
+        "dz": true,
+        "other": []
+      }
+    },
+    {
+      "brand": "Unit Alloys",
+      "type": "chest",
+      "name": "Equalizer",
+      "drop location": {
+        "lz": true,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "brand": "5.11 Tactical",
+      "type": "gloves",
+      "name": "Deathgrips",
+      "drop location": {
+        "lz": false,
+        "dz": true,
+        "other": []
+      }
+    },
+    {
+      "brand": "Petrov Defense Group",
+      "type": "gloves",
+      "name": "Contractor’s Gloves",
+      "drop location": {
+        "lz": true,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "brand": "Alps Summit Armaments",
+      "type": "gloves",
+      "name": "Motherly Love",
+      "drop location": {
+        "lz": false,
+        "dz": false,
+        "other": [
+          "Crafted"
+        ]
+      }
+    },
+    {
+      "brand": "Zwiadowka Sp.z o.o.",
+      "type": "gloves",
+      "name": "Eagles Grasp",
+      "drop location": {
+        "lz": true,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "brand": "Sokolov Concern",
+      "type": "gloves",
+      "name": "Firm Handshake",
+      "drop location": {
+        "lz": true,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "brand": "Richter & Kaiser",
+      "type": "holster",
+      "name": "Forge",
+      "drop location": {
+        "lz": true,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "brand": "Badger Tuff",
+      "type": "holster",
+      "name": "Ammo Dump",
+      "drop location": {
+        "lz": false,
+        "dz": false,
+        "other": [
+          "Crafted"
+        ]
+      }
+    },
+    {
+      "brand": "Brazos de Arcabuz",
+      "type": "holster",
+      "name": "Picaros Holster",
+      "drop location": {
+        "lz": true,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "brand": "Urban Lookout",
+      "type": "holster",
+      "name": "Spot-On",
+      "drop location": {
+        "lz": true,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "brand": "Unit Alloys",
+      "type": "holster",
+      "name": "Salvo",
+      "drop location": {
+        "lz": true,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "brand": "Wyvern Wear",
+      "type": "holster",
+      "name": "Claws Out",
+      "drop location": {
+        "lz": false,
+        "dz": true,
+        "other": []
+      }
+    },
+    {
+      "brand": "Overlord Armaments",
+      "type": "kneepads",
+      "name": "Fox’s Prayer",
+      "drop location": {
+        "lz": true,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "brand": "Electrique",
+      "type": "kneepads",
+      "name": "Snow Machine",
+      "drop location": {
+        "lz": false,
+        "dz": false,
+        "other": [
+          "Special Event Hoarder"
+        ]
+      }
+    },
+    {
+      "brand": "Česká Výroba s.r.o.",
+      "type": "kneepads",
+      "name": "Turmoil",
+      "drop location": {
+        "lz": false,
+        "dz": false,
+        "other": [
+          "Limited time April Fools event."
+        ]
+      }
+    },
+    {
+      "brand": "Murakami Industries",
+      "type": "kneepads",
+      "name": "Emperor’s Guard",
+      "drop location": {
+        "lz": false,
+        "dz": true,
+        "other": []
+      }
+    },
+    {
+      "brand": "Shiny Monkey Gear",
+      "type": "kneepads",
+      "name": "Grease",
+      "drop location": {
+        "lz": true,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "brand": "Imminence Armaments",
+      "type": "kneepads",
+      "name": "Cloak",
+      "drop location": {
+        "lz": true,
+        "dz": false,
+        "other": []
+      }
+    }
+  ],
+  "weapon": [
+    {
+      "weapon": "Assault Rifle",
+      "name": "Caretaker",
+      "drop location": {
+        "lz": false,
+        "dz": false,
+        "other": [
+          "Limited time Shepherding Gamepass event."
+        ]
+      }
+    },
+    {
+      "weapon": "ar",
+      "name": "The Archivist",
+      "drop location": {
+        "lz": false,
+        "dz": false,
+        "other": [
+          "Library of Congress classified mission completion reward"
+        ]
+      }
+    },
+    {
+      "weapon": "Assault Rifle",
+      "name": "First Sight",
+      "drop location": {
+        "lz": false,
+        "dz": false,
+        "other": [
+          "Special Event Reward"
+        ]
+      }
+    },
+    {
+      "weapon": "Assault Rifle",
+      "name": "Manic",
+      "drop location": {
+        "lz": false,
+        "dz": true,
+        "other": []
+      }
+    },
+    {
+      "weapon": "Assault Rifle",
+      "name": "The Drill",
+      "drop location": {
+        "lz": true,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "weapon": "Assault Rifle",
+      "name": "Invisible Hand",
+      "drop location": {
+        "lz": true,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "weapon": "Assault Rifle",
+      "name": "Shield Splinterer",
+      "drop location": {
+        "lz": false,
+        "dz": false,
+        "other": [
+          "Ivory Cache then Cassie Mendoza"
+        ]
+      }
+    },
+    {
+      "weapon": "Assault Rifle",
+      "name": "Goalie",
+      "drop location": {
+        "lz": true,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "weapon": "Assault Rifle",
+      "name": "Huntsman",
+      "drop location": {
+        "lz": false,
+        "dz": false,
+        "other": [
+          "Ash Cache then Cassie Mendoza"
+        ]
+      }
+    },
+    {
+      "weapon": "Assault Rifle",
+      "name": "Born Great",
+      "drop location": {
+        "lz": true,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "weapon": "Assault Rifle",
+      "name": "Burn Out",
+      "drop location": {
+        "lz": true,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "weapon": "Assault Rifle",
+      "name": "Savage Wolverine",
+      "drop location": {
+        "lz": false,
+        "dz": false,
+        "other": [
+          "Firewall Field Research (crafting blueprint)"
+        ]
+      }
+    },
+    {
+      "weapon": "Assault Rifle",
+      "name": "Pyromaniac",
+      "drop location": {
+        "lz": true,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "weapon": "Assault Rifle",
+      "name": "Glory Daze",
+      "drop location": {
+        "lz": true,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "weapon": "Assault Rifle",
+      "name": "Mechanical Animal",
+      "drop location": {
+        "lz": true,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "weapon": "Assault Rifle",
+      "name": "Test Subject",
+      "drop location": {
+        "lz": true,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "weapon": "Assault Rifle",
+      "name": "First Bloom",
+      "drop location": {
+        "lz": false,
+        "dz": false,
+        "other": [
+          "Cherry Blossom Event"
+        ]
+      }
+    },
+    {
+      "weapon": "Assault Rifle",
+      "name": "Lud",
+      "drop location": {
+        "lz": true,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "weapon": "Assault Rifle",
+      "name": "Kingbreaker",
+      "drop location": {
+        "lz": true,
+        "dz": false,
+        "other": [
+          "only"
+        ]
+      }
+    },
+    {
+      "weapon": "Assault Rifle",
+      "name": "Lexington",
+      "drop location": {
+        "lz": false,
+        "dz": false,
+        "other": [
+          "Special Event Reward"
+        ]
+      }
+    },
+    {
+      "weapon": "Assault Rifle",
+      "name": "The Railsplitter",
+      "drop location": {
+        "lz": false,
+        "dz": true,
+        "other": []
+      }
+    },
+    {
+      "weapon": "Light Machine Gun",
+      "name": "Dare",
+      "drop location": {
+        "lz": true,
+        "dz": false,
+        "other": [
+          "only"
+        ]
+      }
+    },
+    {
+      "weapon": "Light Machine Gun",
+      "name": "Tabula Rasa",
+      "drop location": {
+        "lz": true,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "weapon": "Light Machine Gun",
+      "name": "Black Friday",
+      "drop location": {
+        "lz": false,
+        "dz": true,
+        "other": []
+      }
+    },
+    {
+      "weapon": "Light Machine Gun",
+      "name": "Good Times",
+      "drop location": {
+        "lz": false,
+        "dz": true,
+        "other": []
+      }
+    },
+    {
+      "weapon": "Light Machine Gun",
+      "name": "The Headline-grabber",
+      "drop location": {
+        "lz": false,
+        "dz": false,
+        "other": [
+          "Capitol Globe classified mission completion reward"
+        ]
+      }
+    },
+    {
+      "weapon": "Light Machine Gun",
+      "name": "The Stinger",
+      "drop location": {
+        "lz": false,
+        "dz": false,
+        "other": [
+          "Friend Referral"
+        ]
+      }
+    },
+    {
+      "weapon": "Light Machine Gun",
+      "name": "Gear Shift",
+      "drop location": {
+        "lz": false,
+        "dz": false,
+        "other": [
+          "Named Item Cache / Targeted Loot"
+        ]
+      }
+    },
+    {
+      "weapon": "Light Machine Gun",
+      "name": "Sleipner",
+      "drop location": {
+        "lz": false,
+        "dz": false,
+        "other": [
+          "Gunner Field Research (crafting blueprint)"
+        ]
+      }
+    },
+    {
+      "weapon": "Light Machine Gun",
+      "name": "Big Show",
+      "drop location": {
+        "lz": true,
+        "dz": false,
+        "other": [
+          "only"
+        ]
+      }
+    },
+    {
+      "weapon": "Light Machine Gun",
+      "name": "Bellringer",
+      "drop location": {
+        "lz": false,
+        "dz": false,
+        "other": [
+          "Special Event Reward"
+        ]
+      }
+    },
+    {
+      "weapon": "Light Machine Gun",
+      "name": "Carnage",
+      "drop location": {
+        "lz": true,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "weapon": "Light Machine Gun",
+      "name": "New Reliable",
+      "drop location": {
+        "lz": true,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "weapon": "Light Machine Gun",
+      "name": "Cricket",
+      "drop location": {
+        "lz": true,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "weapon": "Light Machine Gun",
+      "name": "Rusty",
+      "drop location": {
+        "lz": true,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "weapon": "Light Machine Gun",
+      "name": "Quiet Roar",
+      "drop location": {
+        "lz": true,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "weapon": "Submachine Gun",
+      "name": "The Grudge",
+      "drop location": {
+        "lz": true,
+        "dz": false,
+        "other": [
+          "Warlords Campaign Aaron Keener (story)"
+        ]
+      }
+    },
+    {
+      "weapon": "Assault Rifle",
+      "name": "Interchange",
+      "drop location": {
+        "lz": true,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "weapon": "Submachine Gun",
+      "name": "Cabaret",
+      "drop location": {
+        "lz": true,
+        "dz": false,
+        "other": [
+          "only"
+        ]
+      }
+    },
+    {
+      "weapon": "Submachine Gun",
+      "name": "Grown Great",
+      "drop location": {
+        "lz": true,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "weapon": "Submachine Gun",
+      "name": "Swap Chain",
+      "drop location": {
+        "lz": true,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "weapon": "Submachine Gun",
+      "name": "Safety Distance",
+      "drop location": {
+        "lz": true,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "weapon": "Submachine Gun",
+      "name": "The Apartment",
+      "drop location": {
+        "lz": false,
+        "dz": true,
+        "other": []
+      }
+    },
+    {
+      "weapon": "Submachine Gun",
+      "name": "Emeline's Guard",
+      "drop location": {
+        "lz": true,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "weapon": "Submachine Gun",
+      "name": "Purist",
+      "drop location": {
+        "lz": true,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "weapon": "Submachine Gun",
+      "name": "The Sleigher",
+      "drop location": {
+        "lz": false,
+        "dz": false,
+        "other": [
+          "Special Event Reward"
+        ]
+      }
+    },
+    {
+      "weapon": "Submachine Gun",
+      "name": "Cold Relations",
+      "drop location": {
+        "lz": true,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "weapon": "Submachine Gun",
+      "name": "Slingshot",
+      "drop location": {
+        "lz": false,
+        "dz": false,
+        "other": [
+          "Special Event Reward"
+        ]
+      }
+    },
+    {
+      "weapon": "Submachine Gun",
+      "name": "Froth",
+      "drop location": {
+        "lz": true,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "weapon": "Submachine Gun",
+      "name": "Dark Winter",
+      "drop location": {
+        "lz": false,
+        "dz": true,
+        "other": []
+      }
+    },
+    {
+      "weapon": "Shotgun",
+      "name": "Rock n' Roll",
+      "drop location": {
+        "lz": false,
+        "dz": true,
+        "other": []
+      }
+    },
+    {
+      "weapon": "Shotgun",
+      "name": "Lefty",
+      "drop location": {
+        "lz": true,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "weapon": "Shotgun",
+      "name": "Boomstick",
+      "drop location": {
+        "lz": true,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "weapon": "Shotgun",
+      "name": "The Send-Off",
+      "drop location": {
+        "lz": false,
+        "dz": false,
+        "other": [
+          "Technician Field Research"
+        ]
+      }
+    },
+    {
+      "weapon": "Shotgun",
+      "name": "Cuélebre",
+      "drop location": {
+        "lz": true,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "weapon": "Shotgun",
+      "name": "Lockdown",
+      "drop location": {
+        "lz": true,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "weapon": "Shotgun",
+      "name": "Tsunami",
+      "drop location": {
+        "lz": true,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "weapon": "Shotgun",
+      "name": "Backup Boomstick",
+      "drop location": {
+        "lz": true,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "weapon": "Shotgun",
+      "name": "Firestarter",
+      "drop location": {
+        "lz": false,
+        "dz": false,
+        "other": [
+          "Firewall Specialization"
+        ]
+      }
+    },
+    {
+      "weapon": "Shotgun",
+      "name": "Like Glue",
+      "drop location": {
+        "lz": true,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "weapon": "Shotgun",
+      "name": "Enforcer",
+      "drop location": {
+        "lz": false,
+        "dz": false,
+        "other": [
+          "Pre-Order Only"
+        ]
+      }
+    },
+    {
+      "weapon": "Shotgun",
+      "name": "Thorn",
+      "drop location": {
+        "lz": true,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "weapon": "Shotgun",
+      "name": "The Mop",
+      "drop location": {
+        "lz": true,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "weapon": "Rifle",
+      "name": "The Virginian",
+      "drop location": {
+        "lz": false,
+        "dz": true,
+        "other": []
+      }
+    },
+    {
+      "weapon": "Rifle",
+      "name": "Trader",
+      "drop location": {
+        "lz": true,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "weapon": "Rifle",
+      "name": "Cooler",
+      "drop location": {
+        "lz": false,
+        "dz": false,
+        "other": [
+          "Special Event Reward"
+        ]
+      }
+    },
+    {
+      "weapon": "Rifle",
+      "name": "Baker's Dozen",
+      "drop location": {
+        "lz": true,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "weapon": "Rifle",
+      "name": "Stage Left",
+      "drop location": {
+        "lz": true,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "weapon": "Rifle",
+      "name": "Surge",
+      "drop location": {
+        "lz": true,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "weapon": "Rifle",
+      "name": "Everlasting Gaze",
+      "drop location": {
+        "lz": false,
+        "dz": true,
+        "other": []
+      }
+    },
+    {
+      "weapon": "Rifle",
+      "name": "Harmony",
+      "drop location": {
+        "lz": false,
+        "dz": true,
+        "other": []
+      }
+    },
+    {
+      "weapon": "Rifle",
+      "name": "Artist's Tool",
+      "drop location": {
+        "lz": true,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "weapon": "Rifle",
+      "name": "Achilles",
+      "drop location": {
+        "lz": true,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "weapon": "Rifle",
+      "name": "Whisper",
+      "drop location": {
+        "lz": true,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "weapon": "Marksman Rifle",
+      "name": "The White Death",
+      "drop location": {
+        "lz": true,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "weapon": "Marksman Rifle",
+      "name": "Oh Carol",
+      "drop location": {
+        "lz": false,
+        "dz": false,
+        "other": [
+          "Special Event Reward"
+        ]
+      }
+    },
+    {
+      "weapon": "Marksman Rifle",
+      "name": "Ekim's Long Stick",
+      "drop location": {
+        "lz": true,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "weapon": "Marksman Rifle",
+      "name": "The Darkness",
+      "drop location": {
+        "lz": true,
+        "dz": false,
+        "other": [
+          "Warlords Campaign Theo Parnell (story)"
+        ]
+      }
+    },
+    {
+      "weapon": "Marksman Rifle",
+      "name": "Designated Hitter",
+      "drop location": {
+        "lz": true,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "weapon": "Marksman Rifle",
+      "name": "Pinprick",
+      "drop location": {
+        "lz": false,
+        "dz": true,
+        "other": []
+      }
+    },
+    {
+      "weapon": "Marksman Rifle",
+      "name": "Commando",
+      "drop location": {
+        "lz": true,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "weapon": "Marksman Rifle",
+      "name": "Handbasket",
+      "drop location": {
+        "lz": false,
+        "dz": false,
+        "other": [
+          "Special Event Reward"
+        ]
+      }
+    },
+    {
+      "weapon": "Marksman Rifle",
+      "name": "Relic",
+      "drop location": {
+        "lz": true,
+        "dz": false,
+        "other": [
+          "only"
+        ]
+      }
+    },
+    {
+      "weapon": "Marksman Rifle",
+      "name": "Scalpel",
+      "drop location": {
+        "lz": true,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "weapon": "Marksman Rifle",
+      "name": "Instigator",
+      "drop location": {
+        "lz": true,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "weapon": "Marksman Rifle",
+      "name": "Brutus",
+      "drop location": {
+        "lz": true,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "weapon": "Pistol",
+      "name": "Orbit",
+      "drop location": {
+        "lz": false,
+        "dz": true,
+        "other": []
+      }
+    },
+    {
+      "weapon": "Pistol",
+      "name": "Prophet",
+      "drop location": {
+        "lz": true,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "weapon": "Pistol",
+      "name": "Sharpshooter's 93R",
+      "drop location": {
+        "lz": false,
+        "dz": false,
+        "other": [
+          "Sharpshooter Specialization"
+        ]
+      }
+    },
+    {
+      "weapon": "Pistol",
+      "name": "Survivalist D50",
+      "drop location": {
+        "lz": false,
+        "dz": false,
+        "other": [
+          "Survivalist Specialization"
+        ]
+      }
+    },
+    {
+      "weapon": "Pistol",
+      "name": "Mozambique Special",
+      "drop location": {
+        "lz": true,
+        "dz": false,
+        "other": [
+          "Warlords Campaign Javier Kajika (story)"
+        ]
+      }
+    },
+    {
+      "weapon": "Pistol",
+      "name": "Quickstep",
+      "drop location": {
+        "lz": false,
+        "dz": false,
+        "other": [
+          "Special Event Reward"
+        ]
+      }
+    },
+    {
+      "weapon": "Pistol",
+      "name": "Maxim 9",
+      "drop location": {
+        "lz": false,
+        "dz": false,
+        "other": [
+          "Technician Specialization"
+        ]
+      }
+    },
+    {
+      "weapon": "Pistol",
+      "name": "P320 XCompact",
+      "drop location": {
+        "lz": false,
+        "dz": false,
+        "other": [
+          "Gunner Specialization"
+        ]
+      }
+    },
+    {
+      "weapon": "Pistol",
+      "name": "Lightning Rod",
+      "drop location": {
+        "lz": true,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "weapon": "Pistol",
+      "name": "TDI \"Kard\" Custom",
+      "drop location": {
+        "lz": false,
+        "dz": true,
+        "other": [
+          "Caches"
+        ]
+      }
+    },
+    {
+      "weapon": "Pistol",
+      "name": "The Harvest",
+      "drop location": {
+        "lz": false,
+        "dz": false,
+        "other": [
+          "Special Event Reward"
+        ]
+      }
+    },
+    {
+      "weapon": "Pistol",
+      "name": "Diceros Special",
+      "drop location": {
+        "lz": false,
+        "dz": false,
+        "other": [
+          "Demolitionist Specialization"
+        ]
+      }
+    }
+  ]
+}
