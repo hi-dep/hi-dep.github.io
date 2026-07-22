@@ -21,6 +21,18 @@
           ],
           "prototype_gear_cache": "chest",
           "prototype_weapon_cache": "pistol"
+        },
+        {
+          "day": "2026-07-22",
+          "target_loot": [
+            "Hana-U Corporation",
+            "Wyvern Wear",
+            "Ongoing Directive",
+            "Airaldi Holdings",
+            "Negotiator's Dilemma"
+          ],
+          "prototype_gear_cache": "backpack",
+          "prototype_weapon_cache": "lmg"
         }
       ]
     }
