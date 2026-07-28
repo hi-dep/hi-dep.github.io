@@ -9,7 +9,20 @@
         "Bank Headquarters",
         "DCD Headquarters"
       ],
-      "target_loot_by_day": []
+      "target_loot_by_day": [
+        {
+          "day": "2026-07-28",
+          "target_loot": [
+            "Imminence Armaments",
+            "Brazos de Arcabuz",
+            "pistol",
+            "Golan Gear Ltd",
+            "Habsburg Guard"
+          ],
+          "prototype_gear_cache": "mask",
+          "prototype_weapon_cache": "rifle"
+        }
+      ]
     }
   ]
 }
