@@ -1,6 +1,6 @@
 {
-  "built_at": "2026-07-28T21:35:03.628698Z",
-  "target_week": "2026-07-28",
+  "built_at": "2026-08-04T08:00:03.052838Z",
+  "target_week": "2026-08-04",
   "chunks": [
     {
       "month": "2021-06",
@@ -373,6 +373,12 @@
       "start": "2026-07-07",
       "end": "2026-07-28",
       "file": "shop/shop_2026-07.db.gz"
+    },
+    {
+      "month": "2026-08",
+      "start": null,
+      "end": null,
+      "file": "shop/shop_2026-08.db.gz"
     }
   ]
 }
