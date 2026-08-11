@@ -885,6 +885,19 @@
       }
     },
     {
+      "weapon": "ar",
+      "weapon_key": "ar",
+      "name": "The Archivist",
+      "name_key": "thearchivist",
+      "drop location": {
+        "lz": false,
+        "dz": false,
+        "other": [
+          "Library of Congress classified mission completion reward"
+        ]
+      }
+    },
+    {
       "weapon": "Assault Rifle",
       "weapon_key": "ar",
       "name": "First Sight",
@@ -970,19 +983,6 @@
     {
       "weapon": "Assault Rifle",
       "weapon_key": "ar",
-      "name": "First Bloom",
-      "name_key": "firstbloom",
-      "drop location": {
-        "lz": false,
-        "dz": false,
-        "other": [
-          "Cherry Blossom Event"
-        ]
-      }
-    },
-    {
-      "weapon": "Assault Rifle",
-      "weapon_key": "ar",
       "name": "Born Great",
       "name_key": "borngreat",
       "drop location": {
@@ -1057,6 +1057,19 @@
         "lz": true,
         "dz": false,
         "other": []
+      }
+    },
+    {
+      "weapon": "Assault Rifle",
+      "weapon_key": "ar",
+      "name": "First Bloom",
+      "name_key": "firstbloom",
+      "drop location": {
+        "lz": false,
+        "dz": false,
+        "other": [
+          "Cherry Blossom Event"
+        ]
       }
     },
     {
@@ -1156,6 +1169,19 @@
     {
       "weapon": "Light Machine Gun",
       "weapon_key": "lmg",
+      "name": "The Headline-grabber",
+      "name_key": "theheadlinegrabber",
+      "drop location": {
+        "lz": false,
+        "dz": false,
+        "other": [
+          "Capitol Globe classified mission completion reward"
+        ]
+      }
+    },
+    {
+      "weapon": "Light Machine Gun",
+      "weapon_key": "lmg",
       "name": "The Stinger",
       "name_key": "thestinger",
       "drop location": {
@@ -1169,12 +1195,14 @@
     {
       "weapon": "Light Machine Gun",
       "weapon_key": "lmg",
-      "name": "The Headline-grabber",
-      "name_key": "theheadlinegrabber",
+      "name": "Gear Shift",
+      "name_key": "gearshift",
       "drop location": {
         "lz": false,
         "dz": false,
-        "other": []
+        "other": [
+          "Named Item Cache / Targeted Loot"
+        ]
       }
     },
     {
@@ -1200,6 +1228,19 @@
         "dz": false,
         "other": [
           "only"
+        ]
+      }
+    },
+    {
+      "weapon": "Light Machine Gun",
+      "weapon_key": "lmg",
+      "name": "Bellringer",
+      "name_key": "bellringer",
+      "drop location": {
+        "lz": false,
+        "dz": false,
+        "other": [
+          "Special Event Reward"
         ]
       }
     },
@@ -1269,6 +1310,17 @@
         "other": [
           "Warlords Campaign Aaron Keener (story)"
         ]
+      }
+    },
+    {
+      "weapon": "Assault Rifle",
+      "weapon_key": "ar",
+      "name": "Interchange",
+      "name_key": "interchange",
+      "drop location": {
+        "lz": true,
+        "dz": false,
+        "other": []
       }
     },
     {
@@ -1566,6 +1618,17 @@
       "drop location": {
         "lz": false,
         "dz": true,
+        "other": []
+      }
+    },
+    {
+      "weapon": "Rifle",
+      "weapon_key": "rifle",
+      "name": "Trader",
+      "name_key": "trader",
+      "drop location": {
+        "lz": true,
+        "dz": false,
         "other": []
       }
     },
@@ -1957,54 +2020,6 @@
         "dz": false,
         "other": [
           "Demolitionist Specialization"
-        ]
-      }
-    },
-    {
-      "weapon": "Light Machine Gun",
-      "weapon_key": "lmg",
-      "name": "Gear Shift",
-      "name_key": "gearshift",
-      "drop location": {
-        "lz": false,
-        "dz": false,
-        "other": [
-          "Named Item Cache / Targeted Loot"
-        ]
-      }
-    },
-    {
-      "weapon": "Assault Rifle",
-      "weapon_key": "ar",
-      "name": "Interchange",
-      "name_key": "interchange",
-      "drop location": {
-        "lz": false,
-        "dz": false,
-        "other": []
-      }
-    },
-    {
-      "weapon": "Rifle",
-      "weapon_key": "rifle",
-      "name": "Trader",
-      "name_key": "trader",
-      "drop location": {
-        "lz": false,
-        "dz": false,
-        "other": []
-      }
-    },
-    {
-      "weapon": "Light Machine Gun",
-      "weapon_key": "lmg",
-      "name": "Bellringer",
-      "name_key": "bellringer",
-      "drop location": {
-        "lz": false,
-        "dz": false,
-        "other": [
-          "Special Event Reward"
         ]
       }
     }
