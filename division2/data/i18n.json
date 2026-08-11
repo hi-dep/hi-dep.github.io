@@ -1082,7 +1082,9 @@
       "ganglandhit": "Gangland Hit",
       "headscratcher": "ヘッドスクラッチャー",
       "perfectheadscratcher": "パーフェクト・ヘッドスクラッチャー",
-      "perfectdetermined": "パーフェクト・ディターミネーション"
+      "perfectdetermined": "パーフェクト・ディターミネーション",
+      "coreattribute": "TODO:coreattribute",
+      "30hsd": "TODO:30hsd"
     },
     "cache": {
       "amount": "数量",
