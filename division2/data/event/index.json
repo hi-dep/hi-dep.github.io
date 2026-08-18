@@ -9,7 +9,20 @@
         "Jefferson Trade Center",
         "Federal Emergency Bunker"
       ],
-      "target_loot_by_day": []
+      "target_loot_by_day": [
+        {
+          "day": "2026-08-18",
+          "target_loot": [
+            "lmg",
+            "Lengmo",
+            "Aces & Eights",
+            "Hotshot",
+            "shotgun"
+          ],
+          "prototype_gear_cache": "kneepads",
+          "prototype_weapon_cache": "lmg"
+        }
+      ]
     }
   ]
 }
