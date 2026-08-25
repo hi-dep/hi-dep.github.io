@@ -9,7 +9,20 @@
         "Jefferson Plaza",
         "Air & Space Museum"
       ],
-      "target_loot_by_day": []
+      "target_loot_by_day": [
+        {
+          "day": "2026-08-25",
+          "target_loot": [
+            "Rigger",
+            "Eclipse Protocol",
+            "Core Strength",
+            "chest",
+            "shotgun"
+          ],
+          "prototype_gear_cache": "holster",
+          "prototype_weapon_cache": "rifle"
+        }
+      ]
     }
   ]
 }
