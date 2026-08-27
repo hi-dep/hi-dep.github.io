@@ -84,7 +84,8 @@
       "corestrength": "コア強度",
       "royalworks": "ロイヤルワークス",
       "ortizreficere": "オルティス：レフィキオー",
-      "edelweissgpz": "エーデルワイスGPz"
+      "edelweissgpz": "エーデルワイスGPz",
+      "emberengine": "アンバーエンジン"
     },
     "gear_item_name": {
       "chainkiller": "チェインキラー",
@@ -535,7 +536,8 @@
       "m870expressreplica": "M870 エキスプレス 模造品",
       "spas12replica": "SPAS-12 模造品",
       "super90replica": "スーパー 90 模造品",
-      "tacticalsuper90sbsreplica": "タクティカル スーパー 90 SBS 模造品"
+      "tacticalsuper90sbsreplica": "タクティカル スーパー 90 SBS 模造品",
+      "fafnir": "ファフニール"
     },
     "weapon_item_name_pistol": {
       "custompf45": "カスタム PF45",
@@ -1079,13 +1081,14 @@
       "asyoufirethegunwillplaychristmasmusic": "placeholder:asyoufirethegunwillplaychristmasmusic",
       "perfectoverflowing": "パーフェクト・オーバーフロー",
       "caduceus": "カドゥケウス",
-      "ganglandhit": "Gangland Hit",
+      "ganglandhit": "ギャングランド・ヒット",
       "headscratcher": "ヘッドスクラッチャー",
       "perfectheadscratcher": "パーフェクト・ヘッドスクラッチャー",
       "perfectdetermined": "パーフェクト・ディターミネーション",
       "coreattribute": "TODO:coreattribute",
       "30hsd": "TODO:30hsd",
-      "perfectnearsighted": "パーフェクト・ニアサイテッド"
+      "perfectnearsighted": "パーフェクト・ニアサイテッド",
+      "dragonsbreath": "ドラゴン・ブレス"
     },
     "cache": {
       "amount": "数量",
