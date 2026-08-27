@@ -489,7 +489,6 @@
       "blueprint": [
         {
           "slot": "backpack",
-          "src": "Season",
           "type": "craft"
         },
         {
@@ -508,7 +507,6 @@
         },
         {
           "slot": "gloves",
-          "src": "Season",
           "type": "craft"
         },
         {
@@ -518,7 +516,6 @@
         },
         {
           "slot": "holster",
-          "src": "Season",
           "type": "craft"
         },
         {
@@ -1003,11 +1000,6 @@
           "type": "craft"
         },
         {
-          "slot": "backpack",
-          "src": "Season",
-          "type": "craft"
-        },
-        {
           "slot": "chest",
           "type": "craft"
         },
@@ -1016,17 +1008,7 @@
           "type": "craft"
         },
         {
-          "slot": "gloves",
-          "src": "Season",
-          "type": "craft"
-        },
-        {
           "slot": "holster",
-          "type": "craft"
-        },
-        {
-          "slot": "holster",
-          "src": "Season",
           "type": "craft"
         },
         {
@@ -1478,6 +1460,54 @@
         "gloves",
         "kneepads"
       ],
+      "drop": []
+    },
+    {
+      "item_id": "6db16d31c45fa994::named",
+      "entity_type": "brandset",
+      "category": "gear",
+      "tier": "named",
+      "name_key": "keeper",
+      "name": "Keeper",
+      "brand_name": "5.11 Tactical",
+      "brand_key": "511tactical",
+      "slot_key": "backpack",
+      "blueprint": [
+        {
+          "slot": "backpack",
+          "src": "Reconstructed Caches",
+          "type": "craft"
+        }
+      ],
+      "target_looted": [
+        "5.11 Tactical",
+        "mask",
+        "chest",
+        "holster",
+        "backpack",
+        "gloves",
+        "kneepads"
+      ],
+      "drop": []
+    },
+    {
+      "item_id": "72187442b3de841c::named",
+      "entity_type": "brandset",
+      "category": "gear",
+      "tier": "named",
+      "name_key": "melonballer",
+      "name": "Melon Baller",
+      "brand_name": "Airaldi Holdings",
+      "brand_key": "airaldiholdings",
+      "slot_key": "backpack",
+      "blueprint": [
+        {
+          "slot": "backpack",
+          "src": "Reconstructed Caches",
+          "type": "craft"
+        }
+      ],
+      "target_looted": [],
       "drop": []
     },
     {
@@ -4961,7 +4991,13 @@
       "brand_name": "",
       "brand_key": "",
       "slot_key": "kneepads",
-      "blueprint": [],
+      "blueprint": [
+        {
+          "slot": "kneepads",
+          "src": "Cleaners Kill Squad",
+          "type": "craft"
+        }
+      ],
       "target_looted": [],
       "drop": []
     },
@@ -10340,17 +10376,7 @@
           "type": "craft"
         },
         {
-          "slot": "backpack",
-          "src": "Season",
-          "type": "craft"
-        },
-        {
           "slot": "chest",
-          "type": "craft"
-        },
-        {
-          "slot": "chest",
-          "src": "Season",
           "type": "craft"
         },
         {
@@ -10358,26 +10384,11 @@
           "type": "craft"
         },
         {
-          "slot": "gloves",
-          "src": "Season",
-          "type": "craft"
-        },
-        {
           "slot": "holster",
           "type": "craft"
         },
         {
-          "slot": "holster",
-          "src": "Season",
-          "type": "craft"
-        },
-        {
           "slot": "kneepads",
-          "type": "craft"
-        },
-        {
-          "slot": "kneepads",
-          "src": "Season",
           "type": "craft"
         },
         {
@@ -10401,7 +10412,6 @@
       "blueprint": [
         {
           "slot": "backpack",
-          "src": "Season",
           "type": "craft"
         },
         {
@@ -10411,7 +10421,6 @@
         },
         {
           "slot": "chest",
-          "src": "Season",
           "type": "craft"
         },
         {
@@ -10421,7 +10430,6 @@
         },
         {
           "slot": "gloves",
-          "src": "Season",
           "type": "craft"
         },
         {
@@ -10431,7 +10439,6 @@
         },
         {
           "slot": "holster",
-          "src": "Season",
           "type": "craft"
         },
         {
@@ -10441,7 +10448,6 @@
         },
         {
           "slot": "kneepads",
-          "src": "Season",
           "type": "craft"
         },
         {
@@ -10837,6 +10843,26 @@
       "slot_key": "",
       "blueprint": [
         {
+          "slot": "backpack",
+          "type": "craft"
+        },
+        {
+          "slot": "chest",
+          "type": "craft"
+        },
+        {
+          "slot": "gloves",
+          "type": "craft"
+        },
+        {
+          "slot": "holster",
+          "type": "craft"
+        },
+        {
+          "slot": "kneepads",
+          "type": "craft"
+        },
+        {
           "slot": "mask",
           "type": "craft"
         }
@@ -10900,7 +10926,6 @@
         },
         {
           "slot": "chest",
-          "src": "Season",
           "type": "craft"
         },
         {
@@ -11176,6 +11201,26 @@
       "brand_key": "truepatriot",
       "slot_key": "",
       "blueprint": [
+        {
+          "slot": "backpack",
+          "type": "craft"
+        },
+        {
+          "slot": "chest",
+          "type": "craft"
+        },
+        {
+          "slot": "gloves",
+          "type": "craft"
+        },
+        {
+          "slot": "holster",
+          "type": "craft"
+        },
+        {
+          "slot": "kneepads",
+          "type": "craft"
+        },
         {
           "slot": "mask",
           "type": "craft"
@@ -11990,7 +12035,12 @@
       "brand_name": "",
       "brand_key": "",
       "slot_key": "ar",
-      "blueprint": [],
+      "blueprint": [
+        {
+          "src": "Cleaners Kill Squad",
+          "type": "craft"
+        }
+      ],
       "target_looted": [],
       "drop": []
     },
@@ -16440,7 +16490,12 @@
       "brand_name": "",
       "brand_key": "",
       "slot_key": "smg",
-      "blueprint": [],
+      "blueprint": [
+        {
+          "src": "Blacktusk Kill Squad",
+          "type": "craft"
+        }
+      ],
       "target_looted": [],
       "drop": []
     },
