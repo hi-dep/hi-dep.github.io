@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "built_at": "2026-08-19T01:05:03.024871Z",
+  "built_at": "2026-08-27T22:45:02.677589Z",
   "sanitize": {
     "enabled": true,
     "safe_chars": "a-z 0-9 . _ -"
@@ -24,6 +24,7 @@
     "eclipseprotocol": "img/brands/eclipseprotocol.png",
     "edelweissgpz": "img/brands/edelweissgpz.png",
     "electrique": "img/brands/electrique.png",
+    "emberengine": "img/brands/emberengine.png",
     "empressinternational": "img/brands/empressinternational.png",
     "fenrisgroupab": "img/brands/fenrisgroupab.png",
     "foundrybulwark": "img/brands/foundrybulwark.png",
@@ -70,8 +71,7 @@
     "walkerharrisco": "img/brands/walkerharrisco.png",
     "wyvernwear": "img/brands/wyvernwear.png",
     "yaahlgear": "img/brands/yaahlgear.png",
-    "zwiadowkaspzoo": "img/brands/zwiadowkaspzoo.png",
-    "emberengine": "img/brands/emberengine.png"
+    "zwiadowkaspzoo": "img/brands/zwiadowkaspzoo.png"
   },
   "gear_slots": {
     "backpack": "img/gears/backpack.png",
@@ -136,6 +136,7 @@
     "escapeplan": "img/talents/escapeplan.png",
     "explosivedelivery": "img/talents/explosivedelivery.png",
     "fireworksshow": "img/talents/fireworksshow.png",
+    "flashpoint": "img/talents/flashpoint.png",
     "flurry": "img/talents/flurry.png",
     "focus": "img/talents/focus.png",
     "fortissimo": "img/talents/fortissimo.png",
@@ -289,6 +290,7 @@
     "biggamehunter": "img/weapon_talents/biggamehunter.png",
     "binarytrigger": "img/weapon_talents/binarytrigger.png",
     "blossomharvest": "img/weapon_talents/blossomharvest.png",
+    "boilingpoint": "img/weapon_talents/boilingpoint.png",
     "boomerang": "img/weapon_talents/boomerang.png",
     "brazen": "img/weapon_talents/brazen.png",
     "breadbasket": "img/weapon_talents/breadbasket.png",
@@ -305,6 +307,7 @@
     "determined": "img/weapon_talents/determined.png",
     "disruptorrounds": "img/weapon_talents/disruptorrounds.png",
     "doctorhome": "img/weapon_talents/doctorhome.png",
+    "dragonsbreath": "img/weapon_talents/dragonsbreath.png",
     "eaglestrike": "img/weapon_talents/eaglestrike.png",
     "electromagneticaccelerator": "img/weapon_talents/electromagneticaccelerator.png",
     "extra": "img/weapon_talents/extra.png",
@@ -321,6 +324,7 @@
     "futureperfection": "img/weapon_talents/futureperfect.png",
     "ganglandhit": "img/weapon_talents/ganglandhit.png",
     "geriandfreki": "img/weapon_talents/geriandfreki.png",
+    "grandlandhit": "img/weapon_talents/grandlandhit.png",
     "headscratcher": "img/weapon_talents/headscratcher.png",
     "hiddenrock": "img/weapon_talents/hiddenrock.png",
     "highprioritytarget": "img/weapon_talents/highprioritytarget.png",
@@ -347,6 +351,7 @@
     "paymentinkind": "img/weapon_talents/paymentinkind.png",
     "perfectallegro": "img/weapon_talents/allegro.png",
     "perfectbackandforth": "img/weapon_talents/backandforth.png",
+    "perfectboilingpoint": "img/weapon_talents/boilingpoint.png",
     "perfectboomerang": "img/weapon_talents/boomerang.png",
     "perfectbrazen": "img/weapon_talents/brazen.png",
     "perfectbreadbasket": "img/weapon_talents/breadbasket.png",
@@ -425,6 +430,7 @@
     "salvage": "img/weapon_talents/salvage.png",
     "sandman": "img/weapon_talents/sandman.png",
     "septicshock": "img/weapon_talents/septicshock.png",
+    "shakedown": "img/weapon_talents/shakedown.png",
     "sledgehammer": "img/weapon_talents/sledgehammer.png",
     "softspot": "img/weapon_talents/softspot.png",
     "spike": "img/weapon_talents/spike.png",
@@ -443,11 +449,6 @@
     "unnerve": "img/weapon_talents/unnerve.png",
     "unwavering": "img/weapon_talents/unwavering.png",
     "vindictive": "img/weapon_talents/vindictive.png",
-    "boilingpoint": "img/weapon_talents/boilingpoint.png",
-    "perfectboilingpoint": "img/weapon_talents/boilingpoint.png",
-    "dragonsbreath": "img/weapon_talents/dragonsbreath.png",
-    "grandlandhit": "img/weapon_talents/grandlandhit.png",
-    "shakedown": "img/weapon_talents/shakedown.png",
     "youcanlook": "img/weapon_talents/youcanlook.png"
   }
 }

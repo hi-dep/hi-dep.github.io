@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "built_at": "2026-08-19T01:05:03.024871Z",
+  "built_at": "2026-08-27T22:45:02.677589Z",
   "categories": {
     "vendor": {
       "benitez": "ベニテス",
@@ -914,7 +914,8 @@
       "overchargednanites": "オーバーチャージ・ナナイト",
       "improveddampeners": "インプルーブド・ダンプナー",
       "perfectlyopportunistic": "パーフェクト・オポチュニスティック",
-      "hostilenegotiations": "ホスタイル・ネゴシエーション"
+      "hostilenegotiations": "ホスタイル・ネゴシエーション",
+      "flashpoint": "TODO:flashpoint"
     },
     "weapon_talent": {
       "closepersonal": "接近戦",
