@@ -8035,6 +8035,20 @@
       "drop": []
     },
     {
+      "item_id": "96557e475a0c5106",
+      "entity_type": "gearset",
+      "category": "gear",
+      "tier": "gearset",
+      "name_key": "emberengine",
+      "name": "Ember Engine",
+      "brand_name": "Ember Engine",
+      "brand_key": "emberengine",
+      "slot_key": "",
+      "blueprint": [],
+      "target_looted": [],
+      "drop": []
+    },
+    {
       "item_id": "a9eb6c09e9c0241c",
       "entity_type": "gearset",
       "category": "gear",

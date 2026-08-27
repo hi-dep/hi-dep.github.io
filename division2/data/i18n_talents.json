@@ -213,7 +213,9 @@
       "blossomharvest": "敵の残りアーマーとHPの合計が10%あるごとに、武器ダメージが3.3%増幅される",
       "headscratcher": "混乱状態の敵へのダメージが30%増幅する\n4人の敵を倒した後、次に攻撃を命中させた敵を混乱状態にする",
       "perfectheadscratcher": "混乱状態の敵へのダメージが35%増幅する\n3人の敵を倒した後、次に攻撃を命中させた敵を混乱状態にする",
-      "perfectnearsighted": "TODO:Receive +100% stability at the cost of -35% optimal range."
+      "perfectnearsighted": "TODO:Receive +100% stability at the cost of -35% optimal range.",
+      "boilingpoint": "TODO:The first 53% of your magazine will have -100% Critical Hit Chance. The rest will have 100%.",
+      "perfectboilingpoint": "TODO:The first 48% of your magazine will have -100% Critical Hit Chance. The rest will have 100%."
     },
     "gearset_talent_desc": {
       "deadmanshand": "ライフルまたはマークスマンライフルの射撃が命中するとカードを1枚めくる\nカードが5枚めくられた後、次の射撃のダメージが30%増幅される。命中した分だけ良いカードが出る\nフォーカード:4回命中\nフルハウス:3回命中\nエース&エイト:2回命中\nヘッドショットで1枚多くカードをめくる",
@@ -301,7 +303,10 @@
       "overchargednanites": "回復効率ボーナスが150%から225%に上昇する",
       "improveddampeners": "範囲と持続時間の減少量が90%から25%に減少する",
       "strategiccombatsupport": "グラウンドコントロールの近接回復を60%から120%に増加する\n必要条件\nグラウンドコントロール",
-      "hostilenegotiations": "クリティカルヒットで敵を20秒間マークする。最大3回マーク可能\nマークされた敵にクリティカルヒットを決めると、他のマークされている敵は与えたダメージの60%を受ける\nマークされた敵を倒すと、クリティカルダメージが2%上昇し、最大20回累積する〔戦闘終了まで〕"
+      "hostilenegotiations": "クリティカルヒットで敵を20秒間マークする。最大3回マーク可能\nマークされた敵にクリティカルヒットを決めると、他のマークされている敵は与えたダメージの60%を受ける\nマークされた敵を倒すと、クリティカルダメージが2%上昇し、最大20回累積する〔戦闘終了まで〕",
+      "spontaneouscombustion": "自分が付与したすべてのステータス効果が40%の確率で敵を炎上させる\n最初に付与されたステータス効果が炎上だった場合、その効果発生中に敵は+25%の炎上ダメージを受ける",
+      "flashpoint": "自然発火の炎上付与率が20%に上昇する",
+      "whitehot": "自然発火による炎上ダメージデバフの持続時間が+50%延長される"
     },
     "exotic_gear_talent_desc": {
       "toxicdelivery": "ステータス効果は時間経過ダメージのデバフを10秒適用する\n与える全てのダメージは自身のコンカッショングレネードのダメージの50%で、ステータス効果の特性で増加",

@@ -916,7 +916,8 @@
       "perfectlyopportunistic": "パーフェクト・オポチュニスティック",
       "hostilenegotiations": "ホスタイル・ネゴシエーション",
       "flashpoint": "フラッシュポイント",
-      "whitehot": "ホワイトホット"
+      "whitehot": "ホワイトホット",
+      "spontaneouscombustion": "自然発火"
     },
     "weapon_talent": {
       "closepersonal": "接近戦",
@@ -1090,7 +1091,9 @@
       "coreattribute": "TODO:coreattribute",
       "30hsd": "TODO:30hsd",
       "perfectnearsighted": "パーフェクト・ニアサイテッド",
-      "dragonsbreath": "ドラゴン・ブレス"
+      "dragonsbreath": "ドラゴン・ブレス",
+      "boilingpoint": "TODO:boilingpoint",
+      "perfectboilingpoint": "TODO:perfectboilingpoint"
     },
     "cache": {
       "amount": "数量",
