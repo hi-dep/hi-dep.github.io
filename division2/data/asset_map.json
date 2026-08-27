@@ -136,7 +136,6 @@
     "escapeplan": "img/talents/escapeplan.png",
     "explosivedelivery": "img/talents/explosivedelivery.png",
     "fireworksshow": "img/talents/fireworksshow.png",
-    "flashpoint": "img/talents/flashpoint.png",
     "flurry": "img/talents/flurry.png",
     "focus": "img/talents/focus.png",
     "fortissimo": "img/talents/fortissimo.png",
@@ -274,7 +273,9 @@
     "vigilance": "img/talents/vigilance.png",
     "wavingtheflag": "img/talents/wavingtheflag.png",
     "weakestlink": "img/talents/weakestlink.png",
-    "wicked": "img/talents/wicked.png"
+    "wicked": "img/talents/wicked.png",
+    "whitehot": "img/talents/whitehot.png",
+    "flashpoint": "img/talents/flashpoint.png"
   },
   "weapon_talents": {
     "30hsd": "img/weapon_talents/30hsd.png",
