@@ -1656,6 +1656,73 @@ body.seasonmod-modal-open {
   padding: 0;
 }
 
+.brand-trait-filter {
+  display: inline-flex;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 6px;
+  max-width: min(100%, 620px);
+}
+
+.brand-trait-filter__field {
+  min-width: 190px;
+}
+
+.brand-trait-filter__field select {
+  min-width: 190px;
+  height: var(--toolbar-control-h);
+  padding: 5px 9px;
+  background: var(--panel);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: 12px;
+}
+
+.brand-trait-filter__add {
+  height: var(--toolbar-control-h);
+}
+
+.brand-trait-chips {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 5px;
+  min-height: var(--toolbar-control-h);
+}
+
+.brand-trait-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 7px 4px 9px;
+  border: 1px solid rgba(167, 139, 250, .48);
+  border-radius: 999px;
+  background: rgba(167, 139, 250, .13);
+  color: var(--text);
+  font-size: 11px;
+  line-height: 1;
+}
+
+.brand-trait-chip__remove {
+  width: 16px;
+  height: 16px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 16px;
+}
+
+.brand-trait-chip__remove:hover,
+.brand-trait-chip__remove:focus-visible {
+  background: rgba(255, 255, 255, .12);
+  color: var(--text);
+}
+
 .gearset-view.catgroup {
   border: 0;
   background: transparent;
