@@ -16,18 +16,53 @@
   ],
   "rows": [
     {
-      "item_id": "0dbcdf3575072768::highend",
+      "item_id": "03e698aae89f978b::highend",
       "entity_type": "brandset",
       "category": "gear",
       "tier": "highend",
       "name_key": "",
       "name": "",
-      "brand_name": "Petrov Defense Group",
-      "brand_key": "petrovdefensegroup",
+      "brand_name": "Providence Defense",
+      "brand_key": "providencedefense",
+      "slot_key": "",
+      "blueprint": [
+        {
+          "slot": "chest",
+          "type": "craft"
+        },
+        {
+          "slot": "holster",
+          "type": "craft"
+        },
+        {
+          "slot": "mask",
+          "type": "craft"
+        }
+      ],
+      "target_looted": [],
+      "drop": []
+    },
+    {
+      "item_id": "06f542afa89109ec::highend",
+      "entity_type": "brandset",
+      "category": "gear",
+      "tier": "highend",
+      "name_key": "",
+      "name": "",
+      "brand_name": "Shiny Monkey Gear",
+      "brand_key": "shinymonkeygear",
       "slot_key": "",
       "blueprint": [
         {
           "slot": "backpack",
+          "type": "craft"
+        },
+        {
+          "slot": "chest",
+          "type": "craft"
+        },
+        {
+          "slot": "gloves",
           "type": "craft"
         },
         {
@@ -36,6 +71,10 @@
         },
         {
           "slot": "kneepads",
+          "type": "craft"
+        },
+        {
+          "slot": "mask",
           "type": "craft"
         }
       ],
@@ -90,68 +129,14 @@
       "drop": []
     },
     {
-      "item_id": "1c350bbe76c2ac2d::highend",
+      "item_id": "1fefdd66b378df12::highend",
       "entity_type": "brandset",
       "category": "gear",
       "tier": "highend",
       "name_key": "",
       "name": "",
-      "brand_name": "Sokolov Concern",
-      "brand_key": "sokolovconcern",
-      "slot_key": "",
-      "blueprint": [
-        {
-          "slot": "chest",
-          "type": "craft"
-        },
-        {
-          "slot": "gloves",
-          "type": "craft"
-        },
-        {
-          "slot": "kneepads",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "26124e6cb5edcb52::highend",
-      "entity_type": "brandset",
-      "category": "gear",
-      "tier": "highend",
-      "name_key": "",
-      "name": "",
-      "brand_name": "Douglas & Harding",
-      "brand_key": "douglasharding",
-      "slot_key": "",
-      "blueprint": [
-        {
-          "slot": "chest",
-          "type": "craft"
-        },
-        {
-          "slot": "kneepads",
-          "type": "craft"
-        },
-        {
-          "slot": "mask",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "297f1b2ebd211d25::highend",
-      "entity_type": "brandset",
-      "category": "gear",
-      "tier": "highend",
-      "name_key": "",
-      "name": "",
-      "brand_name": "Electrique",
-      "brand_key": "electrique",
+      "brand_name": "Unit Alloys",
+      "brand_key": "unitalloys",
       "slot_key": "",
       "blueprint": [
         {
@@ -179,15 +164,96 @@
           "type": "craft"
         }
       ],
-      "target_looted": [
-        "Electrique",
-        "mask",
-        "chest",
-        "holster",
-        "backpack",
-        "gloves",
-        "kneepads"
+      "target_looted": [],
+      "drop": []
+    },
+    {
+      "item_id": "2d27a14ceb25ab1c::highend",
+      "entity_type": "brandset",
+      "category": "gear",
+      "tier": "highend",
+      "name_key": "",
+      "name": "",
+      "brand_name": "Grupo Sombra S.A.",
+      "brand_key": "gruposombrasa",
+      "slot_key": "",
+      "blueprint": [
+        {
+          "slot": "chest",
+          "type": "craft"
+        },
+        {
+          "slot": "gloves",
+          "type": "craft"
+        },
+        {
+          "slot": "holster",
+          "type": "craft"
+        },
+        {
+          "slot": "kneepads",
+          "type": "craft"
+        }
       ],
+      "target_looted": [],
+      "drop": []
+    },
+    {
+      "item_id": "2e9b1c78c3c8cdfe::highend",
+      "entity_type": "brandset",
+      "category": "gear",
+      "tier": "highend",
+      "name_key": "",
+      "name": "",
+      "brand_name": "Hana-U Corporation",
+      "brand_key": "hanaucorporation",
+      "slot_key": "",
+      "blueprint": [
+        {
+          "slot": "backpack",
+          "type": "craft"
+        },
+        {
+          "slot": "gloves",
+          "type": "craft"
+        },
+        {
+          "slot": "holster",
+          "type": "craft"
+        },
+        {
+          "slot": "mask",
+          "type": "craft"
+        }
+      ],
+      "target_looted": [],
+      "drop": []
+    },
+    {
+      "item_id": "33a93085e39661a7::highend",
+      "entity_type": "brandset",
+      "category": "gear",
+      "tier": "highend",
+      "name_key": "",
+      "name": "",
+      "brand_name": "Petrov Defense Group",
+      "brand_key": "petrovdefensegroup",
+      "slot_key": "",
+      "blueprint": [
+        {
+          "slot": "backpack",
+          "type": "craft"
+        },
+        {
+          "slot": "holster",
+          "type": "craft"
+        },
+        {
+          "slot": "kneepads",
+          "type": "craft"
+        }
+      ],
+      "target_looted": [],
       "drop": []
     },
     {
@@ -218,22 +284,34 @@
       "drop": []
     },
     {
-      "item_id": "364cbf968f77309e::highend",
+      "item_id": "3747ba716e0d47bd::highend",
       "entity_type": "brandset",
       "category": "gear",
       "tier": "highend",
       "name_key": "",
       "name": "",
-      "brand_name": "Overlord Armaments",
-      "brand_key": "overlordarmaments",
+      "brand_name": "Legatus S.p.A.",
+      "brand_key": "legatusspa",
       "slot_key": "",
       "blueprint": [
+        {
+          "slot": "backpack",
+          "type": "craft"
+        },
         {
           "slot": "chest",
           "type": "craft"
         },
         {
           "slot": "gloves",
+          "type": "craft"
+        },
+        {
+          "slot": "holster",
+          "type": "craft"
+        },
+        {
+          "slot": "kneepads",
           "type": "craft"
         },
         {
@@ -442,117 +520,6 @@
       ]
     },
     {
-      "item_id": "4ae2ed5756736dff::highend",
-      "entity_type": "brandset",
-      "category": "gear",
-      "tier": "highend",
-      "name_key": "",
-      "name": "",
-      "brand_name": "Murakami Industries",
-      "brand_key": "murakamiindustries",
-      "slot_key": "",
-      "blueprint": [
-        {
-          "slot": "backpack",
-          "type": "craft"
-        },
-        {
-          "slot": "kneepads",
-          "type": "craft"
-        },
-        {
-          "slot": "mask",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [
-        "Murakami Industries",
-        "mask",
-        "chest",
-        "holster",
-        "backpack",
-        "gloves",
-        "kneepads"
-      ],
-      "drop": []
-    },
-    {
-      "item_id": "521d4db3facaea85::highend",
-      "entity_type": "brandset",
-      "category": "gear",
-      "tier": "highend",
-      "name_key": "",
-      "name": "",
-      "brand_name": "Royal Works",
-      "brand_key": "royalworks",
-      "slot_key": "",
-      "blueprint": [
-        {
-          "slot": "backpack",
-          "src": "Y8S1 Season Reward",
-          "type": "craft"
-        },
-        {
-          "slot": "chest",
-          "src": "Y8S1 Season Reward",
-          "type": "craft"
-        },
-        {
-          "slot": "gloves",
-          "src": "Y8S1 Season Reward",
-          "type": "craft"
-        },
-        {
-          "slot": "holster",
-          "src": "Y8S1 Season Reward",
-          "type": "craft"
-        },
-        {
-          "slot": "kneepads",
-          "src": "Y8S1 Season Reward",
-          "type": "craft"
-        },
-        {
-          "slot": "mask",
-          "src": "Y8S1 Season Reward",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "531b423062b724a2::highend",
-      "entity_type": "brandset",
-      "category": "gear",
-      "tier": "highend",
-      "name_key": "",
-      "name": "",
-      "brand_name": "Česká Výroba s.r.o.",
-      "brand_key": "ceskavyrobasro",
-      "slot_key": "",
-      "blueprint": [
-        {
-          "slot": "backpack",
-          "type": "craft"
-        },
-        {
-          "slot": "holster",
-          "type": "craft"
-        },
-        {
-          "slot": "kneepads",
-          "type": "craft"
-        },
-        {
-          "slot": "mask",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
       "item_id": "57bc988f9cfa00e9::highend",
       "entity_type": "brandset",
       "category": "gear",
@@ -585,6 +552,33 @@
         "gloves",
         "kneepads"
       ],
+      "drop": []
+    },
+    {
+      "item_id": "5c556710748690c3::highend",
+      "entity_type": "brandset",
+      "category": "gear",
+      "tier": "highend",
+      "name_key": "",
+      "name": "",
+      "brand_name": "Sokolov Concern",
+      "brand_key": "sokolovconcern",
+      "slot_key": "",
+      "blueprint": [
+        {
+          "slot": "chest",
+          "type": "craft"
+        },
+        {
+          "slot": "gloves",
+          "type": "craft"
+        },
+        {
+          "slot": "kneepads",
+          "type": "craft"
+        }
+      ],
+      "target_looted": [],
       "drop": []
     },
     {
@@ -623,151 +617,7 @@
       "drop": []
     },
     {
-      "item_id": "719360ad6b87b98b::highend",
-      "entity_type": "brandset",
-      "category": "gear",
-      "tier": "highend",
-      "name_key": "",
-      "name": "",
-      "brand_name": "Grupo Sombra S.A.",
-      "brand_key": "gruposombrasa",
-      "slot_key": "",
-      "blueprint": [
-        {
-          "slot": "chest",
-          "type": "craft"
-        },
-        {
-          "slot": "gloves",
-          "type": "craft"
-        },
-        {
-          "slot": "holster",
-          "type": "craft"
-        },
-        {
-          "slot": "kneepads",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "72187442b3de841c::highend",
-      "entity_type": "brandset",
-      "category": "gear",
-      "tier": "highend",
-      "name_key": "",
-      "name": "",
-      "brand_name": "Airaldi Holdings",
-      "brand_key": "airaldiholdings",
-      "slot_key": "",
-      "blueprint": [
-        {
-          "slot": "backpack",
-          "type": "craft"
-        },
-        {
-          "slot": "gloves",
-          "type": "craft"
-        },
-        {
-          "slot": "kneepads",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "791474ef58d04aa7::highend",
-      "entity_type": "brandset",
-      "category": "gear",
-      "tier": "highend",
-      "name_key": "",
-      "name": "",
-      "brand_name": "Shiny Monkey Gear",
-      "brand_key": "shinymonkeygear",
-      "slot_key": "",
-      "blueprint": [
-        {
-          "slot": "backpack",
-          "type": "craft"
-        },
-        {
-          "slot": "chest",
-          "type": "craft"
-        },
-        {
-          "slot": "gloves",
-          "type": "craft"
-        },
-        {
-          "slot": "holster",
-          "type": "craft"
-        },
-        {
-          "slot": "kneepads",
-          "type": "craft"
-        },
-        {
-          "slot": "mask",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [
-        "Shiny Monkey Gear",
-        "mask",
-        "chest",
-        "holster",
-        "backpack",
-        "gloves",
-        "kneepads"
-      ],
-      "drop": []
-    },
-    {
-      "item_id": "7fe5caf7e6deaa26::highend",
-      "entity_type": "brandset",
-      "category": "gear",
-      "tier": "highend",
-      "name_key": "",
-      "name": "",
-      "brand_name": "Edelweiss GPz",
-      "brand_key": "edelweissgpz",
-      "slot_key": "",
-      "blueprint": [
-        {
-          "slot": "backpack",
-          "type": "craft"
-        },
-        {
-          "slot": "chest",
-          "type": "craft"
-        },
-        {
-          "slot": "gloves",
-          "type": "craft"
-        },
-        {
-          "slot": "holster",
-          "type": "craft"
-        },
-        {
-          "slot": "kneepads",
-          "type": "craft"
-        },
-        {
-          "slot": "mask",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "80b8386b40ace6cb::highend",
+      "item_id": "718db337e462dedd::highend",
       "entity_type": "brandset",
       "category": "gear",
       "tier": "highend",
@@ -806,7 +656,34 @@
       "drop": []
     },
     {
-      "item_id": "88872fc9de6af85f::highend",
+      "item_id": "72187442b3de841c::highend",
+      "entity_type": "brandset",
+      "category": "gear",
+      "tier": "highend",
+      "name_key": "",
+      "name": "",
+      "brand_name": "Airaldi Holdings",
+      "brand_key": "airaldiholdings",
+      "slot_key": "",
+      "blueprint": [
+        {
+          "slot": "backpack",
+          "type": "craft"
+        },
+        {
+          "slot": "gloves",
+          "type": "craft"
+        },
+        {
+          "slot": "kneepads",
+          "type": "craft"
+        }
+      ],
+      "target_looted": [],
+      "drop": []
+    },
+    {
+      "item_id": "7e21cbc2a9fd50ca::highend",
       "entity_type": "brandset",
       "category": "gear",
       "tier": "highend",
@@ -847,15 +724,7 @@
           "type": "craft"
         }
       ],
-      "target_looted": [
-        "Empress International",
-        "mask",
-        "chest",
-        "holster",
-        "backpack",
-        "gloves",
-        "kneepads"
-      ],
+      "target_looted": [],
       "drop": []
     },
     {
@@ -894,33 +763,6 @@
       "drop": []
     },
     {
-      "item_id": "93571dcdd1686c0c",
-      "entity_type": "brandset",
-      "category": "gear",
-      "tier": "highend",
-      "name_key": "",
-      "name": "",
-      "brand_name": "Richter & Kaiser GmbH",
-      "brand_key": "richterkaisergmbh",
-      "slot_key": "",
-      "blueprint": [
-        {
-          "slot": "chest",
-          "type": "craft"
-        },
-        {
-          "slot": "holster",
-          "type": "craft"
-        },
-        {
-          "slot": "mask",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
       "item_id": "9b17adc1d9cc8660::highend",
       "entity_type": "brandset",
       "category": "gear",
@@ -949,72 +791,6 @@
         },
         {
           "slot": "kneepads",
-          "type": "craft"
-        },
-        {
-          "slot": "mask",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "a4828d6a1b2011d1::highend",
-      "entity_type": "brandset",
-      "category": "gear",
-      "tier": "highend",
-      "name_key": "",
-      "name": "",
-      "brand_name": "Unit Alloys",
-      "brand_key": "unitalloys",
-      "slot_key": "",
-      "blueprint": [
-        {
-          "slot": "backpack",
-          "type": "craft"
-        },
-        {
-          "slot": "chest",
-          "type": "craft"
-        },
-        {
-          "slot": "gloves",
-          "type": "craft"
-        },
-        {
-          "slot": "holster",
-          "type": "craft"
-        },
-        {
-          "slot": "kneepads",
-          "type": "craft"
-        },
-        {
-          "slot": "mask",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "b288be13c2b5b272::highend",
-      "entity_type": "brandset",
-      "category": "gear",
-      "tier": "highend",
-      "name_key": "",
-      "name": "",
-      "brand_name": "Providence Defense",
-      "brand_key": "providencedefense",
-      "slot_key": "",
-      "blueprint": [
-        {
-          "slot": "chest",
-          "type": "craft"
-        },
-        {
-          "slot": "holster",
           "type": "craft"
         },
         {
@@ -1073,14 +849,14 @@
       "drop": []
     },
     {
-      "item_id": "b9b73562827f14f0::highend",
+      "item_id": "b9671f154f041b58::highend",
       "entity_type": "brandset",
       "category": "gear",
       "tier": "highend",
       "name_key": "",
       "name": "",
-      "brand_name": "Hana-U Corporation",
-      "brand_key": "hanaucorporation",
+      "brand_name": "Murakami Industries",
+      "brand_key": "murakamiindustries",
       "slot_key": "",
       "blueprint": [
         {
@@ -1088,11 +864,7 @@
           "type": "craft"
         },
         {
-          "slot": "gloves",
-          "type": "craft"
-        },
-        {
-          "slot": "holster",
+          "slot": "kneepads",
           "type": "craft"
         },
         {
@@ -1100,15 +872,7 @@
           "type": "craft"
         }
       ],
-      "target_looted": [
-        "Hana-U Corporation",
-        "mask",
-        "chest",
-        "holster",
-        "backpack",
-        "gloves",
-        "kneepads"
-      ],
+      "target_looted": [],
       "drop": []
     },
     {
@@ -1265,6 +1029,111 @@
       "drop": []
     },
     {
+      "item_id": "cd9897382269e1b4::highend",
+      "entity_type": "brandset",
+      "category": "gear",
+      "tier": "highend",
+      "name_key": "",
+      "name": "",
+      "brand_name": "Edelweiss GPz",
+      "brand_key": "edelweissgpz",
+      "slot_key": "",
+      "blueprint": [
+        {
+          "slot": "backpack",
+          "type": "craft"
+        },
+        {
+          "slot": "chest",
+          "type": "craft"
+        },
+        {
+          "slot": "gloves",
+          "type": "craft"
+        },
+        {
+          "slot": "holster",
+          "type": "craft"
+        },
+        {
+          "slot": "kneepads",
+          "type": "craft"
+        },
+        {
+          "slot": "mask",
+          "type": "craft"
+        }
+      ],
+      "target_looted": [],
+      "drop": []
+    },
+    {
+      "item_id": "d0ee9fc81098eac6::highend",
+      "entity_type": "brandset",
+      "category": "gear",
+      "tier": "highend",
+      "name_key": "",
+      "name": "",
+      "brand_name": "Electrique",
+      "brand_key": "electrique",
+      "slot_key": "",
+      "blueprint": [
+        {
+          "slot": "backpack",
+          "type": "craft"
+        },
+        {
+          "slot": "chest",
+          "type": "craft"
+        },
+        {
+          "slot": "gloves",
+          "type": "craft"
+        },
+        {
+          "slot": "holster",
+          "type": "craft"
+        },
+        {
+          "slot": "kneepads",
+          "type": "craft"
+        },
+        {
+          "slot": "mask",
+          "type": "craft"
+        }
+      ],
+      "target_looted": [],
+      "drop": []
+    },
+    {
+      "item_id": "d3dfbe8831b074cd::highend",
+      "entity_type": "brandset",
+      "category": "gear",
+      "tier": "highend",
+      "name_key": "",
+      "name": "",
+      "brand_name": "Overlord Armaments",
+      "brand_key": "overlordarmaments",
+      "slot_key": "",
+      "blueprint": [
+        {
+          "slot": "chest",
+          "type": "craft"
+        },
+        {
+          "slot": "gloves",
+          "type": "craft"
+        },
+        {
+          "slot": "mask",
+          "type": "craft"
+        }
+      ],
+      "target_looted": [],
+      "drop": []
+    },
+    {
       "item_id": "e08898911dda5efd::highend",
       "entity_type": "brandset",
       "category": "gear",
@@ -1304,14 +1173,14 @@
       "drop": []
     },
     {
-      "item_id": "e8eecda1edf50c80::highend",
+      "item_id": "e9a51e9068baa019::highend",
       "entity_type": "brandset",
       "category": "gear",
       "tier": "highend",
       "name_key": "",
       "name": "",
-      "brand_name": "Legatus S.p.A.",
-      "brand_key": "legatusspa",
+      "brand_name": "Česká Výroba s.r.o.",
+      "brand_key": "ceskavyrobasro",
       "slot_key": "",
       "blueprint": [
         {
@@ -1319,15 +1188,34 @@
           "type": "craft"
         },
         {
-          "slot": "chest",
-          "type": "craft"
-        },
-        {
-          "slot": "gloves",
-          "type": "craft"
-        },
-        {
           "slot": "holster",
+          "type": "craft"
+        },
+        {
+          "slot": "kneepads",
+          "type": "craft"
+        },
+        {
+          "slot": "mask",
+          "type": "craft"
+        }
+      ],
+      "target_looted": [],
+      "drop": []
+    },
+    {
+      "item_id": "eadf16a8b9dec121::highend",
+      "entity_type": "brandset",
+      "category": "gear",
+      "tier": "highend",
+      "name_key": "",
+      "name": "",
+      "brand_name": "Douglas & Harding",
+      "brand_key": "douglasharding",
+      "slot_key": "",
+      "blueprint": [
+        {
+          "slot": "chest",
           "type": "craft"
         },
         {
@@ -1378,7 +1266,52 @@
       "drop": []
     },
     {
-      "item_id": "fe8e477bbdf5f458::highend",
+      "item_id": "f30da51d1aa3d1d7::highend",
+      "entity_type": "brandset",
+      "category": "gear",
+      "tier": "highend",
+      "name_key": "",
+      "name": "",
+      "brand_name": "Royal Works",
+      "brand_key": "royalworks",
+      "slot_key": "",
+      "blueprint": [
+        {
+          "slot": "backpack",
+          "src": "Y8S1 Season Reward",
+          "type": "craft"
+        },
+        {
+          "slot": "chest",
+          "src": "Y8S1 Season Reward",
+          "type": "craft"
+        },
+        {
+          "slot": "gloves",
+          "src": "Y8S1 Season Reward",
+          "type": "craft"
+        },
+        {
+          "slot": "holster",
+          "src": "Y8S1 Season Reward",
+          "type": "craft"
+        },
+        {
+          "slot": "kneepads",
+          "src": "Y8S1 Season Reward",
+          "type": "craft"
+        },
+        {
+          "slot": "mask",
+          "src": "Y8S1 Season Reward",
+          "type": "craft"
+        }
+      ],
+      "target_looted": [],
+      "drop": []
+    },
+    {
+      "item_id": "f9f75011d0c030ce::highend",
       "entity_type": "brandset",
       "category": "gear",
       "tier": "highend",
@@ -1430,6 +1363,33 @@
         "gloves",
         "kneepads"
       ],
+      "drop": []
+    },
+    {
+      "item_id": "f4d364597d64079d",
+      "entity_type": "brandset",
+      "category": "gear",
+      "tier": "highend",
+      "name_key": "richterkaisergmbh",
+      "name": "Richter & Kaiser GmbH",
+      "brand_name": "Richter & Kaiser GmbH",
+      "brand_key": "richterkaisergmbh",
+      "slot_key": "",
+      "blueprint": [
+        {
+          "slot": "chest",
+          "type": "craft"
+        },
+        {
+          "slot": "holster",
+          "type": "craft"
+        },
+        {
+          "slot": "mask",
+          "type": "craft"
+        }
+      ],
+      "target_looted": [],
       "drop": []
     },
     {
