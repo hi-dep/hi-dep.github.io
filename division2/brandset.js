@@ -1,6 +1,40 @@
 /* brandset-specific view logic */
 (function () {
   let brandRowsCache = null;
+  let brandTraitFilters = [];
+
+  function brandTraitLabel(key, fallback) {
+    return langSelect.value === "ja"
+      ? (i18n[key] ?? fallback ?? key)
+      : (fallback ?? key);
+  }
+
+  function renderBrandTraitChips(container) {
+    if (!container) return;
+    container.innerHTML = brandTraitFilters.map((key) => `
+      <span class="brand-trait-chip">
+        <span>${escapeHtml(brandTraitLabel(key, key))}</span>
+        <button type="button" class="brand-trait-chip__remove" data-brand-trait-remove="${escapeHtml(key)}" aria-label="${escapeHtml(ui("removeTraitFilter"))}">×</button>
+      </span>
+    `).join("");
+  }
+
+  window.brandTraitCardMatches = function brandTraitCardMatches(card) {
+    if (!brandTraitFilters.length) return true;
+    const cardKeys = new Set(String(card?.dataset?.brandTraits || "").split(" ").filter(Boolean));
+    return brandTraitFilters.some((key) => cardKeys.has(key));
+  };
+
+  window.brandClearTraitFilters = function brandClearTraitFilters(options) {
+    brandTraitFilters = [];
+    const chips = document.querySelector("[data-brand-trait-chips]");
+    renderBrandTraitChips(chips);
+    const select = document.querySelector("[data-brand-trait-select]");
+    const add = document.querySelector("[data-brand-trait-add]");
+    if (select) select.value = "";
+    if (add) add.disabled = true;
+    if (!options?.silent) applyFiltersToDom();
+  };
 
   async function loadBrandRows() {
     if (brandRowsCache) return brandRowsCache;
@@ -147,16 +181,63 @@
       return;
     }
 
+    const traitOptions = Array.from(new Map(
+      items.flatMap((it) => it.bonuses.map((b) => {
+        const key = normalizeKey(b.typeKey || b.type || "");
+        return key ? [key, { key, label: b.type || b.typeKey || key }] : null;
+      }).filter(Boolean))
+    ).values()).sort((a, b) => brandTraitLabel(a.key, a.label).localeCompare(brandTraitLabel(b.key, b.label), langSelect.value === "ja" ? "ja" : "en"));
+    const availableTraitKeys = new Set(traitOptions.map((x) => x.key));
+    brandTraitFilters = brandTraitFilters.filter((key) => availableTraitKeys.has(key));
+
     const section = document.createElement("section");
     section.className = "catgroup catgroup--gear brandset-view";
     section.innerHTML = `
       <div class="trello-group-toggle">
         ${typeof buildInlineConditionFilterHtml === "function" ? buildInlineConditionFilterHtml() : ""}
+        <div class="brand-trait-filter" data-vendor-filter-control="1" hidden aria-hidden="true">
+          <label class="field brand-trait-filter__field">
+            <select data-brand-trait-select aria-label="${escapeHtml(ui("traitFilter"))}">
+              <option value="">${escapeHtml(ui("selectTrait"))}</option>
+              ${traitOptions.map((x) => `<option value="${escapeHtml(x.key)}">${escapeHtml(brandTraitLabel(x.key, x.label))}</option>`).join("")}
+            </select>
+          </label>
+          <button class="btn btn--ghost brand-trait-filter__add" type="button" data-brand-trait-add disabled>${escapeHtml(ui("addTraitFilter"))}</button>
+          <div class="brand-trait-chips" data-brand-trait-chips aria-label="${escapeHtml(ui("activeTraitFilters"))}"></div>
+        </div>
         <button class="btn btn--ghost brand-named-btn ${window.brandShowNamed ? "is-on" : ""}" type="button" data-toggle-brand-named="1">Named</button>
       </div>
       <div class="grid grid--gear"></div>
     `;
     const grid = section.querySelector(".grid");
+    const traitSelect = section.querySelector("[data-brand-trait-select]");
+    const traitAdd = section.querySelector("[data-brand-trait-add]");
+    const traitChips = section.querySelector("[data-brand-trait-chips]");
+    renderBrandTraitChips(traitChips);
+    if (traitSelect) {
+      traitSelect.addEventListener("change", () => {
+        if (traitAdd) traitAdd.disabled = !traitSelect.value || brandTraitFilters.includes(traitSelect.value);
+      });
+    }
+    if (traitAdd) {
+      traitAdd.addEventListener("click", () => {
+        const key = String(traitSelect?.value || "").trim();
+        if (!key || brandTraitFilters.includes(key)) return;
+        brandTraitFilters = brandTraitFilters.concat(key);
+        renderBrandTraitChips(traitChips);
+        traitSelect.value = "";
+        traitAdd.disabled = true;
+        applyFiltersToDom();
+      });
+    }
+    traitChips?.addEventListener("click", (event) => {
+      const remove = event.target.closest("[data-brand-trait-remove]");
+      if (!remove) return;
+      const key = remove.getAttribute("data-brand-trait-remove");
+      brandTraitFilters = brandTraitFilters.filter((x) => x !== key);
+      renderBrandTraitChips(traitChips);
+      applyFiltersToDom();
+    });
 
     items.forEach((it) => {
       const brandKeyNorm = normalizeKey(it.brandsetKey || it.brandset || "");
@@ -265,11 +346,15 @@
       });
       const search = searchParts.join(" ");
       const brandCardId = `brand:${brandKeyNorm || normalizeKey(title || it.brandset || "")}`;
+      const brandTraitKeys = it.bonuses
+        .map((b) => normalizeKey(b.typeKey || b.type || ""))
+        .filter(Boolean);
 
       const card = document.createElement("div");
       card.className = `card rarity-highend ${coreClass(it.core)}`;
       card.setAttribute("data-item-id", brandCardId);
       card.setAttribute("data-search", search);
+      card.setAttribute("data-brand-traits", Array.from(new Set(brandTraitKeys)).join(" "));
       card.innerHTML = `
         ${brandBgHtml}
         <div class="card__head">
@@ -313,6 +398,7 @@
     });
 
     contentEl.appendChild(section);
+    if (typeof setFiltersOpen === "function") setFiltersOpen(filtersOpen);
     applyFiltersToDom();
   }
 

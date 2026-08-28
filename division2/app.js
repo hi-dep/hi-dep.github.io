@@ -1351,6 +1351,11 @@ const UI = {
     selectGroup: "選択",
     filterGroup: "フィルタ",
     clearFilters: "フィルタ解除",
+    traitFilter: "特性",
+    selectTrait: "特性を選択",
+    addTraitFilter: "追加",
+    activeTraitFilters: "適用中の特性フィルタ",
+    removeTraitFilter: "特性フィルタを削除",
     loadingIndex: "index.json 読み込み…",
     loadingI18n: "i18n 読み込み…",
     loadingAssets: "asset_map 読み込み…",
@@ -1399,6 +1404,11 @@ const UI = {
     selectGroup: "Select",
     filterGroup: "Filter",
     clearFilters: "Clear filters",
+    traitFilter: "Attribute",
+    selectTrait: "Select attribute",
+    addTraitFilter: "Add",
+    activeTraitFilters: "Active attribute filters",
+    removeTraitFilter: "Remove attribute filter",
     loadingIndex: "Loading index.json…",
     loadingI18n: "Loading i18n…",
     loadingAssets: "Loading asset_map…",
@@ -3939,6 +3949,7 @@ function applyFiltersToDom() {
   const keys = activeFilterKeys.slice();
   const isSelectableView = currentViewMode === "vendor" || currentViewMode === "brand" || currentViewMode === "gearset" || currentViewMode === "exotic_gear";
   const useKeyFilter = currentViewMode === "vendor";
+  const useBrandTraitFilter = currentViewMode === "brand" && typeof window.brandTraitCardMatches === "function";
   syncCardSelectionClasses();
 
   document.body.classList.toggle("only-selected", isSelectableView && onlySelected);
@@ -3947,7 +3958,8 @@ function applyFiltersToDom() {
     const id = card.dataset.itemId;
     const okSel = (!isSelectableView || !onlySelected) || selectedIds.has(id);
     const okKeys = !useKeyFilter || cardHasKeys(card, keys);
-    card.style.display = (okSel && okKeys) ? "" : "none";
+    const okBrandTraits = !useBrandTraitFilter || window.brandTraitCardMatches(card);
+    card.style.display = (okSel && okKeys && okBrandTraits) ? "" : "none";
   });
 
   // line highlight
@@ -4032,6 +4044,9 @@ function toggleFilterKey(key) {
 
 function clearFilters() {
   activeFilterKeys = [];
+  if (currentViewMode === "brand" && typeof window.brandClearTraitFilters === "function") {
+    window.brandClearTraitFilters({ silent: true });
+  }
   renderChips();
   applyFiltersToDom();
 }
