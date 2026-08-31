@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generated_at_jst": "2026-08-30 17:03:04",
+  "generated_at_jst": "2026-08-31 09:27:04",
   "pool_map_keys": [
     "envy",
     "gluttony",
@@ -10,10 +10,10 @@
   ],
   "anchor_jst": "2026-03-07 09:00:00",
   "cycle_days": 3,
-  "timestamp_rows": 60,
-  "timestamp_rows_raw": 60,
+  "timestamp_rows": 61,
+  "timestamp_rows_raw": 61,
   "pool_map_rows": 200,
   "db_gz": "data/descent/descent_talent_pool_latest.db.gz",
-  "timestamp_hash": "eab98f2e2eb1a0b5e502af6f5df02534b9697a8fec917b05ee9439bccb26ad80",
-  "content_hash": "bb98385e591e413b4b9141dbcd05a9e52ba3821a2d15e3e6c3448e4de7115f85"
+  "timestamp_hash": "5ba82ed6cddd2a734738ca24e6fc8d7cacba2fc4777e2972e1b7a559c6e27480",
+  "content_hash": "f0864698df4d7f944b954ea42893b1aa06528e859d175084f796c0330c3f0e54"
 }
