@@ -914,10 +914,11 @@
       "overchargednanites": "オーバーチャージ・ナナイト",
       "improveddampeners": "インプルーブド・ダンプナー",
       "perfectlyopportunistic": "パーフェクト・オポチュニスティック",
-      "hostilenegotiations": "ホスタイル・ネゴシエーション",
+      "hostilenegotiations": "ホスタイル・ネゴシエーショ",
       "flashpoint": "フラッシュポイント",
       "whitehot": "ホワイトホット",
-      "spontaneouscombustion": "自然発火"
+      "spontaneouscombustion": "自然発火",
+      "perfectconussion": "TODO:perfectconussion"
     },
     "weapon_talent": {
       "closepersonal": "接近戦",
