@@ -732,7 +732,8 @@
       "totalarmor": "合計アーマー",
       "stat": "placeholder:stat",
       "strapduration": "placeholder:strapduration",
-      "bonusarmor": "ボーナスアーマー"
+      "bonusarmor": "ボーナスアーマー",
+      "increasedburnduration": "炎上持続時間増加"
     },
     "gear_talent": {
       "companion": "コンパニオン",
