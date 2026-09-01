@@ -9,7 +9,20 @@
         "American History Museum",
         "Space Administration HQ"
       ],
-      "target_loot_by_day": []
+      "target_loot_by_day": [
+        {
+          "day": "2026-09-01",
+          "target_loot": [
+            "Skill MOD",
+            "Aegis",
+            "Belstone Armory",
+            "Unit Alloys",
+            "Legatus S.p.A."
+          ],
+          "prototype_gear_cache": "kneepads",
+          "prototype_weapon_cache": "mmr"
+        }
+      ]
     }
   ]
 }
