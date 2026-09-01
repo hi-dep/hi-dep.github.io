@@ -194,17 +194,6 @@
     section.className = "catgroup catgroup--gear brandset-view";
     section.innerHTML = `
       <div class="trello-group-toggle">
-        ${typeof buildInlineConditionFilterHtml === "function" ? buildInlineConditionFilterHtml() : ""}
-        <div class="brand-trait-filter" data-vendor-filter-control="1" hidden aria-hidden="true">
-          <label class="field brand-trait-filter__field">
-            <select data-brand-trait-select aria-label="${escapeHtml(ui("traitFilter"))}">
-              <option value="">${escapeHtml(ui("selectTrait"))}</option>
-              ${traitOptions.map((x) => `<option value="${escapeHtml(x.key)}">${escapeHtml(brandTraitLabel(x.key, x.label))}</option>`).join("")}
-            </select>
-          </label>
-          <button class="btn btn--ghost brand-trait-filter__add" type="button" data-brand-trait-add disabled>${escapeHtml(ui("addTraitFilter"))}</button>
-          <div class="brand-trait-chips" data-brand-trait-chips aria-label="${escapeHtml(ui("activeTraitFilters"))}"></div>
-        </div>
         <button class="btn btn--ghost brand-named-btn ${window.brandShowNamed ? "is-on" : ""}" type="button" data-toggle-brand-named="1">Named</button>
       </div>
       <div class="grid grid--gear"></div>
@@ -253,7 +242,9 @@
       const baseLines = [];
       if (core) baseLines.push(core);
       it.bonuses.forEach((b) => {
-        const typeText = trText(b.type || b.typeKey || "");
+        const typeText = (langSelect.value === "ja")
+          ? trText(b.typeKey || b.type || "")
+          : trText(b.type || b.typeKey || "");
         let text = "";
         const numUnit = `${formatDisplayNumber(b.valueNum || "")}${b.unit || ""}`.trim();
         if (numUnit || typeText) {

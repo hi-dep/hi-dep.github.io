@@ -1,9 +1,6 @@
 /* gearset-specific view logic */
 (function () {
   let gearsetRowsCache = null;
-  let gearsetDescMode = String(window.gearsetDescMode || "pve").toLowerCase();
-  if (!["pve", "pvp", "compare"].includes(gearsetDescMode)) gearsetDescMode = "pve";
-  window.gearsetDescMode = gearsetDescMode;
 
   function textToHtmlPreserveNewline(text) {
     return escapeHtml(String(text || "")).replace(/\r?\n/g, "<br>");
@@ -11,75 +8,6 @@
   function trGearsetTalentDesc(rawDesc, talentKey) {
     return trCategoryText("gearset_talent_desc", talentKey, String(rawDesc || "").replace(/\r/g, ""));
   }
-  function trGearsetNormalizeTalentDesc(rawDesc, talentKey) {
-    return trCategoryText("gearset_normalize_talent_desc", talentKey, String(rawDesc || "").replace(/\r/g, ""));
-  }
-
-  function tokenizeForDiff(text) {
-    const s = String(text || "");
-    const re = /(\r\n|\n|[ \t]+|[A-Za-z0-9%+.\-]+|[^A-Za-z0-9\s])/g;
-    const out = [];
-    let m;
-    while ((m = re.exec(s)) !== null) out.push(m[0]);
-    return out;
-  }
-
-  function tokenToHtml(tok) {
-    if (tok === "\r\n" || tok === "\n") return "<br>";
-    return escapeHtml(tok);
-  }
-
-  function highlightDiffHtml(baseText, compareText, diffClass = "gear-talent-diff") {
-    const a = tokenizeForDiff(baseText);
-    const b = tokenizeForDiff(compareText);
-    if (!a.length || !b.length) return b.map(tokenToHtml).join("");
-
-    const n = a.length;
-    const m = b.length;
-    const dp = Array.from({ length: n + 1 }, () => new Array(m + 1).fill(0));
-    for (let i = n - 1; i >= 0; i--) {
-      for (let j = m - 1; j >= 0; j--) {
-        if (a[i] === b[j]) dp[i][j] = dp[i + 1][j + 1] + 1;
-        else dp[i][j] = Math.max(dp[i + 1][j], dp[i][j + 1]);
-      }
-    }
-
-    let i = 0;
-    let j = 0;
-    const chunks = [];
-    let diffBuf = [];
-    const flushDiff = () => {
-      if (!diffBuf.length) return;
-      chunks.push(`<span class="${diffClass}">${diffBuf.map(tokenToHtml).join("")}</span>`);
-      diffBuf = [];
-    };
-    while (i < n && j < m) {
-      if (a[i] === b[j]) {
-        flushDiff();
-        chunks.push(tokenToHtml(b[j]));
-        i++;
-        j++;
-      } else if (dp[i + 1][j] >= dp[i][j + 1]) {
-        i++;
-      } else {
-        diffBuf.push(b[j]);
-        j++;
-      }
-    }
-    while (j < m) {
-      diffBuf.push(b[j]);
-      j++;
-    }
-    flushDiff();
-    return chunks.join("");
-  }
-
-  function gearsetDescModeLabel(mode) {
-    if (mode === "pvp") return "PvP";
-    if (mode === "compare") return "Compare";
-    return "PvE";
-  }
-
   async function loadGearsetRows() {
     if (gearsetRowsCache) return gearsetRowsCache;
     const SQL = await initSql();
@@ -109,7 +37,6 @@
       } catch (e) {
         // keep backward compatibility with older DB snapshots
       }
-      const hasNormalizeDesc = bonusCols.has("talent_desc_normalize");
       const stmt = db.prepare(`
         SELECT
           g.item_id,
@@ -126,7 +53,7 @@
           b.type,
           b.type_key,
           b.talent_name,
-          b.talent_desc${hasNormalizeDesc ? ",\n          b.talent_desc_normalize" : ""}
+          b.talent_desc
         FROM items_gearsets g
         LEFT JOIN items_gearset_bonuses b ON b.parent_item_id = g.item_id
         ORDER BY g.gearset, g.item_id, b.bonus_ord, b.bonus_part_ord
@@ -170,7 +97,6 @@
           typeKey: String(r.type_key || "").trim(),
           talentName: String(r.talent_name || "").trim(),
           talentDesc: String(r.talent_desc || "").trim(),
-          talentDescNormalize: String(r.talent_desc_normalize || "").trim()
         });
       }
     });
@@ -195,28 +121,11 @@
     section.className = "catgroup catgroup--gear gearset-view";
     section.innerHTML = `
       <div class="trello-group-toggle gearset-toolbar">
-        ${typeof buildInlineConditionFilterHtml === "function" ? buildInlineConditionFilterHtml() : ""}
-        <label class="gearset-desc-mode-field">
-          <select class="gearset-desc-mode-select" data-gearset-desc-mode-select="1" aria-label="gearset desc mode">
-            <option value="pve"${gearsetDescMode === "pve" ? " selected" : ""}>${gearsetDescModeLabel("pve")}</option>
-            <option value="pvp"${gearsetDescMode === "pvp" ? " selected" : ""}>${gearsetDescModeLabel("pvp")}</option>
-            <option value="compare"${gearsetDescMode === "compare" ? " selected" : ""}>${gearsetDescModeLabel("compare")}</option>
-          </select>
-        </label>
         <button class="btn btn--ghost talent-desc-btn ${window.talentShowDesc ? "is-on" : ""}" type="button" data-toggle-talent-desc="1">Desc</button>
       </div>
       <div class="grid grid--gear"></div>
     `;
     const grid = section.querySelector(".grid");
-    const modeSelect = section.querySelector("[data-gearset-desc-mode-select]");
-    if (modeSelect) {
-      modeSelect.addEventListener("change", () => {
-        const nextMode = String(modeSelect.value || "pve").toLowerCase();
-        gearsetDescMode = ["pve", "pvp", "compare"].includes(nextMode) ? nextMode : "pve";
-        window.gearsetDescMode = gearsetDescMode;
-        renderGearsetViewFromRows(payload);
-      });
-    }
 
     function gearPieceIconByLabels(labels) {
       const all = (labels || []).map((x) => normalizeKey(x || "")).join(" ");
@@ -317,32 +226,8 @@
       return "";
     }
 
-    function gearsetTalentDescLines(talentKey, pveRaw, normalizeRaw) {
+    function gearsetTalentDescLines(talentKey, pveRaw) {
       const pveText = trGearsetTalentDesc(pveRaw, talentKey);
-      const pvpText = trGearsetNormalizeTalentDesc(normalizeRaw, talentKey);
-      if (gearsetDescMode === "pvp") {
-        return pvpText ? [{ cls: "line line--named-meta line--talent-desc", text: pvpText, textHtml: textToHtmlPreserveNewline(pvpText), isDesc: true }] : [];
-      }
-      if (gearsetDescMode === "compare") {
-        const lines = [];
-        if (pveText) {
-          lines.push({
-            cls: "line line--named-meta line--talent-desc gearset-compare-line gearset-compare-line--pve",
-            text: pveText,
-            textHtml: `<span class="gearset-compare-label">PvE</span><span class="gearset-compare-text">${highlightDiffHtml(pvpText, pveText, "gear-talent-diff gear-talent-diff--pve")}</span>`,
-            isDesc: true
-          });
-        }
-        if (pvpText) {
-          lines.push({
-            cls: "line line--named-meta line--talent-desc gearset-compare-line gearset-compare-line--pvp",
-            text: pvpText,
-            textHtml: `<span class="gearset-compare-label">PvP</span><span class="gearset-compare-text">${highlightDiffHtml(pveText, pvpText, "gear-talent-diff gear-talent-diff--pvp")}</span>`,
-            isDesc: true
-          });
-        }
-        return lines;
-      }
       return pveText ? [{ cls: "line line--named-meta line--talent-desc", text: pveText, textHtml: textToHtmlPreserveNewline(pveText), isDesc: true }] : [];
     }
 
@@ -410,21 +295,20 @@
           const tdDisp = (langSelect.value === "ja")
             ? trGearsetTalentDesc(td, talentKey)
             : td;
-          const tdNormalize = (langSelect.value === "ja")
-            ? trGearsetNormalizeTalentDesc(String(b.talentDescNormalize || ""), talentKey)
-            : String(b.talentDescNormalize || "").trim();
           if (tnDisp) lines.push({
             cls: "line line--gray line--talent",
             text: tnDisp.trim(),
             key: talentKey,
             icon: `${slotIcon || ""}${talentIcon || ""}`
           });
-          gearsetTalentDescLines(talentKey, tdDisp, tdNormalize).forEach((descLine) => lines.push(descLine));
+          gearsetTalentDescLines(talentKey, tdDisp).forEach((descLine) => lines.push(descLine));
           continue;
-        }
-        const parts = [];
-        gs.forEach((x) => {
-          const typeText = trText(x.type || x.typeKey || "");
+      }
+      const parts = [];
+      gs.forEach((x) => {
+        const typeText = (langSelect.value === "ja")
+          ? trText(x.typeKey || x.type || "")
+          : trText(x.type || x.typeKey || "");
           const numUnit = `${formatDisplayNumber(x.valueNum || "")}${x.unit || ""}`.trim();
           const valText = [numUnit, typeText].filter(Boolean).join(" ").trim() || stripHtml(x.value || "");
           if (valText) parts.push({ text: valText, key: String(x.typeKey || "").trim() });
@@ -446,7 +330,6 @@
       pushSearch(coreText || "");
       for (const itb of it.bonuses || []) {
         pushSearch(itb.talentDesc || "");
-        pushSearch(itb.talentDescNormalize || "");
       }
       lines.forEach((ln) => pushSearch(ln.text || ""));
 

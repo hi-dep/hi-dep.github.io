@@ -1486,54 +1486,6 @@ body.seasonmod-modal-open {
   display: none;
 }
 
-.gearset-compare-label {
-  display: inline-block;
-  min-width: 3.2em;
-  margin-right: 6px;
-  padding: 0 5px;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.08);
-  color: var(--muted);
-  font-size: 10px;
-  line-height: 1.5;
-  vertical-align: top;
-}
-
-.gearset-compare-line--pve .gearset-compare-label {
-  color: rgba(120, 255, 180, 1);
-  background: rgba(120, 255, 180, 0.12);
-}
-
-.gearset-compare-line--pvp .gearset-compare-label {
-  color: var(--perfect-text);
-  background: rgba(255, 149, 58, 0.12);
-}
-
-.gearset-compare-text {
-  display: inline;
-  white-space: normal;
-}
-
-.gear-talent-diff--pve {
-  color: rgba(120, 255, 180, 1);
-  background: rgba(120, 255, 180, 0.14);
-}
-
-.gear-talent-diff--pvp {
-  color: rgba(255, 170, 96, 1);
-  background: rgba(255, 149, 58, 0.14);
-}
-
-.gearset-compare-line--pve .gear-talent-diff {
-  color: rgba(120, 255, 180, 1);
-  background: rgba(120, 255, 180, 0.14);
-}
-
-.gearset-compare-line--pvp .gear-talent-diff {
-  color: rgba(255, 170, 96, 1);
-  background: rgba(255, 149, 58, 0.14);
-}
-
 .status {
   color: var(--muted);
   font-size: 13px;
@@ -1828,6 +1780,63 @@ body.seasonmod-modal-open {
   grid-template-columns: repeat(auto-fill, minmax(var(--card-min), 1fr));
 }
 
+.gear-attributes-gearset-grid {
+  margin-top: var(--card-gap);
+}
+
+.gear-attributes-toolbar .brand-trait-filter {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.gear-attributes-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.gear-attributes-toolbar .brand-trait-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+}
+
+.gear-attributes-toolbar .brand-trait-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 7px;
+  border: 1px solid rgba(255, 255, 255, .22);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .08);
+  font-size: .82rem;
+}
+
+.gear-attributes-toolbar .brand-trait-chip__remove {
+  border: 0;
+  padding: 0;
+  color: inherit;
+  background: transparent;
+  cursor: pointer;
+}
+
+.gear-attributes-view .card__bgimg {
+  width: 72px;
+  height: 72px;
+}
+
+.gear-attributes-view .gear-attribute-trait-line-hit::before {
+  background: rgba(255, 132, 19, .78);
+}
+
+.gear-attributes-view .gear-attribute-value--hit {
+  color: var(--named-text);
+  font-weight: 700;
+}
+
 .exotic-items-sep {
   grid-column: 1 / -1;
   border: 0;
@@ -1974,11 +1983,6 @@ body.seasonmod-modal-open {
   pointer-events: none;
 }
 
-.gear-talent-diff {
-  color: var(--perfect-text);
-  font-weight: 700;
-}
-
 .descent-tier-value {
   color: var(--named-text);
   font-weight: 700;
@@ -2121,8 +2125,8 @@ body.seasonmod-modal-open {
 }
 
 .card__bgimg {
-  width: 44px;
-  height: 44px;
+  width: 72px;
+  height: 72px;
   object-fit: contain;
   display: block;
 }

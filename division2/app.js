@@ -43,6 +43,7 @@ const navVendorBtn = document.getElementById("navVendorBtn");
 const navEventBtn = document.getElementById("navEventBtn");
 const navSeasonModBtn = document.getElementById("navSeasonModBtn");
 const navWeaponsBtn = document.getElementById("navWeaponsBtn");
+const navGearAttributesBtn = document.getElementById("navGearAttributesBtn");
 const navBrandBtn = document.getElementById("navBrandBtn");
 const navGearsetBtn = document.getElementById("navGearsetBtn");
 const navExoticGearBtn = document.getElementById("navExoticGearBtn");
@@ -242,10 +243,13 @@ function buildToolbarHtmlFromDef(def) {
 }
 
 function buildInlineConditionFilterHtml() {
-  return `
-    <button id="filterToggleBtn" class="btn btn--ghost topbar__toggle" type="button">${ui("filtersOpen")}</button>
+  const selectionControls = currentViewMode === "gear_attributes" ? "" : `
     <button id="onlySelectedBtn" class="btn btn--toggle" type="button" data-vendor-filter-control="1" hidden aria-hidden="true" disabled>${ui("selectedOnly")}</button>
     <button id="clearSelectedBtn" class="btn btn--ghost" type="button" data-vendor-filter-control="1" hidden aria-hidden="true" disabled>${ui("clearSelected")}</button>
+  `;
+  return `
+    <button id="filterToggleBtn" class="btn btn--ghost topbar__toggle" type="button">${ui("filtersOpen")}</button>
+    ${selectionControls}
   `;
 }
 window.buildInlineConditionFilterHtml = buildInlineConditionFilterHtml;
@@ -269,7 +273,7 @@ function findViewToolbarNodes(viewMode) {
     if (picker && picker.classList.contains("trello-sections-picker")) nodes.push(picker);
     return nodes;
   }
-  if (mode === "weapons" || mode === "brand" || mode === "gearset" || mode === "exotic_gear" || mode === "gear_talent" || mode === "weapon_talent") {
+  if (mode === "weapons" || mode === "gear_attributes" || mode === "brand" || mode === "gearset" || mode === "exotic_gear" || mode === "gear_talent" || mode === "weapon_talent") {
     const tb = contentEl.querySelector(".trello-group-toggle");
     return tb ? [tb] : [];
   }
@@ -283,6 +287,7 @@ function viewUsesHeaderToolbar(viewMode) {
     || mode === "trello"
     || mode === "patches"
     || mode === "weapons"
+    || mode === "gear_attributes"
     || mode === "brand"
     || mode === "gearset"
     || mode === "exotic_gear"
@@ -1078,6 +1083,7 @@ function resolveViewMode(rawView) {
   if (view === "event" || view === "events") return "event";
   if (view === "season_mod" || view === "seasonmod" || view === "modifiers" || view === "modifier") return "season_mod";
   if (view === "weapons" || view === "weapon") return "weapons";
+  if (view === "gear_attributes" || view === "gearattributes" || view === "gear-attributes") return "gear_attributes";
   if (view === "brand" || view === "brands") return "brand";
   if (view === "gearset" || view === "gearsets") return "gearset";
   if (view === "exotic_gear" || view === "exoticgear") return "exotic_gear";
@@ -1213,7 +1219,7 @@ function buildPathForViewMode(mode) {
 
 function updateModeUi() {
   const isVendorView = currentViewMode === "vendor";
-  const sharedFilterViews = new Set(["vendor", "brand", "gearset", "exotic_gear"]);
+  const sharedFilterViews = new Set(["vendor", "gear_attributes", "exotic_gear"]);
   if (isVendorView) {
     ensureVendorToolbarMounted();
   } else {
@@ -1221,7 +1227,10 @@ function updateModeUi() {
   }
   let nextTitle = "Division 2 Vendor";
   if (titleEl) {
-    if (currentViewMode === "brand") {
+    if (currentViewMode === "gear_attributes") {
+      nextTitle = "Division 2 Gear Attributes";
+      titleEl.textContent = nextTitle;
+    } else if (currentViewMode === "brand") {
       nextTitle = "Division 2 Brandset";
       titleEl.textContent = nextTitle;
     } else if (currentViewMode === "event") {
@@ -1830,6 +1839,19 @@ function trText(text) {
   if (langSelect.value !== "ja") return cleaned;
   const key = normalizeKey(cleaned);
   return i18n[key] ?? cleaned;
+}
+
+function displayStatEnglish(text, statKey = "") {
+  const aliases = {
+    ardamage: "Assault Rifle Damage",
+    assaultrifledamage: "Assault Rifle Damage",
+    mmrdamage: "Marksman Rifle Damage",
+    marksmanrifledamage: "Marksman Rifle Damage",
+    healthdamage: "Damage To Health",
+    damagetohealth: "Damage To Health",
+  };
+  const key = normalizeKey(statKey || text || "");
+  return aliases[key] || stripHtml(text ?? "");
 }
 
 function trCategoryText(category, key, fallbackText = "") {
@@ -3377,7 +3399,8 @@ function renderLine(item, ln, colorOverride = "") {
   if (lt === "modslot" || lt === "slot") return "";
 
   const iconClass = ln.icon_class || "";
-  const statEn = stripHtml((lt === "talent" && ln.override_talent_name) ? ln.override_talent_name : (ln.stat_en || ""));
+  const statEnRaw = (lt === "talent" && ln.override_talent_name) ? ln.override_talent_name : (ln.stat_en || "");
+  const statEn = displayStatEnglish(statEnRaw, ln.stat_key || "");
   if (!statEn) return "";
   if (/^[\-–—]+$/.test(statEn)) return "";
 
@@ -3948,8 +3971,8 @@ function applyFiltersToDom() {
 
   const keys = activeFilterKeys.slice();
   const isSelectableView = currentViewMode === "vendor" || currentViewMode === "brand" || currentViewMode === "gearset" || currentViewMode === "exotic_gear";
-  const useKeyFilter = currentViewMode === "vendor";
-  const useBrandTraitFilter = currentViewMode === "brand" && typeof window.brandTraitCardMatches === "function";
+  const useKeyFilter = currentViewMode === "vendor" || currentViewMode === "gear_attributes";
+  const useGearAttributeFilter = currentViewMode === "gear_attributes" && typeof window.gearAttributesTraitCardMatches === "function";
   syncCardSelectionClasses();
 
   document.body.classList.toggle("only-selected", isSelectableView && onlySelected);
@@ -3958,8 +3981,8 @@ function applyFiltersToDom() {
     const id = card.dataset.itemId;
     const okSel = (!isSelectableView || !onlySelected) || selectedIds.has(id);
     const okKeys = !useKeyFilter || cardHasKeys(card, keys);
-    const okBrandTraits = !useBrandTraitFilter || window.brandTraitCardMatches(card);
-    card.style.display = (okSel && okKeys && okBrandTraits) ? "" : "none";
+    const okTraits = !useGearAttributeFilter || window.gearAttributesTraitCardMatches(card);
+    card.style.display = (okSel && okKeys && okTraits) ? "" : "none";
   });
 
   // line highlight
@@ -3971,6 +3994,20 @@ function applyFiltersToDom() {
     const k = line.dataset.statKey;
     if (activeFilterKeys.includes(k)) line.classList.add("is-filter-hit");
     else line.classList.remove("is-filter-hit");
+    if (currentViewMode === "gear_attributes" && typeof window.gearAttributesTraitLineMatches === "function") {
+      const traitHit = window.gearAttributesTraitLineMatches(line);
+      const values = line.querySelectorAll("[data-gear-attribute-key]");
+      values.forEach((value) => {
+        const key = normalizeKey(value.getAttribute("data-gear-attribute-key") || "");
+        value.classList.toggle("gear-attribute-value--hit", traitHit && window.gearAttributesTraitKeyMatches(key));
+      });
+      line.classList.toggle("gear-attribute-trait-line-hit", traitHit);
+      line.classList.remove("line--named");
+    } else {
+      line.classList.remove("line--named");
+      line.classList.remove("gear-attribute-trait-line-hit");
+      line.querySelectorAll(".gear-attribute-value--hit").forEach((value) => value.classList.remove("gear-attribute-value--hit"));
+    }
   });
 
   // toggle button ui
@@ -4044,8 +4081,8 @@ function toggleFilterKey(key) {
 
 function clearFilters() {
   activeFilterKeys = [];
-  if (currentViewMode === "brand" && typeof window.brandClearTraitFilters === "function") {
-    window.brandClearTraitFilters({ silent: true });
+  if (currentViewMode === "gear_attributes" && typeof window.gearAttributesClearTraitFilters === "function") {
+    window.gearAttributesClearTraitFilters({ silent: true });
   }
   renderChips();
   applyFiltersToDom();
@@ -4292,6 +4329,13 @@ async function renderBrandView() {
   await window.brandViewRender();
 }
 
+async function renderGearAttributesView() {
+  if (typeof window.gearAttributesViewRender !== "function") {
+    throw new Error("gearAttributesViewRender is not available");
+  }
+  await window.gearAttributesViewRender();
+}
+
 async function renderGearsetView() {
   if (typeof window.gearsetViewRender !== "function") {
     throw new Error("gearsetViewRender is not available");
@@ -4381,7 +4425,7 @@ function toggleNavMenu() {
 async function switchViewMode(mode) {
   const prevViewMode = currentViewMode;
   saveSelectionStateForView(prevViewMode);
-  currentViewMode = (mode === "event" || mode === "season_mod" || mode === "weapons" || mode === "brand" || mode === "gearset" || mode === "exotic_gear" || mode === "gear_talent" || mode === "weapon_talent" || mode === "y8s2_talent_diff" || mode === "descent_talent" || mode === "prototype" || mode === "cost" || mode === "blueprint" || mode === "item_sources" || mode === "trello" || mode === "patches") ? mode : "vendor";
+  currentViewMode = (mode === "event" || mode === "season_mod" || mode === "weapons" || mode === "gear_attributes" || mode === "brand" || mode === "gearset" || mode === "exotic_gear" || mode === "gear_talent" || mode === "weapon_talent" || mode === "y8s2_talent_diff" || mode === "descent_talent" || mode === "prototype" || mode === "cost" || mode === "blueprint" || mode === "item_sources" || mode === "trello" || mode === "patches") ? mode : "vendor";
   loadSelectionStateForView(currentViewMode);
   const shouldResetSharedFilterOpen =
     prevViewMode !== currentViewMode &&
@@ -4424,6 +4468,11 @@ async function switchViewMode(mode) {
   }
   if (currentViewMode === "event") {
     await renderEventView();
+    requestToolbarSync();
+    return;
+  }
+  if (currentViewMode === "gear_attributes") {
+    await renderGearAttributesView();
     requestToolbarSync();
     return;
   }
@@ -4622,6 +4671,8 @@ async function boot() {
           await renderSeasonModView();
         } else if (currentViewMode === "weapons") {
           await renderWeaponsView();
+        } else if (currentViewMode === "gear_attributes") {
+          await renderGearAttributesView();
         } else if (currentViewMode === "brand") {
           await renderBrandView();
         } else if (currentViewMode === "gearset") {
@@ -4720,6 +4771,11 @@ if (navSeasonModBtn) {
 if (navWeaponsBtn) {
   navWeaponsBtn.addEventListener("click", () => {
     switchViewMode("weapons").catch(err => setStatus(`${ui("error")}: ${err.message}`));
+  });
+}
+if (navGearAttributesBtn) {
+  navGearAttributesBtn.addEventListener("click", () => {
+    switchViewMode("gear_attributes").catch(err => setStatus(`${ui("error")}: ${err.message}`));
   });
 }
 if (navBrandBtn) {
@@ -5644,7 +5700,7 @@ function handleViewInteractionClick(e) {
   }
   const line = e.target.closest(".line[data-stat-key]");
   if (line) {
-    if (currentViewMode !== "vendor") return;
+    if (currentViewMode !== "vendor" && currentViewMode !== "gear_attributes") return;
     if (!filtersOpen) return;
     const lineTextTapTarget = e.target.closest(".line__text, .line__text-pop-trigger");
     if (!lineTextTapTarget) return;
