@@ -97,7 +97,7 @@
       "perfectsafeguard": "フルアーマー時、スキル修復の合計が160%増加する",
       "perfectunbreakable": "アーマーが消耗するとアーマーの100%を修復する。\nクールダウン：55秒",
       "perfectlyopportunistic": "ショットガンとマークスマンライフルで敵に攻撃がヒットすると、相手のダメージが15%5秒間増幅する\n\n必要条件：マークスマンライフルかショットガンを構えていること",
-      "perfectconussion": "TODO:Headshots increase total weapon damage by 20% for 1.5s. 5s with marksman rifles.\nHeadshot kills increase total weapon damage by 15% for 10s.\n\nBoth buffs can be active for an increase of 25% total weapon damage"
+      "perfectconussion": "TODO:Headshots increase total weapon damage by 20% for 1.5s, 5s with marksman rifles.\nHeadshot kills increase total weapon damage by 15% for 10s.\n\nBoth buffs can be active for an increase of 35% total weapon damage"
     },
     "weapon_talent_desc": {
       "breadbasket": "ボディショットを決めるごとに、次のヘッドショットに対して+55%のダメージボーナスが10秒間累積する。最大累積数は3",
