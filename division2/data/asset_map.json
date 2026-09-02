@@ -276,7 +276,11 @@
     "wicked": "img/talents/wicked.png",
     "whitehot": "img/talents/whitehot.png",
     "flashpoint": "img/talents/flashpoint.png",
-    "perfectconussion": "img/talents/perfectconussion.png"
+    "perfectconussion": "img/talents/perfectconussion.png",
+    "perfectconcussion": "img/talents/perfectconcussion.png",
+    "perfectlyreassigned": "img/talents/perfectlyreassigned.png",
+    "perfectprotector": "img/talents/perfectprotector.png",
+    "perfecttagteam": "img/talents/perfecttagteam.png"
   },
   "weapon_talents": {
     "30hsd": "img/weapon_talents/30hsd.png",

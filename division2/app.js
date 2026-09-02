@@ -55,8 +55,6 @@ const navPrototypeBtn = document.getElementById("navPrototypeBtn");
 const navCostBtn = document.getElementById("navCostBtn");
 const navBlueprintBtn = document.getElementById("navBlueprintBtn");
 const navItemSourcesBtn = document.getElementById("navItemSourcesBtn");
-const navTrelloBtn = document.getElementById("navTrelloBtn");
-const navPatchesBtn = document.getElementById("navPatchesBtn");
 if (navMenuPanel) navMenuPanel.inert = true;
 
 const labelLangEl = document.getElementById("labelLang");
@@ -81,8 +79,7 @@ let isWorldTimePopupOpen = false;
 let statusMode = "";
 const JST_OFFSET_MS = 9 * 60 * 60 * 1000;
 let filtersOpen = false;
-let currentViewMode = "vendor"; // vendor | event | season_mod | weapons | brand | gearset | exotic_gear | gear_talent | weapon_talent | y8s2_talent_diff | descent_talent | prototype | cost | blueprint | item_sources | trello | patches
-let trelloSummaryCache = null;
+let currentViewMode = "vendor"; // vendor | event | season_mod | weapons | brand | gearset | exotic_gear | gear_talent | weapon_talent | y8s2_talent_diff | descent_talent | prototype | cost | blueprint | item_sources
 let descentPoolState = {
   loaded: false,
   available: false,
@@ -110,9 +107,6 @@ let itemTalentOverridePromise = null;
 let talentDescLookupCache = null;
 let talentDescLookupPromise = null;
 window.currentViewMode = currentViewMode;
-window.trelloGroupBy = "name";
-window.trelloShowArchive = false;
-window.trelloExpandAll = false;
 window.brandShowNamed = false;
 window.weaponsShowDetails = false;
 window.weaponTalentTypeFilter = [];
@@ -265,14 +259,6 @@ function findViewToolbarNodes(viewMode) {
     const tb = contentEl.querySelector(".trello-group-toggle.descent-controls");
     return tb ? [tb] : [];
   }
-  if (mode === "trello" || mode === "patches") {
-    const tb = contentEl.querySelector(".trello-group-toggle");
-    if (!tb) return [];
-    const nodes = [tb];
-    const picker = tb.nextElementSibling;
-    if (picker && picker.classList.contains("trello-sections-picker")) nodes.push(picker);
-    return nodes;
-  }
   if (mode === "weapons" || mode === "gear_attributes" || mode === "brand" || mode === "gearset" || mode === "exotic_gear" || mode === "gear_talent" || mode === "weapon_talent") {
     const tb = contentEl.querySelector(".trello-group-toggle");
     return tb ? [tb] : [];
@@ -284,8 +270,6 @@ function viewUsesHeaderToolbar(viewMode) {
   const mode = String(viewMode || "");
   return mode === "item_sources"
     || mode === "descent_talent"
-    || mode === "trello"
-    || mode === "patches"
     || mode === "weapons"
     || mode === "gear_attributes"
     || mode === "brand"
@@ -1095,8 +1079,6 @@ function resolveViewMode(rawView) {
   if (view === "cost" || view === "grade_cost" || view === "gradecost") return "cost";
   if (view === "blueprint" || view === "blueprints") return "blueprint";
   if (view === "item_sources" || view === "itemsources") return "item_sources";
-  if (view === "trello") return "trello";
-  if (view === "patches") return "patches";
   return "";
 }
 
@@ -1146,10 +1128,6 @@ function applyUrlParams() {
   const descentPool = normalizeKey(getUrlParam("descent_pool"));
   window.descentTalentInitialPoolKey = descentPool || "";
 
-  // trello_group=name|planned
-  const trelloGroup = getUrlParam("trello_group").toLowerCase();
-  if (trelloGroup === "planned") window.trelloGroupBy = "planned";
-  else if (trelloGroup === "name") window.trelloGroupBy = "name";
 }
 
 function isRootViewPagePath() {
@@ -1272,12 +1250,6 @@ function updateModeUi() {
     } else if (currentViewMode === "item_sources") {
       nextTitle = "Division 2 Item Sources";
       titleEl.textContent = nextTitle;
-    } else if (currentViewMode === "trello") {
-      nextTitle = "Division 2 Trello";
-      titleEl.textContent = nextTitle;
-    } else if (currentViewMode === "patches") {
-      nextTitle = "Division 2 Patches";
-      titleEl.textContent = nextTitle;
     } else {
       nextTitle = "Division 2 Vendor";
       titleEl.textContent = nextTitle;
@@ -1312,12 +1284,6 @@ function applyGlobalLangConstraintForView() {
   if (optEn) optEn.disabled = false;
 }
 
-function refreshDescButtons() {
-  document.querySelectorAll(".trello-desc-btn[data-toggle-desc]").forEach((btn) => {
-    btn.classList.toggle("is-on", !!window.trelloExpandAll);
-  });
-}
-
 function refreshTalentDescButtons() {
   document.querySelectorAll(".talent-desc-btn[data-toggle-talent-desc]").forEach((btn) => {
     btn.classList.toggle("is-on", !!window.talentShowDesc);
@@ -1330,18 +1296,6 @@ function toggleCardDesc(cardEl) {
   const isOpen = cardEl.classList.contains("is-desc-open");
   cardEl.classList.toggle("is-desc-open", !isOpen);
   cardEl.setAttribute("data-desc-open", (!isOpen) ? "1" : "0");
-}
-
-function syncDescToggleStateFromDom() {
-  if (!(currentViewMode === "trello" || currentViewMode === "patches")) return;
-  const panels = Array.from(contentEl.querySelectorAll(".trello-card__detail"));
-  if (panels.length === 0) {
-    window.trelloExpandAll = false;
-    refreshDescButtons();
-    return;
-  }
-  window.trelloExpandAll = panels.every((p) => p.getAttribute("aria-hidden") === "false");
-  refreshDescButtons();
 }
 
 /* ---------------------------
@@ -3958,16 +3912,6 @@ function cardHasKeys(card, terms) {
 
 
 function applyFiltersToDom() {
-  if (currentViewMode === "trello" || currentViewMode === "patches") {
-    document.body.classList.remove("only-selected");
-    if (typeof window.trelloViewApplyFilters === "function") {
-      window.trelloViewApplyFilters();
-    }
-    if (onlySelectedBtn) {
-      onlySelectedBtn.classList.remove("is-on");
-    }
-    return;
-  }
 
   const keys = activeFilterKeys.slice();
   const isSelectableView = currentViewMode === "vendor" || currentViewMode === "brand" || currentViewMode === "gearset" || currentViewMode === "exotic_gear";
@@ -4300,14 +4244,6 @@ async function loadWeek(userDateStr, options = {}) {
   if (currentDate) setVendorDateValue(currentDate);
 }
 
-async function renderTrelloView() {
-  if (typeof window.trelloViewRender !== "function") {
-    throw new Error("trelloViewRender is not available");
-  }
-  await window.trelloViewRender();
-  syncDescToggleStateFromDom();
-}
-
 async function renderEventView() {
   if (typeof window.eventViewRender !== "function") {
     throw new Error("eventViewRender is not available");
@@ -4425,7 +4361,7 @@ function toggleNavMenu() {
 async function switchViewMode(mode) {
   const prevViewMode = currentViewMode;
   saveSelectionStateForView(prevViewMode);
-  currentViewMode = (mode === "event" || mode === "season_mod" || mode === "weapons" || mode === "gear_attributes" || mode === "brand" || mode === "gearset" || mode === "exotic_gear" || mode === "gear_talent" || mode === "weapon_talent" || mode === "y8s2_talent_diff" || mode === "descent_talent" || mode === "prototype" || mode === "cost" || mode === "blueprint" || mode === "item_sources" || mode === "trello" || mode === "patches") ? mode : "vendor";
+  currentViewMode = (mode === "event" || mode === "season_mod" || mode === "weapons" || mode === "gear_attributes" || mode === "brand" || mode === "gearset" || mode === "exotic_gear" || mode === "gear_talent" || mode === "weapon_talent" || mode === "y8s2_talent_diff" || mode === "descent_talent" || mode === "prototype" || mode === "cost" || mode === "blueprint" || mode === "item_sources") ? mode : "vendor";
   loadSelectionStateForView(currentViewMode);
   const shouldResetSharedFilterOpen =
     prevViewMode !== currentViewMode &&
@@ -4533,11 +4469,6 @@ async function switchViewMode(mode) {
   }
   if (currentViewMode === "item_sources") {
     await renderItemSourcesView();
-    requestToolbarSync();
-    return;
-  }
-  if (currentViewMode === "trello" || currentViewMode === "patches") {
-    await renderTrelloView();
     requestToolbarSync();
     return;
   }
@@ -4722,6 +4653,8 @@ langSelect.addEventListener("change", () => {
     renderSeasonModView().catch(err => setStatus(`${ui("error")}: ${err.message}`));
   } else if (currentViewMode === "weapons") {
     renderWeaponsView().catch(err => setStatus(`${ui("error")}: ${err.message}`));
+  } else if (currentViewMode === "gear_attributes") {
+    renderGearAttributesView().catch(err => setStatus(`${ui("error")}: ${err.message}`));
   } else if (currentViewMode === "brand") {
     renderBrandView().catch(err => setStatus(`${ui("error")}: ${err.message}`));
   } else if (currentViewMode === "gearset") {
@@ -4742,8 +4675,6 @@ langSelect.addEventListener("change", () => {
     renderBlueprintView().catch(err => setStatus(`${ui("error")}: ${err.message}`));
   } else if (currentViewMode === "item_sources") {
     renderItemSourcesView().catch(err => setStatus(`${ui("error")}: ${err.message}`));
-  } else {
-    renderTrelloView().catch(err => setStatus(`${ui("error")}: ${err.message}`));
   }
 });
 
@@ -4833,17 +4764,6 @@ if (navItemSourcesBtn) {
     switchViewMode("item_sources").catch(err => setStatus(`${ui("error")}: ${err.message}`));
   });
 }
-if (navTrelloBtn) {
-  navTrelloBtn.addEventListener("click", () => {
-    switchViewMode("trello").catch(err => setStatus(`${ui("error")}: ${err.message}`));
-  });
-}
-if (navPatchesBtn) {
-  navPatchesBtn.addEventListener("click", () => {
-    switchViewMode("patches").catch(err => setStatus(`${ui("error")}: ${err.message}`));
-  });
-}
-
 if (worldTimeEl) {
   worldTimeEl.addEventListener("click", (e) => {
     e.stopPropagation();
@@ -5506,92 +5426,9 @@ async function handleBlueprintExoticPopup(exoticBtn) {
 
 // event delegation: line tap => toggle filter, card tap => select
 function handleViewInteractionClick(e) {
-  if (currentViewMode === "trello" || currentViewMode === "patches") {
-    const sbtn = e.target.closest(".trello-sections-btn[data-toggle-sections-picker]");
-    if (sbtn) {
-      const picker = document.querySelector(".trello-sections-picker");
-      if (picker) {
-        const hidden = picker.getAttribute("aria-hidden") !== "false";
-        picker.setAttribute("aria-hidden", hidden ? "false" : "true");
-      }
-      return;
-    }
-    const schk = e.target.closest(".trello-section-check[data-section-key-enc]");
-    if (schk) {
-      const enc = schk.getAttribute("data-section-key-enc");
-      const key = enc ? decodeURIComponent(enc) : "";
-      if (key && typeof window.trelloViewSetSectionVisible === "function") {
-        const gb = window.trelloGroupBy === "planned" ? "planned" : "name";
-        window.trelloViewSetSectionVisible(gb, key, !!schk.checked);
-        applyFiltersToDom();
-      }
-      return;
-    }
-    const gbtn = e.target.closest(".trello-group-btn[data-group-by]");
-    if (gbtn) {
-      const gb = String(gbtn.getAttribute("data-group-by") || "").toLowerCase();
-      window.trelloGroupBy = gb === "planned" ? "planned" : "name";
-      renderTrelloView().catch(err => setStatus(`${ui("error")}: ${err.message}`));
-      return;
-    }
-    const abtn = e.target.closest(".trello-archive-btn[data-toggle-archive]");
-    if (abtn) {
-      window.trelloShowArchive = !window.trelloShowArchive;
-      renderTrelloView().catch(err => setStatus(`${ui("error")}: ${err.message}`));
-      return;
-    }
-    const dbtn = e.target.closest(".trello-desc-btn[data-toggle-desc]");
-    if (dbtn) {
-      window.trelloExpandAll = !window.trelloExpandAll;
-      contentEl.querySelectorAll(".trello-card[data-detail-id]").forEach((card) => {
-        const id = card.getAttribute("data-detail-id");
-        const panel = id ? document.getElementById(id) : null;
-        if (!panel) return;
-        panel.setAttribute("aria-hidden", window.trelloExpandAll ? "false" : "true");
-        card.classList.toggle("is-expanded", !!window.trelloExpandAll);
-      });
-      refreshDescButtons();
-      return;
-    }
-    const sht = e.target.closest(".trello-section-title[data-section-key-enc]");
-    if (sht) {
-      const enc = sht.getAttribute("data-section-key-enc");
-      const key = enc ? decodeURIComponent(enc) : "";
-      const gb = window.trelloGroupBy === "planned" ? "planned" : "name";
-      const sec = sht.closest(".trello-section");
-      if (key && sec && typeof window.trelloViewSetSectionCollapsed === "function") {
-        const nextCollapsed = !sec.classList.contains("is-collapsed");
-        window.trelloViewSetSectionCollapsed(gb, key, nextCollapsed);
-        sec.classList.toggle("is-collapsed", nextCollapsed);
-        const list = sec.querySelector(".trello-list");
-        const caret = sht.querySelector(".trello-section-title__caret");
-        if (list) list.setAttribute("aria-hidden", nextCollapsed ? "true" : "false");
-        sht.setAttribute("aria-expanded", nextCollapsed ? "false" : "true");
+  /* legacy handler removed
         if (caret) caret.textContent = nextCollapsed ? "▸" : "▾";
-      }
-      return;
-    }
-    const fk = e.target.closest("[data-filter-key]");
-    if (fk && filtersOpen) {
-      const k = fk.getAttribute("data-filter-key");
-      if (k) toggleFilterKey(k);
-      return;
-    }
-    if (e.target.closest("a")) return;
-    const tcard = e.target.closest(".trello-card[data-detail-id]");
-    if (tcard) {
-      const targetId = tcard.getAttribute("data-detail-id");
-      const panel = targetId ? document.getElementById(targetId) : null;
-      if (panel) {
-        const hidden = panel.getAttribute("aria-hidden") !== "false";
-        panel.setAttribute("aria-hidden", hidden ? "false" : "true");
-        tcard.classList.toggle("is-expanded", hidden);
-        syncDescToggleStateFromDom();
-      }
-      return;
-    }
-    return;
-  }
+  */
   if (currentViewMode === "brand") {
     const bnbtn = e.target.closest(".brand-named-btn[data-toggle-brand-named]");
     if (bnbtn) {
@@ -5735,15 +5572,6 @@ contentEl.addEventListener("click", handleViewInteractionClick);
 if (vendorToolbarHostEl) {
   vendorToolbarHostEl.addEventListener("click", handleViewInteractionClick);
 }
-
-contentEl.addEventListener("keydown", (e) => {
-  if (currentViewMode !== "trello" && currentViewMode !== "patches") return;
-  if (e.key !== "Enter" && e.key !== " ") return;
-  const sht = e.target.closest(".trello-section-title[data-section-key-enc]");
-  if (!sht) return;
-  e.preventDefault();
-  sht.click();
-});
 
 boot().catch(err => {
   console.error(err);
