@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "built_at": "2026-08-27T22:45:02.677589Z",
+  "built_at": "2026-09-02T06:50:03.313179Z",
   "categories": {
     "vendor": {
       "benitez": "ベニテス",
@@ -1105,7 +1105,8 @@
       "perfectnearsighted": "パーフェクト・ニアサイテッド",
       "dragonsbreath": "ドラゴン・ブレス",
       "boilingpoint": "沸点",
-      "perfectboilingpoint": "パーフクト・ボイリングポイント"
+      "perfectboilingpoint": "パーフクト・ボイリングポイント",
+      "perfectstrained": "TODO:perfectstrained"
     },
     "cache": {
       "amount": "数量",

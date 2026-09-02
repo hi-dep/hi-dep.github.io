@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "built_at": "2026-09-02T06:05:03.636191Z",
+  "built_at": "2026-09-02T06:50:03.313179Z",
   "sanitize": {
     "enabled": true,
     "safe_chars": "a-z 0-9 . _ -"
@@ -162,6 +162,7 @@
     "nolimit": "img/icon/talent/nolimit.png",
     "obliterate": "img/icon/talent/obliterate.png",
     "oneforall": "img/icon/talent/oneforall.png",
+    "oneinthehandtwointhebag": "img/icon/talent/oneinthehandtwointhebag.png",
     "opportunistic": "img/icon/talent/opportunistic.png",
     "ostracize": "img/icon/exotic_talent/Blacklisters_Ostracize.png",
     "outercore": "img/icon/talent/outercore.png",
@@ -178,6 +179,7 @@
     "patrioticboost": "img/icon/talent/patrioticboost.png",
     "perfectadrenalinerush": "img/icon/talent/adrenalinerush.png",
     "perfectbloodsucker": "img/icon/talent/bloodsucker.png",
+    "perfectbraced": "img/icon/talent/perfectbraced.png",
     "perfectclutch": "img/icon/talent/clutch.png",
     "perfectcombinedarms": "img/icon/talent/combinedarms.png",
     "perfectcompanion": "img/icon/talent/companion.png",
@@ -272,9 +274,7 @@
     "vigilance": "img/icon/talent/vigilance.png",
     "wavingtheflag": "img/icon/talent/wavingtheflag.png",
     "weakestlink": "img/icon/exotic_talent/Overdogs_Weakest Link.png",
-    "wicked": "img/icon/talent/wicked.png",
-    "perfectbraced": "img/icon/talent/perfectbraced.png",
-    "oneinthehandtwointhebag": "img/icon/talent/oneinthehandtwointhebag.png"
+    "wicked": "img/icon/talent/wicked.png"
   },
   "weapon_talents": {
     "actumest": "img/icon/exotic_weapon/St. Elmo's Engine_Actum Est.png",
@@ -287,6 +287,7 @@
     "biggamehunter": "img/icon/exotic_weapon/The Bighorn_Big Game Hunter.png",
     "binarytrigger": "img/icon/exotic_weapon/Merciless_Binary Trigger.png",
     "blossomharvest": "img/icon/named_weapon_talent/Blossom Harvest.png",
+    "boilingpoint": "img/icon/weapon_talent/boilingpoint.png",
     "boomerang": "img/icon/weapon_talent/boomerang.png",
     "brazen": "img/icon/weapon_talent/brazen.png",
     "breadbasket": "img/icon/weapon_talent/breadbasket.png",
@@ -301,6 +302,7 @@
     "determined": "img/icon/weapon_talent/determined.png",
     "disruptorrounds": "img/icon/exotic_weapon/Bluescreen_Disruptor Rounds.png",
     "doctorhome": "img/icon/exotic_weapon/Doctor Home_Doctor Home.png",
+    "dragonsbreath": "img/icon/weapon_talent/dragonsbreath.png",
     "eaglestrike": "img/icon/exotic_weapon/Eagle Bearer_Eagle's Strike.png",
     "electromagneticaccelerator": "img/icon/exotic_weapon/Nemesis_Electromagnetic Accelerator.png",
     "eyeless": "img/icon/weapon_talent/eyeless.png",
@@ -340,6 +342,7 @@
     "paymentinkind": "img/icon/exotic_weapon/Backfire_Payment in Kind.png",
     "perfectallegro": "img/icon/weapon_talent/allegro.png",
     "perfectbackandforth": "img/icon/weapon_talent/backandforth.png",
+    "perfectboilingpoint": "img/icon/weapon_talent/perfectboilingpoint.png",
     "perfectboomerang": "img/icon/weapon_talent/boomerang.png",
     "perfectbrazen": "img/icon/weapon_talent/brazen.png",
     "perfectbreadbasket": "img/icon/weapon_talent/breadbasket.png",
@@ -393,6 +396,7 @@
     "perfectsoftspot": "img/icon/weapon_talent/softspot.png",
     "perfectspike": "img/icon/weapon_talent/spike.png",
     "perfectstabilize": "img/icon/weapon_talent/stabilize.png",
+    "perfectstrained": "img/icon/weapon_talent/strained.png",
     "perfectstreamline": "img/icon/weapon_talent/streamline.png",
     "perfectthunderstrike": "img/icon/weapon_talent/thunderstrike.png",
     "perfectunhinged": "img/icon/weapon_talent/Unhinged.png",
@@ -435,10 +439,7 @@
     "unhinged": "img/icon/weapon_talent/unhinged.png",
     "unnerve": "img/icon/exotic_weapon/Strega_Unnerve.png",
     "unwavering": "img/icon/weapon_talent/unwavering.png",
-    "vindictive": "img/icon/weapon_talent/vindictive.png",
-    "dragonsbreath": "img/icon/weapon_talent/dragonsbreath.png",
-    "boilingpoint": "img/icon/weapon_talent/boilingpoint.png",
-    "perfectboilingpoint": "img/icon/weapon_talent/perfectboilingpoint.png"
+    "vindictive": "img/icon/weapon_talent/vindictive.png"
   },
   "gearsets": {
     "aceseights": "img/icon/gearset/aceseights.png",
