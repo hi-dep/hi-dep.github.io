@@ -4564,6 +4564,14 @@ async function boot() {
   });
   buildI18nReverse();
 
+  // Asset paths may contain spaces and mixed case. Load the map before the
+  // first view render so the initial render does not request slug-only paths.
+  try {
+    assetMap = await fetchJsonWithTimeout(`${DATA_BASE}/asset_map.json?ts=${Date.now()}`, 8000);
+  } catch (e) {
+    assetMap = null;
+  }
+
   const defaultDate = getVendorDateValue() || indexJson.target_week || new Date().toISOString().slice(0, 10);
   setVendorDateValue(defaultDate);
   updateModeUi();
@@ -4573,12 +4581,6 @@ async function boot() {
   setStatus("");
   (async () => {
     let needsVendorRerender = false;
-    try {
-      assetMap = await fetchJsonWithTimeout(`${DATA_BASE}/asset_map.json?ts=${Date.now()}`, 8000);
-      needsVendorRerender = true;
-    } catch (e) {
-      assetMap = null;
-    }
     try {
       graphConfig = await fetchJsonWithTimeout(`${DATA_BASE}/graph_config.json?ts=${Date.now()}`, 5000);
       needsVendorRerender = true;
