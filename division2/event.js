@@ -480,7 +480,7 @@
       }).join("");
 
       setContentHtml(`
-        <section class="blueprint-view event-view" aria-label="event">
+        <section class="blueprint-view event-view" aria-label="target-looted">
           ${rowHtml}
         </section>
       `);

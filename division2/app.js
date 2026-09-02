@@ -1212,7 +1212,7 @@ function updateModeUi() {
       nextTitle = "Division 2 Brandset";
       titleEl.textContent = nextTitle;
     } else if (currentViewMode === "event") {
-      nextTitle = "Division 2 Event";
+      nextTitle = "Division 2 Target Looted";
       titleEl.textContent = nextTitle;
     } else if (currentViewMode === "season_mod") {
       nextTitle = "Division 2 Season MOD";
@@ -1451,7 +1451,7 @@ function applyUiLang() {
   const filterGroupLabelEl = document.getElementById("filterGroupLabel");
   if (selectGroupLabelEl) selectGroupLabelEl.textContent = ui("selectGroup");
   if (filterGroupLabelEl) filterGroupLabelEl.textContent = ui("filterGroup");
-  if (navEventBtn) navEventBtn.textContent = "Event";
+  if (navEventBtn) navEventBtn.textContent = "Target Looted";
   if (navSeasonModBtn) navSeasonModBtn.textContent = "Season MOD";
   if (navExoticGearBtn) navExoticGearBtn.textContent = "Exotic Items";
 
