@@ -272,7 +272,9 @@
     "vigilance": "img/icon/talent/vigilance.png",
     "wavingtheflag": "img/icon/talent/wavingtheflag.png",
     "weakestlink": "img/icon/exotic_talent/Overdogs_Weakest Link.png",
-    "wicked": "img/icon/talent/wicked.png"
+    "wicked": "img/icon/talent/wicked.png",
+    "perfectbraced": "img/icon/talent/perfectbraced.png",
+    "oneinthehandtwointhebag": "img/icon/talent/oneinthehandtwointhebag.png"
   },
   "weapon_talents": {
     "actumest": "img/icon/exotic_weapon/St. Elmo's Engine_Actum Est.png",
@@ -433,7 +435,10 @@
     "unhinged": "img/icon/weapon_talent/unhinged.png",
     "unnerve": "img/icon/exotic_weapon/Strega_Unnerve.png",
     "unwavering": "img/icon/weapon_talent/unwavering.png",
-    "vindictive": "img/icon/weapon_talent/vindictive.png"
+    "vindictive": "img/icon/weapon_talent/vindictive.png",
+    "dragonsbreath": "img/icon/weapon_talent/dragonsbreath.png",
+    "boilingpoint": "img/icon/weapon_talent/boilingpoint.png",
+    "perfectboilingpoint": "img/icon/weapon_talent/perfectboilingpoint.png"
   },
   "gearsets": {
     "aceseights": "img/icon/gearset/aceseights.png",
