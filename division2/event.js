@@ -250,9 +250,9 @@
     const resolved = resolveTargetLoot(name);
     const key = resolved.key;
     if (!key || typeof iconUrl !== "function") return "";
-    if (resolved.kind === "weapon_types") return iconUrl("weapon_types", key, "img/weapons");
-    if (resolved.kind === "gear_slots") return iconUrl("gear_slots", key, "img/gears");
-    return iconUrl("brands", key, "img/brands");
+    if (resolved.kind === "weapon_types") return iconUrl("weapon_types", key, "img/icon/weapon");
+    if (resolved.kind === "gear_slots") return iconUrl("gear_slots", key, "img/icon/slot");
+    return iconUrl("brands", key, "img/icon/brandset");
   }
 
   function targetLootCellHtml(name, t) {

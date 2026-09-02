@@ -1003,8 +1003,8 @@ function openDescentPoolStatusPopup(anchorEl, poolKeyHint = "") {
       const key = normalizeKey(String(t?.talent_key || t?.name || ""));
       const name = String(t?.name || t?.talent_name || key || "").trim();
       const rarityClass = rarityClassByGroup(g);
-      const iconSrc = iconUrl("talents", key, "img/talents")
-        || iconUrl("weapon_talents", key, "img/weapon_talents");
+      const iconSrc = iconUrl("talents", key, "img/icon/talent")
+        || iconUrl("weapon_talents", key, "img/icon/weapon_talent");
       const bgStyle = iconSrc ? ` style="background-image:url('${escapeHtml(iconSrc)}')"` : "";
       const disp = (langSelect.value === "ja") ? (i18n[key] ?? name) : name;
       return `
@@ -2278,8 +2278,8 @@ function buildBrandPopupCardHtml(info, brandName, brandKey) {
     if (text) lines.push(text);
   });
   const brandKeyNorm = normalizeKey(brandKey || title);
-  const brandIconPrimary = iconUrl("brands", brandKeyNorm, "img/brands");
-  const brandIconAlt = iconUrl("brands", normalizeKey(title), "img/brands");
+  const brandIconPrimary = iconUrl("brands", brandKeyNorm, "img/icon/brandset");
+  const brandIconAlt = iconUrl("brands", normalizeKey(title), "img/icon/brandset");
   const brandIconFallbacks = [];
   if (brandIconAlt && brandIconAlt !== brandIconPrimary) brandIconFallbacks.push(brandIconAlt);
   const brandBgHtml = brandIconPrimary
@@ -2457,7 +2457,7 @@ function buildGearsetPopupCardHtml(it, fallbackTitle = "") {
       const g = grouped.get(k);
       if (!g) return "";
       const icons = (g.slots || []).map((slot) => {
-        const src = iconUrl("gear_slots", normalizeKey(slot), "img/gears");
+        const src = iconUrl("gear_slots", normalizeKey(slot), "img/icon/slot");
         const cls = `ico ico--core-slot core-mixed-icon core-mixed-icon--${escapeHtml(k)}`;
         return src ? iconImgHtml(src, cls, slot) : "";
       }).filter(Boolean).join("");
@@ -2490,11 +2490,11 @@ function buildGearsetPopupCardHtml(it, fallbackTitle = "") {
   function gearPieceIconByLabels(labels) {
     const all = (labels || []).map((x) => normalizeKey(x || "")).join(" ");
     if (all.includes("backpack")) {
-      const src = iconUrl("gear_slots", "backpack", "img/gears");
+      const src = iconUrl("gear_slots", "backpack", "img/icon/slot");
       return src ? iconImgHtml(src, "ico ico--talent", "backpack") : "";
     }
     if (all.includes("chest")) {
-      const src = iconUrl("gear_slots", "chest", "img/gears");
+      const src = iconUrl("gear_slots", "chest", "img/icon/slot");
       return src ? iconImgHtml(src, "ico ico--talent", "chest") : "";
     }
     return "";
@@ -2509,9 +2509,9 @@ function buildGearsetPopupCardHtml(it, fallbackTitle = "") {
     if (pieceIcon) add(pieceIcon);
     if (setIconPrimary) add(setIconPrimary);
     if (baseKey) {
-      add(iconUrl("talents", baseKey, "img/talents"));
+      add(iconUrl("talents", baseKey, "img/icon/talent"));
       if (typeof talentKeyVariants === "function") {
-        for (const k of talentKeyVariants(baseKey)) add(iconUrl("talents", k, "img/talents"));
+        for (const k of talentKeyVariants(baseKey)) add(iconUrl("talents", k, "img/icon/talent"));
       }
     }
     if (isFourPc) {
@@ -2549,8 +2549,8 @@ function buildGearsetPopupCardHtml(it, fallbackTitle = "") {
       const isFourPc = !(isBackpackTalent || isChestTalent);
       const pieceSuffix = isFourPc ? "4pc" : (isBackpackTalent ? "backpack" : (isChestTalent ? "chest" : ""));
       const slotIcon = isBackpackTalent
-        ? iconImgHtml(iconUrl("gear_slots", "backpack", "img/gears"), "ico ico--talent", "backpack")
-        : (isChestTalent ? iconImgHtml(iconUrl("gear_slots", "chest", "img/gears"), "ico ico--talent", "chest") : "");
+        ? iconImgHtml(iconUrl("gear_slots", "backpack", "img/icon/slot"), "ico ico--talent", "backpack")
+        : (isChestTalent ? iconImgHtml(iconUrl("gear_slots", "chest", "img/icon/slot"), "ico ico--talent", "chest") : "");
       const pieceIcon = gearsetIconUrl(keyNorm, pieceSuffix) || gearPieceIconByLabels(labelList);
       const talentKey = normalizeKey(tn || "");
       const talentIcon = gearsetTalentIconHtml(talentKey, pieceIcon, isFourPc, setIconPrimary, setFallbacks);
@@ -2585,7 +2585,7 @@ function buildGearsetPopupCardHtml(it, fallbackTitle = "") {
       const tnDisp = (langSelect.value === "ja") ? (i18n[tk] ?? trText(t.title)) : t.title;
       const tdDisp = (langSelect.value === "ja") ? trCategoryText("gearset_talent_desc", tk, t.desc) : t.desc;
       const rawSlot = idx === 0 ? "backpack" : "chest";
-      const slotIcon = iconImgHtml(iconUrl("gear_slots", rawSlot, "img/gears"), "ico ico--talent", rawSlot);
+      const slotIcon = iconImgHtml(iconUrl("gear_slots", rawSlot, "img/icon/slot"), "ico ico--talent", rawSlot);
       lines.push({
         cls: "line line--gray line--talent",
         text: tnDisp,
@@ -2881,7 +2881,7 @@ function gearsetIconUrl(gearsetKey, suffix = "") {
   const baseKey = normalizeKey(gearsetKey || "");
   if (!baseKey) return "";
   const iconKey = suffix ? `${baseKey}_${suffix}` : baseKey;
-  return iconUrl("gearsets", iconKey, "img/gearset");
+  return iconUrl("gearsets", iconKey, "img/icon/slotet");
 }
 
 /* ---------------------------
@@ -2978,9 +2978,9 @@ function brandTalentIconHtml(talentKey, fallbackText = "") {
     if (!u) return;
     if (!cands.includes(u)) cands.push(u);
   };
-  add(iconUrl("talents", baseKey, "img/talents"));
+  add(iconUrl("talents", baseKey, "img/icon/talent"));
   for (const k of talentKeyVariants(baseKey)) {
-    add(iconUrl("talents", k, "img/talents"));
+    add(iconUrl("talents", k, "img/icon/talent"));
   }
   if (!cands.length) return "";
   return iconImgHtml(cands[0], "ico ico--talent", "talent", cands.slice(1));
@@ -3424,18 +3424,18 @@ function renderLine(item, ln, colorOverride = "") {
     const primaryKind = isWeapon ? "weapon_talents" : "talents";
     const fallbackKind = isWeapon ? "talents" : "weapon_talents";
 
-    const primary = iconUrl(primaryKind, baseKey, isWeapon ? "img/weapon_talents" : "img/talents");
+    const primary = iconUrl(primaryKind, baseKey, isWeapon ? "img/icon/weapon_talent" : "img/icon/talent");
     const fallbacks = [];
 
     for (const k of variants) {
-      const p = iconUrl(primaryKind, k, isWeapon ? "img/weapon_talents" : "img/talents");
+      const p = iconUrl(primaryKind, k, isWeapon ? "img/icon/weapon_talent" : "img/icon/talent");
       if (p) fallbacks.push(p);
     }
 
-    const fbSameKey = iconUrl(fallbackKind, baseKey, isWeapon ? "img/talents" : "img/weapon_talents");
+    const fbSameKey = iconUrl(fallbackKind, baseKey, isWeapon ? "img/icon/talent" : "img/icon/weapon_talent");
     if (fbSameKey) fallbacks.push(fbSameKey);
     for (const k of variants) {
-      const p = iconUrl(fallbackKind, k, isWeapon ? "img/talents" : "img/weapon_talents");
+      const p = iconUrl(fallbackKind, k, isWeapon ? "img/icon/talent" : "img/icon/weapon_talent");
       if (p) fallbacks.push(p);
     }
 
@@ -3557,8 +3557,8 @@ function buildCardBg(item, modCard = null) {
     const bKey = item.brand_key || normalizeKey(item.brand_en);
     const sKey = item.slot_key || normalizeKey(item.slot_en);
     const isGearset = normalizeKey(item.rarity || "") === "gearset";
-    const brandIcon = isGearset ? gearsetIconUrl(bKey) : iconUrl("brands", bKey, "img/brands");
-    const slotIcon = iconUrl("gear_slots", sKey, "img/gears");
+    const brandIcon = isGearset ? gearsetIconUrl(bKey) : iconUrl("brands", bKey, "img/icon/brandset");
+    const slotIcon = iconUrl("gear_slots", sKey, "img/icon/slot");
 
     return [
       bgIconHtml(brandIcon, "card__bg--tr", "brand"),
@@ -3569,13 +3569,13 @@ function buildCardBg(item, modCard = null) {
   // weapon: weapon type (TR)
   if (item.category === "weapon") {
     const wKey = item.slot_key || normalizeKey(item.slot_en);
-    const wIcon = iconUrl("weapon_types", wKey, "img/weapons");
+    const wIcon = iconUrl("weapon_types", wKey, "img/icon/weapon");
     return bgIconHtml(wIcon, "card__bg--tr", "weapon");
   }
 
   // mod: skill mod / gear mod icons (top-right)
   if (item.category === "mod" && modCard) {
-    const p = modCard.isSkillMod ? appPath("img/gears/skillmod.png") : appPath("img/gears/gearmod.png");
+    const p = modCard.isSkillMod ? appPath("img/icon/slot/skillmod.png") : appPath("img/icon/slot/gearmod.png");
     return bgIconHtml(p, "card__bg--tr", "mod");
   }
 
@@ -4973,8 +4973,8 @@ function blueprintPopupExoticTalentIconHtml(talentKey, fallbackText = "", isWeap
   };
   const primaryKind = isWeapon ? "weapon_talents" : "talents";
   const fallbackKind = isWeapon ? "talents" : "weapon_talents";
-  const primaryDir = isWeapon ? "img/weapon_talents" : "img/talents";
-  const fallbackDir = isWeapon ? "img/talents" : "img/weapon_talents";
+  const primaryDir = isWeapon ? "img/icon/weapon_talent" : "img/icon/talent";
+  const fallbackDir = isWeapon ? "img/icon/talent" : "img/icon/weapon_talent";
   add(iconUrl(primaryKind, baseKey, primaryDir));
   if (typeof talentKeyVariants === "function") {
     for (const k of talentKeyVariants(baseKey)) add(iconUrl(primaryKind, k, primaryDir));
@@ -5216,12 +5216,12 @@ function buildBlueprintNamedPopupCardHtml(row, itemKind = "gear", fallbackName =
   let typeBadgeHtml = "";
   if (isWeapon) {
     const wg = blueprintPopupWeaponGroupKey(row?.weapon_group || "");
-    const wIcon = iconUrl("weapon_types", wg, "img/weapons");
+    const wIcon = iconUrl("weapon_types", wg, "img/icon/weapon");
     bg = wIcon ? bgIconHtml(wIcon, "card__bg--tr", "weapon") : "";
     typeBadgeHtml = `<span class="wt-inline-badges"><span class="wt-badge is-on">${escapeHtml(blueprintPopupWeaponTypeShortLabel(wg))}</span></span>`;
   } else {
     const slotKey = gearSlotKey(row?.item_type || "");
-    const slotIcon = iconUrl("gear_slots", slotKey, "img/gears");
+    const slotIcon = iconUrl("gear_slots", slotKey, "img/icon/slot");
     bg = slotIcon ? bgIconHtml(slotIcon, "card__bg--tr", "slot") : "";
   }
 
@@ -5381,11 +5381,11 @@ function buildBlueprintExoticPopupCardHtml(row, itemKind = "gear", fallbackName 
   let bg = "";
   if (isWeapon) {
     const wg = blueprintPopupWeaponGroupKey(row?.weapon_group || "");
-    const wIcon = iconUrl("weapon_types", wg, "img/weapons");
+    const wIcon = iconUrl("weapon_types", wg, "img/icon/weapon");
     bg = wIcon ? bgIconHtml(wIcon, "card__bg--tr", "weapon") : "";
   } else {
     const slotKey = gearSlotKey(row?.item_type || "");
-    const slotIcon = iconUrl("gear_slots", slotKey, "img/gears");
+    const slotIcon = iconUrl("gear_slots", slotKey, "img/icon/slot");
     bg = slotIcon ? bgIconHtml(slotIcon, "card__bg--tr", "slot") : "";
   }
   return `

@@ -278,7 +278,7 @@
     if (!slot) return "";
     const isWeapon = normalizeKey(row.category || "") === "weapon";
     const iconKind = isWeapon ? "weapon_types" : "gear_slots";
-    const iconDir = isWeapon ? "img/weapons" : "img/gears";
+    const iconDir = isWeapon ? "img/icon/weapon" : "img/icon/slot";
     const src = iconUrl(iconKind, slot, iconDir);
     const slotLabel = trByKeyFallback(slot, slot);
     const bpType = localizeBlueprintType(bp?.type || "craft");
@@ -338,7 +338,7 @@
       const wBadge = weaponTypeBadgeHtml(slotKey);
       if (wBadge) bits.push(wBadge);
     } else if (category === "gear" && (tier === "named" || tier === "exotic")) {
-      const slotIcon = iconUrl("gear_slots", slotKey, "img/gears");
+      const slotIcon = iconUrl("gear_slots", slotKey, "img/icon/slot");
       const slotLabel = trByKeyFallback(slotKey, slotKey);
       if (slotIcon) {
         bits.push(`<span class="item-source-icon item-sources-name-slot" title="${escapeHtml(slotLabel)}">${iconImgHtml(slotIcon, "ico ico--item-source", slotLabel)}</span>`);
@@ -380,13 +380,13 @@
     const isBrand = !!bKey && (k === bKey || (brandNameKey && k === brandNameKey));
     if (isBrand) {
       const isGearset = normalizeKey(row.tier || row.rarity || row.brand_scope || "") === "gearset";
-      const src = isGearset ? iconUrl("gearsets", bKey, "img/gearset") : iconUrl("brands", bKey, "img/brands");
+      const src = isGearset ? iconUrl("gearsets", bKey, "img/icon/slotet") : iconUrl("brands", bKey, "img/icon/brandset");
       const alt = trByKeyFallback(bKey, brandName || baseRaw || val);
       if (!src) return `<span class="item-source-tag${scope === "dz" ? " item-source-tag--dz" : ""}">${escapeHtml(alt)}${scopeText ? ` (${escapeHtml(scopeText)})` : ""}</span>`;
       return `<span class="item-source-icon item-sources-name-slot item-sources-target-entry${scopeEntryClass}" title="${escapeHtml(alt)}">${iconImgHtml(src, "ico ico--item-source", alt)}${scopeBadge}</span>`;
     }
 
-    const slotSrc = iconUrl("gear_slots", k, "img/gears");
+    const slotSrc = iconUrl("gear_slots", k, "img/icon/slot");
     const slotLabel = trByKeyFallback(k, baseRaw || val);
     if (slotSrc) {
       return `<span class="item-source-icon item-sources-name-slot item-sources-target-entry${scopeEntryClass}" title="${escapeHtml(slotLabel)}">${iconImgHtml(slotSrc, "ico ico--item-source", slotLabel)}${scopeBadge}</span>`;
@@ -416,10 +416,10 @@
       const bKey = normalizeKey(row.brand_key || "");
       const brandFallback = (brandNameByKey && brandNameByKey.get(bKey)) || row.brand_key || alt;
       const isGearset = normalizeKey(row.tier || row.rarity || row.brand_scope || "") === "gearset";
-      src = isGearset ? iconUrl("gearsets", bKey, "img/gearset") : iconUrl("brands", bKey, "img/brands");
+      src = isGearset ? iconUrl("gearsets", bKey, "img/icon/slotet") : iconUrl("brands", bKey, "img/icon/brandset");
       alt = trByKeyFallback(bKey, brandFallback);
     } else {
-      src = iconUrl("gear_slots", tKey, "img/gears");
+      src = iconUrl("gear_slots", tKey, "img/icon/slot");
       alt = trByKeyFallback(tKey, tKey || alt);
     }
     if (!src) {
@@ -440,7 +440,7 @@
         : tagLabel("craft_only");
       return `<span class="item-source-tag">${escapeHtml(onlyLabel)}</span>`;
     }
-    const src = iconUrl("gear_slots", c.slot, "img/gears");
+    const src = iconUrl("gear_slots", c.slot, "img/icon/slot");
     if (!src) {
       return `<span class="item-source-tag">${escapeHtml(`Craft:${c.slot}`)}</span>`;
     }

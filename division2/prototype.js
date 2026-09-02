@@ -255,12 +255,12 @@
       const s = normalizeKey(slotKey || "");
       const c = normalizeKey(category || "");
       let src = "";
-      if (c === "weapon" && s) src = appPath(`img/weapons/${s}.png`);
+      if (c === "weapon" && s) src = appPath(`img/icon/weapon/${s}.png`);
       if (c === "gear") {
-        if (s === "mask" || s === "backpack" || s === "chest") src = appPath(`img/gears/${s}.png`);
-        if (s === "glove" || s === "gloves") src = appPath("img/gears/gloves.png");
-        if (s === "holster") src = appPath("img/gears/holster.png");
-        if (s === "kneepads" || s === "knee" || s === "kneepad") src = appPath("img/gears/kneepads.png");
+      if (s === "mask" || s === "backpack" || s === "chest") src = appPath(`img/icon/slot/${s}.png`);
+      if (s === "glove" || s === "gloves") src = appPath("img/icon/slot/gloves.png");
+      if (s === "holster") src = appPath("img/icon/slot/holster.png");
+      if (s === "kneepads" || s === "knee" || s === "kneepad") src = appPath("img/icon/slot/kneepads.png");
       }
       if (!src) return "";
       return `<img class="ico ico--item-source blueprint-slot-ico" src="${escapeHtml(src)}" alt="${escapeHtml(s)}" loading="lazy" decoding="async" />`;

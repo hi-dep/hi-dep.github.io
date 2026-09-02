@@ -130,11 +130,11 @@
     function gearPieceIconByLabels(labels) {
       const all = (labels || []).map((x) => normalizeKey(x || "")).join(" ");
       if (all.includes("backpack")) {
-        const src = iconUrl("gear_slots", "backpack", "img/gears");
+        const src = iconUrl("gear_slots", "backpack", "img/icon/slot");
         return src ? iconImgHtml(src, "ico ico--talent", "backpack") : "";
       }
       if (all.includes("chest")) {
-        const src = iconUrl("gear_slots", "chest", "img/gears");
+        const src = iconUrl("gear_slots", "chest", "img/icon/slot");
         return src ? iconImgHtml(src, "ico ico--talent", "chest") : "";
       }
       return "";
@@ -183,7 +183,7 @@
         const g = grouped.get(k);
         if (!g) return "";
         const icons = (g.slots || []).map((slot) => {
-          const src = iconUrl("gear_slots", normalizeKey(slot), "img/gears");
+          const src = iconUrl("gear_slots", normalizeKey(slot), "img/icon/slot");
           const cls = `ico ico--core-slot core-mixed-icon core-mixed-icon--${escapeHtml(k)}`;
           return src ? iconImgHtml(src, cls, slot) : "";
         }).filter(Boolean).join("");
@@ -206,9 +206,9 @@
       if (pieceIcon) add(pieceIcon);
       if (setIconPrimary) add(setIconPrimary);
       if (baseKey) {
-        add(iconUrl("talents", baseKey, "img/talents"));
+        add(iconUrl("talents", baseKey, "img/icon/talent"));
         if (typeof talentKeyVariants === "function") {
-          for (const k of talentKeyVariants(baseKey)) add(iconUrl("talents", k, "img/talents"));
+          for (const k of talentKeyVariants(baseKey)) add(iconUrl("talents", k, "img/icon/talent"));
         }
       }
       if (isFourPc) {
@@ -284,8 +284,8 @@
           const isFourPc = !(isBackpackTalent || isChestTalent);
           const pieceSuffix = isFourPc ? "4pc" : (isBackpackTalent ? "backpack" : (isChestTalent ? "chest" : ""));
           const slotIcon = isBackpackTalent
-            ? iconImgHtml(iconUrl("gear_slots", "backpack", "img/gears"), "ico ico--talent", "backpack")
-            : (isChestTalent ? iconImgHtml(iconUrl("gear_slots", "chest", "img/gears"), "ico ico--talent", "chest") : "");
+            ? iconImgHtml(iconUrl("gear_slots", "backpack", "img/icon/slot"), "ico ico--talent", "backpack")
+            : (isChestTalent ? iconImgHtml(iconUrl("gear_slots", "chest", "img/icon/slot"), "ico ico--talent", "chest") : "");
           const pieceIcon = gearsetIconUrl(setKeyNorm, pieceSuffix) || gearPieceIconByLabels(labelList);
           const talentKey = normalizeKey(tn || "");
           const talentIcon = gearsetTalentIconHtml(talentKey, pieceIcon, isFourPc, setIconPrimary, setIconFallbacks);

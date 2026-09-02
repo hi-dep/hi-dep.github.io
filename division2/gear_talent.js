@@ -302,7 +302,7 @@
       const talentRaw = namedOnly ? "" : String(r.talent || "").trim();
       const talentKey = normalizeKey(talentRaw);
       const talentSlotKey = gearSlotKey(r.talent_slot || "");
-      const talentSlotIconSrc = talentSlotKey ? iconUrl("gear_slots", talentSlotKey, "img/gears") : "";
+      const talentSlotIconSrc = talentSlotKey ? iconUrl("gear_slots", talentSlotKey, "img/icon/slot") : "";
       const talentSlotIcon = talentSlotIconSrc ? iconImgHtml(talentSlotIconSrc, "ico ico--talent", talentSlotKey) : "";
       const talentTitle = (langSelect.value === "ja")
         ? (i18n[talentKey] ?? trText(talentRaw))
@@ -400,8 +400,8 @@
       }
       card.setAttribute("data-item-id", `gear-talent:${idx}:${talentKey || perfectKey || "row"}`);
       card.setAttribute("data-search", searchParts.join(" "));
-      const iconPrimary = iconUrl("talents", talentKey || perfectKey, "img/talents");
-      const iconAlt = iconUrl("talents", perfectKey || talentKey, "img/talents");
+      const iconPrimary = iconUrl("talents", talentKey || perfectKey, "img/icon/talent");
+      const iconAlt = iconUrl("talents", perfectKey || talentKey, "img/icon/talent");
       const iconFallbacks = [];
       if (iconAlt && iconAlt !== iconPrimary) iconFallbacks.push(iconAlt);
       const bg = iconPrimary ? bgIconHtml(iconPrimary, "card__bg--tr", "talent", iconFallbacks) : "";
@@ -416,10 +416,10 @@
           ${matchedItems.length && !namedOnly && hasPerfectTalent ? `<div class="gear-talent-gap" aria-hidden="true"></div>` : ""}
           ${matchedItems.map((it) => {
             const sk = gearSlotKey(it.itemType || "");
-            const slotIconSrc = iconUrl("gear_slots", sk, "img/gears");
+            const slotIconSrc = iconUrl("gear_slots", sk, "img/icon/slot");
             const slotIcon = slotIconSrc ? iconImgHtml(slotIconSrc, "ico ico--talent", "slot") : "";
             const bk = normalizeKey(it.brandsetKey || it.brandset || "");
-            const brandIconSrc = iconUrl("brands", it.brandsetKey || bk, "img/brands");
+            const brandIconSrc = iconUrl("brands", it.brandsetKey || bk, "img/icon/brandset");
             const brandIcon = brandIconSrc ? iconImgHtml(brandIconSrc, "ico ico--brand-inline", "brand") : "";
             const brandName = (langSelect.value === "ja")
               ? (i18n[it.brandsetKey] ?? i18n[bk] ?? it.brandset)

@@ -18,8 +18,8 @@
     };
     const primaryKind = isWeapon ? "weapon_talents" : "talents";
     const fallbackKind = isWeapon ? "talents" : "weapon_talents";
-    const primaryDir = isWeapon ? "img/weapon_talents" : "img/talents";
-    const fallbackDir = isWeapon ? "img/talents" : "img/weapon_talents";
+    const primaryDir = isWeapon ? "img/icon/weapon_talent" : "img/icon/talent";
+    const fallbackDir = isWeapon ? "img/icon/talent" : "img/icon/weapon_talent";
     add(iconUrl(primaryKind, baseKey, primaryDir));
     if (typeof talentKeyVariants === "function") {
       for (const k of talentKeyVariants(baseKey)) add(iconUrl(primaryKind, k, primaryDir));
@@ -385,12 +385,12 @@
       let typeBadgeHtml = "";
       if (String(r.item_class || "") === "weapon") {
         const wg = weaponGroupKey(r.weapon_group || "");
-        const wIcon = iconUrl("weapon_types", wg, "img/weapons");
+        const wIcon = iconUrl("weapon_types", wg, "img/icon/weapon");
         bg = wIcon ? bgIconHtml(wIcon, "card__bg--tr", "weapon") : "";
         typeBadgeHtml = `<span class="wt-inline-badges"><span class="wt-badge is-on">${escapeHtml(weaponTypeShortLabel(wg))}</span></span>`;
       } else {
         const slotKey = exoticSlotKey(r.item_type || "");
-        const slotIcon = iconUrl("gear_slots", slotKey, "img/gears");
+        const slotIcon = iconUrl("gear_slots", slotKey, "img/icon/slot");
         bg = slotIcon ? bgIconHtml(slotIcon, "card__bg--tr", "slot") : "";
       }
 

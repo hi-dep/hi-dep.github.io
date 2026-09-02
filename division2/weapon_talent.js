@@ -501,11 +501,11 @@
       card.setAttribute("data-item-id", `weapon-talent:${idx}:${talentKey || perfectKey || "row"}`);
       card.setAttribute("data-search", searchParts.join(" "));
       const iconPrimary =
-        iconUrl("weapon_talents", talentKey || perfectKey, "img/weapon_talents")
-        || iconUrl("talents", talentKey || perfectKey, "img/talents");
+        iconUrl("weapon_talents", talentKey || perfectKey, "img/icon/weapon_talent")
+        || iconUrl("talents", talentKey || perfectKey, "img/icon/talent");
       const iconAlt =
-        iconUrl("weapon_talents", perfectKey || talentKey, "img/weapon_talents")
-        || iconUrl("talents", perfectKey || talentKey, "img/talents");
+        iconUrl("weapon_talents", perfectKey || talentKey, "img/icon/weapon_talent")
+        || iconUrl("talents", perfectKey || talentKey, "img/icon/talent");
       const iconFallbacks = [];
       if (iconAlt && iconAlt !== iconPrimary) iconFallbacks.push(iconAlt);
       const bg = iconPrimary ? bgIconHtml(iconPrimary, "card__bg--tr", "talent", iconFallbacks) : "";
@@ -520,7 +520,7 @@
           ${matchedItems.length && hasPerfectTalent && !!talentTitle ? `<div class="gear-talent-gap" aria-hidden="true"></div>` : ""}
           ${matchedItems.map((it) => {
             const wg = weaponGroupKey(it.weaponGroup || "");
-            const wIconSrc = iconUrl("weapon_types", wg, "img/weapons");
+            const wIconSrc = iconUrl("weapon_types", wg, "img/icon/weapon");
             const wIcon = wIconSrc ? iconImgHtml(wIconSrc, "ico ico--talent", "weapon") : "";
             const nk = normalizeKey(it.nameKey || it.name || "");
             const itemName = (langSelect.value === "ja") ? (i18n[it.nameKey] ?? i18n[nk] ?? it.name) : it.name;

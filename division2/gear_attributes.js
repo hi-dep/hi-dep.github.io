@@ -148,7 +148,7 @@
       });
       return Array.from(grouped.values()).map((g) => {
         const icons = g.slots.map((slot) => {
-          const src = iconUrl("gear_slots", normalizeKey(slot), "img/gears");
+          const src = iconUrl("gear_slots", normalizeKey(slot), "img/icon/slot");
           return src ? iconImgHtml(src, "ico ico--core-slot", slot) : "";
         }).join("");
         return `<span class="core-mixed-row core-mixed-row--${escapeHtml(normalizeKey(g.label))}"><span class="core-mixed-label">${escapeHtml(trText(g.label))}</span><span class="core-mixed-icons">${icons}</span></span>`;
@@ -212,7 +212,7 @@
       card.dataset.gearAttributeTraits = Array.from(traitKeys).join(" ");
       const icon = it.rarity === "gearset"
         ? gearsetIconUrl(it.set_key || key)
-        : iconUrl("brands", it.set_key || key, "img/brands");
+        : iconUrl("brands", it.set_key || key, "img/icon/brandset");
       const bg = icon ? bgIconHtml(icon, "card__bg--tr", it.set_name || "") : "";
       card.innerHTML = `
         ${bg}

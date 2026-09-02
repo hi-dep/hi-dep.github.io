@@ -367,7 +367,7 @@
     const desc = String(tierText || descTemplate || "").trim();
     const showDesc = !!window.talentShowDesc;
     const search = [rawName, name, talentKey, group, desc].map((x) => normalizeKey(x || "")).filter(Boolean).join(" ");
-    const iconPrimary = iconUrl("talents", talentKey, "img/talents");
+    const iconPrimary = iconUrl("talents", talentKey, "img/icon/talent");
     const bg = iconPrimary ? bgIconHtml(iconPrimary, "card__bg--tr", "talent") : "";
     const lines = [];
     lines.push({ cls: "line line--talent", html: escapeHtml(name || rawName || talentKey) });

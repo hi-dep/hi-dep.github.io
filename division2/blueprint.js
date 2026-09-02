@@ -253,12 +253,12 @@
     const c = normalizeKey(category || "");
     let src = "";
     if (c === "weapon") {
-      if (WEAPON_SLOTS.includes(s)) src = appPath(`img/weapons/${s}.png`);
+      if (WEAPON_SLOTS.includes(s)) src = appPath(`img/icon/weapon/${s}.png`);
     } else if (c === "gear") {
-      if (s === "mask" || s === "backpack" || s === "chest") src = appPath(`img/gears/${s}.png`);
-      if (s === "glove") src = appPath("img/gears/gloves.png");
-      if (s === "holster") src = appPath("img/gears/holster.png");
-      if (s === "kneepads") src = appPath("img/gears/kneepads.png");
+      if (s === "mask" || s === "backpack" || s === "chest") src = appPath(`img/icon/slot/${s}.png`);
+      if (s === "glove") src = appPath("img/icon/slot/gloves.png");
+      if (s === "holster") src = appPath("img/icon/slot/holster.png");
+      if (s === "kneepads") src = appPath("img/icon/slot/kneepads.png");
     }
     if (!src) return `<span class="blueprint-slot-text">${escapeHtml(slotLabel(s))}</span>`;
     return `<img class="ico ico--item-source blueprint-slot-ico" src="${escapeHtml(src)}" alt="${escapeHtml(slotLabel(s))}" title="${escapeHtml(slotLabel(s))}" loading="lazy" decoding="async" />`;

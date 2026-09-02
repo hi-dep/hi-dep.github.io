@@ -195,7 +195,7 @@
       const title = (langSelect.value === "ja") ? weaponNameJaWithReplica(r) : (r.name || "");
       const groupKey = normalizeKey(r.weapon_group || "");
       const groupLabel = weaponTypeShortLabel(groupKey, trText(r.weapon_group || ""));
-      const slotIcon = iconUrl("weapon_types", groupKey, "img/weapons");
+      const slotIcon = iconUrl("weapon_types", groupKey, "img/icon/weapon");
       const slotIconHtml = slotIcon ? iconImgHtml(slotIcon, "ico", "weapon") : "";
 
       const mBaseDamage = formatDisplayNumber(r.base_damage);

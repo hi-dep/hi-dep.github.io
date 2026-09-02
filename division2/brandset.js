@@ -231,8 +231,8 @@
     items.forEach((it) => {
       const brandKeyNorm = normalizeKey(it.brandsetKey || it.brandset || "");
       const title = brandDisplayTitle(it);
-      const brandIconPrimary = iconUrl("brands", it.brandsetKey || brandKeyNorm, "img/brands");
-      const brandIconAlt = iconUrl("brands", brandKeyNorm, "img/brands");
+      const brandIconPrimary = iconUrl("brands", it.brandsetKey || brandKeyNorm, "img/icon/brandset");
+      const brandIconAlt = iconUrl("brands", brandKeyNorm, "img/icon/brandset");
       const brandIconFallbacks = [];
       if (brandIconAlt && brandIconAlt !== brandIconPrimary) brandIconFallbacks.push(brandIconAlt);
       const brandBgHtml = brandIconPrimary
@@ -276,7 +276,7 @@
             ? (i18n[n.nameKey] ?? n.name)
             : n.name;
           const sk = gearSlotKey(n.itemType || "");
-          const slotIconSrc = iconUrl("gear_slots", sk, "img/gears");
+          const slotIconSrc = iconUrl("gear_slots", sk, "img/icon/slot");
           const slotIcon = slotIconSrc ? iconImgHtml(slotIconSrc, "ico ico--talent", "slot") : "";
           const details = [];
           if (n.talent || n.talentKey) {
