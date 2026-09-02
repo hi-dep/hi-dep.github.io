@@ -220,7 +220,8 @@
       "perfectheadscratcher": "混乱状態の敵へのダメージが35%増幅する\n3人の敵を倒した後、次に攻撃を命中させた敵を混乱状態にする",
       "perfectnearsighted": "TODO:Receive +100% stability at the cost of -35% optimal range.",
       "boilingpoint": "TODO:The first 53% of your magazine will have -100% Critical Hit Chance. The rest will have 100%.",
-      "perfectboilingpoint": "TODO:The first 48% of your magazine will have -100% Critical Hit Chance. The rest will have 100%."
+      "perfectboilingpoint": "TODO:The first 48% of your magazine will have -100% Critical Hit Chance. The rest will have 100%.",
+      "perfectstrained": "TODO:Gain 10% critical hit damage for every 0.5s you are firing.\nStacks up to 8 times."
     },
     "gearset_talent_desc": {
       "deadmanshand": "ライフルまたはマークスマンライフルの射撃が命中するとカードを1枚めくる\nカードが5枚めくられた後、次の射撃のダメージが75%増幅される。命中した分だけ良いカードが出る\nフォーカード:4回命中\nフルハウス:3回命中\nエース&エイト:2回命中\nヘッドショットで1枚多くカードをめくる",
