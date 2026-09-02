@@ -2871,6 +2871,10 @@ function iconUrl(kind, key, fallbackDir = "") {
     const pAlt = assetPath("talents", key);
     if (pAlt) return assetUrl(pAlt);
   }
+  // The unified asset map is authoritative. Do not synthesize slug-only
+  // paths for keys without a mapping; those files do not exist in the icon
+  // tree (notably perfect/perfectly talent variants).
+  if (assetMap && typeof assetMap === "object") return "";
   if (!fallbackDir) return "";
   const safe = sanitizeFileKey(key);
   if (!safe) return "";
@@ -2936,11 +2940,13 @@ function talentKeyVariants(tKey) {
   if (key.startsWith("perfectly")) {
     const base = key.replace(/^perfectly/, "");
     if (base) {
+      vars.push(base);
       vars.push(`perfect${base}`);
     }
   } else if (key.startsWith("perfect")) {
     const base = key.replace(/^perfect/, "");
     if (base) {
+      vars.push(base);
       vars.push(`perfectly${base}`);
     }
   }
