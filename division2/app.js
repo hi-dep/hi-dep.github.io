@@ -79,6 +79,7 @@ let isWorldTimePopupOpen = false;
 let statusMode = "";
 const JST_OFFSET_MS = 9 * 60 * 60 * 1000;
 let filtersOpen = false;
+const SEASON_MOD_URL_KEYS = ["sm_season", "sm_active", "sm_level", "sm_p1", "sm_p2", "sm_p3", "sm_ao", "sm_po"];
 let currentViewMode = "vendor"; // vendor | event | season_mod | weapons | brand | gearset | exotic_gear | gear_talent | weapon_talent | y8s2_talent_diff | descent_talent | prototype | cost | blueprint | item_sources
 let descentPoolState = {
   loaded: false,
@@ -1123,6 +1124,11 @@ function applyUrlParams() {
     nextViewMode = resolveViewMode(queryViewRaw);
   }
   if (nextViewMode) initialViewMode = nextViewMode;
+
+  // Season MOD state is view-local and must not remain on other pages.
+  if (nextViewMode !== "season_mod") {
+    replaceUrlParams(Object.fromEntries(SEASON_MOD_URL_KEYS.map((key) => [key, null])));
+  }
 
   // descent_pool=<pool_key>
   const descentPool = normalizeKey(getUrlParam("descent_pool"));
@@ -4390,17 +4396,22 @@ async function switchViewMode(mode) {
   }
   if (worldTimeWrapEl) worldTimeWrapEl.style.display = "";
   const descentPoolParam = currentViewMode === "descent_talent" ? (window.descentTalentInitialPoolKey || null) : null;
+  const seasonModParams = currentViewMode === "season_mod"
+    ? {}
+    : Object.fromEntries(SEASON_MOD_URL_KEYS.map((key) => [key, null]));
   if (isRootViewPagePath()) {
     replaceUrlParams({
       view: currentViewMode,
       veiw: null,
-      descent_pool: descentPoolParam
+      descent_pool: descentPoolParam,
+      ...seasonModParams
     });
   } else {
     replaceUrlPathAndParams(buildPathForViewMode(currentViewMode), {
       view: null,
       veiw: null,
-      descent_pool: descentPoolParam
+      descent_pool: descentPoolParam,
+      ...seasonModParams
     });
   }
   if (currentViewMode === "weapons") {
