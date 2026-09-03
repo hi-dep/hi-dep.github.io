@@ -427,15 +427,15 @@
       const lines = [];
       const namedOnlyCardClass = namedOnly ? " wt-card--named-only" : "";
       const showDesc = !!window.talentShowDesc;
-      if (allowTypes.length || String(r.__named_only || "") === "1") {
-        const enabled = String(r.__named_only || "") === "1" ? [] : allowTypes;
-        lines.push({
-          cls: "line line--weapon-types",
-          text: "",
-          key: "",
-          html: `<div class="wt-badges">${weaponTypeBadgesHtml(enabled)}</div>`
-        });
-      }
+      // An empty weapon-type definition means "none", so keep the type row
+      // visible and render every badge as off.
+      const enabled = String(r.__named_only || "") === "1" ? [] : allowTypes;
+      lines.push({
+        cls: "line line--weapon-types",
+        text: "",
+        key: "",
+        html: `<div class="wt-badges">${weaponTypeBadgesHtml(enabled)}</div>`
+      });
       if (talentTitle) lines.push({ cls: "line line--gray line--talent", text: talentTitle, key: talentKey });
       const talentDescDisp = trTalentDescPreserveNewline(talentDesc, talentKey);
       const perfectDescDisp = trTalentDescPreserveNewline(perfectDesc, perfectKey || talentKey);
