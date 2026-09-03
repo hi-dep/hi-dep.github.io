@@ -2784,6 +2784,26 @@
       "drop": []
     },
     {
+      "item_id": "cf3e928aed5c1ea6",
+      "entity_type": "gear_exotic",
+      "category": "gear",
+      "tier": "exotic",
+      "name_key": "harrierpride",
+      "name": "Harrier Pride",
+      "brand_name": "",
+      "brand_key": "",
+      "slot_key": "backpack",
+      "blueprint": [
+        {
+          "slot": "backpack",
+          "src": "Outcasts retaliation completion",
+          "type": "craft"
+        }
+      ],
+      "target_looted": [],
+      "drop": []
+    },
+    {
       "item_id": "24f5534313589f57",
       "entity_type": "gear_exotic",
       "category": "gear",
@@ -3233,6 +3253,26 @@
     },
     {
       "item_id": "7e22d0e62d0d6bd3",
+      "entity_type": "gear_exotic",
+      "category": "gear",
+      "tier": "exotic",
+      "name_key": "ninjabikemessengerkneepads",
+      "name": "NinjaBike Messenger Kneepads",
+      "brand_name": "",
+      "brand_key": "",
+      "slot_key": "kneepads",
+      "blueprint": [
+        {
+          "slot": "kneepads",
+          "src": "Cleaners Kill Squad",
+          "type": "craft"
+        }
+      ],
+      "target_looted": [],
+      "drop": []
+    },
+    {
+      "item_id": "a2880a764a029614",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
