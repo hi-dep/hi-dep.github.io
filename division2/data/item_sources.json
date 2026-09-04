@@ -8874,7 +8874,7 @@
       "drop": []
     },
     {
-      "item_id": "fce5aac80fbbb8a5",
+      "item_id": "weapon:1886",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -8888,7 +8888,7 @@
       "drop": []
     },
     {
-      "item_id": "6fc2be932636295e",
+      "item_id": "weapon:586magnum",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -8902,7 +8902,7 @@
       "drop": []
     },
     {
-      "item_id": "1ec1836a9f695ca7",
+      "item_id": "weapon:93r",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -8916,7 +8916,7 @@
       "drop": []
     },
     {
-      "item_id": "61688881a41b2007",
+      "item_id": "weapon:achilles",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -8935,7 +8935,7 @@
       "drop": []
     },
     {
-      "item_id": "07e8ad51f269429a",
+      "item_id": "weapon:acr",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -8945,13 +8945,11 @@
       "brand_key": "",
       "slot_key": "ar",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "ar"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "181542fdff4e0c99",
+      "item_id": "weapon:acre",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -8961,13 +8959,11 @@
       "brand_key": "",
       "slot_key": "ar",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "ar"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "346b0e1f806723c8",
+      "item_id": "weapon:acrss",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -8981,7 +8977,7 @@
       "drop": []
     },
     {
-      "item_id": "93bd14e6397bc5b5",
+      "item_id": "weapon:acs12",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -8995,7 +8991,7 @@
       "drop": []
     },
     {
-      "item_id": "8cf94f2e71165c82",
+      "item_id": "weapon:adrestia",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -9009,7 +9005,7 @@
       "drop": []
     },
     {
-      "item_id": "fa86edc1519e0a06",
+      "item_id": "weapon:agitator",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "exotic",
@@ -9018,17 +9014,12 @@
       "brand_name": "",
       "brand_key": "",
       "slot_key": "ar",
-      "blueprint": [
-        {
-          "src": "Hyenas retaliation completion",
-          "type": "craft"
-        }
-      ],
+      "blueprint": [],
       "target_looted": [],
       "drop": []
     },
     {
-      "item_id": "2d48e82013976f4f",
+      "item_id": "weapon:akm",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -9038,13 +9029,11 @@
       "brand_key": "",
       "slot_key": "ar",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "ar"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "359b8d6b56cc4f0e",
+      "item_id": "weapon:artiststool",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -9063,7 +9052,7 @@
       "drop": []
     },
     {
-      "item_id": "417ef0cd79d6c127",
+      "item_id": "weapon:auga3cqc",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -9073,13 +9062,11 @@
       "brand_key": "",
       "slot_key": "ar",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "ar"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "d90c18afa9bbfaae",
+      "item_id": "weapon:auga3paraxs",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -9093,7 +9080,7 @@
       "drop": []
     },
     {
-      "item_id": "a5516c83102bf702",
+      "item_id": "weapon:backfire",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "exotic",
@@ -9112,7 +9099,7 @@
       "drop": []
     },
     {
-      "item_id": "591513be73a761a3",
+      "item_id": "weapon:backupboomstick",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -9131,7 +9118,7 @@
       "drop": []
     },
     {
-      "item_id": "a514b27f6c44a839",
+      "item_id": "weapon:bakersdozen",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -9150,12 +9137,12 @@
       "drop": []
     },
     {
-      "item_id": "46b50e6c46b11e08",
+      "item_id": "weapon:bellringer",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
       "name_key": "bellringer",
-      "name": "Bellringer",
+      "name": "Bell Ringer",
       "brand_name": "",
       "brand_key": "",
       "slot_key": "lmg",
@@ -9167,7 +9154,7 @@
       ]
     },
     {
-      "item_id": "13f6518cdf72079c",
+      "item_id": "weapon:bigalejandro",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "exotic",
@@ -9186,7 +9173,7 @@
       "drop": []
     },
     {
-      "item_id": "35b42ca049fcbeda",
+      "item_id": "weapon:bigshow",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -9205,7 +9192,7 @@
       "drop": []
     },
     {
-      "item_id": "b118db93427ce5f0",
+      "item_id": "weapon:bittersweet",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "exotic",
@@ -9224,7 +9211,7 @@
       "drop": []
     },
     {
-      "item_id": "481ef01cc9c45c6b",
+      "item_id": "weapon:blackfriday",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -9245,7 +9232,7 @@
       ]
     },
     {
-      "item_id": "f106375c7a8547b0",
+      "item_id": "weapon:blackmarketakm",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -9255,31 +9242,11 @@
       "brand_key": "",
       "slot_key": "ar",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "ar"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "c798632adf741c3a",
-      "entity_type": "weapon",
-      "category": "weapon",
-      "tier": "highend",
-      "name_key": "blackmarketakmreplica",
-      "name": "Black Market AK-M Replica",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "ar",
-      "blueprint": [
-        {
-          "type": "craft"
-        }
-      ],
-      "drop": [],
-      "target_looted": []
-    },
-    {
-      "item_id": "1d780640f2977ae8",
+      "item_id": "weapon:blackmarketm60e6",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -9293,39 +9260,7 @@
       "drop": []
     },
     {
-      "item_id": "17f9d0b09957e9ae",
-      "entity_type": "weapon",
-      "category": "weapon",
-      "tier": "highend",
-      "name_key": "blackmarketm60e6replica",
-      "name": "Black Market M60 E6 Replica",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "lmg",
-      "blueprint": [
-        {
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "a098f6dc8b332894",
-      "entity_type": "weapon",
-      "category": "weapon",
-      "tier": "highend",
-      "name_key": "blackmarketrpk74",
-      "name": "Black Market RPK-74",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "lmg",
-      "blueprint": [],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "f5a422c29ac21362",
+      "item_id": "weapon:blackmarketrpk74e",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -9339,39 +9274,7 @@
       "drop": []
     },
     {
-      "item_id": "0ac9d609e313b5a1",
-      "entity_type": "weapon",
-      "category": "weapon",
-      "tier": "highend",
-      "name_key": "blackmarketrpk74ereplica",
-      "name": "Black Market RPK-74 E Replica",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "lmg",
-      "blueprint": [
-        {
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "2e75b156dabe9f56",
-      "entity_type": "weapon",
-      "category": "weapon",
-      "tier": "highend",
-      "name_key": "blackmarketrpk74replica",
-      "name": "Black Market RPK-74 Replica",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "lmg",
-      "blueprint": [],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "b996e9f4feef3630",
+      "item_id": "weapon:blackmarketsasg12s",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -9385,25 +9288,7 @@
       "drop": []
     },
     {
-      "item_id": "f50856456d313937",
-      "entity_type": "weapon",
-      "category": "weapon",
-      "tier": "highend",
-      "name_key": "blackmarketsasg12sreplica",
-      "name": "Black Market SASG-12 S Replica",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "shotgun",
-      "blueprint": [
-        {
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "15bdbce91d34261f",
+      "item_id": "weapon:blackmarkett821",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -9417,25 +9302,7 @@
       "drop": []
     },
     {
-      "item_id": "213add97b1ce604d",
-      "entity_type": "weapon",
-      "category": "weapon",
-      "tier": "highend",
-      "name_key": "blackmarkett821replica",
-      "name": "Black Market T821 Replica",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "smg",
-      "blueprint": [
-        {
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "f581e25ebe98a1fd",
+      "item_id": "weapon:bluescreen",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "exotic",
@@ -9454,7 +9321,7 @@
       "drop": []
     },
     {
-      "item_id": "f3081fbb4cc45623",
+      "item_id": "weapon:boomstick",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -9473,7 +9340,7 @@
       "drop": []
     },
     {
-      "item_id": "fe5d416bb7373edb",
+      "item_id": "weapon:borngreat",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -9492,7 +9359,21 @@
       "drop": []
     },
     {
-      "item_id": "fe345c50c156cd40",
+      "item_id": "weapon:brainbreak",
+      "entity_type": "weapon",
+      "category": "weapon",
+      "tier": "named",
+      "name_key": "brainbreak",
+      "name": "Brain Break",
+      "brand_name": "",
+      "brand_key": "",
+      "slot_key": "rifle",
+      "blueprint": [],
+      "target_looted": [],
+      "drop": []
+    },
+    {
+      "item_id": "weapon:brutus",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -9511,7 +9392,7 @@
       "drop": []
     },
     {
-      "item_id": "e6d568d303d438a2",
+      "item_id": "weapon:bulletking",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "exotic",
@@ -9530,7 +9411,7 @@
       "drop": []
     },
     {
-      "item_id": "106afe40cedf4ebd",
+      "item_id": "weapon:burnout",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -9549,7 +9430,7 @@
       "drop": []
     },
     {
-      "item_id": "a62ad19eab72c239",
+      "item_id": "weapon:busylittlebee",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "exotic",
@@ -9568,7 +9449,7 @@
       "drop": []
     },
     {
-      "item_id": "a087cac631e132d1",
+      "item_id": "weapon:cabaret",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -9587,7 +9468,7 @@
       "drop": []
     },
     {
-      "item_id": "bd21dcbebd16254a",
+      "item_id": "weapon:caduceus",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "exotic",
@@ -9606,7 +9487,7 @@
       "drop": []
     },
     {
-      "item_id": "fc429a8e7ae07aa5",
+      "item_id": "weapon:capacitor",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "exotic",
@@ -9625,7 +9506,7 @@
       "drop": []
     },
     {
-      "item_id": "dfbc8bf98f786dc2",
+      "item_id": "weapon:carbine7",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -9635,13 +9516,11 @@
       "brand_key": "",
       "slot_key": "ar",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "ar"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "a684cd673b1ef8dc",
+      "item_id": "weapon:caretaker",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -9655,7 +9534,7 @@
       "drop": []
     },
     {
-      "item_id": "9a3ec07a6267928d",
+      "item_id": "weapon:carnage",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -9674,7 +9553,7 @@
       "drop": []
     },
     {
-      "item_id": "ebc693733ea1745e",
+      "item_id": "weapon:chameleon",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "exotic",
@@ -9693,7 +9572,7 @@
       "drop": []
     },
     {
-      "item_id": "5d4e5508c614c76a",
+      "item_id": "weapon:classicm1a",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -9707,7 +9586,7 @@
       "drop": []
     },
     {
-      "item_id": "e59970cd7cc98490",
+      "item_id": "weapon:classicm44carbine",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -9721,25 +9600,7 @@
       "drop": []
     },
     {
-      "item_id": "daf5058dd49dad51",
-      "entity_type": "weapon",
-      "category": "weapon",
-      "tier": "highend",
-      "name_key": "classicm44carbinereplica",
-      "name": "Classic M44 Carbine Replica",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "mmr",
-      "blueprint": [
-        {
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "dcd5db75adae9461",
+      "item_id": "weapon:classicm60",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -9753,25 +9614,7 @@
       "drop": []
     },
     {
-      "item_id": "4147271b70b4046f",
-      "entity_type": "weapon",
-      "category": "weapon",
-      "tier": "highend",
-      "name_key": "classicm60replica",
-      "name": "Classic M60 Replica",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "lmg",
-      "blueprint": [
-        {
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "b93d075e972f52d0",
+      "item_id": "weapon:classicrpk74",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -9785,7 +9628,7 @@
       "drop": []
     },
     {
-      "item_id": "a69ee904603bb6d7",
+      "item_id": "weapon:cmmgbanshee",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -9803,7 +9646,7 @@
       "drop": []
     },
     {
-      "item_id": "584e81240efb1c75",
+      "item_id": "weapon:coldrelations",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -9822,7 +9665,7 @@
       "drop": []
     },
     {
-      "item_id": "b0ec94c9359841ae",
+      "item_id": "weapon:commando",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -9841,7 +9684,7 @@
       "drop": []
     },
     {
-      "item_id": "478505ccff014891",
+      "item_id": "weapon:convertedsmg9",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -9855,7 +9698,7 @@
       "drop": []
     },
     {
-      "item_id": "02364f91b650098a",
+      "item_id": "weapon:convertedsmg9a2",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -9869,25 +9712,7 @@
       "drop": []
     },
     {
-      "item_id": "8270c4e1bdd1860d",
-      "entity_type": "weapon",
-      "category": "weapon",
-      "tier": "highend",
-      "name_key": "convertedsmg9replica",
-      "name": "Converted SMG-9 Replica",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "smg",
-      "blueprint": [
-        {
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "f4e4a40edb419cc0",
+      "item_id": "weapon:cooler",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -9901,7 +9726,7 @@
       "drop": []
     },
     {
-      "item_id": "25f30d1e1eee9f11",
+      "item_id": "weapon:covertsrs",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -9915,7 +9740,7 @@
       "drop": []
     },
     {
-      "item_id": "a2132f74e33bef12",
+      "item_id": "weapon:cricket",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -9934,7 +9759,21 @@
       "drop": []
     },
     {
-      "item_id": "da3a85118e7a25cc",
+      "item_id": "weapon:crossbow",
+      "entity_type": "weapon",
+      "category": "weapon",
+      "tier": "signature",
+      "name_key": "crossbow",
+      "name": "Crossbow",
+      "brand_name": "",
+      "brand_key": "",
+      "slot_key": "signature",
+      "blueprint": [],
+      "target_looted": [],
+      "drop": []
+    },
+    {
+      "item_id": "weapon:ctar21",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -9948,7 +9787,7 @@
       "drop": []
     },
     {
-      "item_id": "32651dd1298b599f",
+      "item_id": "weapon:cuelebre",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -9967,7 +9806,7 @@
       "drop": []
     },
     {
-      "item_id": "14d0db071c2449c0",
+      "item_id": "weapon:customl86a2",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -9981,25 +9820,7 @@
       "drop": []
     },
     {
-      "item_id": "c6bb0c0dc0b7d652",
-      "entity_type": "weapon",
-      "category": "weapon",
-      "tier": "highend",
-      "name_key": "customl86a2replica",
-      "name": "Custom L86 A2 Replica",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "lmg",
-      "blueprint": [
-        {
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "2df2d320e4d3f394",
+      "item_id": "weapon:customm44",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -10013,25 +9834,7 @@
       "drop": []
     },
     {
-      "item_id": "097c5d1f7e1bb7b1",
-      "entity_type": "weapon",
-      "category": "weapon",
-      "tier": "highend",
-      "name_key": "customm44replica",
-      "name": "Custom M44 Replica",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "mmr",
-      "blueprint": [
-        {
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "93b4ac92a278dc3a",
+      "item_id": "weapon:customm870mcs",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -10045,25 +9848,7 @@
       "drop": []
     },
     {
-      "item_id": "9f16161604644f52",
-      "entity_type": "weapon",
-      "category": "weapon",
-      "tier": "highend",
-      "name_key": "customm870mcsreplica",
-      "name": "Custom M870 MCS Replica",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "shotgun",
-      "blueprint": [
-        {
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "6fe4554ce4f4a6c6",
+      "item_id": "weapon:customp416g3",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -10077,7 +9862,7 @@
       "drop": []
     },
     {
-      "item_id": "47267f1df4c97a11",
+      "item_id": "weapon:custompf45",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -10091,7 +9876,7 @@
       "drop": []
     },
     {
-      "item_id": "ea14a3f2340f5504",
+      "item_id": "weapon:d50",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -10105,7 +9890,7 @@
       "drop": []
     },
     {
-      "item_id": "75195c26f9bc0dab",
+      "item_id": "weapon:dare",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -10124,7 +9909,7 @@
       "drop": []
     },
     {
-      "item_id": "54a095c67f29ce9c",
+      "item_id": "weapon:darkwinter",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -10145,7 +9930,7 @@
       ]
     },
     {
-      "item_id": "9edd1f59a8f67c61",
+      "item_id": "weapon:designatedhitter",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -10164,7 +9949,7 @@
       "drop": []
     },
     {
-      "item_id": "8fe0ed8d1845dcb2",
+      "item_id": "weapon:diamondback",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "exotic",
@@ -10183,7 +9968,7 @@
       "drop": []
     },
     {
-      "item_id": "b457694921600cdd",
+      "item_id": "weapon:diceros",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -10197,39 +9982,7 @@
       "drop": []
     },
     {
-      "item_id": "c252d9ec26d8b1d0",
-      "entity_type": "weapon",
-      "category": "weapon",
-      "tier": "highend",
-      "name_key": "dicerosreplica",
-      "name": "Diceros Replica",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "pistol",
-      "blueprint": [
-        {
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "838b52e540ffbef5",
-      "entity_type": "weapon",
-      "category": "weapon",
-      "tier": "named",
-      "name_key": "dicerosspecial",
-      "name": "Diceros Special",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "pistol",
-      "blueprint": [],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "257d64fee1beee49",
+      "item_id": "weapon:doctorhome",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "exotic",
@@ -10248,12 +10001,12 @@
       "drop": []
     },
     {
-      "item_id": "aa7385b54f239d32",
+      "item_id": "weapon:doublebarrelsawedoff",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
       "name_key": "doublebarrelsawedoff",
-      "name": "Double Barrel Sawed-Off",
+      "name": "Double Barrel Sawed Off",
       "brand_name": "",
       "brand_key": "",
       "slot_key": "shotgun",
@@ -10262,7 +10015,7 @@
       "drop": []
     },
     {
-      "item_id": "8344b21672484ca8",
+      "item_id": "weapon:doublebarrelshotgun",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -10276,25 +10029,7 @@
       "drop": []
     },
     {
-      "item_id": "0ad845e9a6abacc6",
-      "entity_type": "weapon",
-      "category": "weapon",
-      "tier": "highend",
-      "name_key": "doublebarrelshotgunreplica",
-      "name": "Double Barrel Shotgun Replica",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "shotgun",
-      "blueprint": [
-        {
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "cc3d0cfc8ff59afe",
+      "item_id": "weapon:dreadedict",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "exotic",
@@ -10313,7 +10048,7 @@
       "drop": []
     },
     {
-      "item_id": "fea7dceea2216ae1",
+      "item_id": "weapon:eaglebearer",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "exotic",
@@ -10332,12 +10067,12 @@
       "drop": []
     },
     {
-      "item_id": "aa350f86ebfb17d8",
+      "item_id": "weapon:ekimslongstick",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
       "name_key": "ekimslongstick",
-      "name": "Ekim's Long Stick",
+      "name": "Ekim's Long stick",
       "brand_name": "",
       "brand_key": "",
       "slot_key": "mmr",
@@ -10351,7 +10086,7 @@
       "drop": []
     },
     {
-      "item_id": "457d7ec1dc1bebe3",
+      "item_id": "weapon:emelinesguard",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -10370,7 +10105,7 @@
       "drop": []
     },
     {
-      "item_id": "d45c366f9893a073",
+      "item_id": "weapon:enforcer",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -10384,7 +10119,7 @@
       "drop": []
     },
     {
-      "item_id": "8f69331b9f5e8bfe",
+      "item_id": "weapon:enhancedauga3p",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -10398,7 +10133,7 @@
       "drop": []
     },
     {
-      "item_id": "377114b18cf2cb00",
+      "item_id": "weapon:enhancedpp19",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -10412,7 +10147,7 @@
       "drop": []
     },
     {
-      "item_id": "c6630dfad8de57b1",
+      "item_id": "weapon:everlastinggaze",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -10433,7 +10168,7 @@
       ]
     },
     {
-      "item_id": "c8b81f2f65e366be",
+      "item_id": "weapon:f2000",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -10443,31 +10178,25 @@
       "brand_key": "",
       "slot_key": "ar",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "ar"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "ecdd25393bea4b43",
+      "item_id": "weapon:fafnir",
       "entity_type": "weapon",
       "category": "weapon",
-      "tier": "highend",
-      "name_key": "f2000replica",
-      "name": "F2000 Replica",
+      "tier": "exotic",
+      "name_key": "fafnir",
+      "name": "Fafnir",
       "brand_name": "",
       "brand_key": "",
-      "slot_key": "ar",
-      "blueprint": [
-        {
-          "type": "craft"
-        }
-      ],
-      "drop": [],
-      "target_looted": []
+      "slot_key": "shotgun",
+      "blueprint": [],
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "9f2f4d991713caa1",
+      "item_id": "weapon:fal",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -10481,7 +10210,7 @@
       "drop": []
     },
     {
-      "item_id": "ae9d8f37e2e7d516",
+      "item_id": "weapon:falsa58",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -10495,7 +10224,7 @@
       "drop": []
     },
     {
-      "item_id": "ffb41d43944d55d9",
+      "item_id": "weapon:falsa58para",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -10509,25 +10238,7 @@
       "drop": []
     },
     {
-      "item_id": "ebd148f3e7e1648e",
-      "entity_type": "weapon",
-      "category": "weapon",
-      "tier": "highend",
-      "name_key": "falsa58parareplica",
-      "name": "FAL SA-58 Para Replica",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "ar",
-      "blueprint": [
-        {
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "102c50746d03bea2",
+      "item_id": "weapon:famas2010",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -10541,39 +10252,7 @@
       "drop": []
     },
     {
-      "item_id": "9105d13981f3512e",
-      "entity_type": "weapon",
-      "category": "weapon",
-      "tier": "highend",
-      "name_key": "famas2010replica",
-      "name": "FAMAS 2010 Replica",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "ar",
-      "blueprint": [
-        {
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "f53f43383e6f2858",
-      "entity_type": "weapon",
-      "category": "weapon",
-      "tier": "named",
-      "name_key": "firestarter",
-      "name": "Firestarter",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "shotgun",
-      "blueprint": [],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "57e24d14e9bfe878",
+      "item_id": "weapon:firstbloom",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -10587,7 +10266,7 @@
       "drop": []
     },
     {
-      "item_id": "c50e2b16cd4b9a04",
+      "item_id": "weapon:firstsight",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -10597,14 +10276,14 @@
       "brand_key": "",
       "slot_key": "ar",
       "blueprint": [],
+      "target_looted": [],
       "drop": [
         "Event Hoarder",
         "Mini Warhound"
-      ],
-      "target_looted": []
+      ]
     },
     {
-      "item_id": "1e5ae807959a8dbe",
+      "item_id": "weapon:firstwavepf45",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -10618,7 +10297,7 @@
       "drop": []
     },
     {
-      "item_id": "fc87d76855f5cb98",
+      "item_id": "weapon:froth",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -10637,7 +10316,7 @@
       "drop": []
     },
     {
-      "item_id": "449f5310015d6233",
+      "item_id": "weapon:g28",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -10656,7 +10335,7 @@
       "drop": []
     },
     {
-      "item_id": "2f9ca80486ed5633",
+      "item_id": "weapon:g36c",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -10670,7 +10349,7 @@
       "drop": []
     },
     {
-      "item_id": "591a0e3f3b632a0c",
+      "item_id": "weapon:g36enhanced",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -10684,25 +10363,7 @@
       "drop": []
     },
     {
-      "item_id": "ec9957f5f4aac4e0",
-      "entity_type": "weapon",
-      "category": "weapon",
-      "tier": "highend",
-      "name_key": "g36enhancedreplica",
-      "name": "G36 Enhanced Replica",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "ar",
-      "blueprint": [
-        {
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "3085689284db5eca",
+      "item_id": "weapon:gearshift",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -10721,7 +10382,7 @@
       "drop": []
     },
     {
-      "item_id": "49a65fbe6e4a12a4",
+      "item_id": "weapon:glorydaze",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -10740,7 +10401,7 @@
       "drop": []
     },
     {
-      "item_id": "01efeced78fb5e9a",
+      "item_id": "weapon:goalie",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -10759,7 +10420,7 @@
       "drop": []
     },
     {
-      "item_id": "5780feae69183100",
+      "item_id": "weapon:goodtimes",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -10780,7 +10441,7 @@
       ]
     },
     {
-      "item_id": "45d9078abbf5bc7a",
+      "item_id": "weapon:gr9",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -10798,7 +10459,7 @@
       "drop": []
     },
     {
-      "item_id": "6d60d10499ebaddb",
+      "item_id": "weapon:growngreat",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -10817,7 +10478,7 @@
       "drop": []
     },
     {
-      "item_id": "e6ef2c8e6260413f",
+      "item_id": "weapon:handbasket",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -10834,7 +10495,7 @@
       ]
     },
     {
-      "item_id": "8e4f2ae2ab64d6f9",
+      "item_id": "weapon:harmony",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -10855,7 +10516,7 @@
       ]
     },
     {
-      "item_id": "d6a15f564ea69444",
+      "item_id": "weapon:honeybadger",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -10869,7 +10530,7 @@
       "drop": []
     },
     {
-      "item_id": "355164e669f37fd7",
+      "item_id": "weapon:huntingm44",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -10883,7 +10544,7 @@
       "drop": []
     },
     {
-      "item_id": "9f0fc8d83429dc57",
+      "item_id": "weapon:huntsman",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -10902,7 +10563,21 @@
       "drop": []
     },
     {
-      "item_id": "d2cb9fbd9450ebd1",
+      "item_id": "weapon:incendia",
+      "entity_type": "weapon",
+      "category": "weapon",
+      "tier": "named",
+      "name_key": "incendia",
+      "name": "Incendia",
+      "brand_name": "",
+      "brand_key": "",
+      "slot_key": "mmr",
+      "blueprint": [],
+      "target_looted": [],
+      "drop": []
+    },
+    {
+      "item_id": "weapon:infantrymg5",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -10916,25 +10591,7 @@
       "drop": []
     },
     {
-      "item_id": "3e7a0cbfd91909af",
-      "entity_type": "weapon",
-      "category": "weapon",
-      "tier": "highend",
-      "name_key": "infantrymg5replica",
-      "name": "Infantry MG5 Replica",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "lmg",
-      "blueprint": [
-        {
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "3c3610b5067a3e2e",
+      "item_id": "weapon:instigator",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -10953,7 +10610,21 @@
       "drop": []
     },
     {
-      "item_id": "f395fe9eddcebd4b",
+      "item_id": "weapon:insulttoinjury",
+      "entity_type": "weapon",
+      "category": "weapon",
+      "tier": "named",
+      "name_key": "insulttoinjury",
+      "name": "Insult To Injury",
+      "brand_name": "",
+      "brand_key": "",
+      "slot_key": "lmg",
+      "blueprint": [],
+      "target_looted": [],
+      "drop": []
+    },
+    {
+      "item_id": "weapon:interchange",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -10972,7 +10643,7 @@
       "drop": []
     },
     {
-      "item_id": "8d8ad5482e0aef84",
+      "item_id": "weapon:invisiblehand",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -10987,13 +10658,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": [
-        "ar"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "93722eb65ddb7992",
+      "item_id": "weapon:ironlung",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "exotic",
@@ -11012,7 +10681,7 @@
       "drop": []
     },
     {
-      "item_id": "88e36fc0da32cc45",
+      "item_id": "weapon:iwinegev",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -11030,12 +10699,26 @@
       "drop": []
     },
     {
-      "item_id": "4c389d94dd1d952a",
+      "item_id": "weapon:k8jetstreamflamethrower",
+      "entity_type": "weapon",
+      "category": "weapon",
+      "tier": "signature",
+      "name_key": "k8jetstreamflamethrower",
+      "name": "K8-JetStream Flamethrower",
+      "brand_name": "",
+      "brand_key": "",
+      "slot_key": "signature",
+      "blueprint": [],
+      "target_looted": [],
+      "drop": []
+    },
+    {
+      "item_id": "weapon:kard45",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
       "name_key": "kard45",
-      "name": "Kard-45",
+      "name": "KARD-45",
       "brand_name": "",
       "brand_key": "",
       "slot_key": "pistol",
@@ -11048,7 +10731,7 @@
       "drop": []
     },
     {
-      "item_id": "728355542212795e",
+      "item_id": "weapon:kingbreaker",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -11067,7 +10750,7 @@
       "drop": []
     },
     {
-      "item_id": "17e689316d157c09",
+      "item_id": "weapon:ksgshotgun",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -11081,7 +10764,7 @@
       "drop": []
     },
     {
-      "item_id": "2a417e00dca20fc4",
+      "item_id": "weapon:ladydeath",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "exotic",
@@ -11100,7 +10783,7 @@
       "drop": []
     },
     {
-      "item_id": "5ddc20088f9f25f4",
+      "item_id": "weapon:lefty",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -11119,7 +10802,7 @@
       "drop": []
     },
     {
-      "item_id": "c72cfe96d9f66434",
+      "item_id": "weapon:lexington",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -11133,7 +10816,7 @@
       "drop": []
     },
     {
-      "item_id": "ed88b1d9cb025b45",
+      "item_id": "weapon:liberty",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "exotic",
@@ -11151,7 +10834,7 @@
       "drop": []
     },
     {
-      "item_id": "cad6a99a61964197",
+      "item_id": "weapon:lightningrod",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -11170,7 +10853,7 @@
       "drop": []
     },
     {
-      "item_id": "5af3914ff22f5cb0",
+      "item_id": "weapon:lightweightm4",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -11184,7 +10867,7 @@
       "drop": []
     },
     {
-      "item_id": "17e87d1e5881733b",
+      "item_id": "weapon:likeglue",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -11203,7 +10886,7 @@
       "drop": []
     },
     {
-      "item_id": "5dd2185d80d8902b",
+      "item_id": "weapon:lockdown",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -11222,7 +10905,7 @@
       "drop": []
     },
     {
-      "item_id": "a550964265222150",
+      "item_id": "weapon:lud",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -11241,7 +10924,7 @@
       "drop": []
     },
     {
-      "item_id": "0721e2ad16afd79c",
+      "item_id": "weapon:lullaby",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "exotic",
@@ -11255,7 +10938,7 @@
       "drop": []
     },
     {
-      "item_id": "141dfe26fba6a100",
+      "item_id": "weapon:lvoac",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -11269,25 +10952,7 @@
       "drop": []
     },
     {
-      "item_id": "aa921c35b62d38d9",
-      "entity_type": "weapon",
-      "category": "weapon",
-      "tier": "highend",
-      "name_key": "lvoacreplica",
-      "name": "LVOA-C Replica",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "rifle",
-      "blueprint": [
-        {
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "42cd223184d4a43c",
+      "item_id": "weapon:m16a2",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -11301,25 +10966,7 @@
       "drop": []
     },
     {
-      "item_id": "a0f6de90893c0769",
-      "entity_type": "weapon",
-      "category": "weapon",
-      "tier": "highend",
-      "name_key": "m16a2replica",
-      "name": "M16A2 Replica",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "rifle",
-      "blueprint": [
-        {
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "84adee3fb598f1fd",
+      "item_id": "weapon:m1911",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -11333,7 +10980,7 @@
       "drop": []
     },
     {
-      "item_id": "c3303bb41d39ab59",
+      "item_id": "weapon:m1928",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -11347,7 +10994,7 @@
       "drop": []
     },
     {
-      "item_id": "f956a417caa7ad5e",
+      "item_id": "weapon:m1acqb",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -11361,25 +11008,7 @@
       "drop": []
     },
     {
-      "item_id": "e9365a9d77bd0a6d",
-      "entity_type": "weapon",
-      "category": "weapon",
-      "tier": "highend",
-      "name_key": "m1acqbreplica",
-      "name": "M1A CQB Replica",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "rifle",
-      "blueprint": [
-        {
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "451585105e1f6061",
+      "item_id": "weapon:m249b",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -11393,7 +11022,21 @@
       "drop": []
     },
     {
-      "item_id": "ce222f0c99262ec7",
+      "item_id": "weapon:m32a1multishotgrenadelauncher",
+      "entity_type": "weapon",
+      "category": "weapon",
+      "tier": "signature",
+      "name_key": "m32a1multishotgrenadelauncher",
+      "name": "M32A1 Multi-shot Grenade Launcher",
+      "brand_name": "",
+      "brand_key": "",
+      "slot_key": "signature",
+      "blueprint": [],
+      "target_looted": [],
+      "drop": []
+    },
+    {
+      "item_id": "weapon:m45a1",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -11407,7 +11050,7 @@
       "drop": []
     },
     {
-      "item_id": "12c9e6c3fa3b3f0b",
+      "item_id": "weapon:m700carbon",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -11421,25 +11064,7 @@
       "drop": []
     },
     {
-      "item_id": "ab852798873ac911",
-      "entity_type": "weapon",
-      "category": "weapon",
-      "tier": "highend",
-      "name_key": "m700carbonreplica",
-      "name": "M700 Carbon Replica",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "mmr",
-      "blueprint": [
-        {
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "c3b8ffdacc757387",
+      "item_id": "weapon:m700tactical",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -11453,7 +11078,7 @@
       "drop": []
     },
     {
-      "item_id": "2b1f7ad35443ef64",
+      "item_id": "weapon:m870express",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -11467,25 +11092,7 @@
       "drop": []
     },
     {
-      "item_id": "726a3f0cc6780d46",
-      "entity_type": "weapon",
-      "category": "weapon",
-      "tier": "highend",
-      "name_key": "m870expressreplica",
-      "name": "M870 Express Replica",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "shotgun",
-      "blueprint": [
-        {
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "de93c391b4382de3",
+      "item_id": "weapon:manic",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -11500,15 +11107,13 @@
           "type": "craft"
         }
       ],
+      "target_looted": [],
       "drop": [
         "dz"
-      ],
-      "target_looted": [
-        "ar:dz"
       ]
     },
     {
-      "item_id": "eb3594ae54aa34d1",
+      "item_id": "weapon:mantis",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "exotic",
@@ -11527,7 +11132,7 @@
       "drop": []
     },
     {
-      "item_id": "075bca509c7f8c55",
+      "item_id": "weapon:marinesuper90",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -11541,21 +11146,7 @@
       "drop": []
     },
     {
-      "item_id": "4fee8cb717f79332",
-      "entity_type": "weapon",
-      "category": "weapon",
-      "tier": "named",
-      "name_key": "maxim9",
-      "name": "Maxim 9",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "pistol",
-      "blueprint": [],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "a92234870c966580",
+      "item_id": "weapon:mechanicalanimal",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -11574,26 +11165,7 @@
       "drop": []
     },
     {
-      "item_id": "f092a680566c6a5f",
-      "entity_type": "weapon",
-      "category": "weapon",
-      "tier": "exotic",
-      "name_key": "merciless",
-      "name": "Merciless",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "rifle",
-      "blueprint": [
-        {
-          "src": "Hyenas Kill Squad",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "5f4b9e44c6b23a7d",
+      "item_id": "weapon:mg5",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -11607,7 +11179,7 @@
       "drop": []
     },
     {
-      "item_id": "88ac318740ee3a32",
+      "item_id": "weapon:militaryakm",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -11617,13 +11189,11 @@
       "brand_key": "",
       "slot_key": "ar",
       "blueprint": [],
-      "drop": [],
-      "target_looted": [
-        "ar"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "1cc74ba01ad810f8",
+      "item_id": "weapon:militaryg36",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -11637,7 +11207,7 @@
       "drop": []
     },
     {
-      "item_id": "3d68dc0a6273fee5",
+      "item_id": "weapon:militaryl86lsw",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -11651,7 +11221,7 @@
       "drop": []
     },
     {
-      "item_id": "6248862ac2e2529e",
+      "item_id": "weapon:militarym60e4",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -11665,7 +11235,7 @@
       "drop": []
     },
     {
-      "item_id": "bd573ae29fab3448",
+      "item_id": "weapon:militarym870",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -11679,7 +11249,7 @@
       "drop": []
     },
     {
-      "item_id": "f2175fe188e8c360",
+      "item_id": "weapon:militarym9",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -11693,30 +11263,12 @@
       "drop": []
     },
     {
-      "item_id": "a0177d9d76851093",
-      "entity_type": "weapon",
-      "category": "weapon",
-      "tier": "highend",
-      "name_key": "militarym9replica",
-      "name": "Military M9 Replica",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "pistol",
-      "blueprint": [
-        {
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "96f130989bd5ecfe",
+      "item_id": "weapon:militarymk17",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
       "name_key": "militarymk17",
-      "name": "Military MK17",
+      "name": "Military Mk17",
       "brand_name": "",
       "brand_key": "",
       "slot_key": "rifle",
@@ -11725,7 +11277,7 @@
       "drop": []
     },
     {
-      "item_id": "d268e9edff6de700",
+      "item_id": "weapon:militarymk46",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -11739,25 +11291,7 @@
       "drop": []
     },
     {
-      "item_id": "47d5a13e34d7e653",
-      "entity_type": "weapon",
-      "category": "weapon",
-      "tier": "highend",
-      "name_key": "militarymk46replica",
-      "name": "Military MK46 Replica",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "lmg",
-      "blueprint": [
-        {
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "78693108ae551045",
+      "item_id": "weapon:militaryp416",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -11771,21 +11305,7 @@
       "drop": []
     },
     {
-      "item_id": "6697aea43c25a3aa",
-      "entity_type": "weapon",
-      "category": "weapon",
-      "tier": "highend",
-      "name_key": "militaryrpk74",
-      "name": "Military RPK-74",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "lmg",
-      "blueprint": [],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "3e835d651b6ca959",
+      "item_id": "weapon:militaryrpk74m",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -11799,7 +11319,21 @@
       "drop": []
     },
     {
-      "item_id": "6daadde8fe22d1fb",
+      "item_id": "weapon:minigun",
+      "entity_type": "weapon",
+      "category": "weapon",
+      "tier": "signature",
+      "name_key": "minigun",
+      "name": "Minigun",
+      "brand_name": "",
+      "brand_key": "",
+      "slot_key": "signature",
+      "blueprint": [],
+      "target_looted": [],
+      "drop": []
+    },
+    {
+      "item_id": "weapon:mk16",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -11813,7 +11347,7 @@
       "drop": []
     },
     {
-      "item_id": "934b0c0507522717",
+      "item_id": "weapon:model700",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -11827,25 +11361,7 @@
       "drop": []
     },
     {
-      "item_id": "0724024c5472074a",
-      "entity_type": "weapon",
-      "category": "weapon",
-      "tier": "highend",
-      "name_key": "model700replica",
-      "name": "Model 700 Replica",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "mmr",
-      "blueprint": [
-        {
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "947e3ea5d7112eee",
+      "item_id": "weapon:mosquito",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "exotic",
@@ -11864,7 +11380,7 @@
       "drop": []
     },
     {
-      "item_id": "cee199d1a577346b",
+      "item_id": "weapon:mozambiquespecial",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -11883,7 +11399,7 @@
       "drop": []
     },
     {
-      "item_id": "239e5c719dbe446a",
+      "item_id": "weapon:mp5a2",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -11897,53 +11413,7 @@
       "drop": []
     },
     {
-      "item_id": "5e1d32924b496d1f",
-      "entity_type": "weapon",
-      "category": "weapon",
-      "tier": "highend",
-      "name_key": "mp5n",
-      "name": "MP5-N",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "smg",
-      "blueprint": [],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "82a8701cf0999cef",
-      "entity_type": "weapon",
-      "category": "weapon",
-      "tier": "highend",
-      "name_key": "mp5st",
-      "name": "MP5 ST",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "smg",
-      "blueprint": [],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "3c9f865736858aa3",
-      "entity_type": "weapon",
-      "category": "weapon",
-      "tier": "highend",
-      "name_key": "mp5streplica",
-      "name": "MP5 ST Replica",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "smg",
-      "blueprint": [
-        {
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "a860270a07e67668",
+      "item_id": "weapon:mp7",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -11957,12 +11427,12 @@
       "drop": []
     },
     {
-      "item_id": "da0a84cc5d71fe35",
+      "item_id": "weapon:mpsn",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
-      "name_key": "mpx",
-      "name": "MPX",
+      "name_key": "mpsn",
+      "name": "MPS-N",
       "brand_name": "",
       "brand_key": "",
       "slot_key": "smg",
@@ -11971,7 +11441,21 @@
       "drop": []
     },
     {
-      "item_id": "7f1c29a2c21fd8f9",
+      "item_id": "weapon:mpsst",
+      "entity_type": "weapon",
+      "category": "weapon",
+      "tier": "highend",
+      "name_key": "mpsst",
+      "name": "MPS ST",
+      "brand_name": "",
+      "brand_key": "",
+      "slot_key": "smg",
+      "blueprint": [],
+      "target_looted": [],
+      "drop": []
+    },
+    {
+      "item_id": "weapon:nemesis",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "exotic",
@@ -11989,7 +11473,7 @@
       "drop": []
     },
     {
-      "item_id": "1b4e342225ce372c",
+      "item_id": "weapon:newreliable",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -12008,7 +11492,7 @@
       "drop": []
     },
     {
-      "item_id": "eb624802d1c99036",
+      "item_id": "weapon:officersm9a1",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -12022,7 +11506,7 @@
       "drop": []
     },
     {
-      "item_id": "6e57c32a5ecaaace",
+      "item_id": "weapon:ohcarol",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -12039,7 +11523,21 @@
       ]
     },
     {
-      "item_id": "a53b78324bb9193d",
+      "item_id": "weapon:oldglory",
+      "entity_type": "weapon",
+      "category": "weapon",
+      "tier": "named",
+      "name_key": "oldglory",
+      "name": "Old Glory",
+      "brand_name": "",
+      "brand_key": "",
+      "slot_key": "smg",
+      "blueprint": [],
+      "target_looted": [],
+      "drop": []
+    },
+    {
+      "item_id": "weapon:orbit",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -12060,7 +11558,7 @@
       ]
     },
     {
-      "item_id": "5371610a2ede9dbf",
+      "item_id": "weapon:ouroboros",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "exotic",
@@ -12079,7 +11577,7 @@
       "drop": []
     },
     {
-      "item_id": "4437cc4dd2a1d341",
+      "item_id": "weapon:overlord",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "exotic",
@@ -12098,7 +11596,7 @@
       "drop": []
     },
     {
-      "item_id": "e5821b12c1faf0a9",
+      "item_id": "weapon:oxpecker",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "exotic",
@@ -12117,21 +11615,21 @@
       "drop": []
     },
     {
-      "item_id": "389297a3c5e0a83e",
+      "item_id": "weapon:p017launcher",
       "entity_type": "weapon",
       "category": "weapon",
-      "tier": "named",
-      "name_key": "p320xcompact",
-      "name": "P320 XCompact",
+      "tier": "signature",
+      "name_key": "p017launcher",
+      "name": "P-017 Launcher",
       "brand_name": "",
       "brand_key": "",
-      "slot_key": "pistol",
+      "slot_key": "signature",
       "blueprint": [],
       "target_looted": [],
       "drop": []
     },
     {
-      "item_id": "7568f576327c01a7",
+      "item_id": "weapon:p90",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -12145,25 +11643,7 @@
       "drop": []
     },
     {
-      "item_id": "d78d3a5568b66af0",
-      "entity_type": "weapon",
-      "category": "weapon",
-      "tier": "highend",
-      "name_key": "p90replica",
-      "name": "P90 Replica",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "smg",
-      "blueprint": [
-        {
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "8a3c2e083b1ae598",
+      "item_id": "weapon:pakhan",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "exotic",
@@ -12182,7 +11662,7 @@
       "drop": []
     },
     {
-      "item_id": "69a4d2556ccdc0a6",
+      "item_id": "weapon:paratroopersvd",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -12196,7 +11676,7 @@
       "drop": []
     },
     {
-      "item_id": "cb03f1d6eef77ab4",
+      "item_id": "weapon:pdr",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -12214,7 +11694,7 @@
       "drop": []
     },
     {
-      "item_id": "29113da993cb99cf",
+      "item_id": "weapon:pestilence",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "exotic",
@@ -12233,7 +11713,7 @@
       "drop": []
     },
     {
-      "item_id": "d1d50cac81b9ba64",
+      "item_id": "weapon:pinprick",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -12252,7 +11732,7 @@
       "drop": []
     },
     {
-      "item_id": "d50067fda17d2d57",
+      "item_id": "weapon:police686magnum",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -12271,25 +11751,7 @@
       "drop": []
     },
     {
-      "item_id": "b47be53b02b57967",
-      "entity_type": "weapon",
-      "category": "weapon",
-      "tier": "highend",
-      "name_key": "police686magnumreplica",
-      "name": "Police 686 Magnum Replica",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "pistol",
-      "blueprint": [
-        {
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "ed8f7fb450c01c40",
+      "item_id": "weapon:policem4",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -12303,30 +11765,12 @@
       "drop": []
     },
     {
-      "item_id": "26149a555cf468d4",
-      "entity_type": "weapon",
-      "category": "weapon",
-      "tier": "highend",
-      "name_key": "policem4replica",
-      "name": "Police M4 Replica",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "ar",
-      "blueprint": [
-        {
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "4697b8ae8b239b7a",
+      "item_id": "weapon:policemk17",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
       "name_key": "policemk17",
-      "name": "Police MK17",
+      "name": "Police Mk17",
       "brand_name": "",
       "brand_key": "",
       "slot_key": "rifle",
@@ -12335,25 +11779,7 @@
       "drop": []
     },
     {
-      "item_id": "d35eec1fc1d7fbd2",
-      "entity_type": "weapon",
-      "category": "weapon",
-      "tier": "highend",
-      "name_key": "policemk17replica",
-      "name": "Police MK17 Replica",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "rifle",
-      "blueprint": [
-        {
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "71b7cda8f8593766",
+      "item_id": "weapon:policet821",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -12367,7 +11793,7 @@
       "drop": []
     },
     {
-      "item_id": "b381b319dab624a7",
+      "item_id": "weapon:policeump45",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -12381,7 +11807,7 @@
       "drop": []
     },
     {
-      "item_id": "94180b03725271e8",
+      "item_id": "weapon:pp19",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -12395,7 +11821,21 @@
       "drop": []
     },
     {
-      "item_id": "830f3dacbf279c09",
+      "item_id": "weapon:primadonna",
+      "entity_type": "weapon",
+      "category": "weapon",
+      "tier": "exotic",
+      "name_key": "primadonna",
+      "name": "Prima Donna",
+      "brand_name": "",
+      "brand_key": "",
+      "slot_key": "mmr",
+      "blueprint": [],
+      "target_looted": [],
+      "drop": []
+    },
+    {
+      "item_id": "weapon:prophet",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -12409,7 +11849,7 @@
       "drop": []
     },
     {
-      "item_id": "25198c7334b79d6b",
+      "item_id": "weapon:purist",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -12428,7 +11868,7 @@
       "drop": []
     },
     {
-      "item_id": "b2244571932332d8",
+      "item_id": "weapon:px4stormtypef",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -12442,7 +11882,7 @@
       "drop": []
     },
     {
-      "item_id": "b72026b71a7985a7",
+      "item_id": "weapon:px4stormtypet",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -12456,25 +11896,7 @@
       "drop": []
     },
     {
-      "item_id": "70f9303c8dce48b8",
-      "entity_type": "weapon",
-      "category": "weapon",
-      "tier": "highend",
-      "name_key": "px4stormtypetreplica",
-      "name": "Px4 Storm Type T Replica",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "pistol",
-      "blueprint": [
-        {
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "f1e08098997f0ce0",
+      "item_id": "weapon:pyromaniac",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -12493,7 +11915,7 @@
       "drop": []
     },
     {
-      "item_id": "3467fa2eb114b8fd",
+      "item_id": "weapon:quickstep",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -12510,7 +11932,7 @@
       ]
     },
     {
-      "item_id": "8b4650bcd64c4773",
+      "item_id": "weapon:quietroar",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -12529,7 +11951,21 @@
       "drop": []
     },
     {
-      "item_id": "db65c2b533c45b9b",
+      "item_id": "weapon:rabidd50",
+      "entity_type": "weapon",
+      "category": "weapon",
+      "tier": "named",
+      "name_key": "rabidd50",
+      "name": "Rabid D50",
+      "brand_name": "",
+      "brand_key": "",
+      "slot_key": "pistol",
+      "blueprint": [],
+      "target_looted": [],
+      "drop": []
+    },
+    {
+      "item_id": "weapon:regulus",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "exotic",
@@ -12547,7 +11983,7 @@
       "drop": []
     },
     {
-      "item_id": "33ecaadb508071d5",
+      "item_id": "weapon:relic",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -12561,12 +11997,12 @@
       "drop": []
     },
     {
-      "item_id": "96e49cdf051f7568",
+      "item_id": "weapon:resolutemk47",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
       "name_key": "resolutemk47",
-      "name": "Resolute Mk47",
+      "name": "Resolute MK47",
       "brand_name": "",
       "brand_key": "",
       "slot_key": "rifle",
@@ -12579,7 +12015,7 @@
       "drop": []
     },
     {
-      "item_id": "c8955757a992f496",
+      "item_id": "weapon:rocknroll",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -12600,7 +12036,7 @@
       ]
     },
     {
-      "item_id": "d0e63617b96fda8e",
+      "item_id": "weapon:rusty",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -12619,7 +12055,7 @@
       "drop": []
     },
     {
-      "item_id": "6cd2bb1597cdce02",
+      "item_id": "weapon:ruthless",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "exotic",
@@ -12633,7 +12069,7 @@
       "drop": []
     },
     {
-      "item_id": "12ff2042e7be0d6c",
+      "item_id": "weapon:sacrumimperium",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "exotic",
@@ -12652,7 +12088,7 @@
       "drop": []
     },
     {
-      "item_id": "7c91b68a8488d1c9",
+      "item_id": "weapon:safetydistance",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -12671,7 +12107,7 @@
       "drop": []
     },
     {
-      "item_id": "821763d6cf75840c",
+      "item_id": "weapon:sasg12",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -12685,7 +12121,7 @@
       "drop": []
     },
     {
-      "item_id": "560c9e8bd08d299e",
+      "item_id": "weapon:savagewolverine",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -12704,7 +12140,7 @@
       "drop": []
     },
     {
-      "item_id": "8c54e97b6fb82bbe",
+      "item_id": "weapon:scalpel",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -12723,7 +12159,7 @@
       "drop": []
     },
     {
-      "item_id": "d37a3453b9485319",
+      "item_id": "weapon:scorpio",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "exotic",
@@ -12742,21 +12178,26 @@
       "drop": []
     },
     {
-      "item_id": "8955f0ba334b736a",
+      "item_id": "weapon:sheriff",
       "entity_type": "weapon",
       "category": "weapon",
-      "tier": "named",
-      "name_key": "sharpshooters93r",
-      "name": "Sharpshooter's 93R",
+      "tier": "exotic",
+      "name_key": "sheriff",
+      "name": "Sheriff",
       "brand_name": "",
       "brand_key": "",
-      "slot_key": "pistol",
-      "blueprint": [],
+      "slot_key": "shotgun",
+      "blueprint": [
+        {
+          "src": "Blacktusk Kill Squad",
+          "type": "craft"
+        }
+      ],
       "target_looted": [],
       "drop": []
     },
     {
-      "item_id": "cf755df74a7c54a7",
+      "item_id": "weapon:shieldsplinterer",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -12771,13 +12212,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": [
-        "ar"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "8b155caa3dd8cd72",
+      "item_id": "weapon:shroud",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "exotic",
@@ -12796,7 +12235,7 @@
       "drop": []
     },
     {
-      "item_id": "26ab3e8afed0ad9f",
+      "item_id": "weapon:sig556",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -12814,7 +12253,7 @@
       "drop": []
     },
     {
-      "item_id": "931c9fdd04470b3e",
+      "item_id": "weapon:sig716",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -12828,7 +12267,7 @@
       "drop": []
     },
     {
-      "item_id": "a20002758cbc85d8",
+      "item_id": "weapon:sig716cqb",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -12842,30 +12281,26 @@
       "drop": []
     },
     {
-      "item_id": "d37c040c94bbc254",
+      "item_id": "weapon:sigmpx",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
-      "name_key": "sig716replica",
-      "name": "SIG 716 Replica",
+      "name_key": "sigmpx",
+      "name": "SIG MPX",
       "brand_name": "",
       "brand_key": "",
-      "slot_key": "rifle",
-      "blueprint": [
-        {
-          "type": "craft"
-        }
-      ],
+      "slot_key": "smg",
+      "blueprint": [],
       "target_looted": [],
       "drop": []
     },
     {
-      "item_id": "4cc520230fdbfa0d",
+      "item_id": "weapon:six12",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
       "name_key": "six12",
-      "name": "Six12",
+      "name": "SIX12",
       "brand_name": "",
       "brand_key": "",
       "slot_key": "shotgun",
@@ -12879,12 +12314,12 @@
       "drop": []
     },
     {
-      "item_id": "00c10972140842c2",
+      "item_id": "weapon:sleipnir",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
-      "name_key": "sleipner",
-      "name": "Sleipner",
+      "name_key": "sleipnir",
+      "name": "Sleipnir",
       "brand_name": "",
       "brand_key": "",
       "slot_key": "lmg",
@@ -12898,7 +12333,7 @@
       "drop": []
     },
     {
-      "item_id": "c7f16373de97fb01",
+      "item_id": "weapon:slingshot",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -12915,7 +12350,7 @@
       ]
     },
     {
-      "item_id": "241b142b7d2ba141",
+      "item_id": "weapon:snubnoseddiceros",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -12929,12 +12364,12 @@
       "drop": []
     },
     {
-      "item_id": "908f96a33164ba2c",
+      "item_id": "weapon:socomm1a",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
       "name_key": "socomm1a",
-      "name": "Socom M1A",
+      "name": "SOCOM M1A",
       "brand_name": "",
       "brand_key": "",
       "slot_key": "rifle",
@@ -12947,7 +12382,7 @@
       "drop": []
     },
     {
-      "item_id": "a8a4462460802bd3",
+      "item_id": "weapon:socommk16",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -12961,7 +12396,7 @@
       "drop": []
     },
     {
-      "item_id": "9d60b281dab80b63",
+      "item_id": "weapon:socommk20ssr",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -12975,25 +12410,7 @@
       "drop": []
     },
     {
-      "item_id": "c2ceaa146d8d9ccc",
-      "entity_type": "weapon",
-      "category": "weapon",
-      "tier": "highend",
-      "name_key": "socommk20ssrreplica",
-      "name": "SOCOM MK20 SSR Replica",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "mmr",
-      "blueprint": [
-        {
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "8760a4d2767cfdab",
+      "item_id": "weapon:spas12",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -13007,25 +12424,7 @@
       "drop": []
     },
     {
-      "item_id": "fb4020347a8badf8",
-      "entity_type": "weapon",
-      "category": "weapon",
-      "tier": "highend",
-      "name_key": "spas12replica",
-      "name": "SPAS-12 Replica",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "shotgun",
-      "blueprint": [
-        {
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "96e55898811aa338",
+      "item_id": "weapon:sr1",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -13039,25 +12438,7 @@
       "drop": []
     },
     {
-      "item_id": "cfe2b09c27d51106",
-      "entity_type": "weapon",
-      "category": "weapon",
-      "tier": "highend",
-      "name_key": "sr1replica",
-      "name": "SR-1 Replica",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "mmr",
-      "blueprint": [
-        {
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "adf2109df5b24875",
+      "item_id": "weapon:srsa1",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -13071,25 +12452,7 @@
       "drop": []
     },
     {
-      "item_id": "58f69be462c12959",
-      "entity_type": "weapon",
-      "category": "weapon",
-      "tier": "highend",
-      "name_key": "srsa1replica",
-      "name": "SRS A1 Replica",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "mmr",
-      "blueprint": [
-        {
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "7102a4ed70b86679",
+      "item_id": "weapon:stackbroker",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -13103,7 +12466,7 @@
       "drop": []
     },
     {
-      "item_id": "bc74ba4d312771d8",
+      "item_id": "weapon:stageleft",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -13122,7 +12485,35 @@
       "drop": []
     },
     {
-      "item_id": "9eaec7e98bed1177",
+      "item_id": "weapon:steamer",
+      "entity_type": "weapon",
+      "category": "weapon",
+      "tier": "named",
+      "name_key": "steamer",
+      "name": "Steamer",
+      "brand_name": "",
+      "brand_key": "",
+      "slot_key": "ar",
+      "blueprint": [],
+      "target_looted": [],
+      "drop": []
+    },
+    {
+      "item_id": "weapon:steelsonsacr",
+      "entity_type": "weapon",
+      "category": "weapon",
+      "tier": "exotic",
+      "name_key": "steelsonsacr",
+      "name": "Steel & Sons ACR",
+      "brand_name": "",
+      "brand_key": "",
+      "slot_key": "rifle",
+      "blueprint": [],
+      "target_looted": [],
+      "drop": []
+    },
+    {
+      "item_id": "weapon:stelmosengine",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "exotic",
@@ -13141,7 +12532,7 @@
       "drop": []
     },
     {
-      "item_id": "98bad8a527ae50f2",
+      "item_id": "weapon:stonerlamg",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -13155,7 +12546,7 @@
       "drop": []
     },
     {
-      "item_id": "0637f4f0f572ef79",
+      "item_id": "weapon:strega",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "exotic",
@@ -13174,7 +12565,7 @@
       "drop": []
     },
     {
-      "item_id": "c037b124666e88d4",
+      "item_id": "weapon:super90",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -13188,25 +12579,7 @@
       "drop": []
     },
     {
-      "item_id": "e41d22fc6f85d46a",
-      "entity_type": "weapon",
-      "category": "weapon",
-      "tier": "highend",
-      "name_key": "super90replica",
-      "name": "Super 90 Replica",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "shotgun",
-      "blueprint": [
-        {
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "829f5ea6aec7ed57",
+      "item_id": "weapon:surge",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -13225,7 +12598,7 @@
       "drop": []
     },
     {
-      "item_id": "e81a8d332c63541d",
+      "item_id": "weapon:surplussvd",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -13239,21 +12612,7 @@
       "drop": []
     },
     {
-      "item_id": "cb98b255b7ec2418",
-      "entity_type": "weapon",
-      "category": "weapon",
-      "tier": "named",
-      "name_key": "survivalistd50",
-      "name": "Survivalist D50",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "pistol",
-      "blueprint": [],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "ad2f339fc21ca509",
+      "item_id": "weapon:swapchain",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -13272,26 +12631,7 @@
       "drop": []
     },
     {
-      "item_id": "c1b694005ac747b6",
-      "entity_type": "weapon",
-      "category": "weapon",
-      "tier": "exotic",
-      "name_key": "sweetdreams",
-      "name": "Sweet Dreams",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "shotgun",
-      "blueprint": [
-        {
-          "src": "Outcasts Kill Squad",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "74b39237502e08a8",
+      "item_id": "weapon:tabularasa",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -13310,7 +12650,21 @@
       "drop": []
     },
     {
-      "item_id": "53e440efb33b4a69",
+      "item_id": "weapon:tac50crifle",
+      "entity_type": "weapon",
+      "category": "weapon",
+      "tier": "signature",
+      "name_key": "tac50crifle",
+      "name": "TAC-50 C Rifle",
+      "brand_name": "",
+      "brand_key": "",
+      "slot_key": "signature",
+      "blueprint": [],
+      "target_looted": [],
+      "drop": []
+    },
+    {
+      "item_id": "weapon:tactical308",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -13329,7 +12683,7 @@
       "drop": []
     },
     {
-      "item_id": "7a0f1c36936cd8d7",
+      "item_id": "weapon:tacticalauga3p",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -13343,25 +12697,7 @@
       "drop": []
     },
     {
-      "item_id": "ca85a4495d0b2576",
-      "entity_type": "weapon",
-      "category": "weapon",
-      "tier": "highend",
-      "name_key": "tacticalauga3preplica",
-      "name": "Tactical AUG A3P Replica",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "smg",
-      "blueprint": [
-        {
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "2223273e203a8e81",
+      "item_id": "weapon:tacticalm1911",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -13375,25 +12711,7 @@
       "drop": []
     },
     {
-      "item_id": "32b9b0bf5ed3e036",
-      "entity_type": "weapon",
-      "category": "weapon",
-      "tier": "highend",
-      "name_key": "tacticalm1911replica",
-      "name": "Tactical M1911 Replica",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "pistol",
-      "blueprint": [
-        {
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "47c3d2d42c7f82b3",
+      "item_id": "weapon:tacticalm249para",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -13407,7 +12725,7 @@
       "drop": []
     },
     {
-      "item_id": "4321c14a8ef9f2db",
+      "item_id": "weapon:tacticalmk16",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -13421,25 +12739,7 @@
       "drop": []
     },
     {
-      "item_id": "6d82f5f961ae72e5",
-      "entity_type": "weapon",
-      "category": "weapon",
-      "tier": "highend",
-      "name_key": "tacticalmk16replica",
-      "name": "Tactical Mk 16 Replica",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "ar",
-      "blueprint": [
-        {
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "632d6685cff5760d",
+      "item_id": "weapon:tacticalsasg12k",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -13453,7 +12753,7 @@
       "drop": []
     },
     {
-      "item_id": "08be2849231f4ccb",
+      "item_id": "weapon:tacticalsuper90sbs",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -13467,25 +12767,7 @@
       "drop": []
     },
     {
-      "item_id": "25d65cbcf0a9aa52",
-      "entity_type": "weapon",
-      "category": "weapon",
-      "tier": "highend",
-      "name_key": "tacticalsuper90sbsreplica",
-      "name": "Tactical Super 90 SBS Replica",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "shotgun",
-      "blueprint": [
-        {
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "b184aabeb84d10ed",
+      "item_id": "weapon:tacticalump45",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -13499,25 +12781,7 @@
       "drop": []
     },
     {
-      "item_id": "5a341216fce479dd",
-      "entity_type": "weapon",
-      "category": "weapon",
-      "tier": "highend",
-      "name_key": "tacticalump45replica",
-      "name": "Tactical UMP-45 Replica",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "smg",
-      "blueprint": [
-        {
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "02b411efc883c703",
+      "item_id": "weapon:tacticalvectorsbr9mm",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -13531,7 +12795,7 @@
       "drop": []
     },
     {
-      "item_id": "875b195f69cbc878",
+      "item_id": "weapon:tdikardcustom",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -13552,7 +12816,21 @@
       ]
     },
     {
-      "item_id": "692c7aec5b8d1f56",
+      "item_id": "weapon:teapot",
+      "entity_type": "weapon",
+      "category": "weapon",
+      "tier": "named",
+      "name_key": "teapot",
+      "name": "Teapot",
+      "brand_name": "",
+      "brand_key": "",
+      "slot_key": "rifle",
+      "blueprint": [],
+      "target_looted": [],
+      "drop": []
+    },
+    {
+      "item_id": "weapon:tempest",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "exotic",
@@ -13571,7 +12849,7 @@
       "drop": []
     },
     {
-      "item_id": "b9c29bf16409e120",
+      "item_id": "weapon:testsubject",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -13590,7 +12868,7 @@
       "drop": []
     },
     {
-      "item_id": "fc6021f4dd8a07bd",
+      "item_id": "weapon:theapartment",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -13611,7 +12889,21 @@
       ]
     },
     {
-      "item_id": "ed5b5137d1045cb5",
+      "item_id": "weapon:thearchivist",
+      "entity_type": "weapon",
+      "category": "weapon",
+      "tier": "named",
+      "name_key": "thearchivist",
+      "name": "The Archivist",
+      "brand_name": "",
+      "brand_key": "",
+      "slot_key": "ar",
+      "blueprint": [],
+      "target_looted": [],
+      "drop": []
+    },
+    {
+      "item_id": "weapon:thebighorn",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "exotic",
@@ -13626,11 +12918,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": []
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "ee244309b855130b",
+      "item_id": "weapon:thechatterbox",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "exotic",
@@ -13648,7 +12940,21 @@
       "drop": []
     },
     {
-      "item_id": "2ce3b1b4a44c8035",
+      "item_id": "weapon:theclaw",
+      "entity_type": "weapon",
+      "category": "weapon",
+      "tier": "named",
+      "name_key": "theclaw",
+      "name": "The Claw",
+      "brand_name": "",
+      "brand_key": "",
+      "slot_key": "rifle",
+      "blueprint": [],
+      "target_looted": [],
+      "drop": []
+    },
+    {
+      "item_id": "weapon:thedarkness",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -13667,7 +12973,7 @@
       "drop": []
     },
     {
-      "item_id": "7797a1f5f3df958b",
+      "item_id": "weapon:thedrill",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -13682,13 +12988,11 @@
           "type": "craft"
         }
       ],
-      "drop": [],
-      "target_looted": [
-        "ar"
-      ]
+      "target_looted": [],
+      "drop": []
     },
     {
-      "item_id": "408a4329ee48108d",
+      "item_id": "weapon:thegrudge",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -13707,7 +13011,7 @@
       "drop": []
     },
     {
-      "item_id": "d9f8e0703fafc9a5",
+      "item_id": "weapon:theharvest",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -13724,7 +13028,7 @@
       ]
     },
     {
-      "item_id": "24a5d15722141f02",
+      "item_id": "weapon:theheadlinegrabber",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -13738,7 +13042,7 @@
       "drop": []
     },
     {
-      "item_id": "7076c533a1f88452",
+      "item_id": "weapon:themop",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -13757,7 +13061,7 @@
       "drop": []
     },
     {
-      "item_id": "ae66c4ba65415094",
+      "item_id": "weapon:therailsplitter",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -13778,7 +13082,7 @@
       ]
     },
     {
-      "item_id": "57dbb71a27d67895",
+      "item_id": "weapon:theravenous",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "exotic",
@@ -13797,7 +13101,7 @@
       "drop": []
     },
     {
-      "item_id": "dac693ef71a102de",
+      "item_id": "weapon:thesendoff",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -13816,26 +13120,7 @@
       "drop": []
     },
     {
-      "item_id": "13f2dbd7d7ffe053",
-      "entity_type": "weapon",
-      "category": "weapon",
-      "tier": "highend",
-      "name_key": "thesheriff",
-      "name": "The Sheriff",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "shotgun",
-      "blueprint": [
-        {
-          "src": "Blacktusk Kill Squad",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "276350f5fa8aba4b",
+      "item_id": "weapon:thesleigher",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -13852,7 +13137,7 @@
       ]
     },
     {
-      "item_id": "c1e2e7d7b4dddaa1",
+      "item_id": "weapon:thestinger",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -13871,7 +13156,7 @@
       "drop": []
     },
     {
-      "item_id": "796d361bea7bf7fb",
+      "item_id": "weapon:thevirginian",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -13892,7 +13177,7 @@
       ]
     },
     {
-      "item_id": "9cec88daa89b888e",
+      "item_id": "weapon:thewhitedeath",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -13911,7 +13196,7 @@
       "drop": []
     },
     {
-      "item_id": "89823af6c25a3d90",
+      "item_id": "weapon:thorn",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -13930,7 +13215,7 @@
       "drop": []
     },
     {
-      "item_id": "5d679c83e0c772ab",
+      "item_id": "weapon:tkb408",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -13948,7 +13233,7 @@
       "drop": []
     },
     {
-      "item_id": "3cdec74e854a2364",
+      "item_id": "weapon:tommygun",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -13962,7 +13247,7 @@
       "drop": []
     },
     {
-      "item_id": "999176043be89cf2",
+      "item_id": "weapon:trader",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -13981,7 +13266,7 @@
       "drop": []
     },
     {
-      "item_id": "a0ed7f0dad263068",
+      "item_id": "weapon:tsunami",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -14000,7 +13285,7 @@
       "drop": []
     },
     {
-      "item_id": "cf0f708759110718",
+      "item_id": "weapon:uic15mod2",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -14014,7 +13299,7 @@
       "drop": []
     },
     {
-      "item_id": "b371ab992a02eb29",
+      "item_id": "weapon:underboss",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "exotic",
@@ -14033,7 +13318,7 @@
       "drop": []
     },
     {
-      "item_id": "4da340324f0f8d7f",
+      "item_id": "weapon:urbanmdr",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -14047,25 +13332,7 @@
       "drop": []
     },
     {
-      "item_id": "8f7b724ac7f10de9",
-      "entity_type": "weapon",
-      "category": "weapon",
-      "tier": "highend",
-      "name_key": "urbanmdrreplica",
-      "name": "Urban MDR Replica",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "rifle",
-      "blueprint": [
-        {
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "c1e3f61554edb8cf",
+      "item_id": "weapon:usc45acp",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -14079,25 +13346,7 @@
       "drop": []
     },
     {
-      "item_id": "b6b1443751bbcc45",
-      "entity_type": "weapon",
-      "category": "weapon",
-      "tier": "highend",
-      "name_key": "usc45acpreplica",
-      "name": "USC .45 ACP Replica",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "rifle",
-      "blueprint": [
-        {
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "a8ac822381068bff",
+      "item_id": "weapon:vectorsbr45acp",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -14111,25 +13360,7 @@
       "drop": []
     },
     {
-      "item_id": "b9b92777f5eec722",
-      "entity_type": "weapon",
-      "category": "weapon",
-      "tier": "highend",
-      "name_key": "vectorsbr45acpreplica",
-      "name": "Vector SBR .45 ACP Replica",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "smg",
-      "blueprint": [
-        {
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "2830de9ead5840d5",
+      "item_id": "weapon:vectorsbr9mm",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -14143,7 +13374,7 @@
       "drop": []
     },
     {
-      "item_id": "a83b34ae7d747faa",
+      "item_id": "weapon:vindicator",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "exotic",
@@ -14162,7 +13393,7 @@
       "drop": []
     },
     {
-      "item_id": "c44b496d59bc9501",
+      "item_id": "weapon:whiplash",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "exotic",
@@ -14171,17 +13402,12 @@
       "brand_name": "",
       "brand_key": "",
       "slot_key": "pistol",
-      "blueprint": [
-        {
-          "src": "Blacktusk Kill Squad",
-          "type": "craft"
-        }
-      ],
+      "blueprint": [],
       "target_looted": [],
       "drop": []
     },
     {
-      "item_id": "03aadcb5fc19840a",
+      "item_id": "weapon:whisper",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
@@ -14200,7 +13426,7 @@
       "drop": []
     },
     {
-      "item_id": "14d77a7483c70744",
+      "item_id": "weapon:x45",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -14214,7 +13440,7 @@
       "drop": []
     },
     {
-      "item_id": "6420bdd0c2fba6bd",
+      "item_id": "weapon:x45tactical",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "highend",
@@ -14224,24 +13450,6 @@
       "brand_key": "",
       "slot_key": "pistol",
       "blueprint": [],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "d9908abe7608cd3d",
-      "entity_type": "weapon",
-      "category": "weapon",
-      "tier": "highend",
-      "name_key": "x45tacticalreplica",
-      "name": "X-45 Tactical Replica",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "pistol",
-      "blueprint": [
-        {
-          "type": "craft"
-        }
-      ],
       "target_looted": [],
       "drop": []
     }

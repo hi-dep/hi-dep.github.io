@@ -145,8 +145,9 @@
     return keys.filter((k) => parseTruthy(row[k]));
   }
 
-  function weaponTypeBadgesHtml(enabledTypes) {
+  function weaponTypeBadgesHtml(enabledTypes, highlightedTypes = []) {
     const on = new Set(enabledTypes || []);
+    const highlighted = new Set(highlightedTypes || []);
     const defs = [
       { key: "ar", label: "AR" },
       { key: "smg", label: "SMG" },
@@ -157,7 +158,7 @@
       { key: "pistol", label: "HG" },
     ];
     return defs.map((d) => (
-      `<span class="wt-badge ${on.has(d.key) ? "is-on" : "is-off"}">${escapeHtml(d.label)}</span>`
+      `<span class="wt-badge ${on.has(d.key) ? "is-on" : "is-off"}${highlighted.has(d.key) ? " is-filter-hit" : ""}">${escapeHtml(d.label)}</span>`
     )).join("");
   }
 
@@ -196,6 +197,8 @@
     for (const t of (allowTypes || [])) {
       if (active.has(t)) return true;
     }
+    // A talent may not be generally valid for a weapon type, while a named
+    // weapon of that type can still carry it. Include such linked items.
     for (const it of (matchedItems || [])) {
       const wg = weaponGroupKey(it.weaponGroup || "");
       if (wg && active.has(wg)) return true;
@@ -423,6 +426,7 @@
       const perfectDesc = namedOnly ? String(r.talent_desc || "").trim() : String(r.perfect_talent_desc || "").trim();
 
       const allowTypes = collectAllowedWeaponTypes(r);
+      const activeTypes = new Set(Array.isArray(window.weaponTalentTypeFilter) ? window.weaponTalentTypeFilter : []);
 
       const lines = [];
       const namedOnlyCardClass = namedOnly ? " wt-card--named-only" : "";
@@ -434,7 +438,7 @@
         cls: "line line--weapon-types",
         text: "",
         key: "",
-        html: `<div class="wt-badges">${weaponTypeBadgesHtml(enabled)}</div>`
+        html: `<div class="wt-badges">${weaponTypeBadgesHtml(enabled, allowTypes.filter((t) => activeTypes.has(t)))}</div>`
       });
       if (talentTitle) lines.push({ cls: "line line--gray line--talent", text: talentTitle, key: talentKey });
       const talentDescDisp = trTalentDescPreserveNewline(talentDesc, talentKey);
@@ -527,7 +531,8 @@
             const nameLine = itemName;
             const cls = it.kind === "named" ? "line line--named" : "line line--gray";
             const typeLabel = weaponTypeShortLabel(wg);
-            const metaBadges = `<span class="wt-inline-badges"><span class="wt-badge is-on">${escapeHtml(typeLabel)}</span></span>`;
+            const typeHitClass = activeTypes.has(wg) ? " is-filter-hit" : "";
+            const metaBadges = `<span class="wt-inline-badges"><span class="wt-badge is-on${typeHitClass}">${escapeHtml(typeLabel)}</span></span>`;
             return `<div class="${cls}">${wIcon}${metaBadges}<div class="line__body"><div class="line__text">${escapeHtml(nameLine)}</div></div></div>`;
           }).join("")}
         </div>

@@ -2227,6 +2227,13 @@ body.only-selected .card.is-selected {
   color: rgba(160, 166, 176, .95);
 }
 
+.wt-badge.is-filter-hit {
+  background: rgba(255, 127, 0, .2);
+  border-color: rgba(255, 127, 0, .9);
+  color: var(--named-text);
+  box-shadow: 0 0 0 1px rgba(255, 127, 0, .35) inset;
+}
+
 .wt-inline-badges {
   display: inline-flex;
   align-items: center;

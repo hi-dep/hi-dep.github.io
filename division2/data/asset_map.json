@@ -5,6 +5,17 @@
     "enabled": true,
     "safe_chars": "a-z 0-9 . _ -"
   },
+  "prototype": {
+    "amalgam": "img/icon/augument/Amalgam.png",
+    "anomaly": "img/icon/augument/Anomaly .png",
+    "atomize": "img/icon/augument/Atomize.png",
+    "echo": "img/icon/augument/Echo .png",
+    "entropy": "img/icon/augument/Entropy.png",
+    "paradox": "img/icon/augument/Paradox.png",
+    "quantum": "img/icon/augument/Quantum.png",
+    "synesthesia": "img/icon/augument/Synesthesia.png",
+    "trapper": "img/icon/augument/Trapper.png"
+  },
   "brands": {
     "511tactical": "img/icon/brandset/511tactical.png",
     "aceseights": "img/icon/gearset/aceseights.png",
