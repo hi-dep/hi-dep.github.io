@@ -393,10 +393,14 @@
     }
 
     const rows = rowsRaw.slice().sort((a, b) => {
-      const ak = normalizeKey(String(a.talent || ""));
-      const bk = normalizeKey(String(b.talent || ""));
-      const at = resolveTalentTitle(String(a.talent || ""), ak) || String(a.talent || "");
-      const bt = resolveTalentTitle(String(b.talent || ""), bk) || String(b.talent || "");
+      // Perfect-only rows intentionally have no normal talent value.  Sort
+      // those rows by their Perfect talent instead of placing them first.
+      const aRaw = String(a.talent || a.perfect_talent || "");
+      const bRaw = String(b.talent || b.perfect_talent || "");
+      const ak = normalizeKey(aRaw);
+      const bk = normalizeKey(bRaw);
+      const at = resolveTalentTitle(aRaw, ak) || aRaw;
+      const bt = resolveTalentTitle(bRaw, bk) || bRaw;
       return String(at).localeCompare(String(bt), langSelect.value === "ja" ? "ja" : "en");
     });
 
@@ -414,20 +418,28 @@
 
     rows.forEach((r, idx) => {
       const namedOnly = String(r.__named_only || "") === "1";
+      const allowTypes = collectAllowedWeaponTypes(r);
       const talentRaw = namedOnly ? "" : String(r.talent || "").trim();
       const talentKey = normalizeKey(talentRaw);
-      const talentTitle = resolveTalentTitle(talentRaw, talentKey);
+      let talentTitle = resolveTalentTitle(talentRaw, talentKey);
       const talentDesc = namedOnly ? "" : String(r.talent_desc || "").trim();
 
-      const perfectRaw = namedOnly ? String(r.talent || "").trim() : String(r.perfect_talent || "").trim();
-      const perfectKey = normalizeKey(perfectRaw);
+      let perfectRaw = namedOnly ? String(r.talent || "").trim() : String(r.perfect_talent || "").trim();
+      let perfectKey = normalizeKey(perfectRaw);
+      if (!namedOnly && allowTypes.length === 0 && talentRaw && !perfectRaw) {
+        // Named-item-only custom talents have no applicable normal weapon
+        // type. Render them in the Perfect section for visual consistency.
+        talentTitle = "";
+        perfectRaw = talentRaw;
+        perfectKey = talentKey;
+      }
       const hasPerfectTalent = !!perfectRaw && !/^[\-–—]+$/.test(perfectRaw);
       const perfectTitle = hasPerfectTalent ? resolveTalentTitle(perfectRaw, perfectKey) : "";
-      const perfectDesc = namedOnly ? String(r.talent_desc || "").trim() : String(r.perfect_talent_desc || "").trim();
+      let perfectDesc = (!namedOnly && allowTypes.length === 0 && talentRaw && !String(r.perfect_talent || "").trim())
+        ? talentDesc
+        : (namedOnly ? String(r.talent_desc || "").trim() : String(r.perfect_talent_desc || "").trim());
 
-      const allowTypes = collectAllowedWeaponTypes(r);
       const activeTypes = new Set(Array.isArray(window.weaponTalentTypeFilter) ? window.weaponTalentTypeFilter : []);
-
       const lines = [];
       const namedOnlyCardClass = namedOnly ? " wt-card--named-only" : "";
       const showDesc = !!window.talentShowDesc;
