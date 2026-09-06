@@ -426,7 +426,8 @@
 
       let perfectRaw = namedOnly ? String(r.talent || "").trim() : String(r.perfect_talent || "").trim();
       let perfectKey = normalizeKey(perfectRaw);
-      if (!namedOnly && allowTypes.length === 0 && talentRaw && !perfectRaw) {
+      const perfectOnlyByType = !namedOnly && allowTypes.length === 0 && !!talentRaw && !perfectRaw;
+      if (perfectOnlyByType) {
         // Named-item-only custom talents have no applicable normal weapon
         // type. Render them in the Perfect section for visual consistency.
         talentTitle = "";
@@ -435,7 +436,7 @@
       }
       const hasPerfectTalent = !!perfectRaw && !/^[\-–—]+$/.test(perfectRaw);
       const perfectTitle = hasPerfectTalent ? resolveTalentTitle(perfectRaw, perfectKey) : "";
-      let perfectDesc = (!namedOnly && allowTypes.length === 0 && talentRaw && !String(r.perfect_talent || "").trim())
+      let perfectDesc = perfectOnlyByType
         ? talentDesc
         : (namedOnly ? String(r.talent_desc || "").trim() : String(r.perfect_talent_desc || "").trim());
 
@@ -455,7 +456,7 @@
       if (talentTitle) lines.push({ cls: "line line--gray line--talent", text: talentTitle, key: talentKey });
       const talentDescDisp = trTalentDescPreserveNewline(talentDesc, talentKey);
       const perfectDescDisp = trTalentDescPreserveNewline(perfectDesc, perfectKey || talentKey);
-      if (talentDescDisp) {
+      if (talentDescDisp && !perfectOnlyByType) {
         lines.push({ cls: "line line--named-meta line--talent-desc", text: talentDescDisp, html: textToHtmlPreserveNewline(talentDescDisp), key: "", isDesc: true });
       }
       if (hasPerfectTalent && talentTitle) lines.push({ cls: "brand-named-sep", hr: true, text: "", key: "" });
