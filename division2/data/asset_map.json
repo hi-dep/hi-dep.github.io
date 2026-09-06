@@ -321,7 +321,8 @@
     "unhinged": "img/icon/weapon_talent/Unhinged.png",
     "unwavering": "img/icon/weapon_talent/Unwavering.png",
     "vindictive": "img/icon/weapon_talent/Vindictive.png",
-    "foamatthemouth": "img/icon/named_weapon_talent/Foam at the Mouth.png"
+    "foamatthemouth": "img/icon/named_weapon_talent/Foam at the Mouth.png",
+    "perfectonempty": "img/icon/weapon_talent/On Empty.png"
   },
   "gearsets": {
     "aceseights": "img/icon/gearset/aceseights.png",
