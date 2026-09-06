@@ -2946,14 +2946,14 @@ function talentKeyVariants(tKey) {
   if (key.startsWith("perfectly")) {
     const base = key.replace(/^perfectly/, "");
     if (base) {
-      vars.push(base);
       vars.push(`perfect${base}`);
+      vars.push(base);
     }
   } else if (key.startsWith("perfect")) {
     const base = key.replace(/^perfect/, "");
     if (base) {
-      vars.push(base);
       vars.push(`perfectly${base}`);
+      vars.push(base);
     }
   }
 
