@@ -8,14 +8,42 @@
     const cat = isWeapon ? "exotic_weapon_talent_desc" : "exotic_gear_talent_desc";
     return trCategoryText(cat, talentKey, String(rawDesc || "").replace(/\r/g, ""));
   }
-  function exoticTalentIconHtml(talentKey, fallbackText = "", isWeapon = false) {
+  function exoticTalentIconHtml(talentKey, fallbackText = "", isWeapon = false, itemName = "", itemTalent = "") {
     const baseKey = sanitizeFileKey(talentKey || normalizeKey(fallbackText || ""));
-    if (!baseKey) return "";
+    if (!baseKey && !(String(itemName || "").trim() && String(itemTalent || "").trim())) return "";
     const cands = [];
     const add = (u) => {
       if (!u) return;
       if (!cands.includes(u)) cands.push(u);
     };
+    // Exotic icons are item-specific because several exotic items share a
+    // talent key (and some items contain multiple talent names).  Prefer the
+    // checked-in item/talent icon before the generic asset map.
+    if (itemName && itemTalent) {
+      const dir = isWeapon ? "exotic_weapon" : "exotic_talent";
+      const names = [String(itemName).trim()];
+      const compactName = names[0].replace(/\s+/g, "");
+      if (compactName && compactName !== names[0]) names.push(compactName);
+      const compactLowerName = names[0].replace(/\s+(.)/g, (_, ch) => String(ch).toLowerCase());
+      if (compactLowerName && !names.includes(compactLowerName)) names.push(compactLowerName);
+      const talentNames = String(itemTalent)
+        .split("/")
+        .map((x) => String(x || "").trim())
+        .filter(Boolean);
+      for (const n of names) {
+        for (const t of talentNames) {
+          const talentVariants = [t];
+          // Sheet values may join multiple talent names with an ellipsis;
+          // icon files store each name without that separator.
+          const withoutEllipsis = t.replace(/\s*\.\.\.?/g, "").trim();
+          if (withoutEllipsis && withoutEllipsis !== t) talentVariants.push(withoutEllipsis);
+          // Some filenames collapse the space before an ellipsis.
+          const compactEllipsis = t.replace(/\s+\.\.\./g, "...");
+          if (compactEllipsis !== t) talentVariants.push(compactEllipsis);
+          for (const tv of talentVariants) add(appPath(`img/icon/${dir}/${n}_${tv}.png`));
+        }
+      }
+    }
     const primaryKind = isWeapon ? "weapon_talents" : "talents";
     const fallbackKind = isWeapon ? "talents" : "weapon_talents";
     const primaryDir = isWeapon ? "img/icon/weapon_talent" : "img/icon/talent";
@@ -247,7 +275,7 @@
         : (r.talent || r.talent_key || "");
       const talentKey = String(r.talent_key || "").trim();
       const talentDescText = trExoticTalentDesc(String(r.talent_desc || "").trim(), talentKey, isWeapon);
-      const talentIcon = exoticTalentIconHtml(talentKey, talentText, isWeapon);
+      const talentIcon = exoticTalentIconHtml(talentKey, talentText, isWeapon, r.name, r.talent);
       const attrs = [];
       const weaponModTexts = [];
       if (isWeapon) {

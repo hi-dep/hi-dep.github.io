@@ -1,641 +1,14 @@
 {
   "gear": [
     {
-      "brand": "Douglas & Harding",
-      "brand_key": "douglasharding",
-      "type": "mask",
-      "type_key": "mask",
-      "name": "Punch Drunk",
-      "name_key": "punchdrunk",
-      "drop location": {
-        "lz": true,
-        "dz": false,
-        "other": []
-      }
-    },
-    {
-      "brand": "Gila Guard",
-      "brand_key": "gilaguard",
-      "type": "mask",
-      "type_key": "mask",
-      "name": "Nightwatcher",
-      "name_key": "nightwatcher",
-      "drop location": {
-        "lz": true,
-        "dz": false,
-        "other": []
-      }
-    },
-    {
-      "brand": "Gila Guard",
-      "brand_key": "gilaguard",
-      "type": "mask",
-      "type_key": "mask",
-      "name": "Chill Out",
-      "name_key": "chillout",
+      "brand": "5.11 Tactical",
+      "brand_key": "511tactical",
+      "type": "backpack",
+      "type_key": "backpack",
+      "name": "Keeper",
+      "name_key": "keeper",
       "drop location": {
         "lz": false,
-        "dz": false,
-        "other": [
-          "Special Event Hoarder"
-        ]
-      }
-    },
-    {
-      "brand": "Legatus S.p.A.",
-      "brand_key": "legatusspa",
-      "type": "mask",
-      "type_key": "mask",
-      "name": "Visionario",
-      "name_key": "visionario",
-      "drop location": {
-        "lz": true,
-        "dz": false,
-        "other": []
-      }
-    },
-    {
-      "brand": "Yaahl Gear",
-      "brand_key": "yaahlgear",
-      "type": "mask",
-      "type_key": "mask",
-      "name": "The Hollow Man",
-      "name_key": "thehollowman",
-      "drop location": {
-        "lz": false,
-        "dz": true,
-        "other": []
-      }
-    },
-    {
-      "brand": "Belstone Armory",
-      "brand_key": "belstonearmory",
-      "type": "backpack",
-      "type_key": "backpack",
-      "name": "Liquid Engineer",
-      "name_key": "liquidengineer",
-      "drop location": {
-        "lz": false,
-        "dz": true,
-        "other": []
-      }
-    },
-    {
-      "brand": "Brazos de Arcabuz",
-      "brand_key": "brazosdearcabuz",
-      "type": "backpack",
-      "type_key": "backpack",
-      "name": "Hermano",
-      "name_key": "hermano",
-      "drop location": {
-        "lz": true,
-        "dz": false,
-        "other": []
-      }
-    },
-    {
-      "brand": "Habsburg Guard",
-      "brand_key": "habsburgguard",
-      "type": "backpack",
-      "type_key": "backpack",
-      "name": "The Courier",
-      "name_key": "thecourier",
-      "drop location": {
-        "lz": true,
-        "dz": false,
-        "other": [
-          "only"
-        ]
-      }
-    },
-    {
-      "brand": "Lengmo",
-      "brand_key": "lengmo",
-      "type": "backpack",
-      "type_key": "backpack",
-      "name": "Backbone",
-      "name_key": "backbone",
-      "drop location": {
-        "lz": true,
-        "dz": false,
-        "other": []
-      }
-    },
-    {
-      "brand": "Golan Gear Ltd",
-      "brand_key": "golangearltd",
-      "type": "backpack",
-      "type_key": "backpack",
-      "name": "Anarchist's Cookbook",
-      "name_key": "anarchistscookbook",
-      "drop location": {
-        "lz": true,
-        "dz": true,
-        "other": [
-          "Warlords Campaign Vivian Conley (story)"
-        ]
-      }
-    },
-    {
-      "brand": "China Light Industries Corporation",
-      "brand_key": "chinalightindustriescorporation",
-      "type": "backpack",
-      "type_key": "backpack",
-      "name": "Strategic Alignment",
-      "name_key": "strategicalignment",
-      "drop location": {
-        "lz": true,
-        "dz": false,
-        "other": []
-      }
-    },
-    {
-      "brand": "Electrique",
-      "brand_key": "electrique",
-      "type": "backpack",
-      "type_key": "backpack",
-      "name": "Lavoisier",
-      "name_key": "lavoisier",
-      "drop location": {
-        "lz": true,
-        "dz": false,
-        "other": []
-      }
-    },
-    {
-      "brand": "Walker, Harris & Co.",
-      "brand_key": "walkerharrisco",
-      "type": "backpack",
-      "type_key": "backpack",
-      "name": "Matador",
-      "name_key": "matador",
-      "drop location": {
-        "lz": false,
-        "dz": true,
-        "other": []
-      }
-    },
-    {
-      "brand": "Providence Defense",
-      "brand_key": "providencedefense",
-      "type": "backpack",
-      "type_key": "backpack",
-      "name": "The Gift",
-      "name_key": "thegift",
-      "drop location": {
-        "lz": false,
-        "dz": true,
-        "other": []
-      }
-    },
-    {
-      "brand": "Alps Summit Armaments",
-      "brand_key": "alpssummitarmaments",
-      "type": "backpack",
-      "type_key": "backpack",
-      "name": "Percussive Maintenance",
-      "name_key": "percussivemaintenance",
-      "drop location": {
-        "lz": true,
-        "dz": false,
-        "other": []
-      }
-    },
-    {
-      "brand": "Legatus S.p.A.",
-      "brand_key": "legatusspa",
-      "type": "backpack",
-      "type_key": "backpack",
-      "name": "Vigil",
-      "name_key": "vigil",
-      "drop location": {
-        "lz": true,
-        "dz": false,
-        "other": []
-      }
-    },
-    {
-      "brand": "Česká Výroba s.r.o.",
-      "brand_key": "ceskavyrobasro",
-      "type": "backpack",
-      "type_key": "backpack",
-      "name": "Devil's Due",
-      "name_key": "devilsdue",
-      "drop location": {
-        "lz": false,
-        "dz": true,
-        "other": []
-      }
-    },
-    {
-      "brand": "Empress International",
-      "brand_key": "empressinternational",
-      "type": "backpack",
-      "type_key": "backpack",
-      "name": "Battery Pack",
-      "name_key": "batterypack",
-      "drop location": {
-        "lz": true,
-        "dz": false,
-        "other": []
-      }
-    },
-    {
-      "brand": "Uzina Getica",
-      "brand_key": "uzinagetica",
-      "type": "backpack",
-      "type_key": "backpack",
-      "name": "The Setup",
-      "name_key": "thesetup",
-      "drop location": {
-        "lz": true,
-        "dz": false,
-        "other": []
-      }
-    },
-    {
-      "brand": "Hana-U Corporation",
-      "brand_key": "hanaucorporation",
-      "type": "backpack",
-      "type_key": "backpack",
-      "name": "Force Multiplier",
-      "name_key": "forcemultiplier",
-      "drop location": {
-        "lz": true,
-        "dz": false,
-        "other": []
-      }
-    },
-    {
-      "brand": "Palisade Steelworks",
-      "brand_key": "palisadesteelworks",
-      "type": "backpack",
-      "type_key": "backpack",
-      "name": "Proxy",
-      "name_key": "proxy",
-      "drop location": {
-        "lz": true,
-        "dz": false,
-        "other": []
-      }
-    },
-    {
-      "brand": "Shiny Monkey Gear",
-      "brand_key": "shinymonkeygear",
-      "type": "backpack",
-      "type_key": "backpack",
-      "name": "Axel",
-      "name_key": "axel",
-      "drop location": {
-        "lz": true,
-        "dz": false,
-        "other": []
-      }
-    },
-    {
-      "brand": "Imminence Armaments",
-      "brand_key": "imminencearmaments",
-      "type": "backpack",
-      "type_key": "backpack",
-      "name": "Cap'n",
-      "name_key": "capn",
-      "drop location": {
-        "lz": true,
-        "dz": false,
-        "other": []
-      }
-    },
-    {
-      "brand": "Royal Works",
-      "brand_key": "royalworks",
-      "type": "Backpack",
-      "type_key": "backpack",
-      "name": "Bulldog",
-      "name_key": "bulldog",
-      "drop location": {
-        "lz": true,
-        "dz": false,
-        "other": []
-      }
-    },
-    {
-      "brand": "Edelweiss GPz",
-      "brand_key": "edelweissgpz",
-      "type": "backpack",
-      "type_key": "backpack",
-      "name": "Momma Badger",
-      "name_key": "mommabadger",
-      "drop location": {
-        "lz": true,
-        "dz": true,
-        "other": []
-      }
-    },
-    {
-      "brand": "Grupo Sombra S.A.",
-      "brand_key": "gruposombrasa",
-      "type": "backpack",
-      "type_key": "backpack",
-      "name": "Festive Delivery",
-      "name_key": "festivedelivery",
-      "drop location": {
-        "lz": false,
-        "dz": false,
-        "other": [
-          "Special Event Hoarder"
-        ]
-      }
-    },
-    {
-      "brand": "Electrique",
-      "brand_key": "electrique",
-      "type": "chest",
-      "type_key": "chest",
-      "name": "Henri",
-      "name_key": "henri",
-      "drop location": {
-        "lz": true,
-        "dz": false,
-        "other": []
-      }
-    },
-    {
-      "brand": "Golan Gear Ltd",
-      "brand_key": "golangearltd",
-      "type": "chest",
-      "type_key": "chest",
-      "name": "Hunter-Killer",
-      "name_key": "hunterkiller",
-      "drop location": {
-        "lz": false,
-        "dz": false,
-        "other": [
-          "Off-White cache then Cassie Mendoza"
-        ]
-      }
-    },
-    {
-      "brand": "Belstone Armory",
-      "brand_key": "belstonearmory",
-      "type": "chest",
-      "type_key": "chest",
-      "name": "Everyday Carrier",
-      "name_key": "everydaycarrier",
-      "drop location": {
-        "lz": true,
-        "dz": false,
-        "other": []
-      }
-    },
-    {
-      "brand": "Walker, Harris & Co.",
-      "brand_key": "walkerharrisco",
-      "type": "chest",
-      "type_key": "chest",
-      "name": "Chainkiller",
-      "name_key": "chainkiller",
-      "drop location": {
-        "lz": true,
-        "dz": false,
-        "other": []
-      }
-    },
-    {
-      "brand": "Gila Guard",
-      "brand_key": "gilaguard",
-      "type": "chest",
-      "type_key": "chest",
-      "name": "Pointman",
-      "name_key": "pointman",
-      "drop location": {
-        "lz": true,
-        "dz": false,
-        "other": [
-          "Warlords Campaign James Dragov (story)"
-        ]
-      }
-    },
-    {
-      "brand": "Petrov Defense Group",
-      "brand_key": "petrovdefensegroup",
-      "type": "chest",
-      "type_key": "chest",
-      "name": "Vedmedytsya Vest",
-      "name_key": "vedmedytsyavest",
-      "drop location": {
-        "lz": false,
-        "dz": false,
-        "other": [
-          "Crafted"
-        ]
-      }
-    },
-    {
-      "brand": "Providence Defense",
-      "brand_key": "providencedefense",
-      "type": "chest",
-      "type_key": "chest",
-      "name": "The Sacrifice",
-      "name_key": "thesacrifice",
-      "drop location": {
-        "lz": true,
-        "dz": false,
-        "other": []
-      }
-    },
-    {
-      "brand": "Badger Tuff",
-      "brand_key": "badgertuff",
-      "type": "chest",
-      "type_key": "chest",
-      "name": "Zero F’s",
-      "name_key": "zerofs",
-      "drop location": {
-        "lz": true,
-        "dz": false,
-        "other": []
-      }
-    },
-    {
-      "brand": "Fenris Group AB",
-      "brand_key": "fenrisgroupab",
-      "type": "chest",
-      "type_key": "chest",
-      "name": "Ferocious Calm",
-      "name_key": "ferociouscalm",
-      "drop location": {
-        "lz": false,
-        "dz": true,
-        "other": []
-      }
-    },
-    {
-      "brand": "Grupo Sombra S.A.",
-      "brand_key": "gruposombrasa",
-      "type": "chest",
-      "type_key": "chest",
-      "name": "Door-Kicker’s Knock",
-      "name_key": "doorkickersknock",
-      "drop location": {
-        "lz": false,
-        "dz": true,
-        "other": []
-      }
-    },
-    {
-      "brand": "Empress International",
-      "brand_key": "empressinternational",
-      "type": "chest",
-      "type_key": "chest",
-      "name": "Caesar's Guard",
-      "name_key": "caesarsguard",
-      "drop location": {
-        "lz": true,
-        "dz": false,
-        "other": []
-      }
-    },
-    {
-      "brand": "Uzina Getica",
-      "brand_key": "uzinagetica",
-      "type": "chest",
-      "type_key": "chest",
-      "name": "Closer",
-      "name_key": "closer",
-      "drop location": {
-        "lz": true,
-        "dz": false,
-        "other": []
-      }
-    },
-    {
-      "brand": "Habsburg Guard",
-      "brand_key": "habsburgguard",
-      "type": "chest",
-      "type_key": "chest",
-      "name": "Cherished",
-      "name_key": "cherished",
-      "drop location": {
-        "lz": true,
-        "dz": false,
-        "other": [
-          "only"
-        ]
-      }
-    },
-    {
-      "brand": "Lengmo",
-      "brand_key": "lengmo",
-      "type": "chest",
-      "type_key": "chest",
-      "name": "Carpenter",
-      "name_key": "carpenter",
-      "drop location": {
-        "lz": true,
-        "dz": false,
-        "other": []
-      }
-    },
-    {
-      "brand": "Zwiadowka Sp.z o.o.",
-      "brand_key": "zwiadowkaspzoo",
-      "type": "chest",
-      "type_key": "chest",
-      "name": "Bober",
-      "name_key": "bober",
-      "drop location": {
-        "lz": true,
-        "dz": false,
-        "other": []
-      }
-    },
-    {
-      "brand": "Airaldi Holdings",
-      "brand_key": "airaldiholdings",
-      "type": "chest",
-      "type_key": "chest",
-      "name": "Pristine Example",
-      "name_key": "pristineexample",
-      "drop location": {
-        "lz": true,
-        "dz": false,
-        "other": []
-      }
-    },
-    {
-      "brand": "Urban Lookout",
-      "brand_key": "urbanlookout",
-      "type": "chest",
-      "type_key": "chest",
-      "name": "Sleight",
-      "name_key": "sleight",
-      "drop location": {
-        "lz": true,
-        "dz": false,
-        "other": []
-      }
-    },
-    {
-      "brand": "Palisade Steelworks",
-      "brand_key": "palisadesteelworks",
-      "type": "chest",
-      "type_key": "chest",
-      "name": "Combustor",
-      "name_key": "combustor",
-      "drop location": {
-        "lz": true,
-        "dz": false,
-        "other": []
-      }
-    },
-    {
-      "brand": "Wyvern Wear",
-      "brand_key": "wyvernwear",
-      "type": "Chest",
-      "type_key": "chest",
-      "name": "Impetus",
-      "name_key": "impetus",
-      "drop location": {
-        "lz": false,
-        "dz": false,
-        "other": []
-      }
-    },
-    {
-      "brand": "Royal Works",
-      "brand_key": "royalworks",
-      "type": "Chest",
-      "type_key": "chest",
-      "name": "Robin",
-      "name_key": "robin",
-      "drop location": {
-        "lz": true,
-        "dz": false,
-        "other": []
-      }
-    },
-    {
-      "brand": "Edelweiss GPz",
-      "brand_key": "edelweissgpz",
-      "type": "chest",
-      "type_key": "chest",
-      "name": "Benefactor",
-      "name_key": "benefactor",
-      "drop location": {
-        "lz": true,
-        "dz": true,
-        "other": []
-      }
-    },
-    {
-      "brand": "Unit Alloys",
-      "brand_key": "unitalloys",
-      "type": "chest",
-      "type_key": "chest",
-      "name": "Equalizer",
-      "name_key": "equalizer",
-      "drop location": {
-        "lz": true,
         "dz": false,
         "other": []
       }
@@ -649,19 +22,45 @@
       "name_key": "deathgrips",
       "drop location": {
         "lz": false,
-        "dz": true,
+        "dz": false,
         "other": []
       }
     },
     {
-      "brand": "Petrov Defense Group",
-      "brand_key": "petrovdefensegroup",
-      "type": "gloves",
-      "type_key": "gloves",
-      "name": "Contractor’s Gloves",
-      "name_key": "contractorsgloves",
+      "brand": "Airaldi Holdings",
+      "brand_key": "airaldiholdings",
+      "type": "backpack",
+      "type_key": "backpack",
+      "name": "Melon Baller",
+      "name_key": "melonballer",
       "drop location": {
-        "lz": true,
+        "lz": false,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "brand": "Airaldi Holdings",
+      "brand_key": "airaldiholdings",
+      "type": "chest",
+      "type_key": "chest",
+      "name": "Pristine Example",
+      "name_key": "pristineexample",
+      "drop location": {
+        "lz": false,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "brand": "Alps Summit Armaments",
+      "brand_key": "alpssummitarmaments",
+      "type": "backpack",
+      "type_key": "backpack",
+      "name": "Percussive Maintenance",
+      "name_key": "percussivemaintenance",
+      "drop location": {
+        "lz": false,
         "dz": false,
         "other": []
       }
@@ -676,46 +75,18 @@
       "drop location": {
         "lz": false,
         "dz": false,
-        "other": [
-          "Crafted"
-        ]
-      }
-    },
-    {
-      "brand": "Zwiadowka Sp.z o.o.",
-      "brand_key": "zwiadowkaspzoo",
-      "type": "gloves",
-      "type_key": "gloves",
-      "name": "Eagles Grasp",
-      "name_key": "eaglesgrasp",
-      "drop location": {
-        "lz": true,
-        "dz": false,
         "other": []
       }
     },
     {
-      "brand": "Sokolov Concern",
-      "brand_key": "sokolovconcern",
-      "type": "gloves",
-      "type_key": "gloves",
-      "name": "Firm Handshake",
-      "name_key": "firmhandshake",
+      "brand": "Badger Tuff",
+      "brand_key": "badgertuff",
+      "type": "chest",
+      "type_key": "chest",
+      "name": "Zero F’s",
+      "name_key": "zerofs",
       "drop location": {
-        "lz": true,
-        "dz": false,
-        "other": []
-      }
-    },
-    {
-      "brand": "Richter & Kaiser",
-      "brand_key": "richterkaisergmbh",
-      "type": "holster",
-      "type_key": "holster",
-      "name": "Forge",
-      "name_key": "forge",
-      "drop location": {
-        "lz": true,
+        "lz": false,
         "dz": false,
         "other": []
       }
@@ -730,9 +101,46 @@
       "drop location": {
         "lz": false,
         "dz": false,
-        "other": [
-          "Crafted"
-        ]
+        "other": []
+      }
+    },
+    {
+      "brand": "Belstone Armory",
+      "brand_key": "belstonearmory",
+      "type": "backpack",
+      "type_key": "backpack",
+      "name": "Liquid Engineer",
+      "name_key": "liquidengineer",
+      "drop location": {
+        "lz": false,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "brand": "Belstone Armory",
+      "brand_key": "belstonearmory",
+      "type": "chest",
+      "type_key": "chest",
+      "name": "Everyday Carrier",
+      "name_key": "everydaycarrier",
+      "drop location": {
+        "lz": false,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "brand": "Brazos de Arcabuz",
+      "brand_key": "brazosdearcabuz",
+      "type": "backpack",
+      "type_key": "backpack",
+      "name": "Hermano",
+      "name_key": "hermano",
+      "drop location": {
+        "lz": false,
+        "dz": false,
+        "other": []
       }
     },
     {
@@ -743,59 +151,85 @@
       "name": "Picaros Holster",
       "name_key": "picarosholster",
       "drop location": {
-        "lz": true,
+        "lz": false,
         "dz": false,
         "other": []
       }
     },
     {
-      "brand": "Urban Lookout",
-      "brand_key": "urbanlookout",
-      "type": "holster",
-      "type_key": "holster",
-      "name": "Spot-On",
-      "name_key": "spoton",
-      "drop location": {
-        "lz": true,
-        "dz": false,
-        "other": []
-      }
-    },
-    {
-      "brand": "Unit Alloys",
-      "brand_key": "unitalloys",
-      "type": "holster",
-      "type_key": "holster",
-      "name": "Salvo",
-      "name_key": "salvo",
-      "drop location": {
-        "lz": true,
-        "dz": false,
-        "other": []
-      }
-    },
-    {
-      "brand": "Wyvern Wear",
-      "brand_key": "wyvernwear",
-      "type": "holster",
-      "type_key": "holster",
-      "name": "Claws Out",
-      "name_key": "clawsout",
+      "brand": "China Light Industries Corporation",
+      "brand_key": "chinalightindustriescorporation",
+      "type": "backpack",
+      "type_key": "backpack",
+      "name": "Strategic Alignment",
+      "name_key": "strategicalignment",
       "drop location": {
         "lz": false,
-        "dz": true,
+        "dz": false,
         "other": []
       }
     },
     {
-      "brand": "Overlord Armaments",
-      "brand_key": "overlordarmaments",
-      "type": "kneepads",
-      "type_key": "kneepads",
-      "name": "Fox’s Prayer",
-      "name_key": "foxsprayer",
+      "brand": "Douglas & Harding",
+      "brand_key": "douglasharding",
+      "type": "mask",
+      "type_key": "mask",
+      "name": "Punch Drunk",
+      "name_key": "punchdrunk",
       "drop location": {
-        "lz": true,
+        "lz": false,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "brand": "Edelweiss GPz",
+      "brand_key": "edelweissgpz",
+      "type": "backpack",
+      "type_key": "backpack",
+      "name": "Momma Badger",
+      "name_key": "mommabadger",
+      "drop location": {
+        "lz": false,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "brand": "Edelweiss GPz",
+      "brand_key": "edelweissgpz",
+      "type": "chest",
+      "type_key": "chest",
+      "name": "Benefactor",
+      "name_key": "benefactor",
+      "drop location": {
+        "lz": false,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "brand": "Electrique",
+      "brand_key": "electrique",
+      "type": "backpack",
+      "type_key": "backpack",
+      "name": "Lavoisier",
+      "name_key": "lavoisier",
+      "drop location": {
+        "lz": false,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "brand": "Electrique",
+      "brand_key": "electrique",
+      "type": "chest",
+      "type_key": "chest",
+      "name": "Henri",
+      "name_key": "henri",
+      "drop location": {
+        "lz": false,
         "dz": false,
         "other": []
       }
@@ -810,48 +244,200 @@
       "drop location": {
         "lz": false,
         "dz": false,
-        "other": [
-          "Special Event Hoarder"
-        ]
-      }
-    },
-    {
-      "brand": "Česká Výroba s.r.o.",
-      "brand_key": "ceskavyrobasro",
-      "type": "kneepads",
-      "type_key": "kneepads",
-      "name": "Turmoil",
-      "name_key": "turmoil",
-      "drop location": {
-        "lz": false,
-        "dz": false,
-        "other": [
-          "Limited time April Fools event."
-        ]
-      }
-    },
-    {
-      "brand": "Murakami Industries",
-      "brand_key": "murakamiindustries",
-      "type": "kneepads",
-      "type_key": "kneepads",
-      "name": "Emperor’s Guard",
-      "name_key": "emperorsguard",
-      "drop location": {
-        "lz": false,
-        "dz": true,
         "other": []
       }
     },
     {
-      "brand": "Shiny Monkey Gear",
-      "brand_key": "shinymonkeygear",
-      "type": "kneepads",
-      "type_key": "kneepads",
-      "name": "Grease",
-      "name_key": "grease",
+      "brand": "Empress International",
+      "brand_key": "empressinternational",
+      "type": "backpack",
+      "type_key": "backpack",
+      "name": "Battery Pack",
+      "name_key": "batterypack",
       "drop location": {
-        "lz": true,
+        "lz": false,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "brand": "Empress International",
+      "brand_key": "empressinternational",
+      "type": "chest",
+      "type_key": "chest",
+      "name": "Caesar's Guard",
+      "name_key": "caesarsguard",
+      "drop location": {
+        "lz": false,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "brand": "Fenris Group AB",
+      "brand_key": "fenrisgroupab",
+      "type": "chest",
+      "type_key": "chest",
+      "name": "Ferocious Calm",
+      "name_key": "ferociouscalm",
+      "drop location": {
+        "lz": false,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "brand": "Gila Guard",
+      "brand_key": "gilaguard",
+      "type": "chest",
+      "type_key": "chest",
+      "name": "Pointman",
+      "name_key": "pointman",
+      "drop location": {
+        "lz": false,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "brand": "Gila Guard",
+      "brand_key": "gilaguard",
+      "type": "mask",
+      "type_key": "mask",
+      "name": "Chill Out",
+      "name_key": "chillout",
+      "drop location": {
+        "lz": false,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "brand": "Gila Guard",
+      "brand_key": "gilaguard",
+      "type": "mask",
+      "type_key": "mask",
+      "name": "Nightwatcher",
+      "name_key": "nightwatcher",
+      "drop location": {
+        "lz": false,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "brand": "Golan Gear Ltd",
+      "brand_key": "golangearltd",
+      "type": "backpack",
+      "type_key": "backpack",
+      "name": "Anarchist's Cookbook",
+      "name_key": "anarchistscookbook",
+      "drop location": {
+        "lz": false,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "brand": "Golan Gear Ltd",
+      "brand_key": "golangearltd",
+      "type": "chest",
+      "type_key": "chest",
+      "name": "Hunter-Killer",
+      "name_key": "hunterkiller",
+      "drop location": {
+        "lz": false,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "brand": "Grupo Sombra S.A.",
+      "brand_key": "gruposombrasa",
+      "type": "backpack",
+      "type_key": "backpack",
+      "name": "Festive Delivery",
+      "name_key": "festivedelivery",
+      "drop location": {
+        "lz": false,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "brand": "Grupo Sombra S.A.",
+      "brand_key": "gruposombrasa",
+      "type": "chest",
+      "type_key": "chest",
+      "name": "Door-Kicker’s Knock",
+      "name_key": "doorkickersknock",
+      "drop location": {
+        "lz": false,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "brand": "Habsburg Guard",
+      "brand_key": "habsburgguard",
+      "type": "backpack",
+      "type_key": "backpack",
+      "name": "The Courier",
+      "name_key": "thecourier",
+      "drop location": {
+        "lz": false,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "brand": "Habsburg Guard",
+      "brand_key": "habsburgguard",
+      "type": "chest",
+      "type_key": "chest",
+      "name": "Cherished",
+      "name_key": "cherished",
+      "drop location": {
+        "lz": false,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "brand": "Hana-U Corporation",
+      "brand_key": "hanaucorporation",
+      "type": "backpack",
+      "type_key": "backpack",
+      "name": "Force Multiplier",
+      "name_key": "forcemultiplier",
+      "drop location": {
+        "lz": false,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "brand": "Imminence Armaments",
+      "brand_key": "imminencearmaments",
+      "type": "backpack",
+      "type_key": "backpack",
+      "name": "Cap'n",
+      "name_key": "capn",
+      "drop location": {
+        "lz": false,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "brand": "Imminence Armaments",
+      "brand_key": "imminencearmaments",
+      "type": "chest",
+      "type_key": "chest",
+      "name": "Trick Shot",
+      "name_key": "trickshot",
+      "drop location": {
+        "lz": false,
         "dz": false,
         "other": []
       }
@@ -864,7 +450,449 @@
       "name": "Cloak",
       "name_key": "cloak",
       "drop location": {
-        "lz": true,
+        "lz": false,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "brand": "Legatus S.p.A.",
+      "brand_key": "legatusspa",
+      "type": "backpack",
+      "type_key": "backpack",
+      "name": "Vigil",
+      "name_key": "vigil",
+      "drop location": {
+        "lz": false,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "brand": "Legatus S.p.A.",
+      "brand_key": "legatusspa",
+      "type": "mask",
+      "type_key": "mask",
+      "name": "Visionario",
+      "name_key": "visionario",
+      "drop location": {
+        "lz": false,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "brand": "Lengmo",
+      "brand_key": "lengmo",
+      "type": "backpack",
+      "type_key": "backpack",
+      "name": "Backbone",
+      "name_key": "backbone",
+      "drop location": {
+        "lz": false,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "brand": "Lengmo",
+      "brand_key": "lengmo",
+      "type": "chest",
+      "type_key": "chest",
+      "name": "Carpenter",
+      "name_key": "carpenter",
+      "drop location": {
+        "lz": false,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "brand": "Murakami Industries",
+      "brand_key": "murakamiindustries",
+      "type": "kneepads",
+      "type_key": "kneepads",
+      "name": "Emperor’s Guard",
+      "name_key": "emperorsguard",
+      "drop location": {
+        "lz": false,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "brand": "Overlord Armaments",
+      "brand_key": "overlordarmaments",
+      "type": "kneepads",
+      "type_key": "kneepads",
+      "name": "Fox’s Prayer",
+      "name_key": "foxsprayer",
+      "drop location": {
+        "lz": false,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "brand": "Palisade Steelworks",
+      "brand_key": "palisadesteelworks",
+      "type": "backpack",
+      "type_key": "backpack",
+      "name": "Proxy",
+      "name_key": "proxy",
+      "drop location": {
+        "lz": false,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "brand": "Palisade Steelworks",
+      "brand_key": "palisadesteelworks",
+      "type": "chest",
+      "type_key": "chest",
+      "name": "Combustor",
+      "name_key": "combustor",
+      "drop location": {
+        "lz": false,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "brand": "Petrov Defense Group",
+      "brand_key": "petrovdefensegroup",
+      "type": "chest",
+      "type_key": "chest",
+      "name": "Vedmedytsya Vest",
+      "name_key": "vedmedytsyavest",
+      "drop location": {
+        "lz": false,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "brand": "Petrov Defense Group",
+      "brand_key": "petrovdefensegroup",
+      "type": "gloves",
+      "type_key": "gloves",
+      "name": "Contractor’s Gloves",
+      "name_key": "contractorsgloves",
+      "drop location": {
+        "lz": false,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "brand": "Providence Defense",
+      "brand_key": "providencedefense",
+      "type": "backpack",
+      "type_key": "backpack",
+      "name": "The Gift",
+      "name_key": "thegift",
+      "drop location": {
+        "lz": false,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "brand": "Providence Defense",
+      "brand_key": "providencedefense",
+      "type": "chest",
+      "type_key": "chest",
+      "name": "The Sacrifice",
+      "name_key": "thesacrifice",
+      "drop location": {
+        "lz": false,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "brand": "Richter & Kaiser GmbH",
+      "brand_key": "richterkaisergmbh",
+      "type": "holster",
+      "type_key": "holster",
+      "name": "Forge",
+      "name_key": "forge",
+      "drop location": {
+        "lz": false,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "brand": "Richter & Kaiser GmbH",
+      "brand_key": "richterkaisergmbh",
+      "type": "chest",
+      "type_key": "chest",
+      "name": "Rushdown",
+      "name_key": "rushdown",
+      "drop location": {
+        "lz": false,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "brand": "Royal Works",
+      "brand_key": "royalworks",
+      "type": "backpack",
+      "type_key": "backpack",
+      "name": "Bulldog",
+      "name_key": "bulldog",
+      "drop location": {
+        "lz": false,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "brand": "Royal Works",
+      "brand_key": "royalworks",
+      "type": "chest",
+      "type_key": "chest",
+      "name": "Robin",
+      "name_key": "robin",
+      "drop location": {
+        "lz": false,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "brand": "Shiny Monkey Gear",
+      "brand_key": "shinymonkeygear",
+      "type": "backpack",
+      "type_key": "backpack",
+      "name": "Axel",
+      "name_key": "axel",
+      "drop location": {
+        "lz": false,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "brand": "Shiny Monkey Gear",
+      "brand_key": "shinymonkeygear",
+      "type": "kneepads",
+      "type_key": "kneepads",
+      "name": "Grease",
+      "name_key": "grease",
+      "drop location": {
+        "lz": false,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "brand": "Sokolov Concern",
+      "brand_key": "sokolovconcern",
+      "type": "gloves",
+      "type_key": "gloves",
+      "name": "Firm Handshake",
+      "name_key": "firmhandshake",
+      "drop location": {
+        "lz": false,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "brand": "Unit Alloys",
+      "brand_key": "unitalloys",
+      "type": "chest",
+      "type_key": "chest",
+      "name": "Equalizer",
+      "name_key": "equalizer",
+      "drop location": {
+        "lz": false,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "brand": "Unit Alloys",
+      "brand_key": "unitalloys",
+      "type": "holster",
+      "type_key": "holster",
+      "name": "Salvo",
+      "name_key": "salvo",
+      "drop location": {
+        "lz": false,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "brand": "Urban Lookout",
+      "brand_key": "urbanlookout",
+      "type": "chest",
+      "type_key": "chest",
+      "name": "Sleight",
+      "name_key": "sleight",
+      "drop location": {
+        "lz": false,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "brand": "Urban Lookout",
+      "brand_key": "urbanlookout",
+      "type": "holster",
+      "type_key": "holster",
+      "name": "Spot-On",
+      "name_key": "spoton",
+      "drop location": {
+        "lz": false,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "brand": "Uzina Getica",
+      "brand_key": "uzinagetica",
+      "type": "backpack",
+      "type_key": "backpack",
+      "name": "The Setup",
+      "name_key": "thesetup",
+      "drop location": {
+        "lz": false,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "brand": "Uzina Getica",
+      "brand_key": "uzinagetica",
+      "type": "chest",
+      "type_key": "chest",
+      "name": "Closer",
+      "name_key": "closer",
+      "drop location": {
+        "lz": false,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "brand": "Walker, Harris & Co.",
+      "brand_key": "walkerharrisco",
+      "type": "backpack",
+      "type_key": "backpack",
+      "name": "Matador",
+      "name_key": "matador",
+      "drop location": {
+        "lz": false,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "brand": "Walker, Harris & Co.",
+      "brand_key": "walkerharrisco",
+      "type": "chest",
+      "type_key": "chest",
+      "name": "Chainkiller",
+      "name_key": "chainkiller",
+      "drop location": {
+        "lz": false,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "brand": "Wyvern Wear",
+      "brand_key": "wyvernwear",
+      "type": "chest",
+      "type_key": "chest",
+      "name": "Impetus",
+      "name_key": "impetus",
+      "drop location": {
+        "lz": false,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "brand": "Wyvern Wear",
+      "brand_key": "wyvernwear",
+      "type": "holster",
+      "type_key": "holster",
+      "name": "Claws Out",
+      "name_key": "clawsout",
+      "drop location": {
+        "lz": false,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "brand": "Yaahl Gear",
+      "brand_key": "yaahlgear",
+      "type": "mask",
+      "type_key": "mask",
+      "name": "The Hollow Man",
+      "name_key": "thehollowman",
+      "drop location": {
+        "lz": false,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "brand": "Zwiadowka Sp.z o.o.",
+      "brand_key": "zwiadowkaspzoo",
+      "type": "chest",
+      "type_key": "chest",
+      "name": "Bober",
+      "name_key": "bober",
+      "drop location": {
+        "lz": false,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "brand": "Zwiadowka Sp.z o.o.",
+      "brand_key": "zwiadowkaspzoo",
+      "type": "gloves",
+      "type_key": "gloves",
+      "name": "Eagles Grasp",
+      "name_key": "eaglesgrasp",
+      "drop location": {
+        "lz": false,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "brand": "Česká Výroba s.r.o.",
+      "brand_key": "ceskavyrobasro",
+      "type": "backpack",
+      "type_key": "backpack",
+      "name": "Devil's Due",
+      "name_key": "devilsdue",
+      "drop location": {
+        "lz": false,
+        "dz": false,
+        "other": []
+      }
+    },
+    {
+      "brand": "Česká Výroba s.r.o.",
+      "brand_key": "ceskavyrobasro",
+      "type": "kneepads",
+      "type_key": "kneepads",
+      "name": "Turmoil",
+      "name_key": "turmoil",
+      "drop location": {
+        "lz": false,
         "dz": false,
         "other": []
       }
