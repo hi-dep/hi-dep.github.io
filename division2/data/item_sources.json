@@ -160,11 +160,6 @@
           "type": "craft"
         },
         {
-          "slot": "kneepads",
-          "src": "Season",
-          "type": "craft"
-        },
-        {
           "slot": "mask",
           "type": "craft"
         }
@@ -1283,15 +1278,7 @@
       "blueprint": [
         {
           "slot": "backpack",
-          "type": "craft"
-        },
-        {
-          "slot": "backpack",
           "src": "Y8S1 Season Reward",
-          "type": "craft"
-        },
-        {
-          "slot": "chest",
           "type": "craft"
         },
         {
@@ -1301,15 +1288,7 @@
         },
         {
           "slot": "gloves",
-          "type": "craft"
-        },
-        {
-          "slot": "gloves",
           "src": "Y8S1 Season Reward",
-          "type": "craft"
-        },
-        {
-          "slot": "holster",
           "type": "craft"
         },
         {
@@ -1319,16 +1298,7 @@
         },
         {
           "slot": "kneepads",
-          "src": "Season",
-          "type": "craft"
-        },
-        {
-          "slot": "kneepads",
           "src": "Y8S1 Season Reward",
-          "type": "craft"
-        },
-        {
-          "slot": "mask",
           "type": "craft"
         },
         {
@@ -1395,7 +1365,7 @@
       "drop": []
     },
     {
-      "item_id": "000c233b242c3824::exotic",
+      "item_id": "000c233b242c3824",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -1415,7 +1385,7 @@
       "drop": []
     },
     {
-      "item_id": "0a7bb8a70c3e8ce0::exotic",
+      "item_id": "0a7bb8a70c3e8ce0",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -1435,7 +1405,7 @@
       "drop": []
     },
     {
-      "item_id": "419b930fc82f9c70::exotic",
+      "item_id": "419b930fc82f9c70",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -1457,7 +1427,7 @@
       ]
     },
     {
-      "item_id": "60850455a032636d::exotic",
+      "item_id": "60850455a032636d",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -1477,7 +1447,7 @@
       "drop": []
     },
     {
-      "item_id": "de692fad7a424fdc::exotic",
+      "item_id": "de692fad7a424fdc",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -1497,109 +1467,7 @@
       "drop": []
     },
     {
-      "item_id": "000c233b242c3824::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
-      "name_key": "acostasgobag",
-      "name": "Acosta's Go-Bag",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "backpack",
-      "blueprint": [
-        {
-          "slot": "backpack",
-          "src": "Outcasts Kill Squad",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "0a7bb8a70c3e8ce0::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
-      "name_key": "acostasgobag",
-      "name": "Acosta's Go-Bag",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "backpack",
-      "blueprint": [
-        {
-          "slot": "backpack",
-          "src": "Outcasts Kill Squad",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "419b930fc82f9c70::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
-      "name_key": "acostasgobag",
-      "name": "Acosta's Go-Bag",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "backpack",
-      "blueprint": [
-        {
-          "slot": "backpack",
-          "src": "Outcasts Kill Squad",
-          "type": "craft"
-        }
-      ],
-      "drop": [],
-      "target_looted": [
-        "backpack"
-      ]
-    },
-    {
-      "item_id": "60850455a032636d::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
-      "name_key": "acostasgobag",
-      "name": "Acosta's Go-Bag",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "backpack",
-      "blueprint": [
-        {
-          "slot": "backpack",
-          "src": "Outcasts Kill Squad",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "de692fad7a424fdc::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
-      "name_key": "acostasgobag",
-      "name": "Acosta's Go-Bag",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "backpack",
-      "blueprint": [
-        {
-          "slot": "backpack",
-          "src": "Outcasts Kill Squad",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "029962c42fde5542::exotic",
+      "item_id": "029962c42fde5542",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -1619,7 +1487,7 @@
       "drop": []
     },
     {
-      "item_id": "23e12a458f8bffe2::exotic",
+      "item_id": "23e12a458f8bffe2",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -1639,7 +1507,7 @@
       "drop": []
     },
     {
-      "item_id": "28b847fa8ede3d0f::exotic",
+      "item_id": "28b847fa8ede3d0f",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -1661,7 +1529,7 @@
       "drop": []
     },
     {
-      "item_id": "5d4c5fdbd0a87d96::exotic",
+      "item_id": "5d4c5fdbd0a87d96",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -1681,7 +1549,7 @@
       "drop": []
     },
     {
-      "item_id": "7d4db3dbd13cd1e3::exotic",
+      "item_id": "7d4db3dbd13cd1e3",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -1701,7 +1569,7 @@
       "drop": []
     },
     {
-      "item_id": "ab671c08b2a4d16d::exotic",
+      "item_id": "ab671c08b2a4d16d",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -1721,7 +1589,7 @@
       "drop": []
     },
     {
-      "item_id": "ff8b52a83fa29285::exotic",
+      "item_id": "ff8b52a83fa29285",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -1741,149 +1609,7 @@
       "drop": []
     },
     {
-      "item_id": "029962c42fde5542::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
-      "name_key": "acostaskneepads",
-      "name": "Acosta's Kneepads",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "kneepads",
-      "blueprint": [
-        {
-          "slot": "kneepads",
-          "src": "Outcasts Kill Squad",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "23e12a458f8bffe2::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
-      "name_key": "acostaskneepads",
-      "name": "Acosta's Kneepads",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "kneepads",
-      "blueprint": [
-        {
-          "slot": "kneepads",
-          "src": "Outcasts Kill Squad",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "28b847fa8ede3d0f::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
-      "name_key": "acostaskneepads",
-      "name": "Acosta's Kneepads",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "kneepads",
-      "blueprint": [
-        {
-          "slot": "kneepads",
-          "src": "Outcasts Kill Squad",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [
-        "kneepads"
-      ],
-      "drop": []
-    },
-    {
-      "item_id": "5d4c5fdbd0a87d96::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
-      "name_key": "acostaskneepads",
-      "name": "Acosta's Kneepads",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "kneepads",
-      "blueprint": [
-        {
-          "slot": "kneepads",
-          "src": "Outcasts Kill Squad",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "7d4db3dbd13cd1e3::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
-      "name_key": "acostaskneepads",
-      "name": "Acosta's Kneepads",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "kneepads",
-      "blueprint": [
-        {
-          "slot": "kneepads",
-          "src": "Outcasts Kill Squad",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "ab671c08b2a4d16d::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
-      "name_key": "acostaskneepads",
-      "name": "Acosta's Kneepads",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "kneepads",
-      "blueprint": [
-        {
-          "slot": "kneepads",
-          "src": "Outcasts Kill Squad",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "ff8b52a83fa29285::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
-      "name_key": "acostaskneepads",
-      "name": "Acosta's Kneepads",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "kneepads",
-      "blueprint": [
-        {
-          "slot": "kneepads",
-          "src": "Outcasts Kill Squad",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "7bd803e143a0e6a1::exotic",
+      "item_id": "7bd803e143a0e6a1",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -1903,7 +1629,7 @@
       "drop": []
     },
     {
-      "item_id": "7ef8b8ec715ecedd::exotic",
+      "item_id": "7ef8b8ec715ecedd",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -1923,7 +1649,7 @@
       "drop": []
     },
     {
-      "item_id": "826aa819479e66a8::exotic",
+      "item_id": "826aa819479e66a8",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -1943,7 +1669,7 @@
       "drop": []
     },
     {
-      "item_id": "d338fb8b14a21257::exotic",
+      "item_id": "d338fb8b14a21257",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -1965,7 +1691,7 @@
       ]
     },
     {
-      "item_id": "e7b83b9af4059cb7::exotic",
+      "item_id": "e7b83b9af4059cb7",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -1985,132 +1711,10 @@
       "drop": []
     },
     {
-      "item_id": "f668921e3033acde::exotic",
+      "item_id": "f668921e3033acde",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
-      "name_key": "beacon",
-      "name": "Beacon",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "chest",
-      "blueprint": [
-        {
-          "slot": "chest",
-          "src": "Rikers Kill Squad",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "7bd803e143a0e6a1::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
-      "name_key": "beacon",
-      "name": "Beacon",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "chest",
-      "blueprint": [
-        {
-          "slot": "chest",
-          "src": "Rikers Kill Squad",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "7ef8b8ec715ecedd::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
-      "name_key": "beacon",
-      "name": "Beacon",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "chest",
-      "blueprint": [
-        {
-          "slot": "chest",
-          "src": "Rikers Kill Squad",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "826aa819479e66a8::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
-      "name_key": "beacon",
-      "name": "Beacon",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "chest",
-      "blueprint": [
-        {
-          "slot": "chest",
-          "src": "Rikers Kill Squad",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "d338fb8b14a21257::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
-      "name_key": "beacon",
-      "name": "Beacon",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "chest",
-      "blueprint": [
-        {
-          "slot": "chest",
-          "src": "Rikers Kill Squad",
-          "type": "craft"
-        }
-      ],
-      "drop": [],
-      "target_looted": [
-        "chest"
-      ]
-    },
-    {
-      "item_id": "e7b83b9af4059cb7::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
-      "name_key": "beacon",
-      "name": "Beacon",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "chest",
-      "blueprint": [
-        {
-          "slot": "chest",
-          "src": "Rikers Kill Squad",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "f668921e3033acde::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
       "name_key": "beacon",
       "name": "Beacon",
       "brand_name": "",
@@ -2351,7 +1955,7 @@
       "drop": []
     },
     {
-      "item_id": "023fb566098c98dd::exotic",
+      "item_id": "023fb566098c98dd",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -2373,7 +1977,7 @@
       ]
     },
     {
-      "item_id": "0b4dc205f0257cb0::exotic",
+      "item_id": "0b4dc205f0257cb0",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -2393,7 +1997,7 @@
       "drop": []
     },
     {
-      "item_id": "1116617a0a502f0d::exotic",
+      "item_id": "1116617a0a502f0d",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -2413,7 +2017,7 @@
       "drop": []
     },
     {
-      "item_id": "601c0a7804f91e01::exotic",
+      "item_id": "601c0a7804f91e01",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -2433,7 +2037,7 @@
       "drop": []
     },
     {
-      "item_id": "872417cc7711acfb::exotic",
+      "item_id": "872417cc7711acfb",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -2453,7 +2057,7 @@
       "drop": []
     },
     {
-      "item_id": "87bbe7feca396ff7::exotic",
+      "item_id": "87bbe7feca396ff7",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -2473,129 +2077,7 @@
       "drop": []
     },
     {
-      "item_id": "023fb566098c98dd::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
-      "name_key": "bloodyknuckles",
-      "name": "Bloody Knuckles",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "gloves",
-      "blueprint": [
-        {
-          "slot": "gloves",
-          "src": "Rikers Kill Squad",
-          "type": "craft"
-        }
-      ],
-      "drop": [],
-      "target_looted": [
-        "gloves"
-      ]
-    },
-    {
-      "item_id": "0b4dc205f0257cb0::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
-      "name_key": "bloodyknuckles",
-      "name": "Bloody Knuckles",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "gloves",
-      "blueprint": [
-        {
-          "slot": "gloves",
-          "src": "Rikers Kill Squad",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "1116617a0a502f0d::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
-      "name_key": "bloodyknuckles",
-      "name": "Bloody Knuckles",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "gloves",
-      "blueprint": [
-        {
-          "slot": "gloves",
-          "src": "Rikers Kill Squad",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "601c0a7804f91e01::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
-      "name_key": "bloodyknuckles",
-      "name": "Bloody Knuckles",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "gloves",
-      "blueprint": [
-        {
-          "slot": "gloves",
-          "src": "Rikers Kill Squad",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "872417cc7711acfb::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
-      "name_key": "bloodyknuckles",
-      "name": "Bloody Knuckles",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "gloves",
-      "blueprint": [
-        {
-          "slot": "gloves",
-          "src": "Rikers Kill Squad",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "87bbe7feca396ff7::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
-      "name_key": "bloodyknuckles",
-      "name": "Bloody Knuckles",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "gloves",
-      "blueprint": [
-        {
-          "slot": "gloves",
-          "src": "Rikers Kill Squad",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "262faaf6112f792a::exotic",
+      "item_id": "262faaf6112f792a",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -2615,7 +2097,7 @@
       "drop": []
     },
     {
-      "item_id": "2630c88ef3f7748d::exotic",
+      "item_id": "2630c88ef3f7748d",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -2635,7 +2117,7 @@
       "drop": []
     },
     {
-      "item_id": "30401ca916aab6d7::exotic",
+      "item_id": "30401ca916aab6d7",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -2657,7 +2139,7 @@
       ]
     },
     {
-      "item_id": "53cbc6bb8136be0a::exotic",
+      "item_id": "53cbc6bb8136be0a",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -2677,7 +2159,7 @@
       "drop": []
     },
     {
-      "item_id": "8ebfa1282530aea1::exotic",
+      "item_id": "8ebfa1282530aea1",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -2697,132 +2179,10 @@
       "drop": []
     },
     {
-      "item_id": "db4eaa7cbb96f7c3::exotic",
+      "item_id": "db4eaa7cbb96f7c3",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
-      "name_key": "btsudatagloves",
-      "name": "BTSU Datagloves",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "gloves",
-      "blueprint": [
-        {
-          "slot": "gloves",
-          "src": "True Sons retaliation completion",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "262faaf6112f792a::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
-      "name_key": "btsudatagloves",
-      "name": "BTSU Datagloves",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "gloves",
-      "blueprint": [
-        {
-          "slot": "gloves",
-          "src": "True Sons retaliation completion",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "2630c88ef3f7748d::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
-      "name_key": "btsudatagloves",
-      "name": "BTSU Datagloves",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "gloves",
-      "blueprint": [
-        {
-          "slot": "gloves",
-          "src": "True Sons retaliation completion",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "30401ca916aab6d7::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
-      "name_key": "btsudatagloves",
-      "name": "BTSU Datagloves",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "gloves",
-      "blueprint": [
-        {
-          "slot": "gloves",
-          "src": "True Sons retaliation completion",
-          "type": "craft"
-        }
-      ],
-      "drop": [],
-      "target_looted": [
-        "gloves"
-      ]
-    },
-    {
-      "item_id": "53cbc6bb8136be0a::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
-      "name_key": "btsudatagloves",
-      "name": "BTSU Datagloves",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "gloves",
-      "blueprint": [
-        {
-          "slot": "gloves",
-          "src": "True Sons retaliation completion",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "8ebfa1282530aea1::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
-      "name_key": "btsudatagloves",
-      "name": "BTSU Datagloves",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "gloves",
-      "blueprint": [
-        {
-          "slot": "gloves",
-          "src": "True Sons retaliation completion",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "db4eaa7cbb96f7c3::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
       "name_key": "btsudatagloves",
       "name": "BTSU Datagloves",
       "brand_name": "",
@@ -2869,7 +2229,7 @@
       ]
     },
     {
-      "item_id": "03615cba5b207514::exotic",
+      "item_id": "03615cba5b207514",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -2891,7 +2251,7 @@
       ]
     },
     {
-      "item_id": "0f7b4085a96c4632::exotic",
+      "item_id": "0f7b4085a96c4632",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -2911,7 +2271,7 @@
       "drop": []
     },
     {
-      "item_id": "3ebc6ae5221c316d::exotic",
+      "item_id": "3ebc6ae5221c316d",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -2931,7 +2291,7 @@
       "drop": []
     },
     {
-      "item_id": "483cc0d2d5318bdf::exotic",
+      "item_id": "483cc0d2d5318bdf",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -2951,7 +2311,7 @@
       "drop": []
     },
     {
-      "item_id": "69bb526e43ecb784::exotic",
+      "item_id": "69bb526e43ecb784",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -2971,109 +2331,7 @@
       "drop": []
     },
     {
-      "item_id": "03615cba5b207514::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
-      "name_key": "catharsis",
-      "name": "Catharsis",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "mask",
-      "blueprint": [
-        {
-          "slot": "mask",
-          "src": "True Sons Kill Squad",
-          "type": "craft"
-        }
-      ],
-      "drop": [],
-      "target_looted": [
-        "mask"
-      ]
-    },
-    {
-      "item_id": "0f7b4085a96c4632::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
-      "name_key": "catharsis",
-      "name": "Catharsis",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "mask",
-      "blueprint": [
-        {
-          "slot": "mask",
-          "src": "True Sons Kill Squad",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "3ebc6ae5221c316d::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
-      "name_key": "catharsis",
-      "name": "Catharsis",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "mask",
-      "blueprint": [
-        {
-          "slot": "mask",
-          "src": "True Sons Kill Squad",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "483cc0d2d5318bdf::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
-      "name_key": "catharsis",
-      "name": "Catharsis",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "mask",
-      "blueprint": [
-        {
-          "slot": "mask",
-          "src": "True Sons Kill Squad",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "69bb526e43ecb784::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
-      "name_key": "catharsis",
-      "name": "Catharsis",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "mask",
-      "blueprint": [
-        {
-          "slot": "mask",
-          "src": "True Sons Kill Squad",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "4d3778fb2d5c6c66::exotic",
+      "item_id": "4d3778fb2d5c6c66",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -3093,7 +2351,7 @@
       "drop": []
     },
     {
-      "item_id": "50d02690a2336e92::exotic",
+      "item_id": "50d02690a2336e92",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -3115,7 +2373,7 @@
       ]
     },
     {
-      "item_id": "6cf7db846f59e203::exotic",
+      "item_id": "6cf7db846f59e203",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -3135,7 +2393,7 @@
       "drop": []
     },
     {
-      "item_id": "976b593b9dc95fc9::exotic",
+      "item_id": "976b593b9dc95fc9",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -3155,7 +2413,7 @@
       "drop": []
     },
     {
-      "item_id": "9bef97db852940f8::exotic",
+      "item_id": "9bef97db852940f8",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -3175,7 +2433,7 @@
       "drop": []
     },
     {
-      "item_id": "b13223a413aba90f::exotic",
+      "item_id": "b13223a413aba90f",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -3195,7 +2453,7 @@
       "drop": []
     },
     {
-      "item_id": "fead7c34f430f5f8::exotic",
+      "item_id": "fead7c34f430f5f8",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -3215,149 +2473,7 @@
       "drop": []
     },
     {
-      "item_id": "4d3778fb2d5c6c66::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
-      "name_key": "centurionsscabbard",
-      "name": "Centurion's Scabbard",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "holster",
-      "blueprint": [
-        {
-          "slot": "holster",
-          "src": "Hyenas Kill Squad",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "50d02690a2336e92::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
-      "name_key": "centurionsscabbard",
-      "name": "Centurion's Scabbard",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "holster",
-      "blueprint": [
-        {
-          "slot": "holster",
-          "src": "Hyenas Kill Squad",
-          "type": "craft"
-        }
-      ],
-      "drop": [],
-      "target_looted": [
-        "holster"
-      ]
-    },
-    {
-      "item_id": "6cf7db846f59e203::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
-      "name_key": "centurionsscabbard",
-      "name": "Centurion's Scabbard",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "holster",
-      "blueprint": [
-        {
-          "slot": "holster",
-          "src": "Hyenas Kill Squad",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "976b593b9dc95fc9::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
-      "name_key": "centurionsscabbard",
-      "name": "Centurion's Scabbard",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "holster",
-      "blueprint": [
-        {
-          "slot": "holster",
-          "src": "Hyenas Kill Squad",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "9bef97db852940f8::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
-      "name_key": "centurionsscabbard",
-      "name": "Centurion's Scabbard",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "holster",
-      "blueprint": [
-        {
-          "slot": "holster",
-          "src": "Hyenas Kill Squad",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "b13223a413aba90f::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
-      "name_key": "centurionsscabbard",
-      "name": "Centurion's Scabbard",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "holster",
-      "blueprint": [
-        {
-          "slot": "holster",
-          "src": "Hyenas Kill Squad",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "fead7c34f430f5f8::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
-      "name_key": "centurionsscabbard",
-      "name": "Centurion's Scabbard",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "holster",
-      "blueprint": [
-        {
-          "slot": "holster",
-          "src": "Hyenas Kill Squad",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "2c134c8835dd0d2e::exotic",
+      "item_id": "2c134c8835dd0d2e",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -3377,7 +2493,7 @@
       "drop": []
     },
     {
-      "item_id": "403f95c23e66a01a::exotic",
+      "item_id": "403f95c23e66a01a",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -3397,7 +2513,7 @@
       "drop": []
     },
     {
-      "item_id": "a8b5b7057c782c96::exotic",
+      "item_id": "a8b5b7057c782c96",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -3419,7 +2535,7 @@
       ]
     },
     {
-      "item_id": "ac65d693dc79c197::exotic",
+      "item_id": "ac65d693dc79c197",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -3439,7 +2555,7 @@
       "drop": []
     },
     {
-      "item_id": "d3962cdb5d314510::exotic",
+      "item_id": "d3962cdb5d314510",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -3459,7 +2575,7 @@
       "drop": []
     },
     {
-      "item_id": "e3c93d5e760c0b1b::exotic",
+      "item_id": "e3c93d5e760c0b1b",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -3479,129 +2595,7 @@
       "drop": []
     },
     {
-      "item_id": "2c134c8835dd0d2e::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
-      "name_key": "collector",
-      "name": "Collector",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "chest",
-      "blueprint": [
-        {
-          "slot": "chest",
-          "src": "Outcasts Kill Squad",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "403f95c23e66a01a::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
-      "name_key": "collector",
-      "name": "Collector",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "chest",
-      "blueprint": [
-        {
-          "slot": "chest",
-          "src": "Outcasts Kill Squad",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "a8b5b7057c782c96::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
-      "name_key": "collector",
-      "name": "Collector",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "chest",
-      "blueprint": [
-        {
-          "slot": "chest",
-          "src": "Outcasts Kill Squad",
-          "type": "craft"
-        }
-      ],
-      "drop": [],
-      "target_looted": [
-        "chest"
-      ]
-    },
-    {
-      "item_id": "ac65d693dc79c197::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
-      "name_key": "collector",
-      "name": "Collector",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "chest",
-      "blueprint": [
-        {
-          "slot": "chest",
-          "src": "Outcasts Kill Squad",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "d3962cdb5d314510::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
-      "name_key": "collector",
-      "name": "Collector",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "chest",
-      "blueprint": [
-        {
-          "slot": "chest",
-          "src": "Outcasts Kill Squad",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "e3c93d5e760c0b1b::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
-      "name_key": "collector",
-      "name": "Collector",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "chest",
-      "blueprint": [
-        {
-          "slot": "chest",
-          "src": "Outcasts Kill Squad",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "59e34b3f11fafefc::exotic",
+      "item_id": "59e34b3f11fafefc",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -3621,7 +2615,7 @@
       "drop": []
     },
     {
-      "item_id": "701b420d23a78a29::exotic",
+      "item_id": "701b420d23a78a29",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -3643,7 +2637,7 @@
       ]
     },
     {
-      "item_id": "795b518614a81b86::exotic",
+      "item_id": "795b518614a81b86",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -3663,7 +2657,7 @@
       "drop": []
     },
     {
-      "item_id": "99cbc81c0832598b::exotic",
+      "item_id": "99cbc81c0832598b",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -3683,112 +2677,10 @@
       "drop": []
     },
     {
-      "item_id": "a549fd50fa026e94::exotic",
+      "item_id": "a549fd50fa026e94",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
-      "name_key": "coyotesmask",
-      "name": "Coyote’s Mask",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "mask",
-      "blueprint": [
-        {
-          "slot": "mask",
-          "src": "Hyenas Kill Squad",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "59e34b3f11fafefc::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
-      "name_key": "coyotesmask",
-      "name": "Coyote’s Mask",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "mask",
-      "blueprint": [
-        {
-          "slot": "mask",
-          "src": "Hyenas Kill Squad",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "701b420d23a78a29::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
-      "name_key": "coyotesmask",
-      "name": "Coyote’s Mask",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "mask",
-      "blueprint": [
-        {
-          "slot": "mask",
-          "src": "Hyenas Kill Squad",
-          "type": "craft"
-        }
-      ],
-      "drop": [],
-      "target_looted": [
-        "mask"
-      ]
-    },
-    {
-      "item_id": "795b518614a81b86::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
-      "name_key": "coyotesmask",
-      "name": "Coyote’s Mask",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "mask",
-      "blueprint": [
-        {
-          "slot": "mask",
-          "src": "Hyenas Kill Squad",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "99cbc81c0832598b::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
-      "name_key": "coyotesmask",
-      "name": "Coyote's Mask",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "mask",
-      "blueprint": [
-        {
-          "slot": "mask",
-          "src": "Hyenas Kill Squad",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "a549fd50fa026e94::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
       "name_key": "coyotesmask",
       "name": "Coyote’s Mask",
       "brand_name": "",
@@ -3921,7 +2813,7 @@
       "drop": []
     },
     {
-      "item_id": "034157313d53cd8e::exotic",
+      "item_id": "034157313d53cd8e",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -3941,7 +2833,7 @@
       "drop": []
     },
     {
-      "item_id": "339e3b112a44f89d::exotic",
+      "item_id": "339e3b112a44f89d",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -3961,132 +2853,10 @@
       "drop": []
     },
     {
-      "item_id": "914fadec1af650f0::exotic",
+      "item_id": "914fadec1af650f0",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
-      "name_key": "exodusgloves",
-      "name": "Exodus Gloves",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "gloves",
-      "blueprint": [
-        {
-          "slot": "gloves",
-          "src": "True Sons retaliation completion",
-          "type": "craft"
-        }
-      ],
-      "drop": [],
-      "target_looted": [
-        "gloves"
-      ]
-    },
-    {
-      "item_id": "d275316dfd67caf4::exotic",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "exotic",
-      "name_key": "exodusgloves",
-      "name": "Exodus Gloves",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "gloves",
-      "blueprint": [
-        {
-          "slot": "gloves",
-          "src": "True Sons retaliation completion",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "ea614c8abfe0da8b::exotic",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "exotic",
-      "name_key": "exodusgloves",
-      "name": "Exodus Gloves",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "gloves",
-      "blueprint": [
-        {
-          "slot": "gloves",
-          "src": "True Sons retaliation completion",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "ef0b7d8ade4d3484::exotic",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "exotic",
-      "name_key": "exodusgloves",
-      "name": "Exodus Gloves",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "gloves",
-      "blueprint": [
-        {
-          "slot": "gloves",
-          "src": "True Sons retaliation completion",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "034157313d53cd8e::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
-      "name_key": "exodusgloves",
-      "name": "Exodus Gloves",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "gloves",
-      "blueprint": [
-        {
-          "slot": "gloves",
-          "src": "True Sons retaliation completion",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "339e3b112a44f89d::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
-      "name_key": "exodusgloves",
-      "name": "Exodus Gloves",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "gloves",
-      "blueprint": [
-        {
-          "slot": "gloves",
-          "src": "True Sons retaliation completion",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "914fadec1af650f0::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
       "name_key": "exodusgloves",
       "name": "Exodus Gloves",
       "brand_name": "",
@@ -4105,10 +2875,10 @@
       ]
     },
     {
-      "item_id": "d275316dfd67caf4::named",
+      "item_id": "d275316dfd67caf4",
       "entity_type": "gear_exotic",
       "category": "gear",
-      "tier": "named",
+      "tier": "exotic",
       "name_key": "exodusgloves",
       "name": "Exodus Gloves",
       "brand_name": "",
@@ -4125,10 +2895,10 @@
       "drop": []
     },
     {
-      "item_id": "ea614c8abfe0da8b::named",
+      "item_id": "ea614c8abfe0da8b",
       "entity_type": "gear_exotic",
       "category": "gear",
-      "tier": "named",
+      "tier": "exotic",
       "name_key": "exodusgloves",
       "name": "Exodus Gloves",
       "brand_name": "",
@@ -4145,10 +2915,10 @@
       "drop": []
     },
     {
-      "item_id": "ef0b7d8ade4d3484::named",
+      "item_id": "ef0b7d8ade4d3484",
       "entity_type": "gear_exotic",
       "category": "gear",
-      "tier": "named",
+      "tier": "exotic",
       "name_key": "exodusgloves",
       "name": "Exodus Gloves",
       "brand_name": "",
@@ -4165,7 +2935,7 @@
       "drop": []
     },
     {
-      "item_id": "2c628090c7e6c47b::exotic",
+      "item_id": "2c628090c7e6c47b",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -4185,7 +2955,7 @@
       "drop": []
     },
     {
-      "item_id": "3bf950d06177b4cf::exotic",
+      "item_id": "3bf950d06177b4cf",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -4205,7 +2975,7 @@
       "drop": []
     },
     {
-      "item_id": "492cf75b38d37f30::exotic",
+      "item_id": "492cf75b38d37f30",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -4225,7 +2995,7 @@
       "drop": []
     },
     {
-      "item_id": "5f2d7c53ec6ac2c7::exotic",
+      "item_id": "5f2d7c53ec6ac2c7",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -4245,7 +3015,7 @@
       "drop": []
     },
     {
-      "item_id": "c81c6ec1ce9b6a76::exotic",
+      "item_id": "c81c6ec1ce9b6a76",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -4265,7 +3035,7 @@
       "drop": []
     },
     {
-      "item_id": "cf3e928aed5c1ea6::exotic",
+      "item_id": "cf3e928aed5c1ea6",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -4285,127 +3055,7 @@
       "drop": []
     },
     {
-      "item_id": "2c628090c7e6c47b::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
-      "name_key": "harrierpride",
-      "name": "Harrier Pride",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "backpack",
-      "blueprint": [
-        {
-          "slot": "backpack",
-          "src": "Outcasts retaliation completion",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "3bf950d06177b4cf::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
-      "name_key": "harrierpride",
-      "name": "Harrier Pride",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "backpack",
-      "blueprint": [
-        {
-          "slot": "backpack",
-          "src": "Outcasts retaliation completion",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "492cf75b38d37f30::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
-      "name_key": "harrierpride",
-      "name": "Harrier Pride",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "backpack",
-      "blueprint": [
-        {
-          "slot": "backpack",
-          "src": "Outcasts retaliation completion",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "5f2d7c53ec6ac2c7::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
-      "name_key": "harrierpride",
-      "name": "Harrier Pride",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "backpack",
-      "blueprint": [
-        {
-          "slot": "backpack",
-          "src": "Outcasts retaliation completion",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "c81c6ec1ce9b6a76::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
-      "name_key": "harrierpride",
-      "name": "Harrier Pride",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "backpack",
-      "blueprint": [
-        {
-          "slot": "backpack",
-          "src": "Outcasts retaliation completion",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "cf3e928aed5c1ea6::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
-      "name_key": "harrierpride",
-      "name": "Harrier Pride",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "backpack",
-      "blueprint": [
-        {
-          "slot": "backpack",
-          "src": "Outcasts retaliation completion",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "24f5534313589f57::exotic",
+      "item_id": "24f5534313589f57",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -4425,7 +3075,7 @@
       "drop": []
     },
     {
-      "item_id": "3a01e3c918064f91::exotic",
+      "item_id": "3a01e3c918064f91",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -4445,7 +3095,7 @@
       "drop": []
     },
     {
-      "item_id": "6de9bd26d7db7298::exotic",
+      "item_id": "6de9bd26d7db7298",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -4465,7 +3115,7 @@
       "drop": []
     },
     {
-      "item_id": "ad9de54d657887cc::exotic",
+      "item_id": "ad9de54d657887cc",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -4487,7 +3137,7 @@
       ]
     },
     {
-      "item_id": "b42fb87a68ac73b8::exotic",
+      "item_id": "b42fb87a68ac73b8",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -4507,132 +3157,10 @@
       "drop": []
     },
     {
-      "item_id": "d16c6588a86dff2a::exotic",
+      "item_id": "d16c6588a86dff2a",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
-      "name_key": "imperialdynasty",
-      "name": "Imperial Dynasty",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "holster",
-      "blueprint": [
-        {
-          "slot": "holster",
-          "src": "Cleaners Kill Squad",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "24f5534313589f57::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
-      "name_key": "imperialdynasty",
-      "name": "Imperial Dynasty",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "holster",
-      "blueprint": [
-        {
-          "slot": "holster",
-          "src": "Cleaners Kill Squad",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "3a01e3c918064f91::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
-      "name_key": "imperialdynasty",
-      "name": "Imperial Dynasty",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "holster",
-      "blueprint": [
-        {
-          "slot": "holster",
-          "src": "Cleaners Kill Squad",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "6de9bd26d7db7298::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
-      "name_key": "imperialdynasty",
-      "name": "Imperial Dynasty",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "holster",
-      "blueprint": [
-        {
-          "slot": "holster",
-          "src": "Cleaners Kill Squad",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "ad9de54d657887cc::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
-      "name_key": "imperialdynasty",
-      "name": "Imperial Dynasty",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "holster",
-      "blueprint": [
-        {
-          "slot": "holster",
-          "src": "Cleaners Kill Squad",
-          "type": "craft"
-        }
-      ],
-      "drop": [],
-      "target_looted": [
-        "holster"
-      ]
-    },
-    {
-      "item_id": "b42fb87a68ac73b8::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
-      "name_key": "imperialdynasty",
-      "name": "Imperial Dynasty",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "holster",
-      "blueprint": [
-        {
-          "slot": "holster",
-          "src": "Cleaners Kill Squad",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "d16c6588a86dff2a::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
       "name_key": "imperialdynasty",
       "name": "Imperial Dynasty",
       "brand_name": "",
@@ -4703,7 +3231,7 @@
       "drop": []
     },
     {
-      "item_id": "19e11cee52a8f189::exotic",
+      "item_id": "19e11cee52a8f189",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -4725,7 +3253,7 @@
       ]
     },
     {
-      "item_id": "24f51333afc1bcb2::exotic",
+      "item_id": "24f51333afc1bcb2",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -4745,7 +3273,7 @@
       "drop": []
     },
     {
-      "item_id": "4d0042aff9571347::exotic",
+      "item_id": "4d0042aff9571347",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -4765,7 +3293,7 @@
       "drop": []
     },
     {
-      "item_id": "7e97abafe7c928de::exotic",
+      "item_id": "7e97abafe7c928de",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -4785,7 +3313,7 @@
       "drop": []
     },
     {
-      "item_id": "d1f3dfc0899a85ef::exotic",
+      "item_id": "d1f3dfc0899a85ef",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -4805,109 +3333,7 @@
       "drop": []
     },
     {
-      "item_id": "19e11cee52a8f189::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
-      "name_key": "memento",
-      "name": "Memento",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "backpack",
-      "blueprint": [
-        {
-          "slot": "backpack",
-          "src": "Outcasts Kill Squad",
-          "type": "craft"
-        }
-      ],
-      "drop": [],
-      "target_looted": [
-        "backpack"
-      ]
-    },
-    {
-      "item_id": "24f51333afc1bcb2::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
-      "name_key": "memento",
-      "name": "Memento",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "backpack",
-      "blueprint": [
-        {
-          "slot": "backpack",
-          "src": "Outcasts Kill Squad",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "4d0042aff9571347::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
-      "name_key": "memento",
-      "name": "Memento",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "backpack",
-      "blueprint": [
-        {
-          "slot": "backpack",
-          "src": "Outcasts Kill Squad",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "7e97abafe7c928de::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
-      "name_key": "memento",
-      "name": "Memento",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "backpack",
-      "blueprint": [
-        {
-          "slot": "backpack",
-          "src": "Outcasts Kill Squad",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "d1f3dfc0899a85ef::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
-      "name_key": "memento",
-      "name": "Memento",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "backpack",
-      "blueprint": [
-        {
-          "slot": "backpack",
-          "src": "Outcasts Kill Squad",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "30dc4b917a2a0f5a::exotic",
+      "item_id": "30dc4b917a2a0f5a",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -4927,7 +3353,7 @@
       "drop": []
     },
     {
-      "item_id": "433244ba2191a698::exotic",
+      "item_id": "433244ba2191a698",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -4947,7 +3373,7 @@
       "drop": []
     },
     {
-      "item_id": "43c13444a8bc98f0::exotic",
+      "item_id": "43c13444a8bc98f0",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -4967,7 +3393,7 @@
       "drop": []
     },
     {
-      "item_id": "cac6bb6ecf188eb4::exotic",
+      "item_id": "cac6bb6ecf188eb4",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -4987,7 +3413,7 @@
       "drop": []
     },
     {
-      "item_id": "d897e8c12c1a58bc::exotic",
+      "item_id": "d897e8c12c1a58bc",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -5009,7 +3435,7 @@
       ]
     },
     {
-      "item_id": "ec2a6db33290e3d7::exotic",
+      "item_id": "ec2a6db33290e3d7",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -5029,129 +3455,7 @@
       "drop": []
     },
     {
-      "item_id": "30dc4b917a2a0f5a::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
-      "name_key": "nimbleholster",
-      "name": "Nimble Holster",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "holster",
-      "blueprint": [
-        {
-          "slot": "holster",
-          "src": "Outcasts retaliation completion",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "433244ba2191a698::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
-      "name_key": "nimbleholster",
-      "name": "Nimble Holster",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "holster",
-      "blueprint": [
-        {
-          "slot": "holster",
-          "src": "Outcasts retaliation completion",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "43c13444a8bc98f0::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
-      "name_key": "nimbleholster",
-      "name": "Nimble Holster",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "holster",
-      "blueprint": [
-        {
-          "slot": "holster",
-          "src": "Outcasts retaliation completion",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "cac6bb6ecf188eb4::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
-      "name_key": "nimbleholster",
-      "name": "Nimble Holster",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "holster",
-      "blueprint": [
-        {
-          "slot": "holster",
-          "src": "Outcasts retaliation completion",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "d897e8c12c1a58bc::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
-      "name_key": "nimbleholster",
-      "name": "Nimble Holster",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "holster",
-      "blueprint": [
-        {
-          "slot": "holster",
-          "src": "Outcasts retaliation completion",
-          "type": "craft"
-        }
-      ],
-      "drop": [],
-      "target_looted": [
-        "holster"
-      ]
-    },
-    {
-      "item_id": "ec2a6db33290e3d7::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
-      "name_key": "nimbleholster",
-      "name": "Nimble Holster",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "holster",
-      "blueprint": [
-        {
-          "slot": "holster",
-          "src": "Outcasts retaliation completion",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "62052339b0662441::exotic",
+      "item_id": "62052339b0662441",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -5171,7 +3475,7 @@
       "drop": []
     },
     {
-      "item_id": "8758ff5ae12f953d::exotic",
+      "item_id": "8758ff5ae12f953d",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -5191,7 +3495,7 @@
       "drop": []
     },
     {
-      "item_id": "aaacc7778f179f1d::exotic",
+      "item_id": "aaacc7778f179f1d",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -5211,7 +3515,7 @@
       "drop": []
     },
     {
-      "item_id": "c4a221a58bc1b9b7::exotic",
+      "item_id": "c4a221a58bc1b9b7",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -5233,7 +3537,7 @@
       ]
     },
     {
-      "item_id": "f4a0b9f96079f766::exotic",
+      "item_id": "f4a0b9f96079f766",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -5253,109 +3557,7 @@
       "drop": []
     },
     {
-      "item_id": "62052339b0662441::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
-      "name_key": "ninjabikemessengerbackpack",
-      "name": "NinjaBike Messenger Backpack",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "backpack",
-      "blueprint": [
-        {
-          "slot": "backpack",
-          "src": "Rikers Kill Squad",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "8758ff5ae12f953d::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
-      "name_key": "ninjabikemessengerbackpack",
-      "name": "NinjaBike Messenger Backpack",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "backpack",
-      "blueprint": [
-        {
-          "slot": "backpack",
-          "src": "Rikers Kill Squad",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "aaacc7778f179f1d::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
-      "name_key": "ninjabikemessengerbackpack",
-      "name": "NinjaBike Messenger Backpack",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "backpack",
-      "blueprint": [
-        {
-          "slot": "backpack",
-          "src": "Rikers Kill Squad",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "c4a221a58bc1b9b7::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
-      "name_key": "ninjabikemessengerbackpack",
-      "name": "NinjaBike Messenger Backpack",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "backpack",
-      "blueprint": [
-        {
-          "slot": "backpack",
-          "src": "Rikers Kill Squad",
-          "type": "craft"
-        }
-      ],
-      "drop": [],
-      "target_looted": [
-        "backpack"
-      ]
-    },
-    {
-      "item_id": "f4a0b9f96079f766::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
-      "name_key": "ninjabikemessengerbackpack",
-      "name": "NinjaBike Messenger Backpack",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "backpack",
-      "blueprint": [
-        {
-          "slot": "backpack",
-          "src": "Rikers Kill Squad",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "0e46535089ef9d33::exotic",
+      "item_id": "0e46535089ef9d33",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -5375,7 +3577,7 @@
       "drop": []
     },
     {
-      "item_id": "0f5bb2e9b3c61fa9::exotic",
+      "item_id": "0f5bb2e9b3c61fa9",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -5395,7 +3597,7 @@
       "drop": []
     },
     {
-      "item_id": "38a59e5deceaf306::exotic",
+      "item_id": "38a59e5deceaf306",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -5415,7 +3617,7 @@
       "drop": []
     },
     {
-      "item_id": "7e22d0e62d0d6bd3::exotic",
+      "item_id": "7e22d0e62d0d6bd3",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -5435,7 +3637,7 @@
       "drop": []
     },
     {
-      "item_id": "934fd850b24a3a61::exotic",
+      "item_id": "934fd850b24a3a61",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -5455,7 +3657,7 @@
       "drop": []
     },
     {
-      "item_id": "a2880a764a029614::exotic",
+      "item_id": "a2880a764a029614",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -5475,152 +3677,10 @@
       "drop": []
     },
     {
-      "item_id": "f9195d3fb5bb0164::exotic",
+      "item_id": "f9195d3fb5bb0164",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
-      "name_key": "ninjabikemessengerkneepads",
-      "name": "NinjaBike Messenger Kneepads",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "kneepads",
-      "blueprint": [
-        {
-          "slot": "kneepads",
-          "src": "Cleaners Kill Squad",
-          "type": "craft"
-        }
-      ],
-      "drop": [],
-      "target_looted": [
-        "kneepads"
-      ]
-    },
-    {
-      "item_id": "0e46535089ef9d33::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
-      "name_key": "ninjabikemessengerkneepads",
-      "name": "NinjaBike Messenger Kneepads",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "kneepads",
-      "blueprint": [
-        {
-          "slot": "kneepads",
-          "src": "Cleaners Kill Squad",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "0f5bb2e9b3c61fa9::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
-      "name_key": "ninjabikemessengerkneepads",
-      "name": "NinjaBike Messenger Kneepads",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "kneepads",
-      "blueprint": [
-        {
-          "slot": "kneepads",
-          "src": "Cleaners Kill Squad",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "38a59e5deceaf306::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
-      "name_key": "ninjabikemessengerkneepads",
-      "name": "NinjaBike Messenger Kneepads",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "kneepads",
-      "blueprint": [
-        {
-          "slot": "kneepads",
-          "src": "Cleaners Kill Squad",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "7e22d0e62d0d6bd3::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
-      "name_key": "ninjabikemessengerkneepads",
-      "name": "NinjaBike Messenger Kneepads",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "kneepads",
-      "blueprint": [
-        {
-          "slot": "kneepads",
-          "src": "Cleaners Kill Squad",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "934fd850b24a3a61::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
-      "name_key": "ninjabikemessengerkneepads",
-      "name": "NinjaBike Messenger Kneepads",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "kneepads",
-      "blueprint": [
-        {
-          "slot": "kneepads",
-          "src": "Cleaners Kill Squad",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "a2880a764a029614::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
-      "name_key": "ninjabikemessengerkneepads",
-      "name": "NinjaBike Messenger Kneepads",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "kneepads",
-      "blueprint": [
-        {
-          "slot": "kneepads",
-          "src": "Cleaners Kill Squad",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "f9195d3fb5bb0164::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
       "name_key": "ninjabikemessengerkneepads",
       "name": "NinjaBike Messenger Kneepads",
       "brand_name": "",
@@ -5679,7 +3739,7 @@
       "drop": []
     },
     {
-      "item_id": "07f6591e7fe0710b::exotic",
+      "item_id": "07f6591e7fe0710b",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -5699,7 +3759,7 @@
       "drop": []
     },
     {
-      "item_id": "1139e38f819ddd4e::exotic",
+      "item_id": "1139e38f819ddd4e",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -5719,7 +3779,7 @@
       "drop": []
     },
     {
-      "item_id": "3fb40b40865a40c0::exotic",
+      "item_id": "3fb40b40865a40c0",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -5739,7 +3799,7 @@
       "drop": []
     },
     {
-      "item_id": "56bc1ef8c072bb7a::exotic",
+      "item_id": "56bc1ef8c072bb7a",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -5759,7 +3819,7 @@
       "drop": []
     },
     {
-      "item_id": "a80cee0da3b6717e::exotic",
+      "item_id": "a80cee0da3b6717e",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -5781,132 +3841,10 @@
       ]
     },
     {
-      "item_id": "c5257996cb11ceaf::exotic",
+      "item_id": "c5257996cb11ceaf",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
-      "name_key": "overdogs",
-      "name": "Overdogs",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "gloves",
-      "blueprint": [
-        {
-          "slot": "gloves",
-          "src": "Hyenas retaliation completion",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "07f6591e7fe0710b::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
-      "name_key": "overdogs",
-      "name": "Overdogs",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "gloves",
-      "blueprint": [
-        {
-          "slot": "gloves",
-          "src": "Hyenas retaliation completion",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "1139e38f819ddd4e::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
-      "name_key": "overdogs",
-      "name": "Overdogs",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "gloves",
-      "blueprint": [
-        {
-          "slot": "gloves",
-          "src": "Hyenas retaliation completion",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "3fb40b40865a40c0::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
-      "name_key": "overdogs",
-      "name": "Overdogs",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "gloves",
-      "blueprint": [
-        {
-          "slot": "gloves",
-          "src": "Hyenas retaliation completion",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "56bc1ef8c072bb7a::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
-      "name_key": "overdogs",
-      "name": "Overdogs",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "gloves",
-      "blueprint": [
-        {
-          "slot": "gloves",
-          "src": "Hyenas retaliation completion",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "a80cee0da3b6717e::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
-      "name_key": "overdogs",
-      "name": "Overdogs",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "gloves",
-      "blueprint": [
-        {
-          "slot": "gloves",
-          "src": "Hyenas retaliation completion",
-          "type": "craft"
-        }
-      ],
-      "drop": [],
-      "target_looted": [
-        "gloves"
-      ]
-    },
-    {
-      "item_id": "c5257996cb11ceaf::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
       "name_key": "overdogs",
       "name": "Overdogs",
       "brand_name": "",
@@ -6159,7 +4097,7 @@
       "drop": []
     },
     {
-      "item_id": "363fa1529da1840f::exotic",
+      "item_id": "363fa1529da1840f",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -6179,7 +4117,7 @@
       "drop": []
     },
     {
-      "item_id": "4c17fe11eaf053ff::exotic",
+      "item_id": "4c17fe11eaf053ff",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -6199,7 +4137,7 @@
       "drop": []
     },
     {
-      "item_id": "4f7adec2669fb9b6::exotic",
+      "item_id": "4f7adec2669fb9b6",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -6221,7 +4159,7 @@
       ]
     },
     {
-      "item_id": "9e206b9cc2dc72cb::exotic",
+      "item_id": "9e206b9cc2dc72cb",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -6241,7 +4179,7 @@
       "drop": []
     },
     {
-      "item_id": "ae51b50e458369b0::exotic",
+      "item_id": "ae51b50e458369b0",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -6261,7 +4199,7 @@
       "drop": []
     },
     {
-      "item_id": "d8f3fab80471f00f::exotic",
+      "item_id": "d8f3fab80471f00f",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -6281,129 +4219,7 @@
       "drop": []
     },
     {
-      "item_id": "363fa1529da1840f::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
-      "name_key": "ruggedgauntlets",
-      "name": "Rugged Gauntlets",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "gloves",
-      "blueprint": [
-        {
-          "slot": "gloves",
-          "src": "Outcasts retaliation completion",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "4c17fe11eaf053ff::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
-      "name_key": "ruggedgauntlets",
-      "name": "Rugged Gauntlets",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "gloves",
-      "blueprint": [
-        {
-          "slot": "gloves",
-          "src": "Outcasts retaliation completion",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "4f7adec2669fb9b6::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
-      "name_key": "ruggedgauntlets",
-      "name": "Rugged Gauntlets",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "gloves",
-      "blueprint": [
-        {
-          "slot": "gloves",
-          "src": "Outcasts retaliation completion",
-          "type": "craft"
-        }
-      ],
-      "drop": [],
-      "target_looted": [
-        "gloves"
-      ]
-    },
-    {
-      "item_id": "9e206b9cc2dc72cb::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
-      "name_key": "ruggedgauntlets",
-      "name": "Rugged Gauntlets",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "gloves",
-      "blueprint": [
-        {
-          "slot": "gloves",
-          "src": "Outcasts retaliation completion",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "ae51b50e458369b0::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
-      "name_key": "ruggedgauntlets",
-      "name": "Rugged Gauntlets",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "gloves",
-      "blueprint": [
-        {
-          "slot": "gloves",
-          "src": "Outcasts retaliation completion",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "d8f3fab80471f00f::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
-      "name_key": "ruggedgauntlets",
-      "name": "Rugged Gauntlets",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "gloves",
-      "blueprint": [
-        {
-          "slot": "gloves",
-          "src": "Outcasts retaliation completion",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "524c181d2a895c96::exotic",
+      "item_id": "524c181d2a895c96",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -6423,7 +4239,7 @@
       "drop": []
     },
     {
-      "item_id": "58f9817d9ba60b81::exotic",
+      "item_id": "58f9817d9ba60b81",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -6443,7 +4259,7 @@
       "drop": []
     },
     {
-      "item_id": "5a3f3f7765bcd5c0::exotic",
+      "item_id": "5a3f3f7765bcd5c0",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -6465,7 +4281,7 @@
       ]
     },
     {
-      "item_id": "9c1101b6a7746553::exotic",
+      "item_id": "9c1101b6a7746553",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -6485,7 +4301,7 @@
       "drop": []
     },
     {
-      "item_id": "ab4f794525ace4aa::exotic",
+      "item_id": "ab4f794525ace4aa",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -6505,7 +4321,7 @@
       "drop": []
     },
     {
-      "item_id": "d555b722ec1842c6::exotic",
+      "item_id": "d555b722ec1842c6",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -6525,129 +4341,7 @@
       "drop": []
     },
     {
-      "item_id": "524c181d2a895c96::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
-      "name_key": "sawyerskneepads",
-      "name": "Sawyer's Kneepads",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "kneepads",
-      "blueprint": [
-        {
-          "slot": "kneepads",
-          "src": "Hyenas Kill Squad",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "58f9817d9ba60b81::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
-      "name_key": "sawyerskneepads",
-      "name": "Sawyer's Kneepads",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "kneepads",
-      "blueprint": [
-        {
-          "slot": "kneepads",
-          "src": "Hyenas Kill Squad",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "5a3f3f7765bcd5c0::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
-      "name_key": "sawyerskneepads",
-      "name": "Sawyer's Kneepads",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "kneepads",
-      "blueprint": [
-        {
-          "slot": "kneepads",
-          "src": "Hyenas Kill Squad",
-          "type": "craft"
-        }
-      ],
-      "drop": [],
-      "target_looted": [
-        "kneepads"
-      ]
-    },
-    {
-      "item_id": "9c1101b6a7746553::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
-      "name_key": "sawyerskneepads",
-      "name": "Sawyer's Kneepads",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "kneepads",
-      "blueprint": [
-        {
-          "slot": "kneepads",
-          "src": "Hyenas Kill Squad",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "ab4f794525ace4aa::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
-      "name_key": "sawyerskneepads",
-      "name": "Sawyer's Kneepads",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "kneepads",
-      "blueprint": [
-        {
-          "slot": "kneepads",
-          "src": "Hyenas Kill Squad",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "d555b722ec1842c6::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
-      "name_key": "sawyerskneepads",
-      "name": "Sawyer's Kneepads",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "kneepads",
-      "blueprint": [
-        {
-          "slot": "kneepads",
-          "src": "Hyenas Kill Squad",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "020d088070ad7803::exotic",
+      "item_id": "020d088070ad7803",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -6667,7 +4361,7 @@
       "drop": []
     },
     {
-      "item_id": "963be1cd265f9845::exotic",
+      "item_id": "963be1cd265f9845",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -6689,7 +4383,7 @@
       ]
     },
     {
-      "item_id": "975b3224b5dc97d6::exotic",
+      "item_id": "975b3224b5dc97d6",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -6709,7 +4403,7 @@
       "drop": []
     },
     {
-      "item_id": "b6e4745f6903b846::exotic",
+      "item_id": "b6e4745f6903b846",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -6729,7 +4423,7 @@
       "drop": []
     },
     {
-      "item_id": "f859d40507c33c31::exotic",
+      "item_id": "f859d40507c33c31",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -6749,7 +4443,7 @@
       "drop": []
     },
     {
-      "item_id": "fa5a38b354ee34f7::exotic",
+      "item_id": "fa5a38b354ee34f7",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -6769,129 +4463,7 @@
       "drop": []
     },
     {
-      "item_id": "020d088070ad7803::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
-      "name_key": "shockerpunch",
-      "name": "Shocker Punch",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "holster",
-      "blueprint": [
-        {
-          "slot": "holster",
-          "src": "True Sons Kill Squad",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "963be1cd265f9845::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
-      "name_key": "shockerpunch",
-      "name": "Shocker Punch",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "holster",
-      "blueprint": [
-        {
-          "slot": "holster",
-          "src": "True Sons Kill Squad",
-          "type": "craft"
-        }
-      ],
-      "drop": [],
-      "target_looted": [
-        "holster"
-      ]
-    },
-    {
-      "item_id": "975b3224b5dc97d6::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
-      "name_key": "shockerpunch",
-      "name": "Shocker Punch",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "holster",
-      "blueprint": [
-        {
-          "slot": "holster",
-          "src": "True Sons Kill Squad",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "b6e4745f6903b846::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
-      "name_key": "shockerpunch",
-      "name": "Shocker Punch",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "holster",
-      "blueprint": [
-        {
-          "slot": "holster",
-          "src": "True Sons Kill Squad",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "f859d40507c33c31::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
-      "name_key": "shockerpunch",
-      "name": "Shocker Punch",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "holster",
-      "blueprint": [
-        {
-          "slot": "holster",
-          "src": "True Sons Kill Squad",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "fa5a38b354ee34f7::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
-      "name_key": "shockerpunch",
-      "name": "Shocker Punch",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "holster",
-      "blueprint": [
-        {
-          "slot": "holster",
-          "src": "True Sons Kill Squad",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "02570b613e028bcc::exotic",
+      "item_id": "02570b613e028bcc",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -6911,7 +4483,7 @@
       "drop": []
     },
     {
-      "item_id": "1697535f4f790c52::exotic",
+      "item_id": "1697535f4f790c52",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -6931,7 +4503,7 @@
       "drop": []
     },
     {
-      "item_id": "2f8af61b6340fa6f::exotic",
+      "item_id": "2f8af61b6340fa6f",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -6951,7 +4523,7 @@
       "drop": []
     },
     {
-      "item_id": "45e400df09e4c1b9::exotic",
+      "item_id": "45e400df09e4c1b9",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -6971,7 +4543,7 @@
       "drop": []
     },
     {
-      "item_id": "5d53c8b0ca4b1dcc::exotic",
+      "item_id": "5d53c8b0ca4b1dcc",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -6991,132 +4563,10 @@
       "drop": []
     },
     {
-      "item_id": "73906b8f649f16f8::exotic",
+      "item_id": "73906b8f649f16f8",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
-      "name_key": "tardigradearmorsystem",
-      "name": "Tardigrade Armor System",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "chest",
-      "blueprint": [
-        {
-          "slot": "chest",
-          "src": "True Sons retaliation completion",
-          "type": "craft"
-        }
-      ],
-      "drop": [],
-      "target_looted": [
-        "chest"
-      ]
-    },
-    {
-      "item_id": "02570b613e028bcc::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
-      "name_key": "tardigradearmorsystem",
-      "name": "Tardigrade Armor System",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "chest",
-      "blueprint": [
-        {
-          "slot": "chest",
-          "src": "True Sons retaliation completion",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "1697535f4f790c52::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
-      "name_key": "tardigradearmorsystem",
-      "name": "Tardigrade Armor System",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "chest",
-      "blueprint": [
-        {
-          "slot": "chest",
-          "src": "True Sons retaliation completion",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "2f8af61b6340fa6f::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
-      "name_key": "tardigradearmorsystem",
-      "name": "Tardigrade Armor System",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "chest",
-      "blueprint": [
-        {
-          "slot": "chest",
-          "src": "True Sons retaliation completion",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "45e400df09e4c1b9::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
-      "name_key": "tardigradearmorsystem",
-      "name": "Tardigrade Armor System",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "chest",
-      "blueprint": [
-        {
-          "slot": "chest",
-          "src": "True Sons retaliation completion",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "5d53c8b0ca4b1dcc::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
-      "name_key": "tardigradearmorsystem",
-      "name": "Tardigrade Armor System",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "chest",
-      "blueprint": [
-        {
-          "slot": "chest",
-          "src": "True Sons retaliation completion",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "73906b8f649f16f8::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
       "name_key": "tardigradearmorsystem",
       "name": "Tardigrade Armor System",
       "brand_name": "",
@@ -7211,7 +4661,7 @@
       "drop": []
     },
     {
-      "item_id": "492442439907d1eb::exotic",
+      "item_id": "492442439907d1eb",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -7231,7 +4681,7 @@
       "drop": []
     },
     {
-      "item_id": "60d3baafef83d6d9::exotic",
+      "item_id": "60d3baafef83d6d9",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -7253,7 +4703,7 @@
       ]
     },
     {
-      "item_id": "61aa20257faf4aab::exotic",
+      "item_id": "61aa20257faf4aab",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -7273,7 +4723,7 @@
       "drop": []
     },
     {
-      "item_id": "7a58d7d84502ba35::exotic",
+      "item_id": "7a58d7d84502ba35",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -7293,7 +4743,7 @@
       "drop": []
     },
     {
-      "item_id": "af84d96ceaab07e5::exotic",
+      "item_id": "af84d96ceaab07e5",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -7313,109 +4763,7 @@
       "drop": []
     },
     {
-      "item_id": "492442439907d1eb::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
-      "name_key": "vile",
-      "name": "Vile",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "mask",
-      "blueprint": [
-        {
-          "slot": "mask",
-          "src": "Outcasts retaliation completion",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "60d3baafef83d6d9::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
-      "name_key": "vile",
-      "name": "Vile",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "mask",
-      "blueprint": [
-        {
-          "slot": "mask",
-          "src": "Outcasts retaliation completion",
-          "type": "craft"
-        }
-      ],
-      "drop": [],
-      "target_looted": [
-        "mask"
-      ]
-    },
-    {
-      "item_id": "61aa20257faf4aab::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
-      "name_key": "vile",
-      "name": "Vile",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "mask",
-      "blueprint": [
-        {
-          "slot": "mask",
-          "src": "Outcasts retaliation completion",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "7a58d7d84502ba35::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
-      "name_key": "vile",
-      "name": "Vile",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "mask",
-      "blueprint": [
-        {
-          "slot": "mask",
-          "src": "Outcasts retaliation completion",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "af84d96ceaab07e5::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
-      "name_key": "vile",
-      "name": "Vile",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "mask",
-      "blueprint": [
-        {
-          "slot": "mask",
-          "src": "Outcasts retaliation completion",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "22e1851ba971ed22::exotic",
+      "item_id": "22e1851ba971ed22",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -7435,7 +4783,7 @@
       "drop": []
     },
     {
-      "item_id": "8c09fdfba7b1cd77::exotic",
+      "item_id": "8c09fdfba7b1cd77",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -7455,7 +4803,7 @@
       "drop": []
     },
     {
-      "item_id": "9b037680d3e6968f::exotic",
+      "item_id": "9b037680d3e6968f",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -7475,7 +4823,7 @@
       "drop": []
     },
     {
-      "item_id": "a8d3e0c454494c9a::exotic",
+      "item_id": "a8d3e0c454494c9a",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -7497,7 +4845,7 @@
       ]
     },
     {
-      "item_id": "c23e0a388938495b::exotic",
+      "item_id": "c23e0a388938495b",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
@@ -7517,132 +4865,10 @@
       "drop": []
     },
     {
-      "item_id": "d43cf388f3bcde71::exotic",
+      "item_id": "d43cf388f3bcde71",
       "entity_type": "gear_exotic",
       "category": "gear",
       "tier": "exotic",
-      "name_key": "waveform",
-      "name": "Waveform",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "holster",
-      "blueprint": [
-        {
-          "slot": "holster",
-          "src": "Outcasts retaliation completion",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "22e1851ba971ed22::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
-      "name_key": "waveform",
-      "name": "Waveform",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "holster",
-      "blueprint": [
-        {
-          "slot": "holster",
-          "src": "Outcasts retaliation completion",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "8c09fdfba7b1cd77::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
-      "name_key": "waveform",
-      "name": "Waveform",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "holster",
-      "blueprint": [
-        {
-          "slot": "holster",
-          "src": "Outcasts retaliation completion",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "9b037680d3e6968f::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
-      "name_key": "waveform",
-      "name": "Waveform",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "holster",
-      "blueprint": [
-        {
-          "slot": "holster",
-          "src": "Outcasts retaliation completion",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "a8d3e0c454494c9a::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
-      "name_key": "waveform",
-      "name": "Waveform",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "holster",
-      "blueprint": [
-        {
-          "slot": "holster",
-          "src": "Outcasts retaliation completion",
-          "type": "craft"
-        }
-      ],
-      "drop": [],
-      "target_looted": [
-        "holster"
-      ]
-    },
-    {
-      "item_id": "c23e0a388938495b::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
-      "name_key": "waveform",
-      "name": "Waveform",
-      "brand_name": "",
-      "brand_key": "",
-      "slot_key": "holster",
-      "blueprint": [
-        {
-          "slot": "holster",
-          "src": "Outcasts retaliation completion",
-          "type": "craft"
-        }
-      ],
-      "target_looted": [],
-      "drop": []
-    },
-    {
-      "item_id": "d43cf388f3bcde71::named",
-      "entity_type": "gear_exotic",
-      "category": "gear",
-      "tier": "named",
       "name_key": "waveform",
       "name": "Waveform",
       "brand_name": "",
@@ -7671,11 +4897,6 @@
       "blueprint": [
         {
           "slot": "holster",
-          "type": "craft",
-          "src": "Field Research Firewall"
-        },
-        {
-          "slot": "holster",
           "src": "Field Research Firewall",
           "type": "craft"
         }
@@ -7694,11 +4915,6 @@
       "brand_key": "badgertuff",
       "slot_key": "holster",
       "blueprint": [
-        {
-          "slot": "holster",
-          "type": "craft",
-          "src": "Field Research Firewall"
-        },
         {
           "slot": "holster",
           "src": "Field Research Firewall",
@@ -7721,11 +4937,6 @@
       "blueprint": [
         {
           "slot": "holster",
-          "type": "craft",
-          "src": "Field Research Firewall"
-        },
-        {
-          "slot": "holster",
           "src": "Field Research Firewall",
           "type": "craft"
         }
@@ -7746,11 +4957,6 @@
       "blueprint": [
         {
           "slot": "holster",
-          "type": "craft",
-          "src": "Field Research Firewall"
-        },
-        {
-          "slot": "holster",
           "src": "Field Research Firewall",
           "type": "craft"
         }
@@ -7769,11 +4975,6 @@
       "brand_key": "badgertuff",
       "slot_key": "holster",
       "blueprint": [
-        {
-          "slot": "holster",
-          "type": "craft",
-          "src": "Field Research Firewall"
-        },
         {
           "slot": "holster",
           "src": "Field Research Firewall",
@@ -8428,11 +5629,6 @@
           "slot": "chest",
           "src": "Reconstructed Caches",
           "type": "craft"
-        },
-        {
-          "slot": "chest",
-          "src": "Season",
-          "type": "craft"
         }
       ],
       "target_looted": [],
@@ -8452,11 +5648,6 @@
         {
           "slot": "chest",
           "src": "Reconstructed Caches",
-          "type": "craft"
-        },
-        {
-          "slot": "chest",
-          "src": "Season",
           "type": "craft"
         }
       ],
@@ -8481,11 +5672,6 @@
           "slot": "chest",
           "src": "Reconstructed Caches",
           "type": "craft"
-        },
-        {
-          "slot": "chest",
-          "src": "Season",
-          "type": "craft"
         }
       ],
       "target_looted": [],
@@ -8505,11 +5691,6 @@
         {
           "slot": "chest",
           "src": "Reconstructed Caches",
-          "type": "craft"
-        },
-        {
-          "slot": "chest",
-          "src": "Season",
           "type": "craft"
         }
       ],
@@ -10428,10 +7609,6 @@
       "blueprint": [
         {
           "slot": "chest",
-          "type": "craft"
-        },
-        {
-          "slot": "chest",
           "src": "Purchase from Inaya after defeating WoNY Hunters",
           "type": "craft"
         }
@@ -10450,10 +7627,6 @@
       "brand_key": "golangearltd",
       "slot_key": "chest",
       "blueprint": [
-        {
-          "slot": "chest",
-          "type": "craft"
-        },
         {
           "slot": "chest",
           "src": "Purchase from Inaya after defeating WoNY Hunters",
@@ -10477,10 +7650,6 @@
       "brand_key": "golangearltd",
       "slot_key": "chest",
       "blueprint": [
-        {
-          "slot": "chest",
-          "type": "craft"
-        },
         {
           "slot": "chest",
           "src": "Purchase from Inaya after defeating WoNY Hunters",
@@ -10820,11 +7989,6 @@
       "blueprint": [
         {
           "slot": "gloves",
-          "type": "craft",
-          "src": "Field Research Technician"
-        },
-        {
-          "slot": "gloves",
           "src": "Field Research Technician",
           "type": "craft"
         }
@@ -10848,11 +8012,6 @@
       "blueprint": [
         {
           "slot": "gloves",
-          "type": "craft",
-          "src": "Field Research Technician"
-        },
-        {
-          "slot": "gloves",
           "src": "Field Research Technician",
           "type": "craft"
         }
@@ -10871,11 +8030,6 @@
       "brand_key": "alpssummitarmaments",
       "slot_key": "gloves",
       "blueprint": [
-        {
-          "slot": "gloves",
-          "type": "craft",
-          "src": "Field Research Technician"
-        },
         {
           "slot": "gloves",
           "src": "Field Research Technician",
@@ -10898,11 +8052,6 @@
       "blueprint": [
         {
           "slot": "gloves",
-          "type": "craft",
-          "src": "Field Research Technician"
-        },
-        {
-          "slot": "gloves",
           "src": "Field Research Technician",
           "type": "craft"
         }
@@ -10921,11 +8070,6 @@
       "brand_key": "alpssummitarmaments",
       "slot_key": "gloves",
       "blueprint": [
-        {
-          "slot": "gloves",
-          "type": "craft",
-          "src": "Field Research Technician"
-        },
         {
           "slot": "gloves",
           "src": "Field Research Technician",
@@ -11916,11 +9060,6 @@
           "slot": "backpack",
           "src": "Reconstructed Caches",
           "type": "craft"
-        },
-        {
-          "slot": "backpack",
-          "src": "Season",
-          "type": "craft"
         }
       ],
       "target_looted": [],
@@ -11940,11 +9079,6 @@
         {
           "slot": "backpack",
           "src": "Reconstructed Caches",
-          "type": "craft"
-        },
-        {
-          "slot": "backpack",
-          "src": "Season",
           "type": "craft"
         }
       ],
@@ -12285,11 +9419,6 @@
       "blueprint": [
         {
           "slot": "chest",
-          "type": "craft",
-          "src": "Field Research Gunner"
-        },
-        {
-          "slot": "chest",
           "src": "Field Research Gunner",
           "type": "craft"
         }
@@ -12313,11 +9442,6 @@
       "blueprint": [
         {
           "slot": "chest",
-          "type": "craft",
-          "src": "Field Research Gunner"
-        },
-        {
-          "slot": "chest",
           "src": "Field Research Gunner",
           "type": "craft"
         }
@@ -12338,11 +9462,6 @@
       "blueprint": [
         {
           "slot": "chest",
-          "type": "craft",
-          "src": "Field Research Gunner"
-        },
-        {
-          "slot": "chest",
           "src": "Field Research Gunner",
           "type": "craft"
         }
@@ -12361,11 +9480,6 @@
       "brand_key": "petrovdefensegroup",
       "slot_key": "chest",
       "blueprint": [
-        {
-          "slot": "chest",
-          "type": "craft",
-          "src": "Field Research Gunner"
-        },
         {
           "slot": "chest",
           "src": "Field Research Gunner",
@@ -12752,15 +9866,7 @@
       "blueprint": [
         {
           "slot": "backpack",
-          "type": "craft"
-        },
-        {
-          "slot": "backpack",
           "src": "Y8S1 Journey 7 Reward",
-          "type": "craft"
-        },
-        {
-          "slot": "chest",
           "type": "craft"
         },
         {
@@ -12770,15 +9876,7 @@
         },
         {
           "slot": "gloves",
-          "type": "craft"
-        },
-        {
-          "slot": "gloves",
           "src": "Y8S1 Journey 7 Reward",
-          "type": "craft"
-        },
-        {
-          "slot": "holster",
           "type": "craft"
         },
         {
@@ -12788,15 +9886,7 @@
         },
         {
           "slot": "kneepads",
-          "type": "craft"
-        },
-        {
-          "slot": "kneepads",
           "src": "Y8S1 Journey 7 Reward",
-          "type": "craft"
-        },
-        {
-          "slot": "mask",
           "type": "craft"
         },
         {
@@ -13621,11 +10711,6 @@
       "blueprint": [
         {
           "slot": "backpack",
-          "type": "craft"
-        },
-        {
-          "slot": "backpack",
-          "src": "Season",
           "type": "craft"
         },
         {
@@ -15383,9 +12468,6 @@
       "slot_key": "ar",
       "blueprint": [
         {
-          "type": "craft"
-        },
-        {
           "src": "Purchase from Inaya after defeating Brooklyn Hunters",
           "type": "craft"
         }
@@ -16883,10 +13965,6 @@
       "slot_key": "lmg",
       "blueprint": [
         {
-          "src": "Reconstructed Caches",
-          "type": "craft"
-        },
-        {
           "src": "__EMPTY__",
           "type": "craft"
         }
@@ -16972,10 +14050,6 @@
       "slot_key": "ar",
       "blueprint": [
         {
-          "type": "craft",
-          "src": "Field Research Firewall"
-        },
-        {
           "src": "Field Research Firewall",
           "type": "craft"
         }
@@ -17051,9 +14125,6 @@
       "brand_key": "",
       "slot_key": "ar",
       "blueprint": [
-        {
-          "type": "craft"
-        },
         {
           "src": "Purchase from Inaya after defeating DC Hunters",
           "type": "craft"
@@ -17171,9 +14242,6 @@
       "brand_key": "",
       "slot_key": "lmg",
       "blueprint": [
-        {
-          "type": "craft"
-        },
         {
           "src": "Field Research Gunner",
           "type": "craft"
@@ -17932,9 +15000,6 @@
       "slot_key": "ar",
       "blueprint": [
         {
-          "type": "craft"
-        },
-        {
           "src": "Reconstructed Caches",
           "type": "craft"
         }
@@ -17975,10 +15040,6 @@
       "slot_key": "shotgun",
       "blueprint": [
         {
-          "type": "craft",
-          "src": "Field Research Technician"
-        },
-        {
           "src": "Field Research Technician",
           "type": "craft"
         }
@@ -18014,9 +15075,6 @@
       "brand_key": "",
       "slot_key": "lmg",
       "blueprint": [
-        {
-          "type": "craft"
-        },
         {
           "src": "Friend Referral Reward",
           "type": "craft"
