@@ -1278,32 +1278,26 @@
       "blueprint": [
         {
           "slot": "backpack",
-          "src": "Y8S1 Season Reward",
           "type": "craft"
         },
         {
           "slot": "chest",
-          "src": "Y8S1 Season Reward",
           "type": "craft"
         },
         {
           "slot": "gloves",
-          "src": "Y8S1 Season Reward",
           "type": "craft"
         },
         {
           "slot": "holster",
-          "src": "Y8S1 Season Reward",
           "type": "craft"
         },
         {
           "slot": "kneepads",
-          "src": "Y8S1 Season Reward",
           "type": "craft"
         },
         {
           "slot": "mask",
-          "src": "Y8S1 Season Reward",
           "type": "craft"
         }
       ],
@@ -1743,7 +1737,7 @@
       "blueprint": [
         {
           "slot": "backpack",
-          "src": "Blacktusk Kill Squad",
+          "src": "blacktusk Kill Squad",
           "type": "craft"
         }
       ],
@@ -1765,7 +1759,7 @@
       "blueprint": [
         {
           "slot": "backpack",
-          "src": "Blacktusk Kill Squad",
+          "src": "blacktusk Kill Squad",
           "type": "craft"
         }
       ],
@@ -1785,7 +1779,7 @@
       "blueprint": [
         {
           "slot": "backpack",
-          "src": "Blacktusk Kill Squad",
+          "src": "blacktusk Kill Squad",
           "type": "craft"
         }
       ],
@@ -1805,7 +1799,7 @@
       "blueprint": [
         {
           "slot": "backpack",
-          "src": "Blacktusk Kill Squad",
+          "src": "blacktusk Kill Squad",
           "type": "craft"
         }
       ],
@@ -1825,7 +1819,7 @@
       "blueprint": [
         {
           "slot": "backpack",
-          "src": "Blacktusk Kill Squad",
+          "src": "blacktusk Kill Squad",
           "type": "craft"
         }
       ],
@@ -1845,7 +1839,7 @@
       "blueprint": [
         {
           "slot": "kneepads",
-          "src": "Blacktusk Kill Squad",
+          "src": "blacktusk Kill Squad",
           "type": "craft"
         }
       ],
@@ -1865,7 +1859,7 @@
       "blueprint": [
         {
           "slot": "kneepads",
-          "src": "Blacktusk Kill Squad",
+          "src": "blacktusk Kill Squad",
           "type": "craft"
         }
       ],
@@ -1887,7 +1881,7 @@
       "blueprint": [
         {
           "slot": "kneepads",
-          "src": "Blacktusk Kill Squad",
+          "src": "blacktusk Kill Squad",
           "type": "craft"
         }
       ],
@@ -1907,7 +1901,7 @@
       "blueprint": [
         {
           "slot": "kneepads",
-          "src": "Blacktusk Kill Squad",
+          "src": "blacktusk Kill Squad",
           "type": "craft"
         }
       ],
@@ -1927,7 +1921,7 @@
       "blueprint": [
         {
           "slot": "kneepads",
-          "src": "Blacktusk Kill Squad",
+          "src": "blacktusk Kill Squad",
           "type": "craft"
         }
       ],
@@ -1947,7 +1941,7 @@
       "blueprint": [
         {
           "slot": "kneepads",
-          "src": "Blacktusk Kill Squad",
+          "src": "blacktusk Kill Squad",
           "type": "craft"
         }
       ],
@@ -3873,7 +3867,7 @@
       "blueprint": [
         {
           "slot": "chest",
-          "src": "Blacktusk Kill Squad",
+          "src": "blacktusk Kill Squad",
           "type": "craft"
         }
       ],
@@ -3893,7 +3887,7 @@
       "blueprint": [
         {
           "slot": "chest",
-          "src": "Blacktusk Kill Squad",
+          "src": "blacktusk Kill Squad",
           "type": "craft"
         }
       ],
@@ -3913,7 +3907,7 @@
       "blueprint": [
         {
           "slot": "chest",
-          "src": "Blacktusk Kill Squad",
+          "src": "blacktusk Kill Squad",
           "type": "craft"
         }
       ],
@@ -3933,7 +3927,7 @@
       "blueprint": [
         {
           "slot": "chest",
-          "src": "Blacktusk Kill Squad",
+          "src": "blacktusk Kill Squad",
           "type": "craft"
         }
       ],
@@ -3953,7 +3947,7 @@
       "blueprint": [
         {
           "slot": "chest",
-          "src": "Blacktusk Kill Squad",
+          "src": "blacktusk Kill Squad",
           "type": "craft"
         }
       ],
@@ -3973,7 +3967,7 @@
       "blueprint": [
         {
           "slot": "chest",
-          "src": "Blacktusk Kill Squad",
+          "src": "blacktusk Kill Squad",
           "type": "craft"
         }
       ],
@@ -4611,7 +4605,7 @@
       "blueprint": [
         {
           "slot": "mask",
-          "src": "Blacktusk Kill Squad",
+          "src": "blacktusk Kill Squad",
           "type": "craft"
         }
       ],
@@ -4631,7 +4625,7 @@
       "blueprint": [
         {
           "slot": "mask",
-          "src": "Blacktusk Kill Squad",
+          "src": "blacktusk Kill Squad",
           "type": "craft"
         }
       ],
@@ -4653,7 +4647,7 @@
       "blueprint": [
         {
           "slot": "mask",
-          "src": "Blacktusk Kill Squad",
+          "src": "blacktusk Kill Squad",
           "type": "craft"
         }
       ],
@@ -9866,32 +9860,26 @@
       "blueprint": [
         {
           "slot": "backpack",
-          "src": "Y8S1 Journey 7 Reward",
           "type": "craft"
         },
         {
           "slot": "chest",
-          "src": "Y8S1 Journey 7 Reward",
           "type": "craft"
         },
         {
           "slot": "gloves",
-          "src": "Y8S1 Journey 7 Reward",
           "type": "craft"
         },
         {
           "slot": "holster",
-          "src": "Y8S1 Journey 7 Reward",
           "type": "craft"
         },
         {
           "slot": "kneepads",
-          "src": "Y8S1 Journey 7 Reward",
           "type": "craft"
         },
         {
           "slot": "mask",
-          "src": "Y8S1 Journey 7 Reward",
           "type": "craft"
         }
       ],
@@ -9950,26 +9938,32 @@
       "blueprint": [
         {
           "slot": "backpack",
+          "src": "Y8S3 Journey",
           "type": "craft"
         },
         {
           "slot": "chest",
+          "src": "Y8S3 Journey",
           "type": "craft"
         },
         {
           "slot": "gloves",
+          "src": "Y8S3 Journey",
           "type": "craft"
         },
         {
           "slot": "holster",
+          "src": "Y8S3 Journey",
           "type": "craft"
         },
         {
           "slot": "kneepads",
+          "src": "Y8S3 Journey",
           "type": "craft"
         },
         {
           "slot": "mask",
+          "src": "Y8S3 Journey",
           "type": "craft"
         }
       ],
@@ -11501,7 +11495,7 @@
       "slot_key": "ar",
       "blueprint": [
         {
-          "src": "Blacktusk Kill Squad",
+          "src": "blacktusk Kill Squad",
           "type": "craft"
         }
       ],
@@ -12071,7 +12065,7 @@
       "slot_key": "rifle",
       "blueprint": [
         {
-          "src": "Blacktusk completion",
+          "src": "blacktusk completion",
           "type": "craft"
         }
       ],
@@ -12206,7 +12200,7 @@
       "slot_key": "ar",
       "blueprint": [
         {
-          "src": "Blacktusk completion",
+          "src": "blacktusk completion",
           "type": "craft"
         }
       ],
@@ -13175,7 +13169,11 @@
       "brand_name": "",
       "brand_key": "",
       "slot_key": "shotgun",
-      "blueprint": [],
+      "blueprint": [
+        {
+          "type": "craft"
+        }
+      ],
       "target_looted": [],
       "drop": []
     },
@@ -13973,7 +13971,7 @@
       "slot_key": "smg",
       "blueprint": [
         {
-          "src": "Blacktusk completion",
+          "src": "blacktusk completion",
           "type": "craft"
         }
       ],
@@ -14541,7 +14539,7 @@
       "slot_key": "lmg",
       "blueprint": [
         {
-          "src": "__EMPTY__",
+          "src": "Reconstructed Caches",
           "type": "craft"
         }
       ],
@@ -14558,7 +14556,11 @@
       "brand_name": "",
       "brand_key": "",
       "slot_key": "rifle",
-      "blueprint": [],
+      "blueprint": [
+        {
+          "type": "craft"
+        }
+      ],
       "target_looted": [],
       "drop": []
     },
@@ -14683,7 +14685,7 @@
       "slot_key": "shotgun",
       "blueprint": [
         {
-          "src": "Blacktusk Kill Squad",
+          "src": "blacktusk Kill Squad",
           "type": "craft"
         }
       ],
@@ -15543,7 +15545,7 @@
       "slot_key": "pistol",
       "blueprint": [
         {
-          "src": "Blacktusk Kill Squad",
+          "src": "blacktusk Kill Squad",
           "type": "craft"
         }
       ],
@@ -15616,7 +15618,7 @@
       "slot_key": "ar",
       "blueprint": [
         {
-          "src": "Blacktusk completion",
+          "src": "blacktusk completion",
           "type": "craft"
         }
       ],
@@ -15795,7 +15797,7 @@
       "slot_key": "rifle",
       "blueprint": [
         {
-          "src": "Blacktusk completion",
+          "src": "blacktusk completion",
           "type": "craft"
         }
       ],
@@ -15850,7 +15852,7 @@
       "slot_key": "lmg",
       "blueprint": [
         {
-          "src": "Friend Referral Reward",
+          "src": "Past Friend Referral Reward",
           "type": "craft"
         }
       ],
@@ -16012,7 +16014,7 @@
       "slot_key": "smg",
       "blueprint": [
         {
-          "src": "Blacktusk Kill Squad",
+          "src": "blacktusk Kill Squad",
           "type": "craft"
         }
       ],
@@ -16141,7 +16143,7 @@
       "slot_key": "rifle",
       "blueprint": [
         {
-          "src": "Blacktusk Kill Squad",
+          "src": "blacktusk Kill Squad",
           "type": "craft"
         }
       ],
@@ -16160,7 +16162,7 @@
       "slot_key": "pistol",
       "blueprint": [
         {
-          "src": "Blacktusk Kill Squad",
+          "src": "blacktusk Kill Squad",
           "type": "craft"
         }
       ],

@@ -3437,6 +3437,11 @@ th {
   color: rgba(var(--rarity-exotic), 1);
   background: rgba(var(--rarity-exotic), 0.18);
 }
+.blueprint-row.rarity-exotic .blueprint-reconfigure-pill.is-on {
+  border-color: rgba(var(--rarity-exotic), 0.6);
+  color: rgba(var(--rarity-exotic), 1);
+  background: rgba(var(--rarity-exotic), 0.18);
+}
 .blueprint-row.rarity-exotic .wt-badge.is-on {
   border-color: rgba(var(--rarity-exotic), 0.6);
   color: rgba(var(--rarity-exotic), 1);
@@ -3523,6 +3528,28 @@ th {
   align-items: center;
   gap: 6px;
   min-width: 0;
+}
+
+.blueprint-reconfigure-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 18px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  background: rgba(255, 255, 255, 0.06);
+  flex: 0 0 auto;
+}
+
+.blueprint-reconfigure-ico {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+}
+
+.blueprint-reconfigure-pill.is-off {
+  opacity: 0.45;
 }
 
 .blueprint-slot-inline-name {

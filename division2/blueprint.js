@@ -38,6 +38,21 @@
     },
   };
 
+  const SOURCE_LABEL_OVERRIDES = {
+    "Hyenas completion": { ja: "ハイエナ 報復完了", en: "Hyenas retaliation completion" },
+    "Outcasts completion": { ja: "アウトキャスト 報復完了", en: "Outcasts retaliation completion" },
+    "Rikers completion": { ja: "ライカーズ 報復完了", en: "Rikers retaliation completion" },
+    "True Sons completion": { ja: "トゥルーサンズ 報復完了", en: "True Sons retaliation completion" },
+    "Cleaners completion": { ja: "クリーナーズ 報復完了", en: "Cleaners retaliation completion" },
+    "Blacktusk completion": { ja: "ブラックタスク 報復完了", en: "Blacktusk retaliation completion" },
+    "Hyenas Kill Squad": { ja: "ハイエナ キルスクワッド", en: "Hyenas Kill Squad" },
+    "Outcasts Kill Squad": { ja: "アウトキャスト キルスクワッド", en: "Outcasts Kill Squad" },
+    "Rikers Kill Squad": { ja: "ライカーズ キルスクワッド", en: "Rikers Kill Squad" },
+    "True Sons Kill Squad": { ja: "トゥルーサンズ キルスクワッド", en: "True Sons Kill Squad" },
+    "Cleaners Kill Squad": { ja: "クリーナーズ キルスクワッド", en: "Cleaners Kill Squad" },
+    "Blacktusk Kill Squad": { ja: "ブラックタスク キルスクワッド", en: "Blacktusk Kill Squad" },
+  };
+
   const SOURCE_LABEL = {
     "Control Point": { ja: "コントロールポイント", en: "Control Point" },
     "Season": { ja: "過去シーズン", en: "Past Season" },
@@ -71,6 +86,22 @@
     "Purchase from Inaya after defeating DC Hunters": { ja: "DCハンター討伐後、イナヤから購入", en: "Purchase from Inaya after defeating DC Hunters" },
     "Purchase from Inaya after defeating Brooklyn Hunters": { ja: "ブルックリンハンター討伐後、イナヤから購入", en: "Purchase from Inaya after defeating Brooklyn Hunters" },
   };
+
+  Object.assign(SOURCE_LABEL, SOURCE_LABEL_OVERRIDES);
+  Object.assign(SOURCE_LABEL, {
+    "Hyenas completion": { ja: "\u30cf\u30a4\u30a8\u30ca \u5831\u5fa9\u5b8c\u4e86", en: "Hyenas retaliation completion" },
+    "Outcasts completion": { ja: "\u30a2\u30a6\u30c8\u30ad\u30e3\u30b9\u30c8 \u5831\u5fa9\u5b8c\u4e86", en: "Outcasts retaliation completion" },
+    "Rikers completion": { ja: "\u30e9\u30a4\u30ab\u30fc\u30ba \u5831\u5fa9\u5b8c\u4e86", en: "Rikers retaliation completion" },
+    "True Sons completion": { ja: "\u30c8\u30a5\u30eb\u30fc\u30b5\u30f3\u30ba \u5831\u5fa9\u5b8c\u4e86", en: "True Sons retaliation completion" },
+    "Cleaners completion": { ja: "\u30af\u30ea\u30fc\u30ca\u30fc\u30ba \u5831\u5fa9\u5b8c\u4e86", en: "Cleaners retaliation completion" },
+    "Blacktusk completion": { ja: "\u30d6\u30e9\u30c3\u30af\u30bf\u30b9\u30af \u5831\u5fa9\u5b8c\u4e86", en: "Blacktusk retaliation completion" },
+    "Hyenas Kill Squad": { ja: "\u30cf\u30a4\u30a8\u30ca \u30ad\u30eb\u30b9\u30af\u30ef\u30c3\u30c9", en: "Hyenas Kill Squad" },
+    "Outcasts Kill Squad": { ja: "\u30a2\u30a6\u30c8\u30ad\u30e3\u30b9\u30c8 \u30ad\u30eb\u30b9\u30af\u30ef\u30c3\u30c9", en: "Outcasts Kill Squad" },
+    "Rikers Kill Squad": { ja: "\u30e9\u30a4\u30ab\u30fc\u30ba \u30ad\u30eb\u30b9\u30af\u30ef\u30c3\u30c9", en: "Rikers Kill Squad" },
+    "True Sons Kill Squad": { ja: "\u30c8\u30a5\u30eb\u30fc\u30b5\u30f3\u30ba \u30ad\u30eb\u30b9\u30af\u30ef\u30c3\u30c9", en: "True Sons Kill Squad" },
+    "Cleaners Kill Squad": { ja: "\u30af\u30ea\u30fc\u30ca\u30fc\u30ba \u30ad\u30eb\u30b9\u30af\u30ef\u30c3\u30c9", en: "Cleaners Kill Squad" },
+    "Blacktusk Kill Squad": { ja: "\u30d6\u30e9\u30c3\u30af\u30bf\u30b9\u30af \u30ad\u30eb\u30b9\u30af\u30ef\u30c3\u30c9", en: "Blacktusk Kill Squad" },
+  });
 
   function bpUi(key) {
     const isJa = langSelect && langSelect.value === "ja";
@@ -162,11 +193,12 @@
     return s;
   }
 
-  function sourceLabel(raw) {
+  function sourceLabel(raw, rawJp = "") {
     const s = String(raw || "").trim();
     if (s === "__EMPTY__") return "";
+    if (langSelect && langSelect.value === "ja" && String(rawJp || "").trim()) return String(rawJp).trim();
     if (!s) return bpUi("source_none");
-    const hit = SOURCE_LABEL[s];
+    const hit = SOURCE_LABEL[s] || Object.entries(SOURCE_LABEL).find(([key]) => normalizeKey(key) === normalizeKey(s))?.[1];
     if (!hit) return s;
     return (langSelect && langSelect.value === "ja") ? hit.ja : hit.en;
   }
@@ -264,6 +296,13 @@
     return `<img class="ico ico--item-source blueprint-slot-ico" src="${escapeHtml(src)}" alt="${escapeHtml(slotLabel(s))}" title="${escapeHtml(slotLabel(s))}" loading="lazy" decoding="async" />`;
   }
 
+  function reconfigureIcon(isActive) {
+    const label = (langSelect && langSelect.value === "ja") ? "再構成" : "Reconfigure";
+    const src = appPath("img/icon/other/reconfigure.png");
+    const cls = isActive ? "is-on" : "is-off";
+    return `<span class="blueprint-reconfigure-pill ${cls}"><img class="ico ico--item-source blueprint-reconfigure-ico" src="${escapeHtml(src)}" alt="${escapeHtml(label)}" title="${escapeHtml(label)}" loading="lazy" decoding="async" /></span>`;
+  }
+
   async function fetchBlueprintRows() {
     if (blueprintCache) return blueprintCache;
     const SQL = await initSql();
@@ -276,7 +315,7 @@
       if (!hasBp) throw new Error("data_unavailable");
 
       const out = [];
-      const bpStmt = db.prepare("SELECT category, slot, rality, brand, brand_key, name_key, name, blueprint_exists, season_lock, \"from\" AS source FROM items_blueprints");
+      const bpStmt = db.prepare("SELECT category, slot, rality, brand, brand_key, name_key, name, blueprint_exists, season_lock, project_summit_challenge_cp, reconfigure, \"from\" AS source, from_jp FROM items_blueprints");
       while (bpStmt.step()) {
         const r = bpStmt.getAsObject() || {};
         const category = normalizeKey(r.category);
@@ -292,7 +331,10 @@
           name: String(r.name || "").trim(),
           blueprint_exists: toBool(r.blueprint_exists),
           season_lock: toBool(r.season_lock),
+          project_summit_challenge_cp: toBool(r.project_summit_challenge_cp),
           source: String(r.source || "").trim(),
+          source_jp: String(r.from_jp || "").trim(),
+          reconfigure: toBool(r.reconfigure),
         });
       }
       bpStmt.free();
@@ -414,7 +456,7 @@
     `;
   }
 
-  function addAggregateRow(map, key, label, rality, sourceRaw, slot, blueprintExists, seasonLock, typeLabel) {
+  function addAggregateRow(map, key, label, rality, sourceRaw, sourceJp, slot, blueprintExists, seasonLock, projectSource, reconfigure, typeLabel) {
     const k = normalizeKey(key || label || "unknown");
     if (!map.has(k)) {
       map.set(k, {
@@ -426,6 +468,8 @@
         slots: {},
         sourceSet: new Set(),
         season_lock: false,
+        project_summit_challenge_cp: false,
+        reconfigure: false,
         blueprint_exists: false,
       });
     }
@@ -434,8 +478,10 @@
     if (!ag.slots[sk]) ag.slots[sk] = { exists: false, season: false };
     ag.slots[sk].exists = ag.slots[sk].exists || !!blueprintExists;
     ag.slots[sk].season = ag.slots[sk].season || !!seasonLock;
-    if (sourceRaw) ag.sourceSet.add(sourceLabel(sourceRaw));
+    if (sourceRaw) ag.sourceSet.add(sourceLabel(sourceRaw, sourceJp));
     ag.season_lock = ag.season_lock || !!seasonLock;
+    ag.project_summit_challenge_cp = ag.project_summit_challenge_cp || !!projectSource;
+    ag.reconfigure = ag.reconfigure || !!reconfigure;
     ag.blueprint_exists = ag.blueprint_exists || !!blueprintExists;
   }
 
@@ -453,6 +499,8 @@
         slots: ag.slots || {},
         source,
         season_lock: !!ag.season_lock,
+        project_summit_challenge_cp: !!ag.project_summit_challenge_cp,
+        reconfigure: !!ag.reconfigure,
         blueprint_exists: !!ag.blueprint_exists,
         brand_key: normalizeKey(ag.brand_key || ""),
         brand_scope: normalizeKey(ag.brand_scope || (ag.rality === "gearset" ? "gearset" : "brand")),
@@ -474,7 +522,7 @@
       const hasName = String(r.name || "").trim().length > 0 || String(r.name_key || "").trim().length > 0;
       if (r.rality === "highend" || (!r.rality && hasBrand && !hasName)) {
         const label = localizeBrand(r.brand) || r.brand || "-";
-        addAggregateRow(brandAgg, r.brand || label, label, "highend", r.source, r.slot, r.blueprint_exists, r.season_lock, bpUi("type_brand"));
+        addAggregateRow(brandAgg, r.brand || label, label, "highend", r.source, r.source_jp, r.slot, r.blueprint_exists, r.season_lock, r.project_summit_challenge_cp, r.reconfigure, bpUi("type_brand"));
         const ag = brandAgg.get(normalizeKey(r.brand || label || ""));
         if (ag) {
           if (!ag.brand_key) ag.brand_key = normalizeKey(r.brand_key || r.brand || label || "");
@@ -484,7 +532,7 @@
       }
       if (r.rality === "gearset") {
         const label = localizeBrand(r.brand) || localizeName(r.name_key, r.name) || r.brand || "-";
-        addAggregateRow(gearsetAgg, r.brand || label, label, "gearset", r.source, r.slot, r.blueprint_exists, r.season_lock, bpUi("type_gearset"));
+        addAggregateRow(gearsetAgg, r.brand || label, label, "gearset", r.source, r.source_jp, r.slot, r.blueprint_exists, r.season_lock, r.project_summit_challenge_cp, r.reconfigure, bpUi("type_gearset"));
         const ag = gearsetAgg.get(normalizeKey(r.brand || label || ""));
         if (ag) {
           if (!ag.brand_key) ag.brand_key = normalizeKey(r.brand_key || r.brand || label || "");
@@ -503,13 +551,15 @@
         name_key: normalizeKey(r.name_key),
         rality: inferredRarity,
         slot: r.slot,
-        source: sourceLabel(r.source),
+        source: sourceLabel(r.source, r.source_jp),
         blueprint_exists: !!r.blueprint_exists,
         season_lock: !!r.season_lock,
+        project_summit_challenge_cp: !!r.project_summit_challenge_cp,
+        reconfigure: !!r.reconfigure,
         typeLabel: rarityLabel(inferredRarity),
         brand_key: normalizeKey(r.brand_key || r.brand || ""),
         brand_scope: "brand",
-        search: normalizeKey(`${displayName} ${namedBrand} ${slotLabel(r.slot)} ${sourceLabel(r.source)} ${rarityLabel(inferredRarity)}`),
+        search: normalizeKey(`${displayName} ${namedBrand} ${slotLabel(r.slot)} ${sourceLabel(r.source, r.source_jp)} ${rarityLabel(inferredRarity)}`),
       };
       if (inferredRarity === "named" || inferredRarity === "exotic") {
         const key = normalizeKey(`${row.rality}::${row.slot}::${r.name_key || displayName}`);
@@ -538,11 +588,19 @@
       delete x._sourceSet;
       return x;
     });
-    brandSingles.sort((a, b) => String(a.name).localeCompare(String(b.name), (langSelect && langSelect.value === "ja") ? "ja" : "en"));
+    const nameSort = (a, b) => String(a.name).localeCompare(String(b.name), (langSelect && langSelect.value === "ja") ? "ja" : "en");
+    brandSingles.sort(nameSort);
     namedRows.sort((a, b) => String(a.name).localeCompare(String(b.name), (langSelect && langSelect.value === "ja") ? "ja" : "en"));
-    exoticRows.sort((a, b) => String(a.name).localeCompare(String(b.name), (langSelect && langSelect.value === "ja") ? "ja" : "en"));
+    exoticRows.sort((a, b) => {
+      const slotRank = GEAR_SLOTS.indexOf(normalizeSlot(a.slot)) - GEAR_SLOTS.indexOf(normalizeSlot(b.slot));
+      if (slotRank !== 0) return slotRank;
+      return nameSort(a, b);
+    });
+    const highendRows = finalizeAggregateRows(brandAgg, bpUi("type_brand")).concat(brandSingles);
+    highendRows.sort(nameSort);
+    namedRows.sort(nameSort);
     return {
-      brandset: finalizeAggregateRows(brandAgg, bpUi("type_brand")).concat(brandSingles, namedRows),
+      brandset: highendRows.concat(namedRows),
       gearset: finalizeAggregateRows(gearsetAgg, bpUi("type_gearset")),
       exotic: exoticRows,
     };
@@ -564,7 +622,7 @@
       const slot = normalizeSlot(r.slot);
       if (!WEAPON_SLOTS.includes(slot)) return;
       const name = localizeName(r.name_key, r.name) || localizeBrand(r.brand) || "-";
-      const source = sourceLabel(r.source);
+      const source = sourceLabel(r.source, r.source_jp);
       const row = {
         category: "weapon",
         name,
@@ -574,6 +632,8 @@
         source,
         blueprint_exists: !!r.blueprint_exists,
         season_lock: !!r.season_lock,
+        project_summit_challenge_cp: !!r.project_summit_challenge_cp,
+        reconfigure: !!r.reconfigure,
         search: normalizeKey(`${name} ${slotLabel(slot)} ${source} ${rarityLabel(r.rality)}`),
       };
       const key = normalizeKey(`${slot}::${r.name_key || name}`);
@@ -585,6 +645,8 @@
         if (rarityRank(row.rality) > rarityRank(ex.rality)) ex.rality = row.rality;
         ex.blueprint_exists = ex.blueprint_exists || row.blueprint_exists;
         ex.season_lock = ex.season_lock || row.season_lock;
+        ex.project_summit_challenge_cp = ex.project_summit_challenge_cp || row.project_summit_challenge_cp;
+        ex.reconfigure = ex.reconfigure || row.reconfigure;
         ex._sourceSet.add(source);
         ex.source = Array.from(ex._sourceSet).filter(Boolean).join(", ");
         ex.search = normalizeKey(`${ex.name} ${slotLabel(slot)} ${ex.source} ${rarityLabel(ex.rality)}`);
@@ -595,7 +657,11 @@
         delete x._sourceSet;
         return x;
       });
-      groups[s].sort((a, b) => String(a.name).localeCompare(String(b.name), (langSelect && langSelect.value === "ja") ? "ja" : "en"));
+      groups[s].sort((a, b) => {
+        const rank = rarityRank(a.rality) - rarityRank(b.rality);
+        if (rank !== 0) return rank;
+        return String(a.name).localeCompare(String(b.name), (langSelect && langSelect.value === "ja") ? "ja" : "en");
+      });
     });
     return groups;
   }
@@ -632,7 +698,7 @@
     };
     const sourceSearchText = (row) => {
       const available = (row && row.category === "weapon") ? !!(row && row.blueprint_exists) : isRowAvailable(row);
-      return sourceDisplayText(row && row.source, available, !!(row && row.season_lock));
+      return sourceDisplayText(row && row.source, available, !!(row && row.season_lock), !!(row && row.project_summit_challenge_cp), !!(row && row.reconfigure));
     };
     const rowSearchTextRaw = (row) => {
       if (row && row.kind === "brand_agg") {
@@ -725,12 +791,13 @@
     if (row.kind !== "brand_agg") {
       const onoff = row.blueprint_exists ? "is-on" : "is-off";
       const season = row.season_lock ? " has-season" : "";
+      const recon = row.rality === "exotic" ? reconfigureIcon(!!row.reconfigure) : "";
       if (row.rality === "named") {
         const itemName = String(row.item_name || row.name || "-").trim();
         const itemNameHtml = `<button type="button" class="inline-pop-trigger line__text-pop-trigger" data-pop-type="blueprint-named" data-named-kind="gear" data-named-name="${escapeHtml(itemName)}" data-named-name-key="${escapeHtml(String(row.name_key || ""))}">${escapeHtml(itemName)}</button>`;
-        return `<span class="blueprint-slot-inline"><span class="blueprint-slot-pill ${onoff}${season}">${slotIcon(row.slot, "gear")}</span><span class="blueprint-slot-inline-name">${itemNameHtml}</span></span>`;
+        return `<span class="blueprint-slot-inline"><span class="blueprint-slot-pill ${onoff}${season}">${slotIcon(row.slot, "gear")}</span>${recon}<span class="blueprint-slot-inline-name">${itemNameHtml}</span></span>`;
       }
-      return `<span class="blueprint-slot-pill ${onoff}${season}">${slotIcon(row.slot, "gear")}</span>`;
+      return `<span class="blueprint-slot-inline"><span class="blueprint-slot-pill ${onoff}${season}">${slotIcon(row.slot, "gear")}</span>${recon}</span>`;
     }
     const chips = GEAR_SLOTS.map((s) => {
       const st = row.slots[s] || { exists: false, season: false };
@@ -741,7 +808,7 @@
     return `<div class="blueprint-slot-pack">${chips}</div>`;
   }
 
-  function sourceDisplayText(sourceText, available, seasonLock) {
+  function sourceDisplayText(sourceText, available, seasonLock, projectSource, reconfigure, craft) {
     const isJa = langSelect && langSelect.value === "ja";
     const srcRaw = String(sourceText || "").trim();
     if (srcRaw === "__EMPTY__") return "";
@@ -752,29 +819,67 @@
     const sourceNone = bpUi("source_none");
     const sourceMissing = !srcRaw || srcRaw === sourceNone;
     if (sourceMissing) {
-      if (available && !seasonLock) {
+      if (available && !seasonLock && projectSource) {
         return (isJa
           ? "プロジェクト・サミットチャレンジ・警戒レベル3以上のコントロールポイント"
           : "Project / Summit Challenge / Control Point Alert Level 3+");
       }
-      return "";
+      const types = [];
+      if (craft) types.push(isJa ? "クラフト" : "Craft");
+      if (reconfigure) types.push(isJa ? "再構成" : "Reconfigure");
+      return types.join(" / ");
     }
     const tokens = srcRaw.split(",").map((s) => s.trim()).filter(Boolean);
     const enriched = tokens.map(enrichSourceToken).filter(Boolean);
     const text = enriched.length ? enriched.join(" / ") : srcRaw;
-    return text;
+    const types = [];
+    if (craft) types.push(isJa ? "クラフト" : "Craft");
+    if (reconfigure) types.push(isJa ? "再構成" : "Reconfigure");
+    return [text, ...types].filter(Boolean).join(" / ");
   }
 
-  function renderSourceStatusCell(sourceText, available, seasonLock) {
-    return escapeHtml(sourceDisplayText(sourceText, available, seasonLock));
+  // Keep the display contract independent from the legacy mojibake strings above.
+  function sourceDisplayText(sourceText, available, seasonLock, projectSource, reconfigure, craft) {
+    const isJa = langSelect && langSelect.value === "ja";
+    const srcRaw = String(sourceText || "").trim();
+    if (srcRaw === "__EMPTY__") return "";
+    if (seasonLock) return isJa ? "\u904e\u53bb\u30b7\u30fc\u30ba\u30f3\u5831\u916c\u9650\u5b9a\uff08\u73fe\u5728\u53d6\u5f97\u4e0d\u53ef\uff09" : "Past season reward only (currently unobtainable)";
+    const sourceNone = bpUi("source_none");
+    const sourceMissing = !srcRaw || srcRaw === sourceNone;
+    let text = "";
+    if (sourceMissing) {
+      if (available && projectSource) {
+        text = isJa
+          ? "\u30d7\u30ed\u30b8\u30a7\u30af\u30c8\u30fb\u30b5\u30df\u30c3\u30c8\u30c1\u30e3\u30ec\u30f3\u30b8\u30fb\u8b66\u6212\u30ec\u30d9\u30eb3\u4ee5\u4e0a\u306e\u30b3\u30f3\u30c8\u30ed\u30fc\u30eb\u30dd\u30a4\u30f3\u30c8"
+          : "Project / Summit Challenge / Control Point Alert Level 3+";
+      }
+    } else {
+      const tokens = srcRaw.split(",").map((s) => s.trim()).filter(Boolean);
+      text = tokens.map((token) => {
+        const low = token.toLowerCase();
+        const isKillSquad = low.includes("kill squad") || token.includes("\u30ad\u30eb\u30b9\u30af\u30ef\u30c3\u30c9");
+        const isCompletion = low.includes("completion") || low.includes("retaliation completion") || token.includes("\u5831\u5fa9\u5b8c\u4e86");
+        if (isKillSquad) return `${token} (${isJa ? "\u30d2\u30ed\u30a4\u30c3\u30af: 95\uff05\u3001\u30c1\u30e3\u30ec\u30f3\u30b8: 90\uff05\u3001\u30cf\u30fc\u30c9: 60\uff05\u3001\u30ce\u30fc\u30de\u30eb: 50\uff05" : "Heroic: 95%, Challenging: 90%, Hard: 60%, Normal: 50%"})`;
+        if (isCompletion) return `${token} (${isJa ? "\u30d2\u30ed\u30a4\u30c3\u30af: 50\uff05\u3001\u30c1\u30e3\u30ec\u30f3\u30b8: 35\uff05\u3001\u30cf\u30fc\u30c9: 10\uff05\u3001\u30ce\u30fc\u30de\u30eb: 5\uff05" : "Heroic: 50%, Challenging: 35%, Hard: 10%, Normal: 5%"})`;
+        return token;
+      }).filter(Boolean).join(" / ") || srcRaw;
+    }
+    const types = [];
+    if (craft) types.push(isJa ? "\u30af\u30e9\u30d5\u30c8" : "Craft");
+    return [text, ...types].filter(Boolean).join(" / ");
   }
 
-  function renderWeaponSlotTypeCell(slot, isAvailable, seasonLock) {
+  function renderSourceStatusCell(sourceText, available, seasonLock, projectSource, reconfigure, craft) {
+    return escapeHtml(sourceDisplayText(sourceText, available, seasonLock, projectSource, reconfigure, craft));
+  }
+
+  function renderWeaponSlotTypeCell(slot, isAvailable, seasonLock, reconfigure, isExotic) {
     const s = normalizeSlot(slot);
     const fullLabel = slotLabel(s);
     const cls = isAvailable ? "is-on" : "is-off";
     const season = seasonLock ? " has-season" : "";
-    return `<span class="blueprint-slot-inline"><span class="blueprint-slot-pill ${cls}${season}">${slotIcon(s, "weapon")}</span><span class="blueprint-slot-inline-name">${escapeHtml(fullLabel)}</span></span>`;
+    const recon = isExotic ? reconfigureIcon(!!reconfigure) : "";
+    return `<span class="blueprint-slot-inline"><span class="blueprint-slot-pill ${cls}${season}">${slotIcon(s, "weapon")}</span>${recon}<span class="blueprint-slot-inline-name">${escapeHtml(fullLabel)}</span></span>`;
   }
 
   function sortMark(state, key) {
@@ -819,7 +924,7 @@
         <td class="blueprint-td-accent"><span class="blueprint-accent"></span></td>
         <td class="blueprint-td-name">${escapeHtml(r.name)}</td>
         <td class="blueprint-td-slots">${renderGearSlotsCell(r)}</td>
-        <td class="blueprint-td-source">${renderSourceStatusCell(r.source, isRowAvailable(r), !!r.season_lock)}</td>
+        <td class="blueprint-td-source">${renderSourceStatusCell(r.source, isRowAvailable(r), !!r.season_lock, !!r.project_summit_challenge_cp, !!r.reconfigure, false)}</td>
       </tr>`;
     }).join("");
     return body;
@@ -833,8 +938,8 @@
       <tr class="blueprint-row ${rarityClass(r.rality)}">
         <td class="blueprint-td-accent"><span class="blueprint-accent"></span></td>
         <td class="blueprint-td-name">${escapeHtml(r.name)}</td>
-        <td class="blueprint-td-slots">${renderWeaponSlotTypeCell(r.slot, !!r.blueprint_exists, !!r.season_lock)}</td>
-        <td class="blueprint-td-source">${renderSourceStatusCell(r.source, !!r.blueprint_exists, !!r.season_lock)}</td>
+        <td class="blueprint-td-slots">${renderWeaponSlotTypeCell(r.slot, !!r.blueprint_exists, !!r.season_lock, !!r.reconfigure, r.rality === "exotic")}</td>
+        <td class="blueprint-td-source">${renderSourceStatusCell(r.source, !!r.blueprint_exists, !!r.season_lock, !!r.project_summit_challenge_cp, !!r.reconfigure, false)}</td>
       </tr>
     `).join("");
     return body;
@@ -844,9 +949,22 @@
     const b = (gearGroups && gearGroups.brandset) ? gearGroups.brandset : [];
     const g = (gearGroups && gearGroups.gearset) ? gearGroups.gearset : [];
     const e = (gearGroups && gearGroups.exotic) ? gearGroups.exotic : [];
-    const rows = []
-      .concat(b, g, e)
-      .concat(WEAPON_SLOTS.flatMap((slot) => ((weaponGroups && weaponGroups[slot]) || [])));
+    const weaponRows = WEAPON_SLOTS.flatMap((slot) => ((weaponGroups && weaponGroups[slot]) || []));
+    const weaponRarityRank = (raw) => {
+      const k = normalizeKey(raw || "");
+      if (k === "named") return 2;
+      if (k === "exotic") return 3;
+      return 1;
+    };
+    const locale = (langSelect && langSelect.value === "ja") ? "ja" : "en";
+    weaponRows.sort((a, b2) => {
+      const rarity = weaponRarityRank(a.rality) - weaponRarityRank(b2.rality);
+      if (rarity !== 0) return rarity;
+      const type = WEAPON_SLOTS.indexOf(normalizeSlot(a.slot)) - WEAPON_SLOTS.indexOf(normalizeSlot(b2.slot));
+      if (type !== 0) return type;
+      return String(a.name).localeCompare(String(b2.name), locale);
+    });
+    const rows = [].concat(b, g, e, weaponRows);
     if (!rows.length) return "";
 
     const sortKey = normalizeKey((state && state.sortKey) || "");
@@ -864,7 +982,7 @@
         if (sortKey === "slot") return String(slotSortText(r) || "").toLowerCase();
         if (sortKey === "source") {
           const available = (r && r.category === "weapon") ? !!(r && r.blueprint_exists) : isRowAvailable(r);
-          return String(sourceDisplayText(r && r.source, available, !!(r && r.season_lock)) || "").toLowerCase();
+          return String(sourceDisplayText(r && r.source, available, !!(r && r.season_lock), !!(r && r.project_summit_challenge_cp), !!(r && r.reconfigure)) || "").toLowerCase();
         }
         return String((r && r.name) || "").toLowerCase();
       };
@@ -885,8 +1003,8 @@
       <tr class="${rowClass}${selectedClass}" data-bp-rowkey="${escapeHtml(rowKey)}">
         <td class="blueprint-td-accent"><span class="blueprint-accent"></span></td>
         <td class="blueprint-td-name">${renderBlueprintNameCell(r)}</td>
-        <td class="blueprint-td-slots">${renderWeaponSlotTypeCell(r.slot, !!r.blueprint_exists, !!r.season_lock)}</td>
-        <td class="blueprint-td-source">${renderSourceStatusCell(r.source, !!r.blueprint_exists, !!r.season_lock)}</td>
+        <td class="blueprint-td-slots">${renderWeaponSlotTypeCell(r.slot, !!r.blueprint_exists, !!r.season_lock, !!r.reconfigure, r.rality === "exotic")}</td>
+        <td class="blueprint-td-source">${renderSourceStatusCell(r.source, !!r.blueprint_exists, !!r.season_lock, !!r.project_summit_challenge_cp, !!r.reconfigure, false)}</td>
       </tr>`;
       }
       return `
@@ -894,7 +1012,7 @@
         <td class="blueprint-td-accent"><span class="blueprint-accent"></span></td>
         <td class="blueprint-td-name">${renderBlueprintNameCell(r)}</td>
         <td class="blueprint-td-slots">${renderGearSlotsCell(r)}</td>
-        <td class="blueprint-td-source">${renderSourceStatusCell(r.source, isRowAvailable(r), !!r.season_lock)}</td>
+        <td class="blueprint-td-source">${renderSourceStatusCell(r.source, isRowAvailable(r), !!r.season_lock, !!r.project_summit_challenge_cp, !!r.reconfigure, false)}</td>
       </tr>`;
     }).join("");
     return `
