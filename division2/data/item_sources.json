@@ -13857,6 +13857,20 @@
       "drop": []
     },
     {
+      "item_id": "weapon:namedsasg12",
+      "entity_type": "weapon",
+      "category": "weapon",
+      "tier": "named",
+      "name_key": "namedsasg12",
+      "name": "Named SASG-12",
+      "brand_name": "",
+      "brand_key": "",
+      "slot_key": "shotgun",
+      "blueprint": [],
+      "target_looted": [],
+      "drop": []
+    },
+    {
       "item_id": "weapon:nemesis",
       "entity_type": "weapon",
       "category": "weapon",
