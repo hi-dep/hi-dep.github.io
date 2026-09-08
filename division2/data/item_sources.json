@@ -11154,6 +11154,24 @@
       "drop": []
     },
     {
+      "item_id": "weapon:blackmarketakmreplica",
+      "entity_type": "weapon",
+      "category": "weapon",
+      "tier": "highend",
+      "name_key": "blackmarketakmreplica",
+      "name": "Black Market AK-M Replica",
+      "brand_name": "",
+      "brand_key": "",
+      "slot_key": "ar",
+      "blueprint": [
+        {
+          "type": "craft"
+        }
+      ],
+      "target_looted": [],
+      "drop": []
+    },
+    {
       "item_id": "weapon:blackmarketm60e6",
       "entity_type": "weapon",
       "category": "weapon",
@@ -11164,6 +11182,24 @@
       "brand_key": "",
       "slot_key": "lmg",
       "blueprint": [],
+      "target_looted": [],
+      "drop": []
+    },
+    {
+      "item_id": "weapon:blackmarketm60e6replica",
+      "entity_type": "weapon",
+      "category": "weapon",
+      "tier": "highend",
+      "name_key": "blackmarketm60e6replica",
+      "name": "Black Market M60 E6 Replica",
+      "brand_name": "",
+      "brand_key": "",
+      "slot_key": "lmg",
+      "blueprint": [
+        {
+          "type": "craft"
+        }
+      ],
       "target_looted": [],
       "drop": []
     },
@@ -11182,6 +11218,24 @@
       "drop": []
     },
     {
+      "item_id": "weapon:blackmarketrpk74ereplica",
+      "entity_type": "weapon",
+      "category": "weapon",
+      "tier": "highend",
+      "name_key": "blackmarketrpk74ereplica",
+      "name": "Black Market RPK-74 E Replica",
+      "brand_name": "",
+      "brand_key": "",
+      "slot_key": "lmg",
+      "blueprint": [
+        {
+          "type": "craft"
+        }
+      ],
+      "target_looted": [],
+      "drop": []
+    },
+    {
       "item_id": "weapon:blackmarketsasg12s",
       "entity_type": "weapon",
       "category": "weapon",
@@ -11196,6 +11250,24 @@
       "drop": []
     },
     {
+      "item_id": "weapon:blackmarketsasg12sreplica",
+      "entity_type": "weapon",
+      "category": "weapon",
+      "tier": "highend",
+      "name_key": "blackmarketsasg12sreplica",
+      "name": "Black Market SASG-12 S Replica",
+      "brand_name": "",
+      "brand_key": "",
+      "slot_key": "shotgun",
+      "blueprint": [
+        {
+          "type": "craft"
+        }
+      ],
+      "target_looted": [],
+      "drop": []
+    },
+    {
       "item_id": "weapon:blackmarkett821",
       "entity_type": "weapon",
       "category": "weapon",
@@ -11206,6 +11278,24 @@
       "brand_key": "",
       "slot_key": "smg",
       "blueprint": [],
+      "target_looted": [],
+      "drop": []
+    },
+    {
+      "item_id": "weapon:blackmarkett821replica",
+      "entity_type": "weapon",
+      "category": "weapon",
+      "tier": "highend",
+      "name_key": "blackmarkett821replica",
+      "name": "Black Market T821 Replica",
+      "brand_name": "",
+      "brand_key": "",
+      "slot_key": "smg",
+      "blueprint": [
+        {
+          "type": "craft"
+        }
+      ],
       "target_looted": [],
       "drop": []
     },
@@ -11513,6 +11603,24 @@
       "drop": []
     },
     {
+      "item_id": "weapon:classicm44carbinereplica",
+      "entity_type": "weapon",
+      "category": "weapon",
+      "tier": "highend",
+      "name_key": "classicm44carbinereplica",
+      "name": "Classic M44 Carbine Replica",
+      "brand_name": "",
+      "brand_key": "",
+      "slot_key": "mmr",
+      "blueprint": [
+        {
+          "type": "craft"
+        }
+      ],
+      "target_looted": [],
+      "drop": []
+    },
+    {
       "item_id": "weapon:classicm60",
       "entity_type": "weapon",
       "category": "weapon",
@@ -11523,6 +11631,24 @@
       "brand_key": "",
       "slot_key": "lmg",
       "blueprint": [],
+      "target_looted": [],
+      "drop": []
+    },
+    {
+      "item_id": "weapon:classicm60replica",
+      "entity_type": "weapon",
+      "category": "weapon",
+      "tier": "highend",
+      "name_key": "classicm60replica",
+      "name": "Classic M60 Replica",
+      "brand_name": "",
+      "brand_key": "",
+      "slot_key": "lmg",
+      "blueprint": [
+        {
+          "type": "craft"
+        }
+      ],
       "target_looted": [],
       "drop": []
     },
@@ -11621,6 +11747,24 @@
       "brand_key": "",
       "slot_key": "smg",
       "blueprint": [],
+      "target_looted": [],
+      "drop": []
+    },
+    {
+      "item_id": "weapon:convertedsmg9replica",
+      "entity_type": "weapon",
+      "category": "weapon",
+      "tier": "highend",
+      "name_key": "convertedsmg9replica",
+      "name": "Converted SMG-9 Replica",
+      "brand_name": "",
+      "brand_key": "",
+      "slot_key": "smg",
+      "blueprint": [
+        {
+          "type": "craft"
+        }
+      ],
       "target_looted": [],
       "drop": []
     },
@@ -11733,6 +11877,24 @@
       "drop": []
     },
     {
+      "item_id": "weapon:customl86a2replica",
+      "entity_type": "weapon",
+      "category": "weapon",
+      "tier": "highend",
+      "name_key": "customl86a2replica",
+      "name": "Custom L86 A2 Replica",
+      "brand_name": "",
+      "brand_key": "",
+      "slot_key": "lmg",
+      "blueprint": [
+        {
+          "type": "craft"
+        }
+      ],
+      "target_looted": [],
+      "drop": []
+    },
+    {
       "item_id": "weapon:customm44",
       "entity_type": "weapon",
       "category": "weapon",
@@ -11747,6 +11909,24 @@
       "drop": []
     },
     {
+      "item_id": "weapon:customm44replica",
+      "entity_type": "weapon",
+      "category": "weapon",
+      "tier": "highend",
+      "name_key": "customm44replica",
+      "name": "Custom M44 Replica",
+      "brand_name": "",
+      "brand_key": "",
+      "slot_key": "mmr",
+      "blueprint": [
+        {
+          "type": "craft"
+        }
+      ],
+      "target_looted": [],
+      "drop": []
+    },
+    {
       "item_id": "weapon:customm870mcs",
       "entity_type": "weapon",
       "category": "weapon",
@@ -11757,6 +11937,24 @@
       "brand_key": "",
       "slot_key": "shotgun",
       "blueprint": [],
+      "target_looted": [],
+      "drop": []
+    },
+    {
+      "item_id": "weapon:customm870mcsreplica",
+      "entity_type": "weapon",
+      "category": "weapon",
+      "tier": "highend",
+      "name_key": "customm870mcsreplica",
+      "name": "Custom M870 MCS Replica",
+      "brand_name": "",
+      "brand_key": "",
+      "slot_key": "shotgun",
+      "blueprint": [
+        {
+          "type": "craft"
+        }
+      ],
       "target_looted": [],
       "drop": []
     },
@@ -11895,6 +12093,24 @@
       "drop": []
     },
     {
+      "item_id": "weapon:dicerosreplica",
+      "entity_type": "weapon",
+      "category": "weapon",
+      "tier": "highend",
+      "name_key": "dicerosreplica",
+      "name": "Diceros Replica",
+      "brand_name": "",
+      "brand_key": "",
+      "slot_key": "pistol",
+      "blueprint": [
+        {
+          "type": "craft"
+        }
+      ],
+      "target_looted": [],
+      "drop": []
+    },
+    {
       "item_id": "weapon:doctorhome",
       "entity_type": "weapon",
       "category": "weapon",
@@ -11938,6 +12154,24 @@
       "brand_key": "",
       "slot_key": "shotgun",
       "blueprint": [],
+      "target_looted": [],
+      "drop": []
+    },
+    {
+      "item_id": "weapon:doublebarrelshotgunreplica",
+      "entity_type": "weapon",
+      "category": "weapon",
+      "tier": "highend",
+      "name_key": "doublebarrelshotgunreplica",
+      "name": "Double Barrel Shotgun Replica",
+      "brand_name": "",
+      "brand_key": "",
+      "slot_key": "shotgun",
+      "blueprint": [
+        {
+          "type": "craft"
+        }
+      ],
       "target_looted": [],
       "drop": []
     },
@@ -12095,6 +12329,24 @@
       "drop": []
     },
     {
+      "item_id": "weapon:f2000replica",
+      "entity_type": "weapon",
+      "category": "weapon",
+      "tier": "highend",
+      "name_key": "f2000replica",
+      "name": "F2000 Replica",
+      "brand_name": "",
+      "brand_key": "",
+      "slot_key": "ar",
+      "blueprint": [
+        {
+          "type": "craft"
+        }
+      ],
+      "target_looted": [],
+      "drop": []
+    },
+    {
       "item_id": "weapon:fafnir",
       "entity_type": "weapon",
       "category": "weapon",
@@ -12151,6 +12403,24 @@
       "drop": []
     },
     {
+      "item_id": "weapon:falsa58parareplica",
+      "entity_type": "weapon",
+      "category": "weapon",
+      "tier": "highend",
+      "name_key": "falsa58parareplica",
+      "name": "FAL SA-58 Para Replica",
+      "brand_name": "",
+      "brand_key": "",
+      "slot_key": "ar",
+      "blueprint": [
+        {
+          "type": "craft"
+        }
+      ],
+      "target_looted": [],
+      "drop": []
+    },
+    {
       "item_id": "weapon:famas2010",
       "entity_type": "weapon",
       "category": "weapon",
@@ -12161,6 +12431,24 @@
       "brand_key": "",
       "slot_key": "ar",
       "blueprint": [],
+      "target_looted": [],
+      "drop": []
+    },
+    {
+      "item_id": "weapon:famas2010replica",
+      "entity_type": "weapon",
+      "category": "weapon",
+      "tier": "highend",
+      "name_key": "famas2010replica",
+      "name": "FAMAS 2010 Replica",
+      "brand_name": "",
+      "brand_key": "",
+      "slot_key": "ar",
+      "blueprint": [
+        {
+          "type": "craft"
+        }
+      ],
       "target_looted": [],
       "drop": []
     },
@@ -12272,6 +12560,24 @@
       "brand_key": "",
       "slot_key": "ar",
       "blueprint": [],
+      "target_looted": [],
+      "drop": []
+    },
+    {
+      "item_id": "weapon:g36enhancedreplica",
+      "entity_type": "weapon",
+      "category": "weapon",
+      "tier": "highend",
+      "name_key": "g36enhancedreplica",
+      "name": "G36 Enhanced Replica",
+      "brand_name": "",
+      "brand_key": "",
+      "slot_key": "ar",
+      "blueprint": [
+        {
+          "type": "craft"
+        }
+      ],
       "target_looted": [],
       "drop": []
     },
@@ -12500,6 +12806,24 @@
       "brand_key": "",
       "slot_key": "lmg",
       "blueprint": [],
+      "target_looted": [],
+      "drop": []
+    },
+    {
+      "item_id": "weapon:infantrymg5replica",
+      "entity_type": "weapon",
+      "category": "weapon",
+      "tier": "highend",
+      "name_key": "infantrymg5replica",
+      "name": "Infantry MG5 Replica",
+      "brand_name": "",
+      "brand_key": "",
+      "slot_key": "lmg",
+      "blueprint": [
+        {
+          "type": "craft"
+        }
+      ],
       "target_looted": [],
       "drop": []
     },
@@ -12870,6 +13194,24 @@
       "drop": []
     },
     {
+      "item_id": "weapon:lvoacreplica",
+      "entity_type": "weapon",
+      "category": "weapon",
+      "tier": "highend",
+      "name_key": "lvoacreplica",
+      "name": "LVOA-C Replica",
+      "brand_name": "",
+      "brand_key": "",
+      "slot_key": "rifle",
+      "blueprint": [
+        {
+          "type": "craft"
+        }
+      ],
+      "target_looted": [],
+      "drop": []
+    },
+    {
       "item_id": "weapon:m16a2",
       "entity_type": "weapon",
       "category": "weapon",
@@ -12880,6 +13222,24 @@
       "brand_key": "",
       "slot_key": "rifle",
       "blueprint": [],
+      "target_looted": [],
+      "drop": []
+    },
+    {
+      "item_id": "weapon:m16a2replica",
+      "entity_type": "weapon",
+      "category": "weapon",
+      "tier": "highend",
+      "name_key": "m16a2replica",
+      "name": "M16A2 Replica",
+      "brand_name": "",
+      "brand_key": "",
+      "slot_key": "rifle",
+      "blueprint": [
+        {
+          "type": "craft"
+        }
+      ],
       "target_looted": [],
       "drop": []
     },
@@ -12922,6 +13282,24 @@
       "brand_key": "",
       "slot_key": "rifle",
       "blueprint": [],
+      "target_looted": [],
+      "drop": []
+    },
+    {
+      "item_id": "weapon:m1acqbreplica",
+      "entity_type": "weapon",
+      "category": "weapon",
+      "tier": "highend",
+      "name_key": "m1acqbreplica",
+      "name": "M1A CQB Replica",
+      "brand_name": "",
+      "brand_key": "",
+      "slot_key": "rifle",
+      "blueprint": [
+        {
+          "type": "craft"
+        }
+      ],
       "target_looted": [],
       "drop": []
     },
@@ -12982,6 +13360,24 @@
       "drop": []
     },
     {
+      "item_id": "weapon:m700carbonreplica",
+      "entity_type": "weapon",
+      "category": "weapon",
+      "tier": "highend",
+      "name_key": "m700carbonreplica",
+      "name": "M700 Carbon Replica",
+      "brand_name": "",
+      "brand_key": "",
+      "slot_key": "mmr",
+      "blueprint": [
+        {
+          "type": "craft"
+        }
+      ],
+      "target_looted": [],
+      "drop": []
+    },
+    {
       "item_id": "weapon:m700tactical",
       "entity_type": "weapon",
       "category": "weapon",
@@ -13006,6 +13402,24 @@
       "brand_key": "",
       "slot_key": "shotgun",
       "blueprint": [],
+      "target_looted": [],
+      "drop": []
+    },
+    {
+      "item_id": "weapon:m870expressreplica",
+      "entity_type": "weapon",
+      "category": "weapon",
+      "tier": "highend",
+      "name_key": "m870expressreplica",
+      "name": "M870 Express Replica",
+      "brand_name": "",
+      "brand_key": "",
+      "slot_key": "shotgun",
+      "blueprint": [
+        {
+          "type": "craft"
+        }
+      ],
       "target_looted": [],
       "drop": []
     },
@@ -13181,6 +13595,24 @@
       "drop": []
     },
     {
+      "item_id": "weapon:militarym9replica",
+      "entity_type": "weapon",
+      "category": "weapon",
+      "tier": "highend",
+      "name_key": "militarym9replica",
+      "name": "Military M9 Replica",
+      "brand_name": "",
+      "brand_key": "",
+      "slot_key": "pistol",
+      "blueprint": [
+        {
+          "type": "craft"
+        }
+      ],
+      "target_looted": [],
+      "drop": []
+    },
+    {
       "item_id": "weapon:militarymk17",
       "entity_type": "weapon",
       "category": "weapon",
@@ -13205,6 +13637,24 @@
       "brand_key": "",
       "slot_key": "lmg",
       "blueprint": [],
+      "target_looted": [],
+      "drop": []
+    },
+    {
+      "item_id": "weapon:militarymk46replica",
+      "entity_type": "weapon",
+      "category": "weapon",
+      "tier": "highend",
+      "name_key": "militarymk46replica",
+      "name": "Military MK46 Replica",
+      "brand_name": "",
+      "brand_key": "",
+      "slot_key": "lmg",
+      "blueprint": [
+        {
+          "type": "craft"
+        }
+      ],
       "target_looted": [],
       "drop": []
     },
@@ -13275,6 +13725,24 @@
       "brand_key": "",
       "slot_key": "mmr",
       "blueprint": [],
+      "target_looted": [],
+      "drop": []
+    },
+    {
+      "item_id": "weapon:model700replica",
+      "entity_type": "weapon",
+      "category": "weapon",
+      "tier": "highend",
+      "name_key": "model700replica",
+      "name": "Model 700 Replica",
+      "brand_name": "",
+      "brand_key": "",
+      "slot_key": "mmr",
+      "blueprint": [
+        {
+          "type": "craft"
+        }
+      ],
       "target_looted": [],
       "drop": []
     },
@@ -13355,6 +13823,24 @@
       "brand_key": "",
       "slot_key": "smg",
       "blueprint": [],
+      "target_looted": [],
+      "drop": []
+    },
+    {
+      "item_id": "weapon:mp5streplica",
+      "entity_type": "weapon",
+      "category": "weapon",
+      "tier": "highend",
+      "name_key": "mp5streplica",
+      "name": "MP5 ST Replica",
+      "brand_name": "",
+      "brand_key": "",
+      "slot_key": "smg",
+      "blueprint": [
+        {
+          "type": "craft"
+        }
+      ],
       "target_looted": [],
       "drop": []
     },
@@ -13561,6 +14047,24 @@
       "drop": []
     },
     {
+      "item_id": "weapon:p90replica",
+      "entity_type": "weapon",
+      "category": "weapon",
+      "tier": "highend",
+      "name_key": "p90replica",
+      "name": "P90 Replica",
+      "brand_name": "",
+      "brand_key": "",
+      "slot_key": "smg",
+      "blueprint": [
+        {
+          "type": "craft"
+        }
+      ],
+      "target_looted": [],
+      "drop": []
+    },
+    {
       "item_id": "weapon:pakhan",
       "entity_type": "weapon",
       "category": "weapon",
@@ -13669,6 +14173,24 @@
       "drop": []
     },
     {
+      "item_id": "weapon:police686magnumreplica",
+      "entity_type": "weapon",
+      "category": "weapon",
+      "tier": "highend",
+      "name_key": "police686magnumreplica",
+      "name": "Police 686 Magnum Replica",
+      "brand_name": "",
+      "brand_key": "",
+      "slot_key": "pistol",
+      "blueprint": [
+        {
+          "type": "craft"
+        }
+      ],
+      "target_looted": [],
+      "drop": []
+    },
+    {
       "item_id": "weapon:policem4",
       "entity_type": "weapon",
       "category": "weapon",
@@ -13683,6 +14205,24 @@
       "drop": []
     },
     {
+      "item_id": "weapon:policem4replica",
+      "entity_type": "weapon",
+      "category": "weapon",
+      "tier": "highend",
+      "name_key": "policem4replica",
+      "name": "Police M4 Replica",
+      "brand_name": "",
+      "brand_key": "",
+      "slot_key": "ar",
+      "blueprint": [
+        {
+          "type": "craft"
+        }
+      ],
+      "target_looted": [],
+      "drop": []
+    },
+    {
       "item_id": "weapon:policemk17",
       "entity_type": "weapon",
       "category": "weapon",
@@ -13693,6 +14233,24 @@
       "brand_key": "",
       "slot_key": "rifle",
       "blueprint": [],
+      "target_looted": [],
+      "drop": []
+    },
+    {
+      "item_id": "weapon:policemk17replica",
+      "entity_type": "weapon",
+      "category": "weapon",
+      "tier": "highend",
+      "name_key": "policemk17replica",
+      "name": "Police Mk17 Replica",
+      "brand_name": "",
+      "brand_key": "",
+      "slot_key": "rifle",
+      "blueprint": [
+        {
+          "type": "craft"
+        }
+      ],
       "target_looted": [],
       "drop": []
     },
@@ -13810,6 +14368,24 @@
       "brand_key": "",
       "slot_key": "pistol",
       "blueprint": [],
+      "target_looted": [],
+      "drop": []
+    },
+    {
+      "item_id": "weapon:px4stormtypetreplica",
+      "entity_type": "weapon",
+      "category": "weapon",
+      "tier": "highend",
+      "name_key": "px4stormtypetreplica",
+      "name": "Px4 Storm Type T Replica",
+      "brand_name": "",
+      "brand_key": "",
+      "slot_key": "pistol",
+      "blueprint": [
+        {
+          "type": "craft"
+        }
+      ],
       "target_looted": [],
       "drop": []
     },
@@ -14199,6 +14775,24 @@
       "drop": []
     },
     {
+      "item_id": "weapon:sig716replica",
+      "entity_type": "weapon",
+      "category": "weapon",
+      "tier": "highend",
+      "name_key": "sig716replica",
+      "name": "SIG 716 Replica",
+      "brand_name": "",
+      "brand_key": "",
+      "slot_key": "rifle",
+      "blueprint": [
+        {
+          "type": "craft"
+        }
+      ],
+      "target_looted": [],
+      "drop": []
+    },
+    {
       "item_id": "weapon:sigmpx",
       "entity_type": "weapon",
       "category": "weapon",
@@ -14328,6 +14922,24 @@
       "drop": []
     },
     {
+      "item_id": "weapon:socommk20ssrreplica",
+      "entity_type": "weapon",
+      "category": "weapon",
+      "tier": "highend",
+      "name_key": "socommk20ssrreplica",
+      "name": "SOCOM Mk20 SSR Replica",
+      "brand_name": "",
+      "brand_key": "",
+      "slot_key": "mmr",
+      "blueprint": [
+        {
+          "type": "craft"
+        }
+      ],
+      "target_looted": [],
+      "drop": []
+    },
+    {
       "item_id": "weapon:spas12",
       "entity_type": "weapon",
       "category": "weapon",
@@ -14338,6 +14950,24 @@
       "brand_key": "",
       "slot_key": "shotgun",
       "blueprint": [],
+      "target_looted": [],
+      "drop": []
+    },
+    {
+      "item_id": "weapon:spas12replica",
+      "entity_type": "weapon",
+      "category": "weapon",
+      "tier": "highend",
+      "name_key": "spas12replica",
+      "name": "SPAS-12 Replica",
+      "brand_name": "",
+      "brand_key": "",
+      "slot_key": "shotgun",
+      "blueprint": [
+        {
+          "type": "craft"
+        }
+      ],
       "target_looted": [],
       "drop": []
     },
@@ -14356,6 +14986,24 @@
       "drop": []
     },
     {
+      "item_id": "weapon:sr1replica",
+      "entity_type": "weapon",
+      "category": "weapon",
+      "tier": "highend",
+      "name_key": "sr1replica",
+      "name": "SR-1 Replica",
+      "brand_name": "",
+      "brand_key": "",
+      "slot_key": "mmr",
+      "blueprint": [
+        {
+          "type": "craft"
+        }
+      ],
+      "target_looted": [],
+      "drop": []
+    },
+    {
       "item_id": "weapon:srsa1",
       "entity_type": "weapon",
       "category": "weapon",
@@ -14366,6 +15014,24 @@
       "brand_key": "",
       "slot_key": "mmr",
       "blueprint": [],
+      "target_looted": [],
+      "drop": []
+    },
+    {
+      "item_id": "weapon:srsa1replica",
+      "entity_type": "weapon",
+      "category": "weapon",
+      "tier": "highend",
+      "name_key": "srsa1replica",
+      "name": "SRS A1 Replica",
+      "brand_name": "",
+      "brand_key": "",
+      "slot_key": "mmr",
+      "blueprint": [
+        {
+          "type": "craft"
+        }
+      ],
       "target_looted": [],
       "drop": []
     },
@@ -14502,6 +15168,24 @@
       "drop": []
     },
     {
+      "item_id": "weapon:super90replica",
+      "entity_type": "weapon",
+      "category": "weapon",
+      "tier": "highend",
+      "name_key": "super90replica",
+      "name": "Super 90 Replica",
+      "brand_name": "",
+      "brand_key": "",
+      "slot_key": "shotgun",
+      "blueprint": [
+        {
+          "type": "craft"
+        }
+      ],
+      "target_looted": [],
+      "drop": []
+    },
+    {
       "item_id": "weapon:surge",
       "entity_type": "weapon",
       "category": "weapon",
@@ -14620,6 +15304,24 @@
       "drop": []
     },
     {
+      "item_id": "weapon:tacticalauga3preplica",
+      "entity_type": "weapon",
+      "category": "weapon",
+      "tier": "highend",
+      "name_key": "tacticalauga3preplica",
+      "name": "Tactical AUG A3P Replica",
+      "brand_name": "",
+      "brand_key": "",
+      "slot_key": "smg",
+      "blueprint": [
+        {
+          "type": "craft"
+        }
+      ],
+      "target_looted": [],
+      "drop": []
+    },
+    {
       "item_id": "weapon:tacticalm1911",
       "entity_type": "weapon",
       "category": "weapon",
@@ -14630,6 +15332,24 @@
       "brand_key": "",
       "slot_key": "pistol",
       "blueprint": [],
+      "target_looted": [],
+      "drop": []
+    },
+    {
+      "item_id": "weapon:tacticalm1911replica",
+      "entity_type": "weapon",
+      "category": "weapon",
+      "tier": "highend",
+      "name_key": "tacticalm1911replica",
+      "name": "Tactical M1911 Replica",
+      "brand_name": "",
+      "brand_key": "",
+      "slot_key": "pistol",
+      "blueprint": [
+        {
+          "type": "craft"
+        }
+      ],
       "target_looted": [],
       "drop": []
     },
@@ -14662,6 +15382,24 @@
       "drop": []
     },
     {
+      "item_id": "weapon:tacticalmk16replica",
+      "entity_type": "weapon",
+      "category": "weapon",
+      "tier": "highend",
+      "name_key": "tacticalmk16replica",
+      "name": "Tactical Mk 16 Replica",
+      "brand_name": "",
+      "brand_key": "",
+      "slot_key": "ar",
+      "blueprint": [
+        {
+          "type": "craft"
+        }
+      ],
+      "target_looted": [],
+      "drop": []
+    },
+    {
       "item_id": "weapon:tacticalsasg12k",
       "entity_type": "weapon",
       "category": "weapon",
@@ -14690,6 +15428,24 @@
       "drop": []
     },
     {
+      "item_id": "weapon:tacticalsuper90sbsreplica",
+      "entity_type": "weapon",
+      "category": "weapon",
+      "tier": "highend",
+      "name_key": "tacticalsuper90sbsreplica",
+      "name": "Tactical Super 90 SBS Replica",
+      "brand_name": "",
+      "brand_key": "",
+      "slot_key": "shotgun",
+      "blueprint": [
+        {
+          "type": "craft"
+        }
+      ],
+      "target_looted": [],
+      "drop": []
+    },
+    {
       "item_id": "weapon:tacticalump45",
       "entity_type": "weapon",
       "category": "weapon",
@@ -14700,6 +15456,24 @@
       "brand_key": "",
       "slot_key": "smg",
       "blueprint": [],
+      "target_looted": [],
+      "drop": []
+    },
+    {
+      "item_id": "weapon:tacticalump45replica",
+      "entity_type": "weapon",
+      "category": "weapon",
+      "tier": "highend",
+      "name_key": "tacticalump45replica",
+      "name": "Tactical UMP-45 Replica",
+      "brand_name": "",
+      "brand_key": "",
+      "slot_key": "smg",
+      "blueprint": [
+        {
+          "type": "craft"
+        }
+      ],
       "target_looted": [],
       "drop": []
     },
@@ -15260,6 +16034,24 @@
       "drop": []
     },
     {
+      "item_id": "weapon:urbanmdrreplica",
+      "entity_type": "weapon",
+      "category": "weapon",
+      "tier": "highend",
+      "name_key": "urbanmdrreplica",
+      "name": "Urban MDR Replica",
+      "brand_name": "",
+      "brand_key": "",
+      "slot_key": "rifle",
+      "blueprint": [
+        {
+          "type": "craft"
+        }
+      ],
+      "target_looted": [],
+      "drop": []
+    },
+    {
       "item_id": "weapon:usc45acp",
       "entity_type": "weapon",
       "category": "weapon",
@@ -15274,6 +16066,24 @@
       "drop": []
     },
     {
+      "item_id": "weapon:usc45acpreplica",
+      "entity_type": "weapon",
+      "category": "weapon",
+      "tier": "highend",
+      "name_key": "usc45acpreplica",
+      "name": "USC .45 ACP Replica",
+      "brand_name": "",
+      "brand_key": "",
+      "slot_key": "rifle",
+      "blueprint": [
+        {
+          "type": "craft"
+        }
+      ],
+      "target_looted": [],
+      "drop": []
+    },
+    {
       "item_id": "weapon:vectorsbr45acp",
       "entity_type": "weapon",
       "category": "weapon",
@@ -15284,6 +16094,24 @@
       "brand_key": "",
       "slot_key": "smg",
       "blueprint": [],
+      "target_looted": [],
+      "drop": []
+    },
+    {
+      "item_id": "weapon:vectorsbr45acpreplica",
+      "entity_type": "weapon",
+      "category": "weapon",
+      "tier": "highend",
+      "name_key": "vectorsbr45acpreplica",
+      "name": "Vector SBR .45 ACP Replica",
+      "brand_name": "",
+      "brand_key": "",
+      "slot_key": "smg",
+      "blueprint": [
+        {
+          "type": "craft"
+        }
+      ],
       "target_looted": [],
       "drop": []
     },
@@ -15383,6 +16211,24 @@
       "brand_key": "",
       "slot_key": "pistol",
       "blueprint": [],
+      "target_looted": [],
+      "drop": []
+    },
+    {
+      "item_id": "weapon:x45tacticalreplica",
+      "entity_type": "weapon",
+      "category": "weapon",
+      "tier": "highend",
+      "name_key": "x45tacticalreplica",
+      "name": "X-45 Tactical Replica",
+      "brand_name": "",
+      "brand_key": "",
+      "slot_key": "pistol",
+      "blueprint": [
+        {
+          "type": "craft"
+        }
+      ],
       "target_looted": [],
       "drop": []
     }
