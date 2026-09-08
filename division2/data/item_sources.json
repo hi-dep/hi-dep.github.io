@@ -14674,10 +14674,29 @@
       "drop": []
     },
     {
-      "item_id": "weapon:sheriff",
+      "item_id": "weapon:sheriff::exotic",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "exotic",
+      "name_key": "sheriff",
+      "name": "Sheriff",
+      "brand_name": "",
+      "brand_key": "",
+      "slot_key": "shotgun",
+      "blueprint": [
+        {
+          "src": "blacktusk Kill Squad",
+          "type": "craft"
+        }
+      ],
+      "target_looted": [],
+      "drop": []
+    },
+    {
+      "item_id": "weapon:sheriff::highend",
+      "entity_type": "weapon",
+      "category": "weapon",
+      "tier": "highend",
       "name_key": "sheriff",
       "name": "Sheriff",
       "brand_name": "",
@@ -14828,7 +14847,26 @@
       "drop": []
     },
     {
-      "item_id": "weapon:sleipnir",
+      "item_id": "weapon:sleipnir::highend",
+      "entity_type": "weapon",
+      "category": "weapon",
+      "tier": "highend",
+      "name_key": "sleipnir",
+      "name": "Sleipnir",
+      "brand_name": "",
+      "brand_key": "",
+      "slot_key": "lmg",
+      "blueprint": [
+        {
+          "src": "Field Research Gunner",
+          "type": "craft"
+        }
+      ],
+      "target_looted": [],
+      "drop": []
+    },
+    {
+      "item_id": "weapon:sleipnir::named",
       "entity_type": "weapon",
       "category": "weapon",
       "tier": "named",
