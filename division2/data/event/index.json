@@ -9,7 +9,20 @@
         "Air & Space Museum",
         "District Union Arena"
       ],
-      "target_loot_by_day": []
+      "target_loot_by_day": [
+        {
+          "day": "2026-09-15",
+          "target_loot": [
+            "Providence Defense",
+            "smg",
+            "Walker, Harris & Co.",
+            "shotgun",
+            "Ortiz: Reficere"
+          ],
+          "prototype_gear_cache": "backpack",
+          "prototype_weapon_cache": "mmr"
+        }
+      ]
     }
   ]
 }
