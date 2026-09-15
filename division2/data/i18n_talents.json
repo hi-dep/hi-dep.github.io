@@ -445,7 +445,8 @@
       "perfectlyoptimized": "TODO:Increase weapon handling by 40%.",
       "perfectbackandforth": "TODO:Swapping to this weapon grants +13% Rate of Fire and +12% Weapon Damage for 10s. Swapping from this weapon grants +5% Rate of Fire and +4.5% Weapon Damage for 10s. Receiving one of the bonuses will remove the previous one if it's still active. Two instances of this Talent will not function at the same time.",
       "eaglesstriketenacity": "イーグルストライク\n撃ち続けると命中率が最大30%上昇する\n\nヘッドショットキルでテナシティのバフが15秒間発生する\n\nテナシティの効果はボディショットで1%、ヘッドショットで5%上昇する\n\nテナシティ\n受けたダメージの40~80%がバフの効果終了まで保留される\n\n保留されたダメージはバフ持続中に敵を倒すことで減少する〔最大3キルで100%減少〕",
-      "youcanlookbutyoucanttouch": "見るのはいい…\n非戦闘時に10累積を得る\nこの武器は累積ごとに+12.5%の増幅ダメージを与える\n\n...だが触るな\n1累積を自動的に消費し、1回分の被ダメージを全回復する\n3秒ごとに1累積が補充される"
+      "youcanlookbutyoucanttouch": "見るのはいい…\n非戦闘時に10累積を得る\nこの武器は累積ごとに+12.5%の増幅ダメージを与える\n\n...だが触るな\n1累積を自動的に消費し、1回分の被ダメージを全回復する\n3秒ごとに1累積が補充される",
+      "shakedown": "ボディショットが敵に累積を10秒間与える。最大累積数:4。\n異なる敵を撃つと、累積はすべて消失する\nこの武器は累積ごとに+4%の増幅ダメージを与える\n累積を持つ敵に対する次のヘッドショットは、それをすべて消費して累積ごとに+11%の増幅ダメージを与える\n敵の弱点を破壊すると、敵は5秒間+30%の増幅ダメージを受ける"
     },
     "descent_talent_desc": {
       "adrenalinerush": "敵から10m以内にいる場合、[3*tier]%のボーナスアーマーを5秒間得る。3回まで累積する\nクールダウン: [5.3-(0.3*tier)]秒",
