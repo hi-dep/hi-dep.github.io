@@ -1895,6 +1895,11 @@ body.seasonmod-modal-open {
   color: var(--named-text);
 }
 
+.card__title .exotic-item-type {
+  vertical-align: middle;
+  margin-right: 4px;
+}
+
 .card__subtitle {
   margin-top: 2px;
   font-size: var(--card-subtitle-size);

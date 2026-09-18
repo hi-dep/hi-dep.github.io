@@ -8,7 +8,7 @@
     const cat = isWeapon ? "exotic_weapon_talent_desc" : "exotic_gear_talent_desc";
     return trCategoryText(cat, talentKey, String(rawDesc || "").replace(/\r/g, ""));
   }
-  function exoticTalentIconHtml(talentKey, fallbackText = "", isWeapon = false, itemName = "", itemTalent = "") {
+  function exoticTalentIconHtml(talentKey, fallbackText = "", isWeapon = false, itemName = "", itemTalent = "", imageClass = "ico ico--talent") {
     const baseKey = sanitizeFileKey(talentKey || normalizeKey(fallbackText || ""));
     if (!baseKey && !(String(itemName || "").trim() && String(itemTalent || "").trim())) return "";
     const cands = [];
@@ -55,7 +55,7 @@
     }
     add(iconUrl(fallbackKind, baseKey, fallbackDir));
     if (!cands.length) return "";
-    return iconImgHtml(cands[0], "ico ico--talent", "talent", cands.slice(1));
+    return iconImgHtml(cands[0], imageClass, "talent", cands.slice(1));
   }
 
   async function loadExoticGearRows() {
@@ -275,7 +275,7 @@
         : (r.talent || r.talent_key || "");
       const talentKey = String(r.talent_key || "").trim();
       const talentDescText = trExoticTalentDesc(String(r.talent_desc || "").trim(), talentKey, isWeapon);
-      const talentIcon = exoticTalentIconHtml(talentKey, talentText, isWeapon, r.name, r.talent);
+      const talentBgIcon = exoticTalentIconHtml(talentKey, talentText, isWeapon, r.name, r.talent, "card__bgimg");
       const attrs = [];
       const weaponModTexts = [];
       if (isWeapon) {
@@ -359,7 +359,7 @@
           });
         }
 
-        if (talentText) lines.push({ cls: "line line--gray line--talent", text: talentText, key: talentKey, icon: talentIcon });
+        if (talentText) lines.push({ cls: "line line--gray line--talent", text: talentText, key: talentKey });
         if (talentDescText) {
           lines.push({ cls: "line line--named-meta line--talent-desc", text: talentDescText, textHtml: textToHtmlPreserveNewline(talentDescText), key: "", isDesc: true });
         }
@@ -387,7 +387,7 @@
             : (isCore ? "line line--core" : (dotColorCls ? `line ${dotColorCls} line--noncore-attr` : "line line--gray"));
           lines.push({ cls, text: a.text, key: String(a.key || "").trim() });
         });
-        if (talentText) lines.push({ cls: "line line--gray line--talent", text: talentText, key: talentKey, icon: talentIcon });
+        if (talentText) lines.push({ cls: "line line--gray line--talent", text: talentText, key: talentKey });
         if (talentDescText) {
           lines.push({ cls: "line line--named-meta line--talent-desc", text: talentDescText, textHtml: textToHtmlPreserveNewline(talentDescText), key: "", isDesc: true });
         }
@@ -409,17 +409,18 @@
       weaponModTexts.forEach((t) => pushSearch(t || ""));
       lines.forEach((ln) => pushSearch(ln.text || ""));
 
-      let bg = "";
+      let bg = talentBgIcon ? `<div class="card__bg card__bg--tr">${talentBgIcon}</div>` : "";
       let typeBadgeHtml = "";
       if (String(r.item_class || "") === "weapon") {
         const wg = weaponGroupKey(r.weapon_group || "");
         const wIcon = iconUrl("weapon_types", wg, "img/icon/weapon");
-        bg = wIcon ? bgIconHtml(wIcon, "card__bg--tr", "weapon") : "";
-        typeBadgeHtml = `<span class="wt-inline-badges"><span class="wt-badge is-on">${escapeHtml(weaponTypeShortLabel(wg))}</span></span>`;
+        typeBadgeHtml = `<span class="wt-inline-badges exotic-item-type"><span class="wt-badge is-on">${escapeHtml(weaponTypeShortLabel(wg))}</span></span>`;
       } else {
         const slotKey = exoticSlotKey(r.item_type || "");
         const slotIcon = iconUrl("gear_slots", slotKey, "img/icon/slot");
-        bg = slotIcon ? bgIconHtml(slotIcon, "card__bg--tr", "slot") : "";
+        typeBadgeHtml = slotIcon
+          ? `<img class="ico exotic-item-type" src="${escapeHtml(slotIcon)}" alt="${escapeHtml(slotKey)}" loading="lazy" decoding="async" />`
+          : "";
       }
 
       const card = document.createElement("div");
@@ -437,10 +438,9 @@
         <div class="card__head">
           <div class="card__title-wrap card__title-wrap--gear">
             <div class="card__titles">
-              <div class="card__title"><span class="card__title-text">${escapeHtml(title)}</span></div>
+              <div class="card__title">${typeBadgeHtml}<span class="card__title-text">${escapeHtml(title)}</span></div>
             </div>
           </div>
-          ${typeBadgeHtml}
         </div>
         <div class="lines">
           ${lines.map((ln) => `<div class="${ln.cls}" ${ln.key ? `data-stat-key="${escapeHtml(ln.key)}"` : ""} ${ln.isDesc ? `data-desc-line="1"` : ""}>${ln.icon || ""}<div class="line__body"><div class="line__text">${ln.textHtml || escapeHtml(ln.text)}</div></div></div>`).join("")}
