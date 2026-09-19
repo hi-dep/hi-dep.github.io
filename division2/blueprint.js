@@ -774,8 +774,8 @@
     const onlySelOn = state.onlySelected ? " is-on" : "";
     return `
       <div class="blueprint-toolbar">
-        <button id="blueprintFilterToggleBtn" class="btn btn--ghost topbar__toggle" type="button">${escapeHtml(toggleLabel)}</button>
-        <button id="blueprintOnlySelectedBtn" class="btn btn--toggle${onlySelOn}" type="button" data-blueprint-filter-control="1"${open ? "" : " hidden"}>${escapeHtml(bpUi("selected_only"))}</button>
+        <button id="blueprintFilterToggleBtn" class="btn btn--ghost ui-control" type="button">${escapeHtml(toggleLabel)}</button>
+        <button id="blueprintOnlySelectedBtn" class="btn btn--toggle ui-control${onlySelOn}" type="button" data-blueprint-filter-control="1"${open ? "" : " hidden"}>${escapeHtml(bpUi("selected_only"))}</button>
         <label class="field blueprint-toolbar__search" data-blueprint-filter-control="1"${open ? "" : " hidden"}>
           <span>${escapeHtml(bpUi("search"))}</span>
           <input type="text" data-blueprint-filter="search" value="${escapeHtml(state.search || "")}" placeholder="${escapeHtml(bpUi("search_ph"))}" />

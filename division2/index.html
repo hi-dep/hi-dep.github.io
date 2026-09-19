@@ -17,7 +17,7 @@
   <meta name="twitter:image" content="https://hi-dep.github.io/division2/img/ogp.png?v=20260414011007" />
   <link rel="icon" type="image/svg+xml" href="./img/site_icon.svg" />
   <meta name="theme-color" content="#ff6a00" />
-  <link rel="stylesheet" href="./styles.css?v=20260410b" />
+  <link rel="stylesheet" href="./styles.css?v=20260919j" />
 </head>
 <body>
   <header class="topbar">
@@ -26,22 +26,22 @@
       <div class="title">Division 2 Vendor</div>
     </div>
 
-    <div class="topbar__time">
+    <div class="topbar__time ui-control">
       <span id="worldTimeLabel" class="time-label">TIME</span>
       <span id="worldTime" class="time-value">--:--</span>
     </div>
-    <div id="descentPoolSummary" class="topbar__time topbar__descent" role="button" tabindex="0" aria-label="Descent Talent Pool">
+    <div id="descentPoolSummary" class="topbar__time topbar__descent ui-control" role="button" tabindex="0" aria-label="Descent Talent Pool">
       <span class="time-label">DESCENT</span>
       <span id="descentPoolValue" class="time-value">---</span>
     </div>
 
     <label class="field field--lang">
-      <select id="langSelect">
+      <select id="langSelect" class="ui-control">
         <option value="ja">JA</option>
         <option value="en" selected>EN</option>
       </select>
     </label>
-    <button id="normalizeToggleBtn" class="btn btn--ghost topbar__toggle" type="button" hidden aria-pressed="false">PvP</button>
+    <button id="normalizeToggleBtn" class="btn btn--ghost topbar__toggle ui-control" type="button" hidden aria-pressed="false">PvP</button>
 
     <div id="vendorToolbarHost" class="vendor-toolbar-host"></div>
   </header>

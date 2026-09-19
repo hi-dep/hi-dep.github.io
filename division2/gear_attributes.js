@@ -2,16 +2,18 @@
 (function () {
   let cache = null;
   let traitFilters = [];
+  let traitOptionLabels = new Map();
 
   function traitLabel(key, fallback) {
-    return langSelect.value === "ja" ? (i18n[key] ?? fallback ?? key) : (fallback ?? key);
+    const label = fallback || traitOptionLabels.get(key) || key;
+    return langSelect.value === "ja" ? (i18n[key] ?? label) : label;
   }
 
   function renderTraitChips(container) {
     if (!container) return;
     container.innerHTML = traitFilters.map((key) => `
-      <span class="brand-trait-chip">
-        <span>${escapeHtml(traitLabel(key, key))}</span>
+      <span class="brand-trait-chip ui-control">
+        <span>${escapeHtml(traitLabel(key))}</span>
         <button type="button" class="brand-trait-chip__remove" data-gear-attribute-remove="${escapeHtml(key)}" aria-label="${escapeHtml(ui("removeTraitFilter"))}">×</button>
       </span>
     `).join("");
@@ -38,9 +40,7 @@
     traitFilters = [];
     renderTraitChips(document.querySelector("[data-gear-attribute-chips]"));
     const select = document.querySelector("[data-gear-attribute-select]");
-    const add = document.querySelector("[data-gear-attribute-add]");
     if (select) select.value = "";
-    if (add) add.disabled = true;
     if (!options?.silent) applyFiltersToDom();
   };
 
@@ -90,6 +90,7 @@
     ).values()).sort((a, b) => traitLabel(a.key, a.label).localeCompare(traitLabel(b.key, b.label), langSelect.value === "ja" ? "ja" : "en"));
     const available = new Set(traitOptions.map((x) => x.key));
     traitFilters = traitFilters.filter((key) => available.has(key));
+    traitOptionLabels = new Map(traitOptions.map((x) => [x.key, x.label]));
     const section = document.createElement("section");
     section.className = "catgroup catgroup--gear gear-attributes-view";
     section.innerHTML = `
@@ -97,12 +98,11 @@
         ${typeof buildInlineConditionFilterHtml === "function" ? buildInlineConditionFilterHtml() : ""}
         <div class="brand-trait-filter" data-vendor-filter-control="1" hidden aria-hidden="true">
           <label class="field brand-trait-filter__field">
-            <select data-gear-attribute-select aria-label="${escapeHtml(ui("traitFilter"))}">
+            <select class="ui-control" data-gear-attribute-select aria-label="${escapeHtml(ui("traitFilter"))}">
               <option value="">${escapeHtml(ui("selectTrait"))}</option>
               ${traitOptions.map((x) => `<option value="${escapeHtml(x.key)}">${escapeHtml(traitLabel(x.key, x.label))}</option>`).join("")}
             </select>
           </label>
-          <button class="btn btn--ghost brand-trait-filter__add" type="button" data-gear-attribute-add disabled>${escapeHtml(ui("addTraitFilter"))}</button>
           <div class="brand-trait-chips" data-gear-attribute-chips aria-label="${escapeHtml(ui("activeTraitFilters"))}"></div>
         </div>
       </div>
@@ -112,19 +112,14 @@
     const brandGrid = section.querySelector(".gear-attributes-brand-grid");
     const gearsetGrid = section.querySelector(".gear-attributes-gearset-grid");
     const traitSelect = section.querySelector("[data-gear-attribute-select]");
-    const traitAdd = section.querySelector("[data-gear-attribute-add]");
     const traitChips = section.querySelector("[data-gear-attribute-chips]");
     renderTraitChips(traitChips);
     traitSelect?.addEventListener("change", () => {
-      if (traitAdd) traitAdd.disabled = !traitSelect.value || traitFilters.includes(traitSelect.value);
-    });
-    traitAdd?.addEventListener("click", () => {
       const key = String(traitSelect?.value || "").trim();
       if (!key || traitFilters.includes(key)) return;
       traitFilters = traitFilters.concat(key);
       renderTraitChips(traitChips);
       traitSelect.value = "";
-      traitAdd.disabled = true;
       applyFiltersToDom();
     });
     traitChips?.addEventListener("click", (event) => {

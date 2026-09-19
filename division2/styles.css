@@ -128,6 +128,16 @@ body::before {
   background: rgba(20, 22, 34, 0.62);
 }
 
+/* Shared sizing for compact controls in the header and view toolbars. */
+.ui-control {
+  min-height: var(--toolbar-control-h);
+  height: var(--toolbar-control-h);
+  padding: 5px 8px;
+  font-size: 12px;
+  line-height: 1.2;
+  border-radius: 8px;
+}
+
 .topbar__descent {
   max-width: min(46vw, 560px);
 }
@@ -1343,7 +1353,8 @@ body.seasonmod-modal-open {
 
 .vendor-toolbar .field input,
 .vendor-toolbar .field select {
-  padding: 6px 10px;
+  padding: 5px 8px;
+  font-size: 12px;
 }
 
 .vendor-toolbar .field--mode > span,
@@ -1357,9 +1368,9 @@ body.seasonmod-modal-open {
 }
 
 .vendor-toolbar .btn {
-  padding: 0 10px;
+  padding: 5px 8px;
   font-size: 12px;
-  line-height: 1;
+  line-height: 1.2;
 }
 
 .field {
@@ -1393,12 +1404,13 @@ body.seasonmod-modal-open {
   line-height: 1.2;
 }
 
-.field--lang select {
-  min-width: 2.8ch;
-  width: 2.8ch;
-  height: 20px;
-  padding: 0;
-  font-size: 10px;
+.field--lang select.ui-control {
+  min-width: 36px;
+  width: auto;
+  height: var(--toolbar-control-h);
+  min-height: var(--toolbar-control-h);
+  padding: 5px 8px;
+  font-size: 12px;
   text-align: center;
   appearance: none;
   -webkit-appearance: none;
@@ -1414,16 +1426,13 @@ body.seasonmod-modal-open {
   display: none !important;
 }
 
-#normalizeToggleBtn {
+#normalizeToggleBtn.ui-control {
   order: 5;
   flex: 0 0 auto;
   min-width: 34px;
   width: 34px;
-  height: 20px;
-  min-height: 20px;
-  padding: 0 4px;
-  font-size: 10px;
-  line-height: 1;
+  height: var(--toolbar-control-h);
+  min-height: var(--toolbar-control-h);
   white-space: nowrap;
 }
 
@@ -1459,6 +1468,26 @@ body.seasonmod-modal-open {
 
 .btn--ghost {
   background: transparent;
+}
+
+.btn.ui-control {
+  min-height: var(--toolbar-control-h);
+  height: var(--toolbar-control-h);
+  padding: 5px 8px;
+  font-size: 12px;
+  line-height: 1.2;
+  border-radius: 8px;
+}
+
+/* Vendor fields use the same control geometry as the other toolbars. */
+.vendor-toolbar .field input,
+.vendor-toolbar .field select,
+.vendor-toolbar .btn {
+  min-height: var(--toolbar-control-h);
+  height: var(--toolbar-control-h);
+  padding: 5px 8px;
+  font-size: 12px;
+  line-height: 1.2;
 }
 
 .btn.is-on,
@@ -1641,15 +1670,17 @@ body.seasonmod-modal-open {
   min-width: 190px;
 }
 
-.brand-trait-filter__field select {
+.brand-trait-filter__field select.ui-control {
   min-width: 190px;
   height: var(--toolbar-control-h);
-  padding: 5px 9px;
+  min-height: var(--toolbar-control-h);
+  padding: 5px 8px;
   background: var(--panel);
   color: var(--text);
   border: 1px solid var(--border);
-  border-radius: 6px;
+  border-radius: 8px;
   font-size: 12px;
+  line-height: 1.2;
 }
 
 .brand-trait-filter__add {
@@ -1829,11 +1860,14 @@ body.seasonmod-modal-open {
   display: inline-flex;
   align-items: center;
   gap: 4px;
-  padding: 2px 7px;
+  height: var(--toolbar-control-h);
+  min-height: var(--toolbar-control-h);
+  padding: 5px 8px;
   border: 1px solid rgba(255, 255, 255, .22);
-  border-radius: 999px;
+  border-radius: 8px;
   background: rgba(255, 255, 255, .08);
-  font-size: .82rem;
+  font-size: 12px;
+  line-height: 1.2;
 }
 
 .gear-attributes-toolbar .brand-trait-chip__remove {
@@ -1932,7 +1966,7 @@ body.seasonmod-modal-open {
   box-shadow: 0 0 0 1px rgba(167, 139, 250, .42);
 }
 
-.trello-group-toggle .btn {
+.trello-group-toggle .btn:not(.ui-control) {
   min-height: 20px;
   height: 20px;
   padding: 0 4px;
@@ -2804,25 +2838,26 @@ th {
     margin-left: 0;
   }
 
-  #normalizeToggleBtn {
+  #normalizeToggleBtn.ui-control {
     order: 5;
-    min-height: 18px;
-    height: 18px;
+    min-height: var(--toolbar-control-h);
+    height: var(--toolbar-control-h);
   }
 
-  .trello-group-toggle .btn {
+  .trello-group-toggle .btn:not(.ui-control) {
     min-height: 18px;
     height: 18px;
     padding: 0 4px;
     font-size: 9px;
   }
 
-  .topbar > .field--lang select {
-    min-width: 2.6ch;
-    width: 2.6ch;
-    height: 18px;
-    padding: 0;
-    font-size: 9px;
+  .topbar > .field--lang select.ui-control {
+    min-width: 36px;
+    width: auto;
+    height: var(--toolbar-control-h);
+    min-height: var(--toolbar-control-h);
+    padding: 5px 8px;
+    font-size: 12px;
     line-height: 1;
     text-align: center;
   }
@@ -3075,6 +3110,7 @@ th {
 
 .prototype-attrs-table th {
   white-space: nowrap;
+  font-size: 12px;
 }
 
 .prototype-attrs-table th:first-child,
@@ -3280,9 +3316,10 @@ th {
 
 .blueprint-toolbar {
   display: grid;
-  grid-template-columns: auto minmax(240px, 1fr);
+  grid-template-columns: auto auto;
   gap: 8px;
   align-items: end;
+  justify-content: start;
 }
 
 .blueprint-toolbar .field {
@@ -3324,16 +3361,19 @@ th {
 }
 
 .blueprint-type-btn {
-  min-width: 44px;
-  padding: 4px 9px;
-  font-size: 11px;
-  line-height: 1.2;
+  min-width: 40px;
+  min-height: 20px;
+  height: 20px;
+  padding: 0 6px;
+  font-size: 10px;
+  line-height: 1;
   color: rgba(255, 255, 255, 0.92);
 }
 
 .blueprint-type-btn--icon {
-  min-width: 32px;
-  width: 32px;
+  min-width: 28px;
+  width: 28px;
+  height: 20px;
   padding: 0;
 }
 
@@ -3362,13 +3402,19 @@ th {
 .blueprint-table-scroll {
   border: 1px solid var(--border);
   border-radius: 10px;
-  overflow: auto;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  overscroll-behavior-x: contain;
+  -webkit-overflow-scrolling: touch;
   background: rgba(20, 22, 34, 0.72);
 }
 
 .blueprint-table {
   width: 100%;
   min-width: 780px;
+  table-layout: fixed;
   border-collapse: collapse;
 }
 
@@ -3513,6 +3559,11 @@ th {
 
 .blueprint-td-name {
   font-weight: 700;
+  width: 24%;
+  max-width: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .blueprint-td-rarity {
@@ -3522,6 +3573,8 @@ th {
 .blueprint-td-source {
   color: var(--text);
   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .blueprint-th-sort {
@@ -3884,6 +3937,7 @@ th {
 
   .blueprint-table {
     min-width: 760px;
+    table-layout: fixed;
   }
 
   .blueprint-type-filter-row {
@@ -3904,7 +3958,7 @@ th {
     min-width: 0;
   }
 
-  /* Keep page width stable; scroll only inside blueprint table area */
+  /* Keep page width stable; scroll only inside the Blueprint table area. */
   .blueprint-view,
   .blueprint-table-wrap,
   .blueprint-table-scroll {
@@ -3918,12 +3972,12 @@ th {
 
   .blueprint-table-scroll {
     overflow-x: auto;
-    overflow-y: auto;
+    overflow-y: hidden;
     overscroll-behavior-x: contain;
     -webkit-overflow-scrolling: touch;
   }
 
-  /* Fixed left columns: accent + name */
+  /* Keep the accent/name columns visible while the table scrolls internally. */
   .blueprint-view .blueprint-table th:first-child,
   .blueprint-view .blueprint-table td:first-child {
     position: sticky;
@@ -3937,9 +3991,10 @@ th {
     position: sticky;
     left: 8px;
     z-index: 3;
-    background: rgba(14, 15, 20, 0.98);
     min-width: 170px;
     max-width: 170px;
+    width: 170px;
+    background: rgba(14, 15, 20, 0.98);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -3950,6 +4005,7 @@ th {
   .blueprint-view .blueprint-table th:nth-child(4),
   .blueprint-view .blueprint-table td:nth-child(4) {
     min-width: 220px;
+    max-width: 220px;
   }
 
   .blueprint-subhead-row .blueprint-subhead {

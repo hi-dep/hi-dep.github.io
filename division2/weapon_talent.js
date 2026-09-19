@@ -186,7 +186,7 @@
       { key: "pistol", label: "HG" },
     ];
     const typeBtns = defs.map((d) =>
-      `<button class="btn btn--ghost weapon-type-filter-btn ${active.has(d.key) ? "is-on" : ""}" type="button" data-wt-type="${escapeHtml(d.key)}">${escapeHtml(d.label)}</button>`
+      `<button class="btn btn--ghost ui-control weapon-type-filter-btn ${active.has(d.key) ? "is-on" : ""}" type="button" data-wt-type="${escapeHtml(d.key)}">${escapeHtml(d.label)}</button>`
     ).join("");
     return typeBtns;
   }
@@ -422,7 +422,7 @@
     section.className = "catgroup catgroup--gear catgroup--gear-talent catgroup--weapon-talent";
     section.innerHTML = `
       <div class="trello-group-toggle weapon-type-filter-row">
-        <button class="btn btn--ghost talent-desc-btn ${window.talentShowDesc ? "is-on" : ""}" type="button" data-toggle-talent-desc="1">Desc</button>
+        <button class="btn btn--ghost ui-control talent-desc-btn ${window.talentShowDesc ? "is-on" : ""}" type="button" data-toggle-talent-desc="1">Desc</button>
         ${buildWeaponTypeFilterButtonsHtml()}
       </div>
       <div class="grid grid--gear"></div>

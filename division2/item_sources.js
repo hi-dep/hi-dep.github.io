@@ -535,7 +535,7 @@
       .map((k) => {
         const on = selected.has(k);
         const label = weaponTypeShortLabel(k);
-        return `<button class="btn btn--ghost talent-desc-btn${on ? " is-on" : ""}" type="button" data-item-sources-wt="${escapeHtml(k)}">${escapeHtml(label)}</button>`;
+        return `<button class="btn btn--ghost ui-control talent-desc-btn${on ? " is-on" : ""}" type="button" data-item-sources-wt="${escapeHtml(k)}">${escapeHtml(label)}</button>`;
       })
       .join("");
     return `

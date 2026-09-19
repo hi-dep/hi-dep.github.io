@@ -185,7 +185,7 @@
       <section class="catgroup catgroup--gear catgroup--gear-talent" data-keep-visible="1">
         <div class="trello-group-toggle descent-controls">
           <div class="descent-controls__row descent-controls__row--top">
-            <button class="btn btn--ghost talent-desc-btn ${window.talentShowDesc ? "is-on" : ""}" type="button" data-toggle-talent-desc="1">Desc</button>
+            <button class="btn btn--ghost ui-control talent-desc-btn ${window.talentShowDesc ? "is-on" : ""}" type="button" data-toggle-talent-desc="1">Desc</button>
             ${window.talentShowDesc ? `<select id="descentTierSelect" style="height:24px;padding:0 9px;border-radius:999px;font-size:11px;line-height:1;min-width:92px;max-width:120px;">
             <option value="1" selected>Tier 1</option>
             <option value="2">Tier 2</option>
@@ -476,7 +476,7 @@
       <section class="catgroup catgroup--gear catgroup--gear-talent" data-keep-visible="1">
         <div class="trello-group-toggle descent-controls">
           <div class="descent-controls__row descent-controls__row--top">
-            <button class="btn btn--ghost talent-desc-btn ${window.talentShowDesc ? "is-on" : ""}" type="button" data-toggle-talent-desc="1">Desc</button>
+            <button class="btn btn--ghost ui-control talent-desc-btn ${window.talentShowDesc ? "is-on" : ""}" type="button" data-toggle-talent-desc="1">Desc</button>
             ${window.talentShowDesc ? `<select id="descentTierSelect" style="height:24px;padding:0 9px;border-radius:999px;font-size:11px;line-height:1;min-width:92px;max-width:120px;">${tierSelectOpts}</select>` : ""}
             <button id="descentPoolCopyBtn" type="button" class="btn btn--ghost seasonmod-share-btn descent-copy-btn" aria-label="${escapeHtml(safeLang() === "ja" ? "共有" : "Share")}" title="${escapeHtml(safeLang() === "ja" ? "共有" : "Share")}">
               <svg class="seasonmod-share-btn__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">

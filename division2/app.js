@@ -179,11 +179,11 @@ const VIEW_TOOLBAR_DEFS = Object.freeze({
   vendor: Object.freeze({
     controls: Object.freeze([
       Object.freeze({ kind: "field_date", id: "dateInput", labelId: "labelWeek", label: "週", alwaysVisible: true }),
-      Object.freeze({ kind: "button", id: "filterToggleBtn", className: "btn btn--ghost topbar__toggle", label: "条件", alwaysVisible: true }),
+      Object.freeze({ kind: "button", id: "filterToggleBtn", className: "btn btn--ghost topbar__toggle ui-control", label: "条件", alwaysVisible: true }),
       Object.freeze({ kind: "group_label", id: "selectGroupLabel", className: "vendor-toolbar__group-label vendor-toolbar__group-label--select", label: "選択" }),
-      Object.freeze({ kind: "button", id: "onlySelectedBtn", className: "btn btn--toggle", label: "選択のみ" }),
-      Object.freeze({ kind: "button", id: "recommendSelectedBtn", className: "btn btn--ghost", label: "おすすめ選択" }),
-      Object.freeze({ kind: "button", id: "clearSelectedBtn", className: "btn btn--ghost", label: "選択解除" }),
+      Object.freeze({ kind: "button", id: "onlySelectedBtn", className: "btn btn--toggle ui-control", label: "選択のみ" }),
+      Object.freeze({ kind: "button", id: "recommendSelectedBtn", className: "btn btn--ghost ui-control", label: "おすすめ選択" }),
+      Object.freeze({ kind: "button", id: "clearSelectedBtn", className: "btn btn--ghost ui-control", label: "選択解除" }),
       Object.freeze({ kind: "group_label", id: "filterGroupLabel", className: "vendor-toolbar__group-label vendor-toolbar__group-label--filter", label: "フィルタ" }),
       Object.freeze({
         kind: "field_select",
@@ -196,7 +196,7 @@ const VIEW_TOOLBAR_DEFS = Object.freeze({
         ])
       }),
       Object.freeze({ kind: "field_text", id: "filterInput", labelId: "labelFilter", label: "フィルタ", autocomplete: "off" }),
-      Object.freeze({ kind: "button", id: "clearFiltersBtn", className: "btn btn--ghost", label: "フィルタ解除" }),
+      Object.freeze({ kind: "button", id: "clearFiltersBtn", className: "btn btn--ghost ui-control", label: "フィルタ解除" }),
       Object.freeze({ kind: "chips", id: "filterChips" })
     ])
   }),
@@ -275,11 +275,11 @@ function buildToolbarHtmlFromDef(def) {
 
 function buildInlineConditionFilterHtml() {
   const selectionControls = currentViewMode === "gear_attributes" ? "" : `
-    <button id="onlySelectedBtn" class="btn btn--toggle" type="button" data-vendor-filter-control="1" hidden aria-hidden="true" disabled>${ui("selectedOnly")}</button>
-    <button id="clearSelectedBtn" class="btn btn--ghost" type="button" data-vendor-filter-control="1" hidden aria-hidden="true" disabled>${ui("clearSelected")}</button>
+    <button id="onlySelectedBtn" class="btn btn--toggle ui-control" type="button" data-vendor-filter-control="1" hidden aria-hidden="true" disabled>${ui("selectedOnly")}</button>
+    <button id="clearSelectedBtn" class="btn btn--ghost ui-control" type="button" data-vendor-filter-control="1" hidden aria-hidden="true" disabled>${ui("clearSelected")}</button>
   `;
   return `
-    <button id="filterToggleBtn" class="btn btn--ghost topbar__toggle" type="button">${ui("filtersOpen")}</button>
+    <button id="filterToggleBtn" class="btn btn--ghost topbar__toggle ui-control" type="button">${ui("filtersOpen")}</button>
     ${selectionControls}
   `;
 }
