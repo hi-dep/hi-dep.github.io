@@ -52,7 +52,11 @@
 
 html,
 body {
-  height: 100%;
+  min-height: 100%;
+}
+
+body {
+  height: auto;
 }
 
 body {
@@ -1920,14 +1924,20 @@ body.seasonmod-modal-open {
 
 .gear-talent-diff {
   color: var(--perfect-text);
-  font-weight: 700;
 }
 
 .gear-talent-pvp-diff {
-  font-weight: 700;
   background: rgba(167, 139, 250, .28);
   border-radius: 3px;
   box-shadow: 0 0 0 1px rgba(167, 139, 250, .42);
+}
+
+.trello-group-toggle .btn {
+  min-height: 20px;
+  height: 20px;
+  padding: 0 4px;
+  font-size: 10px;
+  line-height: 1;
 }
 
 .card__title .exotic-item-type {
@@ -2798,6 +2808,13 @@ th {
     order: 5;
     min-height: 18px;
     height: 18px;
+  }
+
+  .trello-group-toggle .btn {
+    min-height: 18px;
+    height: 18px;
+    padding: 0 4px;
+    font-size: 9px;
   }
 
   .topbar > .field--lang select {
