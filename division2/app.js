@@ -11,6 +11,7 @@ function appPath(relPath) {
 const statusEl = document.getElementById("status");
 const contentEl = document.getElementById("content");
 const langSelect = document.getElementById("langSelect");
+const normalizeToggleBtn = document.getElementById("normalizeToggleBtn");
 const vendorToolbarHostEl = document.getElementById("vendorToolbarHost");
 let vendorToolbarMounted = false;
 let vendorDateValue = "";
@@ -81,6 +82,41 @@ const JST_OFFSET_MS = 9 * 60 * 60 * 1000;
 let filtersOpen = false;
 const SEASON_MOD_URL_KEYS = ["sm_season", "sm_active", "sm_level", "sm_p1", "sm_p2", "sm_p3", "sm_ao", "sm_po"];
 let currentViewMode = "vendor"; // vendor | event | season_mod | weapons | brand | gearset | exotic_gear | gear_talent | weapon_talent | y8s2_talent_diff | descent_talent | prototype | cost | blueprint | item_sources
+let normalizeDisplayEnabled = false;
+let normalizeToggleHandler = null;
+
+// Normalize/PvP display is optional because older DB snapshots do not have
+// the normalize columns. Individual views enable this only when their loaded
+// rows contain at least one non-empty normalize value.
+window.isNormalizeDisplayEnabled = () => normalizeDisplayEnabled;
+window.configureNormalizeToggle = (available, onChange) => {
+  const enabled = !!available;
+  normalizeToggleHandler = (typeof onChange === "function") ? onChange : null;
+  if (!enabled) normalizeDisplayEnabled = false;
+  if (normalizeToggleBtn) {
+    normalizeToggleBtn.hidden = !enabled;
+    normalizeToggleBtn.classList.toggle("is-on", enabled && normalizeDisplayEnabled);
+    normalizeToggleBtn.setAttribute("aria-pressed", String(enabled && normalizeDisplayEnabled));
+  }
+};
+window.resetNormalizeToggle = () => {
+  normalizeToggleHandler = null;
+  normalizeDisplayEnabled = false;
+  if (normalizeToggleBtn) {
+    normalizeToggleBtn.hidden = true;
+    normalizeToggleBtn.classList.remove("is-on");
+    normalizeToggleBtn.setAttribute("aria-pressed", "false");
+  }
+};
+
+if (normalizeToggleBtn) {
+  normalizeToggleBtn.addEventListener("click", () => {
+    normalizeDisplayEnabled = !normalizeDisplayEnabled;
+    normalizeToggleBtn.classList.toggle("is-on", normalizeDisplayEnabled);
+    normalizeToggleBtn.setAttribute("aria-pressed", String(normalizeDisplayEnabled));
+    if (normalizeToggleHandler) normalizeToggleHandler(normalizeDisplayEnabled);
+  });
+}
 let descentPoolState = {
   loaded: false,
   available: false,
@@ -4374,6 +4410,7 @@ async function switchViewMode(mode) {
   const prevViewMode = currentViewMode;
   saveSelectionStateForView(prevViewMode);
   currentViewMode = (mode === "event" || mode === "season_mod" || mode === "weapons" || mode === "gear_attributes" || mode === "brand" || mode === "gearset" || mode === "exotic_gear" || mode === "gear_talent" || mode === "weapon_talent" || mode === "y8s2_talent_diff" || mode === "descent_talent" || mode === "prototype" || mode === "cost" || mode === "blueprint" || mode === "item_sources") ? mode : "vendor";
+  if (typeof window.resetNormalizeToggle === "function") window.resetNormalizeToggle();
   loadSelectionStateForView(currentViewMode);
   const shouldResetSharedFilterOpen =
     prevViewMode !== currentViewMode &&

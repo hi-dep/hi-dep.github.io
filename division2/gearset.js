@@ -37,6 +37,9 @@
       } catch (e) {
         // keep backward compatibility with older DB snapshots
       }
+      const normalizeSelect = bonusCols.has("talent_normalize")
+        ? "b.talent_normalize, b.talent_normalize_jp"
+        : "'' AS talent_normalize, '' AS talent_normalize_jp";
       const stmt = db.prepare(`
         SELECT
           g.item_id,
@@ -53,7 +56,8 @@
           b.type,
           b.type_key,
           b.talent_name,
-          b.talent_desc
+          b.talent_desc,
+          ${normalizeSelect}
         FROM items_gearsets g
         LEFT JOIN items_gearset_bonuses b ON b.parent_item_id = g.item_id
         ORDER BY g.gearset, g.item_id, b.bonus_ord, b.bonus_part_ord
@@ -70,6 +74,11 @@
 
   function renderGearsetViewFromRows(payload) {
     const rows = (payload && payload.rows) || [];
+    const normalizeAvailable = rows.some((r) => String(r.talent_normalize || "").trim());
+    if (typeof window.configureNormalizeToggle === "function") {
+      window.configureNormalizeToggle(normalizeAvailable, () => renderGearsetViewFromRows(payload));
+    }
+    const useNormalize = typeof window.isNormalizeDisplayEnabled === "function" && window.isNormalizeDisplayEnabled();
     clearContent();
     const byItem = new Map();
     (rows || []).forEach((r) => {
@@ -97,6 +106,8 @@
           typeKey: String(r.type_key || "").trim(),
           talentName: String(r.talent_name || "").trim(),
           talentDesc: String(r.talent_desc || "").trim(),
+          talentNormalize: String(r.talent_normalize || "").trim(),
+          talentNormalizeJp: String(r.talent_normalize_jp || "").trim(),
         });
       }
     });
@@ -226,9 +237,9 @@
       return "";
     }
 
-    function gearsetTalentDescLines(talentKey, pveRaw) {
+    function gearsetTalentDescLines(talentKey, pveRaw, textHtml) {
       const pveText = trGearsetTalentDesc(pveRaw, talentKey);
-      return pveText ? [{ cls: "line line--named-meta line--talent-desc", text: pveText, textHtml: textToHtmlPreserveNewline(pveText), isDesc: true }] : [];
+      return pveText ? [{ cls: "line line--named-meta line--talent-desc", text: pveText, textHtml: textHtml || textToHtmlPreserveNewline(pveText), isDesc: true }] : [];
     }
 
     items.forEach((it) => {
@@ -273,7 +284,9 @@
         const b = gs[0] || {};
         if (b.bonusType === "talent" || b.talentName || b.talentDesc) {
           const tn = b.talentName || b.value || "";
-          const td = b.talentDesc || "";
+          const td = (useNormalize && (langSelect.value !== "ja" ? b.talentNormalize : (b.talentNormalizeJp || b.talentNormalize)))
+            ? (langSelect.value === "ja" ? (b.talentNormalizeJp || b.talentNormalize) : b.talentNormalize)
+            : (b.talentDesc || "");
           const labelList = gs.map((x) => String(x.label || "").trim()).filter(Boolean);
           const labelNorm = labelList.map((x) => normalizeKey(x)).join(" ");
           const slotNorm = normalizeKey(String(b.slot || ""));
@@ -292,16 +305,22 @@
           const tnDisp = (langSelect.value === "ja")
             ? (i18n[normalizeKey(tn)] ?? trText(tn))
             : tn;
-          const tdDisp = (langSelect.value === "ja")
-            ? trGearsetTalentDesc(td, talentKey)
-            : td;
+          const tdDisp = useNormalize
+            ? td
+            : ((langSelect.value === "ja") ? trGearsetTalentDesc(td, talentKey) : td);
+          const pveTd = (langSelect.value === "ja")
+            ? trGearsetTalentDesc(b.talentDesc || "", talentKey)
+            : (b.talentDesc || "");
+          const tdHtml = useNormalize && tdDisp && pveTd && typeof window.highlightTalentDiffHtml === "function"
+            ? window.highlightTalentDiffHtml(pveTd, tdDisp)
+            : "";
           if (tnDisp) lines.push({
             cls: "line line--gray line--talent",
             text: tnDisp.trim(),
             key: talentKey,
             icon: `${slotIcon || ""}${talentIcon || ""}`
           });
-          gearsetTalentDescLines(talentKey, tdDisp).forEach((descLine) => lines.push(descLine));
+          gearsetTalentDescLines(talentKey, tdDisp, tdHtml).forEach((descLine) => lines.push(descLine));
           continue;
       }
       const parts = [];

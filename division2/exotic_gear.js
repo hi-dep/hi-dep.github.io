@@ -72,8 +72,17 @@
         console.warn("Exotic tables are missing in items.db", { hasGearExotic, hasWeaponExotic });
         throw new Error("data_unavailable");
       }
+      const tableHas = (table, column) => {
+        const info = db.exec(`PRAGMA table_info(${table})`);
+        if (!info[0]) return false;
+        const idx = info[0].columns.indexOf("name");
+        return idx >= 0 && info[0].values.some((row) => String(row[idx] || "") === column);
+      };
       const rows = [];
       if (hasGearExotic) {
+        const normalizeSelect = tableHas("items_gear_exotic", "talent_normalize")
+          ? "talent_normalize, talent_normalize_jp"
+          : "'' AS talent_normalize, '' AS talent_normalize_jp";
         const gst = db.prepare(`
           SELECT
             item_id,
@@ -83,6 +92,7 @@
             talent,
             talent_key,
             talent_desc,
+            ${normalizeSelect},
             attr_types,
             attr_type_keys
           FROM items_gear_exotic
@@ -95,6 +105,9 @@
         gst.free();
       }
       if (hasWeaponExotic) {
+        const normalizeSelect = tableHas("items_weapon_exotic", "talent_normalize")
+          ? "talent_normalize, talent_normalize_jp"
+          : "'' AS talent_normalize, '' AS talent_normalize_jp";
         const wst = db.prepare(`
           SELECT
             item_id,
@@ -105,6 +118,7 @@
             talent,
             talent_key,
             talent_desc,
+            ${normalizeSelect},
             exotic_mods,
             exotic_mod_type_keys
           FROM items_weapon_exotic
@@ -125,6 +139,11 @@
 
   function renderExoticGearViewFromRows(payload) {
     const rows = (payload && payload.rows) || [];
+    const normalizeAvailable = rows.some((r) => String(r.talent_normalize || "").trim());
+    if (typeof window.configureNormalizeToggle === "function") {
+      window.configureNormalizeToggle(normalizeAvailable, () => renderExoticGearViewFromRows(payload));
+    }
+    const useNormalize = typeof window.isNormalizeDisplayEnabled === "function" && window.isNormalizeDisplayEnabled();
     clearContent();
     if (!rows.length) {
       contentEl.innerHTML = `<div class="status">${escapeHtml(ui("noData"))}</div>`;
@@ -274,7 +293,19 @@
         ? (i18n[r.talent_key] ?? trText(r.talent || r.talent_key || ""))
         : (r.talent || r.talent_key || "");
       const talentKey = String(r.talent_key || "").trim();
-      const talentDescText = trExoticTalentDesc(String(r.talent_desc || "").trim(), talentKey, isWeapon);
+      const normalizedDesc = langSelect.value === "ja"
+        ? (r.talent_normalize_jp || r.talent_normalize)
+        : r.talent_normalize;
+      const rawTalentDesc = (useNormalize && String(normalizedDesc || "").trim())
+        ? String(normalizedDesc).trim()
+        : String(r.talent_desc || "").trim();
+      const talentDescText = useNormalize
+        ? rawTalentDesc
+        : trExoticTalentDesc(rawTalentDesc, talentKey, isWeapon);
+      const baseTalentDescText = trExoticTalentDesc(String(r.talent_desc || "").trim(), talentKey, isWeapon);
+      const talentDescHtml = useNormalize && baseTalentDescText && talentDescText && typeof window.highlightTalentDiffHtml === "function"
+        ? window.highlightTalentDiffHtml(baseTalentDescText, talentDescText)
+        : textToHtmlPreserveNewline(talentDescText);
       const talentBgIcon = exoticTalentIconHtml(talentKey, talentText, isWeapon, r.name, r.talent, "card__bgimg");
       const attrs = [];
       const weaponModTexts = [];
@@ -361,7 +392,7 @@
 
         if (talentText) lines.push({ cls: "line line--gray line--talent", text: talentText, key: talentKey });
         if (talentDescText) {
-          lines.push({ cls: "line line--named-meta line--talent-desc", text: talentDescText, textHtml: textToHtmlPreserveNewline(talentDescText), key: "", isDesc: true });
+          lines.push({ cls: "line line--named-meta line--talent-desc", text: talentDescText, textHtml: talentDescHtml, key: "", isDesc: true });
         }
       } else if (attrs.length) {
         attrs.forEach((a) => {
@@ -389,7 +420,7 @@
         });
         if (talentText) lines.push({ cls: "line line--gray line--talent", text: talentText, key: talentKey });
         if (talentDescText) {
-          lines.push({ cls: "line line--named-meta line--talent-desc", text: talentDescText, textHtml: textToHtmlPreserveNewline(talentDescText), key: "", isDesc: true });
+          lines.push({ cls: "line line--named-meta line--talent-desc", text: talentDescText, textHtml: talentDescHtml, key: "", isDesc: true });
         }
       }
 

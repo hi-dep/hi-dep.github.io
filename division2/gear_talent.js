@@ -129,11 +129,21 @@
         console.warn("Gear talent table is missing in items.db", { hasGearTalent });
         throw new Error("data_unavailable");
       }
+      const talentColumns = new Set();
+      const talentInfo = db.exec("PRAGMA table_info(items_gear_talents)");
+      if (talentInfo[0]) {
+        const nameIndex = talentInfo[0].columns.indexOf("name");
+        if (nameIndex >= 0) talentInfo[0].values.forEach((row) => talentColumns.add(String(row[nameIndex] || "")));
+      }
+      const normalizeSelect = talentColumns.has("talent_normalize")
+        ? "talent_normalize, talent_normalize_jp, perfect_talent_normalize, perfect_talent_normalize_jp"
+        : "'' AS talent_normalize, '' AS talent_normalize_jp, '' AS perfect_talent_normalize, '' AS perfect_talent_normalize_jp";
       const stmt = db.prepare(`
         SELECT
           talent_slot,
           talent,
           talent_desc,
+          ${normalizeSelect},
           perfect_talent,
           perfect_talent_desc
         FROM items_gear_talents
@@ -236,7 +246,9 @@
           return;
         }
         if (!String(prev.talent_desc || "").trim() && String(r.talent_desc || "").trim()) prev.talent_desc = r.talent_desc;
+        if (!String(prev.talent_normalize || "").trim() && String(r.talent_normalize || "").trim()) prev.talent_normalize = r.talent_normalize;
         if (!String(prev.perfect_talent_desc || "").trim() && String(r.perfect_talent_desc || "").trim()) prev.perfect_talent_desc = r.perfect_talent_desc;
+        if (!String(prev.perfect_talent_normalize || "").trim() && String(r.perfect_talent_normalize || "").trim()) prev.perfect_talent_normalize = r.perfect_talent_normalize;
       });
       const rowsDeduped = Array.from(dedupedRowsMap.values());
 
@@ -250,6 +262,10 @@
   function renderGearTalentViewFromRows(payload) {
     const rowsRaw = (payload && payload.rows) || [];
     const namedByTalent = (payload && payload.namedByTalent) || new Map();
+    const normalizeAvailable = rowsRaw.some((r) => String(r.talent_normalize || r.perfect_talent_normalize || "").trim());
+    if (typeof window.configureNormalizeToggle === "function") {
+      window.configureNormalizeToggle(normalizeAvailable, (enabled) => renderGearTalentViewFromRows(payload));
+    }
     const slotOrder = new Map([
       ["mask", 0],
       ["backpack", 1],
@@ -307,7 +323,10 @@
       const talentTitle = (langSelect.value === "ja")
         ? (i18n[talentKey] ?? trText(talentRaw))
         : talentRaw;
-      const talentDesc = namedOnly ? "" : String(r.talent_desc || "").trim();
+      const useNormalize = typeof window.isNormalizeDisplayEnabled === "function" && window.isNormalizeDisplayEnabled();
+      const talentDesc = namedOnly ? "" : String((useNormalize
+        ? (langSelect.value === "ja" ? (r.talent_normalize_jp || r.talent_normalize) : r.talent_normalize)
+        : r.talent_desc) || "").trim();
 
       const perfectRaw = namedOnly ? String(r.talent || "").trim() : String(r.perfect_talent || "").trim();
       const perfectKey = normalizeKey(perfectRaw);
@@ -315,7 +334,13 @@
       const perfectTitle = (langSelect.value === "ja")
         ? (hasPerfectTalent ? (i18n[perfectKey] ?? trText(perfectRaw)) : "")
         : (hasPerfectTalent ? perfectRaw : "");
-      const perfectDesc = namedOnly ? String(r.talent_desc || "").trim() : String(r.perfect_talent_desc || "").trim();
+      const perfectDesc = namedOnly
+        ? String((useNormalize
+          ? (langSelect.value === "ja" ? (r.talent_normalize_jp || r.talent_normalize) : r.talent_normalize)
+          : r.talent_desc) || "").trim()
+        : String((useNormalize
+          ? (langSelect.value === "ja" ? (r.perfect_talent_normalize_jp || r.perfect_talent_normalize) : r.perfect_talent_normalize)
+          : r.perfect_talent_desc) || "").trim();
 
       const searchParts = [];
       const pushSearch = (s) => {
@@ -330,8 +355,15 @@
       pushSearch(perfectDesc);
 
       const lines = [];
-      const talentDescDisp = trTalentDescPreserveNewline(talentDesc, talentKey);
-      const perfectDescDisp = trTalentDescPreserveNewline(perfectDesc, perfectKey || talentKey);
+      const talentDescDisp = useNormalize ? talentDesc : trTalentDescPreserveNewline(talentDesc, talentKey);
+      const perfectDescDisp = useNormalize ? perfectDesc : trTalentDescPreserveNewline(perfectDesc, perfectKey || talentKey);
+      const pveTalentDescDisp = trTalentDescPreserveNewline(String(r.talent_desc || "").trim(), talentKey);
+      const pvePerfectDescDisp = trTalentDescPreserveNewline(String(r.perfect_talent_desc || "").trim(), perfectKey || talentKey);
+      const talentDescHtml = useNormalize && pveTalentDescDisp && talentDescDisp
+        ? (typeof window.highlightTalentDiffHtml === "function"
+          ? window.highlightTalentDiffHtml(pveTalentDescDisp, talentDescDisp)
+          : highlightDiffHtml(pveTalentDescDisp, talentDescDisp))
+        : textToHtmlPreserveNewline(talentDescDisp);
       const showDesc = !!window.talentShowDesc;
       if (namedOnly) {
         if (perfectTitle) lines.push({ cls: "line line--named line--talent", text: perfectTitle, key: perfectKey || talentKey, icon: talentSlotIcon });
@@ -350,7 +382,7 @@
           lines.push({
             cls: "line line--named-meta line--talent-desc",
             text: talentDescDisp,
-            html: textToHtmlPreserveNewline(talentDescDisp),
+            html: talentDescHtml,
             key: "",
             isDesc: true
           });
@@ -360,7 +392,11 @@
         }
         if (perfectTitle) lines.push({ cls: "line line--named line--talent", text: perfectTitle, key: perfectKey });
         if (hasPerfectTalent && perfectDescDisp) {
-          const html = highlightDiffHtml(talentDescDisp, perfectDescDisp);
+          const html = useNormalize && pvePerfectDescDisp && perfectDescDisp
+            ? (typeof window.highlightTalentDiffHtml === "function"
+              ? window.highlightTalentDiffHtml(pvePerfectDescDisp, perfectDescDisp, "gear-talent-diff gear-talent-pvp-diff")
+              : highlightDiffHtml(pvePerfectDescDisp, perfectDescDisp))
+            : highlightDiffHtml(talentDescDisp, perfectDescDisp);
           lines.push({ cls: "line line--named-meta line--talent-desc", text: perfectDescDisp, html, key: "", isDesc: true });
         }
       }

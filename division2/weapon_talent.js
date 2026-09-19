@@ -219,10 +219,20 @@
         console.warn("Weapon talent table is missing in items.db", { hasWeaponTalent });
         throw new Error("data_unavailable");
       }
+      const talentColumns = new Set();
+      const talentInfo = db.exec("PRAGMA table_info(items_weapon_talents)");
+      if (talentInfo[0]) {
+        const nameIndex = talentInfo[0].columns.indexOf("name");
+        if (nameIndex >= 0) talentInfo[0].values.forEach((row) => talentColumns.add(String(row[nameIndex] || "")));
+      }
+      const normalizeSelect = talentColumns.has("talent_normalize")
+        ? "talent_normalize, talent_normalize_jp, perfect_talent_normalize, perfect_talent_normalize_jp"
+        : "'' AS talent_normalize, '' AS talent_normalize_jp, '' AS perfect_talent_normalize, '' AS perfect_talent_normalize_jp";
       const stmt = db.prepare(`
         SELECT
           talent,
           talent_desc,
+          ${normalizeSelect},
           perfect_talent,
           perfect_talent_desc,
           ar, lmg, mmr, pistol, rifle, shotgun, smg
@@ -386,6 +396,10 @@
   function renderWeaponTalentViewFromRows(payload) {
     const rowsRaw = (payload && payload.rows) || [];
     const weaponByTalent = (payload && payload.weaponByTalent) || new Map();
+    const normalizeAvailable = rowsRaw.some((r) => String(r.talent_normalize || r.perfect_talent_normalize || "").trim());
+    if (typeof window.configureNormalizeToggle === "function") {
+      window.configureNormalizeToggle(normalizeAvailable, (enabled) => renderWeaponTalentViewFromRows(payload));
+    }
     clearContent();
     if (!rowsRaw.length) {
       contentEl.innerHTML = `<div class="status">${escapeHtml(ui("noData"))}</div>`;
@@ -422,7 +436,10 @@
       const talentRaw = namedOnly ? "" : String(r.talent || "").trim();
       const talentKey = normalizeKey(talentRaw);
       let talentTitle = resolveTalentTitle(talentRaw, talentKey);
-      const talentDesc = namedOnly ? "" : String(r.talent_desc || "").trim();
+      const useNormalize = typeof window.isNormalizeDisplayEnabled === "function" && window.isNormalizeDisplayEnabled();
+      const talentDesc = namedOnly ? "" : String((useNormalize
+        ? (langSelect.value === "ja" ? (r.talent_normalize_jp || r.talent_normalize) : r.talent_normalize)
+        : r.talent_desc) || "").trim();
 
       let perfectRaw = namedOnly ? String(r.talent || "").trim() : String(r.perfect_talent || "").trim();
       let perfectKey = normalizeKey(perfectRaw);
@@ -438,7 +455,13 @@
       const perfectTitle = hasPerfectTalent ? resolveTalentTitle(perfectRaw, perfectKey) : "";
       let perfectDesc = perfectOnlyByType
         ? talentDesc
-        : (namedOnly ? String(r.talent_desc || "").trim() : String(r.perfect_talent_desc || "").trim());
+        : (namedOnly
+          ? String((useNormalize
+            ? (langSelect.value === "ja" ? (r.talent_normalize_jp || r.talent_normalize) : r.talent_normalize)
+            : r.talent_desc) || "").trim()
+          : String((useNormalize
+            ? (langSelect.value === "ja" ? (r.perfect_talent_normalize_jp || r.perfect_talent_normalize) : r.perfect_talent_normalize)
+            : r.perfect_talent_desc) || "").trim());
 
       const activeTypes = new Set(Array.isArray(window.weaponTalentTypeFilter) ? window.weaponTalentTypeFilter : []);
       const lines = [];
@@ -454,15 +477,27 @@
         html: `<div class="wt-badges">${weaponTypeBadgesHtml(enabled, allowTypes.filter((t) => activeTypes.has(t)))}</div>`
       });
       if (talentTitle) lines.push({ cls: "line line--gray line--talent", text: talentTitle, key: talentKey });
-      const talentDescDisp = trTalentDescPreserveNewline(talentDesc, talentKey);
-      const perfectDescDisp = trTalentDescPreserveNewline(perfectDesc, perfectKey || talentKey);
+      const talentDescDisp = useNormalize ? talentDesc : trTalentDescPreserveNewline(talentDesc, talentKey);
+      const perfectDescDisp = useNormalize ? perfectDesc : trTalentDescPreserveNewline(perfectDesc, perfectKey || talentKey);
+      const pveTalentDescDisp = trTalentDescPreserveNewline(String(r.talent_desc || "").trim(), talentKey);
+      const pvePerfectDescDisp = trTalentDescPreserveNewline(String(r.perfect_talent_desc || "").trim(), perfectKey || talentKey);
+      const talentDescHtml = useNormalize && pveTalentDescDisp && talentDescDisp
+        ? (typeof window.highlightTalentDiffHtml === "function"
+          ? window.highlightTalentDiffHtml(pveTalentDescDisp, talentDescDisp)
+          : highlightDiffHtml(pveTalentDescDisp, talentDescDisp))
+        : textToHtmlPreserveNewline(talentDescDisp);
       if (talentDescDisp && !perfectOnlyByType) {
-        lines.push({ cls: "line line--named-meta line--talent-desc", text: talentDescDisp, html: textToHtmlPreserveNewline(talentDescDisp), key: "", isDesc: true });
+        lines.push({ cls: "line line--named-meta line--talent-desc", text: talentDescDisp, html: talentDescHtml, key: "", isDesc: true });
       }
       if (hasPerfectTalent && talentTitle) lines.push({ cls: "brand-named-sep", hr: true, text: "", key: "" });
       if (perfectTitle) lines.push({ cls: "line line--named line--talent", text: perfectTitle, key: perfectKey });
       if (hasPerfectTalent && perfectDescDisp) {
-        lines.push({ cls: "line line--named-meta line--talent-desc", text: perfectDescDisp, html: highlightDiffHtml(talentDescDisp, perfectDescDisp), key: "", isDesc: true });
+        const perfectHtml = useNormalize && pvePerfectDescDisp && perfectDescDisp
+          ? (typeof window.highlightTalentDiffHtml === "function"
+            ? window.highlightTalentDiffHtml(pvePerfectDescDisp, perfectDescDisp, "gear-talent-diff gear-talent-pvp-diff")
+            : highlightDiffHtml(pvePerfectDescDisp, perfectDescDisp))
+          : highlightDiffHtml(talentDescDisp, perfectDescDisp);
+        lines.push({ cls: "line line--named-meta line--talent-desc", text: perfectDescDisp, html: perfectHtml, key: "", isDesc: true });
       }
 
       const matchedItems = [];

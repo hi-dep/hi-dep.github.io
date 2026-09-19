@@ -1406,6 +1406,23 @@ body.seasonmod-modal-open {
   display: none;
 }
 
+#normalizeToggleBtn[hidden] {
+  display: none !important;
+}
+
+#normalizeToggleBtn {
+  order: 5;
+  flex: 0 0 auto;
+  min-width: 34px;
+  width: 34px;
+  height: 20px;
+  min-height: 20px;
+  padding: 0 4px;
+  font-size: 10px;
+  line-height: 1;
+  white-space: nowrap;
+}
+
 .field input:focus,
 .field select:focus,
 .btn:focus {
@@ -1893,6 +1910,24 @@ body.seasonmod-modal-open {
 
 .card__title.is-named {
   color: var(--named-text);
+}
+
+.topbar__toggle.is-on {
+  color: var(--named-text);
+  border-color: rgba(255, 127, 0, .75);
+  background: rgba(255, 127, 0, .14);
+}
+
+.gear-talent-diff {
+  color: var(--perfect-text);
+  font-weight: 700;
+}
+
+.gear-talent-pvp-diff {
+  font-weight: 700;
+  background: rgba(167, 139, 250, .28);
+  border-radius: 3px;
+  box-shadow: 0 0 0 1px rgba(167, 139, 250, .42);
 }
 
 .card__title .exotic-item-type {
@@ -2757,6 +2792,12 @@ th {
     order: 4;
     flex: 0 0 auto;
     margin-left: 0;
+  }
+
+  #normalizeToggleBtn {
+    order: 5;
+    min-height: 18px;
+    height: 18px;
   }
 
   .topbar > .field--lang select {
