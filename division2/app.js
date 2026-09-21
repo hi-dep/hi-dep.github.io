@@ -83,38 +83,77 @@ let filtersOpen = false;
 const SEASON_MOD_URL_KEYS = ["sm_season", "sm_active", "sm_level", "sm_p1", "sm_p2", "sm_p3", "sm_ao", "sm_po"];
 let currentViewMode = "vendor"; // vendor | event | season_mod | weapons | brand | gearset | exotic_gear | gear_talent | weapon_talent | y8s2_talent_diff | descent_talent | prototype | cost | blueprint | item_sources
 let normalizeDisplayEnabled = false;
+let normalizeDisplayMode = 0; // 0: PvE, 1: PvP, 2: compare
 let normalizeToggleHandler = null;
 
 // Normalize/PvP display is optional because older DB snapshots do not have
 // the normalize columns. Individual views enable this only when their loaded
 // rows contain at least one non-empty normalize value.
 window.isNormalizeDisplayEnabled = () => normalizeDisplayEnabled;
+window.getNormalizeDisplayMode = () => normalizeDisplayMode;
+window.normalizePvpCompareHtml = (pveText, pvpText) => {
+  const pve = String(pveText || "");
+  const pvp = String(pvpText || "");
+  const diff = (typeof window.highlightTalentDiffHtml === "function")
+    ? window.highlightTalentDiffHtml(pve, pvp, "gear-talent-pvp-diff")
+    : escapeHtml(pvp).replace(/\r?\n/g, "<br>");
+  return `<span class="normalize-compare-head"><span class="wt-inline-badges normalize-pvp-badge"><span class="wt-badge is-on">PvP</span></span><span class="normalize-compare-divider" aria-hidden="true"></span></span><span class="normalize-compare-text">${diff}</span>`;
+};
 window.configureNormalizeToggle = (available, onChange) => {
   const enabled = !!available;
   normalizeToggleHandler = (typeof onChange === "function") ? onChange : null;
-  if (!enabled) normalizeDisplayEnabled = false;
+  if (!enabled) {
+    normalizeDisplayEnabled = false;
+    normalizeDisplayMode = 0;
+  }
   if (normalizeToggleBtn) {
     normalizeToggleBtn.hidden = !enabled;
-    normalizeToggleBtn.classList.toggle("is-on", enabled && normalizeDisplayEnabled);
-    normalizeToggleBtn.setAttribute("aria-pressed", String(enabled && normalizeDisplayEnabled));
+    normalizeToggleBtn.classList.toggle("is-on", enabled && normalizeDisplayMode === 1);
+    normalizeToggleBtn.classList.toggle("is-compare", enabled && normalizeDisplayMode === 2);
+    normalizeToggleBtn.setAttribute("aria-pressed", String(enabled && normalizeDisplayMode !== 0));
   }
 };
 window.resetNormalizeToggle = () => {
   normalizeToggleHandler = null;
   normalizeDisplayEnabled = false;
+  normalizeDisplayMode = 0;
   if (normalizeToggleBtn) {
     normalizeToggleBtn.hidden = true;
     normalizeToggleBtn.classList.remove("is-on");
+    normalizeToggleBtn.classList.remove("is-compare");
     normalizeToggleBtn.setAttribute("aria-pressed", "false");
   }
 };
 
+function captureOpenDescriptionCards() {
+  const ids = new Set();
+  document.querySelectorAll('.card[data-desc-collapsible="1"].is-desc-open[data-item-id]').forEach((card) => {
+    const id = String(card.getAttribute("data-item-id") || "").trim();
+    if (id) ids.add(id);
+  });
+  return ids;
+}
+
+function restoreOpenDescriptionCards(ids) {
+  if (!(ids instanceof Set) || !ids.size) return;
+  document.querySelectorAll('.card[data-desc-collapsible="1"][data-item-id]').forEach((card) => {
+    const id = String(card.getAttribute("data-item-id") || "").trim();
+    if (!ids.has(id)) return;
+    card.classList.add("is-desc-open");
+    card.setAttribute("data-desc-open", "1");
+  });
+}
+
 if (normalizeToggleBtn) {
   normalizeToggleBtn.addEventListener("click", () => {
-    normalizeDisplayEnabled = !normalizeDisplayEnabled;
-    normalizeToggleBtn.classList.toggle("is-on", normalizeDisplayEnabled);
-    normalizeToggleBtn.setAttribute("aria-pressed", String(normalizeDisplayEnabled));
+    const openCards = captureOpenDescriptionCards();
+    normalizeDisplayMode = (normalizeDisplayMode + 1) % 3;
+    normalizeDisplayEnabled = normalizeDisplayMode === 1;
+    normalizeToggleBtn.classList.toggle("is-on", normalizeDisplayMode === 1);
+    normalizeToggleBtn.classList.toggle("is-compare", normalizeDisplayMode === 2);
+    normalizeToggleBtn.setAttribute("aria-pressed", String(normalizeDisplayMode !== 0));
     if (normalizeToggleHandler) normalizeToggleHandler(normalizeDisplayEnabled);
+    restoreOpenDescriptionCards(openCards);
   });
 }
 let descentPoolState = {

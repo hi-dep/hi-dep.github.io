@@ -78,7 +78,9 @@
     if (typeof window.configureNormalizeToggle === "function") {
       window.configureNormalizeToggle(normalizeAvailable, () => renderGearsetViewFromRows(payload));
     }
-    const useNormalize = typeof window.isNormalizeDisplayEnabled === "function" && window.isNormalizeDisplayEnabled();
+    const normalizeMode = typeof window.getNormalizeDisplayMode === "function" ? window.getNormalizeDisplayMode() : 0;
+    const useNormalize = normalizeMode === 1;
+    const compareNormalize = normalizeMode === 2;
     clearContent();
     const byItem = new Map();
     (rows || []).forEach((r) => {
@@ -308,6 +310,9 @@
           const tdDisp = useNormalize
             ? td
             : ((langSelect.value === "ja") ? trGearsetTalentDesc(td, talentKey) : td);
+          const pvpTd = (langSelect.value === "ja")
+            ? trGearsetTalentDesc(b.talentNormalizeJp || b.talentNormalize || "", talentKey)
+            : (b.talentNormalize || "");
           const pveTd = (langSelect.value === "ja")
             ? trGearsetTalentDesc(b.talentDesc || "", talentKey)
             : (b.talentDesc || "");
@@ -321,6 +326,9 @@
             icon: `${slotIcon || ""}${talentIcon || ""}`
           });
           gearsetTalentDescLines(talentKey, tdDisp, tdHtml).forEach((descLine) => lines.push(descLine));
+          if (compareNormalize && pvpTd) {
+            lines.push({ cls: "line line--named-meta line--talent-desc normalize-compare-pvp", text: pvpTd, textHtml: window.normalizePvpCompareHtml(tdDisp, pvpTd), isDesc: true });
+          }
           continue;
       }
       const parts = [];

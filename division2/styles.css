@@ -1956,6 +1956,45 @@ body.seasonmod-modal-open {
   background: rgba(255, 127, 0, .14);
 }
 
+.topbar__toggle.is-compare {
+  color: var(--color-prototype-bright);
+  border-color: rgba(167, 139, 250, .78);
+  background: rgba(167, 139, 250, .16);
+}
+
+.normalize-compare-pvp {
+  padding-top: 0;
+}
+
+.normalize-pvp-badge {
+  display: inline-flex;
+  vertical-align: baseline;
+}
+
+.normalize-pvp-badge .wt-badge {
+  font-size: inherit;
+  line-height: inherit;
+  padding: 0 4px;
+}
+
+.normalize-compare-text {
+  display: inline;
+}
+
+.normalize-compare-head {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  width: 100%;
+  margin-bottom: 4px;
+}
+
+.normalize-compare-divider {
+  display: inline-block;
+  flex: 1 1 auto;
+  border-top: 1px dashed rgba(167, 139, 250, .48);
+}
+
 .gear-talent-diff {
   color: var(--perfect-text);
 }

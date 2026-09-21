@@ -436,7 +436,9 @@
       const talentRaw = namedOnly ? "" : String(r.talent || "").trim();
       const talentKey = normalizeKey(talentRaw);
       let talentTitle = resolveTalentTitle(talentRaw, talentKey);
-      const useNormalize = typeof window.isNormalizeDisplayEnabled === "function" && window.isNormalizeDisplayEnabled();
+      const normalizeMode = typeof window.getNormalizeDisplayMode === "function" ? window.getNormalizeDisplayMode() : 0;
+      const useNormalize = normalizeMode === 1;
+      const compareNormalize = normalizeMode === 2;
       const talentDesc = namedOnly ? "" : String((useNormalize
         ? (langSelect.value === "ja" ? (r.talent_normalize_jp || r.talent_normalize) : r.talent_normalize)
         : r.talent_desc) || "").trim();
@@ -453,6 +455,10 @@
       }
       const hasPerfectTalent = !!perfectRaw && !/^[\-–—]+$/.test(perfectRaw);
       const perfectTitle = hasPerfectTalent ? resolveTalentTitle(perfectRaw, perfectKey) : "";
+      const pvpTalentDesc = namedOnly ? "" : String((langSelect.value === "ja" ? (r.talent_normalize_jp || r.talent_normalize) : r.talent_normalize) || "").trim();
+      const pvpPerfectDesc = namedOnly
+        ? String((langSelect.value === "ja" ? (r.talent_normalize_jp || r.talent_normalize) : r.talent_normalize) || "").trim()
+        : String((langSelect.value === "ja" ? (r.perfect_talent_normalize_jp || r.perfect_talent_normalize) : r.perfect_talent_normalize) || "").trim();
       let perfectDesc = perfectOnlyByType
         ? talentDesc
         : (namedOnly
@@ -481,6 +487,8 @@
       const perfectDescDisp = useNormalize ? perfectDesc : trTalentDescPreserveNewline(perfectDesc, perfectKey || talentKey);
       const pveTalentDescDisp = trTalentDescPreserveNewline(String(r.talent_desc || "").trim(), talentKey);
       const pvePerfectDescDisp = trTalentDescPreserveNewline(String(r.perfect_talent_desc || "").trim(), perfectKey || talentKey);
+      const pvpTalentDescDisp = trTalentDescPreserveNewline(pvpTalentDesc, talentKey);
+      const pvpPerfectDescDisp = trTalentDescPreserveNewline(pvpPerfectDesc, perfectKey || talentKey);
       const talentDescHtml = useNormalize && pveTalentDescDisp && talentDescDisp
         ? (typeof window.highlightTalentDiffHtml === "function"
           ? window.highlightTalentDiffHtml(pveTalentDescDisp, talentDescDisp)
@@ -488,6 +496,9 @@
         : textToHtmlPreserveNewline(talentDescDisp);
       if (talentDescDisp && !perfectOnlyByType) {
         lines.push({ cls: "line line--named-meta line--talent-desc", text: talentDescDisp, html: talentDescHtml, key: "", isDesc: true });
+        if (compareNormalize && pvpTalentDescDisp) {
+          lines.push({ cls: "line line--named-meta line--talent-desc normalize-compare-pvp", text: pvpTalentDescDisp, html: window.normalizePvpCompareHtml(pveTalentDescDisp, pvpTalentDescDisp), key: "", isDesc: true });
+        }
       }
       if (hasPerfectTalent && talentTitle) lines.push({ cls: "brand-named-sep", hr: true, text: "", key: "" });
       if (perfectTitle) lines.push({ cls: "line line--named line--talent", text: perfectTitle, key: perfectKey });
@@ -498,6 +509,9 @@
             : highlightDiffHtml(pvePerfectDescDisp, perfectDescDisp))
           : highlightDiffHtml(talentDescDisp, perfectDescDisp);
         lines.push({ cls: "line line--named-meta line--talent-desc", text: perfectDescDisp, html: perfectHtml, key: "", isDesc: true });
+        if (compareNormalize && pvpPerfectDescDisp) {
+          lines.push({ cls: "line line--named-meta line--talent-desc normalize-compare-pvp", text: pvpPerfectDescDisp, html: window.normalizePvpCompareHtml(pvePerfectDescDisp, pvpPerfectDescDisp), key: "", isDesc: true });
+        }
       }
 
       const matchedItems = [];

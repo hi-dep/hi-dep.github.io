@@ -143,7 +143,9 @@
     if (typeof window.configureNormalizeToggle === "function") {
       window.configureNormalizeToggle(normalizeAvailable, () => renderExoticGearViewFromRows(payload));
     }
-    const useNormalize = typeof window.isNormalizeDisplayEnabled === "function" && window.isNormalizeDisplayEnabled();
+    const normalizeMode = typeof window.getNormalizeDisplayMode === "function" ? window.getNormalizeDisplayMode() : 0;
+    const useNormalize = normalizeMode === 1;
+    const compareNormalize = normalizeMode === 2;
     clearContent();
     if (!rows.length) {
       contentEl.innerHTML = `<div class="status">${escapeHtml(ui("noData"))}</div>`;
@@ -303,6 +305,7 @@
         ? rawTalentDesc
         : trExoticTalentDesc(rawTalentDesc, talentKey, isWeapon);
       const baseTalentDescText = trExoticTalentDesc(String(r.talent_desc || "").trim(), talentKey, isWeapon);
+      const normalizedTalentDescText = trExoticTalentDesc(String(normalizedDesc || "").trim(), talentKey, isWeapon);
       const talentDescHtml = useNormalize && baseTalentDescText && talentDescText && typeof window.highlightTalentDiffHtml === "function"
         ? window.highlightTalentDiffHtml(baseTalentDescText, talentDescText)
         : textToHtmlPreserveNewline(talentDescText);
@@ -393,6 +396,9 @@
         if (talentText) lines.push({ cls: "line line--gray line--talent", text: talentText, key: talentKey });
         if (talentDescText) {
           lines.push({ cls: "line line--named-meta line--talent-desc", text: talentDescText, textHtml: talentDescHtml, key: "", isDesc: true });
+          if (compareNormalize && normalizedTalentDescText) {
+            lines.push({ cls: "line line--named-meta line--talent-desc normalize-compare-pvp", text: normalizedTalentDescText, textHtml: window.normalizePvpCompareHtml(baseTalentDescText, normalizedTalentDescText), key: "", isDesc: true });
+          }
         }
       } else if (attrs.length) {
         attrs.forEach((a) => {
