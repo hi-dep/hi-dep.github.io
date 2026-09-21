@@ -305,7 +305,8 @@
         ? rawTalentDesc
         : trExoticTalentDesc(rawTalentDesc, talentKey, isWeapon);
       const baseTalentDescText = trExoticTalentDesc(String(r.talent_desc || "").trim(), talentKey, isWeapon);
-      const normalizedTalentDescText = trExoticTalentDesc(String(normalizedDesc || "").trim(), talentKey, isWeapon);
+      // normalize_jp is already translated; do not resolve it again by key.
+      const normalizedTalentDescText = String(normalizedDesc || "").trim();
       const talentDescHtml = useNormalize && baseTalentDescText && talentDescText && typeof window.highlightTalentDiffHtml === "function"
         ? window.highlightTalentDiffHtml(baseTalentDescText, talentDescText)
         : textToHtmlPreserveNewline(talentDescText);

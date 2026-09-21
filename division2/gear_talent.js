@@ -365,8 +365,10 @@
       const perfectDescDisp = useNormalize ? perfectDesc : trTalentDescPreserveNewline(perfectDesc, perfectKey || talentKey);
       const pveTalentDescDisp = trTalentDescPreserveNewline(String(r.talent_desc || "").trim(), talentKey);
       const pvePerfectDescDisp = trTalentDescPreserveNewline(String(r.perfect_talent_desc || "").trim(), perfectKey || talentKey);
-      const pvpTalentDescDisp = trTalentDescPreserveNewline(pvpTalentDesc, talentKey);
-      const pvpPerfectDescDisp = trTalentDescPreserveNewline(pvpPerfectDesc, perfectKey || talentKey);
+      // normalize_jp is already the translated PvP text. Do not resolve it by
+      // talent key here, because that lookup contains the PvE description.
+      const pvpTalentDescDisp = pvpTalentDesc;
+      const pvpPerfectDescDisp = pvpPerfectDesc;
       const talentDescHtml = useNormalize && pveTalentDescDisp && talentDescDisp
         ? (typeof window.highlightTalentDiffHtml === "function"
           ? window.highlightTalentDiffHtml(pveTalentDescDisp, talentDescDisp)
@@ -385,7 +387,7 @@
           });
         }
         if (compareNormalize && pvpPerfectDescDisp) {
-          lines.push({ cls: "line line--named-meta line--talent-desc normalize-compare-pvp", text: pvpPerfectDescDisp, html: window.normalizePvpCompareHtml(pvePerfectDescDisp, pvpPerfectDescDisp), key: "", isDesc: true });
+          lines.push({ cls: "line line--named-meta line--talent-desc normalize-compare-pvp", text: pvpPerfectDescDisp, html: window.normalizePvpCompareHtml(pvePerfectDescDisp, pvpPerfectDescDisp, "gear-talent-diff gear-talent-pvp-diff"), key: "", isDesc: true });
         }
       } else {
         if (talentTitle) lines.push({ cls: "line line--gray line--talent", text: talentTitle, key: talentKey, icon: talentSlotIcon });
@@ -413,7 +415,7 @@
             : highlightDiffHtml(talentDescDisp, perfectDescDisp);
           lines.push({ cls: "line line--named-meta line--talent-desc", text: perfectDescDisp, html, key: "", isDesc: true });
           if (compareNormalize && pvpPerfectDescDisp) {
-            lines.push({ cls: "line line--named-meta line--talent-desc normalize-compare-pvp", text: pvpPerfectDescDisp, html: window.normalizePvpCompareHtml(pvePerfectDescDisp, pvpPerfectDescDisp), key: "", isDesc: true });
+            lines.push({ cls: "line line--named-meta line--talent-desc normalize-compare-pvp", text: pvpPerfectDescDisp, html: window.normalizePvpCompareHtml(pvePerfectDescDisp, pvpPerfectDescDisp, "gear-talent-diff gear-talent-pvp-diff"), key: "", isDesc: true });
           }
         }
       }

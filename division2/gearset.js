@@ -310,8 +310,10 @@
           const tdDisp = useNormalize
             ? td
             : ((langSelect.value === "ja") ? trGearsetTalentDesc(td, talentKey) : td);
-          const pvpTd = (langSelect.value === "ja")
-            ? trGearsetTalentDesc(b.talentNormalizeJp || b.talentNormalize || "", talentKey)
+          // normalize_jp is already translated. Applying the talent-key
+          // translation here would incorrectly restore the PvE description.
+          const pvpTd = langSelect.value === "ja"
+            ? (b.talentNormalizeJp || b.talentNormalize || "")
             : (b.talentNormalize || "");
           const pveTd = (langSelect.value === "ja")
             ? trGearsetTalentDesc(b.talentDesc || "", talentKey)

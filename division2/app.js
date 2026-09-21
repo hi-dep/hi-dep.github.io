@@ -91,11 +91,11 @@ let normalizeToggleHandler = null;
 // rows contain at least one non-empty normalize value.
 window.isNormalizeDisplayEnabled = () => normalizeDisplayEnabled;
 window.getNormalizeDisplayMode = () => normalizeDisplayMode;
-window.normalizePvpCompareHtml = (pveText, pvpText) => {
+window.normalizePvpCompareHtml = (pveText, pvpText, diffClass = "gear-talent-pvp-diff") => {
   const pve = String(pveText || "");
   const pvp = String(pvpText || "");
   const diff = (typeof window.highlightTalentDiffHtml === "function")
-    ? window.highlightTalentDiffHtml(pve, pvp, "gear-talent-pvp-diff")
+    ? window.highlightTalentDiffHtml(pve, pvp, diffClass)
     : escapeHtml(pvp).replace(/\r?\n/g, "<br>");
   return `<span class="normalize-compare-head"><span class="wt-inline-badges normalize-pvp-badge"><span class="wt-badge is-on">PvP</span></span><span class="normalize-compare-divider" aria-hidden="true"></span></span><span class="normalize-compare-text">${diff}</span>`;
 };
