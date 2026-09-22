@@ -9,7 +9,20 @@
         "The Pentagon",
         "DARPA Research Labs"
       ],
-      "target_loot_by_day": []
+      "target_loot_by_day": [
+        {
+          "day": "2026-09-22",
+          "target_loot": [
+            "Ember Engine",
+            "Badger Tuff",
+            "Striker's Battlegear",
+            "Petrov Defense Group",
+            "Alps Summit Armaments"
+          ],
+          "prototype_gear_cache": "mask",
+          "prototype_weapon_cache": "mmr"
+        }
+      ]
     }
   ]
 }
