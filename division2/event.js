@@ -81,6 +81,7 @@
       vendorLineup: ja ? "ラインナップ" : "Lineup",
       prototypeGearCache: ja ? "プロトタイプ装備キャッシュ" : "Prototype Gear Cache",
       prototypeWeaponCache: ja ? "プロトタイプ武器キャッシュ" : "Prototype Weapon Cache",
+      unverified: ja ? "未確認" : "Unverified",
       fallbackSection: ja ? "イベント" : "Event",
       copy: ja ? "コピー" : "Copy",
       copyDone: ja ? "エスカレーションをコピーしました。" : "Escalation copied.",
@@ -255,7 +256,8 @@
     return iconUrl("brands", key, "img/icon/brandset");
   }
 
-  function targetLootCellHtml(name, t) {
+  function targetLootCellHtml(name, t, targetLootAvailable = true) {
+    if (!targetLootAvailable) return `<span class="event-targetloot-empty">${esc(t.unverified)}</span>`;
     const raw = String(name || "").trim();
     if (!raw) return `<span class="event-targetloot-empty">${esc(t.noData)}</span>`;
     const src = targetLootIconUrl(raw);
@@ -326,6 +328,21 @@
     const db = new sql.Database(bytes);
     try {
       const events = {};
+      let targetDay = "";
+      let targetWeek = "";
+      try {
+        const metaRs = db.exec("SELECT key, value FROM meta");
+        if (metaRs && metaRs.length && Array.isArray(metaRs[0].values)) {
+          for (const row of metaRs[0].values) {
+            const key = String(row[0] || "").trim();
+            const value = String(row[1] || "").trim();
+            if (key === "target_day") targetDay = value;
+            if (key === "target_week") targetWeek = value;
+          }
+        }
+      } catch (_e) {
+        // Older DBs may not have metadata; the row dates remain usable.
+      }
       const entries = new Map();
       const sectionRs = db.exec(
         "SELECT section_name, section_key, week, mission_index, mission "
@@ -372,19 +389,53 @@
           });
         }
       }
-      return events;
+      return { events, targetDay, targetWeek };
     } finally {
       db.close();
     }
+  }
+
+  async function loadMissionListFallback() {
+    const jsonPath = (typeof appPath === "function")
+      ? appPath("data/event/index.json")
+      : "./data/event/index.json";
+    const res = await fetch(`${jsonPath}?ts=${Date.now()}`, { cache: "no-store" });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const data = await res.json();
+    const events = {};
+    for (const [sectionName, entries] of Object.entries((data && typeof data === "object") ? data : {})) {
+      if (!Array.isArray(entries)) continue;
+      events[sectionName] = entries.filter((entry) => entry && typeof entry === "object").map((entry) => ({
+        week: String(entry.week || "").trim(),
+        missions: Array.isArray(entry.missions) ? entry.missions.map((x) => String(x || "").trim()).filter(Boolean) : [],
+        target_loot_by_day: [],
+      }));
+    }
+    return { events, targetDay: "", targetWeek: "" };
   }
 
   window.eventViewRender = async function eventViewRender() {
     const t = labels();
     if (typeof setStatus === "function") setStatus(t.loading);
     try {
-      const events = await loadTargetLootedEvents();
-      const targetWeek = normalizeToShopWeekStartJst(new Date());
-      const targetDay = normalizeToShopDayStartJst(new Date());
+      let events;
+      let targetDay = "";
+      let targetWeek = "";
+      let targetLootAvailable = true;
+      try {
+        const loaded = await loadTargetLootedEvents();
+        events = loaded.events;
+        targetDay = loaded.targetDay;
+        targetWeek = loaded.targetWeek;
+      } catch (_dbError) {
+        const loaded = await loadMissionListFallback();
+        events = loaded.events;
+        targetDay = loaded.targetDay;
+        targetWeek = loaded.targetWeek;
+        targetLootAvailable = false;
+      }
+      targetWeek = targetWeek || normalizeToShopWeekStartJst(new Date());
+      targetDay = targetDay || normalizeToShopDayStartJst(new Date());
       const sectionNames = Object.keys(events).sort((a, b) => String(a).localeCompare(String(b)));
       if (!sectionNames.length) {
         setContentHtml(`<section class="event-view"><p class="event-empty">${esc(t.noData)}</p></section>`);
@@ -488,10 +539,10 @@
           `;
         }
         const missionRows = missionRowsData
-          .map((r, i) => `<tr><th scope="row">${esc(String(i + 1))}</th><td>${esc(r.mission)}</td><td>${targetLootCellHtml(r.targetLootRaw, t)}</td></tr>`)
+          .map((r, i) => `<tr><th scope="row">${esc(String(i + 1))}</th><td>${esc(r.mission)}</td><td>${targetLootCellHtml(r.targetLootRaw, t, targetLootAvailable)}</td></tr>`)
           .join("");
         const shopRows = shopRowsData
-          .map((r, i) => `<tr><th scope="row">${esc(String(i + 1))}</th><td>${esc(r.mission)}</td><td>${targetLootCellHtml(r.targetLootRaw, t)}</td></tr>`)
+          .map((r, i) => `<tr><th scope="row">${esc(String(i + 1))}</th><td>${esc(r.mission)}</td><td>${targetLootCellHtml(r.targetLootRaw, t, targetLootAvailable)}</td></tr>`)
           .join("");
         const shopTableHtml = shopRows
           ? `
