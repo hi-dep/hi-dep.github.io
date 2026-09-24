@@ -1142,7 +1142,7 @@ function resolveViewMode(rawView) {
   const view = String(rawView || "").trim().toLowerCase();
   if (!view) return "";
   if (view === "vendor" || view === "vendo") return "vendor";
-  if (view === "event" || view === "events") return "event";
+  if (view === "event" || view === "events" || view === "target_looted" || view === "targetlooted" || view === "target-looted") return "target_looted";
   if (view === "season_mod" || view === "seasonmod" || view === "modifiers" || view === "modifier") return "season_mod";
   if (view === "weapons" || view === "weapon") return "weapons";
   if (view === "gear_attributes" || view === "gearattributes" || view === "gear-attributes") return "gear_attributes";
@@ -1294,7 +1294,7 @@ function updateModeUi() {
     } else if (currentViewMode === "brand") {
       nextTitle = "Division 2 Brandset";
       titleEl.textContent = nextTitle;
-    } else if (currentViewMode === "event") {
+    } else if (currentViewMode === "target_looted") {
       nextTitle = "Division 2 Target Looted";
       titleEl.textContent = nextTitle;
     } else if (currentViewMode === "season_mod") {
@@ -4450,7 +4450,7 @@ function toggleNavMenu() {
 async function switchViewMode(mode) {
   const prevViewMode = currentViewMode;
   saveSelectionStateForView(prevViewMode);
-  currentViewMode = (mode === "event" || mode === "season_mod" || mode === "weapons" || mode === "gear_attributes" || mode === "brand" || mode === "gearset" || mode === "exotic_gear" || mode === "gear_talent" || mode === "weapon_talent" || mode === "y8s2_talent_diff" || mode === "descent_talent" || mode === "prototype" || mode === "cost" || mode === "blueprint" || mode === "item_sources") ? mode : "vendor";
+  currentViewMode = (mode === "target_looted" || mode === "season_mod" || mode === "weapons" || mode === "gear_attributes" || mode === "brand" || mode === "gearset" || mode === "exotic_gear" || mode === "gear_talent" || mode === "weapon_talent" || mode === "y8s2_talent_diff" || mode === "descent_talent" || mode === "prototype" || mode === "cost" || mode === "blueprint" || mode === "item_sources") ? mode : "vendor";
   if (typeof window.resetNormalizeToggle === "function") window.resetNormalizeToggle();
   loadSelectionStateForView(currentViewMode);
   const shouldResetSharedFilterOpen =
@@ -4497,7 +4497,7 @@ async function switchViewMode(mode) {
     requestToolbarSync();
     return;
   }
-  if (currentViewMode === "event") {
+  if (currentViewMode === "target_looted") {
     await renderEventView();
     requestToolbarSync();
     return;
@@ -4693,7 +4693,7 @@ async function boot() {
           const d = getVendorDateValue() || indexJson.target_week || new Date().toISOString().slice(0, 10);
           setVendorDateValue(d);
           await loadWeek(d, { preserveSelection: true });
-        } else if (currentViewMode === "event") {
+        } else if (currentViewMode === "target_looted") {
           await renderEventView();
         } else if (currentViewMode === "season_mod") {
           await renderSeasonModView();
@@ -4744,7 +4744,7 @@ langSelect.addEventListener("change", () => {
   const d = getVendorDateValue();
   if (currentViewMode === "vendor") {
     if (d) loadWeek(d, { preserveSelection: true }).catch(err => setStatus(`${ui("error")}: ${err.message}`));
-  } else if (currentViewMode === "event") {
+  } else if (currentViewMode === "target_looted") {
     renderEventView().catch(err => setStatus(`${ui("error")}: ${err.message}`));
   } else if (currentViewMode === "season_mod") {
     renderSeasonModView().catch(err => setStatus(`${ui("error")}: ${err.message}`));
@@ -4788,7 +4788,7 @@ if (navVendorBtn) {
 }
 if (navEventBtn) {
   navEventBtn.addEventListener("click", () => {
-    switchViewMode("event").catch(err => setStatus(`${ui("error")}: ${err.message}`));
+    switchViewMode("target_looted").catch(err => setStatus(`${ui("error")}: ${err.message}`));
   });
 }
 if (navSeasonModBtn) {

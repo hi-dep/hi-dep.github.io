@@ -190,13 +190,13 @@
       const u = new URL(String(window.location.href || ""));
       const langParam = (lang === "ja" || lang === "en") ? lang : "en";
       u.search = "";
-      u.searchParams.set("view", "event");
+      u.searchParams.set("view", "target_looted");
       u.searchParams.set("lang", langParam);
       url = u.toString();
     } catch (_e) {
       url = "";
     }
-    if (!url) url = `https://hi-dep.github.io/division2/?view=event&lang=${lang}`;
+    if (!url) url = `https://hi-dep.github.io/division2/?view=target_looted&lang=${lang}`;
     return [title, "", ...body, "", `👉 ${url}`].join("\n");
   }
 
@@ -313,14 +313,76 @@
     return { day: String(targetDay || "").trim(), targetLoot: [], prototypeGearCache: "", prototypeWeaponCache: "" };
   }
 
+  async function loadTargetLootedEvents() {
+    if (typeof fetchArrayBuffer !== "function" || typeof gunzipToUint8Array !== "function" || typeof initSql !== "function") {
+      throw new Error("target-looted database helpers are unavailable");
+    }
+    const dbPath = (typeof appPath === "function")
+      ? appPath("data/target_looted/target_looted_latest.db.gz")
+      : "./data/target_looted/target_looted_latest.db.gz";
+    const compressed = await fetchArrayBuffer(`${dbPath}?ts=${Date.now()}`);
+    const bytes = await gunzipToUint8Array(compressed);
+    const sql = await initSql();
+    const db = new sql.Database(bytes);
+    try {
+      const events = {};
+      const entries = new Map();
+      const sectionRs = db.exec(
+        "SELECT section_name, section_key, week, mission_index, mission "
+        + "FROM target_looted_sections ORDER BY section_name, week, mission_index"
+      );
+      if (sectionRs && sectionRs.length && Array.isArray(sectionRs[0].values)) {
+        for (const row of sectionRs[0].values) {
+          const sectionName = String(row[0] || "").trim();
+          const sectionKey = String(row[1] || "").trim();
+          const week = String(row[2] || "").trim();
+          if (!sectionName || !sectionKey || !week) continue;
+          const entryKey = `${sectionKey}|${week}`;
+          let entry = entries.get(entryKey);
+          if (!entry) {
+            entry = { week, missions: [], target_loot_by_day: [] };
+            entries.set(entryKey, entry);
+            if (!Array.isArray(events[sectionName])) events[sectionName] = [];
+            events[sectionName].push(entry);
+          }
+          const mission = String(row[4] || "").trim();
+          if (mission) entry.missions.push(mission);
+        }
+      }
+      const dayRs = db.exec(
+        "SELECT section_key, week, day, target_loot_json, prototype_gear_cache, prototype_weapon_cache "
+        + "FROM target_looted_days ORDER BY section_key, week, day"
+      );
+      if (dayRs && dayRs.length && Array.isArray(dayRs[0].values)) {
+        for (const row of dayRs[0].values) {
+          const entry = entries.get(`${String(row[0] || "").trim()}|${String(row[1] || "").trim()}`);
+          if (!entry) continue;
+          let targetLoot = [];
+          try {
+            const parsed = JSON.parse(String(row[3] || "[]"));
+            targetLoot = Array.isArray(parsed) ? parsed.map((x) => String(x || "").trim()).filter(Boolean) : [];
+          } catch (_e) {
+            targetLoot = [];
+          }
+          entry.target_loot_by_day.push({
+            day: String(row[2] || "").trim(),
+            target_loot: targetLoot,
+            prototype_gear_cache: String(row[4] || "").trim(),
+            prototype_weapon_cache: String(row[5] || "").trim(),
+          });
+        }
+      }
+      return events;
+    } finally {
+      db.close();
+    }
+  }
+
   window.eventViewRender = async function eventViewRender() {
     const t = labels();
     if (typeof setStatus === "function") setStatus(t.loading);
     try {
-      const res = await fetch(`./data/event/index.json?ts=${Date.now()}`, { cache: "no-store" });
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      const data = await res.json();
-      const events = (data && typeof data === "object") ? data : {};
+      const events = await loadTargetLootedEvents();
       const targetWeek = normalizeToShopWeekStartJst(new Date());
       const targetDay = normalizeToShopDayStartJst(new Date());
       const sectionNames = Object.keys(events).sort((a, b) => String(a).localeCompare(String(b)));
