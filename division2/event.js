@@ -395,7 +395,7 @@
     }
   }
 
-  async function loadMissionListFallback() {
+  async function loadEventIndexJson() {
     const jsonPath = (typeof appPath === "function")
       ? appPath("data/event/index.json")
       : "./data/event/index.json";
@@ -408,32 +408,70 @@
       events[sectionName] = entries.filter((entry) => entry && typeof entry === "object").map((entry) => ({
         week: String(entry.week || "").trim(),
         missions: Array.isArray(entry.missions) ? entry.missions.map((x) => String(x || "").trim()).filter(Boolean) : [],
-        target_loot_by_day: [],
+        target_loot_by_day: Array.isArray(entry.target_loot_by_day)
+          ? entry.target_loot_by_day.filter((day) => day && typeof day === "object").map((day) => ({
+            day: String(day.day || "").trim(),
+            target_loot: Array.isArray(day.target_loot) ? day.target_loot.map((x) => String(x || "").trim()).filter(Boolean) : [],
+            prototype_gear_cache: String(day.prototype_gear_cache || "").trim(),
+            prototype_weapon_cache: String(day.prototype_weapon_cache || "").trim(),
+          }))
+          : [],
       }));
     }
     return { events, targetDay: "", targetWeek: "" };
+  }
+
+  function mergeTargetLootedEvents(jsonEvents, dbEvents) {
+    const merged = JSON.parse(JSON.stringify(jsonEvents || {}));
+    for (const [sectionName, dbEntries] of Object.entries(dbEvents || {})) {
+      if (!Array.isArray(merged[sectionName])) merged[sectionName] = [];
+      for (const dbEntry of Array.isArray(dbEntries) ? dbEntries : []) {
+        if (!dbEntry || typeof dbEntry !== "object") continue;
+        const week = String(dbEntry.week || "").trim();
+        let entry = merged[sectionName].find((x) => String(x?.week || "").trim() === week);
+        if (!entry) {
+          entry = { week, missions: [], target_loot_by_day: [] };
+          merged[sectionName].push(entry);
+        }
+        if (Array.isArray(dbEntry.missions) && dbEntry.missions.length) {
+          entry.missions = dbEntry.missions.slice();
+        }
+        if (Array.isArray(dbEntry.target_loot_by_day) && dbEntry.target_loot_by_day.length) {
+          const days = new Map((Array.isArray(entry.target_loot_by_day) ? entry.target_loot_by_day : [])
+            .map((day) => [String(day?.day || "").trim(), day]));
+          for (const day of dbEntry.target_loot_by_day) {
+            days.set(String(day?.day || "").trim(), day);
+          }
+          entry.target_loot_by_day = Array.from(days.values());
+        }
+      }
+    }
+    return merged;
   }
 
   window.eventViewRender = async function eventViewRender() {
     const t = labels();
     if (typeof setStatus === "function") setStatus(t.loading);
     try {
-      let events;
+      let events = {};
       let targetDay = "";
       let targetWeek = "";
-      let targetLootAvailable = true;
+      let jsonLoaded = null;
+      let dbLoaded = null;
       try {
-        const loaded = await loadTargetLootedEvents();
-        events = loaded.events;
-        targetDay = loaded.targetDay;
-        targetWeek = loaded.targetWeek;
-      } catch (_dbError) {
-        const loaded = await loadMissionListFallback();
-        events = loaded.events;
-        targetDay = loaded.targetDay;
-        targetWeek = loaded.targetWeek;
-        targetLootAvailable = false;
+        jsonLoaded = await loadEventIndexJson();
+      } catch (_jsonError) {
+        jsonLoaded = null;
       }
+      try {
+        dbLoaded = await loadTargetLootedEvents();
+      } catch (_dbError) {
+        dbLoaded = null;
+      }
+      events = mergeTargetLootedEvents(jsonLoaded?.events || {}, dbLoaded?.events || {});
+      const targetLootAvailable = Boolean(jsonLoaded || dbLoaded);
+      targetDay = String(dbLoaded?.targetDay || "").trim();
+      targetWeek = String(dbLoaded?.targetWeek || "").trim();
       targetWeek = targetWeek || normalizeToShopWeekStartJst(new Date());
       targetDay = targetDay || normalizeToShopDayStartJst(new Date());
       const sectionNames = Object.keys(events).sort((a, b) => String(a).localeCompare(String(b)));
