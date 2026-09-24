@@ -99,6 +99,16 @@ window.normalizePvpCompareHtml = (pveText, pvpText, diffClass = "gear-talent-pvp
     : escapeHtml(pvp).replace(/\r?\n/g, "<br>");
   return `<span class="normalize-compare-head"><span class="wt-inline-badges normalize-pvp-badge"><span class="wt-badge is-on">PvP</span></span><span class="normalize-compare-divider" aria-hidden="true"></span></span><span class="normalize-compare-text">${diff}</span>`;
 };
+window.normalizePvpPerfectCompareHtml = (pvePerfectText, pvpNormalText, pvpPerfectText) => {
+  const diff = (typeof window.highlightTalentMultiDiffHtml === "function")
+    ? window.highlightTalentMultiDiffHtml(
+      [pvePerfectText, pvpNormalText],
+      pvpPerfectText,
+      ["gear-talent-pvp-diff", "gear-talent-diff"]
+    )
+    : escapeHtml(String(pvpPerfectText || "")).replace(/\r?\n/g, "<br>");
+  return `<span class="normalize-compare-head"><span class="wt-inline-badges normalize-pvp-badge"><span class="wt-badge is-on">PvP</span></span><span class="normalize-compare-divider" aria-hidden="true"></span></span><span class="normalize-compare-text">${diff}</span>`;
+};
 window.configureNormalizeToggle = (available, onChange) => {
   const enabled = !!available;
   normalizeToggleHandler = (typeof onChange === "function") ? onChange : null;
@@ -260,9 +270,6 @@ const VIEW_TOOLBAR_DEFS = Object.freeze({
   descent_talent: Object.freeze({
     controls: Object.freeze(["desc_toggle", "pool_filter"])
   }),
-  item_sources: Object.freeze({
-    controls: Object.freeze(["search", "clear", "weapon_type_filter"])
-  })
 });
 window.viewToolbarDefs = VIEW_TOOLBAR_DEFS;
 
@@ -327,10 +334,6 @@ window.buildInlineConditionFilterHtml = buildInlineConditionFilterHtml;
 function findViewToolbarNodes(viewMode) {
   if (!contentEl) return [];
   const mode = String(viewMode || "");
-  if (mode === "item_sources") {
-    const tb = contentEl.querySelector(".item-sources-toolbar");
-    return tb ? [tb] : [];
-  }
   if (mode === "descent_talent") {
     const tb = contentEl.querySelector(".trello-group-toggle.descent-controls");
     return tb ? [tb] : [];
@@ -344,8 +347,7 @@ function findViewToolbarNodes(viewMode) {
 
 function viewUsesHeaderToolbar(viewMode) {
   const mode = String(viewMode || "");
-  return mode === "item_sources"
-    || mode === "descent_talent"
+  return mode === "descent_talent"
     || mode === "weapons"
     || mode === "gear_attributes"
     || mode === "brand"
@@ -5590,8 +5592,8 @@ function handleViewInteractionClick(e) {
       return;
     }
   }
-  if (currentViewMode === "vendor" || currentViewMode === "brand" || currentViewMode === "gear_talent" || currentViewMode === "blueprint" || currentViewMode === "prototype") {
-    const isPopupBlockedByFilter = !!filtersOpen || (currentViewMode === "blueprint" && !!window.blueprintFiltersOpen);
+  if (currentViewMode === "vendor" || currentViewMode === "brand" || currentViewMode === "gear_talent" || currentViewMode === "blueprint" || currentViewMode === "item_sources" || currentViewMode === "prototype") {
+    const isPopupBlockedByFilter = !!filtersOpen || (currentViewMode === "blueprint" && !!window.blueprintFiltersOpen) || (currentViewMode === "item_sources" && !!window.itemSourcesFiltersOpen);
     if (!isPopupBlockedByFilter) {
       const talentBtn = e.target.closest(".inline-pop-trigger[data-pop-type='talent']");
       if (talentBtn) {

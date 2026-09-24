@@ -186,6 +186,12 @@ body::before {
   letter-spacing: 0.02em;
 }
 
+#worldTime {
+  font-family: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace;
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1;
+}
+
 .vendor-toolbar-host {
   flex: 1 1 100%;
   order: 10;
@@ -2471,81 +2477,6 @@ th {
   background: rgba(255, 255, 255, 0.04);
 }
 
-.item-sources-search {
-  background: var(--panel);
-  color: var(--text);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 6px 10px;
-  font-size: 12px;
-  line-height: 1.2;
-}
-
-.item-sources-search:focus {
-  outline: 1px solid rgba(255, 127, 0, 0.55);
-  outline-offset: 1px;
-}
-
-.item-sources-target-entry {
-  position: relative;
-}
-
-.item-source-scope {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 16px;
-  height: 12px;
-  padding: 0 4px;
-  border-radius: 999px;
-  font-size: 8px;
-  font-weight: 700;
-  line-height: 1;
-  background: transparent;
-  border: 0;
-  color: #fff;
-  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.75);
-}
-
-.item-source-scope--overlay {
-  position: absolute;
-  right: -4px;
-  bottom: -3px;
-  z-index: 1;
-  pointer-events: none;
-}
-
-.item-source-scope--dz {
-  color: var(--color-dark-zone-bright);
-  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.65);
-}
-
-.item-sources-target-entry--dz {
-  border: 0;
-  border-radius: 0;
-}
-
-.item-sources-target-entry--dz .ico--item-source {
-  filter: brightness(0) saturate(100%) invert(79%) sepia(16%) saturate(1261%) hue-rotate(214deg) brightness(97%) contrast(90%);
-}
-
-.item-sources-target-entry--weapon-dz {
-  border: 0;
-  border-radius: 0;
-}
-
-.item-sources-target-entry--weapon-dz .wt-badge {
-  border-color: rgba(var(--color-dark-zone-rgb), 0.82);
-  color: rgba(216, 207, 243, 0.98);
-  background: rgba(var(--color-dark-zone-rgb), 0.18);
-}
-
-.item-source-tag--dz {
-  border-color: rgba(var(--color-dark-zone-rgb), 0.82);
-  color: rgba(216, 207, 243, 0.98);
-  background: rgba(var(--color-dark-zone-rgb), 0.18);
-}
-
 .footer {
   width: min(var(--maxw), 100%);
   margin: 0 auto;
@@ -3614,6 +3545,55 @@ th {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+/* Item Source keeps the Blueprint table shell, but lets each column size from
+   its contents.  The table itself may become wider than the viewport; only
+   .blueprint-table-scroll is allowed to scroll horizontally. */
+.item-sources-view {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.item-sources-view .blueprint-table-scroll {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.item-sources-view .blueprint-table {
+  width: max-content;
+  min-width: 100%;
+  table-layout: auto;
+}
+
+.item-sources-view .blueprint-table th:nth-child(2),
+.item-sources-view .blueprint-table td:nth-child(2) {
+  width: auto;
+  min-width: 180px;
+  white-space: nowrap;
+  overflow: visible;
+  text-overflow: clip;
+}
+
+.item-sources-view .blueprint-table th:nth-child(3),
+.item-sources-view .blueprint-table td:nth-child(3),
+.item-sources-view .blueprint-table th:nth-child(4),
+.item-sources-view .blueprint-table td:nth-child(4) {
+  width: auto;
+  white-space: nowrap;
+  overflow: visible;
+  text-overflow: clip;
+}
+
+.item-sources-view .blueprint-table th:nth-child(5),
+.item-sources-view .blueprint-table td:nth-child(5) {
+  width: auto;
+  min-width: 280px;
+  max-width: 520px;
+  white-space: normal;
+  overflow: visible;
+  text-overflow: clip;
+  overflow-wrap: anywhere;
 }
 
 .blueprint-th-sort {

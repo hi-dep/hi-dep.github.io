@@ -55,4 +55,67 @@
     flush();
     return chunks.join("");
   };
+
+  window.highlightTalentMultiDiffHtml = function highlightTalentMultiDiffHtml(baseTexts, nextText, diffClasses) {
+    const bases = (Array.isArray(baseTexts) ? baseTexts : [baseTexts]).map((v) => String(v || ""));
+    const next = String(nextText || "");
+    const classes = Array.isArray(diffClasses) ? diffClasses : [diffClasses];
+    const tokenize = (value) => {
+      const out = [];
+      const re = /(\r\n|\n|[ \t]+|[A-Za-z0-9%+.\-]+|[^A-Za-z0-9\s])/g;
+      let m;
+      while ((m = re.exec(value)) !== null) out.push(m[0]);
+      return out;
+    };
+    const bTokens = tokenize(next);
+    const diffIndexes = (base) => {
+      const a = tokenize(base);
+      const n = a.length;
+      const m = bTokens.length;
+      const dp = Array.from({ length: n + 1 }, () => new Array(m + 1).fill(0));
+      for (let i = n - 1; i >= 0; i--) {
+        for (let j = m - 1; j >= 0; j--) {
+          dp[i][j] = a[i] === bTokens[j]
+            ? dp[i + 1][j + 1] + 1
+            : Math.max(dp[i + 1][j], dp[i][j + 1]);
+        }
+      }
+      const out = new Set();
+      let i = 0;
+      let j = 0;
+      while (i < n && j < m) {
+        if (a[i] === bTokens[j]) { i++; j++; }
+        else if (dp[i + 1][j] >= dp[i][j + 1]) i++;
+        else { out.add(j); j++; }
+      }
+      while (j < m) out.add(j++);
+      return out;
+    };
+    const marked = diffClasses.map((_, i) => diffIndexes(bases[i] || ""));
+    const escToken = (value) => String(value || "")
+      .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")
+      .replace(/\"/g, "&quot;").replace(/'/g, "&#39;");
+    const tokenHtml = (value) => value === "\n" || value === "\r\n" ? "<br>" : escToken(value);
+    const chunks = [];
+    let activeClasses = [];
+    let activeTokens = [];
+    const flush = () => {
+      if (!activeTokens.length) return;
+      const body = activeTokens.map(tokenHtml).join("");
+      chunks.push(activeClasses.length ? `<span class="${activeClasses.join(" ")}">${body}</span>` : body);
+      activeTokens = [];
+    };
+    bTokens.forEach((token, index) => {
+      const nextClasses = marked
+        .map((set, i) => set.has(index) ? classes[i] : "")
+        .filter(Boolean);
+      if (nextClasses.join(" ") !== activeClasses.join(" ")) {
+        flush();
+        activeClasses = nextClasses;
+      }
+      activeTokens.push(token);
+    });
+    flush();
+    return chunks.join("");
+  };
 })();

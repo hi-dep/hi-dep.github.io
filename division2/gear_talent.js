@@ -387,7 +387,7 @@
           });
         }
         if (compareNormalize && pvpPerfectDescDisp) {
-          lines.push({ cls: "line line--named-meta line--talent-desc normalize-compare-pvp", text: pvpPerfectDescDisp, html: window.normalizePvpCompareHtml(pvePerfectDescDisp, pvpPerfectDescDisp, "gear-talent-diff gear-talent-pvp-diff"), key: "", isDesc: true });
+          lines.push({ cls: "line line--named-meta line--talent-desc normalize-compare-pvp", text: pvpPerfectDescDisp, html: window.normalizePvpCompareHtml(pvpTalentDescDisp, pvpPerfectDescDisp, "gear-talent-diff"), key: "", isDesc: true });
         }
       } else {
         if (talentTitle) lines.push({ cls: "line line--gray line--talent", text: talentTitle, key: talentKey, icon: talentSlotIcon });
@@ -408,14 +408,20 @@
         }
         if (perfectTitle) lines.push({ cls: "line line--named line--talent", text: perfectTitle, key: perfectKey });
         if (hasPerfectTalent && perfectDescDisp) {
-          const html = useNormalize && pvePerfectDescDisp && perfectDescDisp
+          const html = useNormalize && talentDescDisp && perfectDescDisp
             ? (typeof window.highlightTalentDiffHtml === "function"
-              ? window.highlightTalentDiffHtml(pvePerfectDescDisp, perfectDescDisp, "gear-talent-diff gear-talent-pvp-diff")
-              : highlightDiffHtml(pvePerfectDescDisp, perfectDescDisp))
+              ? (typeof window.highlightTalentMultiDiffHtml === "function"
+                ? window.highlightTalentMultiDiffHtml(
+                  [pvePerfectDescDisp, talentDescDisp],
+                  perfectDescDisp,
+                  ["gear-talent-pvp-diff", "gear-talent-diff"]
+                )
+                : window.highlightTalentDiffHtml(talentDescDisp, perfectDescDisp, "gear-talent-diff"))
+              : highlightDiffHtml(talentDescDisp, perfectDescDisp))
             : highlightDiffHtml(talentDescDisp, perfectDescDisp);
           lines.push({ cls: "line line--named-meta line--talent-desc", text: perfectDescDisp, html, key: "", isDesc: true });
           if (compareNormalize && pvpPerfectDescDisp) {
-            lines.push({ cls: "line line--named-meta line--talent-desc normalize-compare-pvp", text: pvpPerfectDescDisp, html: window.normalizePvpCompareHtml(pvePerfectDescDisp, pvpPerfectDescDisp, "gear-talent-diff gear-talent-pvp-diff"), key: "", isDesc: true });
+            lines.push({ cls: "line line--named-meta line--talent-desc normalize-compare-pvp", text: pvpPerfectDescDisp, html: window.normalizePvpPerfectCompareHtml(pvePerfectDescDisp, pvpTalentDescDisp, pvpPerfectDescDisp), key: "", isDesc: true });
           }
         }
       }
