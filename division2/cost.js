@@ -32,41 +32,7 @@
   }
 
   async function fetchCostData() {
-    if (costCache) return costCache;
-    const SQL = await initSql();
-    const v = (window.indexJson && window.indexJson.built_at) ? `?v=${encodeURIComponent(window.indexJson.built_at)}` : `?v=${Date.now()}`;
-    const gz = await fetchArrayBuffer(`${DATA_BASE}/items.db.gz${v}`);
-    const dbBytes = await gunzipToUint8Array(gz);
-    const db = new SQL.Database(dbBytes);
-    try {
-      const readPayload = (table) => {
-        const hasTable = db.exec(`SELECT name FROM sqlite_master WHERE type='table' AND name='${table}'`).length > 0;
-        if (!hasTable) return {};
-        const stmt = db.prepare(`SELECT payload FROM ${table} ORDER BY row_id DESC LIMIT 1`);
-        let out = {};
-        if (stmt.step()) {
-          const rec = stmt.getAsObject() || {};
-          const raw = String(rec.payload || "").trim();
-          if (raw) {
-            try {
-              const parsed = JSON.parse(raw);
-              if (parsed && typeof parsed === "object") out = parsed;
-            } catch (_e) {
-              out = {};
-            }
-          }
-        }
-        stmt.free();
-        return out;
-      };
-      costCache = {
-        grade: readPayload("items_grade_cost"),
-        optimization: readPayload("items_optimization_cost"),
-      };
-      return costCache;
-    } finally {
-      db.close();
-    }
+    return window.loadItemsView("cost", indexJson?.built_at);
   }
 
   function canonicalMaterialLabel(label) {

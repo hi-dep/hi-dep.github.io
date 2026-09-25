@@ -305,44 +305,30 @@
 
   async function fetchBlueprintRows() {
     if (blueprintCache) return blueprintCache;
-    const SQL = await initSql();
-    const v = (window.indexJson && window.indexJson.built_at) ? `?v=${encodeURIComponent(window.indexJson.built_at)}` : `?v=${Date.now()}`;
-    const gz = await fetchArrayBuffer(`${DATA_BASE}/items.db.gz${v}`);
-    const dbBytes = await gunzipToUint8Array(gz);
-    const db = new SQL.Database(dbBytes);
-    try {
-      const hasBp = db.exec("SELECT name FROM sqlite_master WHERE type='table' AND name='items_blueprints'").length > 0;
-      if (!hasBp) throw new Error("data_unavailable");
-
-      const out = [];
-      const bpStmt = db.prepare("SELECT category, slot, rality, brand, brand_key, name_key, name, blueprint_exists, season_lock, project_summit_challenge_cp, reconfigure, \"from\" AS source, from_jp FROM items_blueprints");
-      while (bpStmt.step()) {
-        const r = bpStmt.getAsObject() || {};
-        const category = normalizeKey(r.category);
-        const slot = normalizeSlot(r.slot);
-        if (!category || !slot) continue;
-        out.push({
-          category,
-          slot,
-          rality: normalizeKey(r.rality),
-          brand: String(r.brand || "").trim(),
-          brand_key: normalizeKey(r.brand_key),
-          name_key: normalizeKey(r.name_key),
-          name: String(r.name || "").trim(),
-          blueprint_exists: toBool(r.blueprint_exists),
-          season_lock: toBool(r.season_lock),
-          project_summit_challenge_cp: toBool(r.project_summit_challenge_cp),
-          source: String(r.source || "").trim(),
-          source_jp: String(r.from_jp || "").trim(),
-          reconfigure: toBool(r.reconfigure),
-        });
-      }
-      bpStmt.free();
-      blueprintCache = out;
-      return blueprintCache;
-    } finally {
-      db.close();
+    const rows = await window.loadItemsView("blueprint", indexJson?.built_at);
+    const out = [];
+    for (const r of rows) {
+      const category = normalizeKey(r.category);
+      const slot = normalizeSlot(r.slot);
+      if (!category || !slot) continue;
+      out.push({
+        category,
+        slot,
+        rality: normalizeKey(r.rality),
+        brand: String(r.brand || "").trim(),
+        brand_key: normalizeKey(r.brand_key),
+        name_key: normalizeKey(r.name_key),
+        name: String(r.name || "").trim(),
+        blueprint_exists: toBool(r.blueprint_exists),
+        season_lock: toBool(r.season_lock),
+        project_summit_challenge_cp: toBool(r.project_summit_challenge_cp),
+        source: String(r.from || "").trim(),
+        source_jp: String(r.from_jp || "").trim(),
+        reconfigure: toBool(r.reconfigure),
+      });
     }
+    blueprintCache = out;
+    return blueprintCache;
   }
 
   function loadViewState() {

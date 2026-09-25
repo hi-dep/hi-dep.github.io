@@ -9,67 +9,7 @@
     return trCategoryText("gearset_talent_desc", talentKey, String(rawDesc || "").replace(/\r/g, ""));
   }
   async function loadGearsetRows() {
-    if (gearsetRowsCache) return gearsetRowsCache;
-    const SQL = await initSql();
-    const v = indexJson?.built_at ? `?v=${encodeURIComponent(indexJson.built_at)}` : `?v=${Date.now()}`;
-    const gz = await fetchArrayBuffer(`${DATA_BASE}/items.db.gz${v}`);
-    const dbBytes = await gunzipToUint8Array(gz);
-    const db = new SQL.Database(dbBytes);
-    try {
-      const hasGearsets = db.exec("SELECT name FROM sqlite_master WHERE type='table' AND name='items_gearsets'").length > 0;
-      const hasBonuses = db.exec("SELECT name FROM sqlite_master WHERE type='table' AND name='items_gearset_bonuses'").length > 0;
-      if (!hasGearsets || !hasBonuses) {
-        console.warn("Gearset tables are missing in items.db", { hasGearsets, hasBonuses });
-        throw new Error("data_unavailable");
-      }
-      const bonusCols = new Set();
-      try {
-        const info = db.exec("PRAGMA table_info(items_gearset_bonuses)");
-        if (info && info[0] && Array.isArray(info[0].values)) {
-          const nameIdx = info[0].columns.indexOf("name");
-          if (nameIdx >= 0) {
-            for (const row of info[0].values) {
-              const name = String(row[nameIdx] || "").trim();
-              if (name) bonusCols.add(name);
-            }
-          }
-        }
-      } catch (e) {
-        // keep backward compatibility with older DB snapshots
-      }
-      const normalizeSelect = bonusCols.has("talent_normalize")
-        ? "b.talent_normalize, b.talent_normalize_jp"
-        : "'' AS talent_normalize, '' AS talent_normalize_jp";
-      const stmt = db.prepare(`
-        SELECT
-          g.item_id,
-          g.gearset_key,
-          g.gearset,
-          g.core_attribute,
-          g.core_attribute_by_piece,
-          b.slot,
-          b.label,
-          b.bonus_type,
-          b.value,
-          b.value_num,
-          b.unit,
-          b.type,
-          b.type_key,
-          b.talent_name,
-          b.talent_desc,
-          ${normalizeSelect}
-        FROM items_gearsets g
-        LEFT JOIN items_gearset_bonuses b ON b.parent_item_id = g.item_id
-        ORDER BY g.gearset, g.item_id, b.bonus_ord, b.bonus_part_ord
-      `);
-      const rows = [];
-      while (stmt.step()) rows.push(stmt.getAsObject());
-      stmt.free();
-      gearsetRowsCache = { rows };
-      return gearsetRowsCache;
-    } finally {
-      db.close();
-    }
+    return window.loadItemsView("gearset", indexJson?.built_at);
   }
 
   function renderGearsetViewFromRows(payload) {

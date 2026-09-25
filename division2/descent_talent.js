@@ -245,82 +245,27 @@
   }
 
   async function loadRows() {
-    if (cache) return cache;
-    const SQL = await initSql();
-    const idxV = indexJson?.built_at ? `?v=${encodeURIComponent(indexJson.built_at)}` : `?v=${Date.now()}`;
-    const gz = await fetchArrayBufferWithTimeout(`${DATA_BASE}/descent/descent_talent_pool_latest.db.gz${idxV}`, 8000);
-    const dbBytes = await gunzipToUint8Array(gz);
-    const db = new SQL.Database(dbBytes);
-    try {
+    if (!cache) {
+      const idx = await fetchJsonWithTimeout(`${DATA_BASE}/descent/index.json?ts=${Date.now()}`, 5000);
+      const path = appPath(idx?.web_json_gz || "data/descent/descent_talent_pool_latest.json.gz");
+      const payload = await fetchGzipJson(`${path}?v=${encodeURIComponent(idx?.content_hash || idx?.generated_at_jst || "")}`);
+      const cycles = Array.isArray(payload?.cycles) ? payload.cycles : [];
       const nowJst = jstNowString();
-      const cycleStmt = db.prepare(`
-        SELECT normalized_cycle_jst, talent_pool, talent_pool_key
-        FROM descent_talent_pool
-        WHERE normalized_cycle_jst <= ?
-        ORDER BY normalized_cycle_jst DESC
-        LIMIT 1
-      `);
-      cycleStmt.bind([nowJst]);
-      let active = null;
-      if (cycleStmt.step()) active = cycleStmt.getAsObject();
-      cycleStmt.free();
-      if (!active) {
-        const st = db.prepare(`
-          SELECT normalized_cycle_jst, talent_pool, talent_pool_key
-          FROM descent_talent_pool
-          ORDER BY normalized_cycle_jst DESC
-          LIMIT 1
-        `);
-        if (st.step()) active = st.getAsObject();
-        st.free();
-      }
-      if (!active) {
-        cache = { active: null, rows: [], cycleDays: 3 };
-        return cache;
-      }
-
-      let cycleDays = 3;
-      try {
-        const m = db.exec("SELECT value FROM meta WHERE key='cycle_days'");
-        if (m && m.length && m[0].values && m[0].values.length) {
-          const n = Number(m[0].values[0][0]);
-          if (Number.isFinite(n) && n > 0) cycleDays = n;
-        }
-      } catch (e) {
-        cycleDays = 3;
-      }
-
-      const poolKey = String(active.talent_pool_key || normalizeKey(active.talent_pool || ""));
-      const mapStmt = db.prepare(`
-        SELECT
-          m.pool_key,
-          m.talent_name,
-          m.talent_key,
-          d.talent_group,
-          d.base_description,
-          d.tier_formula
-        FROM descent_talent_pool_map m
-        LEFT JOIN descent_talent_descriptions d ON d.talent_key = m.talent_key
-        ORDER BY m.pool_key, m.talent_name
-      `);
-      const rows = [];
-      while (mapStmt.step()) rows.push(mapStmt.getAsObject());
-      mapStmt.free();
-
+      const activeRow = cycles.filter((row) => String(row.normalized_cycle_jst || "") <= nowJst).at(-1)
+        || cycles.at(-1);
+      const cycleDays = Number(payload?.meta?.cycle_days || idx?.cycle_days || 3);
       cache = {
-        active: {
-          cycle: String(active.normalized_cycle_jst || ""),
-          pool: String(active.talent_pool || ""),
-          poolKey,
-          expiresAt: addDaysJstString(String(active.normalized_cycle_jst || ""), cycleDays),
-        },
-        rows,
-        cycleDays,
+        active: activeRow ? {
+          cycle: String(activeRow.normalized_cycle_jst || ""),
+          pool: String(activeRow.talent_pool || ""),
+          poolKey: String(activeRow.talent_pool_key || normalizeKey(activeRow.talent_pool || "")),
+          expiresAt: addDaysJstString(String(activeRow.normalized_cycle_jst || ""), cycleDays)
+        } : null,
+        rows: Array.isArray(payload?.rows) ? payload.rows : [],
+        cycleDays
       };
-      return cache;
-    } finally {
-      db.close();
     }
+    return cache;
   }
 
   async function fetchArrayBufferWithTimeout(path, timeoutMs) {
@@ -546,4 +491,3 @@
     state.poolInitDone = false;
   };
 })();
-

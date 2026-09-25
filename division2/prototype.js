@@ -3,74 +3,7 @@
   let prototypeCache = null;
 
   async function fetchPrototypeData() {
-    if (prototypeCache) return prototypeCache;
-    const SQL = await initSql();
-    const v = (window.indexJson && window.indexJson.built_at) ? `?v=${encodeURIComponent(window.indexJson.built_at)}` : `?v=${Date.now()}`;
-    const gz = await fetchArrayBuffer(`${DATA_BASE}/items.db.gz${v}`);
-    const dbBytes = await gunzipToUint8Array(gz);
-    const db = new SQL.Database(dbBytes);
-    try {
-      const hasTable = db.exec("SELECT name FROM sqlite_master WHERE type='table' AND name='items_prototype'").length > 0;
-      if (!hasTable) {
-        console.warn("Prototype table is missing in items.db", { hasTable });
-        throw new Error("data_unavailable");
-      }
-      const readTableRows = (tableName) => {
-        const has = db.exec(`SELECT name FROM sqlite_master WHERE type='table' AND name='${tableName}'`).length > 0;
-        if (!has) return [];
-        const cols = db.exec(`PRAGMA table_info(${tableName})`);
-        const colNames = ((cols[0] && cols[0].values) ? cols[0].values : []).map((row) => String(row[1] || ""));
-        const hasPayloadSchema = colNames.includes("payload");
-        const stmt = db.prepare(`SELECT * FROM ${tableName} ORDER BY row_id ASC`);
-        const out = [];
-        while (stmt.step()) {
-          const rec = stmt.getAsObject() || {};
-          if (hasPayloadSchema) {
-            const raw = String(rec.payload || "").trim();
-            if (!raw) continue;
-            try {
-              const obj = JSON.parse(raw);
-              if (obj && typeof obj === "object") out.push(obj);
-            } catch (_e) {
-              // Keep rendering robust even if one row is malformed.
-            }
-            continue;
-          }
-          delete rec.row_id;
-          out.push(rec);
-        }
-        stmt.free();
-        return out;
-      };
-
-      const rows = readTableRows("items_prototype");
-      const attrs = readTableRows("items_prototype_attributes");
-      const readNamedLookup = (tableName, colName, extraCol) => {
-        const has = db.exec(`SELECT name FROM sqlite_master WHERE type='table' AND name='${tableName}'`).length > 0;
-        const byNameKey = {};
-        const byName = {};
-        if (!has) return { byNameKey, byName };
-        const stmt = db.prepare(`SELECT name_key, ${colName}, ${extraCol} FROM ${tableName}`);
-        while (stmt.step()) {
-          const r = stmt.getAsObject() || {};
-          const nk = normalizeKey(String(r.name_key || ""));
-          const nn = normalizeKey(String(r[colName] || ""));
-          const ev = normalizeKey(String(r[extraCol] || ""));
-          if (!ev) continue;
-          if (nk && !Object.prototype.hasOwnProperty.call(byNameKey, nk)) byNameKey[nk] = ev;
-          if (nn && !Object.prototype.hasOwnProperty.call(byName, nn)) byName[nn] = ev;
-        }
-        stmt.free();
-        return { byNameKey, byName };
-      };
-
-      const gearNamed = readNamedLookup("items_gear_named", "name", "item_type");
-      const weaponNamed = readNamedLookup("items_weapon_named", "name", "weapon_group");
-      prototypeCache = { items: rows, attributes: attrs, namedLookup: { gear: gearNamed, weapon: weaponNamed } };
-      return prototypeCache;
-    } finally {
-      db.close();
-    }
+    return window.loadItemsView("prototype", indexJson?.built_at);
   }
 
   function cellText(row, key) {

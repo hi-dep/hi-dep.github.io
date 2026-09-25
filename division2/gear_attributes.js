@@ -45,33 +45,7 @@
   };
 
   async function loadRows() {
-    if (cache) return cache;
-    const SQL = await initSql();
-    const v = indexJson?.built_at ? `?v=${encodeURIComponent(indexJson.built_at)}` : `?v=${Date.now()}`;
-    const bytes = await gunzipToUint8Array(await fetchArrayBuffer(`${DATA_BASE}/items.db.gz${v}`));
-    const db = new SQL.Database(bytes);
-    try {
-      const out = [];
-      const read = (table, keyCol, nameCol, rarity) => {
-        const corePieceCol = table === "items_gearsets" ? "t.core_attribute_by_piece," : "";
-        const st = db.prepare(`
-          SELECT t.${keyCol} AS set_key, t.${nameCol} AS set_name, t.core_attribute,
-                 ${corePieceCol} b.bonus_ord, b.slot, b.value, b.value_num, b.unit, b.type, b.type_key, b.bonus_type
-          FROM ${table} t
-          LEFT JOIN ${table === "items_brandsets" ? "items_brandset_bonuses" : "items_gearset_bonuses"} b
-            ON b.parent_item_id = t.item_id
-          ORDER BY t.${nameCol}, t.item_id, b.bonus_ord, b.bonus_part_ord
-        `);
-        while (st.step()) out.push({ ...st.getAsObject(), rarity });
-        st.free();
-      };
-      read("items_brandsets", "brandset_key", "brandset", "brand");
-      read("items_gearsets", "gearset_key", "gearset", "gearset");
-      cache = out;
-      return out;
-    } finally {
-      db.close();
-    }
+    return window.loadItemsView("gear_attributes", indexJson?.built_at);
   }
 
   function render(rows) {

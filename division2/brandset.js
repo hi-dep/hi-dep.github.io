@@ -37,66 +37,7 @@
   };
 
   async function loadBrandRows() {
-    if (brandRowsCache) return brandRowsCache;
-    const SQL = await initSql();
-    const v = indexJson?.built_at ? `?v=${encodeURIComponent(indexJson.built_at)}` : `?v=${Date.now()}`;
-    const gz = await fetchArrayBuffer(`${DATA_BASE}/items.db.gz${v}`);
-    const dbBytes = await gunzipToUint8Array(gz);
-    const db = new SQL.Database(dbBytes);
-    try {
-      const hasBrandsets = db.exec("SELECT name FROM sqlite_master WHERE type='table' AND name='items_brandsets'").length > 0;
-      const hasBonuses = db.exec("SELECT name FROM sqlite_master WHERE type='table' AND name='items_brandset_bonuses'").length > 0;
-      if (!hasBrandsets || !hasBonuses) {
-        console.warn("Brand tables are missing in items.db", { hasBrandsets, hasBonuses });
-        throw new Error("data_unavailable");
-      }
-      const stmt = db.prepare(`
-        SELECT
-          b.item_id,
-          b.brandset_key,
-          b.brandset,
-          b.core_attribute,
-          bo.slot,
-          bo.label,
-          bo.value,
-          bo.type,
-          bo.type_key,
-          bo.value_num,
-          bo.unit
-        FROM items_brandsets b
-        LEFT JOIN items_brandset_bonuses bo ON bo.parent_item_id = b.item_id
-        ORDER BY b.brandset, b.item_id, bo.bonus_ord, bo.bonus_part_ord
-      `);
-      const rows = [];
-      while (stmt.step()) rows.push(stmt.getAsObject());
-      stmt.free();
-      let namedRows = [];
-      const hasGearNamed = db.exec("SELECT name FROM sqlite_master WHERE type='table' AND name='items_gear_named'").length > 0;
-      if (hasGearNamed) {
-        const nst = db.prepare(`
-          SELECT
-            item_id,
-            brandset_key,
-            brandset,
-            item_type,
-            name,
-            name_key,
-            talent,
-            talent_key,
-            attr,
-            attr_type_keys
-          FROM items_gear_named
-          WHERE (trim(brandset_key) <> '' OR trim(brandset) <> '') AND trim(name) <> ''
-          ORDER BY brandset_key, name
-        `);
-        while (nst.step()) namedRows.push(nst.getAsObject());
-        nst.free();
-      }
-      brandRowsCache = { rows, namedRows };
-      return brandRowsCache;
-    } finally {
-      db.close();
-    }
+    return window.loadItemsView("brand", indexJson?.built_at);
   }
 
   function renderBrandViewFromRows(payload) {

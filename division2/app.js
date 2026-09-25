@@ -1,4 +1,3 @@
-/* global initSqlJs */
 
 const APP_BASE = String(window.__APP_BASE__ || ".").replace(/\/+$/, "");
 const DATA_BASE = `${APP_BASE}/data`;
@@ -73,7 +72,6 @@ let i18nCategories = {};
 let graphConfig = {};
 let vendorRecommendations = { version: 1, auto_select_on_load: false, rules: [] };
 let assetMap = null;
-let SQL = null;
 let lastVendorMap = null;
 let lastItems = [];
 let isWorldTimePopupOpen = false;
@@ -2131,191 +2129,61 @@ function resolveTalentDescription(itemCategory, talentKey, fallbackText = "", lo
 
 async function ensureTalentDescLookupCache() {
   if (talentDescLookupCache) return talentDescLookupCache;
-  if (talentDescLookupPromise) return talentDescLookupPromise;
-  talentDescLookupPromise = (async () => {
-    const out = { gear: new Map(), weapon: new Map() };
-    const put = (map, keyRaw, descRaw) => {
-      const desc = String(descRaw || "").replace(/\r/g, "").trim();
-      if (!desc) return;
-      const keys = expandTalentKeysForLookup(keyRaw || "");
-      if (!keys.length) return;
-      for (const k of keys) {
-        if (!map.has(k)) map.set(k, desc);
-      }
-    };
-    const parseTitleDescFromRaw = (rawText) => {
-      const raw = String(rawText || "").replace(/\r/g, "");
-      if (!raw.trim()) return { title: "", desc: "" };
-      const lines = raw.split("\n").map((x) => String(x || "").trim());
-      const nonEmpty = lines.filter(Boolean);
-      if (!nonEmpty.length) return { title: "", desc: "" };
-      const title = nonEmpty[0];
-      const desc = nonEmpty.slice(1).join("\n").trim();
-      return { title, desc };
-    };
-    const sql = await initSql();
-    const v = indexJson?.built_at ? `?v=${encodeURIComponent(indexJson.built_at)}` : `?v=${Date.now()}`;
-    const gz = await fetchArrayBuffer(`${DATA_BASE}/items.db.gz${v}`);
-    const dbBytes = await gunzipToUint8Array(gz);
-    const db = new sql.Database(dbBytes);
-    try {
-      const hasTable = (name) => db.exec(`SELECT name FROM sqlite_master WHERE type='table' AND name='${name}'`).length > 0;
-      if (hasTable("items_weapon_talents")) {
-        const st = db.prepare(`
-          SELECT talent, talent_desc, perfect_talent, perfect_talent_desc
-          FROM items_weapon_talents
-        `);
-        while (st.step()) {
-          const r = st.getAsObject();
-          put(out.weapon, r.talent, r.talent_desc);
-          put(out.weapon, r.perfect_talent, r.perfect_talent_desc);
-        }
-        st.free();
-      }
-      if (hasTable("items_gear_talents")) {
-        const st = db.prepare(`
-          SELECT talent, talent_desc, perfect_talent, perfect_talent_desc
-          FROM items_gear_talents
-        `);
-        while (st.step()) {
-          const r = st.getAsObject();
-          put(out.gear, r.talent, r.talent_desc);
-          put(out.gear, r.perfect_talent, r.perfect_talent_desc);
-        }
-        st.free();
-      }
-      if (hasTable("items_gearset_bonuses")) {
-        const st = db.prepare(`
-          SELECT talent_name, talent_desc
-          FROM items_gearset_bonuses
-          WHERE trim(talent_name) <> '' OR trim(talent_desc) <> ''
-        `);
-        while (st.step()) {
-          const r = st.getAsObject();
-          const tName = String(r.talent_name || "").trim();
-          const tDesc = String(r.talent_desc || "").replace(/\r/g, "").trim();
-          if (tName && tDesc) put(out.gear, tName, tDesc);
-        }
-        st.free();
-      }
-      if (hasTable("items_gearsets")) {
-        const st = db.prepare(`
-          SELECT backpack_talent, backpack_talent_raw, chest_talent, chest_talent_raw
-          FROM items_gearsets
-        `);
-        while (st.step()) {
-          const r = st.getAsObject();
-          const bp = parseTitleDescFromRaw(r.backpack_talent_raw || "");
-          const ch = parseTitleDescFromRaw(r.chest_talent_raw || "");
-          const bpName = bp.title || String(r.backpack_talent || "").trim();
-          const chName = ch.title || String(r.chest_talent || "").trim();
-          const bpDesc = bp.desc;
-          const chDesc = ch.desc;
-          if (bpName && bpDesc) put(out.gear, bpName, bpDesc);
-          if (chName && chDesc) put(out.gear, chName, chDesc);
-        }
-        st.free();
-      }
-      const collectNamedExotic = (table, map) => {
-        if (!hasTable(table)) return;
-        const st = db.prepare(`
-          SELECT talent, talent_key, talent_desc
-          FROM ${table}
-          WHERE trim(talent) <> '' OR trim(talent_key) <> ''
-        `);
-        while (st.step()) {
-          const r = st.getAsObject();
-          put(map, r.talent_key || r.talent, r.talent_desc);
-        }
-        st.free();
-      };
-      collectNamedExotic("items_weapon_named", out.weapon);
-      collectNamedExotic("items_weapon_exotic", out.weapon);
-      collectNamedExotic("items_gear_named", out.gear);
-      collectNamedExotic("items_gear_exotic", out.gear);
-      talentDescLookupCache = out;
-      return out;
-    } finally {
-      db.close();
-    }
-  })();
-  try {
-    return await talentDescLookupPromise;
-  } finally {
-    talentDescLookupPromise = null;
+  const out = { gear: new Map(), weapon: new Map() };
+  const put = (map, key, description) => {
+    const text = String(description || "").replace(/\r/g, "").trim();
+    if (!text) return;
+    expandTalentKeysForLookup(key || "").forEach((k) => {
+      if (!map.has(k)) map.set(k, text);
+    });
+  };
+  const specs = [
+    ["items_weapon_talents", out.weapon], ["items_gear_talents", out.gear],
+    ["items_weapon_named", out.weapon], ["items_weapon_exotic", out.weapon],
+    ["items_gear_named", out.gear], ["items_gear_exotic", out.gear]
+  ];
+  for (const [table, map] of specs) {
+    (await itemsTableRows(table, indexJson?.built_at)).forEach((row) => {
+      put(map, row.talent_key || row.talent, row.talent_desc);
+      put(map, row.perfect_talent, row.perfect_talent_desc);
+    });
   }
+  (await itemsTableRows("items_gearset_bonuses", indexJson?.built_at)).forEach((row) => {
+    put(out.gear, row.talent_name, row.talent_desc);
+  });
+  (await itemsTableRows("items_gearsets", indexJson?.built_at)).forEach((row) => {
+    for (const prefix of ["backpack", "chest"]) {
+      const lines = String(row[`${prefix}_talent_raw`] || "").replace(/\r/g, "").split("\n").map((s) => s.trim()).filter(Boolean);
+      if (lines.length > 1) put(out.gear, lines[0] || row[`${prefix}_talent`], lines.slice(1).join("\n"));
+    }
+  });
+  talentDescLookupCache = out;
+  return out;
 }
 
 async function ensureBrandDescCache() {
   if (brandDescCache) return brandDescCache;
-  if (brandDescPromise) return brandDescPromise;
-  brandDescPromise = (async () => {
-    const out = new Map();
-    const sql = await initSql();
-    const v = indexJson?.built_at ? `?v=${encodeURIComponent(indexJson.built_at)}` : `?v=${Date.now()}`;
-    const gz = await fetchArrayBuffer(`${DATA_BASE}/items.db.gz${v}`);
-    const dbBytes = await gunzipToUint8Array(gz);
-    const db = new sql.Database(dbBytes);
-    try {
-      const hasBrandsets = db.exec("SELECT name FROM sqlite_master WHERE type='table' AND name='items_brandsets'").length > 0;
-      const hasGearsets = db.exec("SELECT name FROM sqlite_master WHERE type='table' AND name='items_gearsets'").length > 0;
-      const hasBonuses = db.exec("SELECT name FROM sqlite_master WHERE type='table' AND name='items_brandset_bonuses'").length > 0;
-      if ((!hasBrandsets && !hasGearsets) || !hasBonuses) {
-        brandDescCache = out;
-        return out;
+  const out = new Map();
+  for (const [table, keyField, nameField] of [
+    ["items_brandsets", "brandset_key", "brandset"],
+    ["items_gearsets", "gearset_key", "gearset"]
+  ]) {
+    const joined = await loadItemsView(table === "items_brandsets" ? "brand" : "gearset", indexJson?.built_at);
+    (joined.rows || []).forEach((row) => {
+      const key = normalizeKey(row[keyField] || row[nameField] || "");
+      if (!key) return;
+      if (!out.has(key)) out.set(key, { core: String(row.core_attribute || "").trim(), bonuses: [] });
+      if (row.slot != null && String(row.slot).trim()) {
+        out.get(key).bonuses.push({
+          slot: String(row.slot || "").trim(), value: String(row.value || "").trim(),
+          type: String(row.type || "").trim(), typeKey: String(row.type_key || "").trim(),
+          valueNum: String(row.value_num || "").trim(), unit: String(row.unit || "").trim()
+        });
       }
-      const ingest = (tableName, keyCol, nameCol) => {
-        const st = db.prepare(`
-          SELECT
-            t.${keyCol} AS set_key,
-            t.${nameCol} AS set_name,
-            t.core_attribute,
-            bo.slot,
-            bo.value,
-            bo.type,
-            bo.type_key,
-            bo.value_num,
-            bo.unit
-          FROM ${tableName} t
-          LEFT JOIN items_brandset_bonuses bo ON bo.parent_item_id = t.item_id
-          ORDER BY t.${nameCol}, t.item_id, bo.bonus_ord, bo.bonus_part_ord
-        `);
-        while (st.step()) {
-          const row = st.getAsObject();
-          const brandKey = normalizeKey(String(row.set_key || row.set_name || ""));
-          if (!brandKey) continue;
-          if (!out.has(brandKey)) {
-            out.set(brandKey, {
-              core: String(row.core_attribute || "").trim(),
-              bonuses: []
-            });
-          }
-          if (row.slot != null && String(row.slot).trim() !== "") {
-            out.get(brandKey).bonuses.push({
-              slot: String(row.slot || "").trim(),
-              value: String(row.value || "").trim(),
-              type: String(row.type || "").trim(),
-              typeKey: String(row.type_key || "").trim(),
-              valueNum: String(row.value_num || "").trim(),
-              unit: String(row.unit || "").trim()
-            });
-          }
-        }
-        st.free();
-      };
-      if (hasBrandsets) ingest("items_brandsets", "brandset_key", "brandset");
-      if (hasGearsets) ingest("items_gearsets", "gearset_key", "gearset");
-      brandDescCache = out;
-      return out;
-    } finally {
-      db.close();
-    }
-  })();
-  try {
-    return await brandDescPromise;
-  } finally {
-    brandDescPromise = null;
+    });
   }
+  brandDescCache = out;
+  return out;
 }
 
 function formatBrandDescription(info) {
@@ -2390,93 +2258,31 @@ function buildBrandPopupCardHtml(info, brandName, brandKey) {
 
 async function ensureGearsetPopupCache() {
   if (gearsetPopupCache) return gearsetPopupCache;
-  if (gearsetPopupPromise) return gearsetPopupPromise;
-  gearsetPopupPromise = (async () => {
-    const out = new Map();
-    const sql = await initSql();
-    const v = indexJson?.built_at ? `?v=${encodeURIComponent(indexJson.built_at)}` : `?v=${Date.now()}`;
-    const gz = await fetchArrayBuffer(`${DATA_BASE}/items.db.gz${v}`);
-    const dbBytes = await gunzipToUint8Array(gz);
-    const db = new sql.Database(dbBytes);
-    try {
-      const hasGearsets = db.exec("SELECT name FROM sqlite_master WHERE type='table' AND name='items_gearsets'").length > 0;
-      const hasBonuses = db.exec("SELECT name FROM sqlite_master WHERE type='table' AND name='items_gearset_bonuses'").length > 0;
-      if (!hasGearsets || !hasBonuses) {
-        gearsetPopupCache = out;
-        return out;
-      }
-      const st = db.prepare(`
-        SELECT
-          g.item_id,
-          g.gearset_key,
-          g.gearset,
-          g.core_attribute,
-          g.core_attribute_by_piece,
-          g.backpack_talent,
-          g.backpack_talent_raw,
-          g.chest_talent,
-          g.chest_talent_raw,
-          bo.slot,
-          bo.label,
-          bo.bonus_type,
-          bo.value,
-          bo.value_num,
-          bo.unit,
-          bo.type,
-          bo.type_key,
-          bo.talent_name,
-          bo.talent_desc,
-          bo.value_raw
-        FROM items_gearsets g
-        LEFT JOIN items_gearset_bonuses bo ON bo.parent_item_id = g.item_id
-        ORDER BY g.gearset, g.item_id, bo.bonus_ord, bo.bonus_part_ord
-      `);
-      while (st.step()) {
-        const r = st.getAsObject();
-        const key = normalizeKey(String(r.gearset_key || r.gearset || ""));
-        if (!key) continue;
-        if (!out.has(key)) {
-          out.set(key, {
-            itemId: String(r.item_id || "").trim(),
-            gearsetKey: String(r.gearset_key || "").trim(),
-            gearset: String(r.gearset || "").trim(),
-            core: String(r.core_attribute || "").trim(),
-            coreByPiece: parseJsonObjectText(r.core_attribute_by_piece || ""),
-            backpackTalent: String(r.backpack_talent || "").trim(),
-            backpackTalentRaw: String(r.backpack_talent_raw || "").trim(),
-            chestTalent: String(r.chest_talent || "").trim(),
-            chestTalentRaw: String(r.chest_talent_raw || "").trim(),
-            bonuses: []
-          });
-        }
-        if (r.slot != null && String(r.slot).trim() !== "") {
-          out.get(key).bonuses.push({
-            slot: String(r.slot || "").trim(),
-            label: String(r.label || "").trim(),
-            bonusType: String(r.bonus_type || "").trim(),
-            value: String(r.value || "").trim(),
-            valueNum: String(r.value_num || "").trim(),
-            unit: String(r.unit || "").trim(),
-            type: String(r.type || "").trim(),
-            typeKey: String(r.type_key || "").trim(),
-            talentName: String(r.talent_name || "").trim(),
-            talentDesc: String(r.talent_desc || "").trim(),
-            valueRaw: String(r.value_raw || "").trim()
-          });
-        }
-      }
-      st.free();
-      gearsetPopupCache = out;
-      return out;
-    } finally {
-      db.close();
-    }
-  })();
-  try {
-    return await gearsetPopupPromise;
-  } finally {
-    gearsetPopupPromise = null;
-  }
+  const out = new Map();
+  const joined = await loadItemsView("gearset", indexJson?.built_at);
+  (joined.rows || []).forEach((r) => {
+    const key = normalizeKey(r.gearset_key || r.gearset || "");
+    if (!key) return;
+    if (!out.has(key)) out.set(key, {
+      itemId: String(r.item_id || "").trim(), gearsetKey: String(r.gearset_key || "").trim(),
+      gearset: String(r.gearset || "").trim(), core: String(r.core_attribute || "").trim(),
+      coreByPiece: parseJsonObjectText(r.core_attribute_by_piece || ""),
+      backpackTalent: String(r.backpack_talent || "").trim(),
+      backpackTalentRaw: String(r.backpack_talent_raw || "").trim(),
+      chestTalent: String(r.chest_talent || "").trim(), chestTalentRaw: String(r.chest_talent_raw || "").trim(),
+      bonuses: []
+    });
+    if (r.slot != null && String(r.slot).trim()) out.get(key).bonuses.push({
+      slot: String(r.slot || "").trim(), label: String(r.label || "").trim(),
+      bonusType: String(r.bonus_type || "").trim(), value: String(r.value || "").trim(),
+      valueNum: String(r.value_num || "").trim(), unit: String(r.unit || "").trim(),
+      type: String(r.type || "").trim(), typeKey: String(r.type_key || "").trim(),
+      talentName: String(r.talent_name || "").trim(), talentDesc: String(r.talent_desc || "").trim(),
+      valueRaw: String(r.value_raw || "").trim()
+    });
+  });
+  gearsetPopupCache = out;
+  return out;
 }
 
 function gearsetPopupCoreClass(coreText) {
@@ -2719,76 +2525,29 @@ function expandTalentKeysForLookup(raw) {
 
 async function ensureNamedTalentLookupCache() {
   if (namedTalentLookupCache) return namedTalentLookupCache;
-  if (namedTalentLookupPromise) return namedTalentLookupPromise;
-  namedTalentLookupPromise = (async () => {
-    const out = {
-      gearByItemId: new Map(),
-      gearByNameKey: new Map(),
-      weaponByItemId: new Map(),
-      weaponByNameKey: new Map()
-    };
-    const add = (bucket, key, talentKey) => {
-      const k = String(key || "").trim();
-      const t = normalizeKey(talentKey || "");
-      if (!k || !t) return;
-      if (!bucket.has(k)) bucket.set(k, new Set());
-      bucket.get(k).add(t);
-    };
-    const sql = await initSql();
-    const v = indexJson?.built_at ? `?v=${encodeURIComponent(indexJson.built_at)}` : `?v=${Date.now()}`;
-    const gz = await fetchArrayBuffer(`${DATA_BASE}/items.db.gz${v}`);
-    const dbBytes = await gunzipToUint8Array(gz);
-    const db = new sql.Database(dbBytes);
-    try {
-      const hasGearNamed = db.exec("SELECT name FROM sqlite_master WHERE type='table' AND name='items_gear_named'").length > 0;
-      if (hasGearNamed) {
-        const st = db.prepare(`
-          SELECT item_id, name_key, talent, talent_key
-          FROM items_gear_named
-          WHERE trim(talent) <> '' OR trim(talent_key) <> ''
-        `);
-        while (st.step()) {
-          const r = st.getAsObject();
-          const itemId = String(r.item_id || "").trim();
-          const nameKey = normalizeKey(String(r.name_key || ""));
-          const keys = expandTalentKeysForLookup(r.talent_key || r.talent || "");
-          keys.forEach((tk) => {
-            add(out.gearByItemId, itemId, tk);
-            add(out.gearByNameKey, nameKey, tk);
-          });
-        }
-        st.free();
-      }
-      const hasWeaponNamed = db.exec("SELECT name FROM sqlite_master WHERE type='table' AND name='items_weapon_named'").length > 0;
-      if (hasWeaponNamed) {
-        const st = db.prepare(`
-          SELECT item_id, name_key, talent, talent_key
-          FROM items_weapon_named
-          WHERE trim(talent) <> '' OR trim(talent_key) <> ''
-        `);
-        while (st.step()) {
-          const r = st.getAsObject();
-          const itemId = String(r.item_id || "").trim();
-          const nameKey = normalizeKey(String(r.name_key || ""));
-          const keys = expandTalentKeysForLookup(r.talent_key || r.talent || "");
-          keys.forEach((tk) => {
-            add(out.weaponByItemId, itemId, tk);
-            add(out.weaponByNameKey, nameKey, tk);
-          });
-        }
-        st.free();
-      }
-      namedTalentLookupCache = out;
-      return out;
-    } finally {
-      db.close();
-    }
-  })();
-  try {
-    return await namedTalentLookupPromise;
-  } finally {
-    namedTalentLookupPromise = null;
+  const out = {
+    gearByItemId: new Map(), gearByNameKey: new Map(),
+    weaponByItemId: new Map(), weaponByNameKey: new Map()
+  };
+  const add = (bucket, key, talentKey) => {
+    const k = String(key || "").trim();
+    const t = normalizeKey(talentKey || "");
+    if (!k || !t) return;
+    if (!bucket.has(k)) bucket.set(k, new Set());
+    bucket.get(k).add(t);
+  };
+  for (const [table, category] of [["items_gear_named", "gear"], ["items_weapon_named", "weapon"]]) {
+    (await itemsTableRows(table, indexJson?.built_at)).forEach((row) => {
+      const id = String(row.item_id || "").trim();
+      const name = normalizeKey(row.name_key || "");
+      expandTalentKeysForLookup(row.talent_key || row.talent || "").forEach((key) => {
+        add(out[`${category}ByItemId`], id, key);
+        add(out[`${category}ByNameKey`], name, key);
+      });
+    });
   }
+  namedTalentLookupCache = out;
+  return out;
 }
 
 function hasNamedTalentInLookup(lookup, itemCategory, itemId, nameKey, talentKey) {
@@ -2807,73 +2566,41 @@ function hasNamedTalentInLookup(lookup, itemCategory, itemId, nameKey, talentKey
 
 async function ensureItemTalentOverrideCache() {
   if (itemTalentOverrideCache) return itemTalentOverrideCache;
-  if (itemTalentOverridePromise) return itemTalentOverridePromise;
-  itemTalentOverridePromise = (async () => {
-    const out = {
-      gearByItemId: new Map(),
-      gearByNameKey: new Map(),
-      weaponByItemId: new Map(),
-      weaponByNameKey: new Map()
-    };
-    const upsert = (bucket, key, talentKey, payload) => {
-      const k = String(key || "").trim();
-      const tk = normalizeKey(talentKey || "");
-      if (!k || !tk) return;
-      if (!bucket.has(k)) bucket.set(k, new Map());
-      const m = bucket.get(k);
-      const prev = m.get(tk);
-      if (!prev) {
-        m.set(tk, payload);
-        return;
-      }
+  const out = {
+    gearByItemId: new Map(), gearByNameKey: new Map(),
+    weaponByItemId: new Map(), weaponByNameKey: new Map()
+  };
+  const upsert = (bucket, key, talentKey, payload) => {
+    const k = String(key || "").trim();
+    const tk = normalizeKey(talentKey || "");
+    if (!k || !tk) return;
+    if (!bucket.has(k)) bucket.set(k, new Map());
+    const map = bucket.get(k);
+    const prev = map.get(tk);
+    if (!prev) map.set(tk, payload);
+    else {
       if (!prev.talentDesc && payload.talentDesc) prev.talentDesc = payload.talentDesc;
       if (!prev.talent && payload.talent) prev.talent = payload.talent;
-    };
-    const ingestRow = (target, row) => {
-      const itemId = String(row.item_id || "").trim();
-      const nameKey = normalizeKey(String(row.name_key || ""));
+    }
+  };
+  for (const [table, category] of [
+    ["items_gear_named", "gear"], ["items_gear_exotic", "gear"],
+    ["items_weapon_named", "weapon"], ["items_weapon_exotic", "weapon"]
+  ]) {
+    (await itemsTableRows(table, indexJson?.built_at)).forEach((row) => {
+      const id = String(row.item_id || "").trim();
+      const name = normalizeKey(row.name_key || "");
       const talent = String(row.talent || "").trim();
       const talentDesc = String(row.talent_desc || "").replace(/\r/g, "").trim();
-      const keys = expandTalentKeysForLookup(row.talent_key || row.talent || "");
-      keys.forEach((tk) => {
-        const payload = { talentKey: tk, talent, talentDesc };
-        upsert(target.byItemId, itemId, tk, payload);
-        upsert(target.byNameKey, nameKey, tk, payload);
+      expandTalentKeysForLookup(row.talent_key || row.talent || "").forEach((key) => {
+        const payload = { talentKey: key, talent, talentDesc };
+        upsert(out[`${category}ByItemId`], id, key, payload);
+        upsert(out[`${category}ByNameKey`], name, key, payload);
       });
-    };
-
-    const sql = await initSql();
-    const v = indexJson?.built_at ? `?v=${encodeURIComponent(indexJson.built_at)}` : `?v=${Date.now()}`;
-    const gz = await fetchArrayBuffer(`${DATA_BASE}/items.db.gz${v}`);
-    const dbBytes = await gunzipToUint8Array(gz);
-    const db = new sql.Database(dbBytes);
-    try {
-      const collect = (table, target) => {
-        const has = db.exec(`SELECT name FROM sqlite_master WHERE type='table' AND name='${table}'`).length > 0;
-        if (!has) return;
-        const st = db.prepare(`
-          SELECT item_id, name_key, talent, talent_key, talent_desc
-          FROM ${table}
-          WHERE trim(talent) <> '' OR trim(talent_key) <> ''
-        `);
-        while (st.step()) ingestRow(target, st.getAsObject());
-        st.free();
-      };
-      collect("items_gear_named", { byItemId: out.gearByItemId, byNameKey: out.gearByNameKey });
-      collect("items_gear_exotic", { byItemId: out.gearByItemId, byNameKey: out.gearByNameKey });
-      collect("items_weapon_named", { byItemId: out.weaponByItemId, byNameKey: out.weaponByNameKey });
-      collect("items_weapon_exotic", { byItemId: out.weaponByItemId, byNameKey: out.weaponByNameKey });
-      itemTalentOverrideCache = out;
-      return out;
-    } finally {
-      db.close();
-    }
-  })();
-  try {
-    return await itemTalentOverridePromise;
-  } finally {
-    itemTalentOverridePromise = null;
+    });
   }
+  itemTalentOverrideCache = out;
+  return out;
 }
 
 function getVendorTalentOverrideFromCache(cache, itemCategory, itemId, nameKey, talentKey) {
@@ -3134,28 +2861,12 @@ async function fetchArrayBuffer(path) {
 }
 
 async function gunzipToUint8Array(gzBuffer) {
-  if ("DecompressionStream" in window) {
-    const ds = new DecompressionStream("gzip");
-    const stream = new Blob([gzBuffer]).stream().pipeThrough(ds);
-    const ab = await new Response(stream).arrayBuffer();
-    return new Uint8Array(ab);
+const ds = new DecompressionStream("gzip");
+  const stream = new Blob([gzBuffer]).stream().pipeThrough(ds);
+  return new Uint8Array(await new Response(stream).arrayBuffer());
   }
-  if (window.pako) {
-    return window.pako.ungzip(new Uint8Array(gzBuffer));
-  }
-  throw new Error("gzip decode unavailable. Use a modern browser or add pako.min.js.");
-}
 
-async function initSql() {
-  if (SQL) return SQL;
-  if (typeof initSqlJs !== "function") {
-    throw new Error("sql-wasm.js is not loaded. Place web/sql-wasm.js and web/sql-wasm.wasm.");
-  }
-  SQL = await initSqlJs({
-    locateFile: (file) => appPath(file)
-  });
-  return SQL;
-}
+
 
 async function loadDescentPoolState() {
   const fallback = {
@@ -3167,102 +2878,54 @@ async function loadDescentPoolState() {
   };
   try {
     const idx = await fetchJsonWithTimeout(`${DATA_BASE}/descent/index.json?ts=${Date.now()}`, 5000);
-    const dbRel = String(idx?.db_gz || "data/descent/descent_talent_pool_latest.db.gz").trim();
-    const dbPath = appPath(dbRel);
-    const cycleDays = Number(idx?.cycle_days || 3);
+    const path = appPath(idx?.web_json_gz || "data/descent/descent_talent_pool_latest.json.gz");
+    const payload = await fetchGzipJson(`${path}?v=${encodeURIComponent(idx?.content_hash || idx?.generated_at_jst || "")}`);
+    const cycleDays = Number(payload?.meta?.cycle_days || idx?.cycle_days || 3);
     const cycleMs = cycleDays * 24 * 60 * 60 * 1000;
     const anchorUtcMs = parseJstDateTimeToUtcMs(String(idx?.anchor_jst || "2026-03-07 09:00:00"));
     if (!(cycleMs > 0) || !Number.isFinite(anchorUtcMs)) {
       descentPoolState = fallback;
       return;
     }
-
-    const gz = await fetchArrayBuffer(`${dbPath}?ts=${Date.now()}`);
-    const bytes = await gunzipToUint8Array(gz);
-    const sql = await initSql();
-    const db = new sql.Database(bytes);
-    try {
-      const rs = db.exec(
-        "SELECT normalized_cycle_jst, talent_pool, talent_pool_key FROM descent_talent_pool ORDER BY normalized_cycle_jst ASC, talent_pool ASC"
-      );
-      if (!rs || !rs.length || !Array.isArray(rs[0].values)) {
-        descentPoolState = fallback;
-        return;
-      }
-      const map = new Map();
-      for (const row of rs[0].values) {
-        const cycleJst = String(row[0] || "").trim();
-        const poolName = String(row[1] || "").trim();
-        const poolKey = normalizeKey(String(row[2] || poolName));
-        if (!cycleJst) continue;
-        if (!map.has(cycleJst)) {
-          map.set(cycleJst, { pools: new Set(), poolKeys: new Set(), talents: [] });
-        }
-        const bucket = map.get(cycleJst);
-        if (poolName) bucket.pools.add(poolName);
-        if (poolKey) bucket.poolKeys.add(poolKey);
-      }
-      const talentByPoolKey = new Map();
-      try {
-        const trs = db.exec(
-          "SELECT m.pool_key, m.talent_name, m.talent_key, d.talent_group "
-          + "FROM descent_talent_pool_map m "
-          + "LEFT JOIN descent_talent_descriptions d ON d.talent_key = m.talent_key "
-          + "ORDER BY m.pool_key, m.talent_name"
-        );
-        if (trs && trs.length && Array.isArray(trs[0].values)) {
-          for (const row of trs[0].values) {
-            const poolKey = normalizeKey(String(row[0] || ""));
-            if (!poolKey) continue;
-            const item = {
-              talent_name: String(row[1] || "").trim(),
-              talent_key: normalizeKey(String(row[2] || row[1] || "")),
-              talent_group: String(row[3] || "").trim()
-            };
-            if (!talentByPoolKey.has(poolKey)) talentByPoolKey.set(poolKey, []);
-            talentByPoolKey.get(poolKey).push(item);
-          }
-        }
-      } catch (e) {
-        // keep talents empty when map tables are unavailable
-      }
-      const entries = Array.from(map.entries()).map(([cycleJst, bucket]) => ({
+    const talentsByPool = new Map();
+    (payload?.rows || []).forEach((row) => {
+      const key = normalizeKey(row.pool_key || "");
+      if (!key) return;
+      if (!talentsByPool.has(key)) talentsByPool.set(key, []);
+      talentsByPool.get(key).push(row);
+    });
+    const buckets = new Map();
+    (payload?.cycles || []).forEach((row) => {
+      const cycleJst = String(row.normalized_cycle_jst || "").trim();
+      if (!cycleJst) return;
+      if (!buckets.has(cycleJst)) buckets.set(cycleJst, { pools: new Set(), poolKeys: new Set() });
+      const bucket = buckets.get(cycleJst);
+      const pool = String(row.talent_pool || "").trim();
+      const key = normalizeKey(row.talent_pool_key || pool);
+      if (pool) bucket.pools.add(pool);
+      if (key) bucket.poolKeys.add(key);
+    });
+    const entries = Array.from(buckets, ([cycleJst, bucket]) => {
+      const talents = [];
+      const seen = new Set();
+      bucket.poolKeys.forEach((key) => {
+        (talentsByPool.get(key) || []).forEach((row) => {
+          const talentKey = normalizeKey(row.talent_key || row.talent_name || "");
+          if (!talentKey || seen.has(talentKey)) return;
+          seen.add(talentKey);
+          talents.push({ name: String(row.talent_name || "").trim(), talent_key: talentKey, talent_group: String(row.talent_group || "").trim() });
+        });
+      });
+      return {
         cycleJst,
         startUtcMs: parseJstDateTimeToUtcMs(cycleJst),
-        pools: Array.from(bucket.pools || []),
-        poolKeys: Array.from(bucket.poolKeys || []),
-        talents: (() => {
-          const keys = Array.from(bucket.poolKeys || []).map((x) => normalizeKey(x)).filter(Boolean);
-          const out = [];
-          const seen = new Set();
-          for (const k of keys) {
-            const arr = talentByPoolKey.get(k) || [];
-            for (const t of arr) {
-              const tk = normalizeKey(String(t?.talent_key || t?.talent_name || ""));
-              if (!tk || seen.has(tk)) continue;
-              seen.add(tk);
-              out.push({
-                name: String(t?.talent_name || "").trim(),
-                talent_key: tk,
-                talent_group: String(t?.talent_group || "").trim()
-              });
-            }
-          }
-          return out;
-        })()
-      })).filter((x) => Number.isFinite(x.startUtcMs));
-      entries.sort((a, b) => a.startUtcMs - b.startUtcMs);
-      descentPoolState = {
-        loaded: true,
-        available: entries.length > 0,
-        cycleMs,
-        anchorUtcMs,
-        entries
+        pools: Array.from(bucket.pools),
+        poolKeys: Array.from(bucket.poolKeys),
+        talents
       };
-    } finally {
-      db.close();
-    }
-  } catch (e) {
+    }).filter((entry) => Number.isFinite(entry.startUtcMs)).sort((a, b) => a.startUtcMs - b.startUtcMs);
+    descentPoolState = { loaded: true, available: entries.length > 0, cycleMs, anchorUtcMs, entries };
+  } catch (_) {
     descentPoolState = fallback;
   }
 }
@@ -5084,82 +4747,21 @@ function blueprintPopupExoticTalentIconHtml(talentKey, fallbackText = "", isWeap
 
 async function ensureExoticGearPopupCache() {
   if (exoticGearPopupCache) return exoticGearPopupCache;
-  if (exoticGearPopupPromise) return exoticGearPopupPromise;
-  exoticGearPopupPromise = (async () => {
-    const out = {
-      gearByNameKey: new Map(),
-      gearByName: new Map(),
-      weaponByNameKey: new Map(),
-      weaponByName: new Map()
-    };
-    const sql = await initSql();
-    const v = indexJson?.built_at ? `?v=${encodeURIComponent(indexJson.built_at)}` : `?v=${Date.now()}`;
-    const gz = await fetchArrayBuffer(`${DATA_BASE}/items.db.gz${v}`);
-    const dbBytes = await gunzipToUint8Array(gz);
-    const db = new sql.Database(dbBytes);
-    try {
-      const hasGear = db.exec("SELECT name FROM sqlite_master WHERE type='table' AND name='items_gear_exotic'").length > 0;
-      if (hasGear) {
-        const st = db.prepare(`
-          SELECT item_id, name_key, name, item_type, talent, talent_key, talent_desc, attr_types, attr_type_keys
-          FROM items_gear_exotic
-        `);
-        while (st.step()) {
-          const r = st.getAsObject();
-          const row = {
-            item_id: String(r.item_id || "").trim(),
-            name_key: normalizeKey(r.name_key || ""),
-            name: String(r.name || "").trim(),
-            item_type: String(r.item_type || "").trim(),
-            talent: String(r.talent || "").trim(),
-            talent_key: String(r.talent_key || "").trim(),
-            talent_desc: String(r.talent_desc || "").trim(),
-            attr_types: String(r.attr_types || "").trim(),
-            attr_type_keys: String(r.attr_type_keys || "").trim()
-          };
-          if (row.name_key && !out.gearByNameKey.has(row.name_key)) out.gearByNameKey.set(row.name_key, row);
-          const nn = normalizeKey(row.name || "");
-          if (nn && !out.gearByName.has(nn)) out.gearByName.set(nn, row);
-        }
-        st.free();
-      }
-      const hasWeapon = db.exec("SELECT name FROM sqlite_master WHERE type='table' AND name='items_weapon_exotic'").length > 0;
-      if (hasWeapon) {
-        const st = db.prepare(`
-          SELECT item_id, name_key, name, weapon_group, variant, talent, talent_key, talent_desc, exotic_mods, exotic_mod_type_keys
-          FROM items_weapon_exotic
-        `);
-        while (st.step()) {
-          const r = st.getAsObject();
-          const row = {
-            item_id: String(r.item_id || "").trim(),
-            name_key: normalizeKey(r.name_key || ""),
-            name: String(r.name || "").trim(),
-            weapon_group: String(r.weapon_group || "").trim(),
-            variant: String(r.variant || "").trim(),
-            talent: String(r.talent || "").trim(),
-            talent_key: String(r.talent_key || "").trim(),
-            talent_desc: String(r.talent_desc || "").trim(),
-            exotic_mods: String(r.exotic_mods || "").trim(),
-            exotic_mod_type_keys: String(r.exotic_mod_type_keys || "").trim()
-          };
-          if (row.name_key && !out.weaponByNameKey.has(row.name_key)) out.weaponByNameKey.set(row.name_key, row);
-          const nn = normalizeKey(row.name || "");
-          if (nn && !out.weaponByName.has(nn)) out.weaponByName.set(nn, row);
-        }
-        st.free();
-      }
-      exoticGearPopupCache = out;
-      return out;
-    } finally {
-      db.close();
-    }
-  })();
-  try {
-    return await exoticGearPopupPromise;
-  } finally {
-    exoticGearPopupPromise = null;
+  const out = {
+    gearByNameKey: new Map(), gearByName: new Map(),
+    weaponByNameKey: new Map(), weaponByName: new Map()
+  };
+  for (const [table, category] of [["items_gear_exotic", "gear"], ["items_weapon_exotic", "weapon"]]) {
+    (await itemsTableRows(table, indexJson?.built_at)).forEach((row) => {
+      const key = normalizeKey(row.name_key || "");
+      const name = normalizeKey(row.name || "");
+      const value = { ...row, name_key: key };
+      if (key && !out[`${category}ByNameKey`].has(key)) out[`${category}ByNameKey`].set(key, value);
+      if (name && !out[`${category}ByName`].has(name)) out[`${category}ByName`].set(name, value);
+    });
   }
+  exoticGearPopupCache = out;
+  return out;
 }
 
 function blueprintPopupWeaponGroupKey(v) {
@@ -5196,84 +4798,21 @@ function blueprintPopupCoreLineClass(coreKey) {
 
 async function ensureNamedItemPopupCache() {
   if (namedItemPopupCache) return namedItemPopupCache;
-  if (namedItemPopupPromise) return namedItemPopupPromise;
-  namedItemPopupPromise = (async () => {
-    const out = {
-      gearByNameKey: new Map(),
-      gearByName: new Map(),
-      weaponByNameKey: new Map(),
-      weaponByName: new Map()
-    };
-    const sql = await initSql();
-    const v = indexJson?.built_at ? `?v=${encodeURIComponent(indexJson.built_at)}` : `?v=${Date.now()}`;
-    const gz = await fetchArrayBuffer(`${DATA_BASE}/items.db.gz${v}`);
-    const dbBytes = await gunzipToUint8Array(gz);
-    const db = new sql.Database(dbBytes);
-    try {
-      const hasGear = db.exec("SELECT name FROM sqlite_master WHERE type='table' AND name='items_gear_named'").length > 0;
-      if (hasGear) {
-        const st = db.prepare(`
-          SELECT item_id, name_key, name, item_type, core_attribute, core_attribute_key, attr, attr_type_keys, talent, talent_key, talent_desc
-          FROM items_gear_named
-        `);
-        while (st.step()) {
-          const r = st.getAsObject();
-          const row = {
-            item_id: String(r.item_id || "").trim(),
-            name_key: normalizeKey(r.name_key || ""),
-            name: String(r.name || "").trim(),
-            item_type: String(r.item_type || "").trim(),
-            core_attribute: String(r.core_attribute || "").trim(),
-            core_attribute_key: String(r.core_attribute_key || "").trim(),
-            attr: String(r.attr || "").trim(),
-            attr_type_keys: String(r.attr_type_keys || "").trim(),
-            talent: String(r.talent || "").trim(),
-            talent_key: String(r.talent_key || "").trim(),
-            talent_desc: String(r.talent_desc || "").trim()
-          };
-          if (row.name_key && !out.gearByNameKey.has(row.name_key)) out.gearByNameKey.set(row.name_key, row);
-          const nn = normalizeKey(row.name || "");
-          if (nn && !out.gearByName.has(nn)) out.gearByName.set(nn, row);
-        }
-        st.free();
-      }
-      const hasWeapon = db.exec("SELECT name FROM sqlite_master WHERE type='table' AND name='items_weapon_named'").length > 0;
-      if (hasWeapon) {
-        const st = db.prepare(`
-          SELECT item_id, name_key, name, weapon_group, variant, attr, attr_type_keys, talent, talent_key, talent_desc
-          FROM items_weapon_named
-        `);
-        while (st.step()) {
-          const r = st.getAsObject();
-          const row = {
-            item_id: String(r.item_id || "").trim(),
-            name_key: normalizeKey(r.name_key || ""),
-            name: String(r.name || "").trim(),
-            weapon_group: String(r.weapon_group || "").trim(),
-            variant: String(r.variant || "").trim(),
-            attr: String(r.attr || "").trim(),
-            attr_type_keys: String(r.attr_type_keys || "").trim(),
-            talent: String(r.talent || "").trim(),
-            talent_key: String(r.talent_key || "").trim(),
-            talent_desc: String(r.talent_desc || "").trim()
-          };
-          if (row.name_key && !out.weaponByNameKey.has(row.name_key)) out.weaponByNameKey.set(row.name_key, row);
-          const nn = normalizeKey(row.name || "");
-          if (nn && !out.weaponByName.has(nn)) out.weaponByName.set(nn, row);
-        }
-        st.free();
-      }
-      namedItemPopupCache = out;
-      return out;
-    } finally {
-      db.close();
-    }
-  })();
-  try {
-    return await namedItemPopupPromise;
-  } finally {
-    namedItemPopupPromise = null;
+  const out = {
+    gearByNameKey: new Map(), gearByName: new Map(),
+    weaponByNameKey: new Map(), weaponByName: new Map()
+  };
+  for (const [table, category] of [["items_gear_named", "gear"], ["items_weapon_named", "weapon"]]) {
+    (await itemsTableRows(table, indexJson?.built_at)).forEach((row) => {
+      const key = normalizeKey(row.name_key || "");
+      const name = normalizeKey(row.name || "");
+      const value = { ...row, name_key: key };
+      if (key && !out[`${category}ByNameKey`].has(key)) out[`${category}ByNameKey`].set(key, value);
+      if (name && !out[`${category}ByName`].has(name)) out[`${category}ByName`].set(name, value);
+    });
   }
+  namedItemPopupCache = out;
+  return out;
 }
 
 function buildBlueprintNamedPopupCardHtml(row, itemKind = "gear", fallbackName = "", talentDescResolved = "") {

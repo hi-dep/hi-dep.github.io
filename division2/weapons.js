@@ -16,45 +16,7 @@
   }
 
   async function loadWeaponsRows() {
-    if (weaponsRowsCache) return weaponsRowsCache;
-    const SQL = await initSql();
-    const v = indexJson?.built_at ? `?v=${encodeURIComponent(indexJson.built_at)}` : `?v=${Date.now()}`;
-    const gz = await fetchArrayBuffer(`${DATA_BASE}/items.db.gz${v}`);
-    const dbBytes = await gunzipToUint8Array(gz);
-    const db = new SQL.Database(dbBytes);
-    try {
-      const hasWeapons = db.exec("SELECT name FROM sqlite_master WHERE type='table' AND name='items_weapons'").length > 0;
-      if (!hasWeapons) {
-        console.warn("Weapons table is missing in items.db", { hasWeapons });
-        throw new Error("data_unavailable");
-      }
-      const stmt = db.prepare(`
-        SELECT
-          item_id,
-          name_key,
-          name,
-          weapon_group,
-          family,
-          family_key,
-          base,
-          base_key,
-          rarity_tier,
-          rpm,
-          base_mag_size,
-          empty_reload_secs,
-          base_damage,
-          optimal_range
-        FROM items_weapons
-        ORDER BY weapon_group, name
-      `);
-      const rows = [];
-      while (stmt.step()) rows.push(stmt.getAsObject());
-      stmt.free();
-      weaponsRowsCache = { rows };
-      return weaponsRowsCache;
-    } finally {
-      db.close();
-    }
+    return window.loadItemsView("weapons", indexJson?.built_at);
   }
 
   function renderWeaponsViewFromRows(payload) {

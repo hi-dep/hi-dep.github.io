@@ -1208,36 +1208,14 @@
       if (pickerState.loading) return [];
       pickerState.loading = true;
       try {
-        const SQL = await initSql();
         const dbFile = String(seasonData?.passive_patterns_db || `${seasonId}_passive_patterns.db.gz`).trim();
-        const gz = await fetchArrayBuffer(`./data/season_mod/${dbFile}?ts=${Date.now()}`);
-        const dbBytes = await gunzipToUint8Array(gz);
-        const db = new SQL.Database(dbBytes);
-        try {
-          const hasTable = db.exec("SELECT name FROM sqlite_master WHERE type='table' AND name='passive_patterns'").length > 0;
-          if (!hasTable) throw new Error("passive_patterns table is missing");
-          const stmt = db.prepare(`
-            SELECT
-              slot1, slot2, slot3,
-              weapon_handling, headshot_damage, magazine_size,
-              max_armor, protection_from_elites, hazard_protection,
-              skill_damage, skill_repair, status_effects,
-              blackout_emp_radius, blackout_cooldown, blackout_pulse_duration,
-              cloud_repair_per_sec, cloud_cooldown, cloud_blind_duration,
-              optimize_skill_cdr, optimize_cooldown, optimize_overcharge_duration
-            FROM passive_patterns
-          `);
-          const rows = [];
-          while (stmt.step()) rows.push(stmt.getAsObject());
-          stmt.free();
-          pickerState.rows = rows;
-        } finally {
-          db.close();
-        }
+        const jsonFile = dbFile.replace(/\.db\.gz$/, ".json.gz");
+        const payload = await fetchGzipJson(`./data/season_mod/${jsonFile}`);
+        pickerState.rows = Array.isArray(payload?.rows) ? payload.rows : [];
       } finally {
         pickerState.loading = false;
       }
-      return pickerState.rows || [];
+      return pickerState.rows;
     };
 
     const pickerActiveCols = () => {
