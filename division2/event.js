@@ -316,7 +316,20 @@
   }
 
   async function loadTargetLootedEvents() {
-return { events: {}, targetDay: "", targetWeek: "" };
+    if (typeof fetchGzipJson !== "function") {
+      throw new Error("target-looted JSON helpers are unavailable");
+    }
+    const dbPath = (typeof appPath === "function")
+      ? appPath("data/target_looted/target_looted_latest.json.gz")
+      : "./data/target_looted/target_looted_latest.json.gz";
+    const payload = await fetchGzipJson(`${dbPath}?ts=${Date.now()}`);
+    const meta = payload && typeof payload.meta === "object" ? payload.meta : {};
+    const events = payload && typeof payload.events === "object" ? payload.events : {};
+    return {
+      events,
+      targetDay: String(meta.target_day || "").trim(),
+      targetWeek: String(meta.target_week || "").trim(),
+    };
   }
 
   async function loadEventIndexJson() {
