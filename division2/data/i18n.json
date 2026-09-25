@@ -192,7 +192,8 @@
       "mommabadger": "ママ・バジャー",
       "hermano": "エルマーノ",
       "thecatalyst": "触媒",
-      "ironwill": "アイアンウィル"
+      "ironwill": "アイアンウィル",
+      "sarru": "サルー"
     },
     "weapon_item_name_ar": {
       "acr": "ACR",
@@ -328,7 +329,8 @@
       "infantrymg5replica": "インファントリー MG5 模造品",
       "militarymk46replica": "ミリタリー MK46 模造品",
       "theheadlinegrabber": "ヘッドライン·グラバー",
-      "insulttoinjury": "インサルト·トゥ·インジャリー"
+      "insulttoinjury": "インサルト·トゥ·インジャリー",
+      "vertigo": "ヴァーティゴ"
     },
     "weapon_item_name_smg": {
       "blackmarkett821": "ブラックマーケット T821",
@@ -1123,7 +1125,8 @@
       "foamatthemouth": "フォーム・アット・マウス",
       "eaglesstriketenacity": "イーグルストライク/テナシティ",
       "youcanlookbutyoucanttouch": "見るのはいい…/...だが触るな",
-      "shakedown": "シェイクダウン"
+      "shakedown": "シェイクダウン",
+      "startling": "スタートリング"
     },
     "cache": {
       "amount": "数量",
@@ -1175,7 +1178,8 @@
       "rebalance": "リバランス",
       "slotted": "スロット",
       "impervious": "インパーヴィアス",
-      "resolved": "リゾルブ"
+      "resolved": "リゾルブ",
+      "decoyking": "Decoy King"
     },
     "preserved": {
       "conflict_cache": "コンフリクトキャッシュ",

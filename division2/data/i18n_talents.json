@@ -350,7 +350,8 @@
       "rebalance": "敵を3回倒すか攻撃を当てると赤い累積が溜まる。\n累積ごとに0.5%の武器ダメージが付与される\n\n3回攻撃を受けると青い累積が溜まる。\n累積ごとに0.5%のダメージ耐性が付与される\n\n累積数が80になると、累積数をすべて失い、赤い累積ごとに0.5%のダメージ耐性、青い累積ごとに0.5%の武器ダメージが、独立したボーナスとして、次に累積が上限に到達するまで付与される",
       "slotted": "このアイテムの非コア特性1つごとにボーナスを得る。\nボーナスは色に依存する:\n赤:+10%のクリティカルダメージ\n黄:+5%のスキル効率\n青:+1%のアーマー回復\n\nこのアイテムにはあらゆるコア特性が付く可能性がある。\nこのアイテムには、装備MODスロットの代わりに3つ目のランダム特性が付く\nこのアイテムには、ヘッドショットダメージ、HPまたはスキル修復特性は付かない",
       "impervious": "自分とその10m以内にいる味方が状態異常耐性+40%を得る",
-      "resolved": "次のボディショットがヘッドショット扱いになる\n\nクールダウン:2秒\n\n必要条件\n装備:マークスマンライフル、ライフル、ピストル"
+      "resolved": "次のボディショットがヘッドショット扱いになる\n\nクールダウン:2秒\n\n必要条件\n装備:マークスマンライフル、ライフル、ピストル",
+      "decoyking": "While in combat, the Moon will cycle through its phases every 5s. There are 8 Moon phases.\n\nStarting from a New Moon, all damage you deal will be Amplified by 5%. The value of the Amplifier will increase by 5% each phase until reaching 25% during a Full Moon, then it will decrease as the Moon returns to being a New Moon, restarting the cycle.\n\nDuring a Full Moon, deploying a Decoy will grant it Overcharge and the cycle will pause for 10s."
     },
     "exotic_weapon_talent_desc": {
       "adaptiveinstincts": "ヘッドショットを30回決めると、45秒間クリティカル率が20%上昇し、クリティカルダメージが50%増加する\nボディショットを65回決めると、45秒間武器ダメージが90%増加する\nレッグショットを20回決めると、45秒間リロード速度が150%上昇する\nバフは戦闘状態から抜けると更新される",
@@ -446,7 +447,8 @@
       "perfectbackandforth": "TODO:Swapping to this weapon grants +13% Rate of Fire and +12% Weapon Damage for 10s. Swapping from this weapon grants +5% Rate of Fire and +4.5% Weapon Damage for 10s. Receiving one of the bonuses will remove the previous one if it's still active. Two instances of this Talent will not function at the same time.",
       "eaglesstriketenacity": "イーグルストライク\n撃ち続けると命中率が最大30%上昇する\n\nヘッドショットキルでテナシティのバフが15秒間発生する\n\nテナシティの効果はボディショットで1%、ヘッドショットで5%上昇する\n\nテナシティ\n受けたダメージの40~80%がバフの効果終了まで保留される\n\n保留されたダメージはバフ持続中に敵を倒すことで減少する〔最大3キルで100%減少〕",
       "youcanlookbutyoucanttouch": "見るのはいい…\n非戦闘時に10累積を得る\nこの武器は累積ごとに+12.5%の増幅ダメージを与える\n\n...だが触るな\n1累積を自動的に消費し、1回分の被ダメージを全回復する\n3秒ごとに1累積が補充される",
-      "shakedown": "ボディショットが敵に累積を10秒間与える。最大累積数:4。\n異なる敵を撃つと、累積はすべて消失する\nこの武器は累積ごとに+4%の増幅ダメージを与える\n累積を持つ敵に対する次のヘッドショットは、それをすべて消費して累積ごとに+11%の増幅ダメージを与える\n敵の弱点を破壊すると、敵は5秒間+30%の増幅ダメージを受ける"
+      "shakedown": "ボディショットが敵に累積を10秒間与える。最大累積数:4。\n異なる敵を撃つと、累積はすべて消失する\nこの武器は累積ごとに+4%の増幅ダメージを与える\n累積を持つ敵に対する次のヘッドショットは、それをすべて消費して累積ごとに+11%の増幅ダメージを与える\n敵の弱点を破壊すると、敵は5秒間+30%の増幅ダメージを受ける",
+      "startling": "この武器で敵を制圧すると、その敵を混乱状態にし、15秒間にわたり、カバー外のターゲットへのダメージ+30%が自分と味方に発生する"
     },
     "descent_talent_desc": {
       "adrenalinerush": "敵から10m以内にいる場合、[3*tier]%のボーナスアーマーを5秒間得る。3回まで累積する\nクールダウン: [5.3-(0.3*tier)]秒",
