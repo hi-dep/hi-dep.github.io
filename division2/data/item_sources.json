@@ -833,9 +833,9 @@
       "slot_key": "gloves"
     },
     {
-      "item_id": "source:gearexotic:catalyst",
+      "item_id": "source:gearexotic:thecatalyst",
       "item_category": "gear_exotic",
-      "item_name": "Catalyst",
+      "item_name": "The Catalyst",
       "normal_drop": false,
       "pvp_drop": false,
       "named_cache": false,
@@ -848,7 +848,7 @@
       "notes": "",
       "notes_jp": "",
       "work_comment": "Exotic Source.md synchronized",
-      "slot_key": ""
+      "slot_key": "mask"
     },
     {
       "item_id": "source:gearexotic:catharsis",
@@ -1245,24 +1245,6 @@
       "notes_jp": "",
       "work_comment": "Exotic Source.md synchronized",
       "slot_key": "chest"
-    },
-    {
-      "item_id": "source:gearexotic:thecatalyst",
-      "item_category": "gear_exotic",
-      "item_name": "The Catalyst",
-      "normal_drop": false,
-      "pvp_drop": false,
-      "named_cache": false,
-      "exotic_cache": true,
-      "pvp_cache": false,
-      "target_loot": "mask",
-      "target_blueprint_required": false,
-      "specific_source": "",
-      "specific_source_jp": "",
-      "notes": "",
-      "notes_jp": "",
-      "work_comment": "Filled from general exotic acquisition rule: Targeted Loot and Exotic Cache; normal drop not confirmed",
-      "slot_key": "mask"
     },
     {
       "item_id": "source:gearexotic:tinkerer",
