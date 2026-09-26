@@ -562,7 +562,7 @@
       "slotted": "このアイテムの非コア特性1つごとにボーナスを得る。\nボーナスは色に依存する:\n赤:+10%のクリティカルダメージ\n黄:+5%のスキル効率\n青:+1%のアーマー回復\n\nこのアイテムにはあらゆるコア特性が付く可能性がある。\nこのアイテムには、装備MODスロットの代わりに3つ目のランダム特性が付く\nこのアイテムには、ヘッドショットダメージ、HPまたはスキル修復特性は付かない",
       "impervious": "自分とその10m以内にいる味方が状態異常耐性+40%を得る",
       "resolved": "次のボディショットがヘッドショット扱いになる\n\nクールダウン:2秒\n\n必要条件\n装備:マークスマンライフル、ライフル、ピストル",
-      "decoyking": "While in combat, the Moon will cycle through its phases every 5s. There are 8 Moon phases.\n\nStarting from a New Moon, all damage you deal will be Amplified by 5%. The value of the Amplifier will increase by 5% each phase until reaching 25% during a Full Moon, then it will decrease as the Moon returns to being a New Moon, restarting the cycle.\n\nDuring a Full Moon, deploying a Decoy will grant it Overcharge and the cycle will pause for 10s."
+      "decoyking": "戦闘中、月は5秒ごとに満ち欠けの段階が変化する。月の満ち欠けは8段階ある\n\n新月から始まり、与える全てのダメージが5%増幅される。増幅値は段階ごとに5%ずつ上昇し、満月時に25%に達する。その後、月が新月へ戻るにつれて増幅値が低下し、サイクルが再開する\n\n満月時にデコイを展開すると、デコイにオーバーチャージを与え、サイクルが10秒間停止する"
     },
     "exotic_weapon_talent_desc": {
       "adaptiveinstincts": "ヘッドショットを30回決めると、45秒間クリティカル率が20%上昇し、クリティカルダメージが50%増加する\nボディショットを65回決めると、45秒間武器ダメージが90%増加する\nレッグショットを20回決めると、45秒間リロード速度が150%上昇する\nバフは戦闘状態から抜けると更新される",

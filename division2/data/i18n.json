@@ -609,7 +609,8 @@
       "px4stormtypetreplica": "Px4 ストームType T 模造品",
       "tacticalm1911replica": "タクティカル M1911 模造品",
       "x45tacticalreplica": "X-45 タクティカル 模造品",
-      "rabidd50": "ラビッドD50"
+      "rabidd50": "ラビッドD50",
+      "thecrookedstrap": "クルックド・ストラップ"
     },
     "gear_slot": {
       "backpack": "バックパック",
@@ -1179,7 +1180,7 @@
       "slotted": "スロット",
       "impervious": "インパーヴィアス",
       "resolved": "リゾルブ",
-      "decoyking": "Decoy King"
+      "decoyking": "デコイキング"
     },
     "preserved": {
       "conflict_cache": "コンフリクトキャッシュ",

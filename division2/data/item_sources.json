@@ -1193,6 +1193,24 @@
       "slot_key": "gloves"
     },
     {
+      "item_id": "source:gearexotic:sarru",
+      "item_category": "gear_exotic",
+      "item_name": "Sarru",
+      "normal_drop": false,
+      "pvp_drop": false,
+      "named_cache": false,
+      "exotic_cache": false,
+      "pvp_cache": false,
+      "target_loot": "FALSE",
+      "target_blueprint_required": false,
+      "specific_source": "Y8S3 Red Moon Rising Event",
+      "specific_source_jp": "Y8S3 レッドムーン・ライジングイベント",
+      "notes": "",
+      "notes_jp": "",
+      "work_comment": "",
+      "slot_key": "backpack"
+    },
+    {
       "item_id": "source:gearexotic:sawyerskneepads",
       "item_category": "gear_exotic",
       "item_name": "Sawyer's Kneepads",
@@ -3837,6 +3855,24 @@
       "notes_jp": "",
       "work_comment": "Exotic Source.md synchronized",
       "slot_key": "smg"
+    },
+    {
+      "item_id": "source:weaponexotic:vertigo",
+      "item_category": "weapon_exotic",
+      "item_name": "Vertigo",
+      "normal_drop": false,
+      "pvp_drop": false,
+      "named_cache": false,
+      "exotic_cache": false,
+      "pvp_cache": false,
+      "target_loot": "",
+      "target_blueprint_required": false,
+      "specific_source": "Y8S3 Red Moon Rising Event",
+      "specific_source_jp": "Y8S3 レッドムーン・ライジングイベント",
+      "notes": "",
+      "notes_jp": "",
+      "work_comment": "",
+      "slot_key": "lmg"
     },
     {
       "item_id": "source:weaponexotic:vindicator",
@@ -8661,6 +8697,24 @@
       "notes_jp": "",
       "work_comment": "Updated: Classified Mission completion reward",
       "slot_key": "ar"
+    },
+    {
+      "item_id": "source:weaponnamed:thecrookedstrap",
+      "item_category": "weapon_named",
+      "item_name": "The Crooked Strap",
+      "normal_drop": false,
+      "pvp_drop": false,
+      "named_cache": false,
+      "exotic_cache": false,
+      "pvp_cache": false,
+      "target_loot": "",
+      "target_blueprint_required": false,
+      "specific_source": "",
+      "specific_source_jp": "",
+      "notes": "",
+      "notes_jp": "",
+      "work_comment": "",
+      "slot_key": "pistol"
     },
     {
       "item_id": "source:weaponnamed:theclaw",
