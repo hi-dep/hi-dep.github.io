@@ -1201,7 +1201,7 @@
       "named_cache": false,
       "exotic_cache": false,
       "pvp_cache": false,
-      "target_loot": "FALSE",
+      "target_loot": "",
       "target_blueprint_required": false,
       "specific_source": "Y8S3 Red Moon Rising Event",
       "specific_source_jp": "Y8S3 レッドムーン・ライジングイベント",
