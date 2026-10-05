@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex">
+  <title>Division 2 Database</title>
+  <script>
+    (() => {
+      const target = new URL("https://hidep-division2.pages.dev/");
+      const current = new URL(window.location.href);
+
+      for (const [key, value] of current.searchParams) {
+        target.searchParams.append(key, value);
+      }
+
+      // Legacy GitHub Pages used ?view=event for Target Loot.
+      if (target.searchParams.get("view") === "event") {
+        target.searchParams.set("view", "target_loot");
+      }
+
+      target.hash = current.hash;
+      location.replace(target.toString());
+    })();
+  </script>
+</head>
+<body></body>
+</html>
